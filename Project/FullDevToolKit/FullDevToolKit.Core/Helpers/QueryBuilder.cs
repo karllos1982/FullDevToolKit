@@ -6,6 +6,8 @@ namespace FullDevToolKit.Helpers
     public abstract class QueryBuilder
     {
 
+        public QuerySelectBuilder SelectBuilder = new QuerySelectBuilder();
+            
         public List<string> Keys { get; set; }
 
         public List<string> ExcludeFields { get; set; }
@@ -214,4 +216,262 @@ namespace FullDevToolKit.Helpers
             return ret;
         }
     }
+
+    public enum JOINTYPE
+    {
+        NONE = 0,
+        INNER = 1,
+        LEFT = 2,
+        RIGHT = 3
+    }
+
+    public enum ORDERBYTYPE
+    {
+        NONE = 0,
+        ASC = 1,
+        DESC = 2
+    }
+
+    public record TableDef
+    {
+        public string Name { get; set; }
+        public string Alias { get; set; }
+        public bool AllColmuns { get; set; }
+        public string PKFieldName { get; set; }
+
+        public string JoinFieldName { get; set; }
+
+        public JOINTYPE JoinType { get; set; }
+
+        public string AliasJoinTable { get; set; }
+    }
+
+    public record FieldDef
+    {
+        public string TableAlias { get; set; }
+        public string FieldName { get; set; }        
+        public string ParamKey { get; set; }
+        public bool DisplayInSelect { get; set; }
+        public string AutoWhere { get; set; }       
+        public string StaticWhere { get; set; }
+        public ORDERBYTYPE OrderType { get; set; }
+    }
+
+    public record WhereClausuleDef
+    {
+       
+        public FieldDef Field { get; set; }
+
+        public bool AutoClausule { get; set; }
+
+        public string DefaultCriteriaValue { get; set; }
+
+        public string StaticCriteriaValue { get; set; }
+    }
+
+    public class QuerySelectBuilder
+    {
+        private List<TableDef> _Tables;
+        public List<TableDef> Tables { get { return _Tables; } }
+
+        private List<FieldDef> _Fields;
+        public List<FieldDef> Fields { get { return _Fields; } }
+
+       
+
+        public QuerySelectBuilder()
+        {
+            _Tables = new List<TableDef>();
+            _Fields = new List<FieldDef>();          
+
+        }
+
+        public void AddTable(string name, string alias, bool allcolumns, 
+            string pk, string joinfield , JOINTYPE join, string aliasjointable )
+        {
+            var obj = new TableDef
+            {
+                Name = name,
+                Alias = alias,
+                AllColmuns= allcolumns,
+                PKFieldName = pk,
+                JoinFieldName = joinfield,
+                JoinType = join,
+                AliasJoinTable = aliasjointable
+            };
+
+            _Tables.Add(obj); 
+        }
+
+        public void AddField( string tablealias, string name,
+          string paramkey, bool display, string autowhere, string staticwhere, ORDERBYTYPE order)
+        {
+            var obj = new FieldDef
+            {                
+                TableAlias = tablealias,
+                FieldName=name,              
+                ParamKey=paramkey,
+                DisplayInSelect = display,
+                AutoWhere = autowhere,
+                StaticWhere =staticwhere,   
+                OrderType =order
+            };
+
+            _Fields.Add(obj);
+        }
+      
+        
+        public string BuildQuery(string extrawhere = null)
+        {
+            StringBuilder strq = new StringBuilder();
+            string text = "";
+
+            text = "SELECT ";
+          
+            foreach (TableDef t in _Tables)
+            {
+                if (t.AllColmuns) { strq.Append($"{t.Alias}.*,");}                
+            }
+
+            if (strq.Length > 0)
+            {
+                text = text + strq.ToString();
+
+                if (_Fields.Where(f => f.DisplayInSelect == true).ToList().Count == 0)
+                { 
+                    text = text.Remove(text.Length - 1, 1);
+                }
+            }
+
+            strq.Clear();
+
+            foreach (FieldDef f in _Fields)
+            {
+                if (f.DisplayInSelect)
+                {
+                    var f2 = _Tables.Where(t => t.Alias == f.TableAlias && t.AllColmuns).FirstOrDefault();
+                    if (f2 == null)
+                    {
+                        strq.Append($"{f.TableAlias}.{f.FieldName},");
+                    }
+                }
+            }
+
+            if (strq.Length > 0) 
+            {
+                text = text + strq.ToString();
+                text = text.Remove(text.Length - 1, 1);
+            }
+                        
+            strq.Clear();
+
+            text = text + " FROM ";
+            string join_text = "";
+
+            foreach (TableDef t in _Tables)
+            {
+                
+                if (t.JoinType== JOINTYPE.NONE ) 
+                {
+                    strq.Append($"{t.Name} {t.Alias} "); 
+                }
+                else
+                {
+                    switch (t.JoinType)
+                    {
+                        case JOINTYPE.INNER:
+                            join_text = "INNER JOIN";
+                            break;
+
+                        case JOINTYPE.LEFT: 
+                            join_text = "LEFT JOIN";
+                            break;
+
+                        case JOINTYPE.RIGHT:
+                            join_text = "RIGHT JOIN";
+                            break;  
+
+                    }
+
+                    TableDef jointable = _Tables.Where(a =>a.Alias ==t.AliasJoinTable ).FirstOrDefault();
+                        
+                    strq.Append($"{join_text} {t.Name} {t.Alias}{" on "} "+
+                         $"{jointable.Alias}.{t.JoinFieldName} = {t.Alias}.{t.JoinFieldName} ");
+                }
+            }
+
+            text = text + strq.ToString();       
+            strq.Clear();
+
+            text = text + " where 1=1 ";
+
+            foreach (FieldDef w in _Fields)
+            {            
+                if (w.AutoWhere != null)
+                {              
+                    strq.Append($" and ({w.ParamKey}={w.AutoWhere} or  {w.TableAlias}.{w.FieldName}={w.ParamKey})");
+                           
+                }
+
+                if (w.StaticWhere != null && w.StaticWhere != "" )
+                {
+                    strq.Append($" and {w.TableAlias}.{w.FieldName}={w.StaticWhere} ");
+                }
+
+            }
+
+            text = text + strq.ToString();       
+            strq.Clear();
+
+            if (extrawhere != null)
+            {
+                text = text + " " +  extrawhere;
+            }
+
+           
+
+            bool flagorder = false; 
+
+            foreach (FieldDef f in _Fields)
+            {
+                if (f.OrderType != ORDERBYTYPE.NONE)
+                {
+                    flagorder = true;
+                    
+                    if (flagorder) 
+                    {
+                        text = text + " order by ";
+                        flagorder = false;  
+                    }
+
+                    if (f.OrderType != ORDERBYTYPE.ASC)
+                    {
+                        strq.Append($"{f.TableAlias}.{f.FieldName} ASC,");
+                    }
+
+                    if (f.OrderType != ORDERBYTYPE.DESC)
+                    {
+                        strq.Append($"{f.TableAlias}.{f.FieldName} DESC,");
+                    }
+
+                }                                
+            }
+
+            if (strq.Length > 0)
+            {
+                text = text + strq.ToString();
+                text = text.Remove(text.Length - 1, 1);
+            }          
+            
+            return text;
+
+        }
+
+        public void Clear()
+        {
+            _Tables = new List<TableDef>();
+            _Fields = new List<FieldDef>();            
+        }
+    }
+
 }

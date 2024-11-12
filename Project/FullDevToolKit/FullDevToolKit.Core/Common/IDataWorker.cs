@@ -5,13 +5,13 @@ namespace FullDevToolKit.Common
     public interface IDataWorker
     {        
 
-        List<T> ExecuteQueryToList<T>(ref OperationStatus executionstatus,
+        List<T> ExecuteQueryToList<T>(ref ExecutionStatus status,
             string sql, object filter = null);
 
-        T ExecuteQueryFirst<T>(ref OperationStatus executionstatus,
+        T ExecuteQueryFirst<T>(ref ExecutionStatus status,
             string sql, object filter = null);
 
-        OperationStatus Execute(ref OperationStatus executionstatus,
+        ExecutionStatus Execute(ref ExecutionStatus status,
             string sql, object data);
 
 

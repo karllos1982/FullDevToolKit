@@ -6,7 +6,8 @@ namespace FullDevToolKit.Core
     {
         IContext Context { get; set; }
 
-        void InitializeDomains(IContext context, IRepositorySet repositorySet);
+        void Initialize(IContext context, IRepositorySet repositorySet);
+
 
     }
 

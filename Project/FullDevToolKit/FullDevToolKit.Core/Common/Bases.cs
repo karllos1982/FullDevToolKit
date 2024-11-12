@@ -1,5 +1,6 @@
-﻿using System.Collections;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+﻿using System;
+using System.Collections;
+using System.Text.Json.Serialization;
 
 
 namespace FullDevToolKit.Common
@@ -15,59 +16,39 @@ namespace FullDevToolKit.Common
         public string id { get; set; }
     }
 
-    public class InnerException
+    public class ExceptionMessage
     {
         public string Key { get; set; }
 
         public string Description { get; set; }
 
-        public InnerException(string key, string description)
+        public ExceptionMessage(string key, string description)
         {
             this.Key = key;
             this.Description = description;
         }
     }
 
-    public class OperationStatus
+  
+    public class ExecutionExceptions
     {
-        public bool Status; //indica o status do resultado da operação (true, false)
-        public object Returns;//um objeto de retorno
-        public Exception Error; // indica o erro (se ocorrer) ao realizar a operação
-        public List<InnerException> InnerExceptions = new List<InnerException>(); //lista de erros na operação de validação
-
-        public OperationStatus()
+        public ExecutionExceptions() 
         {
-            Status = false;
-            Error = null;
-            Returns = null;
+            Messages = new List<ExceptionMessage> { };
         }
 
-        public OperationStatus(bool status)
-        {
-            Status = status;
-            Error = null;
-            Returns = null;
-        }
+        public List<ExceptionMessage> Messages { get; set; }
 
-        public void Reset()
+        public void AddException(string key, string description)
         {
-            Status = true;
-            InnerExceptions = null;
-            Error = null;
-            Returns = null;
-        }
-
-        public void AddInnerException(string key, string description)
-        {
-            InnerExceptions.Add(new InnerException(key, description));
-            Status = false;
+            Messages.Add(new ExceptionMessage(key, description));         
         }
 
         public ArrayList InnerToArrayList()
         {
             ArrayList ret = new ArrayList();
 
-            foreach (InnerException ie in this.InnerExceptions)
+            foreach (ExceptionMessage ie in this.Messages)
             {
                 ret.Add(ie.Description);
             }
@@ -78,7 +59,7 @@ namespace FullDevToolKit.Common
         {
             string ret = "";
 
-            foreach (InnerException ie in this.InnerExceptions)
+            foreach (ExceptionMessage ie in this.Messages)
             {
                 if (ret == "")
                 {
@@ -97,138 +78,67 @@ namespace FullDevToolKit.Common
 
     public class ExecutionStatus
     {
-        public ExecutionStatus() 
+        public ExecutionStatus()
         {
-            Exceptions = new List<InnerException> { };
+
         }
 
         public ExecutionStatus(bool initialstatus)
         {
-            this.Success = initialstatus;    
-            Exceptions = new List<InnerException> { };  
+            this.Success = initialstatus;
+            Exceptions = new ExecutionExceptions { };
         }
 
         public bool Success { get; set; }
 
-        public List<InnerException> Exceptions { get; set; }
+        public ExecutionExceptions? Exceptions { get; set; }
 
-        public object Returns;
+        public object? Returns;
 
         public void Reset()
         {
             Success = false;
             Exceptions = null;
             Returns = null; 
-        }
-
-        public void AddException(string key, string description)
-        {
-            Exceptions.Add(new InnerException(key, description));
-            Success = false;
-        }
-
-        public ArrayList InnerToArrayList()
-        {
-            ArrayList ret = new ArrayList();
-
-            foreach (InnerException ie in this.Exceptions)
-            {
-                ret.Add(ie.Description);
-            }
-            return ret;
-        }
-
-        public string InnerToString()
-        {
-            string ret = "";
-
-            foreach (InnerException ie in this.Exceptions)
-            {
-                if (ret == "")
-                {
-                    ret = ie.Description;
-                }
-                else
-                {
-                    ret = ret + ", " + ie.Description;
-                }
-
-
-            }
-            return ret;
-        }
+        }          
 
 
     }
 
-    public class APIResponse
+    public class APIResponse<TData>
     {
+        private readonly int _code;
 
+        [JsonConstructor]
+        public APIResponse() => _code = 200;
+
+        public APIResponse(           
+           int code = 200,
+           ExecutionExceptions? exceptions = null)
+        {            
+            Exceptions = exceptions;
+            _code = code;
+        }
+
+        public APIResponse(
+            TData? data,
+            int code = 200,
+            ExecutionExceptions? exceptions = null)
+        {
+            Data = data;
+            Exceptions = exceptions;
+            _code = code;
+        }
+
+        public TData? Data { get; set; }
+        public ExecutionExceptions? Exceptions { get; set; }
+
+        [JsonIgnore]
+        public bool IsSuccess
+            => _code is >= 200 and <= 299;
     }
     
-
-    public class RequestStatus
-    {
-        public RequestStatus()
-        {
-            this._status = "success";
-            this._message = "";
-            this._returns = null;
-        }
-
-        public RequestStatus(string status, string message)
-        {
-            this._status = status;
-            this._message = message;
-            this._returns = null;
-        }
-
-        private string _status;
-        public string status
-        {
-            get { return _status; }
-            set { _status = value; }
-        }
-
-        private string _message;
-        public string message
-        {
-            get { return _message; }
-            set { _message = value; }
-        }
-
-        private object _returns;
-        public object returns
-        {
-            get { return _returns; }
-            set { _returns = value; }
-        }
-
-        public bool IsSuccess()
-        {
-            bool ret = false;
-
-            if (status == "success")
-            {
-                ret = true;
-            }
-
-            return ret;
-        }
-
-        public void SetFailStatus(string msg)
-        {
-            status = "fail";
-            message = msg;
-        }
-
-        public void SetValidationErrsList(OperationStatus ret)
-        {
-            this.returns = ret.InnerExceptions;
-        }
-
-    }
-   
+  
     public enum RECORDSTATEENUM
     {
         NONE = 0,

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("FullDevToolKit.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4dcfe7d20feee075d2092bf4c8d48974b70f9e36")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+58af114b82b2c472086ea3c62f83d1c3d6f367d2")]
 [assembly: System.Reflection.AssemblyProductAttribute("FullDevToolKit.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FullDevToolKit.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

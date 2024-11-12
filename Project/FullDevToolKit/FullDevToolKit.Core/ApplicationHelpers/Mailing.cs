@@ -29,7 +29,7 @@ namespace FullDevToolKit.ApplicationHelpers
 
     }
 
-    public class MailManager
+    public abstract class MailManager
     {
 
         private MailSettings _config;
@@ -45,11 +45,7 @@ namespace FullDevToolKit.ApplicationHelpers
 
         }
 
-        public MailManager(ISettings configs)
-        {
-            _config = configs.MailSettings;
-        }
-
+       
         private List<Destination> _destinations = new List<Destination>();
 
         public List<string> _attfiles { get; set; }

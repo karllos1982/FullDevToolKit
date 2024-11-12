@@ -1,10 +1,46 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\",
+  "WorkspaceRootPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\common\\bases.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\common\\bases.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\idatalogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\idatalogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\iinstancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\iinstancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\ilocalizationtextrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\ilocalizationtextrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\iobjectpermissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\iobjectpermissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\ipermissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\ipermissionrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\irolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\irolerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\isessionlogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\isessionlogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\iuserinstancesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\iuserinstancesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\iuserrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\iuserrolesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\iuserrolesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,23 +50,136 @@
       "DocumentGroups": [
         {
           "DockedWidth": 187,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 9,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "IUserRolesRepository.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IUserRolesRepository.cs",
+              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IUserRolesRepository.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IUserRolesRepository.cs",
+              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IUserRolesRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T02:10:39.87Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IUserRepository.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IUserRepository.cs",
+              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IUserRepository.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IUserRepository.cs",
+              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IUserRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T02:10:38.78Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IUserInstancesRepository.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IUserInstancesRepository.cs",
+              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IUserInstancesRepository.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IUserInstancesRepository.cs",
+              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IUserInstancesRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T02:10:38.202Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ISessionLogRepository.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\ISessionLogRepository.cs",
+              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\ISessionLogRepository.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\ISessionLogRepository.cs",
+              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\ISessionLogRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T02:10:37.609Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "IRoleRepository.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IRoleRepository.cs",
+              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IRoleRepository.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IRoleRepository.cs",
+              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IRoleRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T02:10:36.505Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "IPermissionRepository.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IPermissionRepository.cs",
+              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IPermissionRepository.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IPermissionRepository.cs",
+              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IPermissionRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T02:10:35.684Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IObjectPermissionRepository.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IObjectPermissionRepository.cs",
+              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IObjectPermissionRepository.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IObjectPermissionRepository.cs",
+              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IObjectPermissionRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T02:10:35.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ILocalizationTextRepository.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\ILocalizationTextRepository.cs",
+              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\ILocalizationTextRepository.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\ILocalizationTextRepository.cs",
+              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\ILocalizationTextRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T02:10:34.409Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IInstanceRepository.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IInstanceRepository.cs",
+              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IInstanceRepository.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IInstanceRepository.cs",
+              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IInstanceRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T02:10:33.647Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Bases.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Common\\Bases.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\Common\\Bases.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Common\\Bases.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\Common\\Bases.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAiwF8AAAAFAAAAAAAAAA==",
+              "Title": "IDataLogRepository.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IDataLogRepository.cs",
+              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IDataLogRepository.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IDataLogRepository.cs",
+              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\IDataLogRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-07T22:58:38.102Z",
+              "WhenOpened": "2024-11-12T02:10:32.272Z",
               "EditorCaption": ""
             }
           ]
