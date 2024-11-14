@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FullDevToolKit.Core.SystemAndIdentity.Models.Common
+namespace FullDevToolKit.System.Models.Common
 {
     public class ParameterParam
     {

@@ -1,6 +1,6 @@
 ﻿using FullDevToolKit.Helpers;
 
-namespace FullDevToolKit.Core.SystemAndIdentity.Models.Common
+namespace FullDevToolKit.System.Models.Common
 {
     public class GroupParameterParam
     {

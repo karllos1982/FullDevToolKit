@@ -1,5 +1,4 @@
-﻿using FullDevToolKit.Common;
-using FullDevToolKit.Core;
+﻿using FullDevToolKit.Core;
 using FullDevToolKit.System.Models.Common;
 
 namespace FullDevToolKit.System.Contracts.Repositories

@@ -11,9 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="SystemAndIdentity\Contracts\Domains\" />
     <Folder Include="SystemAndIdentity\Data\Repositories\" />
-    <Folder Include="SystemAndIdentity\Data\QueryBuilders\" />
     <Folder Include="SystemAndIdentity\Manager\BusinessModules\" />
     <Folder Include="SystemAndIdentity\Domain\" />
   </ItemGroup>
