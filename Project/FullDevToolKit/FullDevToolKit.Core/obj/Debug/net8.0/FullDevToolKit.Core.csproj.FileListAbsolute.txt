@@ -1,0 +1,13 @@
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit\FullDevToolKit.Core\obj\Debug\net8.0\FullDevToolKit.Core.csproj.AssemblyReference.cache
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit\FullDevToolKit.Core\obj\Debug\net8.0\FullDevToolKit.Core.GeneratedMSBuildEditorConfig.editorconfig
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit\FullDevToolKit.Core\obj\Debug\net8.0\FullDevToolKit.Core.AssemblyInfoInputs.cache
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit\FullDevToolKit.Core\obj\Debug\net8.0\FullDevToolKit.Core.AssemblyInfo.cs
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit\FullDevToolKit.Core\obj\Debug\net8.0\FullDevToolKit.Core.csproj.CoreCompileInputs.cache
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit\FullDevToolKit.Core\obj\Debug\net8.0\FullDevToolKit.Core.sourcelink.json
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit\FullDevToolKit.Core\bin\Debug\net8.0\FullDevToolKit.Core.deps.json
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit\FullDevToolKit.Core\bin\Debug\net8.0\FullDevToolKit.Core.dll
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit\FullDevToolKit.Core\bin\Debug\net8.0\FullDevToolKit.Core.pdb
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit\FullDevToolKit.Core\obj\Debug\net8.0\FullDevToolKit.Core.dll
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit\FullDevToolKit.Core\obj\Debug\net8.0\refint\FullDevToolKit.Core.dll
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit\FullDevToolKit.Core\obj\Debug\net8.0\FullDevToolKit.Core.pdb
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit\FullDevToolKit.Core\obj\Debug\net8.0\ref\FullDevToolKit.Core.dll

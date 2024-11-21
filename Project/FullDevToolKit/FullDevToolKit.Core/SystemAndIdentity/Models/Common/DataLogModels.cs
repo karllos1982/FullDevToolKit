@@ -1,11 +1,11 @@
 ﻿
-namespace FullDevToolKit.System.Models.Common
+namespace FullDevToolKit.Sys.Models.Common
 {
     public class DataLogParam
     {
-        public Int64 pDataLogID { get; set; }
+        public long pDataLogID { get; set; }
 
-        public Int64 pUserID { get; set; }
+        public long pUserID { get; set; }
         
         public string pEmail { get; set; }
 
@@ -19,7 +19,7 @@ namespace FullDevToolKit.System.Models.Common
 
         public bool SearchByDate { get; set; }
 
-        public Int64 pID { get; set; }
+        public long pID { get; set; }
 
         public DataLogParam()
         {
@@ -36,30 +36,47 @@ namespace FullDevToolKit.System.Models.Common
 
     public class DataLogEntry
     {
-        public Int64 DataLogID { get; set; }
+        public DataLogEntry()
+        {
+            
+        }
 
-        public Int64 UserID { get; set; }        
+        public DataLogEntry(DataLogResult fromobj)
+        {
+            DataLogID = fromobj.DataLogID;  
+            UserID = fromobj.UserID;
+            Date = fromobj.Date;
+            Operation = fromobj.Operation;  
+            TableName = fromobj.TableName;
+            ID = fromobj.ID;
+            LogOldData = fromobj.LogOldData;
+            LogCurrentData  = fromobj.LogCurrentData;
+        }
+
+        public long DataLogID { get; set; }
+
+        public long UserID { get; set; }        
 
         public DateTime Date { get; set; }
 
-        public string Operation { get; set; }     
+        public string Operation { get; set; } = string.Empty;
 
-        public string TableName { get; set; }
+        public string TableName { get; set; } = string.Empty;
 
-        public Int64 ID { get; set; }
+        public long ID { get; set; }
 
-        public string LogOldData { get; set; }
+        public string LogOldData { get; set; } = string.Empty;
 
-        public string LogCurrentData { get; set; }
+        public string LogCurrentData { get; set; } = string.Empty;
 
     }
 
     public class DataLogTimelineModel
     {
 
-        public Int64 LogID { get; set; }
+        public long LogID { get; set; }
 
-        public string Operation { get; set; }
+        public string Operation { get; set; } = string.Empty;
 
         public string OperationText
         {
@@ -88,7 +105,7 @@ namespace FullDevToolKit.System.Models.Common
 
         }
 
-        public string UserEmail { get; set; }
+        public string UserEmail { get; set; } = string.Empty;
 
         public DateTime Date { get; set; }
 
@@ -96,54 +113,54 @@ namespace FullDevToolKit.System.Models.Common
 
     public class TipoOperacaoValueModel
     {
-        public string Value { get; set; }
+        public string Value { get; set; } = string.Empty;
 
-        public string Text { get; set; }
+        public string Text { get; set; } = string.Empty;
     }
 
     public class TabelasValueModel
     {
-        public string Value { get; set; }
+        public string Value { get; set; } = string.Empty;
 
-        public string Text { get; set; }
+        public string Text { get; set; } = string.Empty;
     }
 
     public class DataLogItem
     {
-        public string ItemName { get; set; }
+        public string ItemName { get; set; } = string.Empty;
 
-        public string ItemValue { get; set; }
+        public string ItemValue { get; set; } = string.Empty;
 
         public bool IsDifferent { get; set; }
     }
 
     public class DataLogList
     {
-        public Int64 DataLogID { get; set; }
+        public long DataLogID { get; set; }
 
-        public Int64 UserID { get; set; }
+        public long UserID { get; set; }
 
         public DateTime Date { get; set; }
 
-        public string Operation { get; set; }
+        public string Operation { get; set; } = string.Empty;
 
-        public string TableName { get; set; }
+        public string TableName { get; set; } = string.Empty;
 
-        public Int64 ID { get; set; }
+        public long ID { get; set; }
       
     }
 
     public class DataLogResult
     {
-        public Int64 DataLogID { get; set; }
+        public long DataLogID { get; set; }
 
-        public Int64 UserID { get; set; }
+        public long UserID { get; set; }
 
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         public DateTime Date { get; set; }
 
-        public string Operation { get; set; }
+        public string Operation { get; set; } = string.Empty;
 
         public string OperationText
         {
@@ -172,13 +189,13 @@ namespace FullDevToolKit.System.Models.Common
 
         }
 
-        public string TableName { get; set; }
+        public string TableName { get; set; } = string.Empty;
 
-        public Int64 ID { get; set; }
+        public long ID { get; set; }
 
-        public string LogOldData { get; set; }
+        public string LogOldData { get; set; } = string.Empty;
 
-        public string LogCurrentData { get; set; }
+        public string LogCurrentData { get; set; } = string.Empty;
     }
 
 }

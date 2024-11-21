@@ -266,7 +266,7 @@ namespace FullDevToolKit.Helpers
                     if (value == null)
                     {                            
                         ret.Exceptions?.AddException(fieldname, fieldlabel + " " + 
-                                FullDevToolKit.LocalizationText.Get("Validation-NotNull",lang).Text);
+                                LocalizationText.Get("Validation-NotNull",lang).Text);
                         exit = true;
                             
                     }
@@ -275,7 +275,7 @@ namespace FullDevToolKit.Helpers
                         if (value.Length == 0)
                         {
                         ret.Exceptions?.AddException(fieldname, fieldlabel + " " +
-                            FullDevToolKit.LocalizationText.Get("Validation-NotNull",lang).Text);
+                            LocalizationText.Get("Validation-NotNull",lang).Text);
                         exit = true;
                         }
                     }
@@ -299,7 +299,7 @@ namespace FullDevToolKit.Helpers
                         case FieldType.TEXT:
                             if (value?.Length > maxlength)
                             {
-                                msg = string.Format( FullDevToolKit.LocalizationText.Get("Validation-Max-Characters", lang).Text,fieldlabel, maxlength.ToString());
+                                msg = string.Format( LocalizationText.Get("Validation-Max-Characters", lang).Text,fieldlabel, maxlength.ToString());
                               
                                 ret.Exceptions?.AddException(fieldname, msg);
                             }
@@ -308,7 +308,7 @@ namespace FullDevToolKit.Helpers
                         case FieldType.CPF:
                             if (value?.Length > 0 && !this.ValidateCPF(value))
                             {
-                                msg = string.Format(FullDevToolKit.LocalizationText.Get("Validation-Invalid-Field", lang).Text,fieldlabel);                                
+                                msg = string.Format(LocalizationText.Get("Validation-Invalid-Field", lang).Text,fieldlabel);                                
                                 ret.Exceptions?.AddException(fieldname,msg);
                             }
                             break;
@@ -316,7 +316,7 @@ namespace FullDevToolKit.Helpers
                         case FieldType.CNPJ:
                             if (value?.Length > 0 && !this.ValidateCNPJ(value))
                             {
-                                msg = string.Format(FullDevToolKit.LocalizationText.Get("Validation-Invalid-Field", lang).Text,fieldlabel);                                
+                                msg = string.Format(LocalizationText.Get("Validation-Invalid-Field", lang).Text,fieldlabel);                                
                                 ret.Exceptions?.AddException(fieldname, msg);
                              }
                             break;
@@ -324,7 +324,7 @@ namespace FullDevToolKit.Helpers
                         case FieldType.CEP:
                             if (value?.Length > 0 && !this.ValidateCEP(value))
                             {
-                                msg = string.Format(FullDevToolKit.LocalizationText.Get("Validation-Invalid-Field", lang).Text , fieldlabel);
+                                msg = string.Format(LocalizationText.Get("Validation-Invalid-Field", lang).Text , fieldlabel);
                                 ret.Exceptions?.AddException(fieldname, msg);
                             }
                             break;
@@ -332,7 +332,7 @@ namespace FullDevToolKit.Helpers
                         case FieldType.PHONENUMBER:
                             if (value?.Length > 0 && !this.ValidatePhone(value))
                             {
-                                msg = string.Format(FullDevToolKit.LocalizationText.Get("Validation-Invalid-Field", lang).Text, fieldlabel);
+                                msg = string.Format(LocalizationText.Get("Validation-Invalid-Field", lang).Text, fieldlabel);
                                 ret.Exceptions?.AddException(fieldname, msg);
                             }
                             break;
@@ -340,7 +340,7 @@ namespace FullDevToolKit.Helpers
                         case FieldType.CELLPHONENUMBER:
                             if (value?.Length > 0 && !this.ValidateCellPhone(value))
                             {
-                                msg = string.Format(FullDevToolKit.LocalizationText.Get("Validation-Invalid-Field", lang).Text, fieldlabel);
+                                msg = string.Format(LocalizationText.Get("Validation-Invalid-Field", lang).Text, fieldlabel);
                                 ret.Exceptions?.AddException(fieldname, msg);
                             }
                             break;
@@ -350,7 +350,7 @@ namespace FullDevToolKit.Helpers
                             {
                                 if (value.Length > 0 && !this.IsDate(value))
                                 {
-                                    msg = string.Format(FullDevToolKit.LocalizationText.Get("Validation-Invalid-Field", lang).Text, fieldlabel);
+                                    msg = string.Format(LocalizationText.Get("Validation-Invalid-Field", lang).Text, fieldlabel);
                                     ret.Exceptions?.AddException(fieldname, msg);
                                 }
                             }
@@ -360,7 +360,7 @@ namespace FullDevToolKit.Helpers
                         case FieldType.EMAIL:
                             if (value?.Length > 0 && !this.ValidateEmail(value))
                             {
-                                msg = string.Format(FullDevToolKit.LocalizationText.Get("Validation-Invalid-Field", lang).Text, fieldlabel);
+                                msg = string.Format(LocalizationText.Get("Validation-Invalid-Field", lang).Text, fieldlabel);
                                 ret.Exceptions?.AddException(fieldname, msg);
                             }
                             break;
@@ -368,7 +368,7 @@ namespace FullDevToolKit.Helpers
                         case FieldType.TIME:
                             if (value?.Length > 0 && !this.IsTime(value))
                             {
-                                msg = string.Format(FullDevToolKit.LocalizationText.Get("Validation-Invalid-Field", lang).Text, fieldlabel);
+                                msg = string.Format(LocalizationText.Get("Validation-Invalid-Field", lang).Text, fieldlabel);
                                 ret.Exceptions?.AddException(fieldname, msg);
                             }
                             break;
@@ -376,7 +376,7 @@ namespace FullDevToolKit.Helpers
                         case FieldType.URL:
                             if (value?.Length > 0 && !this.ValidateURL(value))
                             {
-                                msg = string.Format(FullDevToolKit.LocalizationText.Get("Validation-Invalid-Field", lang).Text, fieldlabel);
+                                msg = string.Format(LocalizationText.Get("Validation-Invalid-Field", lang).Text, fieldlabel);
                                 ret.Exceptions?.AddException(fieldname, msg);
                             }
                             break;
@@ -384,7 +384,7 @@ namespace FullDevToolKit.Helpers
                         case FieldType.USERNAME:
                             if (value?.Length > 0 && !this.ValidateUserName(value))
                             {
-                                msg = string.Format(FullDevToolKit.LocalizationText.Get("Validation-Invalid-UserName", lang).Text,fieldlabel);                                
+                                msg = string.Format(LocalizationText.Get("Validation-Invalid-UserName", lang).Text,fieldlabel);                                
                                 ret.Exceptions?.AddException(fieldname, msg);
                            
                             }

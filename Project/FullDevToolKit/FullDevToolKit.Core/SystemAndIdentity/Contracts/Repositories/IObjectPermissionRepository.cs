@@ -1,10 +1,11 @@
 ﻿using FullDevToolKit.Core;
-using FullDevToolKit.System.Models.Identity;
+using FullDevToolKit.Sys.Models.Identity;
 
-namespace FullDevToolKit.System.Contracts.Repositories
+namespace FullDevToolKit.Sys.Contracts.Repositories
 {
     public interface IObjectPermissionRepository :
-        IRepository<ObjectPermissionParam, ObjectPermissionEntry, ObjectPermissionResult, ObjectPermissionList>
+        IRepository<ObjectPermissionParam, ObjectPermissionEntry,
+            ObjectPermissionList,ObjectPermissionResult >
     {
       
 

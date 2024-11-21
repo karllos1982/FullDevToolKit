@@ -1,9 +1,9 @@
 ﻿using FullDevToolKit.Common;
 using FullDevToolKit.Core;
-using FullDevToolKit.System.Contracts.Domains;
-using FullDevToolKit.System.Models.Identity;
+using FullDevToolKit.Sys.Contracts.Domains;
+using FullDevToolKit.Sys.Models.Identity;
 
-namespace FullDevToolKit.System.Contracts.Managers
+namespace FullDevToolKit.Sys.Contracts.Managers
 {
     public interface IIdentityModule: IBusinessModule
     {
@@ -11,9 +11,9 @@ namespace FullDevToolKit.System.Contracts.Managers
       
         Task<UserEntry> CreateNewUser(NewUser data, bool gocommit, object userid);
 
-        Task<UserEntry> Login(UserLogin model);
+        Task<UserResult> Login(UserLogin model);
 
-        Task<List<UserPermissions>> GetUserPermissions(Int64 roleid, Int64 userid);
+        Task<List<UserPermissions>> GetUserPermissions(long roleid, long userid);
 
         Task<PERMISSION_STATE_ENUM> CheckPermission(List<UserPermissions> permissions,
             string objectcode, PERMISSION_CHECK_ENUM type);
@@ -24,15 +24,15 @@ namespace FullDevToolKit.System.Contracts.Managers
         Task RegisterLoginState(UserLogin model, UpdateUserLogin stateinfo);
 
 
-        Task Logout(Int64 userid);
+        Task Logout(long userid);
 
-        Task<ExecutionStatus> GetTemporaryPassword(ChangeUserPassword model);
+        Task<string> GetTemporaryPassword(ChangeUserPassword model);
 
-        Task<ExecutionStatus> GetActiveAccountCode(ActiveUserAccount model);
+        Task<string> GetActiveAccountCode(ActiveUserAccount model);
 
-        Task<ExecutionStatus> GetChangePasswordCode(ChangeUserPassword model);
+        Task<string> GetChangePasswordCode(ChangeUserPassword model);
 
-        Task<ExecutionStatus> ChangeUserProfileImage(ChangeUserImage model);
+        Task ChangeUserProfileImage(ChangeUserImage model);
 
     }
 }

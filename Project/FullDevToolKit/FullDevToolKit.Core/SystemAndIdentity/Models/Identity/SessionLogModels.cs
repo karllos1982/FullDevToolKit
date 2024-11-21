@@ -1,19 +1,19 @@
-﻿namespace FullDevToolKit.System.Models.Identity
+﻿namespace FullDevToolKit.Sys.Models.Identity
 {
     public class SessionLogParam
     {
 
         public SessionLogParam()
         {
-            pSessionID = 0;
+            pSessionLogID = 0;
             pUserID = 0;
             pEmail = "";
             SearchByDate = false; 
         }
 
-        public Int64 pSessionID { get; set; }
+        public long pSessionLogID { get; set; }
 
-        public Int64 pUserID { get; set; }
+        public long pUserID { get; set; }
 
         public string pEmail { get; set; }
 
@@ -27,15 +27,30 @@
 
     public class SessionLogEntry
     {
-        public Int64 SessionID { get; set; }
+        public SessionLogEntry()
+        {
+            
+        }
 
-        public Int64 UserID { get; set; }  
+        public SessionLogEntry(SessionLogResult fromobj)
+        {
+            SessionLogID = fromobj.SessionLogID;
+            UserID = fromobj.UserID;
+            Date = fromobj.Date;
+            IP = fromobj.IP;
+            BrowserName = fromobj.BrowserName;
+            DateLogout = fromobj.DateLogout;   
+        }
+
+        public long SessionLogID { get; set; }
+
+        public long UserID { get; set; }  
 
         public DateTime Date { get; set; }
 
-        public string IP { get; set; }
+        public string IP { get; set; } = string.Empty;  
 
-        public string BrowserName { get; set; }
+        public string BrowserName { get; set; } = string.Empty; 
 
         public DateTime ? DateLogout { get; set; }
 
@@ -43,11 +58,11 @@
 
     public class SessionLogList
     {
-        public Int64 SessionID { get; set; }
+        public long SessionLogID { get; set; }
 
-        public Int64 UserID { get; set; }
+        public long UserID { get; set; }
 
-        public string UserName { get; set; }
+        public string UserName { get; set; } = string.Empty;
 
         public DateTime Date { get; set; }
 
@@ -55,19 +70,19 @@
 
     public class SessionLogResult
     {
-        public Int64 SessionID { get; set; }
+        public long SessionLogID { get; set; }
 
-        public Int64 UserID { get; set; }
+        public long UserID { get; set; }
 
-        public string UserName { get; set; }
+        public string UserName { get; set; } = string.Empty;
 
-        public string Email { get; set; }
+        public string Email { get; set; } = string.Empty;
 
         public DateTime Date { get; set; }
 
-        public string IP { get; set; }
+        public string IP { get; set; } = string.Empty;
 
-        public string BrowserName { get; set; }
+        public string BrowserName { get; set; } = string.Empty;
 
         public DateTime? DateLogout { get; set; }
 

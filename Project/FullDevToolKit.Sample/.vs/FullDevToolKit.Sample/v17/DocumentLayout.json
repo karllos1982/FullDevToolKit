@@ -1,0 +1,105 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\core\\domain\\persondomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|solutionrelative:core\\domain\\persondomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\core\\contracts\\repository\\ipersoncontactrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|solutionrelative:core\\contracts\\repository\\ipersoncontactrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\core\\contracts\\repository\\ipersonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|solutionrelative:core\\contracts\\repository\\ipersonrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\core\\contracts\\domain\\ipersondomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|solutionrelative:core\\contracts\\domain\\ipersondomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F8B0C866-E2C9-4644-94E0-E6ED738B5294}|Models\\Models.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\models\\personcontactmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F8B0C866-E2C9-4644-94E0-E6ED738B5294}|Models\\Models.csproj|solutionrelative:models\\personcontactmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 171,
+          "SelectedChildIndex": 3,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "IPersonContactRepository.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Contracts\\Repository\\IPersonContactRepository.cs",
+              "RelativeDocumentMoniker": "Core\\Contracts\\Repository\\IPersonContactRepository.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Contracts\\Repository\\IPersonContactRepository.cs",
+              "RelativeToolTip": "Core\\Contracts\\Repository\\IPersonContactRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T01:43:52.73Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "IPersonRepository.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Contracts\\Repository\\IPersonRepository.cs",
+              "RelativeDocumentMoniker": "Core\\Contracts\\Repository\\IPersonRepository.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Contracts\\Repository\\IPersonRepository.cs",
+              "RelativeToolTip": "Core\\Contracts\\Repository\\IPersonRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T01:37:25.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "IPersonDomain.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Contracts\\Domain\\IPersonDomain.cs",
+              "RelativeDocumentMoniker": "Core\\Contracts\\Domain\\IPersonDomain.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Contracts\\Domain\\IPersonDomain.cs",
+              "RelativeToolTip": "Core\\Contracts\\Domain\\IPersonDomain.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T01:36:56.207Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PersonDomain.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Domain\\PersonDomain.cs",
+              "RelativeDocumentMoniker": "Core\\Domain\\PersonDomain.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Domain\\PersonDomain.cs",
+              "RelativeToolTip": "Core\\Domain\\PersonDomain.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAIwAcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T01:20:55.119Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PersonContactModels.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\PersonContactModels.cs",
+              "RelativeDocumentMoniker": "Models\\PersonContactModels.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\PersonContactModels.cs",
+              "RelativeToolTip": "Models\\PersonContactModels.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAswBUAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T01:22:23.463Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

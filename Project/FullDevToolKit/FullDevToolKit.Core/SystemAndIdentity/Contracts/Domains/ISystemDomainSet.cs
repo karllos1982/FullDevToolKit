@@ -1,8 +1,8 @@
 ﻿using FullDevToolKit.Core;
-using FullDevToolKit.System.Contracts.Repositories;
+using FullDevToolKit.Sys.Contracts.Repositories;
 
 
-namespace FullDevToolKit.System.Contracts.Domains
+namespace FullDevToolKit.Sys.Contracts.Domains
 {
     public interface ISystemDomainSet: IDomainSet
     {        
@@ -20,7 +20,7 @@ namespace FullDevToolKit.System.Contracts.Domains
 
         ISessionLogDomain SessionLog { get; set; }
 
-        ILocalizationTextRepository LocalizationText { get; set; }
+        ILocalizationTextDomain LocalizationText { get; set; }
 
         IGroupParameterDomain GroupParameter { get; set; }
 

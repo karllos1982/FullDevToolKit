@@ -1,7 +1,7 @@
 ﻿using FullDevToolKit.Helpers;
 using System.Collections.Generic;
 
-namespace FullDevToolKit.System.Data.QueryBuilders
+namespace FullDevToolKit.Sys.Data.QueryBuilders
 {
     public class RoleQueryBuilder : QueryBuilder
     {

@@ -1,12 +1,12 @@
 ﻿using FullDevToolKit.Core;
-using FullDevToolKit.System.Models.Common;
+using FullDevToolKit.Sys.Models.Common;
 
 
-namespace FullDevToolKit.System.Contracts.Repositories
+namespace FullDevToolKit.Sys.Contracts.Repositories
 {
     public interface IParameterRepository :
         IRepository<ParameterParam, ParameterEntry,
-            ParameterResult, ParameterList>
+            ParameterList, ParameterResult >
     {
 
 

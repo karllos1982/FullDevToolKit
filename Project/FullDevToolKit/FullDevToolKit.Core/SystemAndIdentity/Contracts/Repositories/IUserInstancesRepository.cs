@@ -1,10 +1,11 @@
 ﻿using FullDevToolKit.Core;
-using FullDevToolKit.System.Models.Identity;
+using FullDevToolKit.Sys.Models.Identity;
 
-namespace FullDevToolKit.System.Contracts.Repositories
+namespace FullDevToolKit.Sys.Contracts.Repositories
 {
     public interface IUserInstancesRepository :
-        IRepository<UserInstancesParam, UserInstancesEntry, UserInstancesResult, UserInstancesResult>
+        IRepository<UserInstancesParam, UserInstancesEntry, 
+             UserInstancesList, UserInstancesResult>
     {
 
         Task AlterInstance(UserInstancesParam obj);

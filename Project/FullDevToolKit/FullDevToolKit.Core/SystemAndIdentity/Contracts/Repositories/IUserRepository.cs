@@ -1,28 +1,28 @@
 ﻿using FullDevToolKit.Common;
 using FullDevToolKit.Core;
-using FullDevToolKit.System.Models.Identity;
+using FullDevToolKit.Sys.Models.Identity;
 
-namespace FullDevToolKit.System.Contracts.Repositories
+namespace FullDevToolKit.Sys.Contracts.Repositories
 {
     public interface IUserRepository :
-        IRepository<UserParam, UserEntry, UserResult, UserList>
+        IRepository<UserParam, UserEntry, UserList, UserResult>
     {
 
         Task<UserResult> GetByEmail(string email);
 
-        Task<ExecutionStatus> UpdateUserLogin(UpdateUserLogin model);
+        Task UpdateUserLogin(UpdateUserLogin model);
 
-        Task<ExecutionStatus> SetPasswordRecoveryCode(SetPasswordRecoveryCode model);
+        Task SetPasswordRecoveryCode(SetPasswordRecoveryCode model);
 
-        Task<ExecutionStatus> ChangeUserPassword(ChangeUserPassword model);
+        Task ChangeUserPassword(ChangeUserPassword model);
 
-        Task<ExecutionStatus> ActiveUserAccount(ActiveUserAccount model);
+        Task ActiveUserAccount(ActiveUserAccount model);
 
-        Task<ExecutionStatus> ChangeUserProfileImage(ChangeUserImage model);
+        Task ChangeUserProfileImage(ChangeUserImage model);
 
-        Task<ExecutionStatus> UpdateLoginFailCounter(UpdateUserLoginFailCounter model);
+        Task UpdateLoginFailCounter(UpdateUserLoginFailCounter model);
 
-        Task<ExecutionStatus> ChangeState(UserChangeState model);
+        Task ChangeState(UserChangeState model);
 
     }
 }

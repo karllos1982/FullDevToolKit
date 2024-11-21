@@ -1,6 +1,6 @@
 ﻿using FullDevToolKit.Helpers;
 
-namespace FullDevToolKit.System.Data.QueryBuilders
+namespace FullDevToolKit.Sys.Data.QueryBuilders
 {
     public class UserQueryBuilder : QueryBuilder
     {
@@ -16,22 +16,15 @@ namespace FullDevToolKit.System.Data.QueryBuilders
 
             Keys.Add("UserID");
             ExcludeFields.Add("Avatar");
-            ExcludeFields.Add("Role");
-            ExcludeFields.Add("RoleID");            
-            ExcludeFields.Add("RoleList");
-            ExcludeFields.Add("ProfileImageURL");
-            ExcludeFields.Add("Permissions");
-
-            ExcludeFields.Add("InstanceID");
-            ExcludeFields.Add("Instance");
-            ExcludeFields.Add("InstanceList");
+            ExcludeFields.Add("Roles");
+            ExcludeFields.Add("Instances");
 
         }
 
         public string QueryForGetByEmail()
         {
             string ret = @"Select 
-                    UserID,UserName,ApplicationID,Email,Password,Salt,CreateDate,IsActive,IsLocked,LastLoginDate,
+                    UserID,UserName,ApplicationID,Email,Password,Salt,CreateDate,IsActive,IsLocked,DefaultLanguage,LastLoginDate,
                     LastLoginIP,LoginCounter,LoginFailCounter,AuthCode,AuthCodeExpires,PasswordRecoveryCode,ProfileImage,AuthUserID 
                     from sysUser where Email=@pEmail";
 
@@ -128,8 +121,8 @@ namespace FullDevToolKit.System.Data.QueryBuilders
         public override string QueryForGet(object param)
         {
             string ret = @"Select 
-                    UserID,UserName,ApplicationID,Email,Password,Salt,CreateDate,IsActive,IsLocked,LastLoginDate,
-                    LastLoginIP,LoginCounter,LoginFailCounter,AuthCode,AuthCodeExpires,PasswordRecoveryCode,ProfileImage,AuthUserID 
+                    UserID,ApplicationID,UserName,Email,Password,Salt,CreateDate,IsActive,IsLocked,DefaultLanguage,LastLoginDate,
+                    LastLoginIP,LoginCounter,LoginFailCounter,AuthCode,AuthCodeExpires,PasswordRecoveryCode,ProfileImage,AuthUserID                     
                     from sysUser where userid=@pUserID";
 
             return ret;
@@ -139,7 +132,7 @@ namespace FullDevToolKit.System.Data.QueryBuilders
         public override string QueryForList(object param)
         {
             string ret = @"select 
-                UserID,UserName,Emailfrom sysUser
+                UserID,UserName,Email from sysUser u
                 where 1=1 
                 and (@pUserID=0 or u.UserID=@pUserID)
                 and (@pEmail='' or u.Email=@pEmail)
@@ -153,14 +146,14 @@ namespace FullDevToolKit.System.Data.QueryBuilders
 
         public override string QueryForSearch(object param)
         {
-            string ret = @"select 
-                UserID,UserName,Email,Salt,CreateDate,IsActive,IsLocked,LastLoginDate,
-                PasswordRecoveryCode,ProfileImage
+            string ret = @"Select 
+                UserID,ApplicationID,UserName,Email,Password,Salt,CreateDate,IsActive,IsLocked,DefaultLanguage,LastLoginDate,
+                LastLoginIP,LoginCounter,LoginFailCounter,AuthCode,AuthCodeExpires,PasswordRecoveryCode,ProfileImage,AuthUserID 
                 from sysUser u
                 where 1=1 
-                and (@pUserID=0 or u.UserID=@pUserID)
-                and (@pEmail='' or u.Email=@pEmail)
-                and (@pUserName='' or u.UserName=@pUserName)
+                and (@pUserID=0 or u.UserID=@pUserID)                
+                and (@pEmail='' or u.Email like '%' + @pEmail + '%')
+                and (@pUserName='' or u.UserName like '%' + @pUserName + '%')                
                 and (@pRoleID=0 or (u.UserID in (select r.UserID from sysUserRoles r where r.RoleID=@pRoleID)))
                 and (@pInstanceID=0 or (u.UserID in (select r.UserID from sysUserInstances r where r.InstanceID=@pInstanceID)))
                 ";

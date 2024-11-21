@@ -1,6 +1,6 @@
 ﻿using FullDevToolKit.Common;
 
-namespace FullDevToolKit.System.Models.Identity
+namespace FullDevToolKit.Sys.Models.Identity
 {
     public class UserInstancesParam
     {
@@ -12,20 +12,33 @@ namespace FullDevToolKit.System.Models.Identity
             pInstanceID = 0;
         }
 
-        public Int64 pUserInstanceID { get; set; }
+        public long pUserInstanceID { get; set; }
 
-        public Int64 pUserID { get; set; }
+        public long pUserID { get; set; }
 
-        public Int64 pInstanceID { get; set; }
+        public long pInstanceID { get; set; }
     }
 
     public class UserInstancesEntry
     {
-        public Int64 UserInstanceID { get; set; }
+        public UserInstancesEntry()
+        {
+                
+        }
 
-        public Int64 UserID { get; set; }
+        public UserInstancesEntry(UserInstancesResult fromobj)
+        {
+            UserInstanceID = fromobj.UserInstanceID;   
+            UserID = fromobj.UserID;
+            InstanceID = fromobj.InstanceID;
 
-        public Int64 InstanceID { get; set; }      
+        }
+
+        public long UserInstanceID { get; set; }
+
+        public long UserID { get; set; }
+
+        public long InstanceID { get; set; }      
 
         public RECORDSTATEENUM RecordState { get; set; }
     }
@@ -33,26 +46,27 @@ namespace FullDevToolKit.System.Models.Identity
 
     public class UserInstancesList
     {
-        public Int64 UserInstanceID { get; set; }
+        public long UserInstanceID { get; set; }
 
-        public Int64 InstanceID { get; set; }
+        public long InstanceID { get; set; }
 
-        public string InstanceName { get; set; }
+        public string InstanceName { get; set; } = string.Empty;    
 
     }
 
     public class UserInstancesResult
     {
-        public Int64 UserInstanceID { get; set; }
+        public long UserInstanceID { get; set; }
 
-        public Int64 UserID { get; set; }
+        public long UserID { get; set; }
 
-        public string UserName { get; set; }
+        public string UserName { get; set; } = string.Empty;    
 
-        public Int64 InstanceID { get; set; }
+        public long InstanceID { get; set; }
 
-        public string InstanceName { get; set; }
-        
+        public string InstanceName { get; set; } = string.Empty;
+
+        public RECORDSTATEENUM RecordState { get; set; }
 
     }
 

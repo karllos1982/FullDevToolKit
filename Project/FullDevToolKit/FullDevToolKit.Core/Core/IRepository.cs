@@ -2,8 +2,8 @@
 
 namespace FullDevToolKit.Core
 {
-    public interface IRepository<TParam,TEntry,TResult, TList>
-    {
+    public interface IRepository<TParam,TEntry, TList,TResult>
+    {       
         string TableName { get; set; }
 
         string PKFieldName { get; set; }
@@ -25,33 +25,6 @@ namespace FullDevToolKit.Core
 
     }
 
-    public interface IRepositorySync<TParam, TEntry, TResult, TList>
-    {
-
-        IContext Context { get; set; }
-
-        void Create(TEntry model);
-
-        TResult Read(TParam model);
-
-        void Update(TEntry model);
-
-        void Delete(TEntry model);
-
-        List<TList> List(TParam param);
-
-        List<TResult> Search(TParam param);
-
-        
-    }
-
-    public interface IReadRepositorySync<TResult>
-    {
-
-        IContext Context { get; set; }
-       
-
-    }
 
 }
 

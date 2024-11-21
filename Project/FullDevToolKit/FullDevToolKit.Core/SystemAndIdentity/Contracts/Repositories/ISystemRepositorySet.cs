@@ -1,12 +1,12 @@
 ﻿using FullDevToolKit.Common;
 using FullDevToolKit.Core;
 
-namespace FullDevToolKit.System.Contracts.Repositories
+namespace FullDevToolKit.Sys.Contracts.Repositories
 {
 
     public interface ISystemRepositorySet : IRepositorySet
     {
-
+     
         IDataLogRepository DataLog { get; set; }
 
         IInstanceRepository Instance { get; set; }

@@ -41,17 +41,28 @@ namespace FullDevToolKit.Common
 
         public void AddException(string key, string description)
         {
+            if (Messages == null) Messages = new List<ExceptionMessage>();
             Messages.Add(new ExceptionMessage(key, description));         
+        }
+
+        public void AddException(int index,string key, string description)
+        {
+            if (Messages == null) Messages = new List<ExceptionMessage>();    
+            Messages.Insert(index, new ExceptionMessage(key, description));
         }
 
         public ArrayList InnerToArrayList()
         {
             ArrayList ret = new ArrayList();
 
-            foreach (ExceptionMessage ie in this.Messages)
+            if (Messages != null)
             {
-                ret.Add(ie.Description);
+                foreach (ExceptionMessage ie in this.Messages)
+                {
+                    ret.Add(ie.Description);
+                }
             }
+
             return ret;
         }
 
@@ -59,21 +70,23 @@ namespace FullDevToolKit.Common
         {
             string ret = "";
 
-            foreach (ExceptionMessage ie in this.Messages)
+            if (Messages != null)
             {
-                if (ret == "")
+                foreach (ExceptionMessage ie in this.Messages)
                 {
-                    ret = ie.Description;
+                    if (ret == "")
+                    {
+                        ret = ie.Description;
+                    }
+                    else
+                    {
+                        ret = ret + ", " + ie.Description;
+                    }
                 }
-                else
-                {
-                    ret = ret + ", " + ie.Description;
-                }
-
-
             }
             return ret;
         }
+      
     }
 
     public class ExecutionStatus
@@ -99,10 +112,20 @@ namespace FullDevToolKit.Common
         {
             Success = false;
             Exceptions = null;
-            Returns = null; 
-        }          
+            Returns = null;
+        }
 
+        public void SetFailStatus(string key, string description)
+        {
+            this.Success = false;
 
+            if (Exceptions == null)
+            {
+                Exceptions = new ExecutionExceptions();
+            }
+
+            Exceptions.AddException(0,key, description);
+        }
     }
 
     public class APIResponse<TData>

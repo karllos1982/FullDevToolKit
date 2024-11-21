@@ -1,6 +1,6 @@
 ﻿using FullDevToolKit.Helpers;
 
-namespace FullDevToolKit.System.Models.Identity
+namespace FullDevToolKit.Sys.Models.Identity
 {
     public class ObjectPermissionParam
     {
@@ -11,7 +11,7 @@ namespace FullDevToolKit.System.Models.Identity
             pObjectPermissionID = 0; 
         }
 
-        public Int64 pObjectPermissionID { get; set; }
+        public long pObjectPermissionID { get; set; }
 
         public string pObjectName { get; set; }
 
@@ -21,34 +21,45 @@ namespace FullDevToolKit.System.Models.Identity
 
     public class ObjectPermissionEntry
     {
-        
-        public Int64 ObjectPermissionID { get; set; }
+        public ObjectPermissionEntry()
+        {
+            
+        }
+
+        public ObjectPermissionEntry(ObjectPermissionResult fromobj)
+        {
+            ObjectPermissionID = fromobj.ObjectPermissionID;
+            ObjectName = fromobj.ObjectName;    
+            ObjectCode = fromobj.ObjectCode;    
+        }
+
+        public long ObjectPermissionID { get; set; }
 
         [PrimaryValidationConfig("ObjectName", "Object Name", FieldType.TEXT, false, 50)]
-        public string ObjectName { get; set; }
+        public string ObjectName { get; set; } = string.Empty;
 
         [PrimaryValidationConfig("ObjectCode", "Object Code", FieldType.TEXT, false, 25)]
-        public string ObjectCode { get; set; }
+        public string ObjectCode { get; set; } = string.Empty;
 
     }
 
     public class ObjectPermissionList
     {
-        public Int64 ObjectPermissionID { get; set; }
+        public long ObjectPermissionID { get; set; }
 
-        public string ObjectName { get; set; }
+        public string ObjectName { get; set; } = string.Empty;
 
-        public string ObjectCode { get; set; }
+        public string ObjectCode { get; set; } = string.Empty;
 
     }
 
     public class ObjectPermissionResult
     {
-        public Int64 ObjectPermissionID { get; set; }
+        public long ObjectPermissionID { get; set; }
 
-        public string ObjectName { get; set; }
+        public string ObjectName { get; set; } = string.Empty;
 
-        public string ObjectCode { get; set; }
+        public string ObjectCode { get; set; } = string.Empty;
 
     }
 

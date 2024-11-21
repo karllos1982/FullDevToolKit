@@ -1,10 +1,11 @@
 ﻿using FullDevToolKit.Core;
-using FullDevToolKit.System.Models.Identity;
+using FullDevToolKit.Sys.Models.Identity;
 
-namespace FullDevToolKit.System.Contracts.Repositories
+namespace FullDevToolKit.Sys.Contracts.Repositories
 {
     public interface IUserRolesRepository :
-        IRepository<UserRolesParam, UserRolesEntry, UserRolesResult, UserRolesResult>
+        IRepository<UserRolesParam, UserRolesEntry, 
+            UserRolesList, UserRolesResult>
     {
 
         Task AlterRole(UserRolesParam obj);

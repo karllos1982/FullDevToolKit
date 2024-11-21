@@ -1,15 +1,16 @@
 ﻿using FullDevToolKit.Common;
 using FullDevToolKit.Core;
-using FullDevToolKit.System.Contracts.Domains;
+using FullDevToolKit.Sys.Contracts.Domains;
 
-namespace FullDevToolKit.System.Contracts.Managers
+namespace FullDevToolKit.Sys.Contracts.Managers
 {
     public interface ISystemManager: IManager
     {
        
-        ISystemDomainSet DomainSet { get; }
+        IContext Context { get; set; }
+        ISystemDomainSet DomainSet { get; set; }
 
-        IIdentityModule IdentityModule { get; }
+        IIdentityModule IdentityModule { get; set; }
 
         //
 

@@ -1,6 +1,6 @@
 ﻿using FullDevToolKit.Helpers;
 
-namespace FullDevToolKit.System.Models.Identity
+namespace FullDevToolKit.Sys.Models.Identity
 {
 
     public class InstanceParam
@@ -13,7 +13,7 @@ namespace FullDevToolKit.System.Models.Identity
         }
 
 
-        public Int64 pInstanceID { get; set; }
+        public long pInstanceID { get; set; }
         
         public string pInstanceTypeName { get; set; }
 
@@ -24,14 +24,30 @@ namespace FullDevToolKit.System.Models.Identity
 
     public class InstanceEntry
     {
+
+        public InstanceEntry()
+        {
+            
+        }
+
+        public InstanceEntry(InstanceResult fromobj)
+        {
+            InstanceID = fromobj.InstanceID;
+            InstanceName = fromobj.InstanceName;
+            InstanceTypeName = fromobj.InstanceTypeName;
+            IsActive = fromobj.IsActive; 
+            CreateDate = fromobj.CreateDate;
+        }
+
+
         [PrimaryValidationConfig("InstanceID", "LocalizationText ID", FieldType.NUMERIC, false, 0)]
-        public Int64 InstanceID { get; set; }
+        public long InstanceID { get; set; }
 
         [PrimaryValidationConfig("InstanceTypeName", "LocalizationText Type Name", FieldType.TEXT , false, 50)]
-        public string InstanceTypeName { get; set; }
+        public string InstanceTypeName { get; set; } = string.Empty;
 
         [PrimaryValidationConfig("InstanceName", "LocalizationText Name", FieldType.TEXT, false, 100)]
-        public string InstanceName { get; set; }
+        public string InstanceName { get; set; } = string.Empty;
 
         public bool IsActive { get; set; }
 
@@ -42,20 +58,20 @@ namespace FullDevToolKit.System.Models.Identity
 
     public class InstanceList
     {        
-        public Int64 InstanceID { get; set; }
+        public long InstanceID { get; set; }
      
-        public string InstanceName { get; set; }
+        public string InstanceName { get; set; } = string.Empty;    
 
     }
 
     public class InstanceResult
     {
         
-        public Int64 InstanceID { get; set; }
+        public long InstanceID { get; set; }
         
-        public string InstanceTypeName { get; set; }
+        public string InstanceTypeName { get; set; } = string.Empty;
        
-        public string InstanceName { get; set; }
+        public string InstanceName { get; set; } = string.Empty;
 
         public bool IsActive { get; set; }
 

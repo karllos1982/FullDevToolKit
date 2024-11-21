@@ -1,16 +1,16 @@
 ﻿using FullDevToolKit.Helpers;
 
-namespace FullDevToolKit.System.Models.Identity
+namespace FullDevToolKit.Sys.Models.Identity
 {
     public class PermissionParam
     {
-        public Int64 pPermissionID { get; set; }
+        public long pPermissionID { get; set; }
 
-        public Int64 pUserID { get; set; }
+        public long pUserID { get; set; }
 
-        public Int64 pRoleID { get; set; }
+        public long pRoleID { get; set; }
 
-        public Int64 pObjectPermissionID { get; set; }
+        public long pObjectPermissionID { get; set; }
 
         public PermissionParam()
         {
@@ -24,16 +24,33 @@ namespace FullDevToolKit.System.Models.Identity
 
     public class PermissionEntry
     {
-        public Int64 PermissionID { get; set; }
+        public PermissionEntry()
+        {
+            
+        }
+
+        public PermissionEntry(PermissionResult fromobj)
+        {
+            PermissionID = fromobj.PermissionID;
+            ObjectPermissionID = fromobj.ObjectPermissionID;
+            UserID = fromobj.UserID;
+            RoleID = fromobj.RoleID;
+            ReadStatus = fromobj.ReadStatus;    
+            SaveStatus = fromobj.SaveStatus;
+            DeleteStatus = fromobj.DeleteStatus;    
+            TypeGrant = fromobj.TypeGrant;  
+        }
+
+        public long PermissionID { get; set; }
 
         [PrimaryValidationConfig("ObjectPermissionID", "Object Permission ID", FieldType.NUMERIC, false, 0)]
-        public Int64 ObjectPermissionID { get; set; }
+        public long ObjectPermissionID { get; set; }
 
         [PrimaryValidationConfig("RoleID", "Role ID", FieldType.NUMERIC, true, 0)]
-        public Int64? RoleID { get; set; }
+        public long? RoleID { get; set; }
 
         [PrimaryValidationConfig("UserID", "User ID", FieldType.NUMERIC, true, 0)]
-        public Int64? UserID { get; set; }
+        public long? UserID { get; set; }
 
         [PrimaryValidationConfig("ReadStatus", "Read Status", FieldType.NUMERIC, false, 0)]
         public int ReadStatus { get; set; }       
@@ -45,37 +62,37 @@ namespace FullDevToolKit.System.Models.Identity
         public int DeleteStatus { get; set; }
 
         [PrimaryValidationConfig("TypeGrant", "Type Grant", FieldType.TEXT, false,1 )]
-        public string TypeGrant { get; set; }
+        public string TypeGrant { get; set; } = string.Empty;
     }
 
     public class PermissionList
     {
-        public Int64 PermissionID { get; set; }
+        public long PermissionID { get; set; }
 
-        public Int64 ObjectPermissionID { get; set; }
+        public long ObjectPermissionID { get; set; }
 
-        public string ObjectName { get; set; }        
+        public string ObjectName { get; set; } = string.Empty;              
 
 
     }
 
     public class PermissionResult
     {
-        public Int64 PermissionID { get; set; }
+        public long PermissionID { get; set; }
 
-        public Int64 ObjectPermissionID { get; set; }
+        public long ObjectPermissionID { get; set; }
 
-        public string ObjectName { get; set; }
+        public string ObjectName { get; set; } = string.Empty;  
 
-        public string ObjectCode { get; set; }
+        public string ObjectCode { get; set; } = string.Empty;  
 
-        public Int64 RoleID { get; set; }
+        public long RoleID { get; set; }
 
-        public string RoleName { get; set; }
+        public string RoleName { get; set; } = string.Empty;    
 
-        public Int64 UserID { get; set; }
+        public long UserID { get; set; }
 
-        public string UserName { get; set; }
+        public string UserName { get; set; } = string.Empty;    
 
         public int ReadStatus { get; set; }
 
@@ -83,7 +100,7 @@ namespace FullDevToolKit.System.Models.Identity
 
         public int DeleteStatus { get; set; }
 
-        public string TypeGrant { get; set; }
+        public string TypeGrant { get; set; } = string.Empty;   
 
     }
   

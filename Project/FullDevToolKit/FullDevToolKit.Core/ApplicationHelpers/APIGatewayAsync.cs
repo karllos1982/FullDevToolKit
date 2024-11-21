@@ -81,7 +81,7 @@ namespace FullDevToolKit.ApplicationHelpers
         public APIResponse<T> GetDefaultResult<T>()
         {
             ExecutionExceptions exps = new ExecutionExceptions();
-            exps.AddException("UnknowError", FullDevToolKit.LocalizationText.Get("API-Unexpected-Exception", "eng").Text);
+            exps.AddException("UnknowError", LocalizationText.Get("API-Unexpected-Exception", "eng").Text);
             return new APIResponse<T>( 400, exps);
 
         }

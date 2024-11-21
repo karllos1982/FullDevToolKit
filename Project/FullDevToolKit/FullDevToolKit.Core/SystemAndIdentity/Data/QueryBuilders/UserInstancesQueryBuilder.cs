@@ -1,7 +1,7 @@
 ﻿using FullDevToolKit.Helpers;
 using System.Collections.Generic;
 
-namespace FullDevToolKit.System.Data.QueryBuilders
+namespace FullDevToolKit.Sys.Data.QueryBuilders
 {
     public class UserInstancesQueryBuilder : QueryBuilder
     {
@@ -17,13 +17,12 @@ namespace FullDevToolKit.System.Data.QueryBuilders
             ExcludeFields = new List<string>();
 
             Keys.Add("UserInstanceID");
-            ExcludeFields.Add("RecordState");
-            ExcludeFields.Add("InstanceName");
+            ExcludeFields.Add("RecordState");           
         }
 
         public override string QueryForGet(object param)
         {
-            string ret = @"Select * from sysUserInstances
+            string ret = @"select a.UserInstanceID, a.UserID, u.UserName, a.InstanceID, i.InstanceName  
                 where UserInstanceID=@pUserInstanceID";
 
             return ret;
@@ -53,6 +52,16 @@ namespace FullDevToolKit.System.Data.QueryBuilders
              and (@pUserID=0 or a.UserID=@pUserID)
              and (@pInstanceID=0 or a.InstanceID=@pInstanceID)
              ";
+
+            return ret;
+
+        }
+
+        public string QueryForAlterInstance(object param)
+        {
+            string ret = @"update sysuserinstances set instanceid = @pInstanceID
+                        where userinstanceid = @pUserInstanceID
+                     ";
 
             return ret;
 

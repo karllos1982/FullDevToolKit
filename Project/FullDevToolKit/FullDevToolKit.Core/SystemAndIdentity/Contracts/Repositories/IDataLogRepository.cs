@@ -1,10 +1,10 @@
 ﻿using FullDevToolKit.Core;
-using FullDevToolKit.System.Models.Common;
+using FullDevToolKit.Sys.Models.Common;
 
-namespace FullDevToolKit.System.Contracts.Repositories
+namespace FullDevToolKit.Sys.Contracts.Repositories
 {
     public interface IDataLogRepository :
-        IRepository<DataLogParam, DataLogEntry, DataLogResult, DataLogList>
+        IRepository<DataLogParam, DataLogEntry, DataLogList, DataLogResult>
     {
         Task<List<DataLogTimelineModel>> GetDataLogTimeline(Int64 recordID);
 

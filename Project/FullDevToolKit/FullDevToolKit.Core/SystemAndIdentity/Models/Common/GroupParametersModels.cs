@@ -1,6 +1,6 @@
 ﻿using FullDevToolKit.Helpers;
 
-namespace FullDevToolKit.System.Models.Common
+namespace FullDevToolKit.Sys.Models.Common
 {
     public class GroupParameterParam
     {
@@ -8,26 +8,38 @@ namespace FullDevToolKit.System.Models.Common
         {
             pGroupParameterID = 0;
             pGroupParameterName = "";
-            pIsActive = false;
+            pIsActive = -1;
         }
 
 
-        public Int64 pGroupParameterID { get; set; }
+        public long pGroupParameterID { get; set; }
 
         public string pGroupParameterName { get; set; }
 
-        public bool pIsActive { get; set; }
+        public int pIsActive { get; set; }
 
     }
 
     public class GroupParameterEntry
     {
+        public GroupParameterEntry()
+        {
+                
+        }
+
+        public GroupParameterEntry(GroupParameterResult fromobj)
+        {
+            GroupParameterID = fromobj.GroupParameterID;    
+            GroupParameterName = fromobj.GroupParameterName;
+            IsActive = fromobj.IsActive;
+        }
+
         [PrimaryValidationConfig("GroupParameterID", "Group Parameter ID", FieldType.NUMERIC, false, 0)]
-        public Int64 GroupParameterID { get; set; }
+        public long GroupParameterID { get; set; }
 
         [PrimaryValidationConfig("GroupParameterName", "Group Parameter Name", FieldType.TEXT, false,100)]
-        public string GroupParameterName { get; set; }
-       
+        public string GroupParameterName { get; set; } = string.Empty;
+
         public bool IsActive { get; set; }        
 
     }
@@ -35,18 +47,18 @@ namespace FullDevToolKit.System.Models.Common
 
     public class GroupParameterList
     {
-        public Int64 GroupParameterID { get; set; }
+        public long GroupParameterID { get; set; }
 
-        public string GroupParameterName { get; set; }
+        public string GroupParameterName { get; set; } = string.Empty;
 
     }
 
     public class GroupParameterResult
     {
         
-        public Int64 GroupParameterID { get; set; }
+        public long GroupParameterID { get; set; }
         
-        public string GroupParameterName { get; set; }
+        public string GroupParameterName { get; set; } = string.Empty;
 
         public bool IsActive { get; set; }
 

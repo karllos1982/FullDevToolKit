@@ -1,6 +1,6 @@
 ﻿using FullDevToolKit.Helpers;
 
-namespace FullDevToolKit.System.Models.Identity
+namespace FullDevToolKit.Sys.Models.Identity
 {
     public class RoleParam
     {
@@ -11,7 +11,7 @@ namespace FullDevToolKit.System.Models.Identity
             pRoleName = ""; 
         }
 
-        public Int64 pRoleID { get; set; }
+        public long pRoleID { get; set; }
 
         public string pRoleName { get; set; }
 
@@ -19,11 +19,25 @@ namespace FullDevToolKit.System.Models.Identity
 
     public class RoleEntry
     {
+        public RoleEntry()
+        {
+            
+        }
+
+        public RoleEntry(RoleResult fromobj)
+        {
+            RoleID = fromobj.RoleID;
+            RoleName = fromobj.RoleName;    
+            CreateDate = fromobj.CreateDate;
+            IsActive = fromobj.IsActive;
+        }
+
+
         [PrimaryValidationConfig("RoleID", "Role ID", FieldType.NUMERIC, false, 0)]
         public long RoleID { get; set; }
 
         [PrimaryValidationConfig("RoleName", "Role Name", FieldType.TEXT, false, 50)]
-        public string RoleName { get; set; }
+        public string RoleName { get; set; } = string.Empty;    
 
         public DateTime CreateDate { get; set; }
 
@@ -36,9 +50,9 @@ namespace FullDevToolKit.System.Models.Identity
         
         public long RoleID { get; set; }
         
-        public string RoleName { get; set; }
+        public string RoleName { get; set; } = string.Empty;    
 
-        public string sRoleID { get; set; }
+        public string sRoleID { get; set; } = string.Empty;
     }
 
     public class RoleResult
@@ -46,7 +60,7 @@ namespace FullDevToolKit.System.Models.Identity
         
         public long RoleID { get; set; }
         
-        public string RoleName { get; set; }
+        public string RoleName { get; set; } = string.Empty;
 
         public DateTime CreateDate { get; set; }
 

@@ -1,9 +1,9 @@
 ﻿using FullDevToolKit.Common;
 using FullDevToolKit.Core;
-using FullDevToolKit.System.Contracts.Repositories;
-using FullDevToolKit.System.Models.Common;
+using FullDevToolKit.Sys.Contracts.Repositories;
+using FullDevToolKit.Sys.Models.Common;
 
-namespace FullDevToolKit.System.Contracts.Domains
+namespace FullDevToolKit.Sys.Contracts.Domains
 {
     public interface IDataLogDomain :
         IDomain<DataLogParam, DataLogEntry, DataLogList, DataLogResult>

@@ -2,9 +2,9 @@
 
 namespace FullDevToolKit.Core
 {
-    public interface IDomain<TParam, TEntry, TResult, TList>
+    public interface IDomain<TParam, TEntry, TList,TResult>
     {
-        IContext Context { get; set; }
+        IContext Context { get; }
 
         Task<TResult> Get(TParam param);
 
@@ -30,8 +30,7 @@ namespace FullDevToolKit.Core
 
     public interface IDomainSync<TParam, TEntry, TResult, TList>
     {
-        IContext Context { get; set; }
-
+        
         TResult Get(TParam param);
 
         TResult FillChields(TResult obj);

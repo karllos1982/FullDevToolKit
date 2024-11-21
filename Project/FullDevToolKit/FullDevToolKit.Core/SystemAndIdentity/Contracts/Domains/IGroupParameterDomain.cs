@@ -1,8 +1,8 @@
 ﻿using FullDevToolKit.Core;
-using FullDevToolKit.System.Models.Common;
-using FullDevToolKit.System.Models.Identity;
+using FullDevToolKit.Sys.Models.Common;
+using FullDevToolKit.Sys.Models.Identity;
 
-namespace FullDevToolKit.System.Contracts.Domains
+namespace FullDevToolKit.Sys.Contracts.Domains
 {
     public interface IGroupParameterDomain :
       IDomain<GroupParameterParam, GroupParameterEntry, GroupParameterList, GroupParameterResult>

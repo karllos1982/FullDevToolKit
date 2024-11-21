@@ -4,8 +4,7 @@ namespace FullDevToolKit.Core
 {
     public interface IRepositorySet
     {
-        void InitializeRespositories(IContext context);
-
+      
     }
 
 }

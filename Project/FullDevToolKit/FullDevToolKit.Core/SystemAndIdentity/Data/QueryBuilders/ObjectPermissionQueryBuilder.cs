@@ -1,7 +1,7 @@
 ﻿using FullDevToolKit.Helpers;
 using System.Collections.Generic;
 
-namespace FullDevToolKit.System.Data.QueryBuilders
+namespace FullDevToolKit.Sys.Data.QueryBuilders
 {
     public class ObjectPermissionQueryBuilder : QueryBuilder
     {
@@ -33,8 +33,8 @@ namespace FullDevToolKit.System.Data.QueryBuilders
             string ret = @"select *             
              from sysObjectPermission s                           
              where 1=1 
-             and (@pObjectPermissionID=0 or s.ObjectPermissionID=@pObjectPermissionID)
-             and (@pObjectName='' or s.ObjectName=@pObjectName)
+             and (@pObjectPermissionID=0 or s.ObjectPermissionID=@pObjectPermissionID)             
+             and (@pObjectName='' or s.ObjectName like '%' + @pObjectName + '%')  
              and (@pObjectCode='' or s.ObjectCode=@pObjectCode)
              order by ObjectName
              ";

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FullDevToolKit.System.Models.Common
+namespace FullDevToolKit.Sys.Models.Common
 {
     public class ParameterParam
     {
@@ -18,8 +18,8 @@ namespace FullDevToolKit.System.Models.Common
         }
 
 
-        public Int64 pParameterID { get; set; }
-        public Int64 pGroupParameterID { get; set; }
+        public long pParameterID { get; set; }
+        public long pGroupParameterID { get; set; }
 
         public string pParameterName { get; set; }
 
@@ -29,14 +29,27 @@ namespace FullDevToolKit.System.Models.Common
 
     public class ParameterEntry
     {
+        public ParameterEntry()
+        {
+            
+        }
+
+        public ParameterEntry(ParameterResult fromobj)
+        {
+            ParameterID = fromobj.ParameterID;  
+            ParameterName = fromobj.ParameterName;
+            GroupParameterID = fromobj.GroupParameterID;
+            IsActive = fromobj.IsActive;
+        }
+
         [PrimaryValidationConfig("ParameterID", "Parameter ID", FieldType.NUMERIC, false, 0)]
-        public Int64 ParameterID { get; set; }
+        public long ParameterID { get; set; }
 
         [PrimaryValidationConfig("GroupParameterID", "Group Parameter ID", FieldType.NUMERIC, false, 0)]
-        public Int64 GroupParameterID { get; set; }
+        public long GroupParameterID { get; set; }
 
         [PrimaryValidationConfig("ParameterName", "Parameter Name", FieldType.TEXT, false, 100)]
-        public string ParameterName { get; set; }
+        public string ParameterName { get; set; } = string.Empty;
 
         public bool IsActive { get; set; }
 
@@ -45,22 +58,24 @@ namespace FullDevToolKit.System.Models.Common
 
     public class ParameterList
     {
-        public Int64 ParameterID { get; set; }
+        public long ParameterID { get; set; }
 
-        public Int64 GroupParameterID { get; set; }
+        public long GroupParameterID { get; set; }
 
-        public string ParameterName { get; set; }
+        public string ParameterName { get; set; } = string.Empty;
 
     }
 
     public class ParameterResult
     {
         
-        public Int64 ParameterID { get; set; }
+        public long ParameterID { get; set; }
         
-        public Int64 GroupParameterID { get; set; }
+        public long GroupParameterID { get; set; }
 
-        public string ParameterName { get; set; }
+        public int GroupParameterName { get; set; }
+
+        public string ParameterName { get; set; } = string.Empty;
 
         public bool IsActive { get; set; }
 

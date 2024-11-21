@@ -1,37 +1,37 @@
 ﻿using FullDevToolKit.Common;
 using FullDevToolKit.Core;
-using FullDevToolKit.System.Models.Identity;
+using FullDevToolKit.Sys.Models.Identity;
 
-namespace FullDevToolKit.System.Contracts.Domains
+namespace FullDevToolKit.Sys.Contracts.Domains
 {
     public interface IUserDomain :
         IDomain<UserParam, UserEntry, UserList, UserResult>
     {
-        Task<UserEntry> GetByEmail(string email);
+        Task<UserResult> GetByEmail(string email);
 
-        Task<ExecutionStatus> UpdateUserLogin(UpdateUserLogin model);
+        Task UpdateUserLogin(UpdateUserLogin model);
 
-        Task<ExecutionStatus> SetPasswordRecoveryCode(ChangeUserPassword model);
+        Task<string> SetPasswordRecoveryCode(ChangeUserPassword model);
 
-        Task<ExecutionStatus> ChangeUserPassword(ChangeUserPassword model);
+        Task ChangeUserPassword(ChangeUserPassword model);
 
-        Task<ExecutionStatus> ActiveUserAccount(ActiveUserAccount model);
+        Task ActiveUserAccount(ActiveUserAccount model);
 
-        Task<ExecutionStatus> ChangeUserProfileImage(ChangeUserImage model);
+        Task ChangeUserProfileImage(ChangeUserImage model);
 
-        Task<ExecutionStatus> UpdateLoginFailCounter(UpdateUserLoginFailCounter model);
+        Task UpdateLoginFailCounter(UpdateUserLoginFailCounter model);
 
-        Task<ExecutionStatus> ChangeState(UserChangeState model);
+        Task ChangeState(UserChangeState model);
 
         Task<ExecutionStatus> SetDateLogout(Int64 userid);
 
-        Task<UserRolesEntry> AddRoleToUser(Int64 userid, Int64 roleid, bool gocommit);
+        Task<UserRolesEntry> AddRoleToUser(Int64 userid, Int64 roleid);
 
-        Task<UserRolesEntry> RemoveRoleFromUser(Int64 userid, Int64 roleid, bool gocommit);
+        Task<UserRolesEntry> RemoveRoleFromUser(Int64 userid, Int64 roleid);
 
-        Task<UserInstancesEntry> AddInstanceToUser(Int64 userid, Int64 instanceid, bool gocommit);
+        Task<UserInstancesEntry> AddInstanceToUser(Int64 userid, Int64 instanceid);
 
-        Task<UserInstancesEntry> RemoveInstanceFromUser(Int64 userid, Int64 instanceid, bool gocommit);
+        Task<UserInstancesEntry> RemoveInstanceFromUser(Int64 userid, Int64 instanceid);
 
     }
 }
