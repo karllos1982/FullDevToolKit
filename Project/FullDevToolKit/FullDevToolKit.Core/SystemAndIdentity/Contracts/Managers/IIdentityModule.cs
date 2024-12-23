@@ -8,7 +8,8 @@ namespace FullDevToolKit.Sys.Contracts.Managers
     public interface IIdentityModule: IBusinessModule
     {
 
-      
+        ISystemDomainSet Domainset { get; set; }
+
         Task<UserEntry> CreateNewUser(NewUser data, bool gocommit, object userid);
 
         Task<UserResult> Login(UserLogin model);

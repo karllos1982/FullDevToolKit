@@ -4,21 +4,22 @@ using FullDevToolKit.Sys.Contracts.Domains;
 using FullDevToolKit.Sys.Models.Common;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
+using FullDevToolKit.Sys.Data.Repositories;
 
 namespace FullDevToolKit.Sys.Domains
 {
     public class ParameterDomain : IParameterDomain
     {
 
-        public ParameterDomain(ISystemRepositorySet repositorySet)
+        public ParameterDomain(IContext context)
         {
-            RepositorySet = repositorySet;
-            Context = RepositorySet.Parameter.Context;
+            Context = context;
+            _repositories = new SystemRepositorySet(context);
         }
 
         public IContext Context { get; set; }
 
-        public ISystemRepositorySet RepositorySet { get; set; }
+        private ISystemRepositorySet _repositories { get; set; }
 
         public async Task<ParameterResult> FillChields(ParameterResult obj)
         {
@@ -29,7 +30,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             ParameterResult ret = null;
 
-            ret = await RepositorySet.Parameter.Read(param);
+            ret = await _repositories.Parameter.Read(param);
 
             return ret;
         }
@@ -38,7 +39,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<ParameterList> ret = null;
 
-            ret = await RepositorySet.Parameter.List(param);
+            ret = await _repositories.Parameter.List(param);
 
             return ret;
         }
@@ -47,7 +48,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<ParameterResult> ret = null;
 
-            ret = await RepositorySet.Parameter.Search(param);
+            ret = await _repositories.Parameter.Search(param);
 
             return ret;
         }
@@ -73,7 +74,7 @@ namespace FullDevToolKit.Sys.Domains
             ExecutionStatus ret = new ExecutionStatus(true);
 
             bool check =
-                await Context.CheckUniqueValueForInsert(RepositorySet.Parameter.TableName,
+                await Context.CheckUniqueValueForInsert(_repositories.Parameter.TableName,
                         "ParameterName", obj.ParameterName);
 
             if (!check)
@@ -91,8 +92,8 @@ namespace FullDevToolKit.Sys.Domains
             ExecutionStatus ret = new ExecutionStatus(true);
 
             bool check =
-                await Context.CheckUniqueValueForUpdate(RepositorySet.Parameter.TableName, "ParameterName",
-                 obj.ParameterName, RepositorySet.User.PKFieldName, obj.ParameterID.ToString());
+                await Context.CheckUniqueValueForUpdate(_repositories.Parameter.TableName, "ParameterName",
+                 obj.ParameterName, _repositories.User.PKFieldName, obj.ParameterID.ToString());
 
             if (!check)
             {
@@ -120,7 +121,7 @@ namespace FullDevToolKit.Sys.Domains
             {
 
                 ParameterResult old
-                    = await RepositorySet.Parameter.Read(new ParameterParam() { pParameterID = model.ParameterID });
+                    = await _repositories.Parameter.Read(new ParameterParam() { pParameterID = model.ParameterID });
 
                 if (old == null)
                 {
@@ -129,7 +130,7 @@ namespace FullDevToolKit.Sys.Domains
                     if (Context.Status.Success)
                     {
                         if (model.ParameterID == 0) { model.ParameterID = Utilities.GenerateId(); }
-                        await RepositorySet.Parameter.Create(model);
+                        await _repositories.Parameter.Create(model);
                     }
                 }
                 else
@@ -140,7 +141,7 @@ namespace FullDevToolKit.Sys.Domains
 
                     if (Context.Status.Success)
                     {
-                        await RepositorySet.Parameter.Update(model);
+                        await _repositories.Parameter.Update(model);
                     }
 
                 }
@@ -164,7 +165,7 @@ namespace FullDevToolKit.Sys.Domains
             ParameterEntry ret = null;
 
             ParameterResult old
-                = await RepositorySet.Parameter.Read(new ParameterParam() { pParameterID = model.ParameterID });
+                = await _repositories.Parameter.Read(new ParameterParam() { pParameterID = model.ParameterID });
 
             if (old != null)
             {
@@ -172,7 +173,7 @@ namespace FullDevToolKit.Sys.Domains
 
                 if (Context.Status.Success)
                 {
-                    await RepositorySet.Parameter.Delete(model);
+                    await _repositories.Parameter.Delete(model);
                     if (Context.Status.Success && userid != null)
                     {
                         await Context

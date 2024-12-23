@@ -4,21 +4,23 @@ using FullDevToolKit.Sys.Contracts.Domains;
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
+using FullDevToolKit.Sys.Data.Repositories;
 
 namespace FullDevToolKit.Sys.Domains
 {
     public class RoleDomain : IRoleDomain
     {
      
-        public RoleDomain(ISystemRepositorySet repositorySet)
+        public RoleDomain(IContext context)
         {
-            RepositorySet = repositorySet;
-            Context = RepositorySet.Role.Context;
+            Context = context;
+            _repositories = new SystemRepositorySet(context);
         }
 
         public IContext Context { get; set; }
 
-        public ISystemRepositorySet RepositorySet { get; set; }
+        private ISystemRepositorySet _repositories { get; set; }
+
 
         public async Task<RoleResult> FillChields(RoleResult obj)
         {
@@ -29,7 +31,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             RoleResult ret = null;
 
-            ret = await RepositorySet.Role.Read(param); 
+            ret = await _repositories.Role.Read(param); 
             
             return ret;
         }
@@ -38,7 +40,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<RoleList> ret = null;
 
-            ret = await RepositorySet.Role.List(param);           
+            ret = await _repositories.Role.List(param);           
 
             return ret;
         }
@@ -47,7 +49,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<RoleResult> ret = null;
 
-            ret = await RepositorySet.Role.Search(param);
+            ret = await _repositories.Role.Search(param);
 
             return ret;
         }
@@ -73,7 +75,7 @@ namespace FullDevToolKit.Sys.Domains
             ExecutionStatus ret = new ExecutionStatus(true);
 
             bool check =
-                await Context.CheckUniqueValueForInsert(RepositorySet.Role.TableName, "RoleName", obj.RoleName);
+                await Context.CheckUniqueValueForInsert(_repositories.Role.TableName, "RoleName", obj.RoleName);
 
             if (!check)
             {
@@ -90,8 +92,8 @@ namespace FullDevToolKit.Sys.Domains
             ExecutionStatus ret = new ExecutionStatus(true);
 
             bool check =
-                await RepositorySet.Role.Context.CheckUniqueValueForUpdate(RepositorySet.Role.TableName, "RoleName",
-                obj.RoleName, RepositorySet.User.PKFieldName, obj.RoleID.ToString());
+                await _repositories.Role.Context.CheckUniqueValueForUpdate(_repositories.Role.TableName, "RoleName",
+                obj.RoleName, _repositories.User.PKFieldName, obj.RoleID.ToString());
 
             if (!check)
             {
@@ -119,7 +121,7 @@ namespace FullDevToolKit.Sys.Domains
             {
 
                 RoleResult old 
-                    = await RepositorySet.Role.Read(new RoleParam() { pRoleID = model.RoleID });
+                    = await _repositories.Role.Read(new RoleParam() { pRoleID = model.RoleID });
 
                 if (old == null)
                 {
@@ -129,7 +131,7 @@ namespace FullDevToolKit.Sys.Domains
                     {
                         model.CreateDate = DateTime.Now;
                         if (model.RoleID == 0) { model.RoleID = FullDevToolKit.Helpers.Utilities.GenerateId(); }
-                        await RepositorySet.Role.Create(model);
+                        await _repositories.Role.Create(model);
                     }
                 }
                 else
@@ -141,14 +143,14 @@ namespace FullDevToolKit.Sys.Domains
 
                     if (Context.Status.Success)
                     {
-                        await RepositorySet.Role.Update(model);
+                        await _repositories.Role.Update(model);
                     }
 
                 }
 
                 if (Context.Status.Success && userid != null)
                 {
-                   await  RepositorySet.Role.Context
+                   await  _repositories.Role.Context
                         .RegisterDataLogAsync(userid.ToString(), operation, "SYSROLE",
                         model.RoleID.ToString(), old, model);
 
@@ -165,7 +167,7 @@ namespace FullDevToolKit.Sys.Domains
             RoleEntry ret = null;
 
             RoleResult old 
-                = await RepositorySet.Role.Read(new RoleParam() { pRoleID = model.RoleID });
+                = await _repositories.Role.Read(new RoleParam() { pRoleID = model.RoleID });
 
             if (old != null)
             {
@@ -173,10 +175,10 @@ namespace FullDevToolKit.Sys.Domains
 
                 if (Context.Status.Success)
                 {
-                   await RepositorySet.Role.Delete(model);
+                   await _repositories.Role.Delete(model);
                     if (Context.Status.Success && userid != null)
                     {
-                        await RepositorySet.User.Context
+                        await _repositories.User.Context
                             .RegisterDataLogAsync(userid.ToString(), OPERATIONLOGENUM.DELETE, "SYSROLE",
                             model.RoleID.ToString(), old, model);
 

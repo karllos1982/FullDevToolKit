@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35312.102
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{C8DE2544-DCF3-46B4-9F13-DE9A257A76EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{C8DE2544-DCF3-46B4-9F13-DE9A257A76EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models", "Models\Models.csproj", "{F8B0C866-E2C9-4644-94E0-E6ED738B5294}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csproj", "{F8B0C866-E2C9-4644-94E0-E6ED738B5294}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proxy", "Proxy\Proxy.csproj", "{1147A07C-D1D9-426D-88E9-6962C6413D0C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1147A07C-D1D9-426D-88E9-6962C6413D0C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1147A07C-D1D9-426D-88E9-6962C6413D0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1147A07C-D1D9-426D-88E9-6962C6413D0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1147A07C-D1D9-426D-88E9-6962C6413D0C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

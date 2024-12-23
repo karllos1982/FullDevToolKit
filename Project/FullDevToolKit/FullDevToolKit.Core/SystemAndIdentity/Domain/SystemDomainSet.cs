@@ -9,18 +9,18 @@ namespace FullDevToolKit.Sys.Domains
     public class SystemDomainSet: ISystemDomainSet
     {
 
-        public SystemDomainSet(ISystemRepositorySet repositorySet)         
+        public SystemDomainSet(IContext context)         
         {            
-            this.Instance = new InstanceDomain(repositorySet);
-            this.Role = new RoleDomain(repositorySet);
-            this.User = new UserDomain(repositorySet);
-            this.ObjectPermission = new ObjectPermissionDomain(repositorySet);
-            this.Permission = new PermissionDomain(repositorySet);
-            this.DataLog = new DataLogDomain(repositorySet);
-            this.SessionLog = new SessionLogDomain(repositorySet);
-            this.LocalizationText = new LocalizationTextDomain(repositorySet);
-            this.GroupParameter = new GroupParameterDomain(repositorySet);
-            this.Parameter = new ParameterDomain(repositorySet);
+            this.Instance = new InstanceDomain(context);
+            this.Role = new RoleDomain(context);
+            this.User = new UserDomain(context);
+            this.ObjectPermission = new ObjectPermissionDomain(context);
+            this.Permission = new PermissionDomain(context);
+            this.DataLog = new DataLogDomain(context);
+            this.SessionLog = new SessionLogDomain(context);
+            this.LocalizationText = new LocalizationTextDomain(context);
+            this.GroupParameter = new GroupParameterDomain(context);
+            this.Parameter = new ParameterDomain(context);
         }
      
 

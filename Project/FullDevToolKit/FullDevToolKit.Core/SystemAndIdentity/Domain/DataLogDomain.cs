@@ -4,19 +4,21 @@ using FullDevToolKit.Sys.Contracts.Domains;
 using FullDevToolKit.Sys.Models.Common;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
+using FullDevToolKit.Sys.Data.Repositories;
 
 namespace FullDevToolKit.Sys.Domains
 {
     public class DataLogDomain : IDataLogDomain
     {
-        public DataLogDomain(ISystemRepositorySet repositorySet)
+        public DataLogDomain(IContext context)
         {
-            RepositorySet = repositorySet;         
-            Context = RepositorySet.DataLog.Context;    
+            Context = context;
+            _repositories = new SystemRepositorySet(context);          
+            
         }
         public IContext Context { get; set; }
 
-        public ISystemRepositorySet RepositorySet { get; set; }
+        private ISystemRepositorySet _repositories { get; set; }
 
         public async Task<DataLogResult> FillChields(DataLogResult obj)
         {
@@ -27,7 +29,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             DataLogResult ret = null;
 
-            ret = await RepositorySet.DataLog.Read(param); 
+            ret = await _repositories.DataLog.Read(param); 
             
             return ret;
         }
@@ -36,7 +38,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<DataLogList> ret = null;
 
-            ret = await RepositorySet.DataLog.List(param);           
+            ret = await _repositories.DataLog.List(param);           
 
             return ret;
         }
@@ -45,7 +47,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<DataLogResult> ret = null;
 
-            ret = await RepositorySet.DataLog.Search(param);
+            ret = await _repositories.DataLog.Search(param);
 
             return ret;
         }
@@ -59,8 +61,8 @@ namespace FullDevToolKit.Sys.Domains
             if (!ret.Success)
             {
                 ret.SetFailStatus("Error",
-                   LocalizationText.Get("Validation-Error",
-                       Context.LocalizationLanguage).Text);
+                   LocalizationText.Get("Validation-Error", Context.LocalizationLanguage).Text);
+                      
             }
 
             Context.Status = ret;
@@ -95,7 +97,7 @@ namespace FullDevToolKit.Sys.Domains
             {
 
                 DataLogResult old 
-                    = await RepositorySet.DataLog.Read(new DataLogParam() { pDataLogID = model.DataLogID });
+                    = await _repositories.DataLog.Read(new DataLogParam() { pDataLogID = model.DataLogID });
 
                 if (old == null)
                 {
@@ -103,7 +105,7 @@ namespace FullDevToolKit.Sys.Domains
                     if (Context.Status.Success)
                     {           
                         if (model.DataLogID ==0 ) { model.DataLogID = FullDevToolKit.Helpers.Utilities.GenerateId(); }
-                        await RepositorySet.DataLog.Create(model);
+                        await _repositories.DataLog.Create(model);
                     }
                 }
                 else
@@ -114,7 +116,7 @@ namespace FullDevToolKit.Sys.Domains
 
                     if (Context.Status.Success)
                     {
-                         await RepositorySet.DataLog.Update(model);
+                         await _repositories.DataLog.Update(model);
                     }
 
                 }
@@ -140,7 +142,7 @@ namespace FullDevToolKit.Sys.Domains
             DataLogEntry ret = null;
 
             DataLogResult old 
-                = await RepositorySet.DataLog.Read(new DataLogParam() { pDataLogID = model.DataLogID });
+                = await _repositories.DataLog.Read(new DataLogParam() { pDataLogID = model.DataLogID });
 
             if (old != null)
             {
@@ -148,7 +150,7 @@ namespace FullDevToolKit.Sys.Domains
 
                 if (Context.Status.Success)
                 {
-                   await RepositorySet.DataLog.Delete(model);
+                   await _repositories.DataLog.Delete(model);
 
                     if (Context.Status.Success && userid != null)
                     {
@@ -178,7 +180,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<DataLogTimelineModel> ret = null;
 
-            ret = await RepositorySet.DataLog.GetDataLogTimeline(recordID);    
+            ret = await _repositories.DataLog.GetDataLogTimeline(recordID);    
 
             return ret;
         }
@@ -187,7 +189,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<TabelasValueModel> ret = null;
 
-            ret =await  RepositorySet.DataLog.GetTableList();
+            ret =await  _repositories.DataLog.GetTableList();
 
 
             return ret;

@@ -4,6 +4,7 @@ using FullDevToolKit.Sys.Contracts.Domains;
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
+using FullDevToolKit.Sys.Data.Repositories;
 
 
 namespace FullDevToolKit.Sys.Domains
@@ -11,15 +12,15 @@ namespace FullDevToolKit.Sys.Domains
     public class InstanceDomain : IInstanceDomain
     {
        
-        public InstanceDomain(ISystemRepositorySet repositorySet)
-        {            
-            RepositorySet = repositorySet;
-            Context = RepositorySet.Instance.Context;
+        public InstanceDomain(IContext context)
+        {
+            Context = context;
+            _repositories = new SystemRepositorySet(context);
         }
 
         public IContext Context { get; set; }
 
-        public ISystemRepositorySet RepositorySet { get; set; }
+        private ISystemRepositorySet _repositories { get; set; }
 
         public async Task<InstanceResult> FillChields(InstanceResult obj)
         {
@@ -30,7 +31,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             InstanceResult ret = null;
 
-            ret = await RepositorySet.Instance.Read(param);
+            ret = await _repositories.Instance.Read(param);
 
             return ret;
         }
@@ -39,7 +40,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<InstanceList> ret = null;
 
-            ret = await RepositorySet.Instance.List(param);
+            ret = await _repositories.Instance.List(param);
 
             return ret;
         }
@@ -48,7 +49,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<InstanceResult> ret = null;
 
-            ret = await RepositorySet.Instance.Search(param);
+            ret = await _repositories.Instance.Search(param);
 
             return ret;
         }
@@ -76,7 +77,7 @@ namespace FullDevToolKit.Sys.Domains
 
 
             bool check =
-              await Context.CheckUniqueValueForInsert(RepositorySet.Instance.TableName, "InstanceName", obj.InstanceName);
+              await Context.CheckUniqueValueForInsert(_repositories.Instance.TableName, "InstanceName", obj.InstanceName);
 
             if (!check)
             {
@@ -94,8 +95,8 @@ namespace FullDevToolKit.Sys.Domains
             ExecutionStatus ret = new ExecutionStatus(true);
 
             bool check =
-              await Context.CheckUniqueValueForUpdate(RepositorySet.Instance.TableName, "InstanceName",
-                    obj.InstanceName, RepositorySet.User.PKFieldName,obj.InstanceID.ToString());
+              await Context.CheckUniqueValueForUpdate(_repositories.Instance.TableName, "InstanceName",
+                    obj.InstanceName, _repositories.User.PKFieldName,obj.InstanceID.ToString());
 
             if (!check)
             {
@@ -124,7 +125,7 @@ namespace FullDevToolKit.Sys.Domains
             {
 
                 InstanceResult old
-                    = await RepositorySet.Instance.Read(new InstanceParam() { pInstanceID = model.InstanceID });
+                    = await _repositories.Instance.Read(new InstanceParam() { pInstanceID = model.InstanceID });
 
                 if (old == null)
                 {
@@ -134,7 +135,7 @@ namespace FullDevToolKit.Sys.Domains
                     {
                         model.CreateDate = DateTime.Now;
                         if (model.InstanceID == 0) { model.InstanceID = FullDevToolKit.Helpers.Utilities.GenerateId(); }
-                        await RepositorySet.Instance.Create(model);
+                        await _repositories.Instance.Create(model);
                     }
                 }
                 else
@@ -146,7 +147,7 @@ namespace FullDevToolKit.Sys.Domains
 
                     if (Context.Status.Success)
                     {
-                        await RepositorySet.Instance.Update(model);
+                        await _repositories.Instance.Update(model);
                     }
 
                 }
@@ -170,7 +171,7 @@ namespace FullDevToolKit.Sys.Domains
             InstanceEntry ret = null;
 
             InstanceResult old
-                = await RepositorySet.Instance.Read(new InstanceParam() { pInstanceID = model.InstanceID });
+                = await _repositories.Instance.Read(new InstanceParam() { pInstanceID = model.InstanceID });
 
             if (old != null)
             {
@@ -178,7 +179,7 @@ namespace FullDevToolKit.Sys.Domains
 
                 if (Context.Status.Success)
                 {
-                    await RepositorySet.Instance.Delete(model);
+                    await _repositories.Instance.Delete(model);
 
                     if (Context.Status.Success && userid != null)
                     {

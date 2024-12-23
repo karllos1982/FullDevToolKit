@@ -4,21 +4,22 @@ using MyApp.Contracts.Domains;
 using MyApp.Models;
 using MyApp.Contracts.Repositories;
 using FullDevToolKit.Helpers;
+using MyApp.Data.Repositories;
 
 namespace MyApp.Domain
 {
     public class PersonDomain : IPersonDomain
     {
         
-        public PersonDomain(IContext context, IMyAppRepositorySet repositorySet)
-        {
+        public PersonDomain( IContext context)
+        {            
             Context = context;
-            RepositorySet = repositorySet;            
+            RepositorySet = new MyAppRepositorySet(context);    
         }
 
         public IContext Context { get; set; }
 
-        public IMyAppRepositorySet RepositorySet { get; set; }
+        private IMyAppRepositorySet RepositorySet { get; set; }
 
         public async Task<PersonResult> FillChields(PersonResult obj)
         {
@@ -144,7 +145,7 @@ namespace MyApp.Domain
             ExecutionStatus ret = new ExecutionStatus(true);
 
             bool check =
-                await RepositorySet.Person.Context.CheckUniqueValueForInsert(RepositorySet.Person.TableName, "PersonName", obj.PersonName);
+                await Context.CheckUniqueValueForInsert(RepositorySet.Person.TableName, "PersonName", obj.PersonName);
 
             if (!check)
             {
@@ -162,7 +163,7 @@ namespace MyApp.Domain
             ExecutionStatus ret = new ExecutionStatus(true);
 
             bool check =
-              await RepositorySet.Person.Context.CheckUniqueValueForUpdate(RepositorySet.Person.TableName, "PersonName",
+              await Context.CheckUniqueValueForUpdate(RepositorySet.Person.TableName, "PersonName",
               obj.PersonName, RepositorySet.Person.PKFieldName, obj.PersonID.ToString());
 
             if (!check)
@@ -290,7 +291,7 @@ namespace MyApp.Domain
 
                     if (Context.Status.Success && userid != null)
                     {
-                        await RepositorySet.Person.Context
+                        await Context
                             .RegisterDataLogAsync(userid.ToString(),  OPERATIONLOGENUM.DELETE, "Person",
                             model.PersonID.ToString(), old, model);
 

@@ -4,21 +4,22 @@ using FullDevToolKit.Sys.Contracts.Domains;
 using FullDevToolKit.Sys.Models.Common;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
+using FullDevToolKit.Sys.Data.Repositories;
 
 namespace FullDevToolKit.Sys.Domains
 {
     public class GroupParameterDomain : IGroupParameterDomain
     {
 
-        public GroupParameterDomain(ISystemRepositorySet repositorySet)
+        public GroupParameterDomain(IContext context)
         {
-            RepositorySet = repositorySet;
-            Context = RepositorySet.GroupParameter.Context;
+            Context = context;
+            _repositories = new SystemRepositorySet(context);
         }
 
         public IContext Context { get; set; }
 
-        public ISystemRepositorySet RepositorySet { get; set; }
+        private ISystemRepositorySet _repositories { get; set; }
 
         public async Task<GroupParameterResult> FillChields(GroupParameterResult obj)
         {
@@ -29,7 +30,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             GroupParameterResult ret = null;
 
-            ret = await RepositorySet.GroupParameter.Read(param);
+            ret = await _repositories.GroupParameter.Read(param);
 
             return ret;
         }
@@ -38,7 +39,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<GroupParameterList> ret = null;
 
-            ret = await RepositorySet.GroupParameter.List(param);
+            ret = await _repositories.GroupParameter.List(param);
 
             return ret;
         }
@@ -47,7 +48,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<GroupParameterResult> ret = null;
 
-            ret = await RepositorySet.GroupParameter.Search(param);
+            ret = await _repositories.GroupParameter.Search(param);
 
             return ret;
         }
@@ -73,7 +74,7 @@ namespace FullDevToolKit.Sys.Domains
             ExecutionStatus ret = new ExecutionStatus(true);
 
             bool check =
-                await Context.CheckUniqueValueForInsert(RepositorySet.GroupParameter.TableName, "GroupParameterName", obj.GroupParameterName);
+                await Context.CheckUniqueValueForInsert(_repositories.GroupParameter.TableName, "GroupParameterName", obj.GroupParameterName);
 
             if (!check)
             {
@@ -90,8 +91,8 @@ namespace FullDevToolKit.Sys.Domains
             ExecutionStatus ret = new ExecutionStatus(true);
 
             bool check =
-                await Context.CheckUniqueValueForUpdate(RepositorySet.GroupParameter.TableName, "GroupParameterName",
-                obj.GroupParameterName, RepositorySet.User.PKFieldName, obj.GroupParameterID.ToString());
+                await Context.CheckUniqueValueForUpdate(_repositories.GroupParameter.TableName, "GroupParameterName",
+                obj.GroupParameterName, _repositories.User.PKFieldName, obj.GroupParameterID.ToString());
 
             if (!check)
             {
@@ -119,7 +120,7 @@ namespace FullDevToolKit.Sys.Domains
             {
 
                 GroupParameterResult old
-                    = await RepositorySet.GroupParameter.Read(new GroupParameterParam() { pGroupParameterID = model.GroupParameterID });
+                    = await _repositories.GroupParameter.Read(new GroupParameterParam() { pGroupParameterID = model.GroupParameterID });
 
                 if (old == null)
                 {
@@ -128,7 +129,7 @@ namespace FullDevToolKit.Sys.Domains
                     if (Context.Status.Success)
                     {                        
                         if (model.GroupParameterID == 0) { model.GroupParameterID = Utilities.GenerateId(); }
-                        await RepositorySet.GroupParameter.Create(model);
+                        await _repositories.GroupParameter.Create(model);
                     }
                 }
                 else
@@ -139,7 +140,7 @@ namespace FullDevToolKit.Sys.Domains
 
                     if (Context.Status.Success)
                     {
-                        await RepositorySet.GroupParameter.Update(model);
+                        await _repositories.GroupParameter.Update(model);
                     }
 
                 }
@@ -163,7 +164,7 @@ namespace FullDevToolKit.Sys.Domains
             GroupParameterEntry ret = null;
 
             GroupParameterResult old
-                = await RepositorySet.GroupParameter.Read(new GroupParameterParam() { pGroupParameterID = model.GroupParameterID });
+                = await _repositories.GroupParameter.Read(new GroupParameterParam() { pGroupParameterID = model.GroupParameterID });
 
             if (old != null)
             {
@@ -171,7 +172,7 @@ namespace FullDevToolKit.Sys.Domains
 
                 if (Context.Status.Success)
                 {
-                    await RepositorySet.GroupParameter.Delete(model);
+                    await _repositories.GroupParameter.Delete(model);
                     if (Context.Status.Success && userid != null)
                     {
                         await Context

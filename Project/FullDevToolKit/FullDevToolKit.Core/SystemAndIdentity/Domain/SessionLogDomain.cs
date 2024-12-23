@@ -4,22 +4,24 @@ using FullDevToolKit.Sys.Contracts.Domains;
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
+using FullDevToolKit.Sys.Data.Repositories;
 
 namespace FullDevToolKit.Sys.Domains
 {
     public class SessionLogDomain : ISessionLogDomain
     {
         
-        public SessionLogDomain(ISystemRepositorySet repositorySet)
+        public SessionLogDomain(IContext context)
         {
-            RepositorySet = repositorySet;
-            Context = RepositorySet.SessionLog.Context;
+            Context = context;
+            _repositories = new SystemRepositorySet(context);
 
         }
 
         public IContext Context { get; set; }
 
-        public ISystemRepositorySet RepositorySet { get; set; }
+        private ISystemRepositorySet _repositories { get; set; }
+
 
         public async Task<SessionLogResult> FillChields(SessionLogResult obj)
         {
@@ -30,7 +32,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             SessionLogResult ret = null;
 
-            ret = await RepositorySet.SessionLog.Read(param); 
+            ret = await _repositories.SessionLog.Read(param); 
             
             return ret;
         }
@@ -39,7 +41,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<SessionLogList> ret = null;
 
-            ret = await RepositorySet.SessionLog.List(param);           
+            ret = await _repositories.SessionLog.List(param);           
 
             return ret;
         }
@@ -48,7 +50,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<SessionLogResult> ret = null;
 
-            ret = await  RepositorySet.SessionLog.Search(param);
+            ret = await  _repositories.SessionLog.Search(param);
 
             return ret;
         }
@@ -97,7 +99,7 @@ namespace FullDevToolKit.Sys.Domains
             {
 
                 SessionLogResult old 
-                    = await RepositorySet.SessionLog.Read(new SessionLogParam() 
+                    = await _repositories.SessionLog.Read(new SessionLogParam() 
                             { pSessionLogID = model.SessionLogID });
 
                 if (old == null)
@@ -107,7 +109,7 @@ namespace FullDevToolKit.Sys.Domains
                     if (Context.Status.Success)
                     {
                         if (model.SessionLogID == 0) { model.SessionLogID = FullDevToolKit.Helpers.Utilities.GenerateId(); }
-                        await RepositorySet.SessionLog.Create(model);
+                        await _repositories.SessionLog.Create(model);
                     }
                 }
                 else
@@ -118,7 +120,7 @@ namespace FullDevToolKit.Sys.Domains
 
                     if (Context.Status.Success)
                     {
-                       await RepositorySet.SessionLog.Update(model);
+                       await _repositories.SessionLog.Update(model);
                     }
 
                 }
@@ -142,7 +144,7 @@ namespace FullDevToolKit.Sys.Domains
             SessionLogEntry ret = null;
 
             SessionLogResult old 
-                = await RepositorySet.SessionLog.Read(new SessionLogParam() 
+                = await _repositories.SessionLog.Read(new SessionLogParam() 
                     { pSessionLogID = model.SessionLogID });
 
             if (old != null)
@@ -151,7 +153,7 @@ namespace FullDevToolKit.Sys.Domains
 
                 if (Context.Status.Success)
                 {
-                    await RepositorySet.SessionLog.Delete(model);
+                    await _repositories.SessionLog.Delete(model);
 
                     if (Context.Status.Success && userid != null)
                     {

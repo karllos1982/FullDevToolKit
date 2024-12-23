@@ -5,22 +5,23 @@ using FullDevToolKit.Sys.Models.Common;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
 using System.Reflection;
+using FullDevToolKit.Sys.Data.Repositories;
 
 namespace FullDevToolKit.Sys.Domains
 {
     public class LocalizationTextDomain : ILocalizationTextDomain
     {
 
-        public LocalizationTextDomain(ISystemRepositorySet repositorySet)
+        public LocalizationTextDomain(IContext context)
         {
-            RepositorySet = repositorySet;
-            Context = RepositorySet.LocalizationText.Context;
+            Context = context;
+            _repositories = new SystemRepositorySet(context);
 
         }
 
         public IContext Context { get; set; }
 
-        public ISystemRepositorySet RepositorySet { get; set; }
+        private ISystemRepositorySet _repositories { get; set; }
 
         public async Task<LocalizationTextResult> FillChields(LocalizationTextResult obj)
         {
@@ -31,7 +32,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             LocalizationTextResult ret = null;
 
-            ret = await RepositorySet.LocalizationText.Read(param);
+            ret = await _repositories.LocalizationText.Read(param);
 
             return ret;
         }
@@ -40,7 +41,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<LocalizationTextList> ret = null;
 
-            ret = await RepositorySet.LocalizationText.List(param);
+            ret = await _repositories.LocalizationText.List(param);
 
             return ret;
         }
@@ -49,7 +50,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<LocalizationTextResult> ret = null;
 
-            ret = await RepositorySet.LocalizationText.Search(param);
+            ret = await _repositories.LocalizationText.Search(param);
 
             return ret;
         }
@@ -76,7 +77,7 @@ namespace FullDevToolKit.Sys.Domains
             ExecutionStatus ret = new ExecutionStatus(true);
 
             bool check =
-                  await Context.CheckUniqueValueForInsert(RepositorySet.LocalizationText.TableName, "Code", obj.Code);
+                  await Context.CheckUniqueValueForInsert(_repositories.LocalizationText.TableName, "Code", obj.Code);
 
             if (!check)
             {
@@ -92,7 +93,7 @@ namespace FullDevToolKit.Sys.Domains
             // verificar por name na mesma linguagem
 
             param = new LocalizationTextParam() { pName = obj.Name };
-            list = await RepositorySet.LocalizationText.List(param);
+            list = await _repositories.LocalizationText.List(param);
 
             if (list != null)
             {
@@ -120,8 +121,8 @@ namespace FullDevToolKit.Sys.Domains
             // verificar por code
 
             bool check =
-            await Context.CheckUniqueValueForUpdate(RepositorySet.LocalizationText.TableName, "Code",
-                  obj.Code, RepositorySet.User.PKFieldName, obj.LocalizationTextID.ToString());
+            await Context.CheckUniqueValueForUpdate(_repositories.LocalizationText.TableName, "Code",
+                  obj.Code, _repositories.User.PKFieldName, obj.LocalizationTextID.ToString());
 
             if (!check)
             {
@@ -133,7 +134,7 @@ namespace FullDevToolKit.Sys.Domains
             // verificar por name na mesma linguagem
 
             param = new LocalizationTextParam() { pName = obj.Name };
-            list = await RepositorySet.LocalizationText.List(param);
+            list = await _repositories.LocalizationText.List(param);
 
             if (list != null)
             {
@@ -169,7 +170,7 @@ namespace FullDevToolKit.Sys.Domains
             {
 
                 LocalizationTextResult old
-                    = await RepositorySet.LocalizationText.Read(new LocalizationTextParam() { pLocalizationTextID = model.LocalizationTextID });
+                    = await _repositories.LocalizationText.Read(new LocalizationTextParam() { pLocalizationTextID = model.LocalizationTextID });
 
                 if (old == null)
                 {
@@ -178,7 +179,7 @@ namespace FullDevToolKit.Sys.Domains
                     if (Context.Status.Success)
                     {                       
                         if (model.LocalizationTextID == 0) { model.LocalizationTextID = FullDevToolKit.Helpers.Utilities.GenerateId(); }
-                        await RepositorySet.LocalizationText.Create(model);
+                        await _repositories.LocalizationText.Create(model);
                     }
                 }
                 else
@@ -189,7 +190,7 @@ namespace FullDevToolKit.Sys.Domains
 
                     if (Context.Status.Success)
                     {
-                        await RepositorySet.LocalizationText.Update(model);
+                        await _repositories.LocalizationText.Update(model);
                     }
 
                 }
@@ -213,7 +214,7 @@ namespace FullDevToolKit.Sys.Domains
             LocalizationTextEntry ret = null;
 
             LocalizationTextResult old
-                = await RepositorySet.LocalizationText.Read(new LocalizationTextParam() { pLocalizationTextID = model.LocalizationTextID });
+                = await _repositories.LocalizationText.Read(new LocalizationTextParam() { pLocalizationTextID = model.LocalizationTextID });
 
             if (old != null)
             {
@@ -221,7 +222,7 @@ namespace FullDevToolKit.Sys.Domains
 
                 if (Context.Status.Success)
                 {
-                    await RepositorySet.LocalizationText.Delete(model);
+                    await _repositories.LocalizationText.Delete(model);
 
                     if (Context.Status.Success && userid != null)
                     {
@@ -249,7 +250,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<LocalizationTextList> ret = null;
 
-            ret = await RepositorySet.LocalizationText.GetListOfLanguages();
+            ret = await _repositories.LocalizationText.GetListOfLanguages();
 
             return ret;
         }

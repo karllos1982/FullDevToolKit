@@ -7,10 +7,10 @@ using System.Net.Http.Json;
 namespace FullDevToolKit.ApplicationHelpers
 {
     
-    public class APIGatewayManagerAsync
+    public class APIProxyBase
     {
        
-        public APIGatewayManagerAsync()
+        public APIProxyBase()
         {
 
         }

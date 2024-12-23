@@ -4,24 +4,25 @@ using FullDevToolKit.Sys.Contracts.Domains;
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
+using FullDevToolKit.Sys.Data.Repositories;
 
 namespace FullDevToolKit.Sys.Domains
 {
     public class PermissionDomain : IPermissionDomain
     {
        
-        public PermissionDomain( ISystemRepositorySet repositorySet)
+        public PermissionDomain(IContext context)
         {
-            RepositorySet = repositorySet;
-            Context = RepositorySet.Permission.Context;
+            Context = context;
+            _repositories = new SystemRepositorySet(context);
 
         }
 
         public IContext Context { get; set; }
 
-        public ISystemRepositorySet RepositorySet { get; set; }
+        private ISystemRepositorySet _repositories { get; set; }
 
-      
+
         public async Task<PermissionResult> FillChields(PermissionResult obj)
         {
             return obj;
@@ -31,7 +32,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             PermissionResult ret = null;
 
-            ret = await RepositorySet.Permission.Read(param); 
+            ret = await _repositories.Permission.Read(param); 
             
             return ret;
         }
@@ -40,7 +41,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<PermissionList> ret = null;
 
-            ret = await RepositorySet.Permission.List(param);           
+            ret = await _repositories.Permission.List(param);           
 
             return ret;
         }
@@ -49,7 +50,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<PermissionResult> ret = null;
 
-            ret = await RepositorySet.Permission.Search(param);
+            ret = await _repositories.Permission.Search(param);
 
             return ret;
         }
@@ -97,7 +98,7 @@ namespace FullDevToolKit.Sys.Domains
             {
 
                 PermissionResult old 
-                    = await RepositorySet.Permission.Read(new PermissionParam() { pPermissionID = model.PermissionID });
+                    = await _repositories.Permission.Read(new PermissionParam() { pPermissionID = model.PermissionID });
 
                 if (old == null)
                 {
@@ -111,7 +112,7 @@ namespace FullDevToolKit.Sys.Domains
                         if (model.UserID != null) { model.TypeGrant = "U"; }
                         if (model.RoleID != null && model.UserID != null) { model.TypeGrant = "U"; }
 
-                        await RepositorySet.Permission.Create(model);
+                        await _repositories.Permission.Create(model);
                     }
                 }
                 else
@@ -122,7 +123,7 @@ namespace FullDevToolKit.Sys.Domains
 
                     if (Context.Status.Success)
                     {
-                        await RepositorySet.Permission.Update(model);
+                        await _repositories.Permission.Update(model);
                     }
 
                 }
@@ -147,7 +148,7 @@ namespace FullDevToolKit.Sys.Domains
             PermissionEntry ret = null;
 
             PermissionResult old 
-                = await RepositorySet.Permission.Read(new PermissionParam() { pPermissionID = model.PermissionID });
+                = await _repositories.Permission.Read(new PermissionParam() { pPermissionID = model.PermissionID });
 
             if (old != null)
             {
@@ -155,7 +156,7 @@ namespace FullDevToolKit.Sys.Domains
 
                 if (Context.Status.Success)
                 {
-                    await RepositorySet.Permission.Delete(model);
+                    await _repositories.Permission.Delete(model);
 
                     if (Context.Status.Success && userid != null)
                     {
@@ -188,7 +189,7 @@ namespace FullDevToolKit.Sys.Domains
                 pUserID = userid
             };
 
-            ret = await RepositorySet.Permission.GetPermissionsByRoleUser(param);
+            ret = await _repositories.Permission.GetPermissionsByRoleUser(param);
             
 
             return ret;

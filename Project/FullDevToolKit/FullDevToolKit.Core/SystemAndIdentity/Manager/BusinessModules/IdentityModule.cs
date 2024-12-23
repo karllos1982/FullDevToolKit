@@ -3,6 +3,7 @@ using FullDevToolKit.Core;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Domains;
 using FullDevToolKit.Sys.Contracts.Managers;
+using FullDevToolKit.Sys.Domains;
 using FullDevToolKit.Sys.Models.Identity;
 
 
@@ -12,12 +13,15 @@ namespace FullDevToolKit.Sys.Manager
     public class IdentityModule : IIdentityModule
     {
 
-        public IdentityModule(ISystemDomainSet domainset)
+        public IdentityModule(IContext context)
         {
-            _domainset = domainset;
+            Context = context;
+            Domainset = new SystemDomainSet(context);
         }
 
-        private ISystemDomainSet _domainset;
+        public IContext Context { get; set; }
+
+        public ISystemDomainSet Domainset { get; set; }
 
 
         public async Task<UserResult> Login(UserLogin model)
@@ -31,9 +35,9 @@ namespace FullDevToolKit.Sys.Manager
 
             UserResult usermatch = null;
 
-            usermatch = await _domainset.User.GetByEmail(model.Email);
+            usermatch = await Domainset.User.GetByEmail(model.Email);
 
-            if (_domainset.User.Context.Status.Success)
+            if (Domainset.User.Context.Status.Success)
             {
                 if (usermatch != null)
                 {
@@ -51,7 +55,7 @@ namespace FullDevToolKit.Sys.Manager
                                 trys = 5 - usermatch.LoginFailCounter;
 
                                 errmsg = string.Format(LocalizationText.Get("Login-Invalid-Password",
-                                    _domainset.User.Context.LocalizationLanguage).Text, trys.ToString());
+                                    Domainset.User.Context.LocalizationLanguage).Text, trys.ToString());
 
                                 invalidpassword = true;
 
@@ -71,7 +75,7 @@ namespace FullDevToolKit.Sys.Manager
                                 {
                                     activestatus = false;
                                     errmsg = LocalizationText.Get("Login-Attempts", 
-                                        _domainset.User.Context.LocalizationLanguage).Text;
+                                        Domainset.User.Context.LocalizationLanguage).Text;
                                 }
 
                             }
@@ -80,7 +84,7 @@ namespace FullDevToolKit.Sys.Manager
                         else
                         {
                             errmsg = LocalizationText.Get("Login-Inactive-Account", 
-                                _domainset.User.Context.LocalizationLanguage).Text;
+                                Domainset.User.Context.LocalizationLanguage).Text;
 
                         }
                     }
@@ -88,14 +92,14 @@ namespace FullDevToolKit.Sys.Manager
                     {
                         errmsg =
                             LocalizationText.Get("Login-Locked-Account", 
-                                _domainset.User.Context.LocalizationLanguage).Text;
+                                Domainset.User.Context.LocalizationLanguage).Text;
                     }
                 }
                 else
                 {
                     errmsg =
                          LocalizationText.Get("Login-User-NotFound",
-                            _domainset.User.Context.LocalizationLanguage).Text;
+                            Domainset.User.Context.LocalizationLanguage).Text;
                 }
 
                 if (errmsg == "")
@@ -108,7 +112,7 @@ namespace FullDevToolKit.Sys.Manager
 
                 if (invalidpassword)
                 {
-                    await _domainset.User.UpdateLoginFailCounter(new UpdateUserLoginFailCounter()
+                    await Domainset.User.UpdateLoginFailCounter(new UpdateUserLoginFailCounter()
                     { UserID = usermatch.UserID.ToString(), ActiveStatus = activestatus, Reset = false });
                 }
 
@@ -116,12 +120,12 @@ namespace FullDevToolKit.Sys.Manager
             else
             {
                 errmsg 
-                    = LocalizationText.Get("Login-User-NotFound", _domainset.User.Context.LocalizationLanguage).Text;
+                    = LocalizationText.Get("Login-User-NotFound", Domainset.User.Context.LocalizationLanguage).Text;
             }
 
             if (errmsg != "")
             {
-                _domainset.User.Context.Status.SetFailStatus("Error", errmsg);                    
+                Domainset.User.Context.Status.SetFailStatus("Error", errmsg);                    
             }
 
             return ret;
@@ -131,7 +135,7 @@ namespace FullDevToolKit.Sys.Manager
         {
             List<UserPermissions> ret = new List<UserPermissions>();
             List<PermissionResult> list
-                = await _domainset.Permission.GetPermissionsByRoleUser(roleid, userid);
+                = await Domainset.Permission.GetPermissionsByRoleUser(roleid, userid);
 
             foreach (PermissionResult item in list)
             {
@@ -173,7 +177,7 @@ namespace FullDevToolKit.Sys.Manager
         public async Task RegisterLoginState(UserLogin model, UpdateUserLogin stateinfo)
         {
 
-            await _domainset.User.UpdateUserLogin(stateinfo);
+            await Domainset.User.UpdateUserLogin(stateinfo);
 
             SessionLogEntry session = new SessionLogEntry();
             session.SessionLogID = 0;
@@ -183,46 +187,46 @@ namespace FullDevToolKit.Sys.Manager
             session.BrowserName = model.ClienteBrowserName;
             session.DateLogout = null;
 
-            await _domainset.SessionLog.Set(session, stateinfo.UserID);
+            await Domainset.SessionLog.Set(session, stateinfo.UserID);
 
         }
 
 
         public async Task Logout(long userid)
         {
-            await _domainset.User.SetDateLogout(userid);
+            await Domainset.User.SetDateLogout(userid);
         }
 
         public async Task<UserEntry> CreateNewUser(NewUser data, bool gocommit, object userid)
         {
             UserEntry ret = null;
 
-            _domainset.User.Context.Status
-                = PrimaryValidation.Execute(data, new List<string>(), _domainset.User.Context.LocalizationLanguage);
+            Domainset.User.Context.Status
+                = PrimaryValidation.Execute(data, new List<string>(), Domainset.User.Context.LocalizationLanguage);
 
-            if (!_domainset.User.Context.Status.Success)
+            if (!Domainset.User.Context.Status.Success)
             {
 
                 if (data.InstanceID == 0)
                 {
-                    _domainset.User.Context.Status.SetFailStatus("InstanceID",
-                        LocalizationText.Get("Validation-NotNull", _domainset.User.Context.LocalizationLanguage).Text);
+                    Domainset.User.Context.Status.SetFailStatus("InstanceID",
+                        LocalizationText.Get("Validation-NotNull", Domainset.User.Context.LocalizationLanguage).Text);
                 }
 
                 if (data.RoleID == 0)
                 {
-                    _domainset.User.Context.Status.SetFailStatus("RoleID",
-                        LocalizationText.Get("Validation-NotNull", _domainset.User.Context.LocalizationLanguage).Text);               
+                    Domainset.User.Context.Status.SetFailStatus("RoleID",
+                        LocalizationText.Get("Validation-NotNull", Domainset.User.Context.LocalizationLanguage).Text);               
                 }
 
             }
 
-            if (_domainset.User.Context.Status.Success)
+            if (Domainset.User.Context.Status.Success)
             {
                 UserResult old = new UserResult();
                 UserEntry obj;
 
-                old = await _domainset.User.GetByEmail(data.Email);
+                old = await Domainset.User.GetByEmail(data.Email);
 
                 string pwd = MD5.BuildMD5(data.Password);
                 string slt = Utilities.GenerateCode(5);
@@ -250,17 +254,17 @@ namespace FullDevToolKit.Sys.Manager
                     obj.ProfileImage = null;
                     obj.AuthUserID = null;
 
-                    ret = await _domainset.User.Set(obj, userid);
+                    ret = await Domainset.User.Set(obj, userid);
 
-                    if (_domainset.User.Context.Status.Success)
+                    if (Domainset.User.Context.Status.Success)
                     {
                         var aux
-                            = await _domainset.User.AddRoleToUser(ret.UserID, data.RoleID);
+                            = await Domainset.User.AddRoleToUser(ret.UserID, data.RoleID);
 
                         if (aux != null)
                         {
                             var aux2
-                            = await _domainset.User.AddInstanceToUser(ret.UserID, data.InstanceID);
+                            = await Domainset.User.AddInstanceToUser(ret.UserID, data.InstanceID);
 
                         }
 
@@ -269,15 +273,15 @@ namespace FullDevToolKit.Sys.Manager
                 }
                 else
                 {
-                    _domainset.User.Context.Status.SetFailStatus("Error",
-                       LocalizationText.Get("User-Exists", _domainset.User.Context.LocalizationLanguage).Text + data.Email) ;
+                    Domainset.User.Context.Status.SetFailStatus("Error",
+                       LocalizationText.Get("User-Exists", Domainset.User.Context.LocalizationLanguage).Text + data.Email) ;
                   
                 }
             }
             else
             {
-                _domainset.User.Context.Status.SetFailStatus("Error",
-                     LocalizationText.Get("Validation-Error", _domainset.User.Context.LocalizationLanguage).Text);
+                Domainset.User.Context.Status.SetFailStatus("Error",
+                     LocalizationText.Get("Validation-Error", Domainset.User.Context.LocalizationLanguage).Text);
 
             
             }
@@ -291,7 +295,7 @@ namespace FullDevToolKit.Sys.Manager
         {
             string ret = "";
 
-            ret = await _domainset.User.SetPasswordRecoveryCode(model);
+            ret = await Domainset.User.SetPasswordRecoveryCode(model);
 
             return ret;
         }
@@ -300,7 +304,7 @@ namespace FullDevToolKit.Sys.Manager
         {
             string ret = "";
 
-            ret = await _domainset.User.SetPasswordRecoveryCode(new ChangeUserPassword()
+            ret = await Domainset.User.SetPasswordRecoveryCode(new ChangeUserPassword()
                      { Email = model.Email, ToActivate = true });
 
             return ret;
@@ -310,7 +314,7 @@ namespace FullDevToolKit.Sys.Manager
         {
             string ret = "";
 
-            ret = await _domainset.User.SetPasswordRecoveryCode(model);
+            ret = await Domainset.User.SetPasswordRecoveryCode(model);
 
             return ret;
         }
@@ -318,7 +322,7 @@ namespace FullDevToolKit.Sys.Manager
         public async Task ChangeUserProfileImage(ChangeUserImage model)
         {
            
-             await _domainset.User.ChangeUserProfileImage(model);
+             await Domainset.User.ChangeUserProfileImage(model);
                        
         }
 

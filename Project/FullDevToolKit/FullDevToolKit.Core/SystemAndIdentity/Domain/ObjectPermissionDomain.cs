@@ -4,21 +4,22 @@ using FullDevToolKit.Sys.Contracts.Domains;
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
+using FullDevToolKit.Sys.Data.Repositories;
 
 namespace FullDevToolKit.Sys.Domains
 {
     public class ObjectPermissionDomain : IObjectPermissionDomain
     {
       
-        public ObjectPermissionDomain(ISystemRepositorySet repositorySet)
+        public ObjectPermissionDomain(IContext context)
         {
-            RepositorySet = repositorySet;
-            Context = RepositorySet.ObjectPermission.Context;
+            Context = context;
+            _repositories = new SystemRepositorySet(context);
         }
 
         public IContext Context { get; set; }
 
-        public ISystemRepositorySet RepositorySet { get; set; }
+        private ISystemRepositorySet _repositories { get; set; }
 
         public async Task<ObjectPermissionResult> FillChields(ObjectPermissionResult obj)
         {
@@ -29,7 +30,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             ObjectPermissionResult ret = null;
 
-            ret = await RepositorySet.ObjectPermission.Read(param); 
+            ret = await _repositories.ObjectPermission.Read(param); 
             
             return ret;
         }
@@ -38,7 +39,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<ObjectPermissionList> ret = null;
 
-            ret = await RepositorySet.ObjectPermission.List(param);           
+            ret = await _repositories.ObjectPermission.List(param);           
 
             return ret;
         }
@@ -47,7 +48,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<ObjectPermissionResult> ret = null;
 
-            ret = await RepositorySet.ObjectPermission.Search(param);
+            ret = await _repositories.ObjectPermission.Search(param);
 
             return ret;
         }
@@ -75,7 +76,7 @@ namespace FullDevToolKit.Sys.Domains
 
 
             bool check =
-                    await Context.CheckUniqueValueForInsert(RepositorySet.ObjectPermission.TableName, "ObjectCode", obj.ObjectCode) ;
+                    await Context.CheckUniqueValueForInsert(_repositories.ObjectPermission.TableName, "ObjectCode", obj.ObjectCode) ;
 
             if (!check)
             {
@@ -92,8 +93,8 @@ namespace FullDevToolKit.Sys.Domains
             ExecutionStatus ret = new ExecutionStatus(true);
 
             bool check =
-                 await Context.CheckUniqueValueForUpdate(RepositorySet.ObjectPermission.TableName, "ObjectCode",
-                    obj.ObjectCode, RepositorySet.User.PKFieldName, obj.ObjectPermissionID.ToString());
+                 await Context.CheckUniqueValueForUpdate(_repositories.ObjectPermission.TableName, "ObjectCode",
+                    obj.ObjectCode, _repositories.User.PKFieldName, obj.ObjectPermissionID.ToString());
 
             if (!check)
             {
@@ -121,7 +122,7 @@ namespace FullDevToolKit.Sys.Domains
             {
 
                 ObjectPermissionResult old 
-                    = await RepositorySet.ObjectPermission
+                    = await _repositories.ObjectPermission
                         .Read(new ObjectPermissionParam() { pObjectPermissionID = model.ObjectPermissionID });
 
                 if (old == null)
@@ -131,7 +132,7 @@ namespace FullDevToolKit.Sys.Domains
                     if (Context.Status.Success)
                     {
                         if (model.ObjectPermissionID == 0) { model.ObjectPermissionID = FullDevToolKit.Helpers.Utilities.GenerateId(); }
-                        await RepositorySet.ObjectPermission.Create(model);
+                        await _repositories.ObjectPermission.Create(model);
                     }
                 }
                 else
@@ -142,7 +143,7 @@ namespace FullDevToolKit.Sys.Domains
 
                     if (Context.Status.Success)
                     {
-                         await RepositorySet.ObjectPermission.Update(model);
+                         await _repositories.ObjectPermission.Update(model);
                     }
 
                 }
@@ -166,7 +167,7 @@ namespace FullDevToolKit.Sys.Domains
             ObjectPermissionEntry ret = null;
 
             ObjectPermissionResult old 
-                = await RepositorySet.ObjectPermission
+                = await _repositories.ObjectPermission
                     .Read(new ObjectPermissionParam() { pObjectPermissionID = model.ObjectPermissionID });
 
             if (old != null)
@@ -175,7 +176,7 @@ namespace FullDevToolKit.Sys.Domains
 
                 if (Context.Status.Success)
                 {
-                     await RepositorySet.ObjectPermission.Delete(model);
+                     await _repositories.ObjectPermission.Delete(model);
 
                     if (Context.Status.Success && userid != null)
                     {

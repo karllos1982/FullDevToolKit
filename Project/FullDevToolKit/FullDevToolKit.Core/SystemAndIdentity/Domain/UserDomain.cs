@@ -4,6 +4,7 @@ using FullDevToolKit.Sys.Contracts.Domains;
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
+using FullDevToolKit.Sys.Data.Repositories;
 
 
 namespace FullDevToolKit.Sys.Domains
@@ -11,17 +12,18 @@ namespace FullDevToolKit.Sys.Domains
     public class UserDomain : IUserDomain
     {      
 
-        public UserDomain(ISystemRepositorySet repositorySet)
+        public UserDomain(IContext context)
         {
-            
-            RepositorySet =repositorySet;
-            Context = RepositorySet.User.Context;
+
+            Context = context;
+            _repositories = new SystemRepositorySet(context);
 
         }
 
         public IContext Context { get; set; }
 
-        public ISystemRepositorySet RepositorySet { get; set; }
+        private ISystemRepositorySet _repositories { get; set; }
+
 
         public async Task<UserResult> FillChields(UserResult obj)
         {
@@ -29,7 +31,7 @@ namespace FullDevToolKit.Sys.Domains
             param.pUserID = obj.UserID;
 
             List<UserRolesResult> roles
-                = await  RepositorySet.UserRoles.Search(param);
+                = await  _repositories.UserRoles.Search(param);
 
             obj.Roles = roles;
 
@@ -39,7 +41,7 @@ namespace FullDevToolKit.Sys.Domains
             param2.pUserID = obj.UserID;
 
             List<UserInstancesResult> instances
-                = await RepositorySet.UserInstances.Search(param2);
+                = await _repositories.UserInstances.Search(param2);
 
             obj.Instances = instances; 
 
@@ -50,7 +52,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             UserResult ret = null;
 
-            ret = await RepositorySet.User.Read(param); 
+            ret = await _repositories.User.Read(param); 
 
             if (ret != null)
             {
@@ -64,7 +66,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<UserList> ret = null;
 
-            ret = await RepositorySet.User.List(param);           
+            ret = await _repositories.User.List(param);           
 
             return ret;
         }
@@ -73,7 +75,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<UserResult> ret = null;
 
-            ret = await RepositorySet.User.Search(param);
+            ret = await _repositories.User.Search(param);
 
             return ret;
         }
@@ -100,7 +102,7 @@ namespace FullDevToolKit.Sys.Domains
             ExecutionStatus ret = new ExecutionStatus(true);
 
             bool check =
-                await Context.CheckUniqueValueForInsert(RepositorySet.User.TableName, "Email", obj.Email) ;
+                await Context.CheckUniqueValueForInsert(_repositories.User.TableName, "Email", obj.Email) ;
 
             if (!check)
             {
@@ -109,7 +111,7 @@ namespace FullDevToolKit.Sys.Domains
             }
 
             bool check2 =
-                await Context.CheckUniqueValueForInsert(RepositorySet.User.TableName, "UserName", obj.UserName);
+                await Context.CheckUniqueValueForInsert(_repositories.User.TableName, "UserName", obj.UserName);
 
             if (!check2)
             {               
@@ -127,8 +129,8 @@ namespace FullDevToolKit.Sys.Domains
             ExecutionStatus ret = new ExecutionStatus(true);
 
             bool check =
-              await Context.CheckUniqueValueForUpdate(RepositorySet.User.TableName, "Email", 
-                    obj.Email, RepositorySet.User.PKFieldName, obj.UserID.ToString());
+              await Context.CheckUniqueValueForUpdate(_repositories.User.TableName, "Email", 
+                    obj.Email, _repositories.User.PKFieldName, obj.UserID.ToString());
 
             if (!check)
             {
@@ -139,8 +141,8 @@ namespace FullDevToolKit.Sys.Domains
             //
 
             bool check2 =
-                 await Context.CheckUniqueValueForUpdate(RepositorySet.User.TableName, "UserName",
-                    obj.Email, RepositorySet.User.PKFieldName, obj.UserName);
+                 await Context.CheckUniqueValueForUpdate(_repositories.User.TableName, "UserName",
+                    obj.Email, _repositories.User.PKFieldName, obj.UserName);
 
             if (!check2)
              {               
@@ -169,7 +171,7 @@ namespace FullDevToolKit.Sys.Domains
             {
 
                 UserResult old 
-                    = await RepositorySet.User.Read(new UserParam() { pUserID = model.UserID });
+                    = await _repositories.User.Read(new UserParam() { pUserID = model.UserID });
 
                 if (old == null)
                 {
@@ -179,7 +181,7 @@ namespace FullDevToolKit.Sys.Domains
                     {
                         model.CreateDate = DateTime.Now;
                         if (model.UserID == 0) { model.UserID = Utilities.GenerateId(); }
-                        await RepositorySet.User.Create(model);
+                        await _repositories.User.Create(model);
                     }
                 }
                 else
@@ -191,7 +193,7 @@ namespace FullDevToolKit.Sys.Domains
 
                     if (Context.Status.Success)
                     {
-                        await RepositorySet.User.Update(model);
+                        await _repositories.User.Update(model);
                     }
 
                 }
@@ -207,17 +209,17 @@ namespace FullDevToolKit.Sys.Domains
                             if (c.RecordState == RECORDSTATEENUM.ADD)
                             {
                                 c.UserRoleID = Utilities.GenerateId();
-                                await RepositorySet.UserRoles.Create(c);
+                                await _repositories.UserRoles.Create(c);
                             }
 
                             if (c.RecordState == RECORDSTATEENUM.EDITED)
                             {
-                                await RepositorySet.UserRoles.Update(c);
+                                await _repositories.UserRoles.Update(c);
                             }
 
                             if (c.RecordState == RECORDSTATEENUM.DELETED)
                             {
-                                await RepositorySet.UserRoles.Delete(c);
+                                await _repositories.UserRoles.Delete(c);
                             }
 
                         }
@@ -235,17 +237,17 @@ namespace FullDevToolKit.Sys.Domains
                             if (c.RecordState == RECORDSTATEENUM.ADD)
                             {
                                 c.UserInstanceID = Utilities.GenerateId();
-                                await RepositorySet.UserInstances.Create(c);
+                                await _repositories.UserInstances.Create(c);
                             }
 
                             if (c.RecordState == RECORDSTATEENUM.EDITED)
                             {
-                                await RepositorySet.UserInstances.Update(c);
+                                await _repositories.UserInstances.Update(c);
                             }
 
                             if (c.RecordState == RECORDSTATEENUM.DELETED)
                             {
-                                await RepositorySet.UserInstances.Delete(c);
+                                await _repositories.UserInstances.Delete(c);
                             }
 
                         }
@@ -285,7 +287,7 @@ namespace FullDevToolKit.Sys.Domains
                     {
                         foreach (UserRolesResult u in old.Roles)
                         {
-                            await RepositorySet.UserRoles.Delete(
+                            await _repositories.UserRoles.Delete(
                                     new UserRolesEntry() { 
                                         UserRoleID = u.UserRoleID,  
                                         UserID  = u.UserID, 
@@ -304,7 +306,7 @@ namespace FullDevToolKit.Sys.Domains
                     {
                         foreach (UserInstancesResult u in old.Instances)
                         {
-                           await RepositorySet.UserInstances.Delete(
+                           await _repositories.UserInstances.Delete(
                                      new UserInstancesEntry()
                                      {
                                          UserInstanceID = u.UserInstanceID, 
@@ -323,7 +325,7 @@ namespace FullDevToolKit.Sys.Domains
 
                     if (Context.Status.Success)
                     {
-                        await RepositorySet.User.Delete(model);
+                        await _repositories.User.Delete(model);
 
                         if (Context.Status.Success && userid != null)
                         {
@@ -352,7 +354,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             UserResult ret = null;
 
-            ret = await RepositorySet.User.GetByEmail(email);
+            ret = await _repositories.User.GetByEmail(email);
 
             if (ret != null)
             {
@@ -370,13 +372,13 @@ namespace FullDevToolKit.Sys.Domains
             
             UserResult obj = null;
 
-            obj = await RepositorySet.User.Read(new UserParam() { pUserID = model.UserID });
+            obj = await _repositories.User.Read(new UserParam() { pUserID = model.UserID });
 
             if (Context.Status.Success)
             {
                 if (obj != null)
                 {
-                    await RepositorySet.User.UpdateUserLogin(model);
+                    await _repositories.User.UpdateUserLogin(model);
                 }
                 else
                 {
@@ -394,7 +396,7 @@ namespace FullDevToolKit.Sys.Domains
             string errmsg = "";
             
             UserResult usermatch = null;
-            usermatch = await RepositorySet.User.GetByEmail(model.Email);
+            usermatch = await _repositories.User.GetByEmail(model.Email);
 
             if (Context.Status.Success)
             {
@@ -427,7 +429,7 @@ namespace FullDevToolKit.Sys.Domains
 
                 if (errmsg == "")
                 {                    
-                      await RepositorySet.User.SetPasswordRecoveryCode(
+                      await _repositories.User.SetPasswordRecoveryCode(
                         new SetPasswordRecoveryCode()
                         {
                             UserID = usermatch.UserID,
@@ -452,7 +454,7 @@ namespace FullDevToolKit.Sys.Domains
             string errmsg = "";
 
             UserResult usermatch = null;
-            usermatch = await RepositorySet.User.GetByEmail(model.Email);
+            usermatch = await _repositories.User.GetByEmail(model.Email);
 
             if (Context.Status.Success)
             {
@@ -498,7 +500,7 @@ namespace FullDevToolKit.Sys.Domains
                     change.NewPassword = pwd;
                     change.UserID = usermatch.UserID;
 
-                     await RepositorySet.User.ChangeUserPassword(change);
+                     await _repositories.User.ChangeUserPassword(change);
                     
                 }
                 else
@@ -515,7 +517,7 @@ namespace FullDevToolKit.Sys.Domains
             
             string errmsg = "";
             UserResult usermatch = null;
-            usermatch = await RepositorySet.User.GetByEmail(model.Email);
+            usermatch = await _repositories.User.GetByEmail(model.Email);
 
             if (Context.Status.Success)
             {
@@ -550,7 +552,7 @@ namespace FullDevToolKit.Sys.Domains
 
                 if (errmsg == "")
                 {                    
-                    await RepositorySet.User.ActiveUserAccount(model);                   
+                    await _repositories.User.ActiveUserAccount(model);                   
 
                 }
                 else
@@ -574,7 +576,7 @@ namespace FullDevToolKit.Sys.Domains
             else
             {
                 UserResult usermatch = null;
-                usermatch = await RepositorySet.User.Read(new UserParam() { pUserID=model.UserID });
+                usermatch = await _repositories.User.Read(new UserParam() { pUserID=model.UserID });
 
                 if (Context.Status.Success)
                 {
@@ -594,7 +596,7 @@ namespace FullDevToolKit.Sys.Domains
 
                     if (errmsg == "")
                     {
-                         await RepositorySet.User.ChangeUserProfileImage(model);
+                         await _repositories.User.ChangeUserProfileImage(model);
 
                     }
                     else
@@ -609,14 +611,14 @@ namespace FullDevToolKit.Sys.Domains
         public async Task UpdateLoginFailCounter(UpdateUserLoginFailCounter model)
         {
             
-             await RepositorySet.User.UpdateLoginFailCounter(model);                      
+             await _repositories.User.UpdateLoginFailCounter(model);                      
 
         }
 
         public async Task ChangeState(UserChangeState model)
         {
            
-            await RepositorySet.User.ChangeState(model);              
+            await _repositories.User.ChangeState(model);              
 
         }
 
@@ -627,7 +629,7 @@ namespace FullDevToolKit.Sys.Domains
             SessionLogParam param = new SessionLogParam();
           
             param.pUserID = userid;
-            ret = await RepositorySet.SessionLog.SetDateLogout(param);
+            ret = await _repositories.SessionLog.SetDateLogout(param);
 
   
             return ret;
@@ -643,7 +645,7 @@ namespace FullDevToolKit.Sys.Domains
             param.pUserID = userid;
             param.pRoleID = roleid;
 
-            list = await RepositorySet.UserRoles.Search(param);
+            list = await _repositories.UserRoles.Search(param);
 
             if (list != null)
             {
@@ -663,7 +665,7 @@ namespace FullDevToolKit.Sys.Domains
                 obj.RoleID = roleid;
                 obj.UserID = userid;
 
-                 await RepositorySet.UserRoles.Create(obj);
+                 await _repositories.UserRoles.Create(obj);
 
                 if (Context.Status.Success)
                 {
@@ -684,7 +686,7 @@ namespace FullDevToolKit.Sys.Domains
             param.pUserID = userid;
             param.pRoleID = roleid;
 
-            list = await RepositorySet.UserRoles.Search(param);
+            list = await _repositories.UserRoles.Search(param);
 
             if (list != null)
             {
@@ -706,7 +708,7 @@ namespace FullDevToolKit.Sys.Domains
             {
                 UserRolesResult obj = list[0];
 
-                await RepositorySet.UserRoles.Delete(new UserRolesEntry()
+                await _repositories.UserRoles.Delete(new UserRolesEntry()
                 {
                     UserRoleID = obj.UserRoleID,
                     UserID = obj.UserID,
@@ -738,7 +740,7 @@ namespace FullDevToolKit.Sys.Domains
             param.pUserID = userid;
             param.pInstanceID = instanceid;
 
-            list = await RepositorySet.UserInstances.Search(param);
+            list = await _repositories.UserInstances.Search(param);
 
             if (list != null)
             {
@@ -757,7 +759,7 @@ namespace FullDevToolKit.Sys.Domains
                 obj.InstanceID = instanceid;
                 obj.UserID = userid;
 
-                 await RepositorySet.UserInstances.Create(obj);
+                 await _repositories.UserInstances.Create(obj);
 
                 if (Context.Status.Success)
                 {
@@ -779,7 +781,7 @@ namespace FullDevToolKit.Sys.Domains
             param.pUserID = userid;
             param.pInstanceID = instanceid;
 
-            list = await RepositorySet.UserInstances.Search(param);
+            list = await _repositories.UserInstances.Search(param);
 
             if (list != null)
             {
@@ -801,7 +803,7 @@ namespace FullDevToolKit.Sys.Domains
             {
                 UserInstancesResult obj = list[0];
 
-                await RepositorySet.UserInstances.Delete(new UserInstancesEntry()
+                await _repositories.UserInstances.Delete(new UserInstancesEntry()
                 {
                     UserInstanceID = obj.UserInstanceID,
                     UserID = obj.UserID,
@@ -849,7 +851,7 @@ namespace FullDevToolKit.Sys.Domains
                 obj.pUserRoleID = userroleid;
                 obj.pRoleID = newroleid;
 
-                await RepositorySet.UserRoles.AlterRole(obj); 
+                await _repositories.UserRoles.AlterRole(obj); 
                 
             }
             
@@ -878,7 +880,7 @@ namespace FullDevToolKit.Sys.Domains
                 obj.pUserInstanceID= userinstanceid;
                 obj.pInstanceID = newinstanceid;
 
-                await RepositorySet.UserInstances.AlterInstance(obj);
+                await _repositories.UserInstances.AlterInstance(obj);
 
             }
 
