@@ -13,6 +13,85 @@ namespace MyApp.API
 
     }
 
+    public class LocalFileService : IFileService
+    {
+
+        private string _connection = "";
+        private string _container = "";
+
+        public LocalFileService(string connection, string container)
+        {
+            _connection = connection;
+            _container = container;
+
+
+        }
+
+        public async Task<ExecutionStatus> UploadFile(Stream content, string filename)
+        {
+
+            ExecutionStatus ret = new ExecutionStatus(true);
+
+            try
+            {
+                             
+                string fisicalpath = "";
+
+                fisicalpath = $@"{Environment.CurrentDirectory}";
+                fisicalpath = fisicalpath.Replace('\\', '/');
+                fisicalpath = fisicalpath + $"/FileServer/{_container}/{filename}";
+
+                if (File.Exists(fisicalpath))
+                {
+                    File.Delete(fisicalpath);
+                }
+
+                MemoryStream aux = new MemoryStream();
+                content.CopyTo(aux);
+                File.WriteAllBytes(fisicalpath, aux.ToArray());
+
+
+            }
+            catch (Exception ex)
+            {
+                ret.Success = false;
+                ret.Exceptions.AddException("Error", ex.Message);
+            }
+
+            return ret;
+
+        }
+
+        public Stream DownloadFile(string filename)
+        {
+
+            Stream ret = null;
+
+            try
+            {
+
+                string fisicalpath = "";
+
+                fisicalpath = $@"{Environment.CurrentDirectory}";
+                fisicalpath = fisicalpath.Replace('\\', '/');
+                fisicalpath = fisicalpath + $"/FileServer/{_container}/{filename}";
+
+                if (File.Exists(filename))
+                {
+                    ret = new FileStream(fisicalpath, FileMode.Open);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            return ret;
+
+        }
+    }
+
+
     public class AzureFileService: IFileService
     {
 
@@ -84,4 +163,6 @@ namespace MyApp.API
 
         }
     }
+
+
 }

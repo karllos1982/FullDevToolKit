@@ -326,7 +326,7 @@ namespace MyApp.Controllers
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
             MyAppSettings settings = (MyAppSettings)Context.Settings;
 
-            AzureFileService service = new AzureFileService(settings.FileStorageConnection, settings.ProfileImageDir);
+            LocalFileService service = new LocalFileService("", settings.ProfileImageDir);
             Stream body = Request.Body;
             
             ChangeUserImage data = new ChangeUserImage();
@@ -359,7 +359,7 @@ namespace MyApp.Controllers
 
             MyAppSettings settings = (MyAppSettings)Context.Settings;
 
-            AzureFileService service = new AzureFileService(settings.FileStorageConnection, settings.ProfileImageDir);
+            LocalFileService service = new LocalFileService("", settings.ProfileImageDir);
 
             Stream str =  service.DownloadFile(file);
 

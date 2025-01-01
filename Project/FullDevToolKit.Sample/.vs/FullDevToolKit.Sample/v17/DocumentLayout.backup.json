@@ -1,30 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\",
+  "WorkspaceRootPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C8DE2544-DCF3-46B4-9F13-DE9A257A76EE}|API\\API.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8DE2544-DCF3-46B4-9F13-DE9A257A76EE}|API\\API.csproj|solutionrelative:api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webshared\\areas\\viewmodels\\superadmin\\parameterviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|solutionrelative:webshared\\areas\\viewmodels\\superadmin\\parameterviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1147A07C-D1D9-426D-88E9-6962C6413D0C}|Proxy\\Proxy.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\proxy\\authproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1147A07C-D1D9-426D-88E9-6962C6413D0C}|Proxy\\Proxy.csproj|solutionrelative:proxy\\authproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webshared\\areas\\viewmodels\\superadmin\\groupparameterviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|solutionrelative:webshared\\areas\\viewmodels\\superadmin\\groupparameterviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1147A07C-D1D9-426D-88E9-6962C6413D0C}|Proxy\\Proxy.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\proxy\\systemproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webshared\\areas\\viewmodels\\superadmin\\roleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|solutionrelative:webshared\\areas\\viewmodels\\superadmin\\roleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webshared\\areas\\viewmodels\\superadmin\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|solutionrelative:webshared\\areas\\viewmodels\\superadmin\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webshared\\areas\\viewmodels\\superadmin\\permissionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|solutionrelative:webshared\\areas\\viewmodels\\superadmin\\permissionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webshared\\areas\\viewmodels\\superadmin\\instanceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|solutionrelative:webshared\\areas\\viewmodels\\superadmin\\instanceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8DE2544-DCF3-46B4-9F13-DE9A257A76EE}|API\\API.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\api\\controllers\\system\\sessioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8DE2544-DCF3-46B4-9F13-DE9A257A76EE}|API\\API.csproj|solutionrelative:api\\controllers\\system\\sessioncontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webshared\\areas\\viewmodels\\superadmin\\sessionlogviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|solutionrelative:webshared\\areas\\viewmodels\\superadmin\\sessionlogviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1147A07C-D1D9-426D-88E9-6962C6413D0C}|Proxy\\Proxy.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\proxy\\systemproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1147A07C-D1D9-426D-88E9-6962C6413D0C}|Proxy\\Proxy.csproj|solutionrelative:proxy\\systemproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1147A07C-D1D9-426D-88E9-6962C6413D0C}|Proxy\\Proxy.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\proxy\\myappproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1147A07C-D1D9-426D-88E9-6962C6413D0C}|Proxy\\Proxy.csproj|solutionrelative:proxy\\myappproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webshared\\areas\\viewmodels\\superadmin\\objectpermissionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|solutionrelative:webshared\\areas\\viewmodels\\superadmin\\objectpermissionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1147A07C-D1D9-426D-88E9-6962C6413D0C}|Proxy\\Proxy.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\proxy\\datacacheproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1147A07C-D1D9-426D-88E9-6962C6413D0C}|Proxy\\Proxy.csproj|solutionrelative:proxy\\datacacheproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webshared\\areas\\viewmodels\\superadmin\\localizationtextviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|solutionrelative:webshared\\areas\\viewmodels\\superadmin\\localizationtextviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8DE2544-DCF3-46B4-9F13-DE9A257A76EE}|API\\API.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\api\\controllers\\datacachecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8DE2544-DCF3-46B4-9F13-DE9A257A76EE}|API\\API.csproj|solutionrelative:api\\controllers\\datacachecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webshared\\areas\\viewmodels\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|solutionrelative:webshared\\areas\\viewmodels\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -33,94 +57,166 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 162,
-          "SelectedChildIndex": 2,
+          "DockedWidth": 148,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MyAppProxy.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\MyAppProxy.cs",
-              "RelativeDocumentMoniker": "Proxy\\MyAppProxy.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\MyAppProxy.cs",
-              "RelativeToolTip": "Proxy\\MyAppProxy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T18:51:47.048Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
+              "Title": "GroupParameterViewModel.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\GroupParameterViewModel.cs",
+              "RelativeDocumentMoniker": "WebShared\\Areas\\ViewModels\\SuperAdmin\\GroupParameterViewModel.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\GroupParameterViewModel.cs",
+              "RelativeToolTip": "WebShared\\Areas\\ViewModels\\SuperAdmin\\GroupParameterViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-01T23:14:25.421Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "UserViewModel.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\UserViewModel.cs",
+              "RelativeDocumentMoniker": "WebShared\\Areas\\ViewModels\\SuperAdmin\\UserViewModel.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\UserViewModel.cs",
+              "RelativeToolTip": "WebShared\\Areas\\ViewModels\\SuperAdmin\\UserViewModel.cs",
+              "ViewState": "AgIAAJYAAAAAAAAAAAAkwKYAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T00:26:56.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "SystemProxy.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\SystemProxy.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\SystemProxy.cs",
               "RelativeDocumentMoniker": "Proxy\\SystemProxy.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\SystemProxy.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\SystemProxy.cs",
               "RelativeToolTip": "Proxy\\SystemProxy.cs",
-              "ViewState": "AgIAACEAAAAAAAAAAAAowCwAAAApAAAAAAAAAA==",
+              "ViewState": "AgIAACwAAAAAAAAAAAAgwEEAAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T18:03:26.414Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-30T00:24:05.069Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "DataCacheProxy.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\DataCacheProxy.cs",
-              "RelativeDocumentMoniker": "Proxy\\DataCacheProxy.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\DataCacheProxy.cs",
-              "RelativeToolTip": "Proxy\\DataCacheProxy.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAA5wBsAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "SessionLogViewModel.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\SessionLogViewModel.cs",
+              "RelativeDocumentMoniker": "WebShared\\Areas\\ViewModels\\SuperAdmin\\SessionLogViewModel.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\SessionLogViewModel.cs",
+              "RelativeToolTip": "WebShared\\Areas\\ViewModels\\SuperAdmin\\SessionLogViewModel.cs",
+              "ViewState": "AgIAAEIAAAAAAAAAAAAowFYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-19T18:49:27.171Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-30T00:22:26.078Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DataCacheController.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\DataCacheController.cs",
-              "RelativeDocumentMoniker": "API\\Controllers\\DataCacheController.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\DataCacheController.cs",
-              "RelativeToolTip": "API\\Controllers\\DataCacheController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "ObjectPermissionViewModel.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\ObjectPermissionViewModel.cs",
+              "RelativeDocumentMoniker": "WebShared\\Areas\\ViewModels\\SuperAdmin\\ObjectPermissionViewModel.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\ObjectPermissionViewModel.cs",
+              "RelativeToolTip": "WebShared\\Areas\\ViewModels\\SuperAdmin\\ObjectPermissionViewModel.cs",
+              "ViewState": "AgIAAEsAAAAAAAAAAAA4wFYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-19T18:48:54.627Z"
+              "WhenOpened": "2024-12-30T00:02:38.951Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LocalizationTextViewModel.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\LocalizationTextViewModel.cs",
+              "RelativeDocumentMoniker": "WebShared\\Areas\\ViewModels\\SuperAdmin\\LocalizationTextViewModel.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\LocalizationTextViewModel.cs",
+              "RelativeToolTip": "WebShared\\Areas\\ViewModels\\SuperAdmin\\LocalizationTextViewModel.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAAmwFoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T23:38:23.178Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "BaseViewModel.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\BaseViewModel.cs",
+              "RelativeDocumentMoniker": "WebShared\\Areas\\ViewModels\\BaseViewModel.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\BaseViewModel.cs",
+              "RelativeToolTip": "WebShared\\Areas\\ViewModels\\BaseViewModel.cs",
+              "ViewState": "AgIAAPsAAAAAAAAAAAAMwAkBAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T23:14:05.797Z"
             }
           ]
         },
         {
-          "DockedWidth": 136,
+          "DockedWidth": 120,
           "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "API\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "API\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "ParameterViewModel.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\ParameterViewModel.cs",
+              "RelativeDocumentMoniker": "WebShared\\Areas\\ViewModels\\SuperAdmin\\ParameterViewModel.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\ParameterViewModel.cs",
+              "RelativeToolTip": "WebShared\\Areas\\ViewModels\\SuperAdmin\\ParameterViewModel.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAowCYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-23T18:55:30.745Z",
+              "WhenOpened": "2025-01-01T23:19:15Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AuthProxy.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\AuthProxy.cs",
-              "RelativeDocumentMoniker": "Proxy\\AuthProxy.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\AuthProxy.cs",
-              "RelativeToolTip": "Proxy\\AuthProxy.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
+              "DocumentIndex": 6,
+              "Title": "SessionController.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\System\\SessionController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\System\\SessionController.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\System\\SessionController.cs",
+              "RelativeToolTip": "API\\Controllers\\System\\SessionController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-19T18:08:22.171Z",
+              "WhenOpened": "2024-12-30T00:24:26.505Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "RoleViewModel.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\RoleViewModel.cs",
+              "RelativeDocumentMoniker": "WebShared\\Areas\\ViewModels\\SuperAdmin\\RoleViewModel.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\RoleViewModel.cs",
+              "RelativeToolTip": "WebShared\\Areas\\ViewModels\\SuperAdmin\\RoleViewModel.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAYwFUAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T00:16:01.435Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "InstanceViewModel.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\InstanceViewModel.cs",
+              "RelativeDocumentMoniker": "WebShared\\Areas\\ViewModels\\SuperAdmin\\InstanceViewModel.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\InstanceViewModel.cs",
+              "RelativeToolTip": "WebShared\\Areas\\ViewModels\\SuperAdmin\\InstanceViewModel.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwC0AAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-29T23:12:03.907Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PermissionViewModel.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\PermissionViewModel.cs",
+              "RelativeDocumentMoniker": "WebShared\\Areas\\ViewModels\\SuperAdmin\\PermissionViewModel.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\PermissionViewModel.cs",
+              "RelativeToolTip": "WebShared\\Areas\\ViewModels\\SuperAdmin\\PermissionViewModel.cs",
+              "ViewState": "AgIAAKkAAAAAAAAAAADwv7sAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-30T00:04:52.278Z",
               "EditorCaption": ""
             }
           ]

@@ -1,0 +1,143 @@
+﻿@using MyApp.ServerCode; 
+
+ @if (RoleName=="SuperAdmin")
+{
+	
+	<div class="app-sidebar-menu overflow-hidden flex-column-fluid">
+		<!--begin::Menu wrapper-->
+		<div id="kt_app_sidebar_menu_wrapper" class="app-sidebar-wrapper hover-scroll-overlay-y my-5" data-kt-scroll="true" data-kt-scroll-activate="true" data-kt-scroll-height="auto" data-kt-scroll-dependencies="#kt_app_sidebar_logo, #kt_app_sidebar_footer" data-kt-scroll-wrappers="#kt_app_sidebar_menu" data-kt-scroll-offset="5px" data-kt-scroll-save-state="true">
+			<!--begin::Menu-->
+			<div class="menu menu-column menu-rounded menu-sub-indention px-3" id="#kt_app_sidebar_menu" data-kt-menu="true" data-kt-menu-expand="false">
+				<!--begin:Menu item-->
+
+				<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+					<!--begin:Menu link-->
+					
+					<span class="menu-link">
+						<span class="menu-icon">
+							<i class="ki-duotone ki-element-11 fs-2">
+								<span class="path1"></span>
+								<span class="path2"></span>
+								<span class="path3"></span>
+								<span class="path4"></span>
+							</i>
+						</span>
+						<span class="menu-title"> Super Admin</span>
+						<span class="menu-arrow"></span>
+					</span>
+
+					<div class="menu-sub menu-sub-accordion">
+
+						<div id="mn_1001" class="menu-item">
+							<a class="menu-link" href="instances">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">Instances</span>
+							</a>
+						</div>
+
+						<div id="mn_1002" class="menu-item">
+							<a class="menu-link" href="roles">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">Roles</span>
+							</a>
+						</div>
+
+						<div id="mn_1003" class="menu-item">
+							<a class="menu-link" href="objectpermission">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">Object Permissions</span>
+							</a>
+						</div>
+
+						<div id="mn_1004" class="menu-item">
+							<a class="menu-link" href="permission">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">Permissions</span>
+							</a>
+						</div>
+
+						<div id="mn_1005" class="menu-item">
+							<a class="menu-link" href="users">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">Users</span>
+							</a>
+						</div>
+
+						<div id="mn_1006" class="menu-item">
+							<a class="menu-link" href="localizationtext">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">Localization Texts</span>
+							</a>
+						</div>
+					
+					</div>
+				</div>
+
+
+				<div data-kt-menu-trigger="click" class="menu-item menu-accordion">
+					<!--Condominios-->
+
+					<span class="menu-link">
+						<span class="menu-icon">
+							<i class="ki-duotone ki-element-7 fs-2">
+								<span class="path1"></span>
+								<span class="path2"></span>
+							</i>
+						</span>
+						<span class="menu-title">Monitoramento</span>
+						<span class="menu-arrow"></span>
+					</span>
+					
+
+					<div class="menu-sub menu-sub-accordion">
+						<div id="mn_2001" class="menu-item">
+							<a class="menu-link" href="sessionlog">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">Session Logs</span>
+							</a>
+						</div>
+
+						<div id="mn_2002" class="menu-item">
+							<a class="menu-link" href="datalog">
+								<span class="menu-bullet">
+									<span class="bullet bullet-dot"></span>
+								</span>
+								<span class="menu-title">Data Logs</span>
+							</a>
+						</div>
+
+					</div>
+				</div>
+			
+
+			</div>
+			<!--end::Menu-->
+		</div>
+		<!--end::Menu wrapper-->
+	</div>
+	
+}
+
+
+@code {
+
+
+	[Parameter]
+	public string RoleName { get; set; }
+
+
+}

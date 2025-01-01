@@ -161,5 +161,58 @@ namespace MyApp.Controllers
             return ret;
         }
 
+        [HttpGet]
+        [Route("listgroupparameter")]
+        public async Task<object> ListGroupParameter()
+        {
+            CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
+
+            List<GroupParameterResult> list = null;
+
+            list = memorycache.Get<List<GroupParameterResult>>("GROUPPARAMETER");
+
+            if (list == null)
+            {
+                list = await Manager.IdentityModule.Domainset
+                    .GroupParameter.Search(new GroupParameterParam());
+
+                memorycache.Set("GROUPPARAMETER", list, this.GetMemoryCacheOptionsByHour(2));
+
+            }
+
+            ret = list;
+
+            FinalizeManager();
+
+            return ret;
+        }
+
+        [HttpGet]
+        [Route("listparameter")]
+        public async Task<object> ListParameter()
+        {
+            CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
+
+            List<ParameterResult> list = null;
+
+            list = memorycache.Get<List<ParameterResult>>("PARAMETER");
+
+            if (list == null)
+            {
+                list = await Manager.IdentityModule.Domainset
+                    .Parameter.Search(new ParameterParam());
+
+                memorycache.Set("PARAMETER", list, this.GetMemoryCacheOptionsByHour(2));
+
+            }
+
+            ret = list;
+
+            FinalizeManager();
+
+            return ret;
+        }
+
+
     }
 }

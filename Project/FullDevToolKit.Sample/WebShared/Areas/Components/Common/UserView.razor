@@ -1,0 +1,368 @@
+﻿
+<div class="app-navbar-item ms-1 ms-md-3" id="ProfileControl">
+
+    @if (Islogged)
+    {
+
+        <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+            <img id="img1" src="@User.ProfileImageURL"  alt="user" @onclick="OpenProfile" />
+        </div>
+
+
+        <div @onclick="Logout" class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-danger w-30px h-30px w-md-40px h-md-40px position-relative">
+            <i class="ki-duotone ki-exit-right fs-2 fs-lg-1">
+				<span class="path1"></span>
+				<span class="path2"></span>
+				<span class="path3"></span>
+			</i>		
+		</div>
+		
+               
+    }
+
+</div>
+
+  
+    
+<MessageBox @ref="msgbox" ></MessageBox>
+<MessageBox @ref="pwdbox" OnClickOk="OnMsgBoxOk"></MessageBox>
+<MessageBox @ref="imgbox" OnClickOk="OnMsgBoxOk2"></MessageBox>
+
+<Modal @ref="modalRef"  >
+    <ModalContent Centered Size="ModalSize.Large" >
+      
+        <ModalBody>
+          @if(Islogged && _localization != null) 
+          {
+            <div class="row" style="min-height:500px">
+                                                
+                  <div class="card" style="height:20px">
+					    <!--begin::Card head-->
+					    <div class="card-header card-header-stretch">
+						    <!--begin::Title-->
+						    <div class="card-title d-flex align-items-center">
+										
+							    <h3 class="fw-bold m-0 text-gray-800">@_localization.MyProfile_Label </h3>
+						    </div>
+						    <!--end::Title-->
+						    <!--begin::Toolbar-->
+						    <div class="card-toolbar m-0">
+							    <!--begin::Tab nav-->
+							    <ul class="nav nav-tabs nav-line-tabs nav-stretch fs-6 border-0 fw-bold" role="tablist">
+								    <li class="nav-item" role="presentation">
+                                        <a id="kt_link_tab1" class="nav-link justify-content-center text-active-gray-800 active" data-bs-toggle="tab" role="tab" href="#kt_tab1">@_localization.MainProfileData_Label</a>
+								    </li>
+								    <li class="nav-item" role="presentation">
+                                        <a id="kt_link_tab2" class="nav-link justify-content-center text-active-gray-800" data-bs-toggle="tab" role="tab" href="#kt_tab2">@_localization.AlterPassword_Label</a>
+								    </li>								   
+							    </ul>
+							    <!--end::Tab nav-->
+						    </div>
+						    <!--end::Toolbar-->
+					    </div>
+
+                 </div>
+
+                 <div class="">
+						<!--begin::Tab Content-->
+						<div class="tab-content">
+							<!--begin::Tab panel-->
+							<div id="kt_tab1" class="card-body p-0 tab-pane fade show active" role="tabpanel" aria-labelledby="kt_link_tab1">
+                                <div Class="card mb-5 mb-xl-10">
+                                    <div Class="card-body pt-9 pb-0">
+                                        <div class="d-flex flex-wrap flex-sm-nowrap mb-3">
+										<!--begin: Pic-->
+										<div class="me-7 mb-4">
+											<div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
+                                                    <img src="@User.ProfileImageURL" alt="Carregando imagem...">
+												<div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-body h-20px w-20px"></div>
+											</div>
+										</div>
+										<!--end::Pic-->
+										<!--begin::Info-->
+										<div class="flex-grow-1">
+											<!--begin::Title-->
+											<div class="d-flex justify-content-between align-items-start flex-wrap mb-2">
+												<!--begin::User-->
+												<div class="d-flex flex-column">
+													<!--begin::Name-->
+													<div class="d-flex align-items-center mb-2">
+														 <a class="text-gray-900 text-hover-primary fs-2 fw-bold me-1" title="User Name"> 
+                                                             @_localization.UserName_Label: @User.UserName
+                                                          </a>													
+													</div>
+
+                                                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+														 <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" title="Role Name">
+                                                              @_localization.Role_Label: @User.RoleName
+                                                          </a>
+                                                    </div>
+
+                                                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                                                            <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" title="E-mail">
+                                                                @_localization.Email_Label:   @User.Email
+                                                            </a>
+                                                    </div>
+
+                                                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                                                            <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" title="Instance Name"> 
+                                                            @_localization.Instance_Label :  @User.InstanceName 
+                                                            </a>
+                                                    </div>
+
+                                                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                                                            <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" title="Instance Name">
+                                                                @_localization.LanguageRole_Label: @User.LocalizationLanguage
+                                                            </a>
+                                                    </div>
+
+
+                                                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                                                            <span>@_localization.AlterProfileImage_Label:</span>
+
+                                                    </div>
+                                                    
+                                                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                                                        <FileEdit  Changed="@OnChanged" Filter=".jpg, .png, .gif"  />
+                                                    </div>
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+
+                                </div>
+                                     </div>
+                                 </div>
+                             </div>
+
+                             <div id="kt_tab2" class="card-body p-0 tab-pane fade" role="tabpanel" aria-labelledby="kt_link_tab2">
+                                 <div style="padding-left: 25px;padding-top: 20px;" >
+                                                                     
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h5>1. @_localization.AlterPasswordStep1_Label  </h5>
+
+                                            <TaskButton @ref="sendcodebtn" OnClick="SendCode" 
+                                                            Title=@_localization.SendCodeButton_Label
+                                                             ActionLabel=@_localization.SendText_Description>
+                                                     </TaskButton>       
+
+                                                </div>
+                                                    
+                                           </div>
+
+                                            <div class="row" style="margin-top:20px">
+                                                <div class="col-md-12">
+                                                    <h5> 2.  @_localization.AlterPasswordStep2_Label :</h5>
+                                                 </div>
+                                            </div>
+
+                                            <div class="row" style="margin-top:20px">
+                                                <div class="col-md-12"> 
+                                                    <input type="email" @bind-value=@changeObj.Code class="form-control"
+                                                         placeholder=@_localization.InputCode_Description>
+                                                 </div>
+                                            </div>
+
+                                            <div class="row" style="margin-top:20px">
+                                                <div class="col-md-12"> 
+                                                   <input type="password" @bind-value=@changeObj.NewPassword 
+                                                            class="form-control" maxlength="10"
+                                                             placeholder=@_localization.InputNewPassword_Label>
+                                        
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="row" style="margin-top:20px">
+                                                <div class="col-md-12"> 
+                                                                    
+                                                     <TaskButton @ref="alterarsenhabtn" OnClick="ChangePassword"
+                                                             Title=@_localization.AlterPasswordButton_Label                                                             
+                                                             ActionLabel=@_localization.AlterPasswordButton_Loading>
+                                                      </TaskButton>    
+
+                                                </div>
+                                                 
+
+                                            </div> 
+                                    
+                                 </div>
+                             </div>
+
+
+                        </div>
+                 </div>
+
+            </div>
+          }
+
+        </ModalBody>   
+        
+        <ModalFooter>
+            <CloseButton></CloseButton>
+        </ModalFooter>
+
+    </ModalContent>
+</Modal>
+
+@code {
+
+    private Modal modalRef;
+
+    private MessageBox msgbox;
+    private MessageBox pwdbox;
+    private MessageBox imgbox;
+
+    private TaskButton alterarsenhabtn;
+    private TaskButton sendcodebtn;
+    private TaskButton logoutbtn;
+
+    //private UserAuthenticated LoggedUser;
+
+    private ChangeUserPassword changeObj = new ChangeUserPassword();
+
+    private MenuLocalization _localization = null; 
+
+    [Parameter]
+    public MenuLocalization Localization { 
+        set
+        {
+            if (value != null)
+            {
+                _localization=value; 
+            }
+        }
+   
+        get
+        {
+            return _localization;
+        }
+    }
+
+    [Parameter]
+    public bool Islogged { get; set; }
+
+    [Parameter]
+    public UserAuthenticated User { get; set; }
+
+    [Parameter]
+    public AuthProxys Service { get; set; }
+
+
+    [Parameter]
+    public EventCallback OnLogout { get; set; }
+
+    public async Task Logout()
+    {
+        // logoutbtn.Begin();
+
+        await OnLogout.InvokeAsync(null);
+
+       // logoutbtn.End(); 
+    }
+
+    private async Task OpenProfile()
+    {
+        await modalRef.Show();      
+
+    }
+    
+
+    public async Task SendCode()
+    {
+
+        sendcodebtn.Begin();
+
+        await Service.RequestChangePasswordCode(User.Email);
+
+        if (Service.APIResponse.StatusOK)
+        {
+            await msgbox.ShowDialog(_localization.ActivateCode_Title, _localization.ActivateCode_Message);
+        }
+        else
+        {
+            Exception error = null;
+            Service.GetDefaultError(ref error); 
+            await msgbox.ShowDialog(_localization.NoticeLabel, error.Message);
+        }
+        sendcodebtn.End();    
+
+    }
+
+    public async Task ChangePassword()
+    {
+
+        alterarsenhabtn.Begin();
+
+        changeObj.Email = User.Email;
+        await Service.ChangePassword(changeObj);
+
+        if (Service.APIResponse.StatusOK)
+        {
+            await pwdbox.ShowDialog(_localization.PasswordChanged_Title, _localization.PasswordChanged_Message);
+        }
+        else
+        {
+            Exception error = null;
+            Service.GetDefaultError(ref error); 
+            await msgbox.ShowDialog(_localization.NoticeLabel, error.Message);
+        }
+        alterarsenhabtn.End();  
+
+    }
+
+    private async Task OnMsgBoxOk()
+    {
+
+        await OnLogout.InvokeAsync(null);
+
+    }
+
+    private async Task OnChanged( FileChangedEventArgs e )
+    {
+        IFileEntry f = e.Files[0];
+        ChangeUserImage ret = null;
+        byte[] content = null;
+
+        foreach ( var file in e.Files )
+        {         
+
+            using ( var stream = new MemoryStream() )
+            {                
+                await file.WriteToStreamAsync( stream );
+
+                stream.Seek( 0, SeekOrigin.Begin );
+                content = stream.ToArray();
+
+            }
+        }     
+
+        AuthProxys Proxys = (AuthProxys)Service;
+        ret =  await Proxys.ChangeUserImage(content);
+
+        if (Proxys.APIResponse.StatusOK)
+        {
+
+            await pwdbox.ShowDialog(_localization.ImageChanged_Title, _localization.ImageChanged_Message);
+
+        }
+        else
+        {
+            Exception error = null;
+            Proxys.GetDefaultError(ref error); 
+            await msgbox.ShowDialog(_localization.NoticeLabel, error.Message);
+        }
+
+    }
+
+    private  async Task OnMsgBoxOk2()
+    {
+        await modalRef.Hide();
+
+    }
+
+
+
+
+}

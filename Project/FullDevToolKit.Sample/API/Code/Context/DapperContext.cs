@@ -27,7 +27,7 @@ namespace MyApp.Context
         public ExecutionStatus ConnStatus { get; set; }
      
         public ExecutionStatus Status { get; set; }
-        public string LocalizationLanguage { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public string LocalizationLanguage { get; set ; }
 
         public ExecutionStatus Begin(int sourceindex, object isolationlavel)
         {

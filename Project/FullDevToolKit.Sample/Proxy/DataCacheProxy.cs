@@ -28,51 +28,82 @@ namespace MyApp.Proxys
 
         }      
 
-        public async Task<APIResponse<List<TipoOperacaoValueModel>?>> ListTipoOperacao()
+        public async Task<List<TipoOperacaoValueModel>?> ListTipoOperacao()
         {
-            APIResponse<List<TipoOperacaoValueModel>?> ret = null;
+            List<TipoOperacaoValueModel> ret = new List<TipoOperacaoValueModel>();
+            APIResponse<List<TipoOperacaoValueModel>?> response = null;
 
-            ret = await this.GetAsJSON<List<TipoOperacaoValueModel>?>("listtipoperacao", null);
+            response = await this.GetAsJSON<List<TipoOperacaoValueModel>?>("listtipoperacao", null);
+
+            if ( response.IsSuccess)
+            {
+                ret = response.Data; 
+            }
 
             return ret;
         }
 
+        public async Task<List<TabelasValueModel>?> ListTabelas()
+        {
+            List<TabelasValueModel> ret = new List<TabelasValueModel>();
+            APIResponse<List<TabelasValueModel>?> response = null;
+
+            response = await this.GetAsJSON<List<TabelasValueModel>?>("listtabelas", null);
+
+            if (response.IsSuccess)
+            {
+                ret = response.Data;
+            }
+
+            return ret;
+        }
+
+        public async Task<List<RoleList>?> ListRoles()
+        {
+            List<RoleList> ret = new List<RoleList>();
+            APIResponse<List<RoleList>?> response = null;
+
+            response = await this.GetAsJSON<List<RoleList>?>("listroles", null);
+
+            if (response.IsSuccess)
+            {
+                ret = response.Data;
+            }
+
+            return ret;
+        }
+
+
+        public async Task<List<LocalizationTextList>?> ListLanguages()
+        {
+            List<LocalizationTextList> ret = new List<LocalizationTextList>();
+            APIResponse<List<LocalizationTextList>?> response = null;
+
+            response = await this.GetAsJSON<List<LocalizationTextList>?>("listlangs", null);
+
+            if (response.IsSuccess)
+            {
+                ret = response.Data;
+            }
+
+            return ret;
+        }
+
+        public async Task<List<LocalizationTextResult>?> ListLocalizationTexts()
+        {
+            List<LocalizationTextResult> ret = new List<LocalizationTextResult>();
+            APIResponse<List<LocalizationTextResult>?> response = null;
+
+            response = await this.GetAsJSON<List<LocalizationTextResult>?>("listlocalizationtexts", null);
+
+            if (response.IsSuccess)
+            {
+                ret = response.Data;
+            }
+
+            return ret;
+        }
        
-        public async Task<APIResponse<List<TabelasValueModel>?>> ListTabelas()
-        {
-            APIResponse<List<TabelasValueModel>?> ret = null;
-
-            ret = await this.GetAsJSON<List<TabelasValueModel>?>("listtabelas",null);
-
-            return ret;
-        }
-
-        public async Task<APIResponse<List<RoleList>?>> ListRoles()
-        {
-            APIResponse<List<RoleList>?> ret = null;
-
-            ret = await this.GetAsJSON<List<RoleList>?>("listroles", null);                
-
-            return ret;
-        }
-
-        public async Task<APIResponse<LocalizationTextList>?> ListLanguages()
-        {
-            APIResponse<LocalizationTextList?> ret = null;
-
-            ret = await this.GetAsJSON<LocalizationTextList?>("listlangs", null);
-
-            return ret;
-        }
-
-        public async Task<APIResponse<List<LocalizationTextResult>?>> ListLocalizationTexts()
-        {
-            APIResponse<List<LocalizationTextResult>?> ret = null;
-
-            ret = await this.GetAsJSON<List<LocalizationTextResult>?>("listlocalizationtexts", null);
-
-            return ret;
-        }
 
     }
 

@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Models", "Models\Models.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Proxy", "Proxy\Proxy.csproj", "{1147A07C-D1D9-426D-88E9-6962C6413D0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Proxy", "Proxy\Proxy.csproj", "{1147A07C-D1D9-426D-88E9-6962C6413D0C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebShared", "WebShared\WebShared.csproj", "{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{1147A07C-D1D9-426D-88E9-6962C6413D0C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1147A07C-D1D9-426D-88E9-6962C6413D0C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1147A07C-D1D9-426D-88E9-6962C6413D0C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

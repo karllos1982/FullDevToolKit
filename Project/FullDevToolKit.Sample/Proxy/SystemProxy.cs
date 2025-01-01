@@ -20,7 +20,7 @@ namespace MyApp.Proxys
 
         public RoleProxy Role = null;
 
-        public SessionProxy Session = null;
+        public SessionLogProxy SessionLog = null;
 
         public DataLogProxy DataLog = null;
 
@@ -32,7 +32,10 @@ namespace MyApp.Proxys
         
         public LocalizationTextProxy LocalizationText= null;
 
-        
+        public GroupParameterProxy GroupParameter = null;
+
+        public ParameterProxy Parameter = null;
+
         public SystemProxy()
         {
 
@@ -42,37 +45,44 @@ namespace MyApp.Proxys
         {
             User = new UserProxy();
             Role = new RoleProxy();
-            Session = new SessionProxy();
+            SessionLog = new SessionLogProxy();
             DataLog = new DataLogProxy();
             ObjectPermission = new ObjectPermissionProxy();
             Permission = new PermissionProxy();
             Instance = new InstanceProxy();
             LocalizationText= new LocalizationTextProxy();
+            GroupParameter = new GroupParameterProxy(); 
+            Parameter = new ParameterProxy();   
 
-            User.InitializeAPI(http, baseurl + "/membership/user/", token);
+            User.InitializeAPI(http, baseurl + "/system/user/", token);
             User.IsAuthenticated = true;
 
-            Instance.InitializeAPI(http, baseurl + "/membership/instance/", token);
+            Instance.InitializeAPI(http, baseurl + "/system/instance/", token);
             Instance.IsAuthenticated = true;
 
-            Role.InitializeAPI(http, baseurl + "/membership/role/", token);
+            Role.InitializeAPI(http, baseurl + "/system/role/", token);
             Role.IsAuthenticated = true;
 
-            Session.InitializeAPI(http, baseurl + "/membership/session/", token);
-            Session.IsAuthenticated = true;
+            SessionLog.InitializeAPI(http, baseurl + "/system/sessionlog/", token);
+            SessionLog.IsAuthenticated = true;
 
-            DataLog.InitializeAPI(http, baseurl + "/membership/datalog/", token);
+            DataLog.InitializeAPI(http, baseurl + "/system/datalog/", token);
             DataLog.IsAuthenticated = true;
 
-            ObjectPermission.InitializeAPI(http, baseurl + "/membership/objectpermission/", token);
+            ObjectPermission.InitializeAPI(http, baseurl + "/system/objectpermission/", token);
             ObjectPermission.IsAuthenticated = true;
 
-            Permission.InitializeAPI(http, baseurl + "/membership/permission/", token);
+            Permission.InitializeAPI(http, baseurl + "/system/permission/", token);
             Permission.IsAuthenticated = true;
 
-            LocalizationText.InitializeAPI(http, baseurl + "/membership/localizationtext/", token);
+            LocalizationText.InitializeAPI(http, baseurl + "/system/localizationtext/", token);
             LocalizationText.IsAuthenticated = true;
 
+            GroupParameter.InitializeAPI(http, baseurl + "/system/groupparameter/", token);
+            GroupParameter.IsAuthenticated = true;
+
+            Parameter.InitializeAPI(http, baseurl + "/system/parameter/", token);
+            Parameter.IsAuthenticated = true;
         }
      
 
@@ -243,7 +253,6 @@ namespace MyApp.Proxys
 
     }
 
-
     public class RoleProxy : APIProxyBase
     {
      
@@ -294,10 +303,10 @@ namespace MyApp.Proxys
 
     }
 
-    public class SessionProxy : APIProxyBase
+    public class SessionLogProxy : APIProxyBase
     {
 
-        public SessionProxy()
+        public SessionLogProxy()
         {
 
         }
@@ -398,10 +407,10 @@ namespace MyApp.Proxys
         }
 
        
-        public APIResponse<List<DataLogItem>?> GetDataLogItems(string logcontent)
+        public List<DataLogItem> GetDataLogItems(string logcontent)
         {
            
-            APIResponse<List<DataLogItem>?> ret = new APIResponse<List<DataLogItem>?>();    
+            List<DataLogItem> ret = new List<DataLogItem>();    
             List<DataLogItem> list = new List<DataLogItem>();
             DataLogItem obj;
 
@@ -423,7 +432,7 @@ namespace MyApp.Proxys
                 list.Add(obj);
             }            
 
-            ret.Data = list;    
+            ret = list;    
 
             return ret;
         }
@@ -559,7 +568,6 @@ namespace MyApp.Proxys
         }
     }
 
-
     public class LocalizationTextProxy : APIProxyBase
     {
 
@@ -610,6 +618,106 @@ namespace MyApp.Proxys
             return ret;
         }
 
+
+    }
+
+    public class GroupParameterProxy : APIProxyBase
+    {
+
+        public GroupParameterProxy()
+        {
+
+        }
+
+        public async Task<APIResponse<List<GroupParameterResult>?>> Search(GroupParameterParam data)
+        {
+            APIResponse<List<GroupParameterResult>?> ret = null;
+
+            ret = await PostAsJSON<List<GroupParameterResult>?>("search", JsonConvert.SerializeObject(data), null);
+
+
+            return ret;
+        }
+
+        public async Task<APIResponse<List<GroupParameterList>?>> List(GroupParameterParam data)
+        {
+            APIResponse<List<GroupParameterList>?> ret = null;
+
+            ret = await PostAsJSON<List<GroupParameterList>?>("list", JsonConvert.SerializeObject(data), null);
+
+            return ret;
+        }
+
+        public async Task<APIResponse<GroupParameterResult>?> Get(string id)
+        {
+            APIResponse<GroupParameterResult?> ret = null;
+
+            object[] param = new object[1];
+            param[0] = new DefaultGetParam(id);
+
+            ret = await GetAsJSON<GroupParameterResult?>("get", param);
+
+            return ret;
+        }
+
+        public async Task<APIResponse<GroupParameterEntry?>> Set(GroupParameterEntry data)
+        {
+            APIResponse<GroupParameterEntry?> ret = null;
+
+            ret = await PostAsJSON<GroupParameterEntry?>("set", JsonConvert.SerializeObject(data), null);
+
+            return ret;
+        }
+
+    }
+
+    public class ParameterProxy : APIProxyBase
+    {
+
+        public ParameterProxy()
+        {
+
+        }
+
+        public async Task<APIResponse<List<ParameterResult>?>> Search(ParameterParam data)
+        {
+            APIResponse<List<ParameterResult>?> ret = null;
+
+            ret = await PostAsJSON<List<ParameterResult>?>("search", JsonConvert.SerializeObject(data), null);
+
+
+            return ret;
+        }
+
+        public async Task<APIResponse<List<ParameterList>?>> List(ParameterParam data)
+        {
+            APIResponse<List<ParameterList>?> ret = null;
+
+            ret = await PostAsJSON<List<ParameterList>?>("list", JsonConvert.SerializeObject(data), null);
+
+            return ret;
+        }
+
+        public async Task<APIResponse<ParameterResult>?> Get(string id)
+        {
+            APIResponse<ParameterResult?> ret = null;
+
+            object[] param = new object[1];
+            param[0] = new DefaultGetParam(id);
+
+            ret = await GetAsJSON<ParameterResult?>("get", param);
+
+            return ret;
+        }
+
+        public async Task<APIResponse<ParameterEntry?>> Set(ParameterEntry data)
+        {
+            APIResponse<ParameterEntry?> ret = null;
+
+            ret = await PostAsJSON<ParameterEntry?>("set", JsonConvert.SerializeObject(data), null);
+
+            return ret;
+        }
 
     }
 }

@@ -1,0 +1,50 @@
+﻿@inject NavigationManager NavigationManager
+
+
+<div class="page-title d-flex flex-column justify-content-center flex-wrap me-3">
+
+    <div class="row">
+    
+        <div class="col-md-1">
+            
+            <h1 @onclick="GotoHome"
+                class="page-heading d-flex fw-bold fs-3 flex-column justify-content-center my-0 link-breadcrumb">
+                Home /
+            </h1>
+
+        </div>
+
+        <div class="col-md-6">
+            <h1 class="page-heading d-flex fw-bold fs-3 flex-column justify-content-center my-0 page-title">@PageTitle</h1>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+@code {
+
+    [Parameter]    
+    public string PageTitle { get; set; }
+
+    [Parameter]    
+    public string HomeURL { get; set; }
+
+    [Parameter]
+    public bool IsHome { get; set; }
+
+    private string GetURL()
+    {
+        return HomeURL;
+    }
+
+    private void GotoHome()
+    {
+        NavigationManager.NavigateTo(HomeURL);
+    }
+
+
+}
