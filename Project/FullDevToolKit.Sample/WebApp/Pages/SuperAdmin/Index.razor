@@ -1,0 +1,68 @@
+﻿@page "/superadmin"
+
+@inherits SuperAdminLayout
+@layout SuperAdminLayout
+
+
+@inject NavigationManager NavigationManager
+@inject HttpClient _httpclient
+@inject IAppControllerAsync<UserAuthenticated> _appctrl
+@inject IAppSettings _settings
+
+<PageTitle>Área do Super Admin</PageTitle>
+
+
+<div id="kt_app_content" class="app-content flex-column-fluid">    
+    <div id="kt_app_content_container" class="app-container container-fluid">
+        
+        <div class="card">                         
+              <div class="card-header border-0 pt-6">                
+                <div class="card-title">
+                    <h1> Área do Super Admin</h1>
+                </div>
+                <div class="card-toolbar">                    
+                    <div class="d-flex justify-content-end" data-kt-user-table-toolbar="base">                        
+                                              
+                    </div>                    
+                  
+                </div>                
+            </div>
+            
+            <div class="card-body py-4">
+                       
+                        
+           
+
+            </div>   
+            
+        </div>        
+    </div>    
+</div>
+
+@code {
+
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+
+        if (firstRender)
+        {
+            if (await this.InitResources())
+            {
+                await this.InitCacheAndLocalization();                               
+
+                await _appctrl.SetPageTitle("");
+            }
+
+            StateHasChanged();
+
+        }
+    }
+   
+
+}

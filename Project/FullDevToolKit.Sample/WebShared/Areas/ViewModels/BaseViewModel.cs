@@ -272,7 +272,23 @@ namespace MyApp.ViewModel
             }            
         }
 
-        public async Task InitLocalization(DataCacheProxy cache, string lang)
+		public void SetResult<T>(APIResponse<T> response,
+		ref T data, ref ExecutionStatus status, SummaryManager summary )
+		{
+
+			if (response.IsSuccess)
+			{
+				data = response.Data;
+			}
+			else
+			{
+				ServiceStatus.Exceptions = response.Exceptions;
+				ServiceStatus.Success = false;
+				summary.ShowSummaryValidation(response.Exceptions.Messages);
+			}
+		}
+
+		public async Task InitLocalization(DataCacheProxy cache, string lang)
         {
             this.texts = new DefaultLocalization();
             this.texts.Set(await cache.ListLocalizationTexts(), lang);

@@ -1,0 +1,354 @@
+﻿@page "/objectpermission"
+@inherits SuperAdminLayout
+@layout SuperAdminLayout
+
+@inject NavigationManager NavigationManager
+@inject HttpClient _httpclient
+@inject IAppControllerAsync<UserAuthenticated> _appctrl
+@inject IAppSettings _settings
+@inject IDataCacheGatewayManager _cache
+@inject IMembershipGatewayManager _memberservices
+
+
+
+<MessageBox @ref="msgbox"></MessageBox>
+
+<MessageBox @ref="msgbox_create"
+            ButtonNo=@_msgNo ButtonYes=@_msgYes ButtonOK="false"
+            OnClickYes="OnNew">
+</MessageBox>
+
+<TaskLoading @ref="loading" Title=@_LoadingData_Text></TaskLoading>
+
+<div id="kt_app_content" class="app-content flex-column-fluid">
+    <div id="kt_app_content_container" class="app-container container-xxl">
+            
+        <div class="">        
+
+                    <BreadCrumbView PageTitle="@_PageTitle" HomeURL="@homeURL" ></BreadCrumbView>
+
+                    @if (view != null)
+                    {
+                        <div style="display:@view.SearchingState">
+
+                            <div class="row gy-5 g-xl-10">
+
+                                <div class="col-xl-4">                                
+                                    <div class="card card-flush h-xl-100">								      
+								        <div class="card-header pt-7">
+									  
+									        <h3 class="card-title align-items-start flex-column">
+                                        <span class="card-label fw-bold text-dark">@view.texts.SearchButtonLabel</span>
+                                    </h3>									        
+									       
+                                        </div>
+                                           
+                                        <div class="card-body">
+										         <div class="form-group">
+                                                    <label class="form-label">@view.texts.SearchByObjectName_Label:</label>
+                                                    <input type="text" @bind-value="view.param.pObjectName"
+                                                        placeholder=@view.texts.SearchByObjectName_Description class="form-control">
+                                                       
+                                                </div>
+
+                                                 <div class="form-group">
+                                                     <label class="form-label">@view.texts.SearchByObjectCode_Label:</label>
+                                                    <input type="text" maxlength="20" @bind-value="view.param.pObjectCode"
+                                                        placeholder=@view.texts.SearchByObjectCode_Description class="form-control">
+                                                       
+                                                </div>                                              
+
+                                                <p class="field" style="padding-top:10px">
+
+                                                      <TaskButton @ref="searchbtn" OnClick="OnSearch" Title=@view.texts.SearchButtonLabel
+                                                             ReadOnly=!view.Permissions.AllowRead
+                                                             ActionLabel=@view.texts.SearchingLabel>
+                                                      </TaskButton>
+
+                                                </p>									       
+									    
+                                                 <p class="field" style="padding-top:10px">
+                                                        <TaskButton @ref="newbtn" OnClick="OnNew"
+                                                                Title=@view.texts.NewObject_Label Class="dark"
+                                                                Disabled="" ReadOnly=!view.Permissions.AllowSave
+                                                                ActionLabel=@view.texts.InsertingLoadingLabel>
+                                                        </TaskButton>
+
+                                                 </p>
+                                           </div>
+								        </div>
+                                     </div>
+                                                            
+                                <div class="col-xl-8">
+
+                                    <div class="card card-flush h-xl-100">
+										
+										<div class="card-header pt-7">
+											
+											<h3 class="card-title align-items-start flex-column">
+                                                     <span class="card-label fw-bold text-dark">@view.texts.SearchResultLabel</span>
+                                              </h3>
+                                        </div>
+
+                                        <div class="card-body">
+                                            @if (view.searchresult != null)
+                                            {
+                                                @if (view.searchresult.Count > 0)
+                                                {
+                                                      <DataGrid TItem="ObjectPermissionResult" Data="@view.searchresult"  Responsive  ShowPager >                                                                                                                                      
+                                                        <DataGridColumns>
+
+                                                            <DataGridColumn Field="@nameof(ObjectPermissionResult.ObjectName)" Caption=@view.texts.ObjectName_Label />
+                                                            <DataGridColumn Field="@nameof(ObjectPermissionResult.ObjectCode)" Caption=@view.texts.ObjectCode_Label />
+
+                                                            <DataGridColumn Field="@nameof(ObjectPermissionResult.ObjectPermissionID)" Caption=@view.texts.Edit_Label>
+                                                                <DisplayTemplate>
+                                                                      @{
+                                                                            ObjectPermissionResult obj = (context as ObjectPermissionResult);
+                                                                                                                                                   
+                                                                            @if(view.Permissions.AllowSave)
+                                                                            {
+                                                                                <IconButton Icon="IconButton.TYPEICONENUM.EDIT" 
+                                                                                        OnClick="()=>OnDetClick(obj.ObjectPermissionID)"></IconButton>                                                                                                                                                   
+                                                                            }
+                                                                      }
+                                                    
+                                                                </DisplayTemplate>
+                                                            </DataGridColumn>
+
+                                                            </DataGridColumns>
+                                      
+                                                        </DataGrid>
+
+                                                }
+                                                else
+                                                {
+                                                    <p> @view.texts.NoRecordsFound </p>
+                                                }
+                                              }
+                                         
+                                        </div>
+
+                                    </div>
+                                                                  
+
+                                </div>
+
+                           
+                             </div>
+
+                        </div>                       
+
+                        <div style="display:@view.EditingState">
+                            
+                           <BackButton OnClick="Back"></BackButton>
+                           
+                           <div class="row gy-5 g-xl-10">
+
+                                    <div class="col-xl-8">                                
+                                        <div class="card card-flush h-xl-100">								      
+		                                    <div class="card-header pt-7">
+									  
+			                                    <h3 class="card-title align-items-start flex-column">
+                                                     <span class="card-label fw-bold text-dark">@view.texts.ObjectPermissionRecord_Label</span>
+                                                 </h3>									        
+									       
+                                            </div>
+                                           
+                                            <div class="card-body">										            
+                                                    
+                                                    <div class="row">
+                                                        <div class="col-md-12">                                                            
+
+                                                            <div class="form-group">
+                                                                 <label class="form-label" for="name">@view.texts.ObjectName_Label:</label>
+                                                                <input type="text" class="form-control field" @bind-value="@view.result.ObjectName" />
+                                                                <label class="validation_field">@view.GetSummaryMessage("ObjectName") </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                   <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                <label class="form-label" for="email">@view.texts.ObjectCode_Label:</label>
+                                                                <input type="text" class="form-control field" @bind-value="@view.result.ObjectCode" />
+                                                                 <label class="validation_field">@view.GetSummaryMessage("ObjectCode") </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                     <div class="row">
+                                                        <div class="col-md-12">
+
+                                                            <p class="field" style="padding-top:10px">
+
+                                                            <TaskButton @ref="savenewbtn" OnClick="OnSet" Title=@view.texts.SaveObjectPermissionButton_Label
+                                                                    Description=@view.texts.SaveObjectPermissionButton_Description
+                                                                                ActionLabel=@view.texts.Saving_Label
+                                                                                ReadOnly=!view.Permissions.AllowSave>
+                                                            </TaskButton>
+
+                                                            </p>
+                                                         </div>
+		                                           </div>
+
+                                             </div>
+		                                </div>
+                                    </div>
+                                                            
+                                                           
+                                 </div>                                                                                   
+
+                        </div>
+                    }
+                    else
+                    {
+                        <PageLoading LoadingText="Loading page. Please, wait..."></PageLoading>
+
+                    }
+                </div>
+            </div>
+        </div>
+
+
+
+
+@code {
+
+ 
+    private ObjectPermissionViewModel view; 
+   
+    //
+
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+
+        if (firstRender)
+        {
+            if (await this.InitResources())
+            {
+                await this.InitCacheAndLocalization();
+
+                this.InitServices();
+
+                view = new ObjectPermissionViewModel((_memberservices as MembershipGateway),
+                   (_cache as DataCacheGateway), user);
+
+                view.Permissions
+                    = BaseViewModel.SetPermissions(permissions, "SYSOBJECTPERMISSION", false);
+
+                await view.InitializeModels();
+
+                _LoadingData_Text = view.texts.LoadingData;
+                _PageTitle = view.texts.ObjectPermission_PageTitle;
+                _msgYes = view.texts.Yes_Text;
+                _msgNo = view.texts.No_Text;
+
+            }
+
+            StateHasChanged();
+
+        }
+    }
+
+
+    public async Task OnSearch()
+    {
+        searchbtn.Begin(); 
+        await view.Search();
+
+        if (!view.ExecutionStatus.Status)
+        {
+            await msgbox.ShowDialog(view.texts.ErrorOnExecuteSearch, view.ExecutionStatus.Error.Message);
+        }
+
+        searchbtn.End();
+    }
+
+    public void OnNew()
+    {
+
+        view.InitNew(); 
+        StateHasChanged();
+    }
+
+    public async Task OnGet(object id)
+    {
+        await loading.Begin() ;
+
+        await view.Get(id);
+
+        await loading.End();
+
+        if (!view.ExecutionStatus.Status)
+        {
+            await msgbox.ShowDialog(view.texts.ErrorOnReturnData, view.ExecutionStatus.Error.Message);
+        }
+        else
+        {
+            view.InitEdit(); 
+
+        }
+
+        StateHasChanged();
+    }
+
+  
+    public async Task OnSet()
+    {        
+         savenewbtn.Begin(); 
+       
+         await view.Set(); 
+
+        if (!view.ExecutionStatus.Status)
+        {
+            await msgbox.ShowDialog(view.texts.NoticeLabel, view.ExecutionStatus.Error.Message);
+        }
+        else
+        {
+            if (this.view.Inserting)
+            {
+                await msgbox_create.ShowDialog(view.texts.SuccessLabel, view.texts.AfterSaveAnswering);
+            }
+            else
+            {
+                await msgbox.ShowDialog(view.texts.SuccessLabel, view.texts.SuccessSaveMessage);
+                this.Back();
+            }
+
+        }
+
+        savenewbtn.End();
+
+    }
+     
+    public async Task OnDetClick(object id)
+    {        
+       await OnGet(id);
+
+    }
+
+    public void Back()
+    {
+        view.BackToSearch(); 
+        StateHasChanged();
+
+    }
+
+    public void GoHome()
+    {
+        string url = _appctrl.UserInfo.HomeURL;
+        NavigationManager.NavigateTo(url);
+
+    }
+ 
+
+
+}

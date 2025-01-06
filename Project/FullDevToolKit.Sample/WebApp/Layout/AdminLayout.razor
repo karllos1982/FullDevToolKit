@@ -1,0 +1,165 @@
+﻿@inherits LayoutComponentBase
+
+@inject IJSRuntime JSRuntime
+@inject IAppControllerAsync<UserAuthenticated> _appctrl
+@inject IAuthProxyManager _appservices
+@inject IDataCacheProxyManager _cache
+@inject IAppSettings _settings
+@inject NavigationManager NavigationManager
+@inject HttpClient _httpclient
+
+<PageTitle>Super Admin</PageTitle>
+
+<div class="d-flex flex-column flex-root">
+    <div class="page d-flex flex-row flex-column-fluid">
+        <div class="wrapper d-flex flex-column flex-row-fluid" id="kt_wrapper">
+            <div id="kt_header" class="header" data-kt-sticky="true" data-kt-sticky-name="header" data-kt-sticky-offset="{default: '200px', lg: '300px'}">
+                <div class="header-top d-flex align-items-stretch flex-grow-1">
+                    <div class="d-flex container-xxl align-items-stretch">
+                        <div class="d-flex align-items-center align-items-lg-stretch me-5 flex-row-fluid">
+
+                            <MasterMobileButton OnClick="OpenMenu">
+
+                            </MasterMobileButton>
+
+                            <a href="/home" class="d-flex align-items-center">
+                                <img alt="Logo" src="../images/logo.svg" class="h-25px h-lg-30px" />
+                            </a>
+
+                            <MenuLink RoleName="Admin" @ref="menu"
+                                      Display="MenuLink.MENUDISPLAYENUM.TABLINK"
+                                      Localization="localization">                                
+                            </MenuLink>
+
+                        </div>
+
+                        @if (islogged)
+                        {
+                            <UserView Service=@GetService()
+                                  User=@user
+                                  Localization="localization"
+                                  OnLogout="Logout" Islogged=@islogged>
+                            </UserView>
+                        }
+
+
+                    </div>
+
+                </div>
+
+                <MenuLink RoleName="Admin" Permissions="permissions"
+                          Display="MenuLink.MENUDISPLAYENUM.TABITEMS"
+                          Localization="localization">
+                </MenuLink>
+
+            </div>
+
+            @Body
+
+            <MasterFooter></MasterFooter>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@code {
+
+    protected bool islogged = false;
+    protected UserAuthenticated user;
+    protected MenuLink menu;
+    protected List<UserPermissions> permissions = null;
+    protected DefaultLocalization localization = null;
+    protected string siteURL = "";
+
+    protected async Task Initialize(bool firstRender)
+    {
+
+        if (firstRender)
+        {
+            this.InitResources();
+            siteURL = _settings.SiteURL;
+
+            islogged = await _appctrl.IsAuthenticated();
+
+            if (islogged)
+            {
+                try
+                {
+
+                    await _appctrl.GetSession();
+
+                    user = _appctrl.UserInfo;
+                    permissions = await _appctrl.GetUserPermissions(user.Token);
+
+                    if (user.RoleName != "Admin")
+                    {
+                        NavigationManager.NavigateTo(siteURL + "/login");
+                    }
+
+                    if (_appctrl.UserInfo != null)
+                    {
+                        _appservices.Init(_httpclient, _settings.ServiceURL, _appctrl.UserInfo.Token);
+                        _cache.Init(_httpclient, _settings.ServiceURL, user.Token);
+
+                        this.localization = new DefaultLocalization();
+                        this.localization.Set(await ((DataCacheProxy)_cache).ListLocalizationTexts(), 
+                                user.LocalizationLanguage);
+                      
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+
+                StateHasChanged();
+            }
+            else
+            {
+
+                NavigationManager.NavigateTo(siteURL + "/login");
+            }
+
+        }
+
+    }
+
+    private void InitResources()
+    {
+        ((MyAppController)_appctrl).Settings = _settings;
+
+    }
+
+    private async Task Logout()
+    {
+
+        if (_appctrl.UserInfo != null)
+        {
+            await ((AuthProxy)_appservices).Logout();
+        }
+
+        await _appctrl.Logout();
+        string url = _settings.SiteURL;
+        NavigationManager.NavigateTo(url);
+        islogged = false;
+        StateHasChanged();
+    }
+
+    private AuthProxy GetService()
+    {
+
+        return (AuthProxy)_appservices;
+    }
+
+    private async Task OpenMenu()
+    {
+        await menu.OpenMobileMenu();
+
+    }
+
+}

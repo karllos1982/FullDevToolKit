@@ -199,19 +199,19 @@
           "dependencies": {
             "Blazorise": {
               "target": "Package",
-              "version": "[1.7.1, )"
+              "version": "[1.7.2, )"
             },
             "Blazorise.Components": {
               "target": "Package",
-              "version": "[1.7.1, )"
+              "version": "[1.7.2, )"
             },
             "Blazorise.DataGrid": {
               "target": "Package",
-              "version": "[1.7.1, )"
+              "version": "[1.7.2, )"
             },
             "Blazorise.Icons.FontAwesome": {
               "target": "Package",
-              "version": "[1.7.1, )"
+              "version": "[1.7.2, )"
             },
             "Microsoft.AspNetCore.Components": {
               "target": "Package",

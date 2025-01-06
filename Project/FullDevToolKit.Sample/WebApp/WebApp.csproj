@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Code\AppController.cs~RF28cd75d7.TMP" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Models\Models.csproj" />
+    <ProjectReference Include="..\Proxy\Proxy.csproj" />
+    <ProjectReference Include="..\WebShared\WebShared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="wwwroot\assets\js\metronic\" />
+    <Folder Include="wwwroot\assets\plugins\global\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Blazorise" Version="1.7.2" />
+    <PackageReference Include="Blazorise.Bootstrap5" Version="1.7.2" />
+    <PackageReference Include="Blazorise.Components" Version="1.7.2" />
+    <PackageReference Include="Blazorise.DataGrid" Version="1.7.2" />
+    <PackageReference Include="Blazorise.Icons.FontAwesome" Version="1.7.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="FullDevToolKit.Core">
+      <HintPath>..\..\FullDevToolKit\FullDevToolKit.Core\bin\Debug\net8.0\FullDevToolKit.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

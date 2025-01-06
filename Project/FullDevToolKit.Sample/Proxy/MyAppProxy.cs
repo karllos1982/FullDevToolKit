@@ -3,6 +3,7 @@ using FullDevToolKit.Sys.Models.Common;
 using FullDevToolKit.Sys.Models.Identity;
 using Newtonsoft.Json;
 using FullDevToolKit.ApplicationHelpers;
+using MyApp.Models;
 
 namespace MyApp.Proxys
 {
@@ -14,7 +15,7 @@ namespace MyApp.Proxys
 
     public class MyAppProxy : APIProxyBase, IMyAppProxy
     {
-        public ClientGateway Client = null;
+        public PersonProxy Person = null;
 
   
         public MyAppProxy()
@@ -24,10 +25,10 @@ namespace MyApp.Proxys
 
         public void Init(HttpClient http, string baseurl, string token)
         {
-            Client = new ClientGateway();
-          
-            Client.InitializeAPI(http, baseurl + "/template/client/", token);
-            Client.IsAuthenticated = true;
+			Person = new PersonProxy();
+
+			Person.InitializeAPI(http, baseurl + "/business/person/", token);
+			Person.IsAuthenticated = true;
        
         }
       
@@ -35,65 +36,64 @@ namespace MyApp.Proxys
     }
     
 
-    public class ClientGateway : APIGatewayManagerAsync
-    {
+    public class PersonProxy : APIProxyBase
+	{
 
-        public ClientGateway()
+        public PersonProxy()
         {
 
         }
 
-        public async Task<List<ClientResult>> Search(ClientParam data)
-        {
-            List<ClientResult> ret = null;
+		public async Task<APIResponse<List<PersonResult>?>> Search(PersonParam data)
+		{
+			APIResponse<List<PersonResult>?> ret = null;
 
-            ret = await PostAsJSON<List<ClientResult>>("search",
+			ret = await PostAsJSON<List<PersonResult>?>("search", JsonConvert.SerializeObject(data), null);
+
+			return ret;
+		}
+
+
+		public async Task<APIResponse<List<PersonList>?>> List(PersonParam data)
+		{
+			APIResponse<List<PersonList>?> ret = null;
+
+			ret = await PostAsJSON<List<PersonList>?>("list", JsonConvert.SerializeObject(data), null);
+
+			return ret;
+		}
+
+		public async Task<APIResponse<PersonResult?>> Get(string id)
+		{
+			APIResponse<PersonResult?> ret = null;
+
+			object[] param = new object[1];
+			param[0] = new DefaultGetParam(id);
+
+			ret = await GetAsJSON<PersonResult?>("get", param);
+
+			return ret;
+		}
+
+		public async Task<APIResponse<PersonEntry?>> Set(PersonEntry data)
+		{
+			APIResponse<PersonEntry?> ret = null;
+
+			ret = await PostAsJSON<PersonEntry?>("set", JsonConvert.SerializeObject(data), null);
+
+			return ret;
+		}
+
+
+        public async Task<APIResponse<PersonContactEntry?>> ContactEntryValidation(PersonContactEntry data)
+        {
+			APIResponse<PersonContactEntry?> ret = null;
+
+			ret = await PostAsJSON<PersonContactEntry?>("contactsentryvalidation", 
                 JsonConvert.SerializeObject(data), null);
 
-
-            return ret;
-        }
-
-        public async Task<List<ClientList>> List(ClientParam data)
-        {
-            List<ClientList> ret = null;
-
-            ret = await PostAsJSON<List<ClientList>>("list",
-                JsonConvert.SerializeObject(data), null);
-
-            return ret;
-        }
-
-        public async Task<ClientResult> Get(string id)
-        {
-            ClientResult ret = null;
-
-            object[] param = new object[1];
-            param[0] = new DefaultGetParam(id);
-
-            ret = await GetAsJSON<ClientResult>("get", param);
-
-            return ret;
-        }
-
-        public async Task<ClientEntry> Set(ClientEntry data)
-        {
-            ClientEntry ret = null;
-
-            ret = await PostAsJSON<ClientEntry>("set", JsonConvert.SerializeObject(data), null);
-
-            return ret;
-        }
-
-
-        public async Task<ClientContactsEntry> ContactEntryValidation(ClientContactsEntry data)
-        {
-            ClientContactsEntry ret = null;
-
-            ret = await PostAsJSON<ClientContactsEntry>("contactsentryvalidation",
-                JsonConvert.SerializeObject(data), null);
-
-            return ret;
+			return ret;
+			
         }
     }
 

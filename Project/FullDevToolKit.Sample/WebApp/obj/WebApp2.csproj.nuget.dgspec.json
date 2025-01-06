@@ -1,0 +1,372 @@
+{
+  "format": 1,
+  "restore": {
+    "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\WebApp2.csproj": {}
+  },
+  "projects": {
+    "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Gateway\\Gateway.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Gateway\\Gateway.csproj",
+        "projectName": "Gateway",
+        "projectPath": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Gateway\\Gateway.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Gateway\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Models\\Models.csproj": {
+                "projectPath": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Models\\Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "GW.Framework": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "GW.Membership": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Models\\Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Models\\Models.csproj",
+        "projectName": "Models",
+        "projectPath": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Models\\Models.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "GW.Framework": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\WebApp2.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\WebApp2.csproj",
+        "projectName": "WebApp2",
+        "projectPath": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\WebApp2.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Gateway\\Gateway.csproj": {
+                "projectPath": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Gateway\\Gateway.csproj"
+              },
+              "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Models\\Models.csproj": {
+                "projectPath": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Models\\Models.csproj"
+              },
+              "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebShared\\WebShared.csproj": {
+                "projectPath": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebShared\\WebShared.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Blazorise": {
+              "target": "Package",
+              "version": "[1.5.2, )"
+            },
+            "Blazorise.Bootstrap5": {
+              "target": "Package",
+              "version": "[1.5.2, )"
+            },
+            "Blazorise.Components": {
+              "target": "Package",
+              "version": "[1.5.2, )"
+            },
+            "Blazorise.DataGrid": {
+              "target": "Package",
+              "version": "[1.5.2, )"
+            },
+            "Blazorise.Icons.FontAwesome": {
+              "target": "Package",
+              "version": "[1.5.2, )"
+            },
+            "GW.Framework": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "GW.Membership": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.6, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebShared\\WebShared.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebShared\\WebShared.csproj",
+        "projectName": "WebShared",
+        "projectPath": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebShared\\WebShared.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebShared\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Gateway\\Gateway.csproj": {
+                "projectPath": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Gateway\\Gateway.csproj"
+              },
+              "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Models\\Models.csproj": {
+                "projectPath": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\Models\\Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Blazorise": {
+              "target": "Package",
+              "version": "[1.5.2, )"
+            },
+            "Blazorise.Components": {
+              "target": "Package",
+              "version": "[1.5.2, )"
+            },
+            "Blazorise.DataGrid": {
+              "target": "Package",
+              "version": "[1.5.2, )"
+            },
+            "Blazorise.Icons.FontAwesome": {
+              "target": "Package",
+              "version": "[1.5.2, )"
+            },
+            "GW.Framework": {
+              "target": "Package",
+              "version": "[4.1.0, )"
+            },
+            "GW.Membership": {
+              "target": "Package",
+              "version": "[2.1.0, )"
+            },
+            "Microsoft.AspNetCore.Components": {
+              "target": "Package",
+              "version": "[8.0.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
