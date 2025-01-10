@@ -6,8 +6,8 @@
 @inject HttpClient _httpclient
 @inject IAppControllerAsync<UserAuthenticated> _appctrl
 @inject IAppSettings _settings
-@inject IDataCacheGatewayManager _cache
-@inject IMembershipGatewayManager _memberservices
+@inject IDataCacheProxyManager _cache
+@inject ISystemProxyManager _systemservices
 
 
 
@@ -38,31 +38,33 @@
                                 <div class="card-header pt-7">
 
                                     <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.SearchButtonLabel</span>
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("SearchButtonLabel")</span>
                                     </h3>
 
                                 </div>
 
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label class="form-label">@view.texts.SearchByRoleName_Label:</label>
+                                        <label class="form-label">@view.texts.Get("SearchByRoleName-Label"):</label>
                                         <input type="text" @bind-value="view.param.pRoleName" class="form-control"
-                                           placeholder=@view.texts.SearchByRoleName_Description>
+                                           placeholder=@view.texts.Get("SearchByRoleName-Description")>
                                     </div>                                  
 
                                     <p class="field" style="padding-top:10px">
 
-                                        <TaskButton @ref="searchbtn" OnClick="OnSearch" Title=@view.texts.SearchButtonLabel
+                                        <TaskButton @ref="searchbtn" OnClick="OnSearch" 
+                                                Title=@view.texts.Get("SearchButtonLabel")
                                                 ReadOnly=!view.Permissions.AllowRead
-                                                ActionLabel=@view.texts.SearchingLabel>
+                                                ActionLabel=@view.texts.Get("SearchingLabel")>
                                         </TaskButton>
 
                                     </p>
 
                                     <p class="field" style="padding-top:10px">
-                                        <TaskButton @ref="newbtn" OnClick="OnNew" Title=@view.texts.NewRole_Label Class="dark"
-                                                Description=@view.texts.NewRole_Description ReadOnly=!view.Permissions.AllowSave
-                                                ActionLabel=@view.texts.InsertingLoadingLabel>
+                                        <TaskButton @ref="newbtn" OnClick="OnNew" 
+                                                Title=@view.texts.Get("NewRole-Label") Class="dark"
+                                                Description=@view.texts.Get("NewRole-Description") ReadOnly=!view.Permissions.AllowSave
+                                                ActionLabel=@view.texts.Get("InsertingLoadingLabel")>
                                         </TaskButton>
 
                                     </p>
@@ -77,7 +79,7 @@
                                 <div class="card-header pt-7">
 
                                     <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.SearchResultLabel</span>
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("SearchResultLabel")</span>
                                     </h3>
                                 </div>
 
@@ -88,20 +90,22 @@
                                         {
                                             <DataGrid TItem="RoleResult" Data="@view.searchresult" Responsive ShowPager>
                                                 <DataGridColumns>
-                                                    <DataGridColumn Field="@nameof(RoleResult.RoleName)" Caption=@view.texts.RoleName_Label />
+                                                    <DataGridColumn Field="@nameof(RoleResult.RoleName)" 
+                                                        Caption=@view.texts.Get("RoleName-Label") />
 
-                                                    <DataGridColumn Field="@nameof(RoleResult.IsActive)" Caption=@view.texts.Active_Label>
-                                                        <DisplayTemplate>
+                                                        <DataGridColumn Field="@nameof(RoleResult.IsActive)" 
+                                                            Caption=@view.texts.Get("Active-Label")>
+                                                            <DisplayTemplate>
                                                             @{
                                                                 RoleResult obj = (context as RoleResult);
 
                                                                 if (obj.IsActive)
                                                                 {
-                                                                    <span>@view.texts.Yes_Text</span>
+                                                                    <span>@view.texts.Get("Yes-Text")</span>
                                                                 }
                                                                 else
                                                                 {
-                                                                    <span>@view.texts.No_Text</span>
+                                                                    <span>@view.texts.Get("No-Text")</span>
                                                                 }
 
                                                             }
@@ -110,7 +114,8 @@
                                                     </DataGridColumn>
 
 
-                                                    <DataGridColumn Field="@nameof(RoleResult.RoleID)" Caption=@view.texts.Edit_Label>
+                                                    <DataGridColumn Field="@nameof(RoleResult.RoleID)" 
+                                                        Caption=@view.texts.Get("Edit-Label")>
                                                         <DisplayTemplate>
                                                             @{
                                                                 RoleResult obj = (context as RoleResult);
@@ -132,7 +137,7 @@
                                         }
                                         else
                                         {
-                                            <p> @view.texts.NoRecordsFound </p>
+                                            <p> @view.texts.Get("NoRecordsFound") </p>
                                         }
                                     }
 
@@ -159,7 +164,7 @@
                                 <div class="card-header pt-7">
 
                                     <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.RoleRecord_Label</span>
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("RoleRecord-Label")</span>
                                     </h3>
 
                                 </div>
@@ -169,7 +174,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="form-label" for="email">@view.texts.RoleName_Label</label>
+                                                <label class="form-label" for="email">@view.texts.Get("RoleName-Label")</label>
                                                 <input type="text" class="form-control field" @bind-value="@view.result.RoleName" />
                                                 <label class="validation_field">@view.GetSummaryMessage("RoleName") </label>
                                             </div>
@@ -179,7 +184,7 @@
                                     <div class="row" style="padding-top:20px">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="form-label" for="name">@view.texts.Active_Label:</label>
+                                                <label class="form-label" for="name">@view.texts.Get("Active-Label"):</label>
                                                 <Switch TValue="bool" @bind-Checked="@view.result.IsActive"></Switch>
 
                                             </div>
@@ -192,9 +197,10 @@
 
                                             <p class="field" style="padding-top:10px">
 
-                                                <TaskButton @ref="savenewbtn" OnClick="OnSet" Title=@view.texts.SaveRoleButton_Label
-                                                        Description=@view.texts.SaveRoleButton_Description
-                                                        ActionLabel=@view.texts.Saving_Label
+                                                <TaskButton @ref="savenewbtn" OnClick="OnSet" 
+                                                        Title=@view.texts.Get("SaveRoleButton-Label")
+                                                        Description=@view.texts.Get("SaveRoleButton-Description")
+                                                        ActionLabel=@view.texts.Get("Saving-Label")
                                                         ReadOnly=!view.Permissions.AllowSave>
                                                 </TaskButton>
 
@@ -248,18 +254,18 @@
 
                 this.InitServices();
 
-                view = new RoleViewModel((_memberservices as MembershipGateway),
-                   (_cache as DataCacheGateway), user);
+                view = new RoleViewModel((_systemservices as SystemProxy),
+                   (_cache as DataCacheProxy), user);
 
                 view.Permissions
                     = BaseViewModel.SetPermissions(permissions, "SYSROLE", false);
 
                 await view.InitializeModels();
 
-                _LoadingData_Text = view.texts.LoadingData;
-                _PageTitle = view.texts.Role_PageTitle;
-                _msgYes = view.texts.Yes_Text;
-                _msgNo = view.texts.No_Text;
+                _LoadingData_Text = view.texts.Get("LoadingData");
+                _PageTitle = view.texts.Get("Instance-PageTitle");
+                _msgYes = view.texts.Get("Yes-Text");
+                _msgNo = view.texts.Get("No-Text");
 
             }
 
@@ -275,9 +281,10 @@
         searchbtn.Begin();
         await view.Search();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.ErrorOnExecuteSearch, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnExecuteSearch"),
+             view.ServiceStatus.Exceptions.Messages[0].Description);
         }
 
         searchbtn.End();
@@ -298,9 +305,10 @@
 
         await loading.End();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.ErrorOnReturnData, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnReturnData"),
+              view.ServiceStatus.Exceptions.Messages[0].Description);
         }
         else
         {
@@ -318,19 +326,23 @@
 
         await view.Set();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.NoticeLabel, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("NoticeLabel"),
+             view.ServiceStatus.Exceptions.Messages[0].Description);
         }
         else
         {
             if (this.view.Inserting)
             {
-                await msgbox_create.ShowDialog(view.texts.SuccessLabel, view.texts.AfterSaveAnswering);
+                await msgbox_create.ShowDialog(view.texts.Get("SuccessLabel"),
+                view.texts.Get("AfterSaveAnswering"));
             }
             else
             {
-                await msgbox.ShowDialog(view.texts.SuccessLabel, view.texts.SuccessSaveMessage);
+                 await msgbox.ShowDialog(view.texts.Get("SuccessLabel"),
+                 view.texts.Get("SuccessSaveMessage"));
+
                 this.Back();
             }
 

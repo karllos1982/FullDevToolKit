@@ -8,6 +8,7 @@ using FullDevToolKit.Core;
 using FullDevToolKit.Sys.Models.Identity;
 using MyApp.API;
 using FullDevToolKit.ApplicationHelpers;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace MyApp.Controllers
@@ -17,12 +18,14 @@ namespace MyApp.Controllers
     [Authorize]
     public class DataCacheController : APIControllerBase
     {
+       
         public DataCacheController(
             IContext context,
             IContextBuilder contextbuilder,             
             IWebHostEnvironment hostingEnvironment,
             IMemoryCache _cache)
         {
+            memorycache = _cache;
             Init(context, contextbuilder, "");
             Context.LocalizationLanguage = Context.Settings.LocalizationLanguage;            
             LocalizationText.LoadData(context);
@@ -50,7 +53,7 @@ namespace MyApp.Controllers
                 memorycache.Set("TIPOOPERACAO", list, this.GetMemoryCacheOptionsByHour(2)); 
             }
 
-            ret = list;
+            ret = SetReturn<List<TipoOperacaoValueModel>>(list);
 
             FinalizeManager();
 
@@ -75,7 +78,7 @@ namespace MyApp.Controllers
 
             }
 
-            ret = list;
+            ret = SetReturn<List<TabelasValueModel>>(list);
 
             FinalizeManager();
 
@@ -100,7 +103,7 @@ namespace MyApp.Controllers
 
             }
 
-            ret = list;
+            ret = SetReturn<List<RoleList>>(list);
 
             FinalizeManager();
 
@@ -128,7 +131,7 @@ namespace MyApp.Controllers
 
             }
 
-            ret = list;
+            ret = SetReturn<List<LocalizationTextList>>(list);
 
             FinalizeManager();
 
@@ -137,7 +140,8 @@ namespace MyApp.Controllers
 
         [HttpGet]
         [Route("listlocalizationtexts")]
-        public async Task<object> ListLocalizationTexts()
+		
+		public async Task<object> ListLocalizationTexts()
         {
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
@@ -146,16 +150,16 @@ namespace MyApp.Controllers
             list = memorycache.Get<List<LocalizationTextResult>>("LOCALIZATIONTEXTS");
 
             if (list == null)
-            {
-                list = await Manager.IdentityModule.Domainset
+            {				
+				list = await Manager.IdentityModule.Domainset
                     .LocalizationText.Search(new LocalizationTextParam()); 
 
                 memorycache.Set("LOCALIZATIONTEXTS", list, this.GetMemoryCacheOptionsByHour(2));
 
             }
 
-            ret = list;
-
+			ret = SetReturn<List<LocalizationTextResult>>(list);
+			
             FinalizeManager();
 
             return ret;
@@ -180,7 +184,7 @@ namespace MyApp.Controllers
 
             }
 
-            ret = list;
+            ret = SetReturn<List<GroupParameterResult>>(list);
 
             FinalizeManager();
 
@@ -206,7 +210,7 @@ namespace MyApp.Controllers
 
             }
 
-            ret = list;
+            ret = SetReturn<List<ParameterResult>>(list);
 
             FinalizeManager();
 

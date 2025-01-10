@@ -7,8 +7,8 @@
 @inject HttpClient _httpclient
 @inject IAppControllerAsync<UserAuthenticated> _appctrl
 @inject IAppSettings _settings
-@inject IDataCacheGatewayManager _cache
-@inject IMembershipGatewayManager _memberservices
+@inject IDataCacheProxyManager _cache
+@inject ISystemProxyManager _systemservices
 
 
 
@@ -32,7 +32,7 @@
 
             @if (view != null)
             {
-                <div style="display:@view.SearchingState">
+                <div style="display:@view.Get("SearchingState")">
 
                     <div class="row gy-5 g-xl-10">
 
@@ -41,26 +41,26 @@
                                 <div class="card-header pt-7">
 
                                     <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.SearchButtonLabel</span>
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("SearchButtonLabel")</span>
                                     </h3>
 
                                 </div>
 
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label class="form-label">@view.texts.SearchByEmail_Label:</label>
+                                        <label class="form-label">@view.texts.Get("SearchByEmail-Label"):</label>
                                         <input type="email" @bind-value="view.param.pEmail" class="form-control"
-                                           placeholder=@view.texts.SearchByEmail_Description>
+                                           placeholder=@view.texts.Get("SearchByEmail-Description")>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="form-label">@view.texts.SearchByUserName_Label:</label>
+                                        <label class="form-label">@view.texts.Get("SearchByUserName-Label"):</label>
                                         <input type="text" maxlength="20" @bind-value="view.param.pUserName" class="form-control"
-                                           placeholder=@view.texts.SearchByUserName_Description>
+                                           placeholder=@view.texts.Get("SearchByUserName-Description")>
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="form-label">@view.texts.SearchByInstance_Label:</label>
+                                        <label class="form-label">@view.texts.Get("SearchByInstance-Label"):</label>
                                         @if (view.listInstances != null)
                                         {
                                             @if (view.listInstances.Count > 0)
@@ -78,7 +78,7 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="form-label">@view.texts.SearchByRole_Label:</label>
+                                        <label class="form-label">@view.texts.Get("SearchByRole-Label"):</label>
                                         @if (view.listRoles != null)
                                         {
                                             @if (view.listRoles.Count > 0)
@@ -97,17 +97,19 @@
 
                                     <p class="field" style="padding-top:10px">
 
-                                        <TaskButton @ref="searchbtn" OnClick="OnSearch" Title=@view.texts.SearchButtonLabel
+                                        <TaskButton @ref="searchbtn" OnClick="OnSearch" 
+                                                Title=@view.texts.Get("SearchButtonLabel")
                                                 ReadOnly=!view.Permissions.AllowRead
-                                                ActionLabel=@view.texts.SearchingLabel>
+                                                ActionLabel=@view.texts.Get("SearchingLabel")>
                                         </TaskButton>
 
                                     </p>
 
                                     <p class="field" style="padding-top:10px">
-                                        <TaskButton @ref="newbtn" OnClick="OnNew" Title=@view.texts.NewUser_Label Class="dark"
-                                                Description=@view.texts.NewUser_Description ReadOnly=!view.Permissions.AllowSave
-                                                ActionLabel=@view.texts.InsertingLoadingLabel>
+                                        <TaskButton @ref="newbtn" OnClick="OnNew" 
+                                                Title=@view.texts.Get("NewUser-Label") Class="dark"
+                                                Description=@view.texts.Get("NewUser-Description") ReadOnly=!view.Permissions.AllowSave
+                                                ActionLabel=@view.texts.Get("InsertingLoadingLabel")>
                                         </TaskButton>
 
                                     </p>
@@ -122,7 +124,7 @@
                                 <div class="card-header pt-7">
 
                                     <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.SearchResultLabel</span>
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("SearchResultLabel")</span>
                                     </h3>
                                 </div>
 
@@ -134,41 +136,43 @@
                                             <DataGrid TItem="UserResult" Data="@view.searchresult" Responsive ShowPager>
                                                 <DataGridColumns>
 
-                                                    <DataGridColumn Field="@nameof(UserResult.Email)" Caption=@view.texts.Email_Label />
+                                                    <DataGridColumn Field="@nameof(UserResult.Email)" Caption=@view.texts.Get("Email-Label") />
 
-                                                    <DataGridColumn Field="@nameof(UserResult.IsActive)" Caption=@view.texts.Active_Label>
+                                                    <DataGridColumn Field="@nameof(UserResult.IsActive)" Caption=@view.texts.Get("Active-Label")>
                                                         <DisplayTemplate>
                                                             @{
                                                                 UserResult user = (context as UserResult);
                                                                 if (user.IsActive)
                                                                 {
-                                                                    <span>@view.texts.Yes_Text</span>
+                                                                    <span>@view.texts.Get("Yes-Text")</span>
                                                                 }
                                                                 else
                                                                 {
-                                                                    <span>@view.texts.No_Text</span>
+                                                                    <span>@view.texts.Get("No-Text")</span>
                                                                 }
                                                             }
                                                         </DisplayTemplate>
                                                     </DataGridColumn>
 
-                                                    <DataGridColumn Field="@nameof(UserResult.IsLocked)" Caption=@view.texts.Locked_Label>
+                                                    <DataGridColumn Field="@nameof(UserResult.IsLocked)"
+                                                        Caption=@view.texts.Get("Locked-Label")>
                                                         <DisplayTemplate>
                                                             @{
                                                                 UserResult user = (context as UserResult);
                                                                 if (user.IsLocked)
                                                                 {
-                                                                    <span>@view.texts.Yes_Text</span>
+                                                                    <span>@view.texts.Get("Yes-Text")</span>
                                                                 }
                                                                 else
                                                                 {
-                                                                    <span>@view.texts.No_Text</span>
+                                                                    <span>@view.texts.Get("No-Text")</span>
                                                                 }
                                                             }
                                                         </DisplayTemplate>
                                                     </DataGridColumn>
 
-                                                    <DataGridColumn Field="@nameof(UserResult.UserID)" Caption=@view.texts.DetailsLabel>
+                                                    <DataGridColumn Field="@nameof(UserResult.UserID)" 
+                                                        Caption=@view.texts.Get("DetailsLabel")>
                                                         <DisplayTemplate>
                                                             @{
                                                                 UserResult user = (context as UserResult);
@@ -191,7 +195,7 @@
                                         }
                                         else
                                         {
-                                            <p> @view.texts.NoRecordsFound </p>
+                                            <p> @view.texts.Get("NoRecordsFound") </p>
                                         }
                                     }
 
@@ -225,10 +229,10 @@
 
                                             <ul class="nav nav-tabs nav-line-tabs nav-stretch fs-6 border-0 fw-bold" role="tablist">
                                                 <li class="nav-item" role="presentation">
-                                                    <a id="kt_link_usertab1" class="nav-link justify-content-center text-active-gray-800 active" data-bs-toggle="tab" role="tab" href="#kt_usertab1">@view.texts.MainData_Label</a>
+                                                    <a id="kt_link_usertab1" class="nav-link justify-content-center text-active-gray-800 active" data-bs-toggle="tab" role="tab" href="#kt_usertab1">@view.texts.Get("MainData-Label")</a>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
-                                                    <a id="kt_link_usertab2" class="nav-link justify-content-center text-active-gray-800" data-bs-toggle="tab" role="tab" href="#kt_usertab2"> @view.texts.User_SecondTabLabel </a>
+                                                    <a id="kt_link_usertab2" class="nav-link justify-content-center text-active-gray-800" data-bs-toggle="tab" role="tab" href="#kt_usertab2"> @view.texts.Get("User-SecondTabLabel") </a>
                                                 </li>
 
                                             </ul>
@@ -245,7 +249,7 @@
                                                     <div class="col-md-12">
 
                                                         <div class="form-group">
-                                                            <label class="form-label" for="name">@view.texts.UserName_Label:</label>
+                                                            <label class="form-label" for="name">@view.texts.Get("UserName-Label"):</label>
                                                             <input type="text" disabled class="form-control field" value="@view.result.UserName" />
 
                                                         </div>
@@ -255,7 +259,7 @@
                                                 <div class="row">
                                                     <div class="col-md-12">
                                                         <div class="form-group">
-                                                            <label class="form-label" for="email">@view.texts.Email_Label:</label>
+                                                            <label class="form-label" for="email">@view.texts.Get("Email-Label"):</label>
                                                             <input type="text" disabled class="form-control field" value="@view.result.Email" />
                                                         </div>
                                                     </div>
@@ -264,7 +268,7 @@
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label class="form-label" for="name">@view.texts.CreateDate_Label</label>
+                                                            <label class="form-label" for="name">@view.texts.Get("CreateDate-Label")</label>
                                                             <input type="text" disabled class="form-control field" value="@view.result.CreateDate" />
 
                                                         </div>
@@ -272,14 +276,14 @@
 
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label class="form-label" for="email">@view.texts.LastLoginDate_Label</label>
+                                                            <label class="form-label" for="email">@view.texts.Get("LastLoginDate-Label")</label>
                                                             <input type="text" disabled class="form-control field" value="@view.result.LastLoginDate" />
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-4">
                                                         <div class="">
-                                                            <label class="form-label">@view.texts.DefaultLanguage_Label :</label>
+                                                            <label class="form-label">@view.texts.Get("DefaultLanguage-Label") :</label>
                                                             <input type="text" disabled class="form-control field" value="@view.result.DefaultLanguage" />
 
                                                         </div>
@@ -291,7 +295,7 @@
                                                 <div class="row">
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label class="form-label" for="name">@view.texts.LastLoginIP_Label</label>
+                                                            <label class="form-label" for="name">@view.texts.Get("LastLoginIP-Label")</label>
                                                             <input type="text" disabled class="form-control field" value="@view.result.LastLoginIP" />
 
                                                         </div>
@@ -299,14 +303,14 @@
 
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label class="form-label" for="email">@view.texts.LoginCounter_Label</label>
+                                                            <label class="form-label" for="email">@view.texts.Get("LoginCounter-Label")</label>
                                                             <input type="text" disabled class="form-control field" value="@view.result.LoginCounter" />
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label class="form-label" for="email">@view.texts.PasswordRecovery_Label</label>
+                                                            <label class="form-label" for="email">@view.texts.Get("PasswordRecovery-Label")</label>
                                                             <input type="text" disabled class="form-control field" value="@view.result.PasswordRecoveryCode" />
                                                         </div>
                                                     </div>
@@ -324,8 +328,8 @@
                                                 <div class="row">
                                                     <div class="col-md-8">
                                                         <div class="">
-                                                            <h4>@view.texts.AlterInstance_Label:</h4>
-                                                            <label class="form-label">@view.texts.AlterInstance_Description:</label>
+                                                            <h4>@view.texts.Get("AlterInstance-Label"):</h4>
+                                                            <label class="form-label">@view.texts.Get("AlterInstance-Description"):</label>
                                                             @if (view.listInstances != null)
                                                             {
                                                                 @if (view.listInstances.Count > 0)
@@ -344,10 +348,12 @@
                                                     </div>
                                                     <div class="col-md-4" style="padding-top:52px">
 
-                                                        <TaskButton @ref="alterinstancebtn" Title=@view.texts.AlterInstance_Label OnClick="OnAlterInstance"
-                                                            Description=@view.texts.AlterInstance_Description Class="dark"
-                                                            ActionLabel=@view.texts.Altering_Label ReadOnly=!view.Permissions.AllowSave>
-                                                        </TaskButton>
+                                                        @* <TaskButton @ref="alterinstancebtn" 
+                                                            Title=@view.texts.Get("AlterInstance-Label") OnClick="OnAlterInstance"
+                                                            Description=@view.texts.Get("AlterInstance-Description") Class="dark"
+                                                            ActionLabel=@view.texts.Get("Altering-Label") ReadOnly=!view.Permissions.AllowSave>
+                                                        </TaskButton> *@
+
                                                     </div>
 
                                                 </div>
@@ -356,8 +362,8 @@
                                                 <div class="row" style="padding-top:30px">
                                                     <div class="col-md-8">
                                                         <div class="">
-                                                            <h4>@view.texts.AlterRole_Label:</h4>
-                                                            <label class="form-label">@view.texts.AlterRole_Description:</label>
+                                                            <h4>@view.texts.Get("AlterRole-Label"):</h4>
+                                                            <label class="form-label">@view.texts.Get("AlterRole-Description"):</label>
                                                             @if (view.listRoles != null & view.listRoles.Count > 0)
                                                             {
                                                                 <SelectList TItem="RoleList"
@@ -374,10 +380,12 @@
 
                                                     <div class="col-md-4" style="padding-top:52px">
 
-                                                        <TaskButton @ref="alterrolebtn" Title=@view.texts.AlterRole_Label OnClick="OnAlterRole"
-                                                            Description=@view.texts.AlterRole_Description Class="dark"
-                                                            ActionLabel=@view.texts.Altering_Label ReadOnly=!view.Permissions.AllowSave>
-                                                        </TaskButton>
+                                                       @*  <TaskButton @ref="alterrolebtn" 
+                                                            Title=@view.texts.Get("AlterRole-Label") OnClick="OnAlterRole"
+                                                            Description=@view.texts.Get("AlterRole-Description") Class="dark"
+                                                            ActionLabel=@view.texts.Get("Altering-Label") ReadOnly=!view.Permissions.AllowSave>
+                                                        </TaskButton> *@
+
                                                     </div>
 
                                                 </div>
@@ -415,7 +423,7 @@
                                         <div class="row" style="padding-top:20px">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="name">@view.texts.UserStatus_Label:</label>
+                                                    <label class="form-label" for="name">@view.texts.Get("UserStatus-Label"):</label>
 
 
                                                 </div>
@@ -425,7 +433,7 @@
                                         <div class="row" style="padding-top:20px">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="name">@view.texts.Active_Label:</label>
+                                                    <label class="form-label" for="name">@view.texts.Get("Active-Label"):</label>
                                                     <Switch TValue="bool" @bind-Checked="@view.isUserActive"></Switch>
 
                                                 </div>
@@ -436,7 +444,7 @@
                                         <div class="row" style="padding-top:20px">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    <label class="form-label" for="name">@view.texts.Locked_Label:</label>
+                                                    <label class="form-label" for="name">@view.texts.Get("Locked-Label"):</label>
                                                     <Switch TValue="bool" @bind-Checked="@view.isUserLocked"></Switch>
 
                                                 </div>
@@ -445,9 +453,9 @@
 
                                         <p class="field" style="padding-top:10px">
 
-                                            <TaskButton @ref="statebtn" Title=@view.texts.ChangeUserState_Label OnClick="OnChangeState"
-                                                Description=@view.texts.ChangeUserState_Description
-                                                ActionLabel=@view.texts.Altering_Label ReadOnly=!view.Permissions.AllowSave>
+                                            <TaskButton @ref="statebtn" Title=@view.texts.Get("ChangeUserState-Label") OnClick="OnChangeState"
+                                                Description=@view.texts.Get("ChangeUserState-Description")
+                                                ActionLabel=@view.texts.Get("Altering-Label") ReadOnly=!view.Permissions.AllowSave>
                                             </TaskButton>
 
                                         </p>
@@ -473,7 +481,7 @@
                                     <div class="card-header pt-7">
 
                                         <h3 class="card-title align-items-start flex-column">
-                                            <span class="card-label fw-bold text-dark">@view.texts.CreateUser_Label</span>
+                                            <span class="card-label fw-bold text-dark">@view.texts.Get("CreateUser-Label")</span>
                                         </h3>
 
                                     </div>
@@ -484,7 +492,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="">
-                                                    <label class="form-label">@view.texts.Instance_Label:</label>
+                                                    <label class="form-label">@view.texts.Get("Instance-Label"):</label>
                                                     @if (view.listInstances != null)
                                                     {
                                                         @if (view.listInstances.Count > 0)
@@ -509,7 +517,7 @@
                                         <div class="row" style="padding-top:20px">
                                             <div class="col-md-12">
                                                 <div class="">
-                                                    <label class="form-label">@view.texts.Role_Label:</label>
+                                                    <label class="form-label">@view.texts.Get("Role-Label"):</label>
                                                     @if (view.listRoles != null & view.listRoles.Count > 0)
                                                     {
                                                         <SelectList TItem="RoleList"
@@ -529,7 +537,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="">
-                                                    <label class="form-label">@view.texts.Email_Label:</label>
+                                                    <label class="form-label">@view.texts.Get("Email-Label"):</label>
                                                     <input type="text" @bind-value="@view.newModel.Email" maxlength="100" class="form-control" />
                                                     <label class="validation_field">@view.GetSummaryMessage("Email") </label>
                                                 </div>
@@ -539,7 +547,7 @@
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="">
-                                                    <label class="form-label">@view.texts.UserName_Label:</label>
+                                                    <label class="form-label">@view.texts.Get("UserName-Label"):</label>
                                                     <input type="text" @bind-value="@view.newModel.UserName" maxlength="50" class="form-control" />
                                                     <label class="validation_field">@view.GetSummaryMessage("UserName") </label>
                                                 </div>
@@ -549,7 +557,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="">
-                                                    <label class="form-label">@view.texts.Password_Label :</label>
+                                                    <label class="form-label">@view.texts.Get("Password-Label") :</label>
                                                     <input type="password" @bind-value="@view.newModel.Password" maxlength="8" class="form-control" />
                                                     <label class="validation_field">@view.GetSummaryMessage("Password") </label>
                                                 </div>
@@ -559,7 +567,7 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="">
-                                                    <label class="form-label">@view.texts.DefaultLanguage_Label :</label>
+                                                    <label class="form-label">@view.texts.Get("DefaultLanguage-Label") :</label>
 
                                                     @if (view.listLangs != null)
                                                     {
@@ -582,9 +590,10 @@
 
                                         <p class="field" style="padding-top:10px">
 
-                                            <TaskButton @ref="savenewbtn" OnClick="OnCreate" Title=@view.texts.CreateUserButton_Label
-                                                Description=@view.texts.CreateUser_Description
-                                                ActionLabel=@view.texts.Saving_Label ReadOnly=!view.Permissions.AllowSave>
+                                            <TaskButton @ref="savenewbtn" OnClick="OnCreate" 
+                                                Title=@view.texts.Get("CreateUserButton_Label")
+                                                Description=@view.texts.Get("CreateUser-Description")
+                                                ActionLabel=@view.texts.Get("Saving-Label") ReadOnly=!view.Permissions.AllowSave>
                                             </TaskButton>
 
                                         </p>
@@ -646,18 +655,18 @@
 
                 this.InitServices();
 
-                view = new UserViewModel((_memberservices as MembershipGateway),
-                   (_cache as DataCacheGateway), user);
+                view = new UserViewModel((_systemservices as SystemProxy),
+                   (_cache as DataCacheProxy), user);
 
                 view.Permissions
                     = BaseViewModel.SetPermissions(permissions, "SYSUSER", false);
 
                 await view.InitializeModels();
 
-                _LoadingData_Text = view.texts.LoadingData;
-                _PageTitle = view.texts.User_PageTitle;
-                _msgYes = view.texts.Yes_Text;
-                _msgNo = view.texts.No_Text;
+                _LoadingData_Text = view.texts.Get("LoadingData");
+                _PageTitle = view.texts.Get("Instance-PageTitle");
+                _msgYes = view.texts.Get("Yes-Text");
+                _msgNo = view.texts.Get("No-Text");
 
             }
 
@@ -673,9 +682,10 @@
         searchbtn.Begin();
         await view.Search();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.ErrorOnExecuteSearch, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnExecuteSearch"),
+             view.ServiceStatus.Exceptions.Messages[0].Description);
         }
 
         searchbtn.End();
@@ -696,9 +706,10 @@
 
         await loading.End();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.ErrorOnReturnData, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnReturnData"),
+                 view.ServiceStatus.Exceptions.Messages[0].Description);
         }
         else
         {
@@ -714,13 +725,17 @@
         statebtn.Begin();
         await view.ChangeState();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.AlterStatus_Error, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("AlterStatus-Error"),
+             view.ServiceStatus.Exceptions.Messages[0].Description);
+            
         }
         else
-        {
-            await msgbox.ShowDialog(view.texts.NoticeLabel, view.texts.AlterStatus_Success);
+        {            
+
+            await msgbox.ShowDialog(view.texts.Get("NoticeLabel"),
+                view.texts.Get("AlterStatus-Success"));
         }
 
         statebtn.End();
@@ -733,14 +748,17 @@
 
         await view.CreateNew();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.ErrorOnCreateNewRecord, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnCreateNewRecord"),
+                view.ServiceStatus.Exceptions.Messages[0].Description);
+           
         }
         else
         {
             this.Back();
-            await msgbox_create.ShowDialog(view.texts.NoticeLabel, view.texts.AfterSaveAnswering);
+            await msgbox_create.ShowDialog(view.texts.Get("SuccessLabel"),
+              view.texts.Get("AfterSaveAnswering"));
 
         }
 
@@ -769,44 +787,6 @@
         NavigationManager.NavigateTo(url);
 
     }
-
-    public async Task OnAlterInstance()
-    {
-        alterinstancebtn.Begin();
-        await view.AlterInstance();
-
-        if (!view.ExecutionStatus.Status)
-        {
-            await msgbox.ShowDialog(view.texts.AlterInstance_Error, view.ExecutionStatus.Error.Message);
-        }
-        else
-        {
-            await msgbox.ShowDialog(view.texts.NoticeLabel, view.texts.AlterInstance_Success);
-        }
-
-        alterinstancebtn.End();
-
-    }
-
-
-    public async Task OnAlterRole()
-    {
-        alterrolebtn.Begin();
-        await view.AlterRole();
-
-        if (!view.ExecutionStatus.Status)
-        {
-            await msgbox.ShowDialog(view.texts.AlterRole_Error, view.ExecutionStatus.Error.Message);
-        }
-        else
-        {
-            await msgbox.ShowDialog(view.texts.NoticeLabel, view.texts.AlterRole_Success);
-        }
-
-        alterrolebtn.End();
-
-    }
-
 
 
 }

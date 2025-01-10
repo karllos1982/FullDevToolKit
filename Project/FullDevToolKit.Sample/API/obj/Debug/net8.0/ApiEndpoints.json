@@ -169,6 +169,16 @@
   },
   {
     "ContainingType": "MyApp.Controllers.DataCacheController",
+    "Method": "ListGroupParameter",
+    "RelativePath": "DataCache/listgroupparameter",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.Controllers.DataCacheController",
     "Method": "ListLanguages",
     "RelativePath": "DataCache/listlangs",
     "HttpMethod": "GET",
@@ -181,6 +191,16 @@
     "ContainingType": "MyApp.Controllers.DataCacheController",
     "Method": "ListLocalizationTexts",
     "RelativePath": "DataCache/listlocalizationtexts",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.Controllers.DataCacheController",
+    "Method": "ListParameter",
+    "RelativePath": "DataCache/listparameter",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -836,9 +856,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MyApp.Controllers.SessionController",
+    "ContainingType": "MyApp.Controllers.SessionLogController",
     "Method": "Get",
-    "RelativePath": "system/Session/get",
+    "RelativePath": "system/SessionLog/get",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -852,9 +872,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MyApp.Controllers.SessionController",
+    "ContainingType": "MyApp.Controllers.SessionLogController",
     "Method": "List",
-    "RelativePath": "system/Session/list",
+    "RelativePath": "system/SessionLog/list",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -868,9 +888,9 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MyApp.Controllers.SessionController",
+    "ContainingType": "MyApp.Controllers.SessionLogController",
     "Method": "Search",
-    "RelativePath": "system/Session/search",
+    "RelativePath": "system/SessionLog/search",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,

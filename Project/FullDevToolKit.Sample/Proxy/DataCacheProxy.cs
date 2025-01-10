@@ -89,22 +89,39 @@ namespace MyApp.Proxys
             return ret;
         }
 
-        public async Task<List<LocalizationTextResult>?> ListLocalizationTexts()
-        {
-            List<LocalizationTextResult> ret = new List<LocalizationTextResult>();
-            APIResponse<List<LocalizationTextResult>?> response = null;
+        //public async Task<List<LocalizationTextResult>?> ListLocalizationTexts()
+        //{
+        //    List<LocalizationTextResult> ret = new List<LocalizationTextResult>();
+        //    APIResponse<List<LocalizationTextResult>?> response = null;
 
-            response = await this.GetAsJSON<List<LocalizationTextResult>?>("listlocalizationtexts", null);
+        //    response = await this.GetAsJSON<List<LocalizationTextResult>?>("listlocalizationtexts", null);
+
+        //    if (response.IsSuccess)
+        //    {
+        //        ret = response.Data;
+        //    }
+
+        //    return ret;
+        //}
+
+
+		public async Task<List<LocalizationTextResult>> ListLocalizationTexts()
+		{
+            List<LocalizationTextResult> ret = null;
+
+			APIResponse<List<LocalizationTextResult>?> response = null;			
+
+			response = await GetAsJSON<List<LocalizationTextResult>?>("listlocalizationtexts", null);
 
             if (response.IsSuccess)
             {
-                ret = response.Data;
+                ret = response.Data; 
             }
 
-            return ret;
-        }
-       
+			return ret;
+		}
 
-    }
+
+	}
 
 }

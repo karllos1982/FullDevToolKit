@@ -6,8 +6,8 @@
 @inject HttpClient _httpclient
 @inject IAppControllerAsync<UserAuthenticated> _appctrl
 @inject IAppSettings _settings
-@inject IDataCacheGatewayManager _cache
-@inject IMembershipGatewayManager _memberservices
+@inject IDataCacheProxyManager _cache
+@inject ISystemProxyManager _systemservices
 
 
 <MessageBox @ref="msgbox"></MessageBox>
@@ -38,37 +38,37 @@
                                 <div class="card-header pt-7">
 
                                     <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.GetText("SearchButtonLabel")</span>
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("SearchButtonLabel")</span>
                                     </h3>
 
                                 </div>
 
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label class="form-label">@view.texts.GetText("SearchByInstanceName-Label"):</label>
+                                        <label class="form-label">@view.texts.Get("SearchByInstanceName-Label"):</label>
                                         <input type="text" @bind-value="view.param.pInstanceName" class="form-control"
-                                           placeholder="@view.texts.GetText("SearchByInstanceName-Description") ">
+                                               placeholder="@view.texts.Get("SearchByInstanceName-Description") ">
                                     </div>
 
                                     <div class="form-group">
-                                        <label class="form-label">@view.texts.GetText("SearchByInstanceTypeName-Label") :</label>
+                                        <label class="form-label">@view.texts.Get("SearchByInstanceTypeName-Label") :</label>
                                         <input type="text" maxlength="20" @bind-value="view.param.pInstanceTypeName" class="form-control"
-                                           placeholder=@view.texts.GetText("SearchByInstanceTypeName-Description")>
+                                               placeholder=@view.texts.Get("SearchByInstanceTypeName-Description")>
                                     </div>
 
                                     <p class="field" style="padding-top:10px">
 
-                                        <TaskButton @ref="searchbtn" OnClick="OnSearch" Title=@view.texts.GetText("SearchButtonLabel")
+                                        <TaskButton @ref="searchbtn" OnClick="OnSearch" Title=@view.texts.Get("SearchButtonLabel")
                                                 ReadOnly=!view.Permissions.AllowRead
-                                                ActionLabel=@view.texts.GetText("SearchingLabel")>
+                                                    ActionLabel=@view.texts.Get("SearchingLabel")>
                                         </TaskButton>
 
                                     </p>
 
                                     <p class="field" style="padding-top:10px">
-                                        <TaskButton @ref="newbtn" OnClick="OnNew" Title=@view.texts.GetText("NewInstance-Label") Class="dark"
-                                                Description=@view.texts.GetText("NewInstance-Description") ReadOnly=!view.Permissions.AllowSave
-                                                ActionLabel=@view.texts.InsertingLoadingLabel>
+                                        <TaskButton @ref="newbtn" OnClick="OnNew" Title=@view.texts.Get("NewInstance-Label") Class="dark"
+                                                    Description=@view.texts.Get("NewInstance-Description") ReadOnly=!view.Permissions.AllowSave
+                                                    ActionLabel=@view.texts.Get("InsertingLoadingLabel")>
                                         </TaskButton>
 
                                     </p>
@@ -83,7 +83,7 @@
                                 <div class="card-header pt-7">
 
                                     <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.GetText("SearchResultLabel")</span>
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("SearchResultLabel")</span>
                                     </h3>
                                 </div>
 
@@ -95,21 +95,21 @@
                                             <DataGrid TItem="InstanceResult" Data="@view.searchresult" Responsive ShowPager>
                                                 <DataGridColumns>
 
-                                                    <DataGridColumn Field="@nameof(InstanceResult.InstanceTypeName)" Caption=@view.texts.GetText("InstanceTypeName-Label") />
-                                                    <DataGridColumn Field="@nameof(InstanceResult.InstanceName)" Caption=@view.texts.GetText("InstanceName-Label") />
+                                                    <DataGridColumn Field="@nameof(InstanceResult.InstanceTypeName)" Caption=@view.texts.Get("InstanceTypeName-Label") />
+                                                    <DataGridColumn Field="@nameof(InstanceResult.InstanceName)" Caption=@view.texts.Get("InstanceName-Label") />
 
-                                                    <DataGridColumn Field="@nameof(InstanceResult.IsActive)" Caption=@view.texts.GetText("Active-Label")>
+                                                    <DataGridColumn Field="@nameof(InstanceResult.IsActive)" Caption=@view.texts.Get("Active-Label")>
                                                         <DisplayTemplate>
                                                             @{
                                                                 InstanceResult obj = (context as InstanceResult);
 
                                                                 if (obj.IsActive)
                                                                 {
-                                                                    <span>@view.texts.GetText("Yes-Text")</span>
+                                                                    <span>@view.texts.Get("Yes-Text")</span>
                                                                 }
                                                                 else
                                                                 {
-                                                                    <span>@view.texts.GetText("No-Text")</span>
+                                                                    <span>@view.texts.Get("No-Text")</span>
                                                                 }                                                                
                                                               
                                                             }
@@ -118,7 +118,7 @@
                                                     </DataGridColumn>
 
 
-                                                    <DataGridColumn Field="@nameof(InstanceResult.InstanceID)" Caption=@view.texts.GetText("Edit-Label")>
+                                                    <DataGridColumn Field="@nameof(InstanceResult.InstanceID)" Caption=@view.texts.Get("Edit-Label")>
                                                         <DisplayTemplate>
                                                             @{
                                                                 InstanceResult obj = (context as InstanceResult);
@@ -140,7 +140,7 @@
                                         }
                                         else
                                         {
-                                            <p> @view.texts.GetText("NoRecordsFound") </p>
+                                            <p> @view.texts.Get("NoRecordsFound") </p>
                                         }
                                     }
 
@@ -167,7 +167,7 @@
                                 <div class="card-header pt-7">
 
                                     <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.GetText("InstanceRecord-Label") </span>
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("InstanceRecord-Label") </span>
                                     </h3>
 
                                 </div>
@@ -178,7 +178,7 @@
                                         <div class="col-md-12">
 
                                             <div class="form-group">
-                                                <label class="form-label" for="name">@view.texts.GetText("InstanceTypeName-Label"):</label>
+                                                <label class="form-label" for="name">@view.texts.Get("InstanceTypeName-Label"):</label>
                                                 <input type="text" class="form-control field" @bind-value="@view.result.InstanceTypeName" />
                                                 <label class="validation_field">@view.GetSummaryMessage("InstanceTypeName") </label>
                                             </div>
@@ -188,7 +188,7 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="form-label" for="email">@view.texts.GetText("InstanceName-Label"):</label>
+                                                <label class="form-label" for="email">@view.texts.Get("InstanceName-Label"):</label>
                                                 <input type="text" class="form-control field" @bind-value="@view.result.InstanceName" />
                                                 <label class="validation_field">@view.GetSummaryMessage("InstanceName") </label>
                                             </div>
@@ -198,7 +198,7 @@
                                     <div class="row" style="padding-top:20px">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="form-label" for="name">@view.texts.GetText("Active-Label"):</label>
+                                                <label class="form-label" for="name">@view.texts.Get("Active-Label"):</label>
                                                 <Switch TValue="bool" @bind-Checked="@view.result.IsActive"></Switch>
 
                                             </div>
@@ -211,9 +211,9 @@
 
                                             <p class="field" style="padding-top:10px">
 
-                                                <TaskButton @ref="savenewbtn" OnClick="OnSet" Title=@view.texts.GetText("SaveInstanceButton-Label")
-                                                        Description=@view.texts.GetText("SaveInstanceButton-Description")
-                                                        ActionLabel=@view.texts.GetText("Saving-Label")
+                                                <TaskButton @ref="savenewbtn" OnClick="OnSet" Title=@view.texts.Get("SaveInstanceButton-Label")
+                                                            Description=@view.texts.Get("SaveInstanceButton-Description")
+                                                            ActionLabel=@view.texts.Get("Saving-Label")
                                                         ReadOnly=!view.Permissions.AllowSave>
                                                 </TaskButton>
 
@@ -242,7 +242,7 @@
 
 @code {
 
- 
+
     private InstanceViewModel view;
 
     //
@@ -263,18 +263,20 @@
 
                 this.InitServices();
 
-                view = new InstanceViewModel((_memberservices as MembershipGateway),
-                   (_cache as DataCacheGateway), user);
+                view = new InstanceViewModel((_systemservices as SystemProxy),
+                   (_cache as DataCacheProxy), user, _httpclient, _settings.ServiceURL, _appctrl.UserInfo.Token);
+                
+                view.texts = this.localization;
 
                 view.Permissions
                     = BaseViewModel.SetPermissions(permissions, "SYSINSTANCE", false);
 
                 await view.InitializeModels();
 
-                _LoadingData_Text = view.texts.GetText("LoadingData");
-                _PageTitle = view.texts.GetText("Instance-PageTitle");
-                _msgYes = view.texts.GetText("Yes-Text");
-                _msgNo = view.texts.GetText("No-Text");
+                _LoadingData_Text = this.view.texts.Get("LoadingData");
+                _PageTitle = this.view.texts.Get("Instance-PageTitle");
+                _msgYes = this.view.texts.Get("Yes-Text");
+                _msgNo = this.view.texts.Get("No-Text");
 
             }
 
@@ -290,9 +292,10 @@
         searchbtn.Begin();
         await view.Search();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.ErrorOnExecuteSearch, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(localization.Get("ErrorOnExecuteSearch"),
+                view.ServiceStatus.Exceptions.Messages[0].Description);
         }
 
         searchbtn.End();
@@ -313,9 +316,10 @@
 
         await loading.End();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.ErrorOnReturnData, view.ExecutionStatus.Error.Message);
+                 await msgbox.ShowDialog(localization.Get("ErrorOnReturnData"), 
+                    view.ServiceStatus.Exceptions.Messages[0].Description);
         }
         else
         {
@@ -333,19 +337,22 @@
 
         await view.Set();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.NoticeLabel, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(localization.Get("NoticeLabel"), 
+                view.ServiceStatus.Exceptions.Messages[0].Description);
         }
         else
         {
             if (this.view.Inserting)
             {
-                await msgbox_create.ShowDialog(view.texts.SuccessLabel, view.texts.AfterSaveAnswering );
+                await msgbox_create.ShowDialog(localization.Get("SuccessLabel"), 
+                    localization.Get("AfterSaveAnswering"));
             }
             else
             {
-                await msgbox.ShowDialog(view.texts.SuccessLabel, view.texts.SuccessSaveMessage);
+                await msgbox.ShowDialog(localization.Get("SuccessLabel"), 
+                    localization.Get("SuccessSaveMessage"));
                 this.Back();
             }
 

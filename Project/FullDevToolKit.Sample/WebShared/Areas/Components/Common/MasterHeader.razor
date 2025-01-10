@@ -252,7 +252,7 @@
 	public UserAuthenticated User { get; set; }
 
 	[Parameter]
-	public MenuLocalization Localization { get; set; }
+	public DefaultLocalization Localization { get; set; }
 
 	[Parameter]
 	public bool IsLogged { get; set; }
@@ -267,6 +267,6 @@
 	}
 
 	[Parameter]
-	public AuthProxys Service { get; set; }
+	public AuthProxy Service { get; set; }
 	
 }

@@ -6,8 +6,8 @@
 @inject HttpClient _httpclient
 @inject IAppControllerAsync<UserAuthenticated> _appctrl
 @inject IAppSettings _settings
-@inject IDataCacheGatewayManager _cache
-@inject IMembershipGatewayManager _memberservices
+@inject IDataCacheProxyManager _cache
+@inject ISystemProxyManager _systemservices
 
 
 <MessageBox @ref="msgbox"></MessageBox>
@@ -33,7 +33,7 @@
 								    <div class="card-header pt-7">
 									  
 									    <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.SearchButtonLabel</span>
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("SearchButtonLabel")</span>
                                     </h3>									        
 									       
                                     </div>
@@ -41,13 +41,13 @@
                                     <div class="card-body">
 							             	
                                         <div class="form-group">
-                                            <label class="form-label">@view.texts.SearchByEmail_Label:</label>
+                                            <label class="form-label">@view.texts.Get("SearchByEmail-Label"):</label>
                                             <input type="email" @bind-value="@view.param.pEmail"
-                                           placeholder=@view.texts.SearchByEmail_Description  class="form-control field">
+                                           placeholder=@view.texts.Get("SearchByEmail-Description") class="form-control field">
                                     </div>                              
                                  
                                         <div class="form-group">
-                                            <label class="form-label" for="name">@view.texts.SearchByDateInterval_Label:</label>
+                                            <label class="form-label" for="name">@view.texts.Get("SearchByDateInterval-Label"):</label>
                                               <Switch TValue="bool" @bind-Checked="@view.param.SearchByDate"></Switch>
                                     
                                         </div>
@@ -56,10 +56,10 @@
                                         {
                                             <div class="form-group">
 
-                                                <span>@view.texts.SearchByInicialDate_Label:</span>
+                                                <span>@view.texts.Get("SearchByInicialDate-Label"):</span>
                                                 <DateEdit TValue="DateTime" @bind-Date="@view.param.pDate_Start" />
                                                 <br/>
-                                                <span>@view.texts.SearchByFinalDate_Label:</span>
+                                                <span>@view.texts.Get("SearchByFinalDate-Label"):</span>
                                                 <DateEdit TValue="DateTime" @bind-Date="@view.param.pData_End" />                                        
 
                                             </div>
@@ -67,9 +67,10 @@
 
                                         <p class="field" style="padding-top:10px">
 
-                                        <TaskButton @ref="searchbtn" OnClick="OnSearch" Title=@view.texts.SearchButtonLabel
+                                        <TaskButton @ref="searchbtn" OnClick="OnSearch" 
+                                                Title=@view.texts.Get("SearchButtonLabel")
                                                 ReadOnly=!view.Permissions.AllowRead
-                                                ActionLabel=@view.texts.SearchingLabel>
+                                                ActionLabel=@view.texts.Get("SearchingLabel")>
                                         </TaskButton>
 
                                         </p>                                            
@@ -85,7 +86,7 @@
 									<div class="card-header pt-7">
 											
 										<h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.SearchResultLabel</span>
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("SearchResultLabel")</span>
                                     </h3>
                                     </div>
 
@@ -99,10 +100,10 @@
                                              
                                                             <DataGridColumns>
 
-                                                                <DataGridColumn Field="@nameof(SessionLogResult.Date)" Caption=@view.texts.AccessDate_Label />
-                                                                <DataGridColumn Field="@nameof(SessionLogResult.Email)" Caption=@view.texts.Email_Label />
-                                                                <DataGridColumn Field="@nameof(SessionLogResult.UserName)" Caption=@view.texts.UserName_Label />
-                                                                <DataGridColumn Field="@nameof(SessionLogResult.IP)" Caption=@view.texts.IP_Label />
+                                                                <DataGridColumn Field="@nameof(SessionLogResult.Date)" Caption=@view.texts.Get("AccessDate-Label") />
+                                                                <DataGridColumn Field="@nameof(SessionLogResult.Email)" Caption=@view.texts.Get("Email-Label") />
+                                                                <DataGridColumn Field="@nameof(SessionLogResult.UserName)" Caption=@view.texts.Get("UserName-Label") />
+                                                                <DataGridColumn Field="@nameof(SessionLogResult.IP)" Caption=@view.texts.Get("IP-Label") />
 
                                                              </DataGridColumns>
                                       
@@ -111,7 +112,7 @@
                                                 }
                                                 else
                                                 {
-                                                    <p> @view.texts.NoRecordsFound </p>
+                                                    <p> @view.texts.Get("NoRecordsFound") </p>
                                                 }
                                             }
                                          
@@ -145,7 +146,7 @@
 
     //
   
-    private SessionViewModel view; 
+    private SessionLogViewModel view; 
 
     //
 
@@ -166,16 +167,16 @@
 
                 this.InitServices();
 
-                view = new SessionViewModel((_memberservices as MembershipGateway),
-                   (_cache as DataCacheGateway), user);
+                view = new SessionLogViewModel((_systemservices as SystemProxy),
+                   (_cache as DataCacheProxy), user);
 
                 view.Permissions
                     = BaseViewModel.SetPermissions(permissions, "SYSSESSION", false);
 
                 await view.InitializeModels();            
 
-                _LoadingData_Text = view.texts.LoadingData;
-                _PageTitle = view.texts.SessionLog_PageTitle;
+                _LoadingData_Text = view.texts.Get("LoadingData");
+                _PageTitle = view.texts.Get("SessionLog-PageTitle");
            
             }
 
@@ -190,9 +191,10 @@
         searchbtn.Begin(); 
         await view.Search();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.ErrorOnExecuteSearch, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnExecuteSearch"),
+             view.ServiceStatus.Exceptions.Messages[0].Description);
         }
 
         searchbtn.End();
@@ -213,9 +215,10 @@
 
         await loading.End();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.ErrorOnReturnData, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnReturnData"),
+                view.ServiceStatus.Exceptions.Messages[0].Description);
         }
         else
         {

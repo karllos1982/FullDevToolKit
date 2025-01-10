@@ -273,12 +273,8 @@ namespace FullDevToolKit.Sys.Domains
 
             foreach (PropertyInfo p in prop)
             {
-
-                auxname = p.Name;
-                auxname = auxname.Replace("_", "-");
-
+                auxname = p.Name;                
                 text = GetText(textLists, auxname, language);
-
                 p.SetValue(this, text, null);
 
             }

@@ -30,10 +30,13 @@ namespace MyApp.ViewModel
         public string Get(string name)
         {
             string ret = name;
-            
-            if (_texts.ContainsKey(name))
+
+            if (_texts != null)
             {
-                ret = _texts[name];
+                if (_texts.ContainsKey(name))
+                {
+                    ret = _texts[name];
+                }
             }
             
             return ret;

@@ -42,7 +42,9 @@
 						    <!--begin::Title-->
 						    <div class="card-title d-flex align-items-center">
 										
-							    <h3 class="fw-bold m-0 text-gray-800">@_localization.MyProfile_Label </h3>
+							    <h3 class="fw-bold m-0 text-gray-800">
+                                    @_localization.Get("MyProfile-Label")
+                                 </h3>
 						    </div>
 						    <!--end::Title-->
 						    <!--begin::Toolbar-->
@@ -50,10 +52,13 @@
 							    <!--begin::Tab nav-->
 							    <ul class="nav nav-tabs nav-line-tabs nav-stretch fs-6 border-0 fw-bold" role="tablist">
 								    <li class="nav-item" role="presentation">
-                                        <a id="kt_link_tab1" class="nav-link justify-content-center text-active-gray-800 active" data-bs-toggle="tab" role="tab" href="#kt_tab1">@_localization.MainProfileData_Label</a>
+                                        <a id="kt_link_tab1" class="nav-link justify-content-center text-active-gray-800 active" data-bs-toggle="tab" role="tab" href="#kt_tab1">
+                                            @_localization.Get("MainProfileData-Label")
+                                        </a>
 								    </li>
 								    <li class="nav-item" role="presentation">
-                                        <a id="kt_link_tab2" class="nav-link justify-content-center text-active-gray-800" data-bs-toggle="tab" role="tab" href="#kt_tab2">@_localization.AlterPassword_Label</a>
+                                        <a id="kt_link_tab2" class="nav-link justify-content-center text-active-gray-800" data-bs-toggle="tab" role="tab" href="#kt_tab2">
+                                            @_localization.Get("AlterPassword-Label")</a>
 								    </li>								   
 							    </ul>
 							    <!--end::Tab nav-->
@@ -88,37 +93,37 @@
 													<!--begin::Name-->
 													<div class="d-flex align-items-center mb-2">
 														 <a class="text-gray-900 text-hover-primary fs-2 fw-bold me-1" title="User Name"> 
-                                                             @_localization.UserName_Label: @User.UserName
+                                                             @_localization.Get("UserName-Label"): @User.UserName
                                                           </a>													
 													</div>
 
                                                     <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
 														 <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" title="Role Name">
-                                                              @_localization.Role_Label: @User.RoleName
+                                                              @_localization.Get("Role-Label"): @User.RoleName
                                                           </a>
                                                     </div>
 
                                                     <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
                                                             <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" title="E-mail">
-                                                                @_localization.Email_Label:   @User.Email
+                                                                @_localization.Get("Email-Label"):   @User.Email
                                                             </a>
                                                     </div>
 
                                                     <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
                                                             <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" title="Instance Name"> 
-                                                            @_localization.Instance_Label :  @User.InstanceName 
+                                                            @_localization.Get("Instance-Label") :  @User.InstanceName 
                                                             </a>
                                                     </div>
 
                                                     <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
                                                             <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" title="Instance Name">
-                                                                @_localization.LanguageRole_Label: @User.LocalizationLanguage
+                                                                @_localization.Get("LanguageRole-Label"): @User.LocalizationLanguage
                                                             </a>
                                                     </div>
 
 
                                                     <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
-                                                            <span>@_localization.AlterProfileImage_Label:</span>
+                                                            <span>@_localization.Get("AlterProfileImage-Label"):</span>
 
                                                     </div>
                                                     
@@ -141,11 +146,11 @@
                                                                      
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <h5>1. @_localization.AlterPasswordStep1_Label  </h5>
+                                                    <h5>1. @_localization.Get("AlterPasswordStep1-Label")  </h5>
 
-                                            <TaskButton @ref="sendcodebtn" OnClick="SendCode" 
-                                                            Title=@_localization.SendCodeButton_Label
-                                                             ActionLabel=@_localization.SendText_Description>
+                                                    <TaskButton @ref="sendcodebtn" OnClick="SendCode" 
+                                                            Title=@_localization.Get("SendCodeButton-Label")
+                                                             ActionLabel=@_localization.Get("SendText-Description")>
                                                      </TaskButton>       
 
                                                 </div>
@@ -154,14 +159,14 @@
 
                                             <div class="row" style="margin-top:20px">
                                                 <div class="col-md-12">
-                                                    <h5> 2.  @_localization.AlterPasswordStep2_Label :</h5>
+                                                    <h5> 2.  @_localization.Get("AlterPasswordStep2-Label") :</h5>
                                                  </div>
                                             </div>
 
                                             <div class="row" style="margin-top:20px">
                                                 <div class="col-md-12"> 
                                                     <input type="email" @bind-value=@changeObj.Code class="form-control"
-                                                         placeholder=@_localization.InputCode_Description>
+                                                         placeholder=@_localization.Get("InputCode-Description")>
                                                  </div>
                                             </div>
 
@@ -169,7 +174,7 @@
                                                 <div class="col-md-12"> 
                                                    <input type="password" @bind-value=@changeObj.NewPassword 
                                                             class="form-control" maxlength="10"
-                                                             placeholder=@_localization.InputNewPassword_Label>
+                                                             placeholder=@_localization.Get("InputNewPassword-Label")>
                                         
                                                 </div>
                                             </div>
@@ -178,8 +183,8 @@
                                                 <div class="col-md-12"> 
                                                                     
                                                      <TaskButton @ref="alterarsenhabtn" OnClick="ChangePassword"
-                                                             Title=@_localization.AlterPasswordButton_Label                                                             
-                                                             ActionLabel=@_localization.AlterPasswordButton_Loading>
+                                                             Title=@_localization.Get("AlterPasswordButton-Label")                                                            
+                                                             ActionLabel=@_localization.Get("AlterPasswordButton-Loading")>
                                                       </TaskButton>    
 
                                                 </div>
@@ -222,10 +227,10 @@
 
     private ChangeUserPassword changeObj = new ChangeUserPassword();
 
-    private MenuLocalization _localization = null; 
+    private DefaultLocalization _localization = null; 
 
     [Parameter]
-    public MenuLocalization Localization { 
+    public DefaultLocalization Localization { 
         set
         {
             if (value != null)
@@ -247,7 +252,7 @@
     public UserAuthenticated User { get; set; }
 
     [Parameter]
-    public AuthProxys Service { get; set; }
+    public AuthProxy Service { get; set; }
 
 
     [Parameter]
@@ -274,17 +279,19 @@
 
         sendcodebtn.Begin();
 
-        await Service.RequestChangePasswordCode(User.Email);
+        
+        APIResponse<bool> response
+            = await Service.RequestChangePasswordCode(User.Email);
 
-        if (Service.APIResponse.StatusOK)
+        if (response.IsSuccess)
         {
-            await msgbox.ShowDialog(_localization.ActivateCode_Title, _localization.ActivateCode_Message);
+            await msgbox.ShowDialog(_localization.Get("ActivateCode-Title"),
+                _localization.Get("ActivateCode-Message"));
         }
         else
-        {
-            Exception error = null;
-            Service.GetDefaultError(ref error); 
-            await msgbox.ShowDialog(_localization.NoticeLabel, error.Message);
+        {            
+            await msgbox.ShowDialog(_localization.Get("NoticeLabel"), 
+                response.Exceptions.Messages[0].Description);
         }
         sendcodebtn.End();    
 
@@ -296,17 +303,19 @@
         alterarsenhabtn.Begin();
 
         changeObj.Email = User.Email;
-        await Service.ChangePassword(changeObj);
+        APIResponse<bool> response
+            = await Service.ChangePassword(changeObj);
+                   
 
-        if (Service.APIResponse.StatusOK)
+        if (response.IsSuccess)
         {
-            await pwdbox.ShowDialog(_localization.PasswordChanged_Title, _localization.PasswordChanged_Message);
+            await pwdbox.ShowDialog(_localization.Get("PasswordChanged-Title"),
+                _localization.Get("PasswordChanged-Message"));
         }
         else
         {
-            Exception error = null;
-            Service.GetDefaultError(ref error); 
-            await msgbox.ShowDialog(_localization.NoticeLabel, error.Message);
+            await msgbox.ShowDialog(_localization.Get("NoticeLabel"),
+               response.Exceptions.Messages[0].Description);
         }
         alterarsenhabtn.End();  
 
@@ -337,21 +346,21 @@
 
             }
         }     
+        
+        APIResponse<bool> response
+          = await Service.ChangeUserImage(content);        
 
-        AuthProxys Proxys = (AuthProxys)Service;
-        ret =  await Proxys.ChangeUserImage(content);
-
-        if (Proxys.APIResponse.StatusOK)
+        if (response.IsSuccess)
         {
 
-            await pwdbox.ShowDialog(_localization.ImageChanged_Title, _localization.ImageChanged_Message);
+            await pwdbox.ShowDialog(_localization.Get("ImageChanged-Title"), 
+                _localization.Get("ImageChanged-Message"));
 
         }
         else
         {
-            Exception error = null;
-            Proxys.GetDefaultError(ref error); 
-            await msgbox.ShowDialog(_localization.NoticeLabel, error.Message);
+            await msgbox.ShowDialog(_localization.Get("NoticeLabel"),
+              response.Exceptions.Messages[0].Description);
         }
 
     }

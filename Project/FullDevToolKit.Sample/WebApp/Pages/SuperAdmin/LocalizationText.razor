@@ -6,8 +6,8 @@
 @inject HttpClient _httpclient
 @inject IAppControllerAsync<UserAuthenticated> _appctrl
 @inject IAppSettings _settings
-@inject IDataCacheGatewayManager _cache
-@inject IMembershipGatewayManager _memberservices
+@inject IDataCacheProxyManager _cache
+@inject ISystemProxyManager _systemservices
 
 
 
@@ -38,52 +38,53 @@
 								        <div class="card-header pt-7">
 									  
 									        <h3 class="card-title align-items-start flex-column">
-                                                <span class="card-label fw-bold text-dark">@view.texts.SearchButtonLabel</span>
+                                                <span class="card-label fw-bold text-dark">@view.texts.Get("SearchButtonLabel")</span>
                                             </h3>									        
 									       
                                         </div>
                                            
                                         <div class="card-body">
 										         <div class="form-group">
-                                                        <label class="form-label">@view.texts.SearchByLanguage_Label:</label>
+                                                        <label class="form-label">@view.texts.Get("SearchByLanguage-Label"):</label>
                                                         <input type="text" maxlength="5" @bind-value="view.param.pLanguage"
-                                                         placeholder=@view.texts.SearchByLanguage_Description class="form-control">
+                                                         placeholder=@view.texts.Get("SearchByLanguage-Description") class="form-control">
                                                        
                                                 </div>
 
                                                  <div class="form-group">
-                                                    <label class="form-label">@view.texts.SearchByLocalizationCode_Label:</label>
+                                                    <label class="form-label">@view.texts.Get("SearchByLocalizationCode-Label"):</label>
                                                     <input type="text" maxlength="20" @bind-value="view.param.pCode"
-                                                       placeholder=@view.texts.SearchByLocalizationCode_Description class="form-control">
+                                                       placeholder=@view.texts.Get("SearchByLocalizationCode-Description") class="form-control">
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label class="form-label">@view.texts.SearchByLocalizationName_Label:</label>
+                                                    <label class="form-label">@view.texts.Get("SearchByLocalizationName-Label"):</label>
                                                     <input type="text" maxlength="20" @bind-value="view.param.pName"
-                                                        placeholder=@view.texts.SearchByLocalizationName_Description class="form-control">
+                                                        placeholder=@view.texts.Get("SearchByLocalizationName-Description") class="form-control">
                                                    
                                                  </div>
 
                                                 <div class="form-group">
-                                                  <label class="form-label">@view.texts.SearchByLocalizationText_Label:</label>
+                                                  <label class="form-label">@view.texts.Get("SearchByLocalizationText-Label"):</label>
                                                     <input type="text" maxlength="20" @bind-value="view.param.pText"
-                                                        placeholder=@view.texts.SearchByLocalizationText_Description class="form-control">
+                                                        placeholder=@view.texts.Get("SearchByLocalizationText-Description") class="form-control">
                                                        
                                                 </div>
 
                                                 <p class="field" style="padding-top:10px">
 
-                                                    <TaskButton @ref="searchbtn" OnClick="OnSearch" Title=@view.texts.SearchButtonLabel
+                                                    <TaskButton @ref="searchbtn" OnClick="OnSearch" Title=@view.texts.Get("SearchButtonLabel")
                                                              ReadOnly=!view.Permissions.AllowRead
-                                                             ActionLabel=@view.texts.SearchingLabel>
+                                                             ActionLabel=@view.texts.Get("SearchingLabel")>
                                                     </TaskButton>
 
                                                 </p>									       
 									    
                                                  <p class="field" style="padding-top:10px">
-                                                     <TaskButton @ref="newbtn" OnClick="OnNew" Title=@view.texts.NewLocalization_Label Class="dark"
+                                                     <TaskButton @ref="newbtn" OnClick="OnNew" 
+                                                           Title=@view.texts.Get("NewLocalization-Label") Class="dark"
                                                            Disabled="" ReadOnly=!view.Permissions.AllowSave
-                                                          ActionLabel=@view.texts.InsertingLoadingLabel>
+                                                           ActionLabel=@view.texts.Get("InsertingLoadingLabel")>
                                                       </TaskButton>
 
                                                  </p>
@@ -98,7 +99,7 @@
 										<div class="card-header pt-7">
 											
 											<h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.SearchResultLabel</span>
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("SearchResultLabel")</span>
                                     </h3>
                                         </div>
 
@@ -110,12 +111,12 @@
                                                       <DataGrid TItem="LocalizationTextResult" Data="@view.searchresult"  Responsive  ShowPager >                                                                                                                                      
                                                         <DataGridColumns>
 
-                                                            <DataGridColumn Field="@nameof(LocalizationTextResult.Language)" Caption=@view.texts.Language_Label />
-                                                            <DataGridColumn Field="@nameof(LocalizationTextResult.Code)" Caption=@view.texts.LocalizationCode_Label />
-                                                             <DataGridColumn Field="@nameof(LocalizationTextResult.Name)" Caption=@view.texts.LocalizationName_Label />
+                                                            <DataGridColumn Field="@nameof(LocalizationTextResult.Language)" Caption=@view.texts.Get("Language-Label") />
+                                                            <DataGridColumn Field="@nameof(LocalizationTextResult.Code)" Caption=@view.texts.Get("LocalizationCode-Label") />
+                                                             <DataGridColumn Field="@nameof(LocalizationTextResult.Name)" Caption=@view.texts.Get("LocalizationName-Label") />
 
                                                              <DataGridColumn Field="@nameof(LocalizationTextResult.LocalizationTextID)" 
-                                                                    Caption=@view.texts.Edit_Label>
+                                                                    Caption=@view.texts.Get("Edit-Label")>
                                                                 <DisplayTemplate>
                                                                       @{
                                                                             LocalizationTextResult obj = (context as LocalizationTextResult);
@@ -137,7 +138,7 @@
                                                 }
                                                 else
                                                 {
-                                                   <p> @view.texts.NoRecordsFound </p>
+                                                   <p> @view.texts.Get("NoRecordsFound") </p>
                                                 }
                                               }
                                          
@@ -164,7 +165,7 @@
 		                                    <div class="card-header pt-7">
 									  
 			                                    <h3 class="card-title align-items-start flex-column">
-                                                    <span class="card-label fw-bold text-dark">@view.texts.LocalizationRecord_Label</span>
+                                                    <span class="card-label fw-bold text-dark">@view.texts.Get("LocalizationRecord-Label")</span>
                                                 </h3>									        
 									       
                                             </div>
@@ -175,7 +176,7 @@
                                                         <div class="col-md-6">                                                            
 
                                                             <div class="form-group">
-                                                                <label class="form-label" for="language">@view.texts.Language_Label:</label>
+                                                                <label class="form-label" for="language">@view.texts.Get("Language-Label"):</label>
                                                                 <input type="text" maxlength="5" class="form-control field" @bind-value="@view.result.Language" />
                                                                 <label class="validation_field">@view.GetSummaryMessage("Language") </label>
                                                             </div>
@@ -185,7 +186,7 @@
                                                      <div class="row">
                                                         <div class="col-md-6">
                                                             <div class="form-group">
-                                                                <label class="form-label" for="code">@view.texts.LocalizationCode_Label:</label>
+                                                                <label class="form-label" for="code">@view.texts.Get("LocalizationCode-Label"):</label>
                                                                 <input type="text" maxlength="10" class="form-control field" @bind-value="@view.result.Code" />
                                                                  <label class="validation_field">@view.GetSummaryMessage("Code") </label>
                                                             </div>
@@ -196,7 +197,7 @@
                                                         <div class="col-md-12">                                                            
 
                                                             <div class="form-group">
-                                                                <label class="form-label" for="name">@view.texts.LocalizationName_Label:</label>
+                                                                <label class="form-label" for="name">@view.texts.Get("LocalizationName-Label"):</label>
                                                                 <input type="text" maxlength="50" class="form-control field" @bind-value="@view.result.Name" />
                                                                 <label class="validation_field">@view.GetSummaryMessage("Name") </label>
                                                             </div>
@@ -207,7 +208,7 @@
                                                         <div class="col-md-12">                                                            
 
                                                             <div class="form-group">
-                                                                     <label class="form-label" for="name">@view.texts.LocalizationText_Label:</label>
+                                                                     <label class="form-label" for="name">@view.texts.Get("LocalizationText-Label"):</label>
                                                                     <input type="text" maxlength="255" class="form-control field" @bind-value="@view.result.Text" />                                                                                                                                        
                                                                     <label class="validation_field">@view.GetSummaryMessage("Text") </label>
                                                             </div>
@@ -219,9 +220,10 @@
 
                                                             <p class="field" style="padding-top:10px">
 
-                                                                <TaskButton @ref="savenewbtn" OnClick="OnSet" Title=@view.texts.SaveLocalizationButton_Label
-                                                                    Description=@view.texts.SaveLocalizationButton_Description
-                                                                    ActionLabel=@view.texts.Saving_Label
+                                                                <TaskButton @ref="savenewbtn" OnClick="OnSet" 
+                                                                    Title=@view.texts.Get("SaveLocalizationButton-Label")
+                                                                    Description=@view.texts.Get("SaveLocalizationButton-Description")
+                                                                    ActionLabel=@view.texts.Get("Saving-Label")
                                                                     ReadOnly=!view.Permissions.AllowSave>
                                                                 </TaskButton>
 
@@ -273,18 +275,18 @@
 
                 this.InitServices();
 
-                view = new LocalizationTextViewModel((_memberservices as MembershipGateway),
-                   (_cache as DataCacheGateway), user);
+                view = new LocalizationTextViewModel((_systemservices as SystemProxy),
+                   (_cache as DataCacheProxy), user);
 
                 view.Permissions
                     = BaseViewModel.SetPermissions(permissions, "SYSLOCALIZATIONTEXT", false);
 
                 await view.InitializeModels();
 
-                _LoadingData_Text = view.texts.LoadingData;
-                _PageTitle = view.texts.Localization_PageTitle;
-                _msgYes = view.texts.Yes_Text;
-                _msgNo = view.texts.No_Text;
+                _LoadingData_Text = view.texts.Get("LoadingData");
+                _PageTitle = view.texts.Get("Instance-PageTitle");
+                _msgYes = view.texts.Get("Yes-Text");
+                _msgNo = view.texts.Get("No-Text");
 
             }
 
@@ -299,9 +301,10 @@
         searchbtn.Begin(); 
         await view.Search();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-                await msgbox.ShowDialog(view.texts.ErrorOnExecuteSearch, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnExecuteSearch"),
+                view.ServiceStatus.Exceptions.Messages[0].Description);
         }
 
         searchbtn.End();
@@ -322,9 +325,10 @@
 
         await loading.End();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.ErrorOnReturnData, view.ExecutionStatus.Error.Message);
+                 await msgbox.ShowDialog(view.texts.Get("ErrorOnReturnData"), 
+                    view.ServiceStatus.Exceptions.Messages[0].Description);
         }
         else
         {
@@ -342,19 +346,22 @@
        
          await view.Set(); 
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.NoticeLabel, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("NoticeLabel"),
+               view.ServiceStatus.Exceptions.Messages[0].Description);
         }
         else
         {
             if (this.view.Inserting)
             {
-                await msgbox_create.ShowDialog(view.texts.SuccessLabel, view.texts.AfterSaveAnswering);
+                await msgbox_create.ShowDialog(view.texts.Get("SuccessLabel"),
+                    view.texts.Get("AfterSaveAnswering"));
             }
             else
             {
-                await msgbox.ShowDialog(view.texts.SuccessLabel, view.texts.SuccessSaveMessage);
+                await msgbox.ShowDialog(view.texts.Get("SuccessLabel"),
+                  view.texts.Get("SuccessSaveMessage"));
                 this.Back();
             }
 

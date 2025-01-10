@@ -231,7 +231,8 @@
 	{		
 		_cache.Init(_httpclient, _settings.ServiceURL, user.Token);
 
-		this.localization = new DefaultLocalization();
+		this.localization = new DefaultLocalization();	
+
 		this.localization.Set(await ((DataCacheProxy)_cache).ListLocalizationTexts(),
 				user.LocalizationLanguage);
 	}

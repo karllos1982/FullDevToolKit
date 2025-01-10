@@ -1,316 +1,316 @@
 {
   "Files": [
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebApp2.bundle.scp.css",
-      "PackagePath": "staticwebassets\\WebApp2.bundle.scp.css"
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebApp.bundle.scp.css",
+      "PackagePath": "staticwebassets\\WebApp.bundle.scp.css"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\app.css",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\app.css",
       "PackagePath": "staticwebassets\\app.css"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\bootstrap\\bootstrap.min.css",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\bootstrap\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\assets\\css\\bootstrap\\bootstrap.min.css"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\bootstrap\\bootstrap.min.css.map",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\bootstrap\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\assets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-brands-400.ttf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-brands-400.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\@fortawesome\\fa-brands-400.ttf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-brands-400.woff2",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-brands-400.woff2",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\@fortawesome\\fa-brands-400.woff2"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-regular-400.ttf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-regular-400.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\@fortawesome\\fa-regular-400.ttf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-regular-400.woff2",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-regular-400.woff2",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\@fortawesome\\fa-regular-400.woff2"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-solid-900.ttf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-solid-900.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\@fortawesome\\fa-solid-900.ttf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-solid-900.woff2",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-solid-900.woff2",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\@fortawesome\\fa-solid-900.woff2"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-v4compatibility.ttf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-v4compatibility.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\@fortawesome\\fa-v4compatibility.ttf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-v4compatibility.woff2",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-v4compatibility.woff2",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\@fortawesome\\fa-v4compatibility.woff2"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\bootstrap-icons\\bootstrap-icons.woff",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\bootstrap-icons\\bootstrap-icons.woff",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\bootstrap-icons\\bootstrap-icons.woff"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\bootstrap-icons\\bootstrap-icons.woff2",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\bootstrap-icons\\bootstrap-icons.woff2",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\bootstrap-icons\\bootstrap-icons.woff2"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-duotone.eot",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-duotone.eot",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\keenicons\\keenicons-duotone.eot"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-duotone.svg",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-duotone.svg",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\keenicons\\keenicons-duotone.svg"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-duotone.ttf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-duotone.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\keenicons\\keenicons-duotone.ttf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-duotone.woff",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-duotone.woff",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\keenicons\\keenicons-duotone.woff"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-outline.eot",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-outline.eot",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\keenicons\\keenicons-outline.eot"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-outline.svg",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-outline.svg",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\keenicons\\keenicons-outline.svg"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-outline.ttf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-outline.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\keenicons\\keenicons-outline.ttf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-outline.woff",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-outline.woff",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\keenicons\\keenicons-outline.woff"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-solid.eot",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-solid.eot",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\keenicons\\keenicons-solid.eot"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-solid.svg",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-solid.svg",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\keenicons\\keenicons-solid.svg"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-solid.ttf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-solid.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\keenicons\\keenicons-solid.ttf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-solid.woff",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\keenicons\\keenicons-solid.woff",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\keenicons\\keenicons-solid.woff"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-brands-400.eot",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-brands-400.eot",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\line-awesome\\la-brands-400.eot"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-brands-400.svg",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-brands-400.svg",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\line-awesome\\la-brands-400.svg"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-brands-400.ttf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-brands-400.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\line-awesome\\la-brands-400.ttf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-brands-400.woff",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-brands-400.woff",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\line-awesome\\la-brands-400.woff"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-brands-400.woff2",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-brands-400.woff2",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\line-awesome\\la-brands-400.woff2"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-regular-400.eot",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-regular-400.eot",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\line-awesome\\la-regular-400.eot"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-regular-400.svg",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-regular-400.svg",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\line-awesome\\la-regular-400.svg"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-regular-400.ttf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-regular-400.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\line-awesome\\la-regular-400.ttf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-regular-400.woff",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-regular-400.woff",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\line-awesome\\la-regular-400.woff"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-regular-400.woff2",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-regular-400.woff2",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\line-awesome\\la-regular-400.woff2"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-solid-900.eot",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-solid-900.eot",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\line-awesome\\la-solid-900.eot"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-solid-900.svg",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-solid-900.svg",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\line-awesome\\la-solid-900.svg"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-solid-900.ttf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-solid-900.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\line-awesome\\la-solid-900.ttf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-solid-900.woff",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-solid-900.woff",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\line-awesome\\la-solid-900.woff"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-solid-900.woff2",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\line-awesome\\la-solid-900.woff2",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\line-awesome\\la-solid-900.woff2"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-brands-400.ttf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-brands-400.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-brands-400.ttf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-brands-400.woff2",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-brands-400.woff2",
       "PackagePath": "staticwebassets\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-brands-400.woff2"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-regular-400.ttf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-regular-400.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-regular-400.ttf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-regular-400.woff2",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-regular-400.woff2",
       "PackagePath": "staticwebassets\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-regular-400.woff2"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-solid-900.ttf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-solid-900.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-solid-900.ttf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-solid-900.woff2",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-solid-900.woff2",
       "PackagePath": "staticwebassets\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-solid-900.woff2"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-v4compatibility.ttf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-v4compatibility.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-v4compatibility.ttf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-v4compatibility.woff2",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-v4compatibility.woff2",
       "PackagePath": "staticwebassets\\assets\\css\\metronic\\fonts\\@fortawesome\\fa-v4compatibility.woff2"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\open-iconic\\FONT-LICENSE",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\open-iconic\\FONT-LICENSE",
       "PackagePath": "staticwebassets\\assets\\css\\open-iconic"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\open-iconic\\ICON-LICENSE",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\open-iconic\\ICON-LICENSE",
       "PackagePath": "staticwebassets\\assets\\css\\open-iconic"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\open-iconic\\README.md",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\open-iconic\\README.md",
       "PackagePath": "staticwebassets\\assets\\css\\open-iconic\\README.md"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css",
       "PackagePath": "staticwebassets\\assets\\css\\open-iconic\\font\\css\\open-iconic-bootstrap.min.css"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\open-iconic\\font\\fonts\\open-iconic.eot",
       "PackagePath": "staticwebassets\\assets\\css\\open-iconic\\font\\fonts\\open-iconic.eot"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\open-iconic\\font\\fonts\\open-iconic.otf",
       "PackagePath": "staticwebassets\\assets\\css\\open-iconic\\font\\fonts\\open-iconic.otf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\open-iconic\\font\\fonts\\open-iconic.svg",
       "PackagePath": "staticwebassets\\assets\\css\\open-iconic\\font\\fonts\\open-iconic.svg"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\open-iconic\\font\\fonts\\open-iconic.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\open-iconic\\font\\fonts\\open-iconic.ttf"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\open-iconic\\font\\fonts\\open-iconic.woff",
       "PackagePath": "staticwebassets\\assets\\css\\open-iconic\\font\\fonts\\open-iconic.woff"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\plugins.bundle.css",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\plugins.bundle.css",
       "PackagePath": "staticwebassets\\assets\\css\\plugins.bundle.css"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\site.css",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\site.css",
       "PackagePath": "staticwebassets\\assets\\css\\site.css"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\css\\style.bundle.css",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\style.bundle.css",
       "PackagePath": "staticwebassets\\assets\\css\\style.bundle.css"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\images\\auth-screens.png",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\images\\auth-screens.png",
       "PackagePath": "staticwebassets\\assets\\images\\auth-screens.png"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\images\\circle_loader.GIF",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\images\\circle_loader.GIF",
       "PackagePath": "staticwebassets\\assets\\images\\circle_loader.GIF"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\images\\default-dark.svg",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\images\\default-dark.svg",
       "PackagePath": "staticwebassets\\assets\\images\\default-dark.svg"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\images\\default-small.svg",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\images\\default-small.svg",
       "PackagePath": "staticwebassets\\assets\\images\\default-small.svg"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\images\\default.svg",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\images\\default.svg",
       "PackagePath": "staticwebassets\\assets\\images\\default.svg"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\images\\logo-2.svg",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\images\\logo-2.svg",
       "PackagePath": "staticwebassets\\assets\\images\\logo-2.svg"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\images\\logo-dark.png",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\images\\logo-dark.png",
       "PackagePath": "staticwebassets\\assets\\images\\logo-dark.png"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\images\\logo.svg",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\images\\logo.svg",
       "PackagePath": "staticwebassets\\assets\\images\\logo.svg"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\images\\user_anonymous.png",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\images\\user_anonymous.png",
       "PackagePath": "staticwebassets\\assets\\images\\user_anonymous.png"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\js\\components.js",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\js\\components.js",
       "PackagePath": "staticwebassets\\assets\\js\\components.js"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\js\\plugins.bundle.js",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\js\\plugins.bundle.js",
       "PackagePath": "staticwebassets\\assets\\js\\plugins.bundle.js"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\assets\\js\\scripts.bundle.js",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\js\\scripts.bundle.js",
       "PackagePath": "staticwebassets\\assets\\js\\scripts.bundle.js"
     },
     {
-      "Id": "H:\\LocalDrive_00\\Projetos\\GearsOfWeb_Project\\GWTemplate2\\WebApp2\\wwwroot\\favicon.png",
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\favicon.png",
       "PackagePath": "staticwebassets\\favicon.png"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WebApp2.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.WebApp.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.WebApp2.props",
-      "PackagePath": "build\\WebApp2.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.WebApp.props",
+      "PackagePath": "build\\WebApp.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.WebApp2.props",
-      "PackagePath": "buildMultiTargeting\\WebApp2.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.WebApp.props",
+      "PackagePath": "buildMultiTargeting\\WebApp.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.WebApp2.props",
-      "PackagePath": "buildTransitive\\WebApp2.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.WebApp.props",
+      "PackagePath": "buildTransitive\\WebApp.props"
     }
   ],
   "ElementsToRemove": []

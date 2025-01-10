@@ -1,15 +1,15 @@
-﻿@page "/admin/client"
+﻿@page "/admin/person"
 @inherits AdminLayout
 @layout AdminLayout
 
 @inject IJSRuntime JSRuntime
 @inject IAppControllerAsync<UserAuthenticated> _appctrl
-@inject IProxyManager _appservices
-@inject IMyProjectGatewayManager _gateway
-@inject IDataCacheGatewayManager _cache
+@inject IAuthProxyManager _appservices
+@inject IMyAppProxy _services
+@inject IDataCacheProxyManager _cache
 @inject IAppSettings _settings
 @inject NavigationManager NavigationManager
-@inject HttpClient _httpclient
+@inject HttpClient _httpClient
 
 <BreadCrumbView IsHome="false" HomeURL="/admin/home" PageTitle=@_PageTitle></BreadCrumbView>
 
@@ -35,9 +35,9 @@
 
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label class="form-label">Client Name:</label>
-                                        <input type="text" @bind-value="view.param.pClientName" class="form-control"
-                                           placeholder="Pesquisar por Nome do Cliente">
+                                        <label class="form-label">Person Name:</label>
+                                        <input type="text" @bind-value="view.param.pPersonName" class="form-control"
+                                           placeholder="Pesquisar por Nome">
                                     </div>
 
                                     <div class="form-group">
@@ -57,9 +57,9 @@
 
                                     <p class="field" style="padding-top:10px">
 
-                                        <TaskButton @ref="newbtn" OnClick="OnNew" Title=@view.texts.New_Label Class="dark"
+                                        <TaskButton @ref="newbtn" OnClick="OnNew" Title=@view.texts.Get("New_Label") Class="dark"
                                                 ReadOnly=!view.Permissions.AllowSave
-                                                ActionLabel=@view.texts.InsertingLoadingLabel>
+                                                ActionLabel=@view.texts.Get("InsertingLoadingLabel")>
                                         </TaskButton>
                                        
 
@@ -84,21 +84,21 @@
                                     {
                                         @if (view.searchresult.Count > 0)
                                         {
-                                            <DataGrid TItem="ClientResult" Data="@view.searchresult" Responsive ShowPager>
+                                            <DataGrid TItem="PersonResult" Data="@view.searchresult" Responsive ShowPager>
                                                 <DataGridColumns>
 
-                                                    <DataGridColumn Field="@nameof(ClientResult.ClientName)" Caption="Name" />
-                                                    <DataGridColumn Field="@nameof(ClientResult.Email)" Caption="E-mail" />
+                                                    <DataGridColumn Field="@nameof(PersonResult.PersonName)" Caption="Name" />
+                                                    <DataGridColumn Field="@nameof(PersonResult.Email)" Caption="E-mail" />
 
-                                                    <DataGridColumn Field="@nameof(ClientResult.ClientID)" Caption="Edit">
+                                                    <DataGridColumn Field="@nameof(PersonResult.PersonID)" Caption="Edit">
                                                         <DisplayTemplate>
                                                             @{
-                                                                ClientResult obj = (context as ClientResult);
+                                                                PersonResult obj = (context as PersonResult);
 
                                                                 @if (view.Permissions.AllowSave)
                                                                 {
                                                                     <IconButton Icon="IconButton.TYPEICONENUM.EDIT"
-                                                                    OnClick="()=>OnDetClick(obj.ClientID)"></IconButton>
+                                                                    OnClick="()=>OnDetClick(obj.PersonID)"></IconButton>
                                                                 }
                                                             }
 
@@ -144,7 +144,7 @@
                                             <ul class="nav nav-tabs nav-line-tabs nav-stretch fs-6 border-0 fw-bold" role="tablist">
                                                 <li class="nav-item" role="presentation">
                                                     <a class="nav-link justify-content-center text-active-gray-800 @Aba1State" @onclick="()=>SwitchAbas()"
-                                                            data-bs-toggle="tab" role="tab" href="#kt_tab1">Client Record
+                                                            data-bs-toggle="tab" role="tab" href="#kt_tab1">Person Record
                                                      </a>
                                                 </li>
                                                 <li class="nav-item" role="presentation">
@@ -179,9 +179,9 @@
                                                     <div class="col-md-12">
 
                                                         <div class="form-group">
-                                                            <label class="form-label" for="name">Client Name:</label>
-                                                            <input type="text" class="form-control field" @bind-value="@view.result.ClientName" />
-                                                            <label class="validation_field">@view.GetSummaryMessage("ClientName") </label>
+                                                            <label class="form-label" for="name">Person Name:</label>
+                                                            <input type="text" class="form-control field" @bind-value="@view.result.PersonName" />
+                                                            <label class="validation_field">@view.GetSummaryMessage("PersonName") </label>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -233,8 +233,8 @@
 
                                                         <p class="field" style="padding-top:10px">
 
-                                                            <TaskButton @ref="savenewbtn" OnClick="OnSet" Title=@view.texts.Save_Label
-                                                                ActionLabel=@view.texts.Saving_Label
+                                                            <TaskButton @ref="savenewbtn" OnClick="OnSet" Title=@view.texts.Get("Save_Label")
+                                                                ActionLabel=@view.texts.Get("Saving_Label")
                                                                 ReadOnly=!view.Permissions.AllowSave>
                                                             </TaskButton>
 
@@ -256,32 +256,33 @@
                                                 {
                                                     @if (view.result.Contacts.Count > 0)
                                                     {
-                                                        <DataGrid TItem="ClientContactsResult" Data="@view.result.Contacts" Responsive ShowPager>
+                                                        <DataGrid TItem="PersonContactResult" Data="@view.result.Contacts" 
+                                                            Responsive ShowPager>
                                                                                                                        
                                                             <DataGridColumns>
                                                                 
-                                                                <DataGridColumn Field="@nameof(ClientContactsResult.ContactName)" Caption="Name" >
+                                                                <DataGridColumn Field="@nameof(PersonContactResult.PersonName)" Caption="Name" >
                                                                     <DisplayTemplate>
                                                                         @{
-                                                                            ClientContactsResult obj = (context as ClientContactsResult);
+                                                                            PersonContactResult obj = (context as PersonContactResult);
 
                                                                             @if (obj.RecordState != RECORDSTATEENUM.DELETED)
                                                                             {
-                                                                                <span>@obj.ContactName</span>
+                                                                                <span>@obj.PersonName</span>
                                                                             }
                                                                             else
                                                                             {
-                                                                                <del>@obj.ContactName</del>
+                                                                                <del>@obj.PersonName</del>
                                                                             }
 
                                                                         }
                                                                      </DisplayTemplate>
                                                                 </DataGridColumn>
 
-                                                                <DataGridColumn Field="@nameof(ClientContactsResult.Email)" Caption="E-mail">
+                                                                <DataGridColumn Field="@nameof(PersonContactResult.Email)" Caption="E-mail">
                                                                     <DisplayTemplate>
                                                                         @{
-                                                                            ClientContactsResult obj = (context as ClientContactsResult);
+                                                                            PersonContactResult obj = (context as PersonContactResult);
 
                                                                             @if (obj.RecordState != RECORDSTATEENUM.DELETED)
                                                                             {
@@ -297,17 +298,17 @@
                                                                      </DisplayTemplate>
                                                                 </DataGridColumn>                                                                
 
-                                                                <DataGridColumn Field="@nameof(ClientContactsResult.ClientContactID)" Caption="Edit">
+                                                                <DataGridColumn Field="@nameof(PersonContactResult.PersonContactID)" Caption="Edit">
                                                                     <DisplayTemplate>
                                                                         @{
-                                                                            ClientContactsResult obj = (context as ClientContactsResult);
+                                                                            PersonContactResult obj = (context as PersonContactResult);
 
                                                                              @if (obj.RecordState!= RECORDSTATEENUM.DELETED)
                                                                             {
                                                                                 @if (view.Permissions.AllowSave)
                                                                                 {
                                                                                     <IconButton Icon="IconButton.TYPEICONENUM.EDIT"
-                                                                                        OnClick="()=>OnDetContactsClick(obj.ClientContactID)"></IconButton>
+                                                                                        OnClick="()=>OnDetContactsClick(obj.PersonContactID)"></IconButton>
                                                                                 }
                                                                                 else
                                                                                 {
@@ -324,18 +325,18 @@
                                                                     </DisplayTemplate>
                                                                 </DataGridColumn>
                                                                 
-                                                                <DataGridColumn Field="@nameof(ClientContactsResult.ClientID)" Caption="Remove">
+                                                                <DataGridColumn Field="@nameof(PersonContactResult.PersonID)" Caption="Remove">
                                                                     <DisplayTemplate>
 
                                                                          @{
-                                                                            ClientContactsResult obj = (context as ClientContactsResult);
+                                                                            PersonContactResult obj = (context as PersonContactResult);
 
                                                                              @if (obj.RecordState!= RECORDSTATEENUM.DELETED)
                                                                             {
                                                                                 @if (view.Permissions.AllowDelete)
                                                                                 {
                                                                                     <IconButton Icon="IconButton.TYPEICONENUM.DELETE"
-                                                                                        OnClick="()=>OnRemoveContactsClick(obj.ClientContactID)"></IconButton>
+                                                                                        OnClick="()=>OnRemoveContactsClick(obj.PersonContactID)"></IconButton>
                                                                                 }
                                                                                 else
                                                                                 {
@@ -345,7 +346,7 @@
                                                                             else
                                                                             {
                                                                                  <IconButton Icon="IconButton.TYPEICONENUM.UNDO"
-                                                                                    OnClick="()=>OnUnRemoveContactsClick(obj.ClientContactID)"></IconButton>                                                                              
+                                                                                    OnClick="()=>OnUnRemoveContactsClick(obj.PersonContactID)"></IconButton>                                                                              
                                                                           
                                                                             }
                                                                            
@@ -415,9 +416,9 @@
                         <div class="col-md-12">
 
                             <div class="form-group">
-                                <label class="form-label" for="name">Client Name:</label>
-                                <input type="text" class="form-control field" @bind-value="@view.contact.ContactName" />
-                                <label class="validation_field">@view.ContactSummary.GetSummaryMessage("ContactName") </label>
+                                <label class="form-label" for="name">Person Name:</label>
+                                <input type="text" class="form-control field" @bind-value="@view.contact.PersonName" />
+                                    <label class="validation_field">@view.ContactSummary.GetSummaryMessage("PersonName") </label>
                             </div>
                         </div>
                     </div>
@@ -514,7 +515,7 @@
     //
 
     private UserAuthenticated LoggedUser;
-    private ClientViewModel view;
+    private PersonViewModel view;
 
     //
 
@@ -525,14 +526,14 @@
         if (await _appctrl.IsAuthenticated())
         {
             LoggedUser = _appctrl.UserInfo;
-            _gateway.Init(_httpclient, _settings.ServiceURL, LoggedUser.Token);
+            _services.Init(_httpClient, _settings.ServiceURL, LoggedUser.Token);
 
-            view = new ClientViewModel((_gateway as MyProjectGateway),
-                 (_cache as DataCacheGateway), LoggedUser);
+            view = new PersonViewModel((_services as MyAppProxy),
+                 (_cache as DataCacheProxy), LoggedUser);
 
             List<UserPermissions> list = await _appctrl.GetUserPermissions(LoggedUser.Token);
             view.Permissions
-               = BaseViewModel.SetPermissions(list, "CLIENT", false);
+               = BaseViewModel.SetPermissions(list, "Person", false);
         }
 
     }
@@ -545,10 +546,10 @@
             await InitResources();
             await view.InitializeModels();
 
-            _LoadingData_Text = view.texts.LoadingData;
-            _PageTitle = "Client";
-            _msgYes = view.texts.Yes_Text;
-            _msgNo = view.texts.No_Text; 
+            _LoadingData_Text = view.texts.Get("LoadingData");
+            _PageTitle = view.texts.Get("Instance-PageTitle");
+            _msgYes = view.texts.Get("Yes-Text");
+            _msgNo = view.texts.Get("No-Text");
 
             StateHasChanged();
         }
@@ -559,9 +560,11 @@
         searchbtn.Begin();
         await view.Search();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog("Error on search", view.ExecutionStatus.Error.Message);
+             await msgbox.ShowDialog(view.texts.Get("ErrorOnExecuteSearch"), 
+                view.ServiceStatus.Exceptions.Messages[0].Description);
+            
         }
 
         searchbtn.End();
@@ -582,9 +585,10 @@
 
         await loading.End();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog("Error on retreave data", view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnReturnData"),
+                view.ServiceStatus.Exceptions.Messages[0].Description);
         }
         else
         {
@@ -602,19 +606,24 @@
 
         await view.Set();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog("Error on Save.", view.ExecutionStatus.Error.Message);
+             await msgbox.ShowDialog(view.texts.Get("NoticeLabel"), 
+                view.ServiceStatus.Exceptions.Messages[0].Description);
+            
         }
         else
         {
             if (this.view.Inserting)
             {
-                await msgbox_create.ShowDialog("Success!", "Record was saved successfuly. Continue inserting ?");
+                await msgbox_create.ShowDialog(view.texts.Get("SuccessLabel"), 
+                    view.texts.Get("AfterSaveAnswering"));                
             }
             else
             {
-                await msgbox.ShowDialog("Success!", "Record was saved successfuly.");
+                await msgbox.ShowDialog(view.texts.Get("SuccessLabel"),
+                 view.texts.Get("SuccessSaveMessage"));
+
                 this.Back();
             }
 
@@ -643,7 +652,7 @@
 
         await view.SaveContact();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
             await msgbox.ShowDialog("Warning", "Error on data validation.");
         }

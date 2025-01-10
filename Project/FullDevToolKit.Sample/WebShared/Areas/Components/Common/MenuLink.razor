@@ -183,7 +183,7 @@
     public MENUDISPLAYENUM Display { get; set; }
 
     [Parameter]
-    public MenuLocalization Localization { 
+    public DefaultLocalization Localization { 
         set
         {
             if (value != null)
@@ -216,7 +216,7 @@
     }
 
     private List<UserPermissions> _Permissions = null;
-    private MenuLocalization _localization = null; 
+    private DefaultLocalization _localization = null; 
 
     private List<MenuItem> _items = new List<MenuItem>();
     private List<MenuItem> _groups = new List<MenuItem>();  
@@ -259,15 +259,64 @@
 
         if (_localization != null)
         {
-            AddItem(new MenuItem("SuperAdmin", _localization.BasicsData_MenuText, "1") { LinkTitle = _localization.Instance_MenuText, LinkURL = "superadmin/instances", State = "active show", Permission_ObjectCode = "SYSINSTANCE", Permission_Allownone = true });
-            AddItem(new MenuItem("SuperAdmin", _localization.BasicsData_MenuText, "1") { LinkTitle = _localization.Role_MenuText, LinkURL = "superadmin/roles", Permission_ObjectCode = "SYSROLE", Permission_Allownone = true });
-            AddItem(new MenuItem("SuperAdmin", _localization.BasicsData_MenuText, "1") { LinkTitle = _localization.Users_MenuText, LinkURL = "superadmin/users", Permission_ObjectCode = "SYSUSER", Permission_Allownone = true });
-            AddItem(new MenuItem("SuperAdmin", _localization.BasicsData_MenuText, "1") { LinkTitle = _localization.ObjectPermission_MenuText, LinkURL = "superadmin/objectpermission", Permission_ObjectCode = "SYSOBJECTPERMISSION", Permission_Allownone = true });
-            AddItem(new MenuItem("SuperAdmin", _localization.BasicsData_MenuText, "1") { LinkTitle = _localization.Permissions_MenuText, LinkURL = "superadmin/permission", Permission_ObjectCode = "SYSPERMISSION", Permission_Allownone = true });
-            AddItem(new MenuItem("SuperAdmin", _localization.BasicsData_MenuText, "1") { LinkTitle = _localization.Localization_MenuText, LinkURL = "superadmin/localizationtext", Permission_ObjectCode = "SYSPERMISSION", Permission_Allownone = true });
+            AddItem(new MenuItem("SuperAdmin", _localization.Get("BasicsData-MenuText"), "1") { LinkTitle = _localization.Get("Instance_MenuText"), LinkURL = "superadmin/instances", State = "active show", Permission_ObjectCode = "SYSINSTANCE", Permission_Allownone = true });
 
-            AddItem(new MenuItem("SuperAdmin", _localization.Monitoring_MenuText, "2") { LinkTitle = _localization.DataLog_MenuText, LinkURL = "superadmin/datalog", Permission_ObjectCode = "SYSDATALOG", Permission_Allownone = true });
-            AddItem(new MenuItem("SuperAdmin", _localization.Monitoring_MenuText, "2") { LinkTitle = _localization.SessionLog_MenuText, LinkURL = "superadmin/accesslog", Permission_ObjectCode = "SYSSESSION", Permission_Allownone = true });
+                AddItem(new MenuItem("SuperAdmin", _localization.Get("BasicsData-MenuText"), "1")
+                {
+                    LinkTitle = _localization.Get("Role_MenuText"),
+                    LinkURL = "superadmin / roles",
+                    Permission_ObjectCode = "SYSROLE",
+                    Permission_Allownone = true
+                });
+
+                AddItem(new MenuItem("SuperAdmin", _localization.Get("BasicsData-MenuText"), "1")
+                {
+                    LinkTitle = _localization.Get("Users_MenuText"),
+                    LinkURL = "superadmin / users",
+                    Permission_ObjectCode = "SYSUSER",
+                    Permission_Allownone = true
+                });
+
+                AddItem(new MenuItem("SuperAdmin", _localization.Get("BasicsData-MenuText"), "1")
+                {
+                    LinkTitle = _localization.Get("ObjectPermission_MenuText"),
+                    LinkURL = "superadmin / objectpermission",
+                    Permission_ObjectCode = "SYSOBJECTPERMISSION",
+                    Permission_Allownone = true
+                });
+
+                AddItem(new MenuItem("SuperAdmin", _localization.Get("BasicsData-MenuText"), "1")
+                {
+                    LinkTitle = _localization.Get("Permissions_MenuText"),
+                    LinkURL = "superadmin / permission",
+                    Permission_ObjectCode = "SYSPERMISSION",
+                    Permission_Allownone = true
+                });
+
+                AddItem(new MenuItem("SuperAdmin", _localization.Get("BasicsData-MenuText"), "1")
+                {
+                    LinkTitle = _localization.Get("Localization_MenuText"),
+                    LinkURL = "superadmin / localizationtext",
+                    Permission_ObjectCode = "SYSPERMISSION",
+                    Permission_Allownone = true
+                });
+
+
+                AddItem(new MenuItem("SuperAdmin", _localization.Get("Monitoring-MenuText"), "2")
+                {
+                    LinkTitle = _localization.Get("DataLog_MenuText"),
+                    LinkURL = "superadmin / datalog",
+                    Permission_ObjectCode = "SYSDATALOG",
+                    Permission_Allownone = true
+                });
+
+                AddItem(new MenuItem("SuperAdmin", _localization.Get("Monitoring-MenuText"), "2")
+                {
+                    LinkTitle = _localization.Get("SessionLog_MenuText"),
+                    LinkURL = "superadmin / accesslog",
+                    Permission_ObjectCode = "SYSSESSION",
+                    Permission_Allownone = true
+                });
         }
      
 

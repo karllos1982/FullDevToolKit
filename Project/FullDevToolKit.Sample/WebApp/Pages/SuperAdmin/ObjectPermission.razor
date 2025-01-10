@@ -6,8 +6,8 @@
 @inject HttpClient _httpclient
 @inject IAppControllerAsync<UserAuthenticated> _appctrl
 @inject IAppSettings _settings
-@inject IDataCacheGatewayManager _cache
-@inject IMembershipGatewayManager _memberservices
+@inject IDataCacheProxyManager _cache
+@inject ISystemProxyManager _systemservices
 
 
 
@@ -38,40 +38,40 @@
 								        <div class="card-header pt-7">
 									  
 									        <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.SearchButtonLabel</span>
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("SearchButtonLabel")</span>
                                     </h3>									        
 									       
                                         </div>
                                            
                                         <div class="card-body">
 										         <div class="form-group">
-                                                    <label class="form-label">@view.texts.SearchByObjectName_Label:</label>
+                                                    <label class="form-label">@view.texts.Get("SearchByObjectName-Label"):</label>
                                                     <input type="text" @bind-value="view.param.pObjectName"
-                                                        placeholder=@view.texts.SearchByObjectName_Description class="form-control">
+                                                        placeholder=@view.texts.Get("SearchByObjectName-Description") class="form-control">
                                                        
                                                 </div>
 
                                                  <div class="form-group">
-                                                     <label class="form-label">@view.texts.SearchByObjectCode_Label:</label>
+                                                     <label class="form-label">@view.texts.Get("SearchByObjectCode-Label"):</label>
                                                     <input type="text" maxlength="20" @bind-value="view.param.pObjectCode"
-                                                        placeholder=@view.texts.SearchByObjectCode_Description class="form-control">
+                                                        placeholder=@view.texts.Get("SearchByObjectCode-Description") class="form-control">
                                                        
                                                 </div>                                              
 
                                                 <p class="field" style="padding-top:10px">
 
-                                                      <TaskButton @ref="searchbtn" OnClick="OnSearch" Title=@view.texts.SearchButtonLabel
+                                                      <TaskButton @ref="searchbtn" OnClick="OnSearch" Title=@view.texts.Get("SearchButtonLabel")
                                                              ReadOnly=!view.Permissions.AllowRead
-                                                             ActionLabel=@view.texts.SearchingLabel>
+                                                             ActionLabel=@view.texts.Get("SearchingLabel")>
                                                       </TaskButton>
 
                                                 </p>									       
 									    
                                                  <p class="field" style="padding-top:10px">
                                                         <TaskButton @ref="newbtn" OnClick="OnNew"
-                                                                Title=@view.texts.NewObject_Label Class="dark"
+                                                                Title=@view.texts.Get("NewObject-Label") Class="dark"
                                                                 Disabled="" ReadOnly=!view.Permissions.AllowSave
-                                                                ActionLabel=@view.texts.InsertingLoadingLabel>
+                                                                ActionLabel=@view.texts.Get("InsertingLoadingLabel")>
                                                         </TaskButton>
 
                                                  </p>
@@ -86,7 +86,7 @@
 										<div class="card-header pt-7">
 											
 											<h3 class="card-title align-items-start flex-column">
-                                                     <span class="card-label fw-bold text-dark">@view.texts.SearchResultLabel</span>
+                                                     <span class="card-label fw-bold text-dark">@view.texts.Get("SearchResultLabel")</span>
                                               </h3>
                                         </div>
 
@@ -98,10 +98,10 @@
                                                       <DataGrid TItem="ObjectPermissionResult" Data="@view.searchresult"  Responsive  ShowPager >                                                                                                                                      
                                                         <DataGridColumns>
 
-                                                            <DataGridColumn Field="@nameof(ObjectPermissionResult.ObjectName)" Caption=@view.texts.ObjectName_Label />
-                                                            <DataGridColumn Field="@nameof(ObjectPermissionResult.ObjectCode)" Caption=@view.texts.ObjectCode_Label />
+                                                            <DataGridColumn Field="@nameof(ObjectPermissionResult.ObjectName)" Caption=@view.texts.Get("ObjectName-Label") />
+                                                            <DataGridColumn Field="@nameof(ObjectPermissionResult.ObjectCode)" Caption=@view.texts.Get("ObjectCode-Label") />
 
-                                                            <DataGridColumn Field="@nameof(ObjectPermissionResult.ObjectPermissionID)" Caption=@view.texts.Edit_Label>
+                                                            <DataGridColumn Field="@nameof(ObjectPermissionResult.ObjectPermissionID)" Caption=@view.texts.Get("Edit-Label")>
                                                                 <DisplayTemplate>
                                                                       @{
                                                                             ObjectPermissionResult obj = (context as ObjectPermissionResult);
@@ -123,7 +123,7 @@
                                                 }
                                                 else
                                                 {
-                                                    <p> @view.texts.NoRecordsFound </p>
+                                                    <p> @view.texts.Get("NoRecordsFound") </p>
                                                 }
                                               }
                                          
@@ -150,7 +150,7 @@
 		                                    <div class="card-header pt-7">
 									  
 			                                    <h3 class="card-title align-items-start flex-column">
-                                                     <span class="card-label fw-bold text-dark">@view.texts.ObjectPermissionRecord_Label</span>
+                                                     <span class="card-label fw-bold text-dark">@view.texts.Get("ObjectPermissionRecord-Label")</span>
                                                  </h3>									        
 									       
                                             </div>
@@ -161,7 +161,7 @@
                                                         <div class="col-md-12">                                                            
 
                                                             <div class="form-group">
-                                                                 <label class="form-label" for="name">@view.texts.ObjectName_Label:</label>
+                                                                 <label class="form-label" for="name">@view.texts.Get("ObjectName-Label"):</label>
                                                                 <input type="text" class="form-control field" @bind-value="@view.result.ObjectName" />
                                                                 <label class="validation_field">@view.GetSummaryMessage("ObjectName") </label>
                                                             </div>
@@ -171,7 +171,7 @@
                                                    <div class="row">
                                                         <div class="col-md-12">
                                                             <div class="form-group">
-                                                                <label class="form-label" for="email">@view.texts.ObjectCode_Label:</label>
+                                                                <label class="form-label" for="email">@view.texts.Get("ObjectCode-Label"):</label>
                                                                 <input type="text" class="form-control field" @bind-value="@view.result.ObjectCode" />
                                                                  <label class="validation_field">@view.GetSummaryMessage("ObjectCode") </label>
                                                             </div>
@@ -183,9 +183,10 @@
 
                                                             <p class="field" style="padding-top:10px">
 
-                                                            <TaskButton @ref="savenewbtn" OnClick="OnSet" Title=@view.texts.SaveObjectPermissionButton_Label
-                                                                    Description=@view.texts.SaveObjectPermissionButton_Description
-                                                                                ActionLabel=@view.texts.Saving_Label
+                                                            <TaskButton @ref="savenewbtn" OnClick="OnSet" 
+                                                                    Title=@view.texts.Get("SaveObjectPermissionButton-Label")
+                                                                    Description=@view.texts.Get("SaveObjectPermissionButton-Description")
+                                                                                ActionLabel=@view.texts.Get("Saving-Label")
                                                                                 ReadOnly=!view.Permissions.AllowSave>
                                                             </TaskButton>
 
@@ -238,18 +239,18 @@
 
                 this.InitServices();
 
-                view = new ObjectPermissionViewModel((_memberservices as MembershipGateway),
-                   (_cache as DataCacheGateway), user);
+                view = new ObjectPermissionViewModel((_systemservices as SystemProxy),
+                   (_cache as DataCacheProxy), user);
 
                 view.Permissions
                     = BaseViewModel.SetPermissions(permissions, "SYSOBJECTPERMISSION", false);
 
                 await view.InitializeModels();
 
-                _LoadingData_Text = view.texts.LoadingData;
-                _PageTitle = view.texts.ObjectPermission_PageTitle;
-                _msgYes = view.texts.Yes_Text;
-                _msgNo = view.texts.No_Text;
+                _LoadingData_Text = view.texts.Get("LoadingData");
+                _PageTitle = view.texts.Get("Instance-PageTitle");
+                _msgYes = view.texts.Get("Yes-Text");
+                _msgNo = view.texts.Get("No-Text");
 
             }
 
@@ -264,9 +265,10 @@
         searchbtn.Begin(); 
         await view.Search();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.ErrorOnExecuteSearch, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnExecuteSearch"),
+                view.ServiceStatus.Exceptions.Messages[0].Description);
         }
 
         searchbtn.End();
@@ -287,9 +289,10 @@
 
         await loading.End();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.ErrorOnReturnData, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnReturnData"),
+                view.ServiceStatus.Exceptions.Messages[0].Description);
         }
         else
         {
@@ -307,19 +310,22 @@
        
          await view.Set(); 
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.NoticeLabel, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("NoticeLabel"),
+                view.ServiceStatus.Exceptions.Messages[0].Description);
         }
         else
         {
             if (this.view.Inserting)
             {
-                await msgbox_create.ShowDialog(view.texts.SuccessLabel, view.texts.AfterSaveAnswering);
+               await msgbox_create.ShowDialog(view.texts.Get("SuccessLabel"),
+                 view.texts.Get("AfterSaveAnswering"));
             }
             else
             {
-                await msgbox.ShowDialog(view.texts.SuccessLabel, view.texts.SuccessSaveMessage);
+                await msgbox.ShowDialog(view.texts.Get("SuccessLabel"),
+                  view.texts.Get("SuccessSaveMessage"));
                 this.Back();
             }
 

@@ -6,8 +6,8 @@
 @inject HttpClient _httpclient
 @inject IAppControllerAsync<UserAuthenticated> _appctrl
 @inject IAppSettings _settings
-@inject IDataCacheGatewayManager _cache
-@inject IMembershipGatewayManager _memberservices
+@inject IDataCacheProxyManager _cache
+@inject ISystemProxyManager _systemservices
 
 
 <MessageBox @ref="msgbox"></MessageBox>
@@ -37,7 +37,7 @@
 								        <div class="card-header pt-7">
 									  
 									        <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.SearchButtonLabel</span>
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("SearchButtonLabel")</span>
                                     </h3>									        
 									       
                                         </div>
@@ -45,7 +45,7 @@
                                         <div class="card-body">	
                                             
                                              <div class="form-group">
-                                                    <label class="form-label">@view.texts.SearchByObjectPermission_Label:</label>
+                                                    <label class="form-label">@view.texts.Get("SearchByObjectPermission-Label"):</label>
                                                     @if (view.listObject != null )
                                                     {
                                                             @if (view.listObject.Count > 0)
@@ -63,7 +63,7 @@
                                              </div>
                                        
                                              <div class="form-group">
-                                                        <label class="form-label">@view.texts.SearchByRole_Label:</label>
+                                                        <label class="form-label">@view.texts.Get("SearchByRole-Label"):</label>
                                                         @if (view.listRoles != null )
                                                         {
                                                                 @if (view.listRoles.Count > 0)
@@ -81,7 +81,7 @@
                                                 </div>
 
                                              <div class="form-group">
-                                                        <label class="form-label">@view.texts.SearchByUser_Label:</label>
+                                                        <label class="form-label">@view.texts.Get("SearchByUser-Label"):</label>
                                                         @if (view.listUsers != null )
                                                         {
                                                                 @if (view.listUsers.Count > 0)
@@ -100,17 +100,20 @@
 
                                                 <p class="field" style="padding-top:10px">
 
-                                                    <TaskButton @ref="searchbtn" OnClick="OnSearch" Title=@view.texts.SearchButtonLabel
+                                                    <TaskButton @ref="searchbtn" OnClick="OnSearch" 
+                                                            Title=@view.texts.Get("SearchButtonLabel")
                                                             ReadOnly=!view.Permissions.AllowRead
-                                                            ActionLabel=@view.texts.SearchingLabel>
+                                                            ActionLabel=@view.texts.Get("SearchingLabel")>
                                                     </TaskButton>
 
                                                 </p>									       
 									    
                                                  <p class="field" style="padding-top:10px">
-                                                    <TaskButton @ref="newbtn" OnClick="OnNew" Title=@view.texts.NewPermission_Label Class="dark"
-                                                            Description=@view.texts.NewPermission_Description ReadOnly=!view.Permissions.AllowSave
-                                                            ActionLabel=@view.texts.InsertingLoadingLabel>
+                                                    <TaskButton @ref="newbtn" OnClick="OnNew" 
+                                                            Title=@view.texts.Get("NewPermission-Label") Class="dark"
+                                                            Description=@view.texts.Get("NewPermission-Description") 
+                                                            ReadOnly=!view.Permissions.AllowSave
+                                                            ActionLabel=@view.texts.Get("InsertingLoadingLabel")>
                                                     </TaskButton>
 
                                                  </p>
@@ -125,7 +128,7 @@
 										<div class="card-header pt-7">
 											
 											<h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.SearchResultLabel</span>
+                                            <span class="card-label fw-bold text-dark">@view.texts.Get("SearchResultLabel")</span>
                                     </h3>
                                         </div>
 
@@ -137,9 +140,9 @@
                                                       <DataGrid TItem="PermissionResult" Data="@view.searchresult"  Responsive  ShowPager >                                                                                                                                      
                                                         <DataGridColumns>
 
-                                                            <DataGridColumn Field="@nameof(PermissionResult.ObjectName)" Caption=@view.texts.ObjectName_Label Width="20%" />
-                                                            <DataGridColumn Field="@nameof(PermissionResult.RoleName)" Caption=@view.texts.RoleName_Label Width="20%" />
-                                                            <DataGridColumn Field="@nameof(PermissionResult.UserName)" Caption=@view.texts.UserName_Label Width="20%" />
+                                                            <DataGridColumn Field="@nameof(PermissionResult.ObjectName)" Caption=@view.texts.Get("ObjectName-Label") Width="20%" />
+                                                            <DataGridColumn Field="@nameof(PermissionResult.RoleName)" Caption=@view.texts.Get("RoleName-Label") Width="20%" />
+                                                            <DataGridColumn Field="@nameof(PermissionResult.UserName)" Caption=@view.texts.Get("UserName-Label") Width="20%" />
 
                                                              <DataGridColumn Field="@nameof(PermissionResult.ReadStatus)" Caption="Allow Read" Width="10%">
                                                                 <DisplayTemplate>
@@ -148,11 +151,11 @@
 
                                                                         @if (obj.ReadStatus==1)
                                                                         {
-                                                                            <span>@view.texts.Yes_Text</span>
+                                                                            <span>@view.texts.Get("Yes-Text")</span>
                                                                         }
                                                                         else
                                                                         {
-                                                                            <span>@view.texts.No_Text</span>
+                                                                            <span>@view.texts.Get("No-Text")</span>
                                                                         }
 
                                                                     }
@@ -167,11 +170,11 @@
 
                                                                         @if (obj.SaveStatus ==1)
                                                                         {
-                                                                              <span>@view.texts.Yes_Text</span>
+                                                                              <span>@view.texts.Get("Yes-Text")</span>
                                                                         }
                                                                         else
                                                                         {
-                                                                               <span>@view.texts.No_Text</span>
+                                                                               <span>@view.texts.Get("No-Text")</span>
                                                                         }
 
                                                                     }
@@ -186,11 +189,11 @@
 
                                                                         @if (obj.DeleteStatus==1)
                                                                         {
-                                                                             <span>@view.texts.Yes_Text</span>
+                                                                             <span>@view.texts.Get("Yes-Text")</span>
                                                                         }
                                                                         else
                                                                         {
-                                                                            <span>@view.texts.No_Text</span>
+                                                                            <span>@view.texts.Get("No-Text")</span>
                                                                         }
 
                                                                     }
@@ -198,7 +201,8 @@
                                                                 </DisplayTemplate>
                                                             </DataGridColumn>
 
-                                                            <DataGridColumn Field="@nameof(PermissionResult.PermissionID)" Caption=@view.texts.Edit_Label Width="10%">
+                                                            <DataGridColumn Field="@nameof(PermissionResult.PermissionID)" 
+                                                                Caption=@view.texts.Get("Edit-Label") Width="10%">
                                                         
                                                                 <DisplayTemplate>
                                                                     @{
@@ -222,7 +226,7 @@
                                                 }
                                                 else
                                                 {
-                                                      <p> @view.texts.NoRecordsFound </p>
+                                                      <p> @view.texts.Get("NoRecordsFound") </p>
                                                 }
                                               }
                                          
@@ -249,7 +253,7 @@
 		                                    <div class="card-header pt-7">
 									  
 			                                    <h3 class="card-title align-items-start flex-column">
-                                                    <span class="card-label fw-bold text-dark">@view.texts.PermissionRecord_Label</span>
+                                                    <span class="card-label fw-bold text-dark">@view.texts.Get("PermissionRecord-Label") </span>
                                                 </h3>									        
 									       
                                             </div>
@@ -261,7 +265,7 @@
                                                         <div class="col-md-12">
 
                                                               <div class="form-group">
-                                                                 <label class="form-label">@view.texts.ObjectName_Label:</label>
+                                                                 <label class="form-label">@view.texts.Get("ObjectName-Label"):</label>
                                                                 @if (view.listObject != null )
                                                                 {
                                                                     @if (view.listObject.Count > 0)
@@ -288,7 +292,7 @@
                                                             <div class="col-md-12">
 
                                                                   <div class="form-group">
-                                                                    <label class="form-label">@view.texts.PermissionType_Label:</label>
+                                                                    <label class="form-label">@view.texts.Get("PermissionType-Label"):</label>
                                                                     @if (view.listTypeGrant != null )
                                                                     {
                                                                         @if (view.listTypeGrant.Count > 0)
@@ -312,7 +316,7 @@
                                                      <div class="row">
                                                         <div class="col-md-12">
                                                                 <div class="form-group">
-                                                                        <label class="form-label">@view.texts.Role_Label :</label>
+                                                                        <label class="form-label">@view.texts.Get("Role-Label") :</label>
                                                                         @if (view.listRoles != null )
                                                                         {
                                                                                 @if (view.listRoles.Count > 0)
@@ -337,7 +341,7 @@
                                                      <div class="row">
                                                         <div class="col-md-12">
                                                              <div class="form-group">
-                                                                    <label class="form-label">@view.texts.UserName_Label:</label>
+                                                                    <label class="form-label">@view.texts.Get("UserName-Label"):</label>
                                                                     @if (view.listUsers != null )
                                                                     {
                                                                             @if (view.listUsers.Count > 0)
@@ -361,7 +365,7 @@
                                                     <div class="row">
                                                         <div class="col-md-4">
                                                              <div class="form-group">
-                                                                    <label class="form-label">@view.texts.ReadStatus_Label:</label>
+                                                                    <label class="form-label">@view.texts.Get("ReadStatus-Label"):</label>
                                                                     @if (view.listPermissionValue != null )
                                                                     {
                                                                             @if (view.listPermissionValue.Count > 0)
@@ -383,7 +387,7 @@
 
                                                          <div class="col-md-4">
                                                              <div class="form-group">
-                                                                    <label class="form-label">@view.texts.SaveStatus_Label:</label>
+                                                                    <label class="form-label">@view.texts.Get("SaveStatus-Label"):</label>
                                                                     @if (view.listPermissionValue != null )
                                                                     {
                                                                             @if (view.listPermissionValue.Count > 0)
@@ -405,7 +409,7 @@
 
                                                          <div class="col-md-4">
                                                              <div class="form-group">
-                                                                    <label class="form-label">@view.texts.DeleteStatus_Label:</label>
+                                                                    <label class="form-label">@view.texts.Get("DeleteStatus-Label"):</label>
                                                                     @if (view.listPermissionValue != null )
                                                                     {
                                                                             @if (view.listPermissionValue.Count > 0)
@@ -431,9 +435,10 @@
                                                         <div class="col-md-12">
 
                                                             <p class="field" style="padding-top:10px">
-                                                                <TaskButton @ref="savenewbtn" OnClick="OnSet" Title=@view.texts.SavePermissionButton_Label
-                                                                        Description=@view.texts.SavePermissionButton_Description
-                                                                        ActionLabel=@view.texts.Saving_Label
+                                                                <TaskButton @ref="savenewbtn" OnClick="OnSet" 
+                                                                        Title=@view.texts.Get("SavePermissionButton-Label")
+                                                                        Description=@view.texts.Get("SavePermissionButton-Description")
+                                                                        ActionLabel=@view.texts.Get("Saving-Label")
                                                                         ReadOnly=!view.Permissions.AllowSave>
                                                                 </TaskButton>
 
@@ -488,18 +493,18 @@
 
                 this.InitServices();
 
-                view = new PermissionViewModel((_memberservices as MembershipGateway),
-                   (_cache as DataCacheGateway), user);
+                view = new PermissionViewModel((_systemservices as SystemProxy),
+                   (_cache as DataCacheProxy), user);
 
                 view.Permissions
                     = BaseViewModel.SetPermissions(permissions, "SYSPERMISSION", false);
 
                 await view.InitializeModels();
 
-                _LoadingData_Text = view.texts.LoadingData;
-                _PageTitle = view.texts.Permission_PageTitle;
-                _msgYes = view.texts.Yes_Text;
-                _msgNo = view.texts.No_Text;
+                _LoadingData_Text = view.texts.Get("LoadingData");
+                _PageTitle = view.texts.Get("Instance-PageTitle");
+                _msgYes = view.texts.Get("Yes-Text");
+                _msgNo = view.texts.Get("No-Text");
 
             }
 
@@ -515,9 +520,10 @@
         searchbtn.Begin();
         await view.Search();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.ErrorOnExecuteSearch, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnExecuteSearch"),
+               view.ServiceStatus.Exceptions.Messages[0].Description);
         }
 
         searchbtn.End();
@@ -538,9 +544,10 @@
 
         await loading.End();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.ErrorOnReturnData, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnReturnData"),
+               view.ServiceStatus.Exceptions.Messages[0].Description);
         }
         else
         {
@@ -558,19 +565,22 @@
 
         await view.Set();
 
-        if (!view.ExecutionStatus.Status)
+        if (!view.ServiceStatus.Success)
         {
-            await msgbox.ShowDialog(view.texts.NoticeLabel, view.ExecutionStatus.Error.Message);
+            await msgbox.ShowDialog(view.texts.Get("NoticeLabel"),
+              view.ServiceStatus.Exceptions.Messages[0].Description);
         }
         else
         {
             if (this.view.Inserting)
             {
-                await msgbox_create.ShowDialog(view.texts.SuccessLabel, view.texts.AfterSaveAnswering);
+                await msgbox_create.ShowDialog(view.texts.Get("SuccessLabel"),
+                view.texts.Get("AfterSaveAnswering"));
             }
             else
             {
-                await msgbox.ShowDialog(view.texts.SuccessLabel, view.texts.SuccessSaveMessage);
+                await msgbox.ShowDialog(view.texts.Get("SuccessLabel"),
+                 view.texts.Get("SuccessSaveMessage"));
                 this.Back();
             }
 
