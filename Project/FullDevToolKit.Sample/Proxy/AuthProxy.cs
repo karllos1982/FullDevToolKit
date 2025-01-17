@@ -3,6 +3,7 @@ using FullDevToolKit.Sys.Models.Common;
 using FullDevToolKit.Sys.Models.Identity;
 using Newtonsoft.Json;
 using FullDevToolKit.ApplicationHelpers;
+using System.Threading.Tasks.Sources;
 
 
 namespace MyApp.Proxys
@@ -139,13 +140,22 @@ namespace MyApp.Proxys
         }
 
         public async Task Logout()
-        {            
-           
-            this.IsAuthenticated = true;
+        {
+			APIResponse<bool> ret = null;
 
-            object ret = await this.GetAsJSON<object>("changepassword", null);            
-            
-        }
+			try
+            {
+				
+                this.IsAuthenticated = true;
+				 ret = await this.GetAsJSON<bool>("logout", null);
+
+			}
+            catch(Exception ex)
+            {
+                var e = ex.Message; 
+            }		
+
+		}
 
     }
 }

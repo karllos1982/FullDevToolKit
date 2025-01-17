@@ -250,12 +250,13 @@
 		if (_appctrl.UserInfo != null)
 		{
 			await ((AuthProxy)_appservices).Logout();
-		}
 
-		await _appctrl.Logout();
-		string url = _settings.SiteURL;
-		NavigationManager.NavigateTo(url);
-		islogged = false;
+			await _appctrl.Logout();
+			string url = _settings.SiteURL;
+			NavigationManager.NavigateTo(url);
+			islogged = false;
+		}
+				
 		StateHasChanged();
 	}
 

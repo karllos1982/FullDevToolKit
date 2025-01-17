@@ -86,8 +86,11 @@ namespace MyApp.Controllers
 
                 if (data != null)
                 {
-                    data.ProfileImageURL
-                        = Context.Settings.SiteURL + "auth/GetUserImageProfile?file=" + data.ProfileImage;
+                    string img = data.ProfileImage;
+                    if (img == "") { img = "user_anonymous.png"; }
+                    data.ProfileImageURL =
+                        Context.Settings.SiteURL + "auth/GetUserImageProfile?file=" + img;
+                    
                 }
 
                 ret = SetReturn<UserResult>(data);

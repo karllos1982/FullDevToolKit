@@ -32,7 +32,7 @@
 
             @if (view != null)
             {
-                <div style="display:@view.Get("SearchingState")">
+                <div style="display:@view.SearchingState">
 
                     <div class="row gy-5 g-xl-10">
 
@@ -591,7 +591,7 @@
                                         <p class="field" style="padding-top:10px">
 
                                             <TaskButton @ref="savenewbtn" OnClick="OnCreate" 
-                                                Title=@view.texts.Get("CreateUserButton_Label")
+                                                Title=@view.texts.Get("CreateUserButton-Label")
                                                 Description=@view.texts.Get("CreateUser-Description")
                                                 ActionLabel=@view.texts.Get("Saving-Label") ReadOnly=!view.Permissions.AllowSave>
                                             </TaskButton>
@@ -656,7 +656,9 @@
                 this.InitServices();
 
                 view = new UserViewModel((_systemservices as SystemProxy),
-                   (_cache as DataCacheProxy), user);
+                   (_cache as DataCacheProxy), user, _httpclient, _settings.ServiceURL, _appctrl.UserInfo.Token);
+
+                view.texts = this.localization;
 
                 view.Permissions
                     = BaseViewModel.SetPermissions(permissions, "SYSUSER", false);

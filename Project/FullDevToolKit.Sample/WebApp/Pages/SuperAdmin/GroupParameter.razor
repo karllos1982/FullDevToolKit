@@ -1,4 +1,4 @@
-﻿@page "/roles"
+﻿@page "/groupparameter"
 @inherits SuperAdminLayout
 @layout SuperAdminLayout
 
@@ -25,7 +25,7 @@
 
         <div class="">
 
-             <BreadCrumbView PageTitle="@_PageTitle" HomeURL="@homeURL" ></BreadCrumbView>
+            <BreadCrumbView PageTitle="@_PageTitle" HomeURL="@homeURL"></BreadCrumbView>
 
             @if (view != null)
             {
@@ -45,26 +45,26 @@
 
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label class="form-label">@view.texts.Get("SearchByRoleName-Label"):</label>
-                                        <input type="text" @bind-value="view.param.pRoleName" class="form-control"
-                                           placeholder=@view.texts.Get("SearchByRoleName-Description")>
-                                    </div>                                  
+                                        <label class="form-label">@view.texts.Get("SearchByGroupParameterName-Label"):</label>
+                                        <input type="text" @bind-value="view.param.pGroupParameterName" class="form-control"
+                                               placeholder=@view.texts.Get("SearchByGroupParameterName-Description")>
+                                    </div>
 
                                     <p class="field" style="padding-top:10px">
 
-                                        <TaskButton @ref="searchbtn" OnClick="OnSearch" 
-                                                Title=@view.texts.Get("SearchButtonLabel")
-                                                ReadOnly=!view.Permissions.AllowRead
-                                                ActionLabel=@view.texts.Get("SearchingLabel")>
+                                        <TaskButton @ref="searchbtn" OnClick="OnSearch"
+                                                    Title=@view.texts.Get("SearchButtonLabel")
+                                                    ReadOnly=!view.Permissions.AllowRead
+                                                    ActionLabel=@view.texts.Get("SearchingLabel")>
                                         </TaskButton>
 
                                     </p>
 
                                     <p class="field" style="padding-top:10px">
-                                        <TaskButton @ref="newbtn" OnClick="OnNew" 
-                                                Title=@view.texts.Get("NewRole-Label") Class="dark"
-                                                Description=@view.texts.Get("NewRole-Description") ReadOnly=!view.Permissions.AllowSave
-                                                ActionLabel=@view.texts.Get("InsertingLoadingLabel")>
+                                        <TaskButton @ref="newbtn" OnClick="OnNew"
+                                                    Title=@view.texts.Get("NewGroupParameter-Label") Class="dark"
+                                                    Description=@view.texts.Get("NewGroupParameter-Description") ReadOnly=!view.Permissions.AllowSave
+                                                    ActionLabel=@view.texts.Get("InsertingLoadingLabel")>
                                         </TaskButton>
 
                                     </p>
@@ -88,16 +88,16 @@
                                     {
                                         @if (view.searchresult.Count > 0)
                                         {
-                                            <DataGrid TItem="RoleResult" Data="@view.searchresult" Responsive ShowPager>
+                                            <DataGrid TItem="GroupParameterResult" Data="@view.searchresult" Responsive ShowPager>
                                                 <DataGridColumns>
-                                                    <DataGridColumn Field="@nameof(RoleResult.RoleName)" 
-                                                        Caption=@view.texts.Get("RoleName-Label") />
+                                                    <DataGridColumn Field="@nameof(GroupParameterResult.GroupParameterName)"
+                                                                    Caption=@view.texts.Get("GroupParameterName-Label") />
 
-                                                        <DataGridColumn Field="@nameof(RoleResult.IsActive)" 
-                                                            Caption=@view.texts.Get("Active-Label")>
-                                                            <DisplayTemplate>
+                                                    <DataGridColumn Field="@nameof(GroupParameterResult.IsActive)"
+                                                                    Caption=@view.texts.Get("Active-Label")>
+                                                        <DisplayTemplate>
                                                             @{
-                                                                RoleResult obj = (context as RoleResult);
+                                                                GroupParameterResult obj = (context as GroupParameterResult);
 
                                                                 if (obj.IsActive)
                                                                 {
@@ -114,16 +114,16 @@
                                                     </DataGridColumn>
 
 
-                                                    <DataGridColumn Field="@nameof(RoleResult.RoleID)" 
-                                                        Caption=@view.texts.Get("Edit-Label")>
+                                                    <DataGridColumn Field="@nameof(GroupParameterResult.GroupParameterID)"
+                                                                    Caption=@view.texts.Get("Edit-Label")>
                                                         <DisplayTemplate>
                                                             @{
-                                                                RoleResult obj = (context as RoleResult);
+                                                                GroupParameterResult obj = (context as GroupParameterResult);
 
                                                                 @if (view.Permissions.AllowSave)
                                                                 {
                                                                     <IconButton Icon="IconButton.TYPEICONENUM.EDIT"
-                                                                            OnClick="()=>OnDetClick(obj.RoleID)"></IconButton>
+                                                                                OnClick="()=>OnDetClick(obj.GroupParameterID)"></IconButton>
                                                                 }
                                                             }
 
@@ -164,19 +164,19 @@
                                 <div class="card-header pt-7">
 
                                     <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.Get("RoleRecord-Label")</span>
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("GroupParameterRecord-Label")</span>
                                     </h3>
 
                                 </div>
 
-                                <div class="card-body">                           
+                                <div class="card-body">
 
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label class="form-label" for="email">@view.texts.Get("RoleName-Label")</label>
-                                                <input type="text" class="form-control field" @bind-value="@view.result.RoleName" />
-                                                <label class="validation_field">@view.GetSummaryMessage("RoleName") </label>
+                                                <label class="form-label" for="email">@view.texts.Get("GroupParameterName-Label")</label>
+                                                <input type="text" class="form-control field" @bind-value="@view.result.GroupParameterName" />
+                                                <label class="validation_field">@view.GetSummaryMessage("GroupParameterName") </label>
                                             </div>
                                         </div>
                                     </div>
@@ -197,11 +197,11 @@
 
                                             <p class="field" style="padding-top:10px">
 
-                                                <TaskButton @ref="savenewbtn" OnClick="OnSet" 
-                                                        Title=@view.texts.Get("SaveRoleButton-Label")
-                                                        Description=@view.texts.Get("SaveRoleButton-Description")
-                                                        ActionLabel=@view.texts.Get("Saving-Label")
-                                                        ReadOnly=!view.Permissions.AllowSave>
+                                                <TaskButton @ref="savenewbtn" OnClick="OnSet"
+                                                            Title=@view.texts.Get("SaveGroupParameterButton-Label")
+                                                            Description=@view.texts.Get("SaveGroupParameterButton-Description")
+                                                            ActionLabel=@view.texts.Get("Saving-Label")
+                                                            ReadOnly=!view.Permissions.AllowSave>
                                                 </TaskButton>
 
                                             </p>
@@ -219,7 +219,7 @@
             }
             else
             {
-                <PageLoading LoadingText="Loading page. Please, wait..."></PageLoading>
+                <PageLoading LoadingText=@_LoadingData_Text></PageLoading>
 
             }
         </div>
@@ -231,8 +231,8 @@
 
 @code {
 
-        
-    private RoleViewModel view;
+
+    private GroupParameterViewModel view;
 
     //
 
@@ -254,13 +254,13 @@
 
                 this.InitServices();
 
-                view = new RoleViewModel((_systemservices as SystemProxy),
+                view = new GroupParameterViewModel((_systemservices as SystemProxy),
                    (_cache as DataCacheProxy), user, _httpclient, _settings.ServiceURL, _appctrl.UserInfo.Token);
 
                 view.texts = this.localization;
 
                 view.Permissions
-                    = BaseViewModel.SetPermissions(permissions, "SYSROLE", false);
+                    = BaseViewModel.SetPermissions(permissions, "SYSGROUPPARAMETER", false);
 
                 await view.InitializeModels();
 
@@ -342,8 +342,8 @@
             }
             else
             {
-                 await msgbox.ShowDialog(view.texts.Get("SuccessLabel"),
-                 view.texts.Get("SuccessSaveMessage"));
+                await msgbox.ShowDialog(view.texts.Get("SuccessLabel"),
+                view.texts.Get("SuccessSaveMessage"));
 
                 this.Back();
             }

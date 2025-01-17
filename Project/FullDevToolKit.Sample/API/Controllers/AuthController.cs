@@ -174,10 +174,12 @@ namespace MyApp.Controllers
                         break;
                     }
                   
-                }         
-                
+                }
+
+                string img = userM.ProfileImage; 
+                if (img=="") { img = "user_anonymous.png";  }
                 userA.ProfileImageURL =
-                    Context.Settings.SiteURL+ "auth/GetUserImageProfile?file=" + userM.ProfileImage;
+                    Context.Settings.SiteURL+ "auth/GetUserImageProfile?file=" + img;
 
                 ret = SetReturn<UserAuthenticated>(userA);                
 
@@ -363,6 +365,11 @@ namespace MyApp.Controllers
 
             Stream str =  service.DownloadFile(file);
 
+            if (str == null)
+            {
+                str = service.DownloadFile("user_anonymous.png");
+            }
+
             FileStreamResult result = new FileStreamResult(str, "application/octet-stream");
 
             return result;
@@ -376,9 +383,11 @@ namespace MyApp.Controllers
         {
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
-            await Manager.IdentityModule.Logout(long.Parse(this.UserID.ToString())); 
+            await Manager.IdentityModule.Logout(long.Parse(this.UserID.ToString()));
 
-            FinalizeManager();
+			ret = SetReturn<bool>(true);
+
+			FinalizeManager();
 
             return ret;
         }

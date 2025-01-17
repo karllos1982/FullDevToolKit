@@ -34,8 +34,7 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
             string ret = @"select * from sysGroupParameter 
                          where 1=1 
                          and (@pGroupParameterID=0 or GroupParameterID=@pGroupParameterID)
-                         and (@pGroupParameterName='' or GroupParameterName=@pGroupParameterName)
-                         and (@pIsActive=-1 or IsActive=@pIsActive)
+                         and (@pGroupParameterName='' or GroupParameterName=@pGroupParameterName)                         
                         ";
 
             return ret;
@@ -46,8 +45,7 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
             string ret = @"select * from sysGroupParameter 
                          where 1=1 
                          and (@pGroupParameterID=0 or GroupParameterID=@pGroupParameterID)
-                         and (@pGroupParameterName='' or GroupParameterName=@pGroupParameterName)
-                          and (@pIsActive=-1 or IsActive=@pIsActive)
+                         and (@pGroupParameterName='' or GroupParameterName=@pGroupParameterName)                         
                         ";
 
             return ret;

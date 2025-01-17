@@ -34,8 +34,7 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
             string ret = @"select * from sysParameter 
                          where 1=1 
                          and (@pParameterID=0 or ParameterID=@pParameterID)
-                         and (@pParameterName='' or ParameterName=@pParameterName)
-                         and (@pIsActive=-1 or IsActive=@pIsActive)
+                         and (@pParameterName='' or ParameterName=@pParameterName)                        
                         ";
 
             return ret;
@@ -43,13 +42,13 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
 
         public override string QueryForSearch(object param)
         {
-            string ret = @"select * from sysParameter p 
+            string ret = @"select p.*, g.GroupParameterName
+                         from sysParameter p 
                          inner join sysGroupParameter g on p.GroupParameterID=g.GroupParameterID
                          where 1=1 
                          and (@pParameterID=0 or p.ParameterID=@pParameterID)
                          and (@pGroupParameterID=0 or p.GroupParameterID=@pGroupParameterID)
-                         and (@pParameterName='' or p.ParameterName like '%' + @pParameterName + '%')
-                         and (@pIsActive=-1 or p.IsActive=@pIsActive)
+                         and (@pParameterName='' or p.ParameterName like '%' + @pParameterName + '%')                         
                         ";
 
             return ret;

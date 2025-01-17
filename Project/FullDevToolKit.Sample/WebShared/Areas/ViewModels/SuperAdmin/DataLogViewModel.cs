@@ -13,12 +13,13 @@ namespace MyApp.ViewModel
         private DataCacheProxy _cache;
 
         public DataLogViewModel(SystemProxy service, DataCacheProxy cache,
-            UserAuthenticated user)
+            UserAuthenticated user, HttpClient http, string serviceurl, string token)
         {
             _user = user;
             _Proxys = service;
             _cache = cache;
             this.InitializeView();
+            _Proxys.Init(http, serviceurl, token);
         }
 
         UserAuthenticated _user;
@@ -49,9 +50,7 @@ namespace MyApp.ViewModel
 
         public override async Task InitializeModels()
         {
-
-            await ClearSummaryValidation();
-            await this.InitLocalization(_cache, _user.LocalizationLanguage);
+            await ClearSummaryValidation();         
             
         }
 

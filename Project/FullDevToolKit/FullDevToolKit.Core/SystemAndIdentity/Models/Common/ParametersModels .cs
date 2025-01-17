@@ -73,9 +73,9 @@ namespace FullDevToolKit.Sys.Models.Common
         
         public long GroupParameterID { get; set; }
 
-        public int GroupParameterName { get; set; }
+        public string GroupParameterName { get; set; } = string.Empty;
 
-        public string ParameterName { get; set; } = string.Empty;
+		public string ParameterName { get; set; } = string.Empty;
 
         public bool IsActive { get; set; }
 

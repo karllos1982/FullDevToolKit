@@ -16,16 +16,16 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
             Keys = new List<string>();
             ExcludeFields = new List<string>();
 
-            Keys.Add("SessionID");
+            Keys.Add("SessionLogID");
            
         }
 
         public override string QueryForGet(object param)
         {
             string ret = @"select u.UserName, u.Email, s.*   
-                from sysSession
+                from sysSessionLog
                 inner join sysUser u on s.UserID = u.UserID   
-                where SessionID=@pSessionID";
+                where SessionLogID=@pSessionLogID";
 
             return ret;
         }
@@ -33,8 +33,8 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
         public override string QueryForList(object param)
         {
             string ret = @"select 
-             s.SessionID, s.UserID, u.UserName, Date, IP, BrowserName
-             from sysSession s
+             s.SessionLogID, s.UserID, u.UserName, Date, IP, BrowserName
+             from sysSessionLog s
              inner join sysUser u on s.UserID = u.UserID               
              ";
 
@@ -46,7 +46,7 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
             bool gobydate = ((SessionLogParam)param).SearchByDate;
 
             string ret = @"select u.UserName, u.Email, s.*             
-             from sysSession s
+             from sysSessionLog s
              inner join sysUser u on s.UserID = u.UserID  
              where 1=1 
              and (@pUserID=0 or s.UserID=@pUserID)
@@ -67,9 +67,9 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
 
         public string QueryForSetDateLogout()
         {
-            string ret = @"update sysSession set DateLogout = GetDate() 
-                    where SessionID = (select top 1 SessionID 
-                    from sysSession where UserID=@pUserID order by Date desc)
+            string ret = @"update sysSessionLog set DateLogout = GetDate() 
+                    where SessionLogID = (select top 1 SessionLogID 
+                    from sysSessionLog where UserID=@pUserID order by Date desc)
              ";
 
             return ret;

@@ -494,7 +494,9 @@
                 this.InitServices();
 
                 view = new PermissionViewModel((_systemservices as SystemProxy),
-                   (_cache as DataCacheProxy), user);
+                   (_cache as DataCacheProxy), user, _httpclient, _settings.ServiceURL, _appctrl.UserInfo.Token);
+
+                view.texts = this.localization;
 
                 view.Permissions
                     = BaseViewModel.SetPermissions(permissions, "SYSPERMISSION", false);

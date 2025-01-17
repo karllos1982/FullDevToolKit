@@ -89,21 +89,6 @@ namespace MyApp.Proxys
             return ret;
         }
 
-        //public async Task<List<LocalizationTextResult>?> ListLocalizationTexts()
-        //{
-        //    List<LocalizationTextResult> ret = new List<LocalizationTextResult>();
-        //    APIResponse<List<LocalizationTextResult>?> response = null;
-
-        //    response = await this.GetAsJSON<List<LocalizationTextResult>?>("listlocalizationtexts", null);
-
-        //    if (response.IsSuccess)
-        //    {
-        //        ret = response.Data;
-        //    }
-
-        //    return ret;
-        //}
-
 
 		public async Task<List<LocalizationTextResult>> ListLocalizationTexts()
 		{
@@ -121,7 +106,38 @@ namespace MyApp.Proxys
 			return ret;
 		}
 
+        public async Task<List<GroupParameterList>> ListGroupParameter()
+        {
+            List<GroupParameterList> ret = null;
 
-	}
+            APIResponse<List<GroupParameterList>?> response = null;
+
+            response = await GetAsJSON<List<GroupParameterList>?>("listgroupparameter", null);
+
+            if (response.IsSuccess)
+            {
+                ret = response.Data;
+            }
+
+            return ret;
+        }
+
+        public async Task<List<ParameterList>> ListParameter()
+        {
+            List<ParameterList> ret = null;
+
+            APIResponse<List<ParameterList>?> response = null;
+
+            response = await GetAsJSON<List<ParameterList>?>("listparameter", null);
+
+            if (response.IsSuccess)
+            {
+                ret = response.Data;
+            }
+
+            return ret;
+        }
+
+    }
 
 }

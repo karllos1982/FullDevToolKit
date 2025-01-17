@@ -13,13 +13,14 @@ namespace MyApp.ViewModel
         private SystemProxy _Proxys;
         private DataCacheProxy _cacheProxys; 
 
-        public PermissionViewModel(SystemProxy service,
-            DataCacheProxy cache ,  UserAuthenticated user)
+        public PermissionViewModel(SystemProxy service, DataCacheProxy cache ,  
+            UserAuthenticated user, HttpClient http, string serviceurl, string token)
         {
             _user = user;
             _Proxys = service;
             _cacheProxys = cache;  
-            this.InitializeView(user);         
+            this.InitializeView(user);
+            _Proxys.Init(http, serviceurl, token);
         }
 
         UserAuthenticated _user;
@@ -54,8 +55,7 @@ namespace MyApp.ViewModel
         public override async Task InitializeModels()
         {
 
-            await ClearSummaryValidation();
-            await this.InitLocalization(_cacheProxys, _user.LocalizationLanguage);
+            await ClearSummaryValidation();            
 
             await LoadRolesList();
             await LoadUsersList();

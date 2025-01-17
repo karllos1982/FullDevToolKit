@@ -54,6 +54,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwZXJBZG1pblxEYXRhTG9nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FullDevToolKit.Sample/WebApp/Pages/SuperAdmin/GroupParameter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwZXJBZG1pblxHcm91cFBhcmFtZXRlci5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projetos/OUTROS/FullDevToolKit/Project/FullDevToolKit.Sample/WebApp/Pages/SuperAdmin/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwZXJBZG1pblxJbmRleC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -68,6 +72,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Projetos/OUTROS/FullDevToolKit/Project/FullDevToolKit.Sample/WebApp/Pages/SuperAdmin/ObjectPermission.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwZXJBZG1pblxPYmplY3RQZXJtaXNzaW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FullDevToolKit.Sample/WebApp/Pages/SuperAdmin/Parameter.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU3VwZXJBZG1pblxQYXJhbWV0ZXIucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projetos/OUTROS/FullDevToolKit/Project/FullDevToolKit.Sample/WebApp/Pages/SuperAdmin/Permission.razor]

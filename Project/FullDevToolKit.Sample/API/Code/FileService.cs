@@ -76,7 +76,7 @@ namespace MyApp.API
                 fisicalpath = fisicalpath.Replace('\\', '/');
                 fisicalpath = fisicalpath + $"/FileServer/{_container}/{filename}";
 
-                if (File.Exists(filename))
+                if (File.Exists(fisicalpath))
                 {
                     ret = new FileStream(fisicalpath, FileMode.Open);
                 }

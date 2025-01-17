@@ -12,12 +12,13 @@ namespace MyApp.ViewModel
         private DataCacheProxy _cache;
 
         public ParameterViewModel(SystemProxy service, DataCacheProxy cache,
-            UserAuthenticated user)
+            UserAuthenticated user, HttpClient http, string serviceurl, string token)
         {
             _user = user;
             _Proxys = service;
             _cache = cache;
             this.InitializeView(user);
+            _Proxys.Init(http, serviceurl, token);
         }
 
         UserAuthenticated _user;
@@ -25,7 +26,7 @@ namespace MyApp.ViewModel
         public ParameterResult result = new ParameterResult();
         public ParameterParam param = new ParameterParam() { };
         public List<ParameterResult> searchresult = new List<ParameterResult>();
-
+        public List<GroupParameterList> listgroupparameter = new List<GroupParameterList>();    
         public DefaultLocalization texts = null;
 
         public override async Task ClearSummaryValidation()
@@ -39,11 +40,27 @@ namespace MyApp.ViewModel
 
         }
 
+        public async Task LoadGroupParameterList()
+        {
+            listgroupparameter = new List<GroupParameterList>();
+
+            ServiceStatus = new ExecutionStatus(true);
+            listgroupparameter = await _cache.ListGroupParameter();
+
+            if (listgroupparameter == null)
+            {
+                listgroupparameter = new List<GroupParameterList>();
+
+            }
+
+            listgroupparameter.Insert(0, new GroupParameterList() { GroupParameterID = 0, GroupParameterName = this.texts.Get("SelectItem-Description") });
+
+        }
+
         public override async Task InitializeModels()
         {
-
-            await ClearSummaryValidation();
-            await this.InitLocalization(_cache, _user.LocalizationLanguage);
+            await ClearSummaryValidation();    
+            await LoadGroupParameterList(); 
         }
 
 
