@@ -15,13 +15,15 @@ namespace MyApp.ViewModel
         public ContactSummaryManager ContactSummary;
 
         public PersonViewModel(MyAppProxy service, DataCacheProxy cache,
-            UserAuthenticated user)
+            UserAuthenticated user, HttpClient http, string serviceurl, string token)
         {
             _user = user;
 			_proxys = service;
             _cache = cache;
-            ContactSummary = new ContactSummaryManager(); 
             this.InitializeView(user);
+            _proxys.Init(http, serviceurl, token);
+            ContactSummary = new ContactSummaryManager(); 
+            
         }
 
         UserAuthenticated _user;
@@ -48,9 +50,6 @@ namespace MyApp.ViewModel
         {
 
             await ClearSummaryValidation();
-
-            this.texts = new DefaultLocalization();
-            this.texts.FillTexts(await _cache.ListLocalizationTexts(), _user.LocalizationLanguage);
 
             ContactSummary.ClearSummaryValidation();
         }

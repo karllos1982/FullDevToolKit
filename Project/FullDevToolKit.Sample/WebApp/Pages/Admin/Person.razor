@@ -1,21 +1,23 @@
-﻿@page "/admin/person"
+﻿@page "/person"
 @inherits AdminLayout
 @layout AdminLayout
 
-@inject IJSRuntime JSRuntime
+@inject NavigationManager NavigationManager
+@inject HttpClient _httpclient
 @inject IAppControllerAsync<UserAuthenticated> _appctrl
+@inject IAppSettings _settings
+@inject IDataCacheProxyManager _cache
 @inject IAuthProxyManager _appservices
 @inject IMyAppProxy _services
-@inject IDataCacheProxyManager _cache
-@inject IAppSettings _settings
-@inject NavigationManager NavigationManager
-@inject HttpClient _httpClient
+@inject IJSRuntime JSRuntime
 
-<BreadCrumbView IsHome="false" HomeURL="/admin/home" PageTitle=@_PageTitle></BreadCrumbView>
 
-<div id="kt_content_container" class="d-flex flex-column-fluid align-items-start container-xxl">
-    <div class="content flex-row-fluid" id="kt_content">
+<div id="kt_app_content" class="app-content flex-column-fluid">
+    <div id="kt_app_content_container" class="app-container container-xxl">
+
         <div class="">
+
+            <BreadCrumbView IsHome="false" HomeURL="/admin/home" PageTitle=@_PageTitle></BreadCrumbView>
 
             @if (view != null)
             {
@@ -57,7 +59,7 @@
 
                                     <p class="field" style="padding-top:10px">
 
-                                        <TaskButton @ref="newbtn" OnClick="OnNew" Title=@view.texts.Get("New_Label") Class="dark"
+                                        <TaskButton @ref="newbtn" OnClick="OnNew" Title=@view.texts.Get("New-Label") Class="dark"
                                                 ReadOnly=!view.Permissions.AllowSave
                                                 ActionLabel=@view.texts.Get("InsertingLoadingLabel")>
                                         </TaskButton>
@@ -233,8 +235,8 @@
 
                                                         <p class="field" style="padding-top:10px">
 
-                                                            <TaskButton @ref="savenewbtn" OnClick="OnSet" Title=@view.texts.Get("Save_Label")
-                                                                ActionLabel=@view.texts.Get("Saving_Label")
+                                                            <TaskButton @ref="savenewbtn" OnClick="OnSet" Title=@view.texts.Get("Save-Label")
+                                                                ActionLabel=@view.texts.Get("Saving-Label")
                                                                 ReadOnly=!view.Permissions.AllowSave>
                                                             </TaskButton>
 
@@ -362,12 +364,12 @@
                                                     }
                                                     else
                                                     {
-                                                        <p> No records founds.</p>
+                                                        <p> @view.texts.Get("NoRecordsFound") </p>
                                                     }
                                                 }
                                                 else
                                                 {
-                                                    <p> No records founds.</p>
+                                                    <p> @view.texts.Get("NoRecordsFound") </p>
                                                 }
                                            </div>
                                         </div>
@@ -490,22 +492,12 @@
 
 @code {
 
-
-    private MessageBox msgbox;
-    private MessageBox msgbox_create;
+    
     private MessageBox msgbox_delete;
-    private TaskLoading loading;
-    private TaskButton searchbtn;
+
     private TaskButton statebtn;  
     private TaskButton savecontactbtn;
     private TaskButton unremovecontactbtn;
-    private TaskButton newbtn;
-    private TaskButton savenewbtn;
-
-     private string _LoadingData_Text;
-    private string _PageTitle;
-    private string _msgYes = ""; 
-    private string _msgNo = "";
 
     private Modal modalRef;
     private string Aba1State = "active";
@@ -513,29 +505,14 @@
   
 
     //
-
-    private UserAuthenticated LoggedUser;
+    
     private PersonViewModel view;
 
     //
 
-    private async Task InitResources()
+    protected override Task OnInitializedAsync()
     {
-        ((MyAppController)_appctrl).Settings = _settings;
-
-        if (await _appctrl.IsAuthenticated())
-        {
-            LoggedUser = _appctrl.UserInfo;
-            _services.Init(_httpClient, _settings.ServiceURL, LoggedUser.Token);
-
-            view = new PersonViewModel((_services as MyAppProxy),
-                 (_cache as DataCacheProxy), LoggedUser);
-
-            List<UserPermissions> list = await _appctrl.GetUserPermissions(LoggedUser.Token);
-            view.Permissions
-               = BaseViewModel.SetPermissions(list, "Person", false);
-        }
-
+        return base.OnInitializedAsync();
     }
 
     protected override async Task OnAfterRenderAsync(bool firstRender)
@@ -543,17 +520,34 @@
 
         if (firstRender)
         {
-            await InitResources();
-            await view.InitializeModels();
+            if (await this.InitResources())
+            {
+                await this.InitCacheAndLocalization();
 
-            _LoadingData_Text = view.texts.Get("LoadingData");
-            _PageTitle = view.texts.Get("Instance-PageTitle");
-            _msgYes = view.texts.Get("Yes-Text");
-            _msgNo = view.texts.Get("No-Text");
+                this.InitServices();
+
+                view = new PersonViewModel((_services as MyAppProxy),
+                   (_cache as DataCacheProxy), user, _httpclient, _settings.ServiceURL, _appctrl.UserInfo.Token);
+
+                view.texts = this.localization;
+
+                view.Permissions
+                    = BaseViewModel.SetPermissions(permissions, "PERSON", false);
+
+                await view.InitializeModels();
+
+                _LoadingData_Text = this.view.texts.Get("LoadingData");
+                _PageTitle = this.view.texts.Get("Instance-PageTitle");
+                _msgYes = this.view.texts.Get("Yes-Text");
+                _msgNo = this.view.texts.Get("No-Text");
+
+            }
 
             StateHasChanged();
+
         }
     }
+
 
     public async Task OnSearch()
     {

@@ -20,7 +20,7 @@ namespace Template.Controllers
         public PersonController(IContext context,
                 IContextBuilder contextbuilder)
         {
-            Init(context, contextbuilder, "Person");
+            Init(context, contextbuilder, "PERSON");
            
         }
 

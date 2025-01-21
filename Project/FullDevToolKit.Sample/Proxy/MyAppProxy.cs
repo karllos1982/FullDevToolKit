@@ -27,7 +27,7 @@ namespace MyApp.Proxys
         {
 			Person = new PersonProxy();
 
-			Person.InitializeAPI(http, baseurl + "/business/person/", token);
+			Person.InitializeAPI(http, baseurl + "/myapp/person/", token);
 			Person.IsAuthenticated = true;
        
         }

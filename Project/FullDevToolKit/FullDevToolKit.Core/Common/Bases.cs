@@ -130,10 +130,26 @@ namespace FullDevToolKit.Common
 
     public class APIResponse<TData>
     {
-        private readonly int _code;
+        private int _code;
 
         [JsonConstructor]
         public APIResponse() => _code = 200;
+
+        public void SetCode(int code)
+        {
+            _code = code;   
+        }
+
+        public bool IsSuccess 
+        {
+            get
+            {
+               bool ret = false;
+               ret = (_code is >= 200 and <= 299);
+               return ret ;
+            }
+
+        }
 
         public APIResponse(           
            int code = 200,
@@ -141,6 +157,7 @@ namespace FullDevToolKit.Common
         {            
             Exceptions = exceptions;
             _code = code;
+             
         }
 
         public APIResponse(
@@ -155,10 +172,7 @@ namespace FullDevToolKit.Common
 
         public TData? Data { get; set; }
         public ExecutionExceptions? Exceptions { get; set; }
-
-        [JsonIgnore]
-        public bool IsSuccess
-            => _code is >= 200 and <= 299;
+              
     }
     
   

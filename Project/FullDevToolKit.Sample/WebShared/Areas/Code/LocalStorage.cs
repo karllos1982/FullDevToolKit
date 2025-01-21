@@ -2,6 +2,7 @@
 using Microsoft.JSInterop;
 using FullDevToolKit.Common;
 using System.Collections.Generic;
+using FullDevToolKit.Sys.Models.Identity;
 
 namespace MyApp.ServerCode
 {
@@ -16,8 +17,42 @@ namespace MyApp.ServerCode
             _jsruntime = jsruntime;
 
         }
+        //
 
-        public async Task SetUserPermissions(List<UserPermissions> permissions, string token)
+
+        public async Task SetSession(UserAuthenticated user)
+        {
+
+            string val = JsonConvert.SerializeObject(user);
+
+            await utils.SaveLocalData(_jsruntime, "SESSION", val);
+
+        }
+
+        public async Task<UserAuthenticated> GetSession()
+        {
+            UserAuthenticated ret = null;
+
+            string aux = await utils.ReadLocalData(_jsruntime, "SESSION");
+
+            if (aux != null)
+            {
+                ret = JsonConvert.DeserializeObject<UserAuthenticated>(aux);
+            }
+
+            return ret;
+        }
+
+        public async Task ClearSession()
+        {
+            await utils.SaveLocalData(_jsruntime, "SESSION", null);
+        }
+
+
+
+        //
+
+        public async Task SetUserPermissions_(List<UserPermissions> permissions, string token)
         {
 
             // adicionando uma camada de segurança; criar um registro de permissão com o token
@@ -30,7 +65,7 @@ namespace MyApp.ServerCode
 
         }
 
-        public async Task<List<UserPermissions>> GetUserPermissions(string token)
+        public async Task<List<UserPermissions>> GetUserPermissions_(string token)
         {
             List<UserPermissions> ret = null;
 
@@ -55,7 +90,7 @@ namespace MyApp.ServerCode
             return ret;
         }
 
-        public async Task ClearUserPermissions()
+        public async Task ClearUserPermissions_()
         {
             await utils.ClearLocalData(_jsruntime, "USERPERMISSIONS");
         }

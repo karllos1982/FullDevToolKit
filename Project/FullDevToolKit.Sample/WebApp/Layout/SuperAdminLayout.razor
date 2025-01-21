@@ -220,7 +220,7 @@
 			user = _appctrl.UserInfo;
 
 			ret = (user.RoleName == "SuperAdmin"); 						
-			permissions = await _appctrl.GetUserPermissions(user.Token);
+			permissions = await _appctrl.GetUserPermissions(user);
 			
 		}
 

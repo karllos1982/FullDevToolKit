@@ -145,11 +145,11 @@ namespace MyApp.Domain
             ExecutionStatus ret = new ExecutionStatus(true);
 
             bool check =
-                await Context.CheckUniqueValueForInsert(RepositorySet.Person.TableName, "PersonName", obj.PersonName);
+                await Context.CheckUniqueValueForInsert(RepositorySet.Person.TableName, "ContactName", obj.PersonName);
 
             if (!check)
             {
-                PrimaryValidation.AddCheckValidationException(ref ret, "PersonName",
+                PrimaryValidation.AddCheckValidationException(ref ret, "ContactName",
                   string.Format(LocalizationText.Get("Validation-Unique-Value", Context.LocalizationLanguage).Text, "Person Name"));
 
             }          
@@ -163,12 +163,12 @@ namespace MyApp.Domain
             ExecutionStatus ret = new ExecutionStatus(true);
 
             bool check =
-              await Context.CheckUniqueValueForUpdate(RepositorySet.Person.TableName, "PersonName",
+              await Context.CheckUniqueValueForUpdate(RepositorySet.Person.TableName, "ContactName",
               obj.PersonName, RepositorySet.Person.PKFieldName, obj.PersonID.ToString());
 
             if (!check)
             {
-                PrimaryValidation.AddCheckValidationException(ref ret, "PersonName",
+                PrimaryValidation.AddCheckValidationException(ref ret, "ContactName",
                     string.Format(LocalizationText.Get("Validation-Unique-Value", Context.LocalizationLanguage).Text, "Person Name"));
             }
 

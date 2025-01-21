@@ -24,7 +24,7 @@ namespace MyApp.Data.QueryBuilders
             string ret = "";
 
             SelectBuilder.Clear();
-            SelectBuilder.AddTable("PersonContact", "s", true, "PersonContactID", "", JOINTYPE.NONE, null);
+            SelectBuilder.AddTable("PersonContacts", "s", true, "PersonContactID", "", JOINTYPE.NONE, null);
             SelectBuilder.AddField("s", "PersonContactID", "@pPersonContactID", false, "0", null, ORDERBYTYPE.ASC);
 
             ret = SelectBuilder.BuildQuery();          
@@ -38,7 +38,7 @@ namespace MyApp.Data.QueryBuilders
             string ret = "";
 
             SelectBuilder.Clear();
-            SelectBuilder.AddTable("PersonContact", "s", true, "PersonContactID", "", JOINTYPE.NONE, null);
+            SelectBuilder.AddTable("PersonContacts", "s", true, "PersonContactID", "", JOINTYPE.NONE, null);
             SelectBuilder.AddField("s", "PersonContactID", "@pPersonContactID", true, "0", null, ORDERBYTYPE.NONE);
             SelectBuilder.AddField("s", "PersonID", "@pPersonID", true, "0", null, ORDERBYTYPE.NONE);
             SelectBuilder.AddField("s", "ContactName", "@pContactName", true, "''", null, ORDERBYTYPE.ASC );
@@ -56,7 +56,7 @@ namespace MyApp.Data.QueryBuilders
             string ret = "";
 
             SelectBuilder.Clear();
-            SelectBuilder.AddTable("PersonContact", "s", true, "PersonContactID", "", JOINTYPE.NONE, null);
+            SelectBuilder.AddTable("PersonContacts", "s", true, "PersonContactID", "", JOINTYPE.NONE, null);
             SelectBuilder.AddField("s", "PersonContactID", "@pPersonContactID", false, "0", null, ORDERBYTYPE.NONE);
             SelectBuilder.AddField("s", "PersonID", "@pPersonID", false, "0", null, ORDERBYTYPE.NONE);
             SelectBuilder.AddField("s", "ContactName", "@pContactName", false, "''", null, ORDERBYTYPE.ASC);

@@ -1,18 +1,26 @@
 {
   "Version": 1,
-  "Hash": "0k5msCQfJnxK9PAdvVB/KUK6InwcIYhNpGMURwFPOk0=",
+  "Hash": "XQo3heXZDom7GqT7vfub9tkjNrEUb02BvXcUzUPeW68=",
   "Source": "WebShared",
   "BasePath": "_content/WebShared",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "WebShared\\wwwroot",
+      "Source": "WebShared",
+      "ContentRoot": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\wwwroot\\",
+      "BasePath": "_content/WebShared",
+      "Pattern": "**"
+    }
+  ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.datagrid\\1.7.2\\staticwebassets\\datagrid.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.datagrid\\1.7.2\\staticwebassets\\datagrid.js",
       "SourceId": "Blazorise.DataGrid",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.datagrid\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.datagrid\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.DataGrid",
       "RelativePath": "datagrid.js",
       "AssetKind": "All",
@@ -25,13 +33,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.datagrid\\1.7.2\\staticwebassets\\datagrid.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.datagrid\\1.7.2\\staticwebassets\\datagrid.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\css\\all.css",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\css\\all.css",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/css/all.css",
       "AssetKind": "All",
@@ -44,13 +52,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\css\\all.css"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\css\\all.css"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\css\\all.min.css",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\css\\all.min.css",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/css/all.min.css",
       "AssetKind": "All",
@@ -63,13 +71,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\css\\all.min.css"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\css\\all.min.css"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.eot",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.eot",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/webfonts/fa-brands-400.eot",
       "AssetKind": "All",
@@ -82,13 +90,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.eot"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.eot"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.svg",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.svg",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/webfonts/fa-brands-400.svg",
       "AssetKind": "All",
@@ -101,13 +109,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.svg"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.svg"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.ttf",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.ttf",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/webfonts/fa-brands-400.ttf",
       "AssetKind": "All",
@@ -120,13 +128,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.ttf"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.ttf"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.woff",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.woff",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/webfonts/fa-brands-400.woff",
       "AssetKind": "All",
@@ -139,13 +147,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.woff"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.woff"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.woff2",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.woff2",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/webfonts/fa-brands-400.woff2",
       "AssetKind": "All",
@@ -158,13 +166,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.woff2"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-brands-400.woff2"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.eot",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.eot",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/webfonts/fa-regular-400.eot",
       "AssetKind": "All",
@@ -177,13 +185,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.eot"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.eot"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.svg",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.svg",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/webfonts/fa-regular-400.svg",
       "AssetKind": "All",
@@ -196,13 +204,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.svg"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.svg"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.ttf",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.ttf",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/webfonts/fa-regular-400.ttf",
       "AssetKind": "All",
@@ -215,13 +223,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.ttf"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.ttf"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.woff",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.woff",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/webfonts/fa-regular-400.woff",
       "AssetKind": "All",
@@ -234,13 +242,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.woff"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.woff"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.woff2",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.woff2",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/webfonts/fa-regular-400.woff2",
       "AssetKind": "All",
@@ -253,13 +261,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.woff2"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-regular-400.woff2"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.eot",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.eot",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/webfonts/fa-solid-900.eot",
       "AssetKind": "All",
@@ -272,13 +280,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.eot"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.eot"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.svg",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.svg",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/webfonts/fa-solid-900.svg",
       "AssetKind": "All",
@@ -291,13 +299,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.svg"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.svg"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.ttf",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.ttf",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/webfonts/fa-solid-900.ttf",
       "AssetKind": "All",
@@ -310,13 +318,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.ttf"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.ttf"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.woff",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.woff",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/webfonts/fa-solid-900.woff",
       "AssetKind": "All",
@@ -329,13 +337,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.woff"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.woff"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.woff2",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.woff2",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v5/webfonts/fa-solid-900.woff2",
       "AssetKind": "All",
@@ -348,13 +356,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.woff2"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v5\\webfonts\\fa-solid-900.woff2"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\css\\all.css",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\css\\all.css",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v6/css/all.css",
       "AssetKind": "All",
@@ -367,13 +375,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\css\\all.css"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\css\\all.css"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\css\\all.min.css",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\css\\all.min.css",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v6/css/all.min.css",
       "AssetKind": "All",
@@ -386,13 +394,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\css\\all.min.css"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\css\\all.min.css"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-brands-400.ttf",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-brands-400.ttf",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v6/webfonts/fa-brands-400.ttf",
       "AssetKind": "All",
@@ -405,13 +413,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-brands-400.ttf"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-brands-400.ttf"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-brands-400.woff2",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-brands-400.woff2",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v6/webfonts/fa-brands-400.woff2",
       "AssetKind": "All",
@@ -424,13 +432,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-brands-400.woff2"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-brands-400.woff2"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-regular-400.ttf",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-regular-400.ttf",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v6/webfonts/fa-regular-400.ttf",
       "AssetKind": "All",
@@ -443,13 +451,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-regular-400.ttf"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-regular-400.ttf"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-regular-400.woff2",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-regular-400.woff2",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v6/webfonts/fa-regular-400.woff2",
       "AssetKind": "All",
@@ -462,13 +470,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-regular-400.woff2"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-regular-400.woff2"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-solid-900.ttf",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-solid-900.ttf",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v6/webfonts/fa-solid-900.ttf",
       "AssetKind": "All",
@@ -481,13 +489,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-solid-900.ttf"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-solid-900.ttf"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-solid-900.woff2",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-solid-900.woff2",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v6/webfonts/fa-solid-900.woff2",
       "AssetKind": "All",
@@ -500,13 +508,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-solid-900.woff2"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-solid-900.woff2"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-v4compatibility.ttf",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-v4compatibility.ttf",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v6/webfonts/fa-v4compatibility.ttf",
       "AssetKind": "All",
@@ -519,13 +527,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-v4compatibility.ttf"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-v4compatibility.ttf"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-v4compatibility.woff2",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-v4compatibility.woff2",
       "SourceId": "Blazorise.Icons.FontAwesome",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Icons.FontAwesome",
       "RelativePath": "v6/webfonts/fa-v4compatibility.woff2",
       "AssetKind": "All",
@@ -538,13 +546,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-v4compatibility.woff2"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.icons.fontawesome\\1.7.2\\staticwebassets\\v6\\webfonts\\fa-v4compatibility.woff2"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.snackbar\\1.7.2\\staticwebassets\\blazorise.snackbar.css",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.snackbar\\1.7.2\\staticwebassets\\blazorise.snackbar.css",
       "SourceId": "Blazorise.Snackbar",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.snackbar\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.snackbar\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Snackbar",
       "RelativePath": "blazorise.snackbar.css",
       "AssetKind": "All",
@@ -557,13 +565,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.snackbar\\1.7.2\\staticwebassets\\blazorise.snackbar.css"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.snackbar\\1.7.2\\staticwebassets\\blazorise.snackbar.css"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.snackbar\\1.7.2\\staticwebassets\\blazorise.snackbar.min.css",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.snackbar\\1.7.2\\staticwebassets\\blazorise.snackbar.min.css",
       "SourceId": "Blazorise.Snackbar",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.snackbar\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.snackbar\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise.Snackbar",
       "RelativePath": "blazorise.snackbar.min.css",
       "AssetKind": "All",
@@ -576,13 +584,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise.snackbar\\1.7.2\\staticwebassets\\blazorise.snackbar.min.css"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise.snackbar\\1.7.2\\staticwebassets\\blazorise.snackbar.min.css"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\blazorise.css",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\blazorise.css",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "blazorise.css",
       "AssetKind": "All",
@@ -595,13 +603,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\blazorise.css"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\blazorise.css"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\blazorise.min.css",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\blazorise.min.css",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "blazorise.min.css",
       "AssetKind": "All",
@@ -614,13 +622,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\blazorise.min.css"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\blazorise.min.css"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\breakpoint.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\breakpoint.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "breakpoint.js",
       "AssetKind": "All",
@@ -633,13 +641,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\breakpoint.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\breakpoint.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\button.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\button.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "button.js",
       "AssetKind": "All",
@@ -652,13 +660,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\button.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\button.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\closable.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\closable.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "closable.js",
       "AssetKind": "All",
@@ -671,13 +679,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\closable.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\closable.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\colorPicker.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\colorPicker.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "colorPicker.js",
       "AssetKind": "All",
@@ -690,13 +698,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\colorPicker.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\colorPicker.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\datePicker.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\datePicker.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "datePicker.js",
       "AssetKind": "All",
@@ -709,13 +717,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\datePicker.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\datePicker.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\dragDrop.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\dragDrop.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "dragDrop.js",
       "AssetKind": "All",
@@ -728,13 +736,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\dragDrop.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\dragDrop.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\dropdown.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\dropdown.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "dropdown.js",
       "AssetKind": "All",
@@ -747,13 +755,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\dropdown.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\dropdown.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\fileEdit.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\fileEdit.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "fileEdit.js",
       "AssetKind": "All",
@@ -766,13 +774,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\fileEdit.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\fileEdit.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\filePicker.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\filePicker.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "filePicker.js",
       "AssetKind": "All",
@@ -785,13 +793,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\filePicker.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\filePicker.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\floatingUi.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\floatingUi.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "floatingUi.js",
       "AssetKind": "All",
@@ -804,13 +812,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\floatingUi.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\floatingUi.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\inputMask.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\inputMask.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "inputMask.js",
       "AssetKind": "All",
@@ -823,13 +831,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\inputMask.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\inputMask.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\io.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\io.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "io.js",
       "AssetKind": "All",
@@ -842,13 +850,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\io.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\io.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\memoEdit.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\memoEdit.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "memoEdit.js",
       "AssetKind": "All",
@@ -861,13 +869,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\memoEdit.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\memoEdit.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\numericPicker.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\numericPicker.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "numericPicker.js",
       "AssetKind": "All",
@@ -880,13 +888,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\numericPicker.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\numericPicker.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\observer.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\observer.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "observer.js",
       "AssetKind": "All",
@@ -899,13 +907,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\observer.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\observer.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\table.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\table.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "table.js",
       "AssetKind": "All",
@@ -918,13 +926,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\table.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\table.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\textEdit.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\textEdit.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "textEdit.js",
       "AssetKind": "All",
@@ -937,13 +945,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\textEdit.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\textEdit.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\theme.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\theme.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "theme.js",
       "AssetKind": "All",
@@ -956,13 +964,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\theme.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\theme.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\timePicker.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\timePicker.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "timePicker.js",
       "AssetKind": "All",
@@ -975,13 +983,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\timePicker.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\timePicker.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\tooltip.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\tooltip.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "tooltip.js",
       "AssetKind": "All",
@@ -994,13 +1002,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\tooltip.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\tooltip.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\utilities.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\utilities.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "utilities.js",
       "AssetKind": "All",
@@ -1013,13 +1021,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\utilities.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\utilities.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\DateTimeMaskValidator.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\DateTimeMaskValidator.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "validators/DateTimeMaskValidator.js",
       "AssetKind": "All",
@@ -1032,13 +1040,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\DateTimeMaskValidator.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\DateTimeMaskValidator.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\NoValidator.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\NoValidator.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "validators/NoValidator.js",
       "AssetKind": "All",
@@ -1051,13 +1059,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\NoValidator.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\NoValidator.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\NumericMaskValidator.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\NumericMaskValidator.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "validators/NumericMaskValidator.js",
       "AssetKind": "All",
@@ -1070,13 +1078,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\NumericMaskValidator.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\NumericMaskValidator.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\RegExMaskValidator.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\RegExMaskValidator.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "validators/RegExMaskValidator.js",
       "AssetKind": "All",
@@ -1089,13 +1097,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\RegExMaskValidator.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\validators\\RegExMaskValidator.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\autoNumeric.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\autoNumeric.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/autoNumeric.js",
       "AssetKind": "All",
@@ -1108,13 +1116,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\autoNumeric.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\autoNumeric.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\Behave.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\Behave.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/Behave.js",
       "AssetKind": "All",
@@ -1127,13 +1135,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\Behave.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\Behave.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\flatpickr.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\flatpickr.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/flatpickr.js",
       "AssetKind": "All",
@@ -1146,13 +1154,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\flatpickr.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\flatpickr.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\floating-ui.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\floating-ui.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/floating-ui.js",
       "AssetKind": "All",
@@ -1165,13 +1173,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\floating-ui.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\floating-ui.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\floating-ui-core.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\floating-ui-core.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/floating-ui-core.js",
       "AssetKind": "All",
@@ -1184,13 +1192,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\floating-ui-core.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\floating-ui-core.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\inputmask.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\inputmask.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/inputmask.js",
       "AssetKind": "All",
@@ -1203,13 +1211,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\inputmask.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\inputmask.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\jsencrypt.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\jsencrypt.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/jsencrypt.js",
       "AssetKind": "All",
@@ -1222,13 +1230,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\jsencrypt.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\jsencrypt.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\Pickr.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\Pickr.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/Pickr.js",
       "AssetKind": "All",
@@ -1241,13 +1249,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\Pickr.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\Pickr.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\popper.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\popper.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/popper.js",
       "AssetKind": "All",
@@ -1260,13 +1268,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\popper.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\popper.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\sha512.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\sha512.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/sha512.js",
       "AssetKind": "All",
@@ -1279,13 +1287,13 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\sha512.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\sha512.js"
     },
     {
-      "Identity": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\tippy.js",
+      "Identity": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\tippy.js",
       "SourceId": "Blazorise",
       "SourceType": "Package",
-      "ContentRoot": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
+      "ContentRoot": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\",
       "BasePath": "_content/Blazorise",
       "RelativePath": "vendors/tippy.js",
       "AssetKind": "All",
@@ -1298,7 +1306,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\tippy.js"
+      "OriginalItemSpec": "C:\\Users\\Admin\\.nuget\\packages\\blazorise\\1.7.2\\staticwebassets\\vendors\\tippy.js"
     }
   ]
 }

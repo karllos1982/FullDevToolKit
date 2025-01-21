@@ -240,6 +240,43 @@ REFERENCES [dbo].[sysGroupParameter] ([GroupParameterID])
 GO
 
 
+
+-- TABELAS DO TEMPLATE
+
+CREATE TABLE [dbo].[Person](
+	[PersonID] [bigint] NOT NULL,
+	[PersonName] [varchar](50) NOT NULL,
+	[CreateDate] [datetime] NOT NULL,
+	[IsActive] [bit] NOT NULL,
+	[Email] [varchar](255) NOT NULL,
+	[PhoneNamber] [varchar](15) NOT NULL,
+ CONSTRAINT [pk_Person] PRIMARY KEY CLUSTERED 
+(
+	[PersonID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[PersonContacts](
+	[PersonContactID] [bigint] NOT NULL,
+	[PersonID] [bigint] NOT NULL,
+	[ContactName] [varchar](50) NOT NULL,
+	[Email] [varchar](255) NOT NULL,
+	[CellPhoneNumber] [varchar](16) NOT NULL,
+ CONSTRAINT [pk_PersonContact] PRIMARY KEY CLUSTERED 
+(
+	[PersonContactID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[PersonContacts]  WITH NOCHECK ADD  CONSTRAINT [fk_Person_PersonContact] FOREIGN KEY([PersonID])
+REFERENCES [dbo].[Person] ([PersonID])
+GO
+
+
+
+
 -- 2. CREATE PROCS
 
 -- 2.1: Procedure CheckUniqueValueForInsert
@@ -352,8 +389,9 @@ BEGIN
 	insert into sysObjectPermission values (10006, 'Table.sysDataLog.Basic', 'SYSDATALOG')
 	insert into sysObjectPermission values (10007, 'Table.SysInstance.Basic', 'SYSINSTANCE')
 	insert into sysObjectPermission values (10008, 'Table.SysLocalizationText.Basic', 'SYSLOCALIZATIONTEXT')
-    insert into sysObjectPermission values (10009, 'Table.SysGroupParameter.Basic', 'SYSGROUPPARAMETER')
-    insert into sysObjectPermission values (10010, 'Table.SysParameter.Basic', 'SYSPARAMETER')
+    	insert into sysObjectPermission values (10009, 'Table.SysGroupParameter.Basic', 'SYSGROUPPARAMETER')
+	insert into sysObjectPermission values (10010, 'Table.SysParameter.Basic', 'SYSPARAMETER')
+	insert into sysObjectPermission values (10011, 'Table.SysPerson.Basic', 'PERSON')
 
 	insert into sysPermission values (10001, 10001, 1, null, 1,1,1,'R')
 	insert into sysPermission values (10002, 10002, 1, null, 1,1,1,'R')
@@ -365,6 +403,8 @@ BEGIN
 	insert into sysPermission values (10008, 10008, 1, null, 1,1,1,'R')
 	insert into sysPermission values (10009, 10009, 1, null, 1,1,1,'R')
 	insert into sysPermission values (10010, 10010, 1, null, 1,1,1,'R')
+	insert into sysPermission values (10011, 10011, 1, null, 1,1,1,'R')
+	insert into sysPermission values (10012, 10011, 2, null, 1,1,1,'R')
 
 	-- inserts na tabela LocalizationTexts
 
@@ -628,6 +668,26 @@ BEGIN
 	insert into sysLocalizationText Values(1256,      'en-us','1256','Save-Label','Save')
 	insert into sysLocalizationText Values(1257,      'en-us','1257','New-Label','New Record')
 
+	insert into sysLocalizationText Values(1258,      'en-us','1258','SearchByGroupParameterName-Label','Group Parameter Name')
+	insert into sysLocalizationText Values(1259,      'en-us','1259','SearchByGroupParameterName-Description','Search by Group Parameter Name')
+	insert into sysLocalizationText Values(1260,      'en-us','1260','NewGroupParameter-Label','New Group Parameter')
+	insert into sysLocalizationText Values(1261,      'en-us','1261','NewGroupParameter-Description','Click here to create new Group Parameter ')
+	insert into sysLocalizationText Values(1262,      'en-us','1262','GroupParameterRecord-Label','Group Parameter Record')
+	insert into sysLocalizationText Values(1263,      'en-us','1263','GroupParameterName-Label','Group Parameter Name ')
+	insert into sysLocalizationText Values(1264,      'en-us','1264','SaveGroupParameterButton-Label','Save Group Parameter')
+	insert into sysLocalizationText Values(1265,      'en-us','1265','SaveGroupParameterButton-Description','Click here to save Group Parameter')
+	insert into sysLocalizationText Values(1266,      'en-us','1266','GroupParameter-PageTitle','Group Parameters')
+	insert into sysLocalizationText Values(1267,      'en-us','1267','SearchByParameterName-Label','Parameter Name')
+	insert into sysLocalizationText Values(1268,      'en-us','1268','SearchByParameterName-Description','Search by Parameter Name')
+	insert into sysLocalizationText Values(1269,      'en-us','1269','NewParameter-Label','New Parameter')
+	insert into sysLocalizationText Values(1270,      'en-us','1270','NewParameter-Description','Click here to create new Parameter ')
+	insert into sysLocalizationText Values(1271,      'en-us','1271','ParameterRecord-Label','Parameter Record')
+	insert into sysLocalizationText Values(1272,      'en-us','1272','ParameterName-Label','Parameter Name ')
+	insert into sysLocalizationText Values(1273,      'en-us','1273','SaveParameterButton-Label','Save Parameter')
+	insert into sysLocalizationText Values(1274,      'en-us','1274','SaveParameterButton-Description','Click here to save Parameter')
+	insert into sysLocalizationText Values(1275,      'en-us','1275','Parameter-PageTitle','Parameters')
+
+
 	-- 
 
 
@@ -888,6 +948,25 @@ BEGIN
 	insert into sysLocalizationText Values(2255,      'pt-br','2255','SessionLog-MenuText','Log de Sessão')
 	insert into sysLocalizationText Values(2256,      'pt-br','2256','Save-Label','Salvar')
 	insert into sysLocalizationText Values(2257,      'pt-br','2257','New-Label','Novo Registro')
+
+	insert into sysLocalizationText Values(2258,      'pt-br','2258','SearchByGroupParameterName-Label','Nome do Grupo de Parâmetro')
+	insert into sysLocalizationText Values(2259,      'pt-br','2259','SearchByGroupParameterName-Description','Pesquisar por Nome de Grupo de Parâmetro')
+	insert into sysLocalizationText Values(2260,      'pt-br','2260','NewGroupParameter-Label','Novo Grupo de Parâmetro')
+	insert into sysLocalizationText Values(2261,      'pt-br','2261','NewGroupParameter-Description','Clique aqui para criar um novo Grupo de Parâmetro ')
+	insert into sysLocalizationText Values(2262,      'pt-br','2262','GroupParameterRecord-Label','Dados do Grupo de Parâmetro')
+	insert into sysLocalizationText Values(2263,      'pt-br','2263','GroupParameterName-Label','Nome do Grupo de Parâmetro')
+	insert into sysLocalizationText Values(2264,      'pt-br','2264','SaveGroupParameterButton-Label','Save Group Parameter')
+	insert into sysLocalizationText Values(2265,      'pt-br','2265','SaveGroupParameterButton-Description','Clique aqui para salvar o Grupo de Parâmetro')
+	insert into sysLocalizationText Values(2266,      'pt-br','2266','GroupParameter-PageTitle','Grupo de Parâmetros')
+	insert into sysLocalizationText Values(2267,      'pt-br','2267','SearchByParameterName-Label','Nome do Parâmetro')
+	insert into sysLocalizationText Values(2268,      'pt-br','2268','SearchByParameterName-Description','Pesquisar por Nome do Parâmetro')
+	insert into sysLocalizationText Values(2269,      'pt-br','2269','NewParameter-Label','Novo Parâmetro')
+	insert into sysLocalizationText Values(2270,      'pt-br','2270','NewParameter-Description','Clique aqui par acriar um novo Parâmetro')
+	insert into sysLocalizationText Values(2271,      'pt-br','2271','ParameterRecord-Label','Dados do Parâmetro')
+	insert into sysLocalizationText Values(2272,      'pt-br','2272','ParameterName-Label','Nome do Parâmetro')
+	insert into sysLocalizationText Values(2273,      'pt-br','2273','SaveParameterButton-Label','Salvar Parâmetro')
+	insert into sysLocalizationText Values(2274,      'pt-br','2274','SaveParameterButton-Description','Clique aqui para salvar o Parâmetro')
+	insert into sysLocalizationText Values(2275,      'pt-br','2275','Parameter-PageTitle','Parâmetros')
 
 
 END

@@ -37,6 +37,15 @@ namespace FullDevToolKit.ApplicationHelpers
             Requestor.AddHeader("Authorization", "Bearer " + Token.TokenValue); 
         }
 
+        private int GetStatusCode(HttpStatusCode code)
+        {
+            int ret = 0;
+
+            ret = Convert.ToInt32(code);
+
+            return ret;
+            
+        }
     
         public async Task<APIResponse<T?>> GetAsJSON<T>(string endpoint,object[] param)            
         {
@@ -48,6 +57,8 @@ namespace FullDevToolKit.ApplicationHelpers
            
             ret = await exec.Content.ReadFromJsonAsync<APIResponse<T?>>();
 
+            if (ret != null) { ret.SetCode(GetStatusCode(exec.StatusCode)); }
+            
             return ret ?? GetDefaultResult<T?>();
         }
 
@@ -61,6 +72,8 @@ namespace FullDevToolKit.ApplicationHelpers
 
             ret = await exec.Content.ReadFromJsonAsync<APIResponse<T?>>();
 
+            if (ret != null) { ret.SetCode(GetStatusCode(exec.StatusCode)); }
+
             return ret ?? GetDefaultResult<T?>();
         }
         
@@ -73,6 +86,8 @@ namespace FullDevToolKit.ApplicationHelpers
             HttpResponseMessage exec = await Requestor.PostAsStream(endpoint, param, data);
 
             ret = await exec.Content.ReadFromJsonAsync<APIResponse<T?>>();
+
+            if (ret != null) { ret.SetCode(GetStatusCode(exec.StatusCode)); }
 
             return ret ?? GetDefaultResult<T?>();
         }

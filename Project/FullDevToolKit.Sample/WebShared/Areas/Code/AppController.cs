@@ -32,7 +32,7 @@ namespace MyApp.ServerCode
 
         Task ReplaceUserInfo(UserAuthenticated user);
 
-        Task<List<UserPermissions>> GetUserPermissions(string token);
+        Task<List<UserPermissions>> GetUserPermissions(UserAuthenticated user);
 
         Task SetPageTitle(string title);
 

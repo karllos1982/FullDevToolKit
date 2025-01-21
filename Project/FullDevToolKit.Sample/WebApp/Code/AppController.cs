@@ -6,6 +6,7 @@ using MyApp.Proxys;
 using Newtonsoft.Json;
 using System.Runtime.Intrinsics.X86;
 using FullDevToolKit.Core;
+using WebApp.Pages.SuperAdmin;
 
 
 namespace MyApp.ServerCode
@@ -145,24 +146,22 @@ namespace MyApp.ServerCode
 
         public async Task ClearSession()
         {
-            await _cookies.ClearUserInfo();
+            await _localStorage.ClearSession();
         }
 
         public async Task<ExecutionStatus> CreateSession(UserAuthenticated user)
         {
             ExecutionStatus ret = new ExecutionStatus(true);
 
-            DateTime expires = DateTime.Now.AddMinutes(int.Parse(_settings.SessionTimeOut));
-            await _cookies.SetUserInfo(user, expires);
+            await _localStorage.SetSession(user);
 
             return ret;
         }
 
         public async Task ReplaceUserInfo(UserAuthenticated user)
         {
-            await _cookies.ClearUserInfo();
-            DateTime expires = DateTime.Now.AddMinutes(int.Parse(_settings.SessionTimeOut));
-            await _cookies.SetUserInfo(UserInfo, expires);
+            await _localStorage.ClearSession();
+            await _localStorage.SetSession(user);
 
         }
 
@@ -170,9 +169,15 @@ namespace MyApp.ServerCode
         {
             UserAuthenticated ticket = null;
 
-            ticket = await _cookies.GetUserInfo();
+            ticket = await _localStorage.GetSession();
 
-            UserInfo = ticket;
+            if (ticket != null)
+            {
+                if (ticket.Expires.CompareTo(DateTime.Now) >= 0)
+                {
+                    UserInfo = ticket;
+                }
+            }
         }
 
         public async Task<bool> IsAuthenticated()
@@ -200,11 +205,9 @@ namespace MyApp.ServerCode
             if (response.IsSuccess)
             {
                 usr = response.Data; 
-                DateTime expires = DateTime.Now.AddMinutes(int.Parse(_settings.SessionTimeOut));
-                await _localStorage.SetUserPermissions(usr.Permissions, usr.Token);
-             
+                
                 // criando a sessão do usuario no navegador
-                usr.Permissions = null;
+                usr.Expires = DateTime.Now.AddMinutes(int.Parse(_settings.SessionTimeOut));
                 await this.CreateSession(usr);
 
                 ret.Returns = usr;
@@ -220,10 +223,9 @@ namespace MyApp.ServerCode
 
         public async Task Logout()
         {
-            await _cookies.ClearUserInfo();
-            await _cookies.ClearUserPermissions();
-            await _cookies.ClearAllCookies();
-            await _localStorage.ClearUserPermissions();
+            
+            await _cookies.ClearAllCookies();            
+            await _localStorage.ClearSession();
         }
 
         public PermissionsState CheckPermissions(UserAuthenticated user,
@@ -239,11 +241,11 @@ namespace MyApp.ServerCode
             return ret;
         }
 
-        public async Task<List<UserPermissions>> GetUserPermissions(string token)
+        public async Task<List<UserPermissions>> GetUserPermissions(UserAuthenticated user)
         {
             List<UserPermissions> ret = new List<UserPermissions>();
 
-            ret = await _localStorage.GetUserPermissions(token);
+            ret = user.Permissions.ToList();
 
             return ret;
 

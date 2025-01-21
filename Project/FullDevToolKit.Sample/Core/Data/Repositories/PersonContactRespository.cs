@@ -11,7 +11,7 @@ namespace MyApp.Data.Repositories
         public PersonContactRespository(IContext context)
         {
             Context = context;
-            TableName = "PersonContact";
+            TableName = "PersonContacts";
             PKFieldName = "PersonContactID";
         }
 
