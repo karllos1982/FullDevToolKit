@@ -263,18 +263,18 @@
                                                                                                                        
                                                             <DataGridColumns>
                                                                 
-                                                                <DataGridColumn Field="@nameof(PersonContactResult.PersonName)" Caption="Name" >
+                                                                <DataGridColumn Field="@nameof(PersonContactResult.ContactName)" Caption="Name" >
                                                                     <DisplayTemplate>
                                                                         @{
                                                                             PersonContactResult obj = (context as PersonContactResult);
 
                                                                             @if (obj.RecordState != RECORDSTATEENUM.DELETED)
                                                                             {
-                                                                                <span>@obj.PersonName</span>
+                                                                                <span>@obj.ContactName</span>
                                                                             }
                                                                             else
                                                                             {
-                                                                                <del>@obj.PersonName</del>
+                                                                                <del>@obj.ContactName</del>
                                                                             }
 
                                                                         }
@@ -418,9 +418,9 @@
                         <div class="col-md-12">
 
                             <div class="form-group">
-                                <label class="form-label" for="name">Person Name:</label>
-                                <input type="text" class="form-control field" @bind-value="@view.contact.PersonName" />
-                                    <label class="validation_field">@view.ContactSummary.GetSummaryMessage("PersonName") </label>
+                                <label class="form-label" for="name">Contact Name:</label>
+                                    <input type="text" class="form-control field" @bind-value="@view.contact.ContactName" />
+                                    <label class="validation_field">@view.ContactSummary.GetSummaryMessage("ContactName") </label>
                             </div>
                         </div>
                     </div>
@@ -488,7 +488,7 @@
             OnClickYes="OnNew">
 </MessageBox>
 
-<TaskLoading @ref="loading" Title="Carrgaando..."></TaskLoading>
+<TaskLoading @ref="loading" Title="Carregando..."></TaskLoading>
 
 @code {
 
@@ -537,7 +537,7 @@
                 await view.InitializeModels();
 
                 _LoadingData_Text = this.view.texts.Get("LoadingData");
-                _PageTitle = this.view.texts.Get("Instance-PageTitle");
+                _PageTitle = "Person";
                 _msgYes = this.view.texts.Get("Yes-Text");
                 _msgNo = this.view.texts.Get("No-Text");
 

@@ -35,5 +35,7 @@ namespace FullDevToolKit.Sys.Contracts.Managers
 
         Task ChangeUserProfileImage(ChangeUserImage model);
 
+        Task<bool> ChangeUserLanguage(ChangeUserLanguage model); 
+
     }
 }

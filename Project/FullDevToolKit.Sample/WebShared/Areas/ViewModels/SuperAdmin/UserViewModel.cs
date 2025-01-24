@@ -2,6 +2,7 @@
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Sys.Models.Common;
 using MyApp.Proxys;
+using Blazorise;
 
 namespace MyApp.ViewModel
 {
@@ -32,8 +33,8 @@ namespace MyApp.ViewModel
         public List<InstanceList> listInstances = new List<InstanceList>();
         public List<LocalizationTextList> listLangs = new List<LocalizationTextList>();
         
-        public UserRolesResult RoleSelected = new UserRolesResult();
-        public UserInstancesResult InstanceSelected = new UserInstancesResult();
+        public Int64 selectedRole = 0;
+        public Int64 selectedInstance = 0;
 
         public DefaultLocalization texts = null;
 
@@ -110,24 +111,55 @@ namespace MyApp.ViewModel
                 if (ret.Data != null)
                 {
                     listInstances.AddRange(ret.Data);
-                }
-                listInstances.Insert(0, new InstanceList() { InstanceID = 0, InstanceName = this.texts.Get("SelectItem-Description") });             
+                }               
             }
 
+            listInstances.Insert(0, new InstanceList() { InstanceID = 0, InstanceName = this.texts.Get("SelectItem-Description") });
         }
 
 
         public override async Task Set()
         {
             ServiceStatus = new ExecutionStatus(true);
+            
+            UserEntry entry = new UserEntry(result);
 
-            UserEntry entry = new UserEntry(result);            
+            MergeRole(ref entry, result.Roles, selectedRole);
+            MergeInstance(ref entry, result.Instances, selectedInstance);
 
             APIResponse<UserEntry> ret
                 = await _Proxys.User.Set(entry);
 
             SetResult<UserEntry>(ret, ref entry, ref ServiceStatus);
+          
+        }
+        
+        private void MergeRole(ref UserEntry obj,
+                List<UserRolesResult> roles, Int64 roleid)
+        {
+            UserRolesEntry  newentry;
 
+            obj.Roles = new List<UserRolesEntry>();
+
+            newentry = new UserRolesEntry(roles[0]);
+            newentry.RoleID = roleid;
+            newentry.RecordState = RECORDSTATEENUM.EDITED;
+            obj.Roles.Add(newentry);
+                     
+        }
+
+        private void MergeInstance(ref UserEntry obj,
+                List<UserInstancesResult> instances, Int64 instanceid)
+        {
+            UserInstancesEntry newentry;
+
+            obj.Instances = new List<UserInstancesEntry>();
+
+            newentry = new UserInstancesEntry(instances[0]);
+            newentry.InstanceID = instanceid;
+            newentry.RecordState = RECORDSTATEENUM.EDITED;
+            obj.Instances.Add(newentry);
+          
         }
 
         public override async Task Get(object id)
@@ -143,8 +175,8 @@ namespace MyApp.ViewModel
             {
                 this.isUserActive = Convert.ToBoolean(result.IsActive);
                 this.isUserLocked = Convert.ToBoolean(result.IsLocked);
-                RoleSelected = result.Roles[0];
-                InstanceSelected = result.Instances[0];
+                selectedRole = result.Roles[0].RoleID;
+                selectedInstance = result.Instances[0].InstanceID;
             }
            
         }

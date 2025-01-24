@@ -686,7 +686,8 @@ BEGIN
 	insert into sysLocalizationText Values(1273,      'en-us','1273','SaveParameterButton-Label','Save Parameter')
 	insert into sysLocalizationText Values(1274,      'en-us','1274','SaveParameterButton-Description','Click here to save Parameter')
 	insert into sysLocalizationText Values(1275,      'en-us','1275','Parameter-PageTitle','Parameters')
-
+	insert into sysLocalizationText Values(1276,      'en-us','1276','ChangeUserLanguage-Title','Select a language to change')
+	insert into sysLocalizationText Values(1277,      'en-us','1277','ChangeUserLanguage-Message','The User Language has been successfully changed. Log in again.')
 
 	-- 
 
@@ -967,6 +968,8 @@ BEGIN
 	insert into sysLocalizationText Values(2273,      'pt-br','2273','SaveParameterButton-Label','Salvar Parâmetro')
 	insert into sysLocalizationText Values(2274,      'pt-br','2274','SaveParameterButton-Description','Clique aqui para salvar o Parâmetro')
 	insert into sysLocalizationText Values(2275,      'pt-br','2275','Parameter-PageTitle','Parâmetros')
+	insert into sysLocalizationText Values(2276,      'pt-br','2276','ChangeUserLanguage-Title','Selecione um item para trocar a linguagem padrão')
+	insert into sysLocalizationText Values(2277,      'pt-br','2277','ChangeUserLanguage-Message','A linguagem foi trocada com sucesso. É preciso logar novamente para refletir as alterações.')
 
 
 END

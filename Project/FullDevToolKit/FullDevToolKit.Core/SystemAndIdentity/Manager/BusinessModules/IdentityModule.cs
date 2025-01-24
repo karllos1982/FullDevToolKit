@@ -35,6 +35,8 @@ namespace FullDevToolKit.Sys.Manager
 
             UserResult usermatch = null;
 
+            await LocalizationText.LoadDataSync(Domainset.User.Context, true);
+
             usermatch = await Domainset.User.GetByEmail(model.Email);
 
             if (Domainset.User.Context.Status.Success)
@@ -53,7 +55,7 @@ namespace FullDevToolKit.Sys.Manager
                             else
                             {
                                 trys = 5 - usermatch.LoginFailCounter;
-
+                              
                                 errmsg = string.Format(LocalizationText.Get("Login-Invalid-Password",
                                     Domainset.User.Context.LocalizationLanguage).Text, trys.ToString());
 
@@ -201,6 +203,8 @@ namespace FullDevToolKit.Sys.Manager
         {
             UserEntry ret = null;
 
+            await LocalizationText.LoadDataSync(Domainset.User.Context, true);
+
             Domainset.User.Context.Status
                 = PrimaryValidation.Execute(data, new List<string>(), Domainset.User.Context.LocalizationLanguage);
 
@@ -325,6 +329,16 @@ namespace FullDevToolKit.Sys.Manager
              await Domainset.User.ChangeUserProfileImage(model);
                        
         }
+
+        public async Task<bool> ChangeUserLanguage(ChangeUserLanguage model)
+        {
+            bool ret = false;
+
+            await Domainset.User.ChangeUserLanguage(model);
+
+            return ret; 
+        }
+     
 
     }
 

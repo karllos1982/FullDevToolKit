@@ -87,6 +87,16 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
             return ret;
         }
 
+        public string QueryForChangeUserLanguage()
+        {
+            string ret;
+
+            ret = @"update sysUser set DefaultLanguage=@NewLanguage 
+                  where UserID=@UserID";
+
+            return ret;
+        }
+
         public string QueryForSetLoginFailCounter(bool isreset)
         {
             string ret;

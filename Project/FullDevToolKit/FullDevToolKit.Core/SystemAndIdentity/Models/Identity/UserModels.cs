@@ -309,6 +309,13 @@ namespace FullDevToolKit.Sys.Models.Identity
         public string FileName { get; set; } = string.Empty;
     }
 
+    public class ChangeUserLanguage
+    {
+        public long UserID { get; set; }
+
+        public string NewLanguage { get; set; }
+    }
+
     public class UpdateUserLoginFailCounter
     {
         public string UserID { get; set; } = string.Empty;

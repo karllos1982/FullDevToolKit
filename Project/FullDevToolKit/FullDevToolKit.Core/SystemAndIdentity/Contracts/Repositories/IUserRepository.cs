@@ -24,5 +24,7 @@ namespace FullDevToolKit.Sys.Contracts.Repositories
 
         Task ChangeState(UserChangeState model);
 
+        Task ChangeUserLanguage(ChangeUserLanguage model);
+
     }
 }

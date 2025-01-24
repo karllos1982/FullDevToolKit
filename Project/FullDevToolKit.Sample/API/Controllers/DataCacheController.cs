@@ -124,8 +124,8 @@ namespace MyApp.Controllers
             {
                 //list = await Manager.IdentityModule.Domainset.LocalizationText.GetListOfLanguages();
                 list = new List<LocalizationTextList>();
-                list.Add(new LocalizationTextList() { Language = "en-US" });
-                list.Add(new LocalizationTextList() { Language = "pt-BR" });
+                list.Add(new LocalizationTextList() { Language = "en-us" });
+                list.Add(new LocalizationTextList() { Language = "pt-br" });
 
                 memorycache.Set("LANGS", list, this.GetMemoryCacheOptionsByHour(2));
 

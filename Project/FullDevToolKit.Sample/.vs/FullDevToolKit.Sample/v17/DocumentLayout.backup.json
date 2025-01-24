@@ -1,54 +1,14 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\",
+  "WorkspaceRootPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\core\\domain\\persondomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|solutionrelative:core\\domain\\persondomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C8DE2544-DCF3-46B4-9F13-DE9A257A76EE}|API\\API.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8DE2544-DCF3-46B4-9F13-DE9A257A76EE}|API\\API.csproj|solutionrelative:api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\core\\data\\repositories\\personcontactrespository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|solutionrelative:core\\data\\repositories\\personcontactrespository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\core\\data\\querybuilders\\personcontactquerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|solutionrelative:core\\data\\querybuilders\\personcontactquerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\core\\data\\repositories\\personrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|solutionrelative:core\\data\\repositories\\personrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8DE2544-DCF3-46B4-9F13-DE9A257A76EE}|API\\API.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\api\\controllers\\myapp\\personcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8DE2544-DCF3-46B4-9F13-DE9A257A76EE}|API\\API.csproj|solutionrelative:api\\controllers\\myapp\\personcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webapp\\pages\\admin\\person.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|solutionrelative:webapp\\pages\\admin\\person.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webshared\\areas\\viewmodels\\admin\\personviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|solutionrelative:webshared\\areas\\viewmodels\\admin\\personviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webapp\\layout\\superadminlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|solutionrelative:webapp\\layout\\superadminlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webapp\\layout\\adminlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|solutionrelative:webapp\\layout\\adminlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webapp\\code\\appcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|solutionrelative:webapp\\code\\appcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webshared\\areas\\code\\appcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|solutionrelative:webshared\\areas\\code\\appcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webshared\\areas\\code\\localstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|solutionrelative:webshared\\areas\\code\\localstorage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webapp\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|solutionrelative:webapp\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -57,8 +17,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 196,
-          "SelectedChildIndex": 2,
+          "DockedWidth": 152,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,159 +26,39 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "PersonContactRespository.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Data\\Repositories\\PersonContactRespository.cs",
-              "RelativeDocumentMoniker": "Core\\Data\\Repositories\\PersonContactRespository.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Data\\Repositories\\PersonContactRespository.cs",
-              "RelativeToolTip": "Core\\Data\\Repositories\\PersonContactRespository.cs",
-              "ViewState": "AgIAABkAAAAAAAAAAAAcwAwAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T01:38:10.832Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "PersonDomain.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Domain\\PersonDomain.cs",
-              "RelativeDocumentMoniker": "Core\\Domain\\PersonDomain.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Domain\\PersonDomain.cs",
-              "RelativeToolTip": "Core\\Domain\\PersonDomain.cs",
-              "ViewState": "AgIAAM8AAAAAAAAAAADgv9oAAAAVAAAAAAAAAA==",
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAFkAAAAAAAAAAAAwwHoAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T01:36:16.428Z",
+              "WhenOpened": "2025-01-24T20:34:24.146Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "PersonRepository.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Data\\Repositories\\PersonRepository.cs",
-              "RelativeDocumentMoniker": "Core\\Data\\Repositories\\PersonRepository.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Data\\Repositories\\PersonRepository.cs",
-              "RelativeToolTip": "Core\\Data\\Repositories\\PersonRepository.cs",
-              "ViewState": "AgIAADUAAAAAAAAAAAAuwEQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T01:36:05.409Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "PersonContactQueryBuilder.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Data\\QueryBuilders\\PersonContactQueryBuilder.cs",
-              "RelativeDocumentMoniker": "Core\\Data\\QueryBuilders\\PersonContactQueryBuilder.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Data\\QueryBuilders\\PersonContactQueryBuilder.cs",
-              "RelativeToolTip": "Core\\Data\\QueryBuilders\\PersonContactQueryBuilder.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC8AAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T01:34:39.21Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "Person.razor",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Pages\\Admin\\Person.razor",
-              "RelativeDocumentMoniker": "WebApp\\Pages\\Admin\\Person.razor",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Pages\\Admin\\Person.razor",
-              "RelativeToolTip": "WebApp\\Pages\\Admin\\Person.razor",
-              "ViewState": "AgIAAAICAAAAAAAAAAAAAAoCAAArAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "WebApp\\Pages\\Login.razor",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Pages\\Login.razor",
+              "RelativeToolTip": "WebApp\\Pages\\Login.razor",
+              "ViewState": "AgIAAMkAAAAAAAAAAAAAANcAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-21T01:32:54.176Z",
+              "WhenOpened": "2025-01-24T20:32:24.955Z",
               "EditorCaption": ""
-            },
+            }
+          ]
+        },
+        {
+          "DockedWidth": 144,
+          "SelectedChildIndex": -1,
+          "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PersonViewModel.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\Admin\\PersonViewModel.cs",
-              "RelativeDocumentMoniker": "WebShared\\Areas\\ViewModels\\Admin\\PersonViewModel.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\Admin\\PersonViewModel.cs",
-              "RelativeToolTip": "WebShared\\Areas\\ViewModels\\Admin\\PersonViewModel.cs",
-              "ViewState": "AgIAALsAAAAAAAAAAAAUwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T01:32:18.183Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PersonController.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\MyApp\\PersonController.cs",
-              "RelativeDocumentMoniker": "API\\Controllers\\MyApp\\PersonController.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\MyApp\\PersonController.cs",
-              "RelativeToolTip": "API\\Controllers\\MyApp\\PersonController.cs",
-              "ViewState": "AgIAAFsAAAAAAAAAAAArwGgAAAA4AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T01:30:21.637Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "SuperAdminLayout.razor",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Layout\\SuperAdminLayout.razor",
-              "RelativeDocumentMoniker": "WebApp\\Layout\\SuperAdminLayout.razor",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Layout\\SuperAdminLayout.razor",
-              "RelativeToolTip": "WebApp\\Layout\\SuperAdminLayout.razor",
-              "ViewState": "AgIAAMwAAAAAAAAAAADwv+EAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-21T01:23:50.389Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AdminLayout.razor",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Layout\\AdminLayout.razor",
-              "RelativeDocumentMoniker": "WebApp\\Layout\\AdminLayout.razor",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Layout\\AdminLayout.razor",
-              "RelativeToolTip": "WebApp\\Layout\\AdminLayout.razor",
-              "ViewState": "AgIAAMsAAAAAAAAAAADwv9wAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-21T01:23:44.204Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "AppController.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\Code\\AppController.cs",
-              "RelativeDocumentMoniker": "WebShared\\Areas\\Code\\AppController.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\Code\\AppController.cs",
-              "RelativeToolTip": "WebShared\\Areas\\Code\\AppController.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAmwAsAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T01:21:35.918Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "LocalStorage.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\Code\\LocalStorage.cs",
-              "RelativeDocumentMoniker": "WebShared\\Areas\\Code\\LocalStorage.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\Code\\LocalStorage.cs",
-              "RelativeToolTip": "WebShared\\Areas\\Code\\LocalStorage.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAwwDQAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T01:14:36.288Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AppController.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Code\\AppController.cs",
-              "RelativeDocumentMoniker": "WebApp\\Code\\AppController.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Code\\AppController.cs",
-              "RelativeToolTip": "WebApp\\Code\\AppController.cs",
-              "ViewState": "AgIAAC4AAAAAAAAAAAAgwPcAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-21T01:11:30.819Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{605322a2-17ae-43f4-b60f-766556e46c87}"
             }
           ]
         }

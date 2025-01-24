@@ -8,7 +8,7 @@ namespace MyApp.Models
     {
         public PersonContactParam()
         {
-            pPersonName = "";
+			pContactName = "";
             pEmail = "";
 
         }
@@ -17,7 +17,7 @@ namespace MyApp.Models
 
         public Int64 pPersonID { get; set; }
 
-        public string pPersonName { get; set; }
+        public string pContactName { get; set; }
 
         public string pEmail { get; set; }
 
@@ -34,7 +34,7 @@ namespace MyApp.Models
         {
             this.PersonContactID = result.PersonContactID;
             this.PersonID = result.PersonID;
-            this.PersonName = result.PersonName;
+            this.ContactName = result.ContactName;
             this.Email = result.Email;
             this.CellPhoneNumber = result.CellPhoneNumber;
             this.RecordState = result.RecordState;
@@ -44,8 +44,8 @@ namespace MyApp.Models
 
         public Int64 PersonID { get; set; }
 
-        [PrimaryValidationConfig("PersonName", "Contact Name", FieldType.TEXT, false, 50)]
-        public string PersonName { get; set; }
+        [PrimaryValidationConfig("ContactName", "Contact Name", FieldType.TEXT, false, 50)]
+        public string ContactName { get; set; }
 
         [PrimaryValidationConfig("Email", "E-mail", FieldType.EMAIL, false, 255)]
         public string Email { get; set; }
@@ -63,7 +63,7 @@ namespace MyApp.Models
 
         public Int64 PersonID { get; set; }
 
-        public string PersonName { get; set; } = string.Empty;
+        public string ContactName { get; set; } = string.Empty;
 
     }
 
@@ -74,7 +74,7 @@ namespace MyApp.Models
 
         public Int64 PersonID { get; set; }
 
-        public string PersonName { get; set; } = string.Empty; 
+        public string ContactName { get; set; } = string.Empty; 
 
         public string Email { get; set; } = string.Empty;
 

@@ -73,6 +73,7 @@
 							User="@user" 
 							Service="@GetService()"
 							Localization="@localization"
+								  LanguageList="@langs"
 								  OnLogout="Logout">
 						</UserView>
 
@@ -155,6 +156,7 @@
 	protected MenuLink menu;
 	protected List<UserPermissions> permissions = null;
 	protected DefaultLocalization localization = null;
+	protected List<LocalizationTextList> langs = null; 
 	protected string siteURL = "";
 	protected string homeURL = ""; 
 	
@@ -235,6 +237,8 @@
 
 		this.localization.Set(await ((DataCacheProxy)_cache).ListLocalizationTexts(),
 				user.LocalizationLanguage);
+
+		this.langs = await ((DataCacheProxy)_cache).ListLanguages(); 
 	}
 
 	protected void InitServices()

@@ -128,6 +128,12 @@ namespace FullDevToolKit.Sys.Data.Repositories
             await Context.ExecuteAsync(sql, model);
 
         }
+        public async Task ChangeUserLanguage(ChangeUserLanguage model)
+        {
+            string sql = query.QueryForChangeUserLanguage();
+            await Context.ExecuteAsync(sql, model);
+
+        }
 
         public async Task UpdateLoginFailCounter(UpdateUserLoginFailCounter model)
         {            

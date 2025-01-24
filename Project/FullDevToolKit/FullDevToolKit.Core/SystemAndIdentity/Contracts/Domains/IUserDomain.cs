@@ -25,6 +25,8 @@ namespace FullDevToolKit.Sys.Contracts.Domains
 
         Task<ExecutionStatus> SetDateLogout(Int64 userid);
 
+        Task<bool> ChangeUserLanguage(ChangeUserLanguage model);        
+
         Task<UserRolesEntry> AddRoleToUser(Int64 userid, Int64 roleid);
 
         Task<UserRolesEntry> RemoveRoleFromUser(Int64 userid, Int64 roleid);

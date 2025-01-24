@@ -376,6 +376,29 @@ namespace MyApp.Controllers
         }
 
 
+        [HttpPost]
+        [Route("changeuserlanguage")]
+        public async Task<object> ChangeUserLanguage(ChangeUserLanguage param)
+        {
+            CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
+
+            if (IsAllowed)
+            {
+                bool go = await Manager.IdentityModule.Domainset.User.ChangeUserLanguage(param);
+                ret = SetReturn<bool>(go);
+
+            }
+            else
+            {
+                ret = SetReturn<bool>(PERMISSION_CHECK_ENUM.READ);
+            }
+
+            FinalizeManager();
+
+            return ret;
+        }
+
+
         [HttpGet]
         [Route("logout")]
         [Authorize]

@@ -608,6 +608,56 @@ namespace FullDevToolKit.Sys.Domains
 
         }
 
+
+        public async Task<bool> ChangeUserLanguage(ChangeUserLanguage model)
+        {
+            bool ret = false; 
+
+            string errmsg = "";
+
+            if (model.NewLanguage == "")
+            {
+                errmsg = LocalizationText
+                    .Get("Validation-Error", Context.LocalizationLanguage).Text;
+            }
+            else
+            {
+                UserResult usermatch = null;
+                usermatch = await _repositories.User.Read(new UserParam() { pUserID = model.UserID });
+
+                if (Context.Status.Success)
+                {
+
+                    if (usermatch != null)
+                    {
+                        if (!usermatch.IsActive)
+                        {
+                            errmsg = LocalizationText.Get("Login-Inactive-Account", Context.LocalizationLanguage).Text;
+                        }
+
+                    }
+                    else
+                    {
+                        errmsg = LocalizationText.Get("Login-User-NotFound", Context.LocalizationLanguage).Text;
+                    }
+
+                    if (errmsg == "")
+                    {
+                        await _repositories.User.ChangeUserLanguage(model);
+                        ret = true;
+                    }
+                    else
+                    {
+                        Context.Status.SetFailStatus("Error", errmsg);
+                    }
+                }
+            }
+
+            return ret;
+
+        }
+
+        
         public async Task UpdateLoginFailCounter(UpdateUserLoginFailCounter model)
         {
             

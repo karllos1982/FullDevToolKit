@@ -59,18 +59,12 @@
 
                                                 <div class="form-group">
                                                     <label class="form-label">@view.texts.Get("SearchByLocalizationName-Label"):</label>
-                                                    <input type="text" maxlength="20" @bind-value="view.param.pName"
+                                                    <input type="text" maxlength="50" @bind-value="view.param.pName"
                                                         placeholder=@view.texts.Get("SearchByLocalizationName-Description") class="form-control">
                                                    
                                                  </div>
 
-                                                <div class="form-group">
-                                                  <label class="form-label">@view.texts.Get("SearchByLocalizationText-Label"):</label>
-                                                    <input type="text" maxlength="20" @bind-value="view.param.pText"
-                                                        placeholder=@view.texts.Get("SearchByLocalizationText-Description") class="form-control">
-                                                       
-                                                </div>
-
+                                               
                                                 <p class="field" style="padding-top:10px">
 
                                                     <TaskButton @ref="searchbtn" OnClick="OnSearch" Title=@view.texts.Get("SearchButtonLabel")
@@ -286,7 +280,7 @@
                 await view.InitializeModels();
 
                 _LoadingData_Text = view.texts.Get("LoadingData");
-                _PageTitle = view.texts.Get("Instance-PageTitle");
+                _PageTitle = view.texts.Get("Localization-PageTitle");
                 _msgYes = view.texts.Get("Yes-Text");
                 _msgNo = view.texts.Get("No-Text");
 

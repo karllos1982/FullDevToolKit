@@ -34,7 +34,7 @@
         <ModalBody>
           @if(Islogged && _localization != null) 
           {
-            <div class="row" style="min-height:500px">
+            <div class="row" style="min-height:540px">
                                                 
                   <div class="card" style="height:20px">
 					    <!--begin::Card head-->
@@ -116,11 +116,38 @@
                                                     </div>
 
                                                     <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
-                                                            <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" title="Instance Name">
-                                                                @_localization.Get("LanguageRole-Label"): @User.LocalizationLanguage
-                                                            </a>
-                                                    </div>
 
+                                                            <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" title="Instance Name">
+                                                                @_localization.Get("Language-Label") : 
+                                                            </a>
+
+                                                        </div>
+
+
+                                                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                                                            <div class="form-group">
+                                                              
+                                                                <strong class="form-label">@_localization.Get("ChangeUserLanguage-Title"):</strong>
+                                                               
+                                                                <br />
+                                                                @if (_languages != null)
+                                                                {
+                                                                    @if (_languages.Count > 0)
+                                                                    {
+                                                                        <SelectList TItem="LocalizationTextList"
+                                                                                    TValue="string"
+                                                                                    Data="@_languages"
+                                                                                    TextField="@((item)=>item.Language)"
+                                                                                    ValueField="@((item)=>item.Language)"
+                                                                                    SelectedValueChanged="@ChangeLanguage"
+                                                                                    ></SelectList>
+                                                                    }
+
+                                                                }
+
+                                                            </div>
+                                                           
+                                                    </div>
 
                                                     <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
                                                             <span>@_localization.Get("AlterProfileImage-Label"):</span>
@@ -223,6 +250,8 @@
     private TaskButton sendcodebtn;
     private TaskButton logoutbtn;
 
+    private string editLanguage; 
+
     //private UserAuthenticated LoggedUser;
 
     private ChangeUserPassword changeObj = new ChangeUserPassword();
@@ -238,10 +267,29 @@
                 _localization=value; 
             }
         }
-   
+
         get
         {
             return _localization;
+        }
+    }
+
+    private List<LocalizationTextList> _languages = null;
+
+    [Parameter]
+    public List<LocalizationTextList> LanguageList
+    {
+        set
+        {
+            if (value != null)
+            {
+                _languages = value;
+            }
+        }
+
+        get
+        {
+            return _languages;
         }
     }
 
@@ -264,7 +312,7 @@
 
         await OnLogout.InvokeAsync(null);
 
-       // logoutbtn.End(); 
+        // logoutbtn.End(); 
     }
 
     private async Task OpenProfile()
@@ -272,7 +320,30 @@
         await modalRef.Show();      
 
     }
-    
+
+    private async void ChangeLanguage(string value)
+    {
+        ChangeUserLanguage model = new ChangeUserLanguage();
+        model.UserID = long.Parse(User.UserID);
+        model.NewLanguage = value;
+
+        APIResponse<bool> response
+            = await Service.ChangeUserLanguage (model);
+
+
+        if (response.IsSuccess)
+        {
+            await pwdbox.ShowDialog(_localization.Get("NoticeLabel"),
+                _localization.Get("ChangeUserLanguage-Message"));
+        }
+        else
+        {
+            await msgbox.ShowDialog(_localization.Get("NoticeLabel"),
+               response.Exceptions.Messages[0].Description);
+        }
+      
+    }
+       
 
     public async Task SendCode()
     {

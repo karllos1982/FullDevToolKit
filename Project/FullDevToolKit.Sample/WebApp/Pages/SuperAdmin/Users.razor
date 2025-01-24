@@ -339,23 +339,14 @@
                                                                 Data="@view.listInstances"
                                                                 TextField="@((item)=>item.InstanceName)"
                                                                 ValueField="@((item)=>item.InstanceID)"
-                                                                @bind-SelectedValue="@view.InstanceSelected.InstanceID"></SelectList>
+                                                                @bind-SelectedValue="@view.selectedInstance"></SelectList>
                                                                 }
 
                                                             }
 
                                                         </div>
                                                     </div>
-                                                    <div class="col-md-4" style="padding-top:52px">
-
-                                                        @* <TaskButton @ref="alterinstancebtn" 
-                                                            Title=@view.texts.Get("AlterInstance-Label") OnClick="OnAlterInstance"
-                                                            Description=@view.texts.Get("AlterInstance-Description") Class="dark"
-                                                            ActionLabel=@view.texts.Get("Altering-Label") ReadOnly=!view.Permissions.AllowSave>
-                                                        </TaskButton> *@
-
-                                                    </div>
-
+        
                                                 </div>
 
 
@@ -371,25 +362,31 @@
                                                                 Data="@view.listRoles"
                                                                 TextField="@((item)=>item.RoleName)"
                                                                 ValueField="@((item)=>item.RoleID)"
-                                                                @bind-SelectedValue="@view.RoleSelected.RoleID"></SelectList>
+                                                                @bind-SelectedValue="@view.selectedRole"></SelectList>
 
                                                             }
 
                                                         </div>
                                                     </div>
-
-                                                    <div class="col-md-4" style="padding-top:52px">
-
-                                                       @*  <TaskButton @ref="alterrolebtn" 
-                                                            Title=@view.texts.Get("AlterRole-Label") OnClick="OnAlterRole"
-                                                            Description=@view.texts.Get("AlterRole-Description") Class="dark"
-                                                            ActionLabel=@view.texts.Get("Altering-Label") ReadOnly=!view.Permissions.AllowSave>
-                                                        </TaskButton> *@
-
-                                                    </div>
+               
 
                                                 </div>
 
+                                                <div class="row">
+                                                    <div class="col-md-12">
+
+                                                        <p class="field" style="padding-top:10px">
+
+                                                            <TaskButton @ref="savenewbtn" OnClick="OnSet"
+                                                                        Title=@view.texts.Get("Save-Label")
+                                                                        Description=@view.texts.Get("Save-Label")
+                                                                        ActionLabel=@view.texts.Get("Saving-Label")
+                                                                        ReadOnly=!view.Permissions.AllowSave>
+                                                            </TaskButton>
+
+                                                        </p>
+                                                    </div>
+                                                </div>
 
                                             </div>
                                         </div>
@@ -625,8 +622,8 @@
 
 
 @code {
-   
-    
+
+
     private TaskButton statebtn ;    
     private TaskButton alterinstancebtn;
     private TaskButton alterrolebtn;
@@ -639,7 +636,7 @@
     //
 
 
-        protected override Task OnInitializedAsync()
+    protected override Task OnInitializedAsync()
     {
         return base.OnInitializedAsync();
     }
@@ -666,7 +663,7 @@
                 await view.InitializeModels();
 
                 _LoadingData_Text = view.texts.Get("LoadingData");
-                _PageTitle = view.texts.Get("Instance-PageTitle");
+                _PageTitle = view.texts.Get("User-PageTitle");
                 _msgYes = view.texts.Get("Yes-Text");
                 _msgNo = view.texts.Get("No-Text");
 
@@ -731,7 +728,7 @@
         {
             await msgbox.ShowDialog(view.texts.Get("AlterStatus-Error"),
              view.ServiceStatus.Exceptions.Messages[0].Description);
-            
+
         }
         else
         {            
@@ -754,7 +751,7 @@
         {
             await msgbox.ShowDialog(view.texts.Get("ErrorOnCreateNewRecord"),
                 view.ServiceStatus.Exceptions.Messages[0].Description);
-           
+
         }
         else
         {
@@ -765,6 +762,53 @@
         }
 
         savenewbtn.End();
+
+    }
+
+    public async Task OnSet()
+    {
+        bool go = true;
+        string message = "";
+
+        if ( view.selectedInstance == 0)
+        {
+            message = view.texts.Get("AlterInstance-Description"); 
+            go = false; 
+        }
+
+        if (view.selectedRole == 0 )
+        {
+            message = view.texts.Get("AlterRole-Description");
+            go = false;
+        }
+
+        if (go) 
+        {
+            savenewbtn.Begin();
+
+            await view.Set();
+
+            if (!view.ServiceStatus.Success)
+            {
+                await msgbox.ShowDialog(view.texts.Get("NoticeLabel"),
+                 view.ServiceStatus.Exceptions.Messages[0].Description);
+            }
+            else
+            {
+
+                await msgbox.ShowDialog(view.texts.Get("SuccessLabel"),
+                view.texts.Get("SuccessSaveMessage"));
+
+                this.Back();
+
+            }
+
+            savenewbtn.End();
+        }
+        else
+        {
+            await msgbox.ShowDialog(view.texts.Get("NoticeLabel"),message);
+        }
 
     }
 

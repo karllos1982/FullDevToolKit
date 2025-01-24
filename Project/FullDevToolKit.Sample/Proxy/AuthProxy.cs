@@ -139,6 +139,17 @@ namespace MyApp.Proxys
             return ret;
         }
 
+        public async Task<APIResponse<bool>> ChangeUserLanguage(ChangeUserLanguage param)
+        {
+            APIResponse<bool> ret = null;
+            this.IsAuthenticated = true;
+
+            ret = await this.PostAsJSON<bool>("changeuserlanguage", 
+                JsonConvert.SerializeObject(param), null);
+
+            return ret;
+        }
+
         public async Task Logout()
         {
 			APIResponse<bool> ret = null;

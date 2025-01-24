@@ -43,6 +43,22 @@
   },
   {
     "ContainingType": "MyApp.Controllers.AuthController",
+    "Method": "ChangeUserLanguage",
+    "RelativePath": "Auth/changeuserlanguage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Sys.Models.Identity.ChangeUserLanguage",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.Controllers.AuthController",
     "Method": "GetUserImageProfile",
     "RelativePath": "Auth/getuserimageprofile",
     "HttpMethod": "GET",

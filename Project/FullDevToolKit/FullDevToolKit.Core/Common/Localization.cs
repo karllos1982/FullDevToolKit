@@ -133,7 +133,7 @@ namespace FullDevToolKit.Common
             return ret;
         }
 
-        public async static Task LoadData(IContext context, bool enforceupdate = false)
+        public async static Task LoadDataSync(IContext context, bool enforceupdate = false)
         {
             if (enforceupdate)
             {
@@ -149,7 +149,7 @@ namespace FullDevToolKit.Common
 
         }
 
-        public static void LoadDataSync(IContext context, bool enforceupdate = false)
+        public static void LoadData(IContext context, bool enforceupdate = false)
         {
 
             if (enforceupdate)
@@ -179,12 +179,27 @@ namespace FullDevToolKit.Common
                     LoadLocalizationENG(ref _items);
                 }
 
-                ret = _items.Where(l => l.Code == codeorname && l.Language == language).FirstOrDefault();
+                ret = _items.Where(l => l.Code == codeorname && l.Language == language)
+                        .FirstOrDefault();
 
                 if (ret == null)
                 {
-                    ret = _items.Where(l => l.Name == codeorname && l.Language == language).FirstOrDefault();
+                    ret = _items.Where(l => l.Name == codeorname && l.Language == language)
+                        .FirstOrDefault();
                 }
+
+                if (ret == null)
+                {
+                    ret = _items.Where(l => l.Code == codeorname)
+                        .FirstOrDefault();
+                }
+
+                if (ret == null)
+                {
+                    ret = _items.Where(l => l.Name == codeorname)
+                        .FirstOrDefault();
+                }
+
             }
 
             if (ret == null)
