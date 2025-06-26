@@ -1,14 +1,10 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\",
+  "WorkspaceRootPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\manager\\businessmodules\\identitymodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\manager\\businessmodules\\identitymodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\manager\\businessmodules\\identitymodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\common\\localization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\common\\localization.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -28,26 +24,13 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "IdentityModule.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Manager\\BusinessModules\\IdentityModule.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Manager\\BusinessModules\\IdentityModule.cs",
               "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Manager\\BusinessModules\\IdentityModule.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Manager\\BusinessModules\\IdentityModule.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Manager\\BusinessModules\\IdentityModule.cs",
               "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Manager\\BusinessModules\\IdentityModule.cs",
-              "ViewState": "AgIAAFwAAAAAAAAAAAAIwDgAAABFAAAAAAAAAA==",
+              "ViewState": "AgIAAE0AAAAAAAAAAAAIwHkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-24T20:43:22.832Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Localization.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Common\\Localization.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\Common\\Localization.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Common\\Localization.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\Common\\Localization.cs",
-              "ViewState": "AgIAAK0AAAAAAAAAAAAqwL0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-24T20:38:27.506Z",
+              "WhenOpened": "2025-01-25T14:59:05.897Z",
               "EditorCaption": ""
             }
           ]

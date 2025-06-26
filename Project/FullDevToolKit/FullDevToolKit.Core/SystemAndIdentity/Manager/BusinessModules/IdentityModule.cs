@@ -116,6 +116,8 @@ namespace FullDevToolKit.Sys.Manager
                 {
                     await Domainset.User.UpdateLoginFailCounter(new UpdateUserLoginFailCounter()
                     { UserID = usermatch.UserID.ToString(), ActiveStatus = activestatus, Reset = false });
+                    Domainset.User.Context.Commit(); 
+
                 }
 
             }
