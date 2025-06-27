@@ -1,6 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using Microsoft.Data.SqlClient;
 using FullDevToolKit.Core;
-using FullDevToolKit.Sys.Data;
 
 namespace MyApp.Context
 {

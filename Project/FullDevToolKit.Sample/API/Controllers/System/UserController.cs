@@ -3,11 +3,7 @@ using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Common;
 using MyApp.API;
 using Microsoft.AspNetCore.Authorization;
-using System.Security.Claims;
 using FullDevToolKit.Core;
-using FullDevToolKit.Sys.Contracts.Managers;
-using MyApp.Managers;
-using MyApp.Models;
 
 
 namespace MyApp.Controllers

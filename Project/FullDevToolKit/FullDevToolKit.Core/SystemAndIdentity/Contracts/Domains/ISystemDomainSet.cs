@@ -26,5 +26,6 @@ namespace FullDevToolKit.Sys.Contracts.Domains
 
         IParameterDomain Parameter { get; set; }
 
+        IExceptionLogDomain ExceptionLog { get; set; }
     }
 }

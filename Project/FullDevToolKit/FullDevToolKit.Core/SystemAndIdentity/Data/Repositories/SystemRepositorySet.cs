@@ -19,6 +19,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             this.LocalizationText = new LocalizationTextRepository(context);
             this.GroupParameter = new GroupParameterRepository(context);
             this.Parameter = new ParameterRepository(context);
+            this.ExceptionLog = new ExceptionLogRepository(context);
         }
     
         
@@ -44,9 +45,10 @@ namespace FullDevToolKit.Sys.Data.Repositories
 
         public IGroupParameterRepository GroupParameter { get; set; }   
 
-        public IParameterRepository Parameter { get; set; } 
-        
-     
+        public IParameterRepository Parameter { get; set; }
+
+        public IExceptionLogRepository ExceptionLog { get; set; }
+
     }
 
 }

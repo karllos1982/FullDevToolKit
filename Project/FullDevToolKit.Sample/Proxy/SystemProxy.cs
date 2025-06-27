@@ -36,6 +36,8 @@ namespace MyApp.Proxys
 
         public ParameterProxy Parameter = null;
 
+        public ExceptionLogProxy ExceptionLog = null;
+
         public SystemProxy()
         {
 
@@ -52,7 +54,8 @@ namespace MyApp.Proxys
             Instance = new InstanceProxy();
             LocalizationText= new LocalizationTextProxy();
             GroupParameter = new GroupParameterProxy(); 
-            Parameter = new ParameterProxy();   
+            Parameter = new ParameterProxy();
+            ExceptionLog = new ExceptionLogProxy(); 
 
             User.InitializeAPI(http, baseurl + "/system/user/", token);
             User.IsAuthenticated = true;
@@ -83,6 +86,9 @@ namespace MyApp.Proxys
 
             Parameter.InitializeAPI(http, baseurl + "/system/parameter/", token);
             Parameter.IsAuthenticated = true;
+
+            ExceptionLog.InitializeAPI(http, baseurl + "/system/exceptionlog/", token);
+            ExceptionLog.IsAuthenticated = true;
         }
      
 
@@ -674,7 +680,6 @@ namespace MyApp.Proxys
 
     public class ParameterProxy : APIProxyBase
     {
-
         public ParameterProxy()
         {
 
@@ -721,5 +726,48 @@ namespace MyApp.Proxys
         }
 
     }
+
+    public class ExceptionLogProxy : APIProxyBase
+    {
+
+        public ExceptionLogProxy()
+        {
+
+        }
+
+        public async Task<APIResponse<List<ExceptionLogResult>?>> Search(ExceptionLogParam data)
+        {
+            APIResponse<List<ExceptionLogResult>?> ret = null;
+
+            ret = await PostAsJSON<List<ExceptionLogResult>?>("search", JsonConvert.SerializeObject(data), null);
+
+
+            return ret;
+        }
+
+        public async Task<APIResponse<List<ExceptionLogList>?>> List(ExceptionLogParam data)
+        {
+            APIResponse<List<ExceptionLogList>?> ret = null;
+
+            ret = await PostAsJSON<List<ExceptionLogList>?>("list", JsonConvert.SerializeObject(data), null);
+
+            return ret;
+        }
+
+        public async Task<APIResponse<ExceptionLogResult>?> Get(string id)
+        {
+            APIResponse<ExceptionLogResult?> ret = null;
+
+            object[] param = new object[1];
+            param[0] = new DefaultGetParam(id);
+
+            ret = await GetAsJSON<ExceptionLogResult?>("get", param);
+
+            return ret;
+        }
+        
+    }
+
+
 }
 

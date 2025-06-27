@@ -21,6 +21,7 @@ namespace FullDevToolKit.Sys.Domains
             this.LocalizationText = new LocalizationTextDomain(context);
             this.GroupParameter = new GroupParameterDomain(context);
             this.Parameter = new ParameterDomain(context);
+            this.ExceptionLog = new ExceptionLogDomain(context);    
         }
      
 
@@ -44,6 +45,6 @@ namespace FullDevToolKit.Sys.Domains
 
         public IParameterDomain Parameter { get; set; }
 
-
+        public IExceptionLogDomain ExceptionLog { get; set; }
     }
 }

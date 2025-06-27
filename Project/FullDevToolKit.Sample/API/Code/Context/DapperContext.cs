@@ -1,6 +1,5 @@
-﻿using FullDevToolKit.Sys.Contracts;
-using System.Data;
-using System.Data.SqlClient;
+﻿using System.Data;
+using Microsoft.Data.SqlClient;
 using FullDevToolKit.Common;
 using FullDevToolKit.Core;
 using Newtonsoft.Json;
@@ -397,7 +396,7 @@ namespace MyApp.Context
             }
         }
 
-
+        
         public void RegisterDataLog(string userid, OPERATIONLOGENUM operation,
                  string tableaname, string objID, object olddata, object currentdata)
         {
@@ -541,7 +540,11 @@ namespace MyApp.Context
             return ret;
         }
 
-      
+        public async Task RegisterExceptionLog(object exceptioninfo)
+        {
+            
+           
+        }
     }
 
 

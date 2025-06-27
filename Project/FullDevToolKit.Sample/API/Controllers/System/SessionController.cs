@@ -4,7 +4,6 @@ using FullDevToolKit.Common;
 using MyApp.API;
 using Microsoft.AspNetCore.Authorization;
 using FullDevToolKit.Core;
-using FullDevToolKit.Sys.Contracts.Managers;
 
 
 namespace MyApp.Controllers

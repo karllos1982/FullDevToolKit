@@ -2,11 +2,8 @@
 
 namespace MyApp.API
 {
-   
-
     public interface IUserPermissionsManager<T>
     {
-        
         List<UserPermissions> GetPermissions();
 
         void SetPermissions(List<UserPermissions> permissions); 

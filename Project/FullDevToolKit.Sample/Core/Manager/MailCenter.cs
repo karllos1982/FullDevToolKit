@@ -18,9 +18,7 @@ namespace MyApp.Managers
         {
 
         }
-
-
-
+        
         public ExecutionStatus SendTemporaryPassword(string email, string name, string code)
         {
             ExecutionStatus ret = new ExecutionStatus(true);

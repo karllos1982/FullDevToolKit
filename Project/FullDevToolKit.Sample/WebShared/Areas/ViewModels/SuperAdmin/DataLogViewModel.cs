@@ -2,7 +2,6 @@
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Sys.Models.Common;
 using MyApp.Proxys;
-using System.Collections.Generic;
 
 namespace MyApp.ViewModel
 {

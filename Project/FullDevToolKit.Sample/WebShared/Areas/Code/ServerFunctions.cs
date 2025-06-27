@@ -1,7 +1,6 @@
 ﻿using Microsoft.JSInterop;
 using FullDevToolKit.Helpers;
 
-
 public class ServerFunctions
 {
 	public ServerFunctions()

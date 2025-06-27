@@ -408,6 +408,54 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MyApp.Controllers.ExceptionLogController",
+    "Method": "Get",
+    "RelativePath": "system/ExceptionLog/get",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.Controllers.ExceptionLogController",
+    "Method": "List",
+    "RelativePath": "system/ExceptionLog/list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Sys.Models.Common.ExceptionLogParam",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.Controllers.ExceptionLogController",
+    "Method": "Search",
+    "RelativePath": "system/ExceptionLog/search",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Sys.Models.Common.ExceptionLogParam",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MyApp.Controllers.GroupParameterController",
     "Method": "Get",
     "RelativePath": "system/GroupParameter/get",

@@ -7,7 +7,8 @@ using MyApp.Managers;
 using FullDevToolKit.Core;
 using FullDevToolKit.ApplicationHelpers;
 using MyApp.Contracts.Managers;
-using MyApp.Context; 
+using MyApp.Context;
+using API.Code;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,7 +25,9 @@ builder.Services.AddSingleton<ISettings, MyAppSettings>();
 builder.Services.AddScoped<IContextBuilder, ContextBuilder>();
 builder.Services.AddScoped<IContext, DapperContext>();
 builder.Services.AddScoped<IMyAppManager, MyAppManager>();
-builder.Services.AddScoped<MailManager, MyApMailCenter>(); 
+builder.Services.AddScoped<MailManager, MyApMailCenter>();
+builder.Services.AddSingleton<ISystemContext, SystemContext>();
+
 
 //configure auth
 
@@ -86,6 +89,9 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddMvc()
     .AddJsonOptions(op => op.JsonSerializerOptions.PropertyNamingPolicy = null);
 
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
+
 var app = builder.Build();
 
 app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()  );
@@ -105,9 +111,12 @@ app.UseSwaggerUI(opt =>
     
 });
 
+
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+app.UseExceptionHandler();
 
 app.Run();

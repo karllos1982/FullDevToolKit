@@ -4,15 +4,11 @@ using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Models.Identity;
 using MyApp.Proxys;
 using Newtonsoft.Json;
-using System.Runtime.Intrinsics.X86;
-using FullDevToolKit.Core;
-using WebApp.Pages.SuperAdmin;
 
 
 namespace MyApp.ServerCode
 {
- 
-    public class MyAppSettings : IAppSettings
+     public class MyAppSettings : IAppSettings
     {
 
         private IConfiguration _env;

@@ -5,7 +5,6 @@ using FullDevToolKit.Common;
 
 namespace MyApp.ServerCode
 {
-
     public class Cookies
     {
         private IJSRuntime _jsruntime;

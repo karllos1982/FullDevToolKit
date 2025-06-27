@@ -49,6 +49,8 @@ namespace FullDevToolKit.Core
 
         // especial methods 
 
+        Task RegisterExceptionLog(object exceptioninfo );
+
         void RegisterDataLog(string userid, OPERATIONLOGENUM operation,
           string tableaname, string objID, object olddata, object currentdata);
 

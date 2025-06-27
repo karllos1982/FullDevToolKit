@@ -240,6 +240,26 @@ REFERENCES [dbo].[sysGroupParameter] ([GroupParameterID])
 GO
 
 
+-- 1.13: ExceptionLog
+
+CREATE TABLE [dbo].[sysExceptionLog](
+	[ExceptionLogID] [bigint] NOT NULL,
+	[UserID] [varchar](50) NULL,
+	[Date] [datetime] NOT NULL,	
+	[Origin] [varchar](100) NULL,	
+	[TargetSite] [varchar](100) NULL,	
+	[ErrMessage] [varchar](max) NULL,
+	[StackTrace] [varchar](max) NULL,
+	[ClientIP] [varchar](50) NULL,
+ CONSTRAINT [pk_sysExceptionLog] PRIMARY KEY CLUSTERED 
+(
+	[ExceptionLogID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+
+
 
 -- TABELAS DO TEMPLATE
 

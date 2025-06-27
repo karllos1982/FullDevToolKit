@@ -1,11 +1,9 @@
 ﻿using FullDevToolKit.Sys.Domains;
 using FullDevToolKit.Sys.Models.Common; 
-using System.Collections.Generic;
 
 namespace MyApp.ViewModel
 {
    
-
     public class BaseLocalization: LocalizationServiceBase
     {
         

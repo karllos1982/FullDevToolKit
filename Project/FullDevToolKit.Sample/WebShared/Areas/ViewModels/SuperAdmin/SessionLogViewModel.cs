@@ -1,6 +1,5 @@
 ﻿using FullDevToolKit.Common;
 using FullDevToolKit.Sys.Models.Identity;
-using FullDevToolKit.Sys.Models.Common;
 using MyApp.Proxys;
 
 namespace MyApp.ViewModel

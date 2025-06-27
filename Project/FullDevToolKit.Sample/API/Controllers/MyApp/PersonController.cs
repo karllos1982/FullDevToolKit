@@ -4,10 +4,6 @@ using MyApp.API;
 using Microsoft.AspNetCore.Authorization;
 using FullDevToolKit.Core;
 using MyApp.Models;
-using MyApp.Contracts.Domains;
-using MyApp.Contracts.Managers;
-using MyApp.Managers;
-using System.Collections.Generic;
 
 namespace Template.Controllers
 {

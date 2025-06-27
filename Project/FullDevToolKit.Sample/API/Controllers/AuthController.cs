@@ -36,9 +36,10 @@ namespace MyApp.Controllers
         public object Index()
         {
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
-         
 
-            return ret;
+            throw new Exception("Teste de gerenciamento de erro"); 
+
+           // return ret;
         }
 
 

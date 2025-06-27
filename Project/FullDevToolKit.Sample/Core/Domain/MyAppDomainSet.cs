@@ -1,6 +1,5 @@
 ﻿using FullDevToolKit.Core;
 using MyApp.Contracts.Domains;
-using MyApp.Contracts.Repositories;
 
 
 namespace MyApp.Domain

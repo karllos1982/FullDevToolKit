@@ -1,0 +1,370 @@
+﻿@page "/exceptionlog"
+
+@inherits SuperAdminLayout
+@layout SuperAdminLayout
+
+@inject NavigationManager NavigationManager
+@inject HttpClient _httpclient
+@inject IAppControllerAsync<UserAuthenticated> _appctrl
+@inject IAppSettings _settings
+@inject IDataCacheProxyManager _cache
+@inject ISystemProxyManager _systemservices
+
+
+<MessageBox @ref="msgbox"></MessageBox>
+
+<TaskLoading @ref="loading" Title=@_LoadingData_Text></TaskLoading>
+
+
+<div id="kt_app_content" class="app-content flex-column-fluid">
+    <div id="kt_app_content_container" class="app-container container-xxl">
+
+        <div class="">
+
+            <BreadCrumbView PageTitle="@_PageTitle" HomeURL="@homeURL"></BreadCrumbView>
+
+
+            @if (view != null)
+            {
+                <div style="display:@view.SearchingState">
+
+                    <div class="row gy-5 g-xl-10">
+
+                        <div class="col-xl-4">
+                            <div class="card card-flush h-xl-100">
+                                <div class="card-header pt-7">
+
+                                    <h3 class="card-title align-items-start flex-column">
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("SearchButtonLabel")</span>
+                                    </h3>
+
+                                </div>
+
+                                <div class="card-body">
+                                 
+                                    <div class="form-group">
+                                        <label class="form-label" for="name">@view.texts.Get("SearchByIntervalDate-Label"):</label>
+                                        <Switch TValue="bool" @bind-Checked="@view.param.SearchByDate"></Switch>
+
+                                    </div>
+
+                                    @if (view.param.SearchByDate)
+                                    {
+                                        <div class="form-group">
+                                            <span>@view.texts.Get("SearchByInicialDate-Label"):</span>
+                                            <DateEdit TValue="DateTime" @bind-Date="@view.param.pDate_Start" />
+                                            <br />
+                                            <span>@view.texts.Get("SearchByFinalDate-Label"):</span>
+                                            <DateEdit TValue="DateTime" @bind-Date="@view.param.pData_End" />
+
+                                        </div>
+                                    }
+
+                                    <div class="form-group">
+                                        <label class="form-label">@view.texts.Get("SearchByOrgin-Label"):</label>
+                                        <input type="text" class="form-control" maxlength="20" @bind-value="@view.param.pOrigin">
+
+                                    </div>
+
+                                    <p class="field" style="padding-top:10px">
+
+                                        <TaskButton @ref="searchbtn" OnClick="OnSearch"
+                                                    Title=@view.texts.Get("SearchButtonLabel")
+                                                    ReadOnly=!view.Permissions.AllowRead
+                                                    ActionLabel=@view.texts.Get("SearchingLabel")>
+                                        </TaskButton>
+
+                                    </p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-8">
+
+                            <div class="card card-flush h-xl-100">
+
+                                <div class="card-header pt-7">
+
+                                    <h3 class="card-title align-items-start flex-column">
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("SearchResultLabel")</span>
+                                    </h3>
+                                </div>
+
+                                <div class="card-body">
+
+                                    @if (view.searchresult != null)
+                                    {
+                                        @if (view.searchresult.Count > 0)
+                                        {
+                                            <DataGrid TItem="ExceptionLogResult" Data="@view.searchresult" Responsive ShowPager PageSize=10>
+
+                                                <DataGridColumns>
+                                                    
+                                                    <DataGridColumn Field="@nameof(ExceptionLogResult.Origin)" Caption=@view.texts.Get("Origin-Label") />
+                                                    <DataGridColumn Field="@nameof(ExceptionLogResult.TargetSite)" Caption=@view.texts.Get("TargetSite-Label") />
+                                                    <DataGridColumn Field="@nameof(ExceptionLogResult.Date)" Caption=@view.texts.Get("Date-Label") />
+                                                    <DataGridColumn Field="@nameof(ExceptionLogResult.ExceptionLogID)" Caption=@view.texts.Get("DetailsLabel")>
+                                                        <DisplayTemplate>
+                                                            @{
+                                                                ExceptionLogResult obj = (context as ExceptionLogResult);
+
+                                                                @if (view.Permissions.AllowSave)
+                                                                {
+                                                                    <IconButton Icon="IconButton.TYPEICONENUM.DETAILS"
+                                                                                OnClick="()=>OnDetClick(obj.ExceptionLogID)"></IconButton>
+                                                                }
+
+
+                                                            }
+
+                                                        </DisplayTemplate>
+                                                    </DataGridColumn>
+
+                                                </DataGridColumns>
+
+                                            </DataGrid>
+
+                                        }
+                                        else
+                                        {
+                                            <p> @view.texts.Get("NoRecordsFound") </p>
+                                        }
+                                    }
+
+                                </div>
+
+                            </div>
+
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+                <div style="display:@view.EditingState">
+
+                    <BackButton OnClick="Back"></BackButton>
+
+                    <div class="row gy-5 g-xl-10">
+
+                        <div class="col-xl-12">
+                            <div class="card card-flush h-xl-100">
+                                <div class="card-header pt-7">
+
+                                    <h3 class="card-title align-items-start flex-column">
+                                        <span class="card-label fw-bold text-dark">@view.texts.Get("DetailsLabel")</span>
+                                    </h3>
+
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row">
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">@view.texts.Get("LogID-Label"):</label>
+                                                <input type="text" value="@view.result.ExceptionLogID" class="form-control" disabled />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">@view.texts.Get("UserID"):</label>
+                                                <input type="text" value="@view.result.UserID"
+                                                       class="form-control" disabled />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="form-label">@view.texts.Get("Email-Label"):</label>
+                                                <input type="text" value="@view.result.Email"
+                                                       class="form-control" disabled />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">@view.texts.Get("Date-Label"):</label>
+                                                <input type="text" value="@view.result.Date"
+                                                       class="form-control" disabled />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">@view.texts.Get("Origin-Label"):</label>
+                                                <input type="text" value="@view.result.Origin"
+                                                       class="form-control" disabled />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">@view.texts.Get("TargetSite-Label"):</label>
+                                                <input type="text" value="@view.result.TargetSite"
+                                                       class="form-control" disabled />
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">@view.texts.Get("ErrMessage-Label"):</label>
+                                                <p> @view.result.ErrMessage</p>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">@view.texts.Get("StackTrace-Label"):</label>
+                                                <p> @view.result.StackTrace</p>                                              
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="form-label">@view.texts.Get("ClientIP-Label"):</label>
+                                                <input type="text" value="@view.result.ClientIP"
+                                                       class="form-control" disabled />
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                                                    
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            }
+            else
+            {
+
+                <PageLoading LoadingText="Loading page. Please, wait..."></PageLoading>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+@code {
+
+
+    //
+
+    private ExceptionLogViewModel view;
+
+  
+    //
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+
+        if (firstRender)
+        {
+            if (await this.InitResources())
+            {
+                await this.InitCacheAndLocalization();
+
+                this.InitServices();
+
+                view = new ExceptionLogViewModel((_systemservices as SystemProxy),
+                   (_cache as DataCacheProxy), user, _httpclient, _settings.ServiceURL, _appctrl.UserInfo.Token);
+
+                view.texts = this.localization;
+
+                view.Permissions
+                    = BaseViewModel.SetPermissions(permissions, "SYSEXCEPTIONLOG", false);
+
+                await view.InitializeModels();
+            
+                _LoadingData_Text = view.texts.Get("LoadingData");
+                _PageTitle = view.texts.Get("ExceptionLog-PageTitle");
+
+            }
+
+            StateHasChanged();
+
+        }
+    }
+
+    public async Task OnSearch()
+    {
+        searchbtn.Begin();
+        await view.Search();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnExecuteSearch"),
+                view.ServiceStatus.Exceptions.Messages[0].Description);
+        }
+
+        searchbtn.End();
+    }
+
+    public void OnNew()
+    {
+
+        view.InitNew();
+        StateHasChanged();
+    }
+
+    public async Task OnGet(object id)
+    {
+        await loading.Begin();
+
+        await view.Get(id);
+
+        await loading.End();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnReturnData"),
+            view.ServiceStatus.Exceptions.Messages[0].Description);
+        }
+        else
+        {
+            view.InitEdit();
+
+        }
+
+        StateHasChanged();
+    }
+
+
+    public async Task OnDetClick(object id)
+    {
+        await OnGet(id);
+
+    }
+
+    public void Back()
+    {
+        view.BackToSearch();
+        StateHasChanged();
+
+    }
+
+    public void GoHome()
+    {
+        string url = _appctrl.UserInfo.HomeURL;
+        NavigationManager.NavigateTo(url);
+
+    }
+
+
+}

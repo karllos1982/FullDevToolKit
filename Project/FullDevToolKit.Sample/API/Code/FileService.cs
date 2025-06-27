@@ -1,6 +1,4 @@
-﻿//using Azure.Storage.Blobs;
-//using Azure.Storage.Blobs.Models;
-using FullDevToolKit.Common;
+﻿using FullDevToolKit.Common;
 
 
 namespace MyApp.API
