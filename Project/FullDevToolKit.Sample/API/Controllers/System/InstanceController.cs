@@ -12,10 +12,9 @@ namespace MyApp.Controllers
     [Authorize]
     public class InstanceController : APIControllerBase
     {
-        public InstanceController(IContext context,
-           IContextBuilder contextbuilder)
+        public InstanceController(IContext context)
         {
-            Init(context, contextbuilder, "SYSINSTANCE");
+            Init(context, "SYSINSTANCE");
         }
      
 
@@ -24,6 +23,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Search(InstanceParam param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -48,7 +48,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> List(InstanceParam param)
         {
-           
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             if (IsAllowed)
@@ -73,6 +73,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Get(string id)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -98,6 +99,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Set(InstanceEntry param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
 
             if (IsAllowed)

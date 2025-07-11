@@ -1,12 +1,13 @@
 ﻿using FullDevToolKit.Common;
 using FullDevToolKit.ApplicationHelpers;
+using FullDevToolKit.Core.Helpers;
 
 namespace FullDevToolKit.Core
 {
     public interface ISettings
     {
 
-         SourceConfig[] Sources { get; set; }
+         ConnectionStringManager Connections { get; set; }
 
          string SiteURL { get; set; }
 

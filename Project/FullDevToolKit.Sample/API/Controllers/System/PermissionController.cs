@@ -4,6 +4,7 @@ using FullDevToolKit.Common;
 using MyApp.API;
 using Microsoft.AspNetCore.Authorization;
 using FullDevToolKit.Core;
+using FullDevToolKit.Core.Helpers;
 
 
 namespace MyApp.Controllers
@@ -14,10 +15,9 @@ namespace MyApp.Controllers
     public class PermissionController : APIControllerBase
     {
 
-        public PermissionController(IContext context,
-               IContextBuilder contextbuilder)
+        public PermissionController(IContext context)
         {
-            Init(context, contextbuilder, "SYSPERMISSION");
+            Init(context, "SYSPERMISSION");
         }
 
         
@@ -26,6 +26,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Search(PermissionParam param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -50,7 +51,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> List(PermissionParam param)
         {
-           
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             if (IsAllowed)
@@ -76,6 +77,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Get(string id)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -104,6 +106,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Set(PermissionEntry param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
 
             if (IsAllowed)
@@ -129,6 +132,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Delete(PermissionEntry param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.DELETE, false);
 
             if (IsAllowed)

@@ -13,10 +13,9 @@ namespace MyApp.Controllers
     [Authorize]
     public class LocalizationTextController : APIControllerBase
     {
-        public LocalizationTextController(IContext context,
-             IContextBuilder contextbuilder)
+        public LocalizationTextController(IContext context)
         {
-            Init(context, contextbuilder, "SYSLOCALIZATIONTEXT");
+            Init(context, "SYSLOCALIZATIONTEXT");
         }
 
       
@@ -25,6 +24,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Search(LocalizationTextParam param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -49,7 +49,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> List(LocalizationTextParam param)
         {
-           
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             if (IsAllowed)
@@ -74,6 +74,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Get(string id)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -99,6 +100,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Set(LocalizationTextEntry param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
 
 

@@ -1,6 +1,7 @@
 ﻿using FullDevToolKit.Core;
 using FullDevToolKit.Common;
 using FullDevToolKit.ApplicationHelpers;
+using FullDevToolKit.Core.Helpers;
 
 
 namespace MyApp.API
@@ -22,7 +23,7 @@ namespace MyApp.API
 
         }
 
-        public SourceConfig[] Sources { get; set; }
+        public ConnectionStringManager Connections { get; set; }
 
         public string SiteURL { get; set; }
 
@@ -40,19 +41,16 @@ namespace MyApp.API
 
         public void LoadSettings()
         {
-            this.Sources= new SourceConfig[1];
-
-            this.Sources[0] = new SourceConfig(); 
-            this.Sources[0].SourceValue = _env["Sources01"];
-            this.Sources[0].SourceName = "Default";
+            this.Connections = new ConnectionStringManager();
+            this.Connections.AddConnection( ENUM_CONNECTIONSNAMES.MASTERDB, _env[ENUM_CONNECTIONSNAMES.MASTERDB]);
+            this.Connections.AddConnection(ENUM_CONNECTIONSNAMES.SLAVE01DB, _env[ENUM_CONNECTIONSNAMES.SLAVE01DB]);
 
             this.SiteURL = _env["SiteURL"];
             this.ProfileImageDir = _env["ProfileImageDir"];
             this.FileStorageConnection = _env["FileStorageConnection"];
             this.ApplicationName = _env["ApplicationName"];            
             this.LocalizationLanguage = _env["LocalizationLanguage"];
-            this.ContextLength = (int)_env.GetValue(typeof(int), "ContextLength");
-                       
+                                   
             this.MailSettings = new MailSettings();
             this.MailSettings.SMTPServer = _env["SMTPServer"];
             this.MailSettings.SMTPUser = _env["SMTPUser"];

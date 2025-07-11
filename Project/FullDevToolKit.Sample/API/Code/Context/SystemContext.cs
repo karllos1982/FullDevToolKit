@@ -4,6 +4,7 @@ using FullDevToolKit.Common;
 using FullDevToolKit.Core;
 using Dapper;
 using FullDevToolKit.Sys.Models.Common;
+using FullDevToolKit.Core.Helpers;
 
 namespace MyApp.Context
 {
@@ -31,11 +32,12 @@ namespace MyApp.Context
         public ExecutionStatus Status { get; set; }
         public string LocalizationLanguage { get; set; }
 
-        public ExecutionStatus Begin(int sourceindex, object isolationlavel)
+        public ExecutionStatus Begin(ConnectionStringItem conn, object isolationlavel)
         {
             ExecutionStatus ret = new ExecutionStatus(true);
 
-        
+            Connection = new SqlConnection(conn.Value);
+
             return ret;
         }
 
@@ -348,7 +350,10 @@ namespace MyApp.Context
 
         public async Task RegisterExceptionLog(object exceptioninfo)
         {
-            Connection = new SqlConnection(Settings.Sources[0].SourceValue);
+            ConnectionStringItem conn
+                = Settings.Connections.GetConnection("DefaultDB");
+
+            Connection = new SqlConnection(conn.Value);
 
             try
             {

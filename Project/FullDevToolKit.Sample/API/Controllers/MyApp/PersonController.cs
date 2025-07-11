@@ -13,10 +13,9 @@ namespace Template.Controllers
     public class PersonController : APIControllerBase
     {
 
-        public PersonController(IContext context,
-                IContextBuilder contextbuilder)
+        public PersonController(IContext context)
         {
-            Init(context, contextbuilder, "PERSON");
+            Init(context, "PERSON");
            
         }
 
@@ -24,25 +23,17 @@ namespace Template.Controllers
         [Route("search")]
         [Authorize]
         public async Task<object> Search(PersonParam param)
-        {
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);            
-
-            if (IsAllowed)
-            {
-                List<PersonResult> data = null;
-                data = await Manager.MainBusinessModule.DomainSet.Person.Search(param);                
-                ret = SetReturn<List<PersonResult>>(data);
-                
-            }
-            else
-            {
-                ret = SetReturn<List<PersonResult>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
+        {                               
+            await PerformRead(
+                async () =>
+                {
+                    List<PersonResult> data = null;
+                    data = await Manager.MainBusinessModule.DomainSet.Person.Search(param);
+                    ret = SetReturn<List<PersonResult>>(data);
+                }
+            );
+  
             return ret; 
-
         }
 
         [HttpPost]
@@ -50,7 +41,7 @@ namespace Template.Controllers
         [Authorize]
         public async Task<object> List(PersonParam param)
         {
-           
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);            
 
             if (IsAllowed)
@@ -75,6 +66,7 @@ namespace Template.Controllers
         [Authorize]
         public async Task<object> Get(string id)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -100,9 +92,9 @@ namespace Template.Controllers
         [Authorize]
         public async Task<object> Set(PersonEntry param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
-
-            
+                        
             if (IsAllowed)
             {
                 PersonEntry data = null;
@@ -126,6 +118,7 @@ namespace Template.Controllers
         [Authorize]
         public object ContactEntryValidation(PersonContactEntry param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
 
             if (IsAllowed)

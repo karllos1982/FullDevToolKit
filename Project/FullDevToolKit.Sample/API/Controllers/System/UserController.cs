@@ -15,10 +15,9 @@ namespace MyApp.Controllers
     public class UserController : APIControllerBase
     {
 
-        public UserController(IContext context,
-                IContextBuilder contextbuilder)
+        public UserController(IContext context)
         {
-            Init(context, contextbuilder, "SYSUSER");                    
+            Init(context, "SYSUSER");                    
         }
 
 
@@ -26,6 +25,7 @@ namespace MyApp.Controllers
         [Route("search")]        
         public async Task<object> Search(UserParam param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -49,6 +49,7 @@ namespace MyApp.Controllers
         [Route("list")]
         public async Task<object> List(UserParam param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             if (IsAllowed)
@@ -72,6 +73,7 @@ namespace MyApp.Controllers
         [Route("get")]        
         public async Task<object> Get(string id)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -106,6 +108,7 @@ namespace MyApp.Controllers
         [Route("set")]        
         public async Task<object> Set(UserEntry param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
 
             if (IsAllowed)
@@ -130,6 +133,7 @@ namespace MyApp.Controllers
         [Route("createnewuser")]        
         public async Task<object> CreateNewUser(NewUser param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
 
             if (IsAllowed)
@@ -154,6 +158,7 @@ namespace MyApp.Controllers
         [Route("changestate")]        
         public async Task<object> ChangeState(UserChangeState param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
 
             if (IsAllowed)

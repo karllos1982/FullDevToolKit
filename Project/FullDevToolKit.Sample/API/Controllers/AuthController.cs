@@ -19,16 +19,12 @@ namespace MyApp.Controllers
     public class AuthController : APIControllerBase
     {
 
-        public AuthController(IContext context,
-            IContextBuilder contextbuilder, MailManager mail)
+        public AuthController(IContext context,MailManager mail)
         {
-            Init(context, contextbuilder, "");
-            Context.LocalizationLanguage = Context.Settings.LocalizationLanguage;
-            this.MailCenter = mail;
-            LocalizationText.LoadData(context); 
+            Init(context, mail,""); 
+            
         }
-
-       
+               
 
         [HttpGet]
         [Route("index")]
@@ -47,6 +43,7 @@ namespace MyApp.Controllers
         [Route("listlocalizationtexts")]
         public async Task<object> ListLocalizationTexts()
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             List<LocalizationTextResult> data = null;
@@ -94,6 +91,7 @@ namespace MyApp.Controllers
         [AllowAnonymous]
         public object SendEmailConfirmation(EmailConfirmation data) //EmailConfirmation
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             Validations val = new Validations();
@@ -125,6 +123,7 @@ namespace MyApp.Controllers
         [AllowAnonymous]
         public async Task<object> Login(UserLogin param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             param.Password = Utilities.ConvertFromBase64(param.Password);
@@ -201,6 +200,7 @@ namespace MyApp.Controllers
         [AllowAnonymous]
         public async Task<object> RecoveryPassword(ChangeUserPassword param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             string data  =
@@ -230,7 +230,7 @@ namespace MyApp.Controllers
         [AllowAnonymous]
         public async Task<object> RequestActiveAccountCode(ActiveUserAccount param)
         {
-
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             string data =
@@ -260,7 +260,7 @@ namespace MyApp.Controllers
         [AllowAnonymous]
         public async Task<object> ActiveAccount(ActiveUserAccount param)
         {
-
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
              await Manager.IdentityModule.Domainset.User.ActiveUserAccount(param);
@@ -278,7 +278,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> RequestChangePasswordCode(ChangeUserPassword param)
         {
-
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             string data =
@@ -307,7 +307,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> ChangePassword(ChangeUserPassword param)
         {
-
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             await Manager.IdentityModule.Domainset.User.ChangeUserPassword(param);
@@ -325,7 +325,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> ChangeUserImageProfile()
         {
-
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
             MyAppSettings settings = (MyAppSettings)Context.Settings;
 
@@ -358,6 +358,7 @@ namespace MyApp.Controllers
         [Route("getuserimageprofile")]       
         public FileStreamResult GetUserImageProfile(string file)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             MyAppSettings settings = (MyAppSettings)Context.Settings;
@@ -381,6 +382,7 @@ namespace MyApp.Controllers
         [Route("changeuserlanguage")]
         public async Task<object> ChangeUserLanguage(ChangeUserLanguage param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             if (IsAllowed)
@@ -405,6 +407,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Logout()
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             await Manager.IdentityModule.Logout(long.Parse(this.UserID.ToString()));

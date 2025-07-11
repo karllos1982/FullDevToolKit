@@ -13,10 +13,9 @@ namespace MyApp.Controllers
     [Authorize]
     public class DataLogController : APIControllerBase
     {
-        public DataLogController(IContext context,
-             IContextBuilder contextbuilder)
+        public DataLogController(IContext context)             
         {
-            Init(context, contextbuilder, "SYSDATALOG");
+            Init(context, "SYSDATALOG");
         }
       
 
@@ -24,6 +23,7 @@ namespace MyApp.Controllers
         [Route("search")]        
         public async Task<object> Search(DataLogParam param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -47,6 +47,7 @@ namespace MyApp.Controllers
         [Route("list")]        
         public async Task<object> List(DataLogParam param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             if (IsAllowed)
@@ -70,6 +71,7 @@ namespace MyApp.Controllers
         [Route("get")]        
         public async Task<object> Get(string id)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -95,6 +97,7 @@ namespace MyApp.Controllers
         [Route("gettimeline")]       
         public async Task<object> GetTimeLine(string id)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -119,6 +122,7 @@ namespace MyApp.Controllers
         [Route("gettablelist")]        
         public async Task<object> GetTableList()
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)

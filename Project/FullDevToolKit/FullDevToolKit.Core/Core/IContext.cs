@@ -1,5 +1,5 @@
 ﻿using FullDevToolKit.Common;
-
+using FullDevToolKit.Core.Helpers;
 using System.Data;
 
 namespace FullDevToolKit.Core
@@ -25,7 +25,7 @@ namespace FullDevToolKit.Core
 
         ExecutionStatus Rollback();
 
-        ExecutionStatus Begin(int connindex, object isolationlavel);
+        ExecutionStatus Begin(ConnectionStringItem conn, object isolationlavel);
 
         ExecutionStatus End();
 

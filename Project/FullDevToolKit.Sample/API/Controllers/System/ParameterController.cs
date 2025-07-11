@@ -14,10 +14,9 @@ namespace MyApp.Controllers
     public class ParameterController : APIControllerBase
     {
 
-        public ParameterController(IContext context,
-             IContextBuilder contextbuilder)
+        public ParameterController(IContext context)
         {
-            Init(context, contextbuilder, "SYSPARAMETER");
+            Init(context, "SYSPARAMETER");
         }
       
 
@@ -26,6 +25,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Search(ParameterParam param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -51,7 +51,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> List(ParameterParam param)
         {
-           
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             if (IsAllowed)
@@ -76,6 +76,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Get(string id)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -101,6 +102,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Set(ParameterEntry param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
 
             if (IsAllowed)

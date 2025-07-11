@@ -3,12 +3,8 @@
   "WorkspaceRootPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\models\\common\\exceptionlogmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\models\\common\\exceptionlogmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\data\\querybuilders\\exceptionlogquerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\data\\querybuilders\\exceptionlogquerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\helpers\\connectionstringmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\helpers\\connectionstringmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -17,43 +13,30 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 194,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 261,
+          "SelectedChildIndex": 1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ExceptionLogModels.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\ExceptionLogModels.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\ExceptionLogModels.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\ExceptionLogModels.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\ExceptionLogModels.cs",
-              "ViewState": "AgIAAEsAAAAAAAAAAAA0wFgAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T16:06:15.35Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ExceptionLogQueryBuilder.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\ExceptionLogQueryBuilder.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\ExceptionLogQueryBuilder.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\ExceptionLogQueryBuilder.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\ExceptionLogQueryBuilder.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAowDAAAAAlAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "ConnectionStringManager.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Helpers\\ConnectionStringManager.cs",
+              "RelativeDocumentMoniker": "FullDevToolKit.Core\\Helpers\\ConnectionStringManager.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Helpers\\ConnectionStringManager.cs",
+              "RelativeToolTip": "FullDevToolKit.Core\\Helpers\\ConnectionStringManager.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-27T15:53:36.574Z",
+              "WhenOpened": "2025-07-11T17:30:25.896Z",
               "EditorCaption": ""
             }
           ]
         },
         {
-          "DockedWidth": 96,
+          "DockedWidth": 126,
           "SelectedChildIndex": -1,
           "Children": [
             {

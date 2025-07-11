@@ -1,5 +1,49 @@
 [
   {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "Auth",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "Auth",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "MyApp.Controllers.AuthController",
     "Method": "ActiveAccount",
     "RelativePath": "Auth/activeaccount",
@@ -184,6 +228,50 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "DataCache",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "DataCache",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "MyApp.Controllers.DataCacheController",
     "Method": "ListGroupParameter",
     "RelativePath": "DataCache/listgroupparameter",
@@ -252,6 +340,50 @@
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "myapp/Person",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "myapp/Person",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "Template.Controllers.PersonController",
@@ -334,6 +466,50 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/DataLog",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/DataLog",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "MyApp.Controllers.DataLogController",
     "Method": "Get",
     "RelativePath": "system/DataLog/get",
@@ -408,6 +584,50 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/ExceptionLog",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/ExceptionLog",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "MyApp.Controllers.ExceptionLogController",
     "Method": "Get",
     "RelativePath": "system/ExceptionLog/get",
@@ -454,6 +674,50 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/GroupParameter",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/GroupParameter",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "MyApp.Controllers.GroupParameterController",
@@ -520,6 +784,50 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/Instance",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/Instance",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "MyApp.Controllers.InstanceController",
     "Method": "Get",
     "RelativePath": "system/Instance/get",
@@ -582,6 +890,50 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/LocalizationText",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/LocalizationText",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "MyApp.Controllers.LocalizationTextController",
@@ -648,6 +1000,50 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/ObjectPermission",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/ObjectPermission",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "MyApp.Controllers.ObjectPermissionController",
     "Method": "Get",
     "RelativePath": "system/ObjectPermission/get",
@@ -712,6 +1108,50 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/Parameter",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/Parameter",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "MyApp.Controllers.ParameterController",
     "Method": "Get",
     "RelativePath": "system/Parameter/get",
@@ -774,6 +1214,50 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/Permission",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/Permission",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "MyApp.Controllers.PermissionController",
@@ -856,6 +1340,50 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/Role",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/Role",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "MyApp.Controllers.RoleController",
     "Method": "Get",
     "RelativePath": "system/Role/get",
@@ -920,6 +1448,50 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/SessionLog",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/SessionLog",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "MyApp.Controllers.SessionLogController",
     "Method": "Get",
     "RelativePath": "system/SessionLog/get",
@@ -966,6 +1538,50 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/User",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/User",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "MyApp.Controllers.UserController",

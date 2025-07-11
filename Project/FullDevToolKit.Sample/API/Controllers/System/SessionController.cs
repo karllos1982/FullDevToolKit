@@ -14,10 +14,9 @@ namespace MyApp.Controllers
     public class SessionLogController : APIControllerBase
     {
 
-        public SessionLogController(IContext context,
-                IContextBuilder contextbuilder)
+        public SessionLogController(IContext context)
         {
-            Init(context, contextbuilder, "SYSSESSION");
+            Init(context, "SYSSESSION");
         }
       
 
@@ -25,7 +24,7 @@ namespace MyApp.Controllers
         [Route("search")]        
         public async Task<object> Search(SessionLogParam param)
         {
-
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -49,6 +48,7 @@ namespace MyApp.Controllers
         [Route("list")]        
         public async Task<object> List(SessionLogParam param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             if (IsAllowed)
@@ -72,6 +72,7 @@ namespace MyApp.Controllers
         [Route("get")]        
         public async Task<object> Get(string id)
         {
+            BeginManager();
             CheckPermission( PERMISSION_CHECK_ENUM.READ,false);
 
             if (IsAllowed)

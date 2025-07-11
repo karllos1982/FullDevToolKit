@@ -14,10 +14,9 @@ namespace MyApp.Controllers
     public class GroupParameterController : APIControllerBase
     {
 
-        public GroupParameterController(IContext context,
-             IContextBuilder contextbuilder)
+        public GroupParameterController(IContext context)
         {
-            Init(context, contextbuilder, "SYSGROUPPARAMETER");
+            Init(context, "SYSGROUPPARAMETER");
         }
       
 
@@ -26,6 +25,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Search(GroupParameterParam param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -51,7 +51,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> List(GroupParameterParam param)
         {
-           
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             if (IsAllowed)
@@ -76,6 +76,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Get(string id)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -101,6 +102,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Set(GroupParameterEntry param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
 
             if (IsAllowed)

@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using Dapper;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Data.QueryBuilders;
+using FullDevToolKit.Core.Helpers;
 
 namespace MyApp.Context
 {
@@ -28,11 +29,11 @@ namespace MyApp.Context
         public ExecutionStatus Status { get; set; }
         public string LocalizationLanguage { get; set ; }
 
-        public ExecutionStatus Begin(int sourceindex, object isolationlavel)
+        public ExecutionStatus Begin(ConnectionStringItem conn, object isolationlavel)
         {
             ExecutionStatus ret = new ExecutionStatus(true);
 
-            Connection = new SqlConnection(Settings.Sources[sourceindex].SourceValue);
+            Connection = new SqlConnection(conn.Value);
             
             try
             {

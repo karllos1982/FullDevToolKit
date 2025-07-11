@@ -7,6 +7,9 @@ using FullDevToolKit.Core;
 using FullDevToolKit.ApplicationHelpers;
 using MyApp.Contracts.Managers;
 using MyApp.Managers;
+using System.Data;
+using FullDevToolKit.Core.Helpers;
+using MyApp.Models;
 
 namespace MyApp.API
 {
@@ -28,7 +31,27 @@ namespace MyApp.API
         public IContext Context;
         public IMyAppManager Manager;
         public MailManager MailCenter;
-        
+
+
+        public APIControllerBase()
+        {
+                
+        }
+
+        public void Init(IContext context, MailManager mail, string objetocode)
+        {
+            this.Context = context; 
+            Context.LocalizationLanguage = Context.Settings.LocalizationLanguage;
+            this.MailCenter = mail;
+            this.ObjectCode = objetocode;
+        }
+
+        public void Init(IContext context, string objetocode)
+        {
+            this.Context = context;
+            Context.LocalizationLanguage = Context.Settings.LocalizationLanguage;            
+            this.ObjectCode = objetocode;
+        }
 
         protected MemoryCacheEntryOptions GetMemoryCacheOptionsByHour(int time)
         {
@@ -46,13 +69,38 @@ namespace MyApp.API
             PermissionState = PERMISSION_STATE_ENUM.NONE;
         }
 
-        protected void Init(IContext context,
-                IContextBuilder contextbuilder, string objectcode)
+        protected async Task PerformRead(Action method, 
+            string connectionname = "MASTERDB")
         {
-            Context = context;
-            contextbuilder.BuilderContext(Context);
-            this.Manager = new MyAppManager(context);
-            ObjectCode = objectcode; 
+            BeginManager();
+            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
+
+            if (IsAllowed)
+            {
+                method.Invoke();
+            }
+            else
+            {
+                ret = SetReturn<List<PersonResult>>(PERMISSION_CHECK_ENUM.READ);
+            }
+            FinalizeManager();
+        }
+
+        protected async Task PerformSave(Action method,
+           string connectionname = "MASTERDB")
+        {
+            BeginManager();
+            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
+
+            if (IsAllowed)
+            {
+                method.Invoke();
+            }
+            else
+            {
+                ret = SetReturn<List<PersonResult>>(PERMISSION_CHECK_ENUM.READ);
+            }
+            FinalizeManager();
         }
 
         protected void CheckPermission( PERMISSION_CHECK_ENUM? checking = null, bool? allownone = null)
@@ -103,6 +151,21 @@ namespace MyApp.API
 
         }
 
+
+        protected void BeginManager(string connectionname= "", 
+            IsolationLevel isolation = IsolationLevel.ReadCommitted)
+        {
+            if (connectionname == "")
+            {
+                connectionname = ENUM_CONNECTIONSNAMES.MASTERDB; 
+            }
+
+            ConnectionStringItem conn 
+                = this.Context.Settings.Connections.GetConnection(connectionname);
+            Context.Begin(conn, isolation);
+            this.Manager = new MyAppManager(this.Context);
+            LocalizationText.LoadData(this.Context);
+        }
 
         protected void FinalizeManager()
         {

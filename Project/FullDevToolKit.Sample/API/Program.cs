@@ -22,7 +22,6 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddMemoryCache();
 
 builder.Services.AddSingleton<ISettings, MyAppSettings>();
-builder.Services.AddScoped<IContextBuilder, ContextBuilder>();
 builder.Services.AddScoped<IContext, DapperContext>();
 builder.Services.AddScoped<IMyAppManager, MyAppManager>();
 builder.Services.AddScoped<MailManager, MyApMailCenter>();

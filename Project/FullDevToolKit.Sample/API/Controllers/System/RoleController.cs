@@ -14,10 +14,9 @@ namespace MyApp.Controllers
     public class RoleController : APIControllerBase
     {
 
-        public RoleController(IContext context,
-             IContextBuilder contextbuilder)
+        public RoleController(IContext context)
         {
-            Init(context, contextbuilder, "SYSROLE");
+            Init(context, "SYSROLE");
         }
       
 
@@ -26,6 +25,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Search(RoleParam param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -51,7 +51,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> List(RoleParam param)
         {
-           
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             if (IsAllowed)
@@ -76,6 +76,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Get(string id)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -101,6 +102,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Set(RoleEntry param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
 
             if (IsAllowed)

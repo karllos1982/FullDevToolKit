@@ -17,21 +17,19 @@ namespace MyApp.Controllers
     {
        
         public DataCacheController(
-            IContext context,
-            IContextBuilder contextbuilder,             
+            IContext context,                       
             IWebHostEnvironment hostingEnvironment,
             IMemoryCache _cache)
         {
             memorycache = _cache;
-            Init(context, contextbuilder, "");
-            Context.LocalizationLanguage = Context.Settings.LocalizationLanguage;            
-            LocalizationText.LoadData(context);
+            Init(context, null, "");
         }
 
         [HttpGet]
         [Route("listtipoperacao")]
         public object ListTipoOperacao()
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             List<TipoOperacaoValueModel> list = null;
@@ -61,6 +59,7 @@ namespace MyApp.Controllers
         [Route("listtabelas")]
         public async Task<object> ListTabelas()
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             List<TabelasValueModel> list = null;
@@ -86,6 +85,7 @@ namespace MyApp.Controllers
         [Route("listroles")]
         public async Task<object> ListRoles()
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             List<RoleList> list = null;
@@ -111,6 +111,7 @@ namespace MyApp.Controllers
         [Route("listlangs")]
         public async Task<object> ListLanguages()
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             List<LocalizationTextList> list = null;
@@ -140,6 +141,7 @@ namespace MyApp.Controllers
 		
 		public async Task<object> ListLocalizationTexts()
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             List<LocalizationTextResult> list = null;
@@ -166,6 +168,7 @@ namespace MyApp.Controllers
         [Route("listgroupparameter")]
         public async Task<object> ListGroupParameter()
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             List<GroupParameterResult> list = null;
@@ -192,6 +195,7 @@ namespace MyApp.Controllers
         [Route("listparameter")]
         public async Task<object> ListParameter()
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             List<ParameterResult> list = null;

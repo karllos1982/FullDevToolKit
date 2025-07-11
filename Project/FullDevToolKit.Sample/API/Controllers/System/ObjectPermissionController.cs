@@ -14,10 +14,9 @@ namespace MyApp.Controllers
     public class ObjectPermissionController : APIControllerBase
     {
 
-        public ObjectPermissionController(IContext context,
-              IContextBuilder contextbuilder)
+        public ObjectPermissionController(IContext context)
         {
-            Init(context, contextbuilder, "SYSOBJECTPERMISSION");
+            Init(context, "SYSOBJECTPERMISSION");
         }
        
 
@@ -26,6 +25,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Search(ObjectPermissionParam param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -50,7 +50,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> List(ObjectPermissionParam param)
         {
-           
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             if (IsAllowed)
@@ -75,6 +75,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Get(string id)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
@@ -102,6 +103,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Set(ObjectPermissionEntry param)
         {
+            BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
 
             if (IsAllowed)
