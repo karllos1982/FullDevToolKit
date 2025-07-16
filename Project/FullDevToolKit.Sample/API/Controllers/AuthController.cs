@@ -128,6 +128,8 @@ namespace MyApp.Controllers
 
             param.Password = Utilities.ConvertFromBase64(param.Password);
             param.Password = MD5.BuildMD5(param.Password);
+            param.ClientIP = HttpContext.Connection.RemoteIpAddress?.ToString();
+
             UserResult userM = await Manager.IdentityModule.Login(param);
 
             if (Context.Status.Success)

@@ -69,15 +69,16 @@ namespace MyApp.API
             PermissionState = PERMISSION_STATE_ENUM.NONE;
         }
 
-        protected async Task PerformRead(Action method, 
-            string connectionname = "MASTERDB")
+        protected async Task ExecuteForRead<TInput>(TInput param,
+            Func<TInput, Task> method, string connectionname = "MASTERDB")
         {
             BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
             if (IsAllowed)
             {
-                method.Invoke();
+                await method(param);
+
             }
             else
             {
@@ -86,23 +87,41 @@ namespace MyApp.API
             FinalizeManager();
         }
 
-        protected async Task PerformSave(Action method,
-           string connectionname = "MASTERDB")
+        protected async Task ExecuteForSave<TInput>(TInput param,
+            Func<TInput, Task> method, string connectionname = "MASTERDB")
         {
             BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
+            CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
 
             if (IsAllowed)
             {
-                method.Invoke();
+                await method(param);
             }
             else
             {
-                ret = SetReturn<List<PersonResult>>(PERMISSION_CHECK_ENUM.READ);
+                ret = SetReturn<List<PersonResult>>(PERMISSION_CHECK_ENUM.SAVE);
             }
             FinalizeManager();
         }
 
+        protected async Task ExecuteForDelete<TInput>(TInput param,
+           Func<TInput, Task> method, string connectionname = "MASTERDB")
+        {
+            BeginManager();
+            CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
+
+            if (IsAllowed)
+            {
+                await method(param);
+            }
+            else
+            {
+                ret = SetReturn<List<PersonResult>>(PERMISSION_CHECK_ENUM.SAVE);
+            }
+            FinalizeManager();
+        }
+
+       
         protected void CheckPermission( PERMISSION_CHECK_ENUM? checking = null, bool? allownone = null)
         {
            

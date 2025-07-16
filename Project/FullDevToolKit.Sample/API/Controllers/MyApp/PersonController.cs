@@ -23,95 +23,67 @@ namespace Template.Controllers
         [Route("search")]
         [Authorize]
         public async Task<object> Search(PersonParam param)
-        {                               
-            await PerformRead(
-                async () =>
-                {
-                    List<PersonResult> data = null;
-                    data = await Manager.MainBusinessModule.DomainSet.Person.Search(param);
-                    ret = SetReturn<List<PersonResult>>(data);
-                }
-            );
-  
+        {
+            await ExecuteForRead(param,async (param)=>
+            {
+                List<PersonResult> data 
+                    = await Manager.MainBusinessModule.DomainSet.Person.Search(param);
+                ret = SetReturn(data);
+            });   
+            
             return ret; 
         }
+     
 
         [HttpPost]
         [Route("list")]
         [Authorize]
         public async Task<object> List(PersonParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, true);            
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async(param)=>
             {
-                List<PersonList> data = null;
-                data = await Manager.MainBusinessModule.DomainSet.Person.List(param);
-                ret = SetReturn<List<PersonList>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<PersonList>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
+                List<PersonResult> data
+                     = await Manager.MainBusinessModule.DomainSet.Person.Search(param);
+                ret = SetReturn(data);
+            });
 
             return ret;
         }
+      
 
         [HttpGet]
         [Route("get")]
         [Authorize]
         public async Task<object> Get(string id)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(id, async(param)=>
             {
-                PersonResult data = null;
-                data = await Manager.MainBusinessModule
+                PersonResult data 
+                   = await Manager.MainBusinessModule
                     .DomainSet.Person.Get(new PersonParam() { pPersonID = long.Parse(id) });
-                ret = SetReturn<PersonResult>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<PersonResult> (PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
+                ret = SetReturn(data);
+            })
+                ;
             return ret;
         }
+      
 
         [HttpPost]
         [Route("set")]
         [Authorize]
         public async Task<object> Set(PersonEntry param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
-                        
-            if (IsAllowed)
+            await ExecuteForSave(param, async(param)=>
             {
-                PersonEntry data = null;
-                data = await Manager.MainBusinessModule
-                    .DomainSet.Person.Set(param, this.UserID);
-                ret = SetReturn<PersonEntry>(data);
+                PersonEntry data 
+                    = await Manager.MainBusinessModule
+                        .DomainSet.Person.Set(param, this.UserID);
+                ret = SetReturn(data);
+            });
 
-            }
-            else
-            {
-                ret = SetReturn<PersonEntry>(PERMISSION_CHECK_ENUM.SAVE);
-            }
-
-            FinalizeManager();              
-           
-            return ret;
+            return ret;         
         }
+       
 
         [HttpPost]
         [Route("contactsentryvalidation")]

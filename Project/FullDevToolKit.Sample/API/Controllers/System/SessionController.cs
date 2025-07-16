@@ -24,23 +24,13 @@ namespace MyApp.Controllers
         [Route("search")]        
         public async Task<object> Search(SessionLogParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<SessionLogResult> data = null;
-                data = await Manager.IdentityModule.Domainset.SessionLog.Search(param);
-                ret = SetReturn<List<SessionLogResult>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<SessionLogResult>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
+                List<SessionLogResult> data
+                    = await Manager.IdentityModule.Domainset.SessionLog.Search(param);
+                ret = SetReturn(data);
+            });
+         
             return ret;
         }
 
@@ -48,22 +38,12 @@ namespace MyApp.Controllers
         [Route("list")]        
         public async Task<object> List(SessionLogParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<SessionLogList> data = null;
-                data = await Manager.IdentityModule.Domainset.SessionLog.List(param);
-                ret = SetReturn<List<SessionLogList>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<SessionLogList>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
+                List<SessionLogList> data
+                    = await Manager.IdentityModule.Domainset.SessionLog.List(param);
+                ret = SetReturn(data);
+            });          
 
             return ret;
         }
@@ -72,24 +52,13 @@ namespace MyApp.Controllers
         [Route("get")]        
         public async Task<object> Get(string id)
         {
-            BeginManager();
-            CheckPermission( PERMISSION_CHECK_ENUM.READ,false);
-
-            if (IsAllowed)
+            await ExecuteForRead(id, async (param) =>
             {
-                SessionLogResult data = null;
-                data = await Manager.IdentityModule
-                        .Domainset.SessionLog.Get(new SessionLogParam() { pUserID = Int64.Parse(id) });                
-
-                ret = SetReturn<SessionLogResult>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<SessionLogResult>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
+                SessionLogResult data
+                    = await Manager.IdentityModule
+                         .Domainset.SessionLog.Get(new SessionLogParam() { pUserID = Int64.Parse(id) });
+                ret = SetReturn(data);
+            });           
 
             return ret;
         }

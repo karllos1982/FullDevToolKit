@@ -5,6 +5,7 @@ using MyApp.API;
 using Microsoft.AspNetCore.Authorization;
 using FullDevToolKit.Core;
 using FullDevToolKit.Core.Helpers;
+using FullDevToolKit.Sys.Models.Common;
 
 
 namespace MyApp.Controllers
@@ -26,22 +27,12 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Search(PermissionParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<PermissionResult> data = null;
-                data = await Manager.IdentityModule.Domainset.Permission.Search(param);
-                ret = SetReturn<List<PermissionResult>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<PermissionResult>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();          
+                List<PermissionResult> data
+                    = await Manager.IdentityModule.Domainset.Permission.Search(param);
+                ret = SetReturn(data);
+            });                 
 
             return ret;
         }
@@ -51,23 +42,12 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> List(PermissionParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<PermissionList> data = null;
-                data = await Manager.IdentityModule.Domainset.Permission.List(param);
-                ret = SetReturn<List<PermissionList>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<PermissionList>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
+                List<PermissionList> data
+                    = await Manager.IdentityModule.Domainset.Permission.List(param);
+                ret = SetReturn(data);
+            });          
           
             return ret;
         }
@@ -77,27 +57,14 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Get(string id)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(id, async (param) =>
             {
-                PermissionResult data = null;
-                data = await Manager.IdentityModule
-                        .Domainset.Permission.Get(new PermissionParam()
-                        { pPermissionID = Int64.Parse(id) });
-
-                ret = SetReturn<PermissionResult>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<PermissionResult>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
-           
+                PermissionResult data
+                    = await Manager.IdentityModule
+                         .Domainset.Permission.Get(new PermissionParam() { pPermissionID = Int64.Parse(id) });
+                ret = SetReturn(data);
+            });
+                     
             return ret;
         }
 
@@ -106,24 +73,14 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Set(PermissionEntry param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
-
-            if (IsAllowed)
+            await ExecuteForSave(param, async (param) =>
             {
-                PermissionEntry data = null;
-                data = await Manager.IdentityModule
-                    .Domainset.Permission.Set(param, this.UserID);
-                ret = SetReturn<PermissionEntry>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<PermissionEntry>(PERMISSION_CHECK_ENUM.SAVE);
-            }
-
-            FinalizeManager();
-
+                PermissionEntry data
+                    = await Manager.IdentityModule
+                        .Domainset.Permission.Set(param, this.UserID);
+                ret = SetReturn(data);
+            });
+          
             return ret;
         }
 
@@ -132,24 +89,14 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Delete(PermissionEntry param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.DELETE, false);
-
-            if (IsAllowed)
+            await ExecuteForDelete(param, async (param) =>
             {
-                PermissionEntry data = null;
-                data = await Manager.IdentityModule
-                    .Domainset.Permission.Delete(param, this.UserID);
-                ret = SetReturn<PermissionEntry>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<PermissionEntry>(PERMISSION_CHECK_ENUM.DELETE);
-            }
-
-            FinalizeManager();
-          
+                PermissionEntry data
+                    = await Manager.IdentityModule
+                        .Domainset.Permission.Delete(param, this.UserID);
+                ret = SetReturn(data);
+            });
+                     
             return ret;
         }
 

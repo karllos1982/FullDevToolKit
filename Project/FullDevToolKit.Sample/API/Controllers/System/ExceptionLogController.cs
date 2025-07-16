@@ -24,23 +24,13 @@ namespace MyApp.Controllers
         [Route("search")]
         public async Task<object> Search(ExceptionLogParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<ExceptionLogResult> data = null;
-                data = await Manager.IdentityModule.Domainset.ExceptionLog.Search(param);
-                ret = SetReturn<List<ExceptionLogResult>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<ExceptionLogResult>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
+                List<ExceptionLogResult> data
+                    = await Manager.IdentityModule.Domainset.ExceptionLog.Search(param);
+                ret = SetReturn(data);
+            });
+          
             return ret;
         }
 
@@ -48,23 +38,13 @@ namespace MyApp.Controllers
         [Route("list")]
         public async Task<object> List(ExceptionLogParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<ExceptionLogList> data = null;
-                data = await Manager.IdentityModule.Domainset.ExceptionLog.List(param);
-                ret = SetReturn<List<ExceptionLogList>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<ExceptionLogList>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
+                List<ExceptionLogList> data
+                    = await Manager.IdentityModule.Domainset.ExceptionLog.List(param);
+                ret = SetReturn(data);
+            });
+          
             return ret;
         }
 
@@ -72,25 +52,14 @@ namespace MyApp.Controllers
         [Route("get")]
         public async Task<object> Get(string id)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(id, async (param) =>
             {
-                ExceptionLogResult data = null;
-                data = await Manager.IdentityModule
+                ExceptionLogResult data
+                    = await Manager.IdentityModule
                         .Domainset.ExceptionLog.Get(new ExceptionLogParam() { pExceptionLogID = Int64.Parse(id) });
-
-                ret = SetReturn<ExceptionLogResult>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<ExceptionLogResult>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
+                ret = SetReturn(data);
+            });
+         
             return ret;
         }
     

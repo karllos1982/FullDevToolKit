@@ -133,7 +133,7 @@
                                              
                                                             <DataGridColumns>
 
-                                                                <DataGridColumn Field="@nameof(DataLogResult.Email)" Caption=@view.texts.Get("Email-Label") />
+                                                                <DataGridColumn Field="@nameof(DataLogResult.Email)" Caption="User" />
                                                                 <DataGridColumn Field="@nameof(DataLogResult.TableName)" Caption=@view.texts.Get("TableName-Label") />
                                                                 <DataGridColumn Field="@nameof(DataLogResult.OperationText)" Caption=@view.texts.Get("OperationText-Label") />
                                                                 <DataGridColumn Field="@nameof(DataLogResult.Date)" Caption=@view.texts.Get("Date-Label") />
@@ -187,31 +187,34 @@
                                     <div class="card card-flush h-xl-100">								      
 		                                <div class="card-header pt-7">
 									  
-			                                <h3 class="card-title align-items-start flex-column">
-                                        <span class="card-label fw-bold text-dark">@view.texts.Get("DetailsLabel")</span>
-                                    </h3>									        
+                                              <div class="row">
+                                                    
+                                                  <div class="col-md-4">
+                                                        <h3 class="card-title align-items-start flex-column">
+                                                            <span class="card-label fw-bold text-dark">@view.texts.Get("DetailsLabel")</span>
+                                                         </h3>									        
+                                                    </div>
+
+                                                    <div class="col-md-8">
+                                                            <span>@view.texts.Get("LogID-Label"): @view.result.DataLogID  </span>
+                                                    </div>
+                                                  
+                                               </div>          			                                                                                                                                                                         
 									       
                                         </div>
                                            
                                         <div class="card-body">										                                                                                                                                                                                                                      
                                               <div class="row">
 
-                                                    <div class="col-md-3">
-                                                        <div class="form-group">
-                                                            <label class="form-label">@view.texts.Get("LogID-Label"):</label>
-                                                            <input type="text" value="@view.result.DataLogID" class="form-control" disabled />
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-md-8">
+                                                    <div class="col-md-10">
                                                         <div class="form-group">
                                                             <label class="form-label">@view.texts.Get("LogInformation-Label"):</label>
-                                                            <input type="text" value="@view.result.TableName | @view.result.OperationText | @view.result.Date | @view.result.Email"
+                                                            <input type="text" value="@view.result.ID | @view.result.TableName | @view.result.OperationText | @view.result.Date | @view.result.Email"
                                                                    class="form-control" disabled />
                                                         </div>
                                                     </div>
 
-                                                    <div class="col-md-1" >
+                                                    <div class="col-md-2" >
                                                                                                                         
                                                         <div class="mr-2" style="padding-bottom:5px">
                                                             <button type="button" class="btn btn-light-primary me-3"  @onclick="OnGetTimeline">
@@ -305,6 +308,12 @@
                                                 }
                                                 else
                                                 {
+                                                    <div class="row" style="margin-top: 15px">
+                                                        <div class="col-lg-12">
+                                                            <BackButton OnClick="BackTimeLine"></BackButton>
+                                                         </div>
+                                                    </div>
+                                                        
                                                      <div class="row" style="margin-top: 15px">
                                                         <div class="col-lg-12">
 
@@ -359,13 +368,13 @@
 
 
 @code {
-            
+
 
     //
 
-     private DataLogViewModel view;
-   
-     protected TaskIconButton timelinebtn;
+    private DataLogViewModel view;
+
+    protected TaskIconButton timelinebtn;
 
     //
 
@@ -380,7 +389,7 @@
         if (firstRender)
         {
             if (await  this.InitResources())
-			{
+            {
                 await this.InitCacheAndLocalization(); 
 
                 this.InitServices(); 
@@ -388,10 +397,10 @@
                 view = new DataLogViewModel((_systemservices as SystemProxy),
                    (_cache as DataCacheProxy), user, _httpclient, _settings.ServiceURL, _appctrl.UserInfo.Token);
 
-                 view.texts = this.localization;
+                view.texts = this.localization;
 
-                 view.Permissions
-                     = BaseViewModel.SetPermissions(permissions, "SYSDATALOG", false);
+                view.Permissions
+                    = BaseViewModel.SetPermissions(permissions, "SYSDATALOG", false);
 
                 await view.InitializeModels();
                 await view.LoadTipoOperacaoList((_cache as DataCacheProxy));
@@ -399,9 +408,9 @@
 
                 _LoadingData_Text = view.texts.Get("LoadingData");
                 _PageTitle = view.texts.Get("DataLog-PageTitle");
-                              
+
             }
-          
+
             StateHasChanged();
 
         }
@@ -452,22 +461,22 @@
 
     public async Task OnGetTimeline()
     {
-        
+
         await view.GetTimeline();
 
         if (!view.ServiceStatus.Success)
         {
-                 await msgbox.ShowDialog(view.texts.Get("ErrorOnReturnData"), 
-                 view.ServiceStatus.Exceptions.Messages[0].Description);
+            await msgbox.ShowDialog(view.texts.Get("ErrorOnReturnData"), 
+            view.ServiceStatus.Exceptions.Messages[0].Description);
             view.ShowTimeline = false; 
         }
         else
         {
             view.ShowTimeline = true; 
         }
-       
+
     }
-    
+
 
     public async Task OnDetClick(object id)
     {        
@@ -481,6 +490,13 @@
         StateHasChanged();
 
     }
+
+    public void BackTimeLine()
+    {
+        view.ShowTimeline = false;
+        StateHasChanged();
+    }
+    
 
     public void GoHome()
     {

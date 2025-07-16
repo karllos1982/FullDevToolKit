@@ -24,23 +24,13 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Search(LocalizationTextParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<LocalizationTextResult> data = null;
-                data = await Manager.IdentityModule.Domainset.LocalizationText.Search(param);
-                ret = SetReturn<List<LocalizationTextResult>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<LocalizationTextResult>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-         
+                List<LocalizationTextResult> data
+                    = await Manager.IdentityModule.Domainset.LocalizationText.Search(param);
+                ret = SetReturn(data);
+            });
+                  
             return ret;
         }
 
@@ -49,23 +39,13 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> List(LocalizationTextParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<LocalizationTextList> data = null;
-                data = await Manager.IdentityModule.Domainset.LocalizationText.List(param);
-                ret = SetReturn<List<LocalizationTextList>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<LocalizationTextList>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-          
+                List<LocalizationTextList> data
+                    = await Manager.IdentityModule.Domainset.LocalizationText.List(param);
+                ret = SetReturn(data);
+            });
+                      
             return ret;
         }
 
@@ -74,24 +54,14 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Get(string id)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(id, async (param) =>
             {
-                LocalizationTextResult data = null;
-                data = await Manager.IdentityModule
-                        .Domainset.LocalizationText.Get(new LocalizationTextParam() { pLocalizationTextID = Int64.Parse(id) });
-
-                ret = SetReturn<LocalizationTextResult>(data);
-            }
-            else
-            {
-                ret = SetReturn<LocalizationTextResult>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-        
+                LocalizationTextResult data
+                    = await Manager.IdentityModule
+                         .Domainset.LocalizationText.Get(new LocalizationTextParam() { pLocalizationTextID = Int64.Parse(id) });
+                ret = SetReturn(data);
+            });
+                  
             return ret;
         }
 
@@ -100,25 +70,14 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Set(LocalizationTextEntry param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
-
-
-            if (IsAllowed)
+            await ExecuteForSave(param, async (param) =>
             {
-                LocalizationTextEntry data = null;
-                data = await Manager.IdentityModule
-                    .Domainset.LocalizationText.Set(param, this.UserID);
-                ret = SetReturn<LocalizationTextEntry>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<LocalizationTextResult>(PERMISSION_CHECK_ENUM.SAVE);
-            }
-
-            FinalizeManager();
-       
+                LocalizationTextEntry data 
+                    = await Manager.IdentityModule
+                        .Domainset.LocalizationText.Set(param, this.UserID);
+                ret = SetReturn(data);
+            });
+                   
             return ret;
         }
 

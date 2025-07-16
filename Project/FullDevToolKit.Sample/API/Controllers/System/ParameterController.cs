@@ -25,24 +25,13 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Search(ParameterParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<ParameterResult> data = null;
-                data = await Manager.IdentityModule.Domainset.Parameter.Search(param);
-                ret = SetReturn<List<ParameterResult>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<ParameterResult>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
-          
+                List<ParameterResult> data
+                    = await Manager.IdentityModule.Domainset.Parameter.Search(param);
+                ret = SetReturn(data);
+            });
+                     
             return ret;
         }
 
@@ -51,22 +40,12 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> List(ParameterParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<ParameterList> data = null;
-                data = await Manager.IdentityModule.Domainset.Parameter.List(param);
-                ret = SetReturn<List<ParameterList>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<ParameterList>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
+                List<ParameterList> data
+                    = await Manager.IdentityModule.Domainset.Parameter.List(param);
+                ret = SetReturn(data);
+            });          
 
             return ret;
         }
@@ -76,23 +55,13 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Get(string id)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(id, async (param) =>
             {
-                ParameterResult data = null;
-                data = await Manager.IdentityModule
-                        .Domainset.Parameter.Get(new ParameterParam() { pParameterID = Int64.Parse(id) });
-            
-                ret = SetReturn<ParameterResult>(data);
-            }
-            else
-            {
-                ret = SetReturn<ParameterResult>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
+                ParameterResult data
+                    = await Manager.IdentityModule
+                         .Domainset.Parameter.Get(new ParameterParam() { pParameterID = Int64.Parse(id) });
+                ret = SetReturn(data);
+            });           
             
             return ret;
         }
@@ -102,24 +71,14 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Set(ParameterEntry param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
-
-            if (IsAllowed)
+            await ExecuteForSave(param, async (param) =>
             {
-                ParameterEntry data = null;
-                data = await Manager.IdentityModule
-                    .Domainset.Parameter.Set(param, this.UserID);
-                ret = SetReturn<ParameterEntry>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<ParameterEntry>(PERMISSION_CHECK_ENUM.SAVE);
-            }
-
-            FinalizeManager();
-      
+                ParameterEntry data
+                    = await Manager.IdentityModule
+                        .Domainset.Parameter.Set(param, this.UserID);
+                ret = SetReturn(data);
+            });
+                
             return ret;
         }
 

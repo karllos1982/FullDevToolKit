@@ -4,6 +4,7 @@ using FullDevToolKit.Common;
 using MyApp.API;
 using Microsoft.AspNetCore.Authorization;
 using FullDevToolKit.Core;
+using FullDevToolKit.Sys.Models.Common;
 
 namespace MyApp.Controllers
 {
@@ -23,23 +24,13 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Search(InstanceParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<InstanceResult> data = null;
-                data = await Manager.IdentityModule.Domainset.Instance.Search(param);
-                ret = SetReturn<List<InstanceResult>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<InstanceResult>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
+                List<InstanceResult> data
+                    = await Manager.IdentityModule.Domainset.Instance.Search(param);
+                ret = SetReturn(data);
+            });
+          
             return ret;
         }
 
@@ -48,22 +39,12 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> List(InstanceParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<InstanceList> data = null;
-                data = await Manager.IdentityModule.Domainset.Instance.List(param);
-                ret = SetReturn<List<InstanceList>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<InstanceList>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
+                List<InstanceList> data
+                    = await Manager.IdentityModule.Domainset.Instance.List(param);
+                ret = SetReturn(data);
+            });           
            
             return ret;
         }
@@ -73,24 +54,14 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Get(string id)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(id, async (param) =>
             {
-                InstanceResult data = null;
-                data = await Manager.IdentityModule
-                        .Domainset.Instance.Get(new InstanceParam() { pInstanceID = Int64.Parse(id) });
-
-                ret = SetReturn<InstanceResult>(data);
-            }
-            else
-            {
-                ret = SetReturn<InstanceResult>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-         
+                InstanceResult data
+                    = await Manager.IdentityModule
+                          .Domainset.Instance.Get(new InstanceParam() { pInstanceID = Int64.Parse(id) });
+                ret = SetReturn(data);
+            });
+                  
             return ret;
         }
 
@@ -99,24 +70,14 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Set(InstanceEntry param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
-
-            if (IsAllowed)
+            await ExecuteForSave(param, async (param) =>
             {
-                InstanceEntry data = null;
-                data = await Manager.IdentityModule
-                    .Domainset.Instance.Set(param, this.UserID);
-                ret = SetReturn<InstanceEntry>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<InstanceEntry>(PERMISSION_CHECK_ENUM.SAVE);
-            }
-
-            FinalizeManager();
-      
+                InstanceEntry data
+                    = await Manager.IdentityModule
+                         .Domainset.Instance.Set(param, this.UserID);
+                ret = SetReturn(data);
+            });
+                
             return ret;
         }
 

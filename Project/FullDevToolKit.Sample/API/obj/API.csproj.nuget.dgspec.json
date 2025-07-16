@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\API.csproj": {}
+    "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\API.csproj": {
+    "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\API.csproj",
+        "projectUniqueName": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\obj\\",
+        "projectPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\carlos.fonteles\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -27,18 +27,17 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://repo.tic.fgv.br/repository/nuget-fgv/": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Core.csproj": {
-                "projectPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Core.csproj"
+              "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Core.csproj": {
+                "projectPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Core.csproj"
               },
-              "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\Models.csproj": {
-                "projectPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\Models.csproj"
+              "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\Models.csproj": {
+                "projectPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\Models.csproj"
               }
             }
           }
@@ -106,24 +105,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Core.csproj": {
+    "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Core.csproj",
+        "projectUniqueName": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\obj\\",
+        "projectPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\carlos.fonteles\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -133,15 +132,14 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://repo.tic.fgv.br/repository/nuget-fgv/": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\Models.csproj": {
-                "projectPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\Models.csproj"
+              "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\Models.csproj": {
+                "projectPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\Models.csproj"
               }
             }
           }
@@ -176,24 +174,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\Models.csproj": {
+    "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\Models.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\Models.csproj",
+        "projectUniqueName": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\Models.csproj",
         "projectName": "Models",
-        "projectPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\Models.csproj",
-        "packagesPath": "C:\\Users\\carlos.fonteles\\.nuget\\packages\\",
-        "outputPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\obj\\",
+        "projectPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\Models.csproj",
+        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
+        "outputPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\carlos.fonteles\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -203,8 +201,7 @@
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "C:\\Program Files\\dotnet\\library-packs": {},
-          "https://api.nuget.org/v3/index.json": {},
-          "https://repo.tic.fgv.br/repository/nuget-fgv/": {}
+          "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
@@ -242,7 +239,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

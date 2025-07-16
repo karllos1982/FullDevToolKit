@@ -23,23 +23,13 @@ namespace MyApp.Controllers
         [Route("search")]        
         public async Task<object> Search(DataLogParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<DataLogResult> data = null;
-                data = await Manager.IdentityModule.Domainset.DataLog.Search(param);
-                ret = SetReturn<List<DataLogResult>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<DataLogResult>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
+                List<DataLogResult> data
+                    = await Manager.IdentityModule.Domainset.DataLog.Search(param);
+                ret = SetReturn(data);
+            });
+           
             return ret;
         }
 
@@ -47,22 +37,12 @@ namespace MyApp.Controllers
         [Route("list")]        
         public async Task<object> List(DataLogParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<DataLogList> data = null;
-                data = await Manager.IdentityModule.Domainset.DataLog.List(param);
-                ret = SetReturn<List<DataLogList>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<DataLogList>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();            
+                List<DataLogList> data
+                    = await Manager.IdentityModule.Domainset.DataLog.List(param);
+                ret = SetReturn(data);
+            });                   
 
             return ret;
         }
@@ -71,24 +51,14 @@ namespace MyApp.Controllers
         [Route("get")]        
         public async Task<object> Get(string id)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(id, async (param) =>
             {
-                DataLogResult data = null;
-                data = await Manager.IdentityModule
+                DataLogResult data
+                    = await Manager.IdentityModule
                         .Domainset.DataLog.Get(new DataLogParam() { pDataLogID = Int64.Parse(id) });
+                ret = SetReturn(data);
+            });
 
-                ret = SetReturn<DataLogResult>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<DataLogResult>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
 
             return ret;
         }
@@ -97,22 +67,12 @@ namespace MyApp.Controllers
         [Route("gettimeline")]       
         public async Task<object> GetTimeLine(string id)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(id, async (param) =>
             {
-                List<DataLogTimelineModel> data = null;
-                data = await Manager.IdentityModule.Domainset.DataLog.GetTimeLine(Int64.Parse(id));
-                ret = SetReturn<List<DataLogTimelineModel>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<DataLogTimelineModel>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();          
+                List<DataLogTimelineModel> data
+                    = await Manager.IdentityModule.Domainset.DataLog.GetTimeLine(Int64.Parse(id));
+                ret = SetReturn(data);
+            });               
 
             return ret;
         }
@@ -122,6 +82,7 @@ namespace MyApp.Controllers
         [Route("gettablelist")]        
         public async Task<object> GetTableList()
         {
+
             BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
@@ -142,7 +103,6 @@ namespace MyApp.Controllers
             return ret;
         }
         
-
 
     }
 }

@@ -4,6 +4,7 @@ using FullDevToolKit.Common;
 using MyApp.API;
 using Microsoft.AspNetCore.Authorization;
 using FullDevToolKit.Core;
+using FullDevToolKit.Sys.Models.Common;
 
 
 namespace MyApp.Controllers
@@ -25,23 +26,12 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Search(RoleParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<RoleResult> data = null;
-                data = await Manager.IdentityModule.Domainset.Role.Search(param);
-                ret = SetReturn<List<RoleResult>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<RoleResult>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
+                List<RoleResult> data
+                    = await Manager.IdentityModule.Domainset.Role.Search(param);
+                ret = SetReturn(data);
+            });          
           
             return ret;
         }
@@ -51,23 +41,13 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> List(RoleParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<RoleList> data = null;
-                data = await Manager.IdentityModule.Domainset.Role.List(param);
-                ret = SetReturn<List<RoleList>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<RoleList>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
+                List<RoleList> data
+                    = await Manager.IdentityModule.Domainset.Role.List(param);
+                ret = SetReturn(data);
+            });
+           
             return ret;
         }
 
@@ -76,24 +56,14 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Get(string id)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(id, async (param) =>
             {
-                RoleResult data = null;
-                data = await Manager.IdentityModule
-                        .Domainset.Role.Get(new RoleParam() { pRoleID = Int64.Parse(id) });
-            
-                ret = SetReturn<RoleResult>(data);
-            }
-            else
-            {
-                ret = SetReturn<RoleResult>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-            
+                RoleResult data
+                    = await Manager.IdentityModule
+                         .Domainset.Role.Get(new RoleParam() { pRoleID = Int64.Parse(id) });
+                ret = SetReturn(data);
+            });
+                      
             return ret;
         }
 
@@ -102,24 +72,14 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Set(RoleEntry param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
-
-            if (IsAllowed)
+            await ExecuteForSave(param, async (param) =>
             {
-                RoleEntry data = null;
-                data = await Manager.IdentityModule
-                    .Domainset.Role.Set(param, this.UserID);
-                ret = SetReturn<RoleEntry>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<RoleEntry>(PERMISSION_CHECK_ENUM.SAVE);
-            }
-
-            FinalizeManager();
-      
+                RoleEntry data
+                    = await Manager.IdentityModule
+                        .Domainset.Role.Set(param, this.UserID);
+                ret = SetReturn(data);
+            });
+                 
             return ret;
         }
 

@@ -4,6 +4,7 @@ using FullDevToolKit.Common;
 using MyApp.API;
 using Microsoft.AspNetCore.Authorization;
 using FullDevToolKit.Core;
+using FullDevToolKit.Sys.Models.Common;
 
 
 namespace MyApp.Controllers
@@ -25,23 +26,13 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Search(ObjectPermissionParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<ObjectPermissionResult> data = null;
-                data = await Manager.IdentityModule.Domainset.ObjectPermission.Search(param);
-                ret = SetReturn<List<ObjectPermissionResult>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<ObjectPermissionResult>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();           
-
+                List<ObjectPermissionResult> data
+                    = await Manager.IdentityModule.Domainset.ObjectPermission.Search(param);
+                ret = SetReturn(data);
+            });
+                 
             return ret;
         }
 
@@ -50,22 +41,12 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> List(ObjectPermissionParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<ObjectPermissionList> data = null;
-                data = await Manager.IdentityModule.Domainset.ObjectPermission.List(param);
-                ret = SetReturn<List<ObjectPermissionList>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<ObjectPermissionList>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();           
+                List<ObjectPermissionList> data
+                    = await Manager.IdentityModule.Domainset.ObjectPermission.List(param);
+                ret = SetReturn(data);
+            });         
 
             return ret;
         }
@@ -75,25 +56,13 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Get(string id)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(id, async (param) =>
             {
-                ObjectPermissionResult data = null;
-                data = await Manager.IdentityModule
-                        .Domainset.ObjectPermission.Get(new ObjectPermissionParam() { pObjectPermissionID = Int64.Parse(id) });
-
-                ret = SetReturn<ObjectPermissionResult>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<ObjectPermissionResult>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
+                ObjectPermissionResult data
+                    = await Manager.IdentityModule
+                         .Domainset.ObjectPermission.Get(new ObjectPermissionParam() { pObjectPermissionID = Int64.Parse(id) });
+                ret = SetReturn(data);
+            });       
            
             return ret;
         }
@@ -103,23 +72,13 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Set(ObjectPermissionEntry param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
-
-            if (IsAllowed)
+            await ExecuteForSave(param, async (param) =>
             {
-                ObjectPermissionEntry data = null;
-                data = await Manager.IdentityModule
-                    .Domainset.ObjectPermission.Set(param, this.UserID);
-                ret = SetReturn<ObjectPermissionEntry>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<ObjectPermissionEntry>(PERMISSION_CHECK_ENUM.SAVE);
-            }
-
-            FinalizeManager();          
+                ObjectPermissionEntry data
+                    = await Manager.IdentityModule
+                        .Domainset.ObjectPermission.Set(param, this.UserID);
+                ret = SetReturn(data);
+            });                  
 
             return ret;
         }

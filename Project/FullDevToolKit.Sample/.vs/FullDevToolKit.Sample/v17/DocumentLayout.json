@@ -1,29 +1,54 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\",
-  "Documents": [],
+  "WorkspaceRootPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\core\\domain\\persondomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|solutionrelative:core\\domain\\persondomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\core\\data\\repositories\\personrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3BEC8246-1E1F-48C3-B6C1-3E4A51E18CF2}|Core\\Core.csproj|solutionrelative:core\\data\\repositories\\personrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 1,
+      "Orientation": 0,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 26,
-          "SelectedChildIndex": -1,
+          "DockedWidth": 226,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            }
-          ]
-        },
-        {
-          "DockedHeight": 4,
-          "SelectedChildIndex": -1,
-          "Children": [
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{605322a2-17ae-43f4-b60f-766556e46c87}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PersonDomain.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Domain\\PersonDomain.cs",
+              "RelativeDocumentMoniker": "Core\\Domain\\PersonDomain.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Domain\\PersonDomain.cs",
+              "RelativeToolTip": "Core\\Domain\\PersonDomain.cs",
+              "ViewState": "AgIAAOYAAAAAAAAAAAAUwOwAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T00:57:54.651Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "PersonRepository.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Data\\Repositories\\PersonRepository.cs",
+              "RelativeDocumentMoniker": "Core\\Data\\Repositories\\PersonRepository.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Core\\Data\\Repositories\\PersonRepository.cs",
+              "RelativeToolTip": "Core\\Data\\Repositories\\PersonRepository.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAuwEgAAABHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-07-16T00:57:33.293Z",
+              "EditorCaption": ""
             }
           ]
         }

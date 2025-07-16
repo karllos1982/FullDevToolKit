@@ -25,23 +25,12 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Search(GroupParameterParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<GroupParameterResult> data = null;
-                data = await Manager.IdentityModule.Domainset.GroupParameter.Search(param);
-                ret = SetReturn<List<GroupParameterResult>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<GroupParameterResult>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
+                List<GroupParameterResult> data
+                    = await Manager.IdentityModule.Domainset.GroupParameter.Search(param);
+                ret = SetReturn(data);
+            });
           
             return ret;
         }
@@ -51,23 +40,13 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> List(GroupParameterParam param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
-
-            if (IsAllowed)
+            await ExecuteForRead(param, async (param) =>
             {
-                List<GroupParameterList> data = null;
-                data = await Manager.IdentityModule.Domainset.GroupParameter.List(param);
-                ret = SetReturn<List<GroupParameterList>>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<List<GroupParameterList>>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-
+                List<GroupParameterList> data
+                    = await Manager.IdentityModule.Domainset.GroupParameter.List(param);
+                ret = SetReturn(data);
+            });
+       
             return ret;
         }
 
@@ -76,24 +55,15 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Get(string id)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.READ, false);
 
-            if (IsAllowed)
+            await ExecuteForRead(id, async (param) =>
             {
-                GroupParameterResult data = null;
-                data = await Manager.IdentityModule
-                        .Domainset.GroupParameter.Get(new GroupParameterParam() { pGroupParameterID = Int64.Parse(id) });
-            
-                ret = SetReturn<GroupParameterResult>(data);
-            }
-            else
-            {
-                ret = SetReturn<GroupParameterResult>(PERMISSION_CHECK_ENUM.READ);
-            }
-
-            FinalizeManager();
-            
+                GroupParameterResult data
+                    = await Manager.IdentityModule
+                         .Domainset.GroupParameter.Get(new GroupParameterParam() { pGroupParameterID = Int64.Parse(id) });
+                ret = SetReturn(data);
+            });
+                      
             return ret;
         }
 
@@ -102,24 +72,14 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Set(GroupParameterEntry param)
         {
-            BeginManager();
-            CheckPermission(PERMISSION_CHECK_ENUM.SAVE, false);
-
-            if (IsAllowed)
+            await ExecuteForSave(param, async (param) =>
             {
-                GroupParameterEntry data = null;
-                data = await Manager.IdentityModule
-                    .Domainset.GroupParameter.Set(param, this.UserID);
-                ret = SetReturn<GroupParameterEntry>(data);
-
-            }
-            else
-            {
-                ret = SetReturn<GroupParameterEntry>(PERMISSION_CHECK_ENUM.SAVE);
-            }
-
-            FinalizeManager();
-      
+                GroupParameterEntry data 
+                    = await Manager.IdentityModule
+                        .Domainset.GroupParameter.Set(param, this.UserID);
+                    ret = SetReturn(data);
+            });
+                  
             return ret;
         }
 
