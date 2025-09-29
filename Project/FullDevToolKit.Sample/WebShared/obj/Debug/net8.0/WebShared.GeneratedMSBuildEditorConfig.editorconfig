@@ -30,6 +30,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29tcG9uZW50c1xDb21tb25cQnJlYWRDcnVtYlZpZXcucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FullDevToolKit.Sample/WebShared/Areas/Components/Common/DataLogTimeline.razor]
+build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29tcG9uZW50c1xDb21tb25cRGF0YUxvZ1RpbWVsaW5lLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FullDevToolKit.Sample/WebShared/Areas/Components/Common/IconButton.razor]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcQ29tcG9uZW50c1xDb21tb25cSWNvbkJ1dHRvbi5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 

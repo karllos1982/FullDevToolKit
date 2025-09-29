@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\assets\\css\\bootstrap\\bootstrap.min.css.map"
     },
     {
+      "Id": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\components.styles.css",
+      "PackagePath": "staticwebassets\\assets\\css\\components.styles.css"
+    },
+    {
       "Id": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\wwwroot\\assets\\css\\fonts\\@fortawesome\\fa-brands-400.ttf",
       "PackagePath": "staticwebassets\\assets\\css\\fonts\\@fortawesome\\fa-brands-400.ttf"
     },

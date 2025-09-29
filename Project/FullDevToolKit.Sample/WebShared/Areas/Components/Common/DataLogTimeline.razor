@@ -1,0 +1,55 @@
+﻿<h3 class="datalog-tml-title">@Title </h3>
+
+@if (TimeLineRecords != null)
+{
+    @if (TimeLineRecords.Count > 0)
+    {
+        <div class="datalog-tml">
+
+            @for (int i = 0; i <= TimeLineRecords.Count - 1; i++)
+            {
+                <div class="datalog-tml-container @getPosicionClass(i)">
+                    <div class="datalog-tml-content">
+                        <h5>@TimeLineRecords[i].Date</h5>
+                        <h5 class="@getOperationClass(TimeLineRecords[i].OperationText)">
+                            @TimeLineRecords[i].OperationText</h5>
+                        <h5>@TimeLineRecords[i].UserEmail</h5>
+                        
+                   </div>
+                </div>
+            }
+
+
+        </div>
+    }
+}
+
+
+@code {
+
+    [Parameter]
+    public List<DataLogTimelineModel> TimeLineRecords { get; set; } = new List<DataLogTimelineModel>(); 
+
+    [Parameter]
+    public string Title { get; set; } = ""; 
+
+    private string getPosicionClass(int i)
+    {
+        string ret = "datalog-tml-left";
+
+        if ((i % 2) >  0)
+        {
+            ret = "datalog-tml-right";
+        }
+
+        return ret;
+    }
+
+    private string getOperationClass(string operation)
+    {
+        string ret = "datalog-tml-operation-" + operation.ToLower();
+             
+        return ret;
+    }
+
+}
