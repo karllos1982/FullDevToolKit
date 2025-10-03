@@ -5,27 +5,28 @@ using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
 using FullDevToolKit.Sys.Data.Repositories;
+using System.Security.Cryptography;
 
 
 namespace FullDevToolKit.Sys.Domains
 {
-    public class UserDomain : IUserDomain
-    {      
+    public class UserDomain
+           : BaseDomain<UserParam, UserEntry, UserList, UserResult>, IUserDomain
+
+    {
 
         public UserDomain(IContext context)
         {
 
             Context = context;
             _repositories = new SystemRepositorySet(context);
-
+            this.TableName = _repositories.User.TableName;
         }
-
-        public IContext Context { get; set; }
-
+        
         private ISystemRepositorySet _repositories { get; set; }
 
 
-        public async Task<UserResult> FillChields(UserResult obj)
+        public override async Task<UserResult> FillChields(UserResult obj)
         {
             UserRolesParam param = new UserRolesParam();
             param.pUserID = obj.UserID;
@@ -80,24 +81,8 @@ namespace FullDevToolKit.Sys.Domains
             return ret;
         }
 
-        public async Task EntryValidation(UserEntry obj)
-        {
-            ExecutionStatus ret = null;
-
-            ret = PrimaryValidation.Execute(obj, new List<string>(), Context.LocalizationLanguage);        
-
-            if (!ret.Success)
-            {
-                ret.SetFailStatus("Error",
-                  LocalizationText.Get("Validation-Error",
-                      Context.LocalizationLanguage).Text);
-            }
-
-            Context.Status = ret;
-
-        }
-
-        public async Task InsertValidation(UserEntry obj)
+   
+        public override async Task InsertValidation(UserEntry obj)
         {
             ExecutionStatus ret = new ExecutionStatus(true);
 
@@ -124,7 +109,7 @@ namespace FullDevToolKit.Sys.Domains
 
         }
 
-        public async Task UpdateValidation(UserEntry obj)
+        public override async Task UpdateValidation(UserEntry obj)
         {
             ExecutionStatus ret = new ExecutionStatus(true);
 
@@ -155,200 +140,164 @@ namespace FullDevToolKit.Sys.Domains
 
         }
 
-        public async Task DeleteValidation(UserEntry obj)
+        public override async Task DeleteValidation(UserEntry obj)
         {
-            Context.Status = new ExecutionStatus(true);
+            Context.Status = new ExecutionStatus(true);        
         }
+
 
         public async Task<UserEntry> Set(UserEntry model, object userid)
         {
             UserEntry ret = null;
-            OPERATIONLOGENUM operation = OPERATIONLOGENUM.INSERT;
+            this.PKValue = model.UserID.ToString();
 
-           await EntryValidation(model);
+            ret = await ExecutionForSet(model, userid,
+                      async (model) =>
+                      {
+                          return
+                             await _repositories.User.Read(new UserParam()
+                             { pUserID = model.UserID });
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.User.Create(model);
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.User.Update(model);
+                      }
+                      , null,
+                      async(model) =>
+                      {
+                          if (model.Roles != null)
+                          {
+                              foreach (UserRolesEntry c in model.Roles)
+                              {
+                                  if (c.RecordState != RECORDSTATEENUM.NONE)
+                                  {
+                                      c.UserID = model.UserID;
 
-            if ( Context.Status.Success)
-            {
+                                      if (c.RecordState == RECORDSTATEENUM.ADD)
+                                      {
+                                          c.UserRoleID = Utilities.GenerateId();
+                                          await _repositories.UserRoles.Create(c);
+                                      }
 
-                UserResult old 
-                    = await _repositories.User.Read(new UserParam() { pUserID = model.UserID });
+                                      if (c.RecordState == RECORDSTATEENUM.EDITED)
+                                      {
+                                          await _repositories.UserRoles.Update(c);
+                                      }
 
-                if (old == null)
-                {
-                    await InsertValidation(model);
+                                      if (c.RecordState == RECORDSTATEENUM.DELETED)
+                                      {
+                                          await _repositories.UserRoles.Delete(c);
+                                      }
 
-                    if (Context.Status.Success)
-                    {
-                        model.CreateDate = DateTime.Now;
-                        if (model.UserID == 0) { model.UserID = Utilities.GenerateId(); }
-                        await _repositories.User.Create(model);
-                    }
-                }
-                else
-                {
-                    model.CreateDate = old.CreateDate;
-                    operation = OPERATIONLOGENUM.UPDATE;
+                                  }
+                              }
+                          }
 
-                    await UpdateValidation(model);
+                          if (model.Instances != null)
+                          {
+                              foreach (UserInstancesEntry c in model.Instances)
+                              {
+                                  if (c.RecordState != RECORDSTATEENUM.NONE)
+                                  {
+                                      c.UserID = model.UserID;
 
-                    if (Context.Status.Success)
-                    {
-                        await _repositories.User.Update(model);
-                    }
+                                      if (c.RecordState == RECORDSTATEENUM.ADD)
+                                      {
+                                          c.UserInstanceID = Utilities.GenerateId();
+                                          await _repositories.UserInstances.Create(c);
+                                      }
 
-                }
+                                      if (c.RecordState == RECORDSTATEENUM.EDITED)
+                                      {
+                                          await _repositories.UserInstances.Update(c);
+                                      }
 
-                if (model.Roles != null)
-                {
-                    foreach (UserRolesEntry c in model.Roles)
-                    {
-                        if (c.RecordState != RECORDSTATEENUM.NONE)
-                        {
-                            c.UserID = model.UserID;
+                                      if (c.RecordState == RECORDSTATEENUM.DELETED)
+                                      {
+                                          await _repositories.UserInstances.Delete(c);
+                                      }
 
-                            if (c.RecordState == RECORDSTATEENUM.ADD)
-                            {
-                                c.UserRoleID = Utilities.GenerateId();
-                                await _repositories.UserRoles.Create(c);
-                            }
-
-                            if (c.RecordState == RECORDSTATEENUM.EDITED)
-                            {
-                                await _repositories.UserRoles.Update(c);
-                            }
-
-                            if (c.RecordState == RECORDSTATEENUM.DELETED)
-                            {
-                                await _repositories.UserRoles.Delete(c);
-                            }
-
-                        }
-                    }
-                }
-
-                if (model.Instances != null)
-                {
-                    foreach (UserInstancesEntry c in model.Instances)
-                    {
-                        if (c.RecordState != RECORDSTATEENUM.NONE)
-                        {
-                            c.UserID = model.UserID;
-
-                            if (c.RecordState == RECORDSTATEENUM.ADD)
-                            {
-                                c.UserInstanceID = Utilities.GenerateId();
-                                await _repositories.UserInstances.Create(c);
-                            }
-
-                            if (c.RecordState == RECORDSTATEENUM.EDITED)
-                            {
-                                await _repositories.UserInstances.Update(c);
-                            }
-
-                            if (c.RecordState == RECORDSTATEENUM.DELETED)
-                            {
-                                await _repositories.UserInstances.Delete(c);
-                            }
-
-                        }
-                    }
-                }
-
-                if (Context.Status.Success && userid != null)
-                {
-                    await Context
-                        .RegisterDataLogAsync(userid.ToString(), operation, "SYSUSER",
-                        model.UserID.ToString(), old, model);
-
-                    ret = model;
-                }
-
-            }     
+                                  }
+                              }
+                          }
+                      }
+                  );
 
             return ret;
         }
 
-     
 
         public async Task<UserEntry> Delete(UserEntry model, object userid)
         {
             UserEntry ret = null;
+            this.PKValue = model.UserID.ToString();
 
-            UserResult old 
-                = await this.Get(new UserParam() { pUserID = model.UserID });
+            ret = await ExecutionForDelete(model, userid,
+                      async (model) =>
+                      {
+                          return
+                             await _repositories.User.Read(new UserParam()
+                             { pUserID = model.UserID });
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.User.Delete(model);
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          if (model.Roles != null)
+                          {
+                              foreach (UserRolesResult u in model.Roles)
+                              {
+                                  await _repositories.UserRoles.Delete(
+                                          new UserRolesEntry()
+                                          {
+                                              UserRoleID = u.UserRoleID,
+                                              UserID = u.UserID,
+                                              RoleID = u.RoleID
+                                          }
+                                      );
 
-            if (old != null)
-            {
-                await DeleteValidation(model);
+                                  if (!Context.Status.Success)
+                                  {
+                                      break;
+                                  }
+                              }
+                          }
 
-                if (Context.Status.Success)
-                {
-                    if (Context.Status.Success && old.Roles != null)
-                    {
-                        foreach (UserRolesResult u in old.Roles)
-                        {
-                            await _repositories.UserRoles.Delete(
-                                    new UserRolesEntry() { 
-                                        UserRoleID = u.UserRoleID,  
-                                        UserID  = u.UserID, 
-                                        RoleID = u.RoleID
-                                    } 
-                                );
+                          if (model.Instances != null)
+                          {
+                              foreach (UserInstancesResult u in model.Instances)
+                              {
+                                  await _repositories.UserInstances.Delete(
+                                            new UserInstancesEntry()
+                                            {
+                                                UserInstanceID = u.UserInstanceID,
+                                                UserID = u.UserID,
+                                                InstanceID = u.InstanceID
 
-                            if (!Context.Status.Success)
-                            {
-                                break;
-                            }
-                        }
-                    }
+                                            }
+                                      );
 
-                    if (Context.Status.Success && old.Instances != null)
-                    {
-                        foreach (UserInstancesResult u in old.Instances)
-                        {
-                           await _repositories.UserInstances.Delete(
-                                     new UserInstancesEntry()
-                                     {
-                                         UserInstanceID = u.UserInstanceID, 
-                                         UserID = u.UserID, 
-                                         InstanceID =   u.InstanceID
-
-                                     }
-                               );
-
-                            if (!Context.Status.Success)
-                            {
-                                break;
-                            }
-                        }
-                    }
-
-                    if (Context.Status.Success)
-                    {
-                        await _repositories.User.Delete(model);
-
-                        if (Context.Status.Success && userid != null)
-                        {
-                            await Context
-                                    .RegisterDataLogAsync(userid.ToString(), OPERATIONLOGENUM.DELETE, "SYSUSER",
-                                      model.UserID.ToString(), old, model);
-
-                            ret = model;
-                        }
-
-                    }                   
-                }
-            }
-            else
-            {
-                Context.Status
-                    .SetFailStatus("Error", LocalizationText.Get("Record-NotFound",
-                        Context.LocalizationLanguage).Text);
-            }
+                                  if (!Context.Status.Success)
+                                  {
+                                      break;
+                                  }
+                              }
+                          }
+                      }
+                  );
 
             return ret;
         }
-
     
         public async  Task<UserResult> GetByEmail(string email)
         {
@@ -493,8 +442,8 @@ namespace FullDevToolKit.Sys.Domains
 
                 if (errmsg == "")
                 {                   
-                    string pwd = MD5.BuildMD5(model.NewPassword);
-                    pwd = MD5.BuildMD5(pwd + usermatch.Salt);
+                    string pwd = FullDevToolKit.Helpers.MD5.BuildMD5(model.NewPassword);
+                    pwd = FullDevToolKit.Helpers.MD5.BuildMD5(pwd + usermatch.Salt);
 
                     ChangeUserPassword change = new ChangeUserPassword();
                     change.NewPassword = pwd;
@@ -676,10 +625,10 @@ namespace FullDevToolKit.Sys.Domains
         {
             ExecutionStatus ret = new ExecutionStatus(true);
 
-            SessionLogParam param = new SessionLogParam();
+            UserParam param = new UserParam();
           
             param.pUserID = userid;
-            ret = await _repositories.SessionLog.SetDateLogout(param);
+            //ret = await _repositories.User.SetDateLogout(param);
 
   
             return ret;
@@ -878,9 +827,7 @@ namespace FullDevToolKit.Sys.Domains
 
 
         public async Task AlterRole(Int64 userroleid, Int64 newroleid)
-        {
-                        
-
+        {                        
             if (userroleid == 0)
             {
                 Context.Status

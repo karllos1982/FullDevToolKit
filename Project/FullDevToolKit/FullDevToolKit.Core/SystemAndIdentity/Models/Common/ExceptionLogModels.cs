@@ -1,6 +1,26 @@
 ﻿
+using FullDevToolKit.Core.Common;
+
 namespace FullDevToolKit.Sys.Models.Common
 {
+    public class ExceptionLogBaseModel: BaseModel
+    {
+        public long ExceptionLogID { get; set; }
+
+        public string UserID { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public string Origin { get; set; }
+
+        public string TargetSite { get; set; }
+
+        public string ErrMessage { get; set; }
+
+        public string StackTrace { get; set; }
+
+        public string ClientIP { get; set; }
+    }
 
     public class ExceptionLogParam
     {
@@ -26,7 +46,7 @@ namespace FullDevToolKit.Sys.Models.Common
 
     }
 
-    public class ExceptionLogEntry
+    public class ExceptionLogEntry: ExceptionLogBaseModel
     {
 
         public ExceptionLogEntry()
@@ -36,66 +56,25 @@ namespace FullDevToolKit.Sys.Models.Common
 
         public ExceptionLogEntry(ExceptionLogResult fromobj)
         {
-            this.ExceptionLogID= fromobj.ExceptionLogID;
-            this.UserID= fromobj.UserID;
-            this.Date = fromobj.Date;
-            this.Origin = fromobj.Origin;            
-            this.TargetSite = fromobj.TargetSite;
-            this.ErrMessage = fromobj.ErrMessage;
-            this.StackTrace = fromobj.StackTrace;
-            this.ClientIP = fromobj.ClientIP;
+            BaseModel.ConvertTo(fromobj, this);
         }
 
-        public long ExceptionLogID { get; set; }
-
-        public string UserID { get; set; }
         
-        public DateTime Date { get; set; }
-
-        public string Origin { get; set; }
-
-        public string TargetSite { get; set; }
-
-        public string ErrMessage { get; set; }
-
-        public string StackTrace { get; set; }
-
-        public string ClientIP { get; set; }
     }
 
-    public class ExceptionLogList
+    public class ExceptionLogList: ExceptionLogBaseModel
     {
-       
-        public long ExceptionLogID { get; set; } 
-
-        public DateTime Date { get; set; }
+              
        
     }
 
 
-    public class ExceptionLogResult
+    public class ExceptionLogResult: ExceptionLogBaseModel
     {
         public ExceptionLogResult()
         {
 
         }
 
-        public long ExceptionLogID { get; set; }
-
-        public string UserID { get; set; }
-
-		public string Email { get; set; } = string.Empty;
-
-		public DateTime Date { get; set; }
-
-        public string Origin { get; set; }
-
-        public string TargetSite { get; set; }
-
-        public string ErrMessage { get; set; }
-
-        public string StackTrace { get; set; }
-
-        public string ClientIP { get; set; }
     }
 }

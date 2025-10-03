@@ -1,7 +1,21 @@
-﻿using FullDevToolKit.Helpers;
+﻿using FullDevToolKit.Core.Common;
+using FullDevToolKit.Helpers;
 
 namespace FullDevToolKit.Sys.Models.Identity
 {
+ 
+    public class ObjectPermssionBaseModel: BaseModel
+    {
+        public long ObjectPermissionID { get; set; }
+
+        [PrimaryValidationConfig("ObjectName", "Object Name", FieldType.TEXT, false, 50)]
+        public string ObjectName { get; set; } = string.Empty;
+
+        [PrimaryValidationConfig("ObjectCode", "Object Code", FieldType.TEXT, false, 25)]
+        public string ObjectCode { get; set; } = string.Empty;
+    }
+
+
     public class ObjectPermissionParam
     {
         public ObjectPermissionParam()
@@ -19,7 +33,7 @@ namespace FullDevToolKit.Sys.Models.Identity
 
     }
 
-    public class ObjectPermissionEntry
+    public class ObjectPermissionEntry: ObjectPermssionBaseModel
     {
         public ObjectPermissionEntry()
         {
@@ -28,38 +42,19 @@ namespace FullDevToolKit.Sys.Models.Identity
 
         public ObjectPermissionEntry(ObjectPermissionResult fromobj)
         {
-            ObjectPermissionID = fromobj.ObjectPermissionID;
-            ObjectName = fromobj.ObjectName;    
-            ObjectCode = fromobj.ObjectCode;    
+            BaseModel.ConvertTo(fromobj, this);
         }
+        
+    }
 
-        public long ObjectPermissionID { get; set; }
-
-        [PrimaryValidationConfig("ObjectName", "Object Name", FieldType.TEXT, false, 50)]
-        public string ObjectName { get; set; } = string.Empty;
-
-        [PrimaryValidationConfig("ObjectCode", "Object Code", FieldType.TEXT, false, 25)]
-        public string ObjectCode { get; set; } = string.Empty;
+    public class ObjectPermissionList: ObjectPermssionBaseModel
+    {
 
     }
 
-    public class ObjectPermissionList
+    public class ObjectPermissionResult: ObjectPermssionBaseModel
     {
-        public long ObjectPermissionID { get; set; }
-
-        public string ObjectName { get; set; } = string.Empty;
-
-        public string ObjectCode { get; set; } = string.Empty;
-
-    }
-
-    public class ObjectPermissionResult
-    {
-        public long ObjectPermissionID { get; set; }
-
-        public string ObjectName { get; set; } = string.Empty;
-
-        public string ObjectCode { get; set; } = string.Empty;
+  
 
     }
 

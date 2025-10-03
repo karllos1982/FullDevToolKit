@@ -1,88 +1,33 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webapp\\pages\\superadmin\\datalog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|solutionrelative:webapp\\pages\\superadmin\\datalog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webshared\\areas\\viewmodels\\superadmin\\datalogviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{0CE51BB2-EBB1-41FE-93B3-0B11F06B5865}|WebShared\\WebShared.csproj|solutionrelative:webshared\\areas\\viewmodels\\superadmin\\datalogviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webapp\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|solutionrelative:webapp\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webapp\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|solutionrelative:webapp\\pages\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "WorkspaceRootPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\",
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 226,
-          "SelectedChildIndex": 1,
+          "DockedWidth": 269,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "DataLog.razor",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Pages\\SuperAdmin\\DataLog.razor",
-              "RelativeDocumentMoniker": "WebApp\\Pages\\SuperAdmin\\DataLog.razor",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Pages\\SuperAdmin\\DataLog.razor",
-              "RelativeToolTip": "WebApp\\Pages\\SuperAdmin\\DataLog.razor",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAqwFAAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-19T18:06:58.602Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DataLogViewModel.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\DataLogViewModel.cs",
-              "RelativeDocumentMoniker": "WebShared\\Areas\\ViewModels\\SuperAdmin\\DataLogViewModel.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\Areas\\ViewModels\\SuperAdmin\\DataLogViewModel.cs",
-              "RelativeToolTip": "WebShared\\Areas\\ViewModels\\SuperAdmin\\DataLogViewModel.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAgwC4AAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-19T18:06:26.856Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Index.razor",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Pages\\Index.razor",
-              "RelativeDocumentMoniker": "WebApp\\Pages\\Index.razor",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Pages\\Index.razor",
-              "RelativeToolTip": "WebApp\\Pages\\Index.razor",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-19T18:03:48.622Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Login.razor",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Pages\\Login.razor",
-              "RelativeDocumentMoniker": "WebApp\\Pages\\Login.razor",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Pages\\Login.razor",
-              "RelativeToolTip": "WebApp\\Pages\\Login.razor",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABsAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-07-19T18:03:43.5Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{605322a2-17ae-43f4-b60f-766556e46c87}"
             }
           ]
         }

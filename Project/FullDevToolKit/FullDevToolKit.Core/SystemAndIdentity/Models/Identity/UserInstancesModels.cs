@@ -1,7 +1,20 @@
 ﻿using FullDevToolKit.Common;
+using FullDevToolKit.Core.Common;
 
 namespace FullDevToolKit.Sys.Models.Identity
 {
+
+    public class UserInstancesBaseModel:BaseModel
+    {
+        public long UserInstanceID { get; set; }
+
+        public long UserID { get; set; }
+
+        public long InstanceID { get; set; }
+
+        public RECORDSTATEENUM RecordState { get; set; }
+    }
+
     public class UserInstancesParam
     {
 
@@ -19,7 +32,7 @@ namespace FullDevToolKit.Sys.Models.Identity
         public long pInstanceID { get; set; }
     }
 
-    public class UserInstancesEntry
+    public class UserInstancesEntry : UserInstancesBaseModel
     {
         public UserInstancesEntry()
         {
@@ -28,45 +41,25 @@ namespace FullDevToolKit.Sys.Models.Identity
 
         public UserInstancesEntry(UserInstancesResult fromobj)
         {
-            UserInstanceID = fromobj.UserInstanceID;   
-            UserID = fromobj.UserID;
-            InstanceID = fromobj.InstanceID;
+            BaseModel.ConvertTo(fromobj, this);
 
         }
-
-        public long UserInstanceID { get; set; }
-
-        public long UserID { get; set; }
-
-        public long InstanceID { get; set; }      
-
-        public RECORDSTATEENUM RecordState { get; set; }
+       
     }
 
 
-    public class UserInstancesList
+    public class UserInstancesList : UserInstancesBaseModel
     {
-        public long UserInstanceID { get; set; }
-
-        public long InstanceID { get; set; }
-
-        public string InstanceName { get; set; } = string.Empty;    
+          
 
     }
 
-    public class UserInstancesResult
+    public class UserInstancesResult : UserInstancesBaseModel
     {
-        public long UserInstanceID { get; set; }
-
-        public long UserID { get; set; }
-
-        public string UserName { get; set; } = string.Empty;    
-
-        public long InstanceID { get; set; }
+   
+        public string UserName { get; set; } = string.Empty;     
 
         public string InstanceName { get; set; } = string.Empty;
-
-        public RECORDSTATEENUM RecordState { get; set; }
 
     }
 

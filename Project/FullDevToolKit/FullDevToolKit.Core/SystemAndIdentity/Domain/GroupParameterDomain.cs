@@ -8,20 +8,20 @@ using FullDevToolKit.Sys.Data.Repositories;
 
 namespace FullDevToolKit.Sys.Domains
 {
-    public class GroupParameterDomain : IGroupParameterDomain
+    public class GroupParameterDomain  
+        : BaseDomain<GroupParameterParam, GroupParameterEntry, GroupParameterList, GroupParameterResult>, IGroupParameterDomain
     {
 
         public GroupParameterDomain(IContext context)
         {
             Context = context;
             _repositories = new SystemRepositorySet(context);
-        }
-
-        public IContext Context { get; set; }
+            this.TableName = _repositories.GroupParameter.TableName;
+        }        
 
         private ISystemRepositorySet _repositories { get; set; }
 
-        public async Task<GroupParameterResult> FillChields(GroupParameterResult obj)
+        public override async Task<GroupParameterResult> FillChields(GroupParameterResult obj)
         {
             return obj;
         }
@@ -52,24 +52,8 @@ namespace FullDevToolKit.Sys.Domains
 
             return ret;
         }
-        public async Task EntryValidation(GroupParameterEntry obj)
-        {
-            ExecutionStatus ret = null;
-
-            ret = PrimaryValidation.Execute(obj, new List<string>(), Context.LocalizationLanguage);
-
-            if (!ret.Success)
-            {
-                ret.SetFailStatus("Error",
-                   LocalizationText.Get("Validation-Error",
-                       Context.LocalizationLanguage).Text);
-            }
-
-            Context.Status = ret;
-
-        }
-
-        public async Task InsertValidation(GroupParameterEntry obj)
+     
+        public override async Task InsertValidation(GroupParameterEntry obj)
         {
             ExecutionStatus ret = new ExecutionStatus(true);
 
@@ -86,7 +70,7 @@ namespace FullDevToolKit.Sys.Domains
 
         }
 
-        public async Task UpdateValidation(GroupParameterEntry obj)
+        public override async Task UpdateValidation(GroupParameterEntry obj)
         {
             ExecutionStatus ret = new ExecutionStatus(true);
 
@@ -104,7 +88,7 @@ namespace FullDevToolKit.Sys.Domains
 
         }
 
-        public async Task DeleteValidation(GroupParameterEntry obj)
+        public override async Task DeleteValidation(GroupParameterEntry obj)
         {
             Context.Status = new ExecutionStatus(true);
         }
@@ -112,88 +96,53 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<GroupParameterEntry> Set(GroupParameterEntry model, object userid)
         {
             GroupParameterEntry ret = null;
-            OPERATIONLOGENUM operation = OPERATIONLOGENUM.INSERT;
+            this.PKValue = model.GroupParameterID.ToString();
 
-            await EntryValidation(model);
-
-            if (Context.Status.Success)
-            {
-
-                GroupParameterResult old
-                    = await _repositories.GroupParameter.Read(new GroupParameterParam() { pGroupParameterID = model.GroupParameterID });
-
-                if (old == null)
-                {
-                    await InsertValidation(model);
-
-                    if (Context.Status.Success)
-                    {                        
-                        if (model.GroupParameterID == 0) { model.GroupParameterID = Utilities.GenerateId(); }
-                        await _repositories.GroupParameter.Create(model);
-                    }
-                }
-                else
-                {                    
-                    operation = OPERATIONLOGENUM.UPDATE;
-
-                    await UpdateValidation(model);
-
-                    if (Context.Status.Success)
-                    {
-                        await _repositories.GroupParameter.Update(model);
-                    }
-
-                }
-
-                if (Context.Status.Success && userid != null)
-                {
-                    await Context
-                         .RegisterDataLogAsync(userid.ToString(), operation, "SYSGROUPPARAMETER",
-                         model.GroupParameterID.ToString(), old, model);
-
-                    ret = model;
-                }
-
-            }
+            ret = await ExecutionForSet(model, userid,
+                      async (model) =>
+                      {
+                          return
+                             await _repositories.GroupParameter.Read(new GroupParameterParam()
+                             { pGroupParameterID = model.GroupParameterID });
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.GroupParameter.Create(model);
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.GroupParameter.Update(model);
+                      }                      
+                  );
 
             return ret;
         }
+
 
         public async Task<GroupParameterEntry> Delete(GroupParameterEntry model, object userid)
         {
             GroupParameterEntry ret = null;
+            this.PKValue = model.GroupParameterID.ToString();
 
-            GroupParameterResult old
-                = await _repositories.GroupParameter.Read(new GroupParameterParam() { pGroupParameterID = model.GroupParameterID });
+            ret = await ExecutionForDelete(model, userid,
+                      async (model) =>
+                      {
+                          return
+                             await _repositories.GroupParameter.Read(new GroupParameterParam()
+                             { pGroupParameterID = model.GroupParameterID });
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.GroupParameter.Delete(model);
+                      }
 
-            if (old != null)
-            {
-                await DeleteValidation(model);
-
-                if (Context.Status.Success)
-                {
-                    await _repositories.GroupParameter.Delete(model);
-                    if (Context.Status.Success && userid != null)
-                    {
-                        await Context
-                            .RegisterDataLogAsync(userid.ToString(), OPERATIONLOGENUM.DELETE, "SYSGROUPPARAMETER",
-                                 model.GroupParameterID.ToString(), old, model);
-
-                        ret = model;
-                    }
-                }
-            }
-            else
-            {
-                Context.Status
-                    .SetFailStatus("Error", LocalizationText.Get("Record-NotFound",
-                        Context.LocalizationLanguage).Text);
-
-            }
+                  );
 
             return ret;
         }
-
 
 
     }

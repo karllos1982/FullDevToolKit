@@ -22,8 +22,17 @@ namespace FullDevToolKit.Core
 
         Task<List<TResult>> Search(TParam param);
 
+    }
+
+    public interface IRepositoryReadOnly<TParam, TResult>
+    {
+
+        IContext Context { get; set; }
+              
+        Task<List<TResult>> Read(TParam param);
 
     }
+
 
 
 }

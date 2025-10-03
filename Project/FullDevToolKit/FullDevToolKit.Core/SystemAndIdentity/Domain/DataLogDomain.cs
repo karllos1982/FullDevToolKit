@@ -8,19 +8,20 @@ using FullDevToolKit.Sys.Data.Repositories;
 
 namespace FullDevToolKit.Sys.Domains
 {
-    public class DataLogDomain : IDataLogDomain
+    public class DataLogDomain 
+        : BaseDomain<DataLogParam,DataLogEntry,DataLogList,DataLogResult>, IDataLogDomain
     {
         public DataLogDomain(IContext context)
         {
             Context = context;
-            _repositories = new SystemRepositorySet(context);          
+            _repositories = new SystemRepositorySet(context);
+            this.TableName = _repositories.DataLog.TableName; 
             
         }
-        public IContext Context { get; set; }
-
+        
         private ISystemRepositorySet _repositories { get; set; }
 
-        public async Task<DataLogResult> FillChields(DataLogResult obj)
+        public override async Task<DataLogResult> FillChields(DataLogResult obj)
         {
             return obj;
         }
@@ -51,36 +52,20 @@ namespace FullDevToolKit.Sys.Domains
 
             return ret;
         }
+  
 
-        public async Task EntryValidation(DataLogEntry obj)
-        {
-            ExecutionStatus ret = null;
-
-            ret = PrimaryValidation.Execute(obj, new List<string>(), Context.LocalizationLanguage);
-
-            if (!ret.Success)
-            {
-                ret.SetFailStatus("Error",
-                   LocalizationText.Get("Validation-Error", Context.LocalizationLanguage).Text);
-                      
-            }
-
-            Context.Status = ret;
-
-        }
-
-        public async Task InsertValidation(DataLogEntry obj)
+        public override async Task InsertValidation(DataLogEntry obj)
         {
             Context.Status = new ExecutionStatus(true);
         }
 
-        public async Task UpdateValidation(DataLogEntry obj)
+        public override async Task UpdateValidation(DataLogEntry obj)
         {
              Context.Status = new ExecutionStatus(true);
 
         }
 
-        public async Task DeleteValidation(DataLogEntry obj)
+        public override async Task DeleteValidation(DataLogEntry obj)
         {
              Context.Status = new ExecutionStatus(true);
         }
@@ -88,93 +73,52 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<DataLogEntry> Set(DataLogEntry model, object userid)
         {
             DataLogEntry ret = null;
+            this.PKValue = model.DataLogID.ToString(); 
 
-            OPERATIONLOGENUM operation = OPERATIONLOGENUM.INSERT;
+            ret = await ExecutionForSet( model, userid,
+                      async (model) =>
+                      {
+                         return 
+                            await _repositories.DataLog.Read(new DataLogParam() { pDataLogID = model.DataLogID });
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.DataLog.Create(model);
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.DataLog.Update(model);
+                      }                     
+                  );
 
-            await EntryValidation(model);
-
-            if (Context.Status.Success)
-            {
-
-                DataLogResult old 
-                    = await _repositories.DataLog.Read(new DataLogParam() { pDataLogID = model.DataLogID });
-
-                if (old == null)
-                {
-                    await InsertValidation(model); 
-                    if (Context.Status.Success)
-                    {           
-                        if (model.DataLogID ==0 ) { model.DataLogID = FullDevToolKit.Helpers.Utilities.GenerateId(); }
-                        await _repositories.DataLog.Create(model);
-                    }
-                }
-                else
-                {                    
-                    operation = OPERATIONLOGENUM.UPDATE;
-
-                     await UpdateValidation(model);
-
-                    if (Context.Status.Success)
-                    {
-                         await _repositories.DataLog.Update(model);
-                    }
-
-                }
-
-                if (Context.Status.Success && userid != null)
-                {
-                   await Context
-                        .RegisterDataLogAsync(userid.ToString(), operation, "SYSDATALOG",
-                        model.DataLogID.ToString(), old, model);
-
-                    ret = model;
-                }
-
-            }
-            
             return ret;
         }
 
       
-
         public async Task<DataLogEntry> Delete(DataLogEntry model, object userid)
         {
             DataLogEntry ret = null;
+            this.PKValue = model.DataLogID.ToString();
 
-            DataLogResult old 
-                = await _repositories.DataLog.Read(new DataLogParam() { pDataLogID = model.DataLogID });
-
-            if (old != null)
-            {
-               await DeleteValidation(model);
-
-                if (Context.Status.Success)
-                {
-                   await _repositories.DataLog.Delete(model);
-
-                    if (Context.Status.Success && userid != null)
-                    {
-                        await Context
-                                .RegisterDataLogAsync(userid.ToString(), OPERATIONLOGENUM.DELETE, "SYSDATALOG",
-                                    model.DataLogID.ToString(), old, model);
-
-                        ret = model;
-                    }
-                }
-            }
-            else
-            {
-                Context.Status
-                   .SetFailStatus("Error", LocalizationText.Get("Record-NotFound",
-                       Context.LocalizationLanguage).Text);
-
-            }
+            ret = await ExecutionForDelete(model, userid,
+                      async (model) =>
+                      {
+                          return
+                             await _repositories.DataLog.Read(new DataLogParam() { pDataLogID = model.DataLogID });
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.DataLog.Delete(model);
+                      }
+                    
+                  );
 
             return ret;
         }
-
-
-      
+              
 
         public async Task<List<DataLogTimelineModel>> GetTimeLine(long recordID)
         {

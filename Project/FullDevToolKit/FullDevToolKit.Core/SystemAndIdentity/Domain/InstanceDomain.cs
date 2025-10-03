@@ -5,24 +5,26 @@ using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
 using FullDevToolKit.Sys.Data.Repositories;
+using FullDevToolKit.Sys.Models.Common;
 
 
 namespace FullDevToolKit.Sys.Domains
 {
-    public class InstanceDomain : IInstanceDomain
+    public class InstanceDomain
+                : BaseDomain<InstanceParam, InstanceEntry, InstanceList, InstanceResult>, IInstanceDomain
     {
        
         public InstanceDomain(IContext context)
         {
             Context = context;
             _repositories = new SystemRepositorySet(context);
+            this.TableName = _repositories.Instance.TableName;
         }
-
-        public IContext Context { get; set; }
+        
 
         private ISystemRepositorySet _repositories { get; set; }
 
-        public async Task<InstanceResult> FillChields(InstanceResult obj)
+        public override async Task<InstanceResult> FillChields(InstanceResult obj)
         {
             return obj;
         }
@@ -54,24 +56,8 @@ namespace FullDevToolKit.Sys.Domains
             return ret;
         }
 
-        public async Task EntryValidation(InstanceEntry obj)
-        {
-            ExecutionStatus ret = null;
-
-            ret = PrimaryValidation.Execute(obj, new List<string>(), Context.LocalizationLanguage);
-
-            if (!ret.Success)
-            {
-                ret.SetFailStatus("Error",
-                    LocalizationText.Get("Validation-Error", 
-                        Context.LocalizationLanguage).Text);
-            }
-
-            Context.Status = ret;
-
-        }
-
-        public async Task InsertValidation(InstanceEntry obj)
+      
+        public override async Task InsertValidation(InstanceEntry obj)
         {
             ExecutionStatus ret = new ExecutionStatus(true);
 
@@ -90,7 +76,7 @@ namespace FullDevToolKit.Sys.Domains
 
         }
 
-        public async Task UpdateValidation(InstanceEntry obj)
+        public override async Task UpdateValidation(InstanceEntry obj)
         {
             ExecutionStatus ret = new ExecutionStatus(true);
 
@@ -109,7 +95,7 @@ namespace FullDevToolKit.Sys.Domains
 
         }
 
-        public async Task DeleteValidation(InstanceEntry obj)
+        public override async Task DeleteValidation(InstanceEntry obj)
         {
              Context.Status = new ExecutionStatus(true);
         }
@@ -117,87 +103,51 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<InstanceEntry> Set(InstanceEntry model, object userid)
         {
             InstanceEntry ret = null;
-            OPERATIONLOGENUM operation = OPERATIONLOGENUM.INSERT;
+            this.PKValue = model.InstanceID.ToString();
 
-            await EntryValidation(model);
-
-            if (Context.Status.Success)
-            {
-
-                InstanceResult old
-                    = await _repositories.Instance.Read(new InstanceParam() { pInstanceID = model.InstanceID });
-
-                if (old == null)
-                {
-                    await InsertValidation(model);
-
-                    if (Context.Status.Success)
-                    {
-                        model.CreateDate = DateTime.Now;
-                        if (model.InstanceID == 0) { model.InstanceID = FullDevToolKit.Helpers.Utilities.GenerateId(); }
-                        await _repositories.Instance.Create(model);
-                    }
-                }
-                else
-                {
-                    model.CreateDate = old.CreateDate;
-                    operation = OPERATIONLOGENUM.UPDATE;
-
-                    await UpdateValidation(model);
-
-                    if (Context.Status.Success)
-                    {
-                        await _repositories.Instance.Update(model);
-                    }
-
-                }
-
-                if (Context.Status.Success && userid != null)
-                {
-                    await Context
-                        .RegisterDataLogAsync(userid.ToString(), operation, "SYSINSTANCE",
-                        model.InstanceID.ToString(), old, model);
-
-                    ret = model;
-                }
-
-            }
+            ret = await ExecutionForSet(model, userid,
+                      async (model) =>
+                      {
+                          return
+                             await _repositories.Instance.Read(new InstanceParam()
+                             { pInstanceID = model.InstanceID });
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.Instance.Create(model);
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.Instance.Update(model);
+                      }
+                      
+                  );
 
             return ret;
         }
 
+
         public async Task<InstanceEntry> Delete(InstanceEntry model, object userid)
         {
             InstanceEntry ret = null;
+            this.PKValue = model.InstanceID.ToString();
 
-            InstanceResult old
-                = await _repositories.Instance.Read(new InstanceParam() { pInstanceID = model.InstanceID });
+            ret = await ExecutionForDelete(model, userid,
+                      async (model) =>
+                      {
+                          return
+                             await _repositories.Instance.Read(new InstanceParam()
+                             { pInstanceID = model.InstanceID });
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.Instance.Delete(model);
+                      }
 
-            if (old != null)
-            {
-                await DeleteValidation(model);
-
-                if (Context.Status.Success)
-                {
-                    await _repositories.Instance.Delete(model);
-
-                    if (Context.Status.Success && userid != null)
-                    {
-                        await Context
-                            .RegisterDataLogAsync(userid.ToString(),  OPERATIONLOGENUM.DELETE, "SYSINSTANCE",
-                            model.InstanceID.ToString(), old, model);
-
-                        ret = model;
-                    }
-
-                }
-            }
-            else
-            {
-                Context.Status
-                    .SetFailStatus("Error", LocalizationText.Get("Record-NotFound", 
-                        Context.LocalizationLanguage).Text);                 
-            }
+                  );
 
             return ret;
         }

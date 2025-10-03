@@ -1,5 +1,23 @@
-﻿namespace FullDevToolKit.Sys.Models.Identity
+﻿using FullDevToolKit.Core.Common;
+
+namespace FullDevToolKit.Sys.Models.Identity
 {
+
+    public class SessionLogBaseModel: BaseModel
+    {
+        public long SessionLogID { get; set; }
+
+        public long UserID { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public string IP { get; set; } = string.Empty;
+
+        public string BrowserName { get; set; } = string.Empty;
+
+        public DateTime? DateLogout { get; set; }
+    }
+
     public class SessionLogParam
     {
 
@@ -25,7 +43,7 @@
 
     }
 
-    public class SessionLogEntry
+    public class SessionLogEntry : SessionLogBaseModel
     {
         public SessionLogEntry()
         {
@@ -34,58 +52,24 @@
 
         public SessionLogEntry(SessionLogResult fromobj)
         {
-            SessionLogID = fromobj.SessionLogID;
-            UserID = fromobj.UserID;
-            Date = fromobj.Date;
-            IP = fromobj.IP;
-            BrowserName = fromobj.BrowserName;
-            DateLogout = fromobj.DateLogout;   
+            BaseModel.ConvertTo(fromobj, this);
         }
+      
+    }
 
-        public long SessionLogID { get; set; }
-
-        public long UserID { get; set; }  
-
-        public DateTime Date { get; set; }
-
-        public string IP { get; set; } = string.Empty;  
-
-        public string BrowserName { get; set; } = string.Empty; 
-
-        public DateTime ? DateLogout { get; set; }
+    public class SessionLogList : SessionLogBaseModel
+    {      
 
     }
 
-    public class SessionLogList
+    public class SessionLogResult : SessionLogBaseModel
     {
-        public long SessionLogID { get; set; }
-
-        public long UserID { get; set; }
-
-        public string UserName { get; set; } = string.Empty;
-
-        public DateTime Date { get; set; }
-
-    }
-
-    public class SessionLogResult
-    {
-        public long SessionLogID { get; set; }
-
-        public long UserID { get; set; }
-
+       
         public string UserName { get; set; } = string.Empty;
 
         public string Email { get; set; } = string.Empty;
 
-        public DateTime Date { get; set; }
-
-        public string IP { get; set; } = string.Empty;
-
-        public string BrowserName { get; set; } = string.Empty;
-
-        public DateTime? DateLogout { get; set; }
-
+       
     }
 
 

@@ -5,23 +5,25 @@ using FullDevToolKit.Sys.Models.Common;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
 using FullDevToolKit.Sys.Data.Repositories;
+using FullDevToolKit.Sys.Models.Identity;
 
 namespace FullDevToolKit.Sys.Domains
 {
-    public class ParameterDomain : IParameterDomain
+    public class ParameterDomain
+              : BaseDomain<ParameterParam, ParameterEntry, ParameterList, ParameterResult>, IParameterDomain
     {
 
         public ParameterDomain(IContext context)
         {
             Context = context;
             _repositories = new SystemRepositorySet(context);
+            this.TableName = _repositories.Parameter.TableName;
         }
-
-        public IContext Context { get; set; }
+        
 
         private ISystemRepositorySet _repositories { get; set; }
 
-        public async Task<ParameterResult> FillChields(ParameterResult obj)
+        public override async Task<ParameterResult> FillChields(ParameterResult obj)
         {
             return obj;
         }
@@ -52,24 +54,9 @@ namespace FullDevToolKit.Sys.Domains
 
             return ret;
         }
-        public async Task EntryValidation(ParameterEntry obj)
-        {
-            ExecutionStatus ret = null;
+     
 
-            ret = PrimaryValidation.Execute(obj, new List<string>(), Context.LocalizationLanguage);
-
-            if (!ret.Success)
-            {
-                ret.SetFailStatus("Error",
-                     LocalizationText.Get("Validation-Error",
-                         Context.LocalizationLanguage).Text);
-            }
-
-            Context.Status = ret;
-
-        }
-
-        public async Task InsertValidation(ParameterEntry obj)
+        public override async Task InsertValidation(ParameterEntry obj)
         {
             ExecutionStatus ret = new ExecutionStatus(true);
 
@@ -87,7 +74,7 @@ namespace FullDevToolKit.Sys.Domains
 
         }
 
-        public async Task UpdateValidation(ParameterEntry obj)
+        public override async Task UpdateValidation(ParameterEntry obj)
         {
             ExecutionStatus ret = new ExecutionStatus(true);
 
@@ -105,7 +92,7 @@ namespace FullDevToolKit.Sys.Domains
 
         }
 
-        public async Task DeleteValidation(ParameterEntry obj)
+        public override async Task DeleteValidation(ParameterEntry obj)
         {
             Context.Status = new ExecutionStatus(true);
         }
@@ -113,84 +100,50 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<ParameterEntry> Set(ParameterEntry model, object userid)
         {
             ParameterEntry ret = null;
-            OPERATIONLOGENUM operation = OPERATIONLOGENUM.INSERT;
+            this.PKValue = model.ParameterID.ToString();
 
-            await EntryValidation(model);
-
-            if (Context.Status.Success)
-            {
-
-                ParameterResult old
-                    = await _repositories.Parameter.Read(new ParameterParam() { pParameterID = model.ParameterID });
-
-                if (old == null)
-                {
-                    await InsertValidation(model);
-
-                    if (Context.Status.Success)
-                    {
-                        if (model.ParameterID == 0) { model.ParameterID = Utilities.GenerateId(); }
-                        await _repositories.Parameter.Create(model);
-                    }
-                }
-                else
-                {
-                    operation = OPERATIONLOGENUM.UPDATE;
-
-                    await UpdateValidation(model);
-
-                    if (Context.Status.Success)
-                    {
-                        await _repositories.Parameter.Update(model);
-                    }
-
-                }
-
-                if (Context.Status.Success && userid != null)
-                {
-                    await Context
-                         .RegisterDataLogAsync(userid.ToString(), operation, "SYSPARAMETER",
-                             model.ParameterID.ToString(), old, model);
-
-                    ret = model;
-                }
-
-            }
+            ret = await ExecutionForSet(model, userid,
+                      async (model) =>
+                      {
+                          return
+                             await _repositories.Parameter.Read(new ParameterParam()
+                             { pParameterID = model.ParameterID });
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.Parameter.Create(model);
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.Parameter.Update(model);
+                      }                      
+                  );
 
             return ret;
         }
 
+
         public async Task<ParameterEntry> Delete(ParameterEntry model, object userid)
         {
             ParameterEntry ret = null;
+            this.PKValue = model.ParameterID.ToString();
 
-            ParameterResult old
-                = await _repositories.Parameter.Read(new ParameterParam() { pParameterID = model.ParameterID });
+            ret = await ExecutionForDelete(model, userid,
+                      async (model) =>
+                      {
+                          return
+                             await _repositories.Parameter.Read(new ParameterParam()
+                             { pParameterID = model.ParameterID });
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.Parameter.Delete(model);
+                      }
 
-            if (old != null)
-            {
-                await DeleteValidation(model);
-
-                if (Context.Status.Success)
-                {
-                    await _repositories.Parameter.Delete(model);
-                    if (Context.Status.Success && userid != null)
-                    {
-                        await Context
-                                .RegisterDataLogAsync(userid.ToString(), OPERATIONLOGENUM.DELETE, "SYSPARAMETER",
-                                model.ParameterID.ToString(), old, model);
-
-                        ret = model;
-                    }
-                }
-            }
-            else
-            {
-                Context.Status
-                    .SetFailStatus("Error", LocalizationText.Get("Record-NotFound",
-                        Context.LocalizationLanguage).Text);
-
-            }
+                  );
 
             return ret;
         }

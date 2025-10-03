@@ -1,5 +1,6 @@
 ﻿using FullDevToolKit.Helpers;
 using FullDevToolKit.Common;
+using FullDevToolKit.Core.Common;
 
 namespace FullDevToolKit.Sys.Models.Identity
 {
@@ -56,6 +57,53 @@ namespace FullDevToolKit.Sys.Models.Identity
 
     }
    
+    public class UserBaseModel: BaseModel
+    {
+        [PrimaryValidationConfig("UserID", "User ID", FieldType.NUMERIC, false, 0)]
+        public long UserID { get; set; }
+
+        public long ApplicationID { get; set; }
+
+        [PrimaryValidationConfig("UserName", "User Name", FieldType.USERNAME, false, 50)]
+        public string UserName { get; set; } = string.Empty;
+
+        [PrimaryValidationConfig("Email", "E-mail", FieldType.EMAIL, false, 100)]
+        public string Email { get; set; } = string.Empty;
+
+        public string Password { get; set; } = string.Empty;
+
+        public string Salt { get; set; } = string.Empty;
+
+        public DateTime CreateDate { get; set; }
+
+        public bool IsActive { get; set; }
+
+        public bool IsLocked { get; set; }
+
+        public string? DefaultLanguage { get; set; }
+
+        public DateTime LastLoginDate { get; set; }
+
+        public string? LastLoginIP { get; set; }
+
+        public int LoginCounter { get; set; }
+
+        public int LoginFailCounter { get; set; }
+
+        public string? Avatar { get; set; }
+
+        public string? AuthCode { get; set; }
+
+        public DateTime AuthCodeExpires { get; set; }
+
+        public string? PasswordRecoveryCode { get; set; }
+
+        public string? ProfileImage { get; set; }
+
+        public string? AuthUserID { get; set; }
+
+
+    }
 
     public class UserParam
     {
@@ -112,7 +160,7 @@ namespace FullDevToolKit.Sys.Models.Identity
         public string Code { get; set; } = string.Empty;
     }
 
-    public class UserEntry
+    public class UserEntry : UserBaseModel
     {
         public UserEntry()
         {
@@ -120,142 +168,30 @@ namespace FullDevToolKit.Sys.Models.Identity
         }
         public UserEntry(UserResult fromobj)
         {
-            UserID = fromobj.UserID;
-            ApplicationID = fromobj.ApplicationID;
-            UserName = fromobj.UserName;
-            Email = fromobj.Email;
-            Password = fromobj.Password;
-            Salt   = fromobj.Salt;  
-            CreateDate = fromobj.CreateDate;
-            IsActive = fromobj.IsActive;
-            IsLocked    = fromobj.IsLocked;
-            DefaultLanguage = fromobj.DefaultLanguage;  
-            LastLoginDate = fromobj.LastLoginDate;
-            LastLoginIP = fromobj.LastLoginIP;
-            LoginCounter = fromobj.LoginCounter;
-            LoginFailCounter = fromobj.LoginFailCounter;
-            Avatar  = fromobj.Avatar;
-            AuthCode = fromobj.AuthCode;
-            AuthCodeExpires = fromobj.AuthCodeExpires;
-            PasswordRecoveryCode   = fromobj.PasswordRecoveryCode;  
-            ProfileImage = fromobj.ProfileImage;
-            AuthUserID  = fromobj.AuthUserID;
-
-
-
+            BaseModel.ConvertTo(fromobj, this);
         }
 
-        [PrimaryValidationConfig("UserID", "User ID", FieldType.NUMERIC, false, 0)]
-        public long UserID { get; set; }
-
-        public long ApplicationID { get; set; }
-
-        [PrimaryValidationConfig("UserName", "User Name", FieldType.USERNAME, false, 50)]
-        public string UserName { get; set; } = string.Empty;
-
-        [PrimaryValidationConfig("Email", "E-mail", FieldType.EMAIL, false, 100)]
-        public string Email { get; set; } = string.Empty;
-
-        public string Password { get; set; } = string.Empty;
-
-        public string Salt { get; set; } = string.Empty;
-
-        public DateTime CreateDate { get; set; }
-
-        public bool IsActive { get; set; }
-
-        public bool IsLocked { get; set; }
-
-        public string? DefaultLanguage { get; set; }
-
-        public DateTime LastLoginDate { get; set; }
-
-        public string? LastLoginIP { get; set; }
-
-        public int LoginCounter { get; set; }
-
-        public int LoginFailCounter { get; set; }
-
-        public string? Avatar { get; set; }
-
-        public string? AuthCode { get; set; }
-
-        public DateTime AuthCodeExpires { get; set; }
-
-        public string? PasswordRecoveryCode { get; set; }
-
-        public string? ProfileImage { get; set; }
-
-        public string? AuthUserID { get; set; }
-
-        public List<UserRolesEntry> Roles { get; set; }    
+        public List<UserRolesEntry> Roles { get; set; }
 
         public List<UserInstancesEntry> Instances { get; set; }
+        
+    }
+
+    public class UserList: UserBaseModel
+    {        
 
     }
 
-    public class UserList
-    {
-        public long UserID { get; set; }
-
-        public string? UserName { get; set; }       
-
-        public string? Email { get; set; }
-
-    }
-
-    public class UserResult
-    {
-        
-        public long UserID { get; set; }
-
-        public long ApplicationID { get; set; }
-        
-        public string UserName { get; set; } = string.Empty;
-        
-        public string Email { get; set; } = string.Empty;
-
-        public string Password { get; set; } = string.Empty;
-
-        public string Salt { get; set; } = string.Empty;
-
-        public DateTime CreateDate { get; set; }
-
-        public bool IsActive { get; set; }
-
-        public bool IsLocked { get; set; }
-
-        public string DefaultLanguage { get; set; } = string.Empty;
-
-        public DateTime LastLoginDate { get; set; }
-
-        public string LastLoginIP { get; set; } = string.Empty;
-
-        public Int32 LoginCounter { get; set; }
-
-        public Int32 LoginFailCounter { get; set; }
-
-        public string Avatar { get; set; } = string.Empty;
-
-        public string AuthCode { get; set; } = string.Empty;
-
-        public DateTime AuthCodeExpires { get; set; }
-
-        public string PasswordRecoveryCode { get; set; } = string.Empty;
-
-        public string ProfileImage { get; set; } = string.Empty;
-
-        public string AuthUserID { get; set; } = string.Empty;
+    public class UserResult: UserBaseModel
+    {                
 
         public string ProfileImageURL { get; set; } = string.Empty;
 
         //
-      
+
         public List<UserRolesResult> Roles { get; set; } = new List<UserRolesResult>();
 
         public List<UserInstancesResult> Instances { get; set; } = new List<UserInstancesResult>();
-
-        //
 
         public List<UserPermissions> Permissions { get; set; } = new List<UserPermissions>();   
 

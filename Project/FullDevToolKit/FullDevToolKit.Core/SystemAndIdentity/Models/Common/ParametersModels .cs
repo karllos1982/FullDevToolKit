@@ -1,4 +1,5 @@
-﻿using FullDevToolKit.Helpers;
+﻿using FullDevToolKit.Core.Common;
+using FullDevToolKit.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,20 @@ using System.Threading.Tasks;
 
 namespace FullDevToolKit.Sys.Models.Common
 {
+    public class ParameterBaseModel: BaseModel
+    {
+        [PrimaryValidationConfig("ParameterID", "Parameter ID", FieldType.NUMERIC, false, 0)]
+        public long ParameterID { get; set; }
+
+        [PrimaryValidationConfig("GroupParameterID", "Group Parameter ID", FieldType.NUMERIC, false, 0)]
+        public long GroupParameterID { get; set; }
+
+        [PrimaryValidationConfig("ParameterName", "Parameter Name", FieldType.TEXT, false, 100)]
+        public string ParameterName { get; set; } = string.Empty;
+
+        public bool IsActive { get; set; }
+    }
+
     public class ParameterParam
     {
         public ParameterParam()
@@ -27,7 +42,7 @@ namespace FullDevToolKit.Sys.Models.Common
 
     }
 
-    public class ParameterEntry
+    public class ParameterEntry: ParameterBaseModel
     {
         public ParameterEntry()
         {
@@ -36,48 +51,21 @@ namespace FullDevToolKit.Sys.Models.Common
 
         public ParameterEntry(ParameterResult fromobj)
         {
-            ParameterID = fromobj.ParameterID;  
-            ParameterName = fromobj.ParameterName;
-            GroupParameterID = fromobj.GroupParameterID;
-            IsActive = fromobj.IsActive;
+            BaseModel.ConvertTo(fromobj, this);
         }
 
-        [PrimaryValidationConfig("ParameterID", "Parameter ID", FieldType.NUMERIC, false, 0)]
-        public long ParameterID { get; set; }
-
-        [PrimaryValidationConfig("GroupParameterID", "Group Parameter ID", FieldType.NUMERIC, false, 0)]
-        public long GroupParameterID { get; set; }
-
-        [PrimaryValidationConfig("ParameterName", "Parameter Name", FieldType.TEXT, false, 100)]
-        public string ParameterName { get; set; } = string.Empty;
-
-        public bool IsActive { get; set; }
-
+     
     }
 
 
-    public class ParameterList
-    {
-        public long ParameterID { get; set; }
-
-        public long GroupParameterID { get; set; }
-
-        public string ParameterName { get; set; } = string.Empty;
+    public class ParameterList: ParameterBaseModel
+    {  
 
     }
 
-    public class ParameterResult
+    public class ParameterResult: ParameterBaseModel
     {
-        
-        public long ParameterID { get; set; }
-        
-        public long GroupParameterID { get; set; }
-
         public string GroupParameterName { get; set; } = string.Empty;
-
-		public string ParameterName { get; set; } = string.Empty;
-
-        public bool IsActive { get; set; }
 
     }
 }

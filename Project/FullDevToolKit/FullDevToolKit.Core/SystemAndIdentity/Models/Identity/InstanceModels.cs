@@ -1,7 +1,26 @@
 ﻿using FullDevToolKit.Helpers;
+using FullDevToolKit.Common;
+using FullDevToolKit.Core.Common;
 
 namespace FullDevToolKit.Sys.Models.Identity
 {
+
+    public class InstanceBaseModel: BaseModel
+    {
+
+        [PrimaryValidationConfig("InstanceID", "LocalizationText ID", FieldType.NUMERIC, false, 0)]
+        public long InstanceID { get; set; }
+
+        [PrimaryValidationConfig("InstanceTypeName", "LocalizationText Type Name", FieldType.TEXT, false, 50)]
+        public string InstanceTypeName { get; set; } = string.Empty;
+
+        [PrimaryValidationConfig("InstanceName", "LocalizationText Name", FieldType.TEXT, false, 100)]
+        public string InstanceName { get; set; } = string.Empty;
+
+        public bool IsActive { get; set; }
+
+        public DateTime CreateDate { get; set; }
+    }
 
     public class InstanceParam
     {
@@ -22,7 +41,7 @@ namespace FullDevToolKit.Sys.Models.Identity
         
     }
 
-    public class InstanceEntry
+    public class InstanceEntry: InstanceBaseModel
     {
 
         public InstanceEntry()
@@ -32,50 +51,20 @@ namespace FullDevToolKit.Sys.Models.Identity
 
         public InstanceEntry(InstanceResult fromobj)
         {
-            InstanceID = fromobj.InstanceID;
-            InstanceName = fromobj.InstanceName;
-            InstanceTypeName = fromobj.InstanceTypeName;
-            IsActive = fromobj.IsActive; 
-            CreateDate = fromobj.CreateDate;
+            BaseModel.ConvertTo(fromobj, this);
         }
 
-
-        [PrimaryValidationConfig("InstanceID", "LocalizationText ID", FieldType.NUMERIC, false, 0)]
-        public long InstanceID { get; set; }
-
-        [PrimaryValidationConfig("InstanceTypeName", "LocalizationText Type Name", FieldType.TEXT , false, 50)]
-        public string InstanceTypeName { get; set; } = string.Empty;
-
-        [PrimaryValidationConfig("InstanceName", "LocalizationText Name", FieldType.TEXT, false, 100)]
-        public string InstanceName { get; set; } = string.Empty;
-
-        public bool IsActive { get; set; }
-
-        public DateTime CreateDate { get; set; }
-
     }
 
 
-    public class InstanceList
+    public class InstanceList: InstanceBaseModel
     {        
-        public long InstanceID { get; set; }
-     
-        public string InstanceName { get; set; } = string.Empty;    
 
     }
 
-    public class InstanceResult
+    public class InstanceResult: InstanceBaseModel
     {
-        
-        public long InstanceID { get; set; }
-        
-        public string InstanceTypeName { get; set; } = string.Empty;
-       
-        public string InstanceName { get; set; } = string.Empty;
-
-        public bool IsActive { get; set; }
-
-        public DateTime CreateDate { get; set; }
+               
 
     }
 

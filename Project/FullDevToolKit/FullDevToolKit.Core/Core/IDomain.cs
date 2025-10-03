@@ -6,9 +6,7 @@ namespace FullDevToolKit.Core
     {
         IContext Context { get; }
 
-        Task<TResult> Get(TParam param);
-
-        Task<TResult> FillChields(TResult obj);
+        Task<TResult> Get(TParam param);        
 
         Task<List<TList>> List(TParam param);
 
@@ -17,14 +15,6 @@ namespace FullDevToolKit.Core
         Task<TEntry> Set(TEntry model, object userid);
 
         Task<TEntry> Delete(TEntry model, object userid);
-
-        Task EntryValidation(TEntry obj);
-
-        Task InsertValidation(TEntry obj);
-
-        Task UpdateValidation(TEntry obj);
-
-        Task DeleteValidation(TEntry obj);
 
     }
 

@@ -1,7 +1,35 @@
-﻿using FullDevToolKit.Helpers;
+﻿using FullDevToolKit.Core.Common;
+using FullDevToolKit.Helpers;
 
 namespace FullDevToolKit.Sys.Models.Identity
 {
+
+    public class PermissionBaseModel: BaseModel
+    {
+        public long PermissionID { get; set; }
+
+        [PrimaryValidationConfig("ObjectPermissionID", "Object Permission ID", FieldType.NUMERIC, false, 0)]
+        public long ObjectPermissionID { get; set; }
+
+        [PrimaryValidationConfig("RoleID", "Role ID", FieldType.NUMERIC, true, 0)]
+        public long? RoleID { get; set; }
+
+        [PrimaryValidationConfig("UserID", "User ID", FieldType.NUMERIC, true, 0)]
+        public long? UserID { get; set; }
+
+        [PrimaryValidationConfig("ReadStatus", "Read Status", FieldType.NUMERIC, false, 0)]
+        public int ReadStatus { get; set; }
+
+        [PrimaryValidationConfig("SaveStatus", "Save Status", FieldType.NUMERIC, false, 0)]
+        public int SaveStatus { get; set; }
+
+        [PrimaryValidationConfig("DeleteStatus", "Delete Status", FieldType.NUMERIC, false, 0)]
+        public int DeleteStatus { get; set; }
+
+        [PrimaryValidationConfig("TypeGrant", "Type Grant", FieldType.TEXT, false, 1)]
+        public string TypeGrant { get; set; } = string.Empty;
+    }
+
     public class PermissionParam
     {
         public long pPermissionID { get; set; }
@@ -22,7 +50,7 @@ namespace FullDevToolKit.Sys.Models.Identity
 
     }
 
-    public class PermissionEntry
+    public class PermissionEntry: PermissionBaseModel
     {
         public PermissionEntry()
         {
@@ -31,76 +59,25 @@ namespace FullDevToolKit.Sys.Models.Identity
 
         public PermissionEntry(PermissionResult fromobj)
         {
-            PermissionID = fromobj.PermissionID;
-            ObjectPermissionID = fromobj.ObjectPermissionID;
-            UserID = fromobj.UserID;
-            RoleID = fromobj.RoleID;
-            ReadStatus = fromobj.ReadStatus;    
-            SaveStatus = fromobj.SaveStatus;
-            DeleteStatus = fromobj.DeleteStatus;    
-            TypeGrant = fromobj.TypeGrant;  
+            BaseModel.ConvertTo(fromobj, this);
         }
 
-        public long PermissionID { get; set; }
 
-        [PrimaryValidationConfig("ObjectPermissionID", "Object Permission ID", FieldType.NUMERIC, false, 0)]
-        public long ObjectPermissionID { get; set; }
+    }
 
-        [PrimaryValidationConfig("RoleID", "Role ID", FieldType.NUMERIC, true, 0)]
-        public long? RoleID { get; set; }
-
-        [PrimaryValidationConfig("UserID", "User ID", FieldType.NUMERIC, true, 0)]
-        public long? UserID { get; set; }
-
-        [PrimaryValidationConfig("ReadStatus", "Read Status", FieldType.NUMERIC, false, 0)]
-        public int ReadStatus { get; set; }       
-
-        [PrimaryValidationConfig("SaveStatus", "Save Status", FieldType.NUMERIC, false, 0)]
+    public class PermissionList : PermissionBaseModel
+    {
         public int SaveStatus { get; set; }
-
-        [PrimaryValidationConfig("DeleteStatus", "Delete Status", FieldType.NUMERIC, false, 0)]
-        public int DeleteStatus { get; set; }
-
-        [PrimaryValidationConfig("TypeGrant", "Type Grant", FieldType.TEXT, false,1 )]
-        public string TypeGrant { get; set; } = string.Empty;
     }
 
-    public class PermissionList
+    public class PermissionResult : PermissionBaseModel
     {
-        public long PermissionID { get; set; }
 
-        public long ObjectPermissionID { get; set; }
+        public string RoleName { get; set; } = string.Empty;
+   
+        public string UserName { get; set; } = string.Empty;
 
-        public string ObjectName { get; set; } = string.Empty;              
-
-
-    }
-
-    public class PermissionResult
-    {
-        public long PermissionID { get; set; }
-
-        public long ObjectPermissionID { get; set; }
-
-        public string ObjectName { get; set; } = string.Empty;  
-
-        public string ObjectCode { get; set; } = string.Empty;  
-
-        public long RoleID { get; set; }
-
-        public string RoleName { get; set; } = string.Empty;    
-
-        public long UserID { get; set; }
-
-        public string UserName { get; set; } = string.Empty;    
-
-        public int ReadStatus { get; set; }
-
-        public int SaveStatus { get; set; }        
-
-        public int DeleteStatus { get; set; }
-
-        public string TypeGrant { get; set; } = string.Empty;   
+        public string ObjectCode { get; set; }
 
     }
   

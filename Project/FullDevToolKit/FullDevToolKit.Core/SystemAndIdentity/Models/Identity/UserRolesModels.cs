@@ -1,7 +1,20 @@
-﻿using FullDevToolKit.Common; 
+﻿using FullDevToolKit.Common;
+using FullDevToolKit.Core.Common;
 
 namespace FullDevToolKit.Sys.Models.Identity
 {
+
+    public class UserRolesBaseModel: BaseModel
+    {
+        public long UserRoleID { get; set; }
+
+        public long UserID { get; set; }
+
+        public long RoleID { get; set; }
+
+        public RECORDSTATEENUM RecordState { get; set; }
+    }
+
     public class UserRolesParam
     {
 
@@ -19,7 +32,7 @@ namespace FullDevToolKit.Sys.Models.Identity
         public long pRoleID { get; set; }
     }
 
-    public class UserRolesEntry
+    public class UserRolesEntry : UserRolesBaseModel
     {
         public UserRolesEntry()
         {
@@ -28,43 +41,22 @@ namespace FullDevToolKit.Sys.Models.Identity
 
         public UserRolesEntry(UserRolesResult fromobj)
         {
-            UserRoleID = fromobj.UserRoleID;  
-            UserID = fromobj.UserID;    
-            RoleID = fromobj.RoleID;    
+            BaseModel.ConvertTo(fromobj, this);
         }
 
-        public long UserRoleID { get; set; }
-
-        public long UserID { get; set; }
-
-        public long RoleID { get; set; }
-
-        public RECORDSTATEENUM RecordState { get; set; }
+   
     }
 
-    public class UserRolesList
-    {
-        public long UserRoleID { get; set; }
-
-        public long RoleID { get; set; }
-
-        public string RoleName { get; set; } = string.Empty;    
+    public class UserRolesList : UserRolesBaseModel
+    {         
 
     }
 
-    public class UserRolesResult
+    public class UserRolesResult : UserRolesBaseModel
     {
-        public long UserRoleID { get; set; }
-
-        public long UserID { get; set; }
-
-        public string UserName { get; set; } = string.Empty;    
-
-        public long RoleID { get; set; }
-
+        public string UserName { get; set; } = string.Empty;
+        
         public string RoleName { get; set; } = string.Empty;
-
-        public RECORDSTATEENUM RecordState { get; set; }
 
     }
 

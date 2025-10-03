@@ -1,6 +1,28 @@
 ﻿
+using FullDevToolKit.Core.Common;
+
 namespace FullDevToolKit.Sys.Models.Common
 {
+
+    public class DataLogBaseModel: BaseModel
+    {
+        public long DataLogID { get; set; }
+
+        public long UserID { get; set; }
+
+        public DateTime Date { get; set; }
+
+        public string Operation { get; set; } = string.Empty;
+
+        public string TableName { get; set; } = string.Empty;
+
+        public long ID { get; set; }
+
+        public string LogOldData { get; set; } = string.Empty;
+
+        public string LogCurrentData { get; set; } = string.Empty;
+    }
+
     public class DataLogParam
     {
         public long pDataLogID { get; set; }
@@ -34,7 +56,7 @@ namespace FullDevToolKit.Sys.Models.Common
 
     }
 
-    public class DataLogEntry
+    public class DataLogEntry: DataLogBaseModel
     {
         public DataLogEntry()
         {
@@ -43,31 +65,9 @@ namespace FullDevToolKit.Sys.Models.Common
 
         public DataLogEntry(DataLogResult fromobj)
         {
-            DataLogID = fromobj.DataLogID;  
-            UserID = fromobj.UserID;
-            Date = fromobj.Date;
-            Operation = fromobj.Operation;  
-            TableName = fromobj.TableName;
-            ID = fromobj.ID;
-            LogOldData = fromobj.LogOldData;
-            LogCurrentData  = fromobj.LogCurrentData;
-        }
+            BaseModel.ConvertTo(fromobj, this);
 
-        public long DataLogID { get; set; }
-
-        public long UserID { get; set; }        
-
-        public DateTime Date { get; set; }
-
-        public string Operation { get; set; } = string.Empty;
-
-        public string TableName { get; set; } = string.Empty;
-
-        public long ID { get; set; }
-
-        public string LogOldData { get; set; } = string.Empty;
-
-        public string LogCurrentData { get; set; } = string.Empty;
+        }      
 
     }
 
@@ -134,40 +134,23 @@ namespace FullDevToolKit.Sys.Models.Common
         public bool IsDifferent { get; set; }
     }
 
-    public class DataLogList
+    public class DataLogList: DataLogBaseModel
     {
-        public long DataLogID { get; set; }
-
-        public long UserID { get; set; }
-
-        public DateTime Date { get; set; }
-
-        public string Operation { get; set; } = string.Empty;
-
-        public string TableName { get; set; } = string.Empty;
-
-        public long ID { get; set; }
-      
+            
     }
 
-    public class DataLogResult
+    public class DataLogResult : DataLogBaseModel
     {
-        public long DataLogID { get; set; }
+        
+        public string Email { get; set; } = string.Empty; 
 
-        public long UserID { get; set; }
-
-        public string Email { get; set; } = string.Empty;
-
-        public DateTime Date { get; set; }
-
-        public string Operation { get; set; } = string.Empty;
-
+        
         public string OperationText
         {
             get
             {
                 string aux = "";
-
+                
                 switch (Operation)
                 {
                     case "I":
@@ -188,14 +171,7 @@ namespace FullDevToolKit.Sys.Models.Common
             }
 
         }
-
-        public string TableName { get; set; } = string.Empty;
-
-        public long ID { get; set; }
-
-        public string LogOldData { get; set; } = string.Empty;
-
-        public string LogCurrentData { get; set; } = string.Empty;
+       
     }
 
 }

@@ -8,19 +8,19 @@ using FullDevToolKit.Sys.Data.Repositories;
 
 namespace FullDevToolKit.Sys.Domains
 {
-    public class ExceptionLogDomain : IExceptionLogDomain
+    public class ExceptionLogDomain
+        : BaseDomain<ExceptionLogParam, ExceptionLogEntry, ExceptionLogList, ExceptionLogResult>, IExceptionLogDomain
     {
         public ExceptionLogDomain(IContext context)
         {
             Context = context;
             _repositories = new SystemRepositorySet(context);
-
+            this.TableName = _repositories.ExceptionLog.TableName;
         }
-        public IContext Context { get; set; }
-
+        
         private ISystemRepositorySet _repositories { get; set; }
 
-        public async Task<ExceptionLogResult> FillChields(ExceptionLogResult obj)
+        public override async Task<ExceptionLogResult> FillChields(ExceptionLogResult obj)
         {
             return obj;
         }
@@ -52,35 +52,19 @@ namespace FullDevToolKit.Sys.Domains
             return ret;
         }
 
-        public async Task EntryValidation(ExceptionLogEntry obj)
-        {
-            ExecutionStatus ret = null;
-
-            ret = PrimaryValidation.Execute(obj, new List<string>(), Context.LocalizationLanguage);
-
-            if (!ret.Success)
-            {
-                ret.SetFailStatus("Error",
-                   LocalizationText.Get("Validation-Error", Context.LocalizationLanguage).Text);
-
-            }
-
-            Context.Status = ret;
-
-        }
-
-        public async Task InsertValidation(ExceptionLogEntry obj)
+       
+        public override async Task InsertValidation(ExceptionLogEntry obj)
         {
             Context.Status = new ExecutionStatus(true);
         }
 
-        public async Task UpdateValidation(ExceptionLogEntry obj)
+        public override async Task UpdateValidation(ExceptionLogEntry obj)
         {
             Context.Status = new ExecutionStatus(true);
 
         }
 
-        public async Task DeleteValidation(ExceptionLogEntry obj)
+        public override async Task DeleteValidation(ExceptionLogEntry obj)
         {
             Context.Status = new ExecutionStatus(true);
         }
@@ -88,91 +72,53 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<ExceptionLogEntry> Set(ExceptionLogEntry model, object userid)
         {
             ExceptionLogEntry ret = null;
+            this.PKValue = model.ExceptionLogID.ToString();
 
-            OPERATIONLOGENUM operation = OPERATIONLOGENUM.INSERT;
-
-            await EntryValidation(model);
-
-            if (Context.Status.Success)
-            {
-
-                ExceptionLogResult old
-                    = await _repositories.ExceptionLog.Read(new ExceptionLogParam() { pExceptionLogID = model.ExceptionLogID });
-
-                if (old == null)
-                {
-                    await InsertValidation(model);
-                    if (Context.Status.Success)
-                    {
-                        if (model.ExceptionLogID == 0) { model.ExceptionLogID = FullDevToolKit.Helpers.Utilities.GenerateId(); }
-                        await _repositories.ExceptionLog.Create(model);
-                    }
-                }
-                else
-                {
-                    operation = OPERATIONLOGENUM.UPDATE;
-
-                    await UpdateValidation(model);
-
-                    if (Context.Status.Success)
-                    {
-                        await _repositories.ExceptionLog.Update(model);
-                    }
-
-                }
-
-                if (Context.Status.Success && userid != null)
-                {
-                    await Context
-                         .RegisterDataLogAsync(userid.ToString(), operation, "SYSEXCEPTIONLOG",
-                         model.ExceptionLogID.ToString(), old, model);
-
-                    ret = model;
-                }
-
-            }
+            ret = await ExecutionForSet(model, userid,
+                      async (model) =>
+                      {
+                          return
+                             await _repositories.ExceptionLog.Read(new ExceptionLogParam() 
+                             { pExceptionLogID = model.ExceptionLogID });
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.ExceptionLog.Create(model);
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.ExceptionLog.Update(model);
+                      }                      
+                  );
 
             return ret;
         }
-
-
 
         public async Task<ExceptionLogEntry> Delete(ExceptionLogEntry model, object userid)
         {
             ExceptionLogEntry ret = null;
+            this.PKValue = model.ExceptionLogID.ToString();
 
-            ExceptionLogResult old
-                = await _repositories.ExceptionLog.Read(new ExceptionLogParam() { pExceptionLogID = model.ExceptionLogID });
+            ret = await ExecutionForDelete(model, userid,
+                      async (model) =>
+                      {
+                          return
+                             await _repositories.ExceptionLog.Read(new ExceptionLogParam() 
+                                { pExceptionLogID = model.ExceptionLogID });
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await _repositories.ExceptionLog.Delete(model);
+                      }
 
-            if (old != null)
-            {
-                await DeleteValidation(model);
-
-                if (Context.Status.Success)
-                {
-                    await _repositories.ExceptionLog.Delete(model);
-
-                    if (Context.Status.Success && userid != null)
-                    {
-                        await Context
-                                .RegisterDataLogAsync(userid.ToString(), OPERATIONLOGENUM.DELETE, "SYSEXCEPTIONLOG",
-                                    model.ExceptionLogID.ToString(), old, model);
-
-                        ret = model;
-                    }
-                }
-            }
-            else
-            {
-                Context.Status
-                   .SetFailStatus("Error", LocalizationText.Get("Record-NotFound",
-                       Context.LocalizationLanguage).Text);
-
-            }
+                  );
 
             return ret;
         }
 
-
+      
     }
 }
