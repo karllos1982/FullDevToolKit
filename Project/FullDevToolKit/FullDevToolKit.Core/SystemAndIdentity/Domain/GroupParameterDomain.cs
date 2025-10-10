@@ -96,6 +96,11 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<GroupParameterEntry> Set(GroupParameterEntry model, object userid)
         {
             GroupParameterEntry ret = null;
+            
+            if (model.GroupParameterID == 0)
+            {
+                model.GroupParameterID = Helpers.Utilities.GenerateId();
+            }
             this.PKValue = model.GroupParameterID.ToString();
 
             ret = await ExecutionForSet(model, userid,
@@ -107,7 +112,7 @@ namespace FullDevToolKit.Sys.Domains
                       }
                       ,
                       async (model) =>
-                      {
+                      {                          
                           await _repositories.GroupParameter.Create(model);
                       }
                       ,

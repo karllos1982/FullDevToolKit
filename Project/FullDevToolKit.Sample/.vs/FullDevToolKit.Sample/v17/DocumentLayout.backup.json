@@ -1,76 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webapp\\pages\\superadmin\\permission.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|solutionrelative:webapp\\pages\\superadmin\\permission.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C8DE2544-DCF3-46B4-9F13-DE9A257A76EE}|API\\API.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8DE2544-DCF3-46B4-9F13-DE9A257A76EE}|API\\API.csproj|solutionrelative:api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webapp\\pages\\superadmin\\parameter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{7C230AC7-0376-4D6B-8481-8CE554078D2A}|WebApp\\WebApp.csproj|solutionrelative:webapp\\pages\\superadmin\\parameter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
-      "Orientation": 0,
+      "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 269,
-          "SelectedChildIndex": 3,
+          "DockedHeight": 50,
+          "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "API\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "API\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAH4AAAAAAAAAAAApwI4AAAAbAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T20:41:01.309Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Parameter.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Pages\\SuperAdmin\\Parameter.razor",
-              "RelativeDocumentMoniker": "WebApp\\Pages\\SuperAdmin\\Parameter.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Pages\\SuperAdmin\\Parameter.razor",
-              "RelativeToolTip": "WebApp\\Pages\\SuperAdmin\\Parameter.razor",
-              "ViewState": "AgIAAGwAAAAAAAAAAAAYwHkAAABtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-03T20:36:42.752Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Permission.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Pages\\SuperAdmin\\Permission.razor",
-              "RelativeDocumentMoniker": "WebApp\\Pages\\SuperAdmin\\Permission.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\Pages\\SuperAdmin\\Permission.razor",
-              "RelativeToolTip": "WebApp\\Pages\\SuperAdmin\\Permission.razor",
-              "ViewState": "AgIAADgBAAAAAAAAAAApwEABAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-03T20:36:03.686Z",
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
             }
           ]
         },
         {
-          "DockedWidth": 200,
+          "DockedHeight": 50,
           "SelectedChildIndex": -1,
           "Children": [
             {

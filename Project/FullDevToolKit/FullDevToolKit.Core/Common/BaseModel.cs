@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Linq;
+using System.Reflection;
 
 namespace FullDevToolKit.Core.Common
 {
@@ -13,16 +14,23 @@ namespace FullDevToolKit.Core.Common
         public static void ConvertTo(BaseModel inobj, BaseModel outobj)
         {
 
-            if (inobj == null)
+            if (inobj != null)
             {
                 PropertyInfo[] props = inobj.GetType().GetProperties();
 
                 foreach (PropertyInfo pi in props)
                 {
-                    object val = pi.GetValue(inobj);
+                    if (!pi.ToString().Contains("System.Collections.Generic.List"))
+                    {
+                        object val = pi.GetValue(inobj);
 
-                    PropertyInfo p_out = outobj.GetType().GetProperty(pi.Name);
-                    p_out.SetValue(outobj, val);
+                        PropertyInfo p_out = outobj.GetType().GetProperty(pi.Name);
+                        if (p_out != null)
+                        {
+                            p_out.SetValue(outobj, val);
+                        }
+                    }
+                    
                 }
 
             }

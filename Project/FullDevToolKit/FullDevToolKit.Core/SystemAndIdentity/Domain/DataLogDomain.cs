@@ -73,8 +73,14 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<DataLogEntry> Set(DataLogEntry model, object userid)
         {
             DataLogEntry ret = null;
-            this.PKValue = model.DataLogID.ToString(); 
 
+            if (model.DataLogID == 0)
+            {
+                model.DataLogID = Helpers.Utilities.GenerateId();
+            }
+            this.PKValue = model.DataLogID.ToString();
+
+            
             ret = await ExecutionForSet( model, userid,
                       async (model) =>
                       {
@@ -83,7 +89,7 @@ namespace FullDevToolKit.Sys.Domains
                       }
                       ,
                       async (model) =>
-                      {
+                      {                          
                           await _repositories.DataLog.Create(model);
                       }
                       ,

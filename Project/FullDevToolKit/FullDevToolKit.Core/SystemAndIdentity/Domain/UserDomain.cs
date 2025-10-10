@@ -149,6 +149,11 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<UserEntry> Set(UserEntry model, object userid)
         {
             UserEntry ret = null;
+            
+            if (model.UserID == 0)
+            {
+                model.UserID = Helpers.Utilities.GenerateId();
+            }
             this.PKValue = model.UserID.ToString();
 
             ret = await ExecutionForSet(model, userid,

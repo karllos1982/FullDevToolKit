@@ -1,72 +1,16 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\models\\identity\\permissionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\models\\identity\\permissionmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\models\\common\\parametersmodels .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\models\\common\\parametersmodels .cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\models\\identity\\userinstancesmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\models\\identity\\userinstancesmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\models\\identity\\userrolesmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\models\\identity\\userrolesmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 33,
-          "SelectedChildIndex": 0,
+          "DockedHeight": 50,
+          "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "PermissionModel.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\PermissionModel.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\PermissionModel.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\PermissionModel.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\PermissionModel.cs",
-              "ViewState": "AgIAAEEAAAAAAAAAAAAYwEcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T20:46:14.518Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserInstancesModels.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserInstancesModels.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserInstancesModels.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserInstancesModels.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserInstancesModels.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAuwDAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T20:43:43.829Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "UserRolesModels.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserRolesModels.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserRolesModels.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserRolesModels.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserRolesModels.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAuwDoAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T20:41:59.887Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -74,24 +18,11 @@
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ParametersModels .cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\ParametersModels .cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\ParametersModels .cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\ParametersModels .cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\ParametersModels .cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAuwEcAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-10-03T20:39:17.521Z",
-              "EditorCaption": ""
             }
           ]
         },
         {
-          "DockedHeight": 4,
+          "DockedHeight": 50,
           "SelectedChildIndex": -1,
           "Children": [
             {

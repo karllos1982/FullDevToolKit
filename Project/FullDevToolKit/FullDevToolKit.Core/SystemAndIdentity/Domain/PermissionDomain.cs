@@ -77,6 +77,11 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<PermissionEntry> Set(PermissionEntry model, object userid)
         {
             PermissionEntry ret = null;
+            
+            if (model.PermissionID == 0)
+            {
+                model.PermissionID = Helpers.Utilities.GenerateId();
+            }
             this.PKValue = model.PermissionID.ToString();
 
             ret = await ExecutionForSet(model, userid,

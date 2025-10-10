@@ -32,5 +32,7 @@ namespace FullDevToolKit.Sys.Contracts.Repositories
         IParameterRepository Parameter { get; set; }
 
         IExceptionLogRepository ExceptionLog { get; set; }
+
+        IConfigsRepository Configs { get; set; }
     }
 }

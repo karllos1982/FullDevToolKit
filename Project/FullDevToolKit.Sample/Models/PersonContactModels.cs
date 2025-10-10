@@ -1,4 +1,5 @@
 ﻿using FullDevToolKit.Common;
+using FullDevToolKit.Core.Common;
 using FullDevToolKit.Helpers;
 
 
@@ -23,23 +24,8 @@ namespace MyApp.Models
 
     }
 
-    public class PersonContactEntry
+    public class PersonContactBaseModel: BaseModel
     {
-        public PersonContactEntry()
-        {
-
-        }
-
-        public PersonContactEntry(PersonContactResult result)
-        {
-            this.PersonContactID = result.PersonContactID;
-            this.PersonID = result.PersonID;
-            this.ContactName = result.ContactName;
-            this.Email = result.Email;
-            this.CellPhoneNumber = result.CellPhoneNumber;
-            this.RecordState = result.RecordState;
-        }
-
         public Int64 PersonContactID { get; set; }
 
         public Int64 PersonID { get; set; }
@@ -54,34 +40,31 @@ namespace MyApp.Models
         public string CellPhoneNumber { get; set; }
 
         public RECORDSTATEENUM RecordState { get; set; }
+    }
+
+    public class PersonContactEntry: PersonContactBaseModel
+    {
+        public PersonContactEntry()
+        {
+
+        }
+
+        public PersonContactEntry(PersonContactBaseModel fromobj)
+        {
+            BaseModel.ConvertTo(fromobj, this);
+        }              
 
     }
 
-    public class PersonContactList
-    {
-        public Int64 PersonContactID { get; set; }
-
-        public Int64 PersonID { get; set; }
-
-        public string ContactName { get; set; } = string.Empty;
+    public class PersonContactList : PersonContactBaseModel
+    {        
 
     }
 
-    public class PersonContactResult
+    public class PersonContactResult : PersonContactBaseModel
     {
 
-        public Int64 PersonContactID { get; set; }
-
-        public Int64 PersonID { get; set; }
-
-        public string ContactName { get; set; } = string.Empty; 
-
-        public string Email { get; set; } = string.Empty;
-
-        public string CellPhoneNumber { get; set; } = string.Empty;
-
-        public RECORDSTATEENUM RecordState { get; set; }
-
+     
     }
 
 }

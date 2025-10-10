@@ -75,6 +75,11 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<SessionLogEntry> Set(SessionLogEntry model, object userid)
         {
             SessionLogEntry ret = null;
+            
+            if (model.SessionLogID == 0)
+            {
+                model.SessionLogID = Helpers.Utilities.GenerateId();
+            }
             this.PKValue = model.SessionLogID.ToString();
 
             ret = await ExecutionForSet(model, userid,

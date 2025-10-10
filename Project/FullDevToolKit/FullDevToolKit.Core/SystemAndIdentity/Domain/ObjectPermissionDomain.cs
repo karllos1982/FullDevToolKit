@@ -102,6 +102,11 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<ObjectPermissionEntry> Set(ObjectPermissionEntry model, object userid)
         {
             ObjectPermissionEntry ret = null;
+            
+            if (model.ObjectPermissionID == 0)
+            {
+                model.ObjectPermissionID = Helpers.Utilities.GenerateId();
+            }
             this.PKValue = model.ObjectPermissionID.ToString();
 
             ret = await ExecutionForSet(model, userid,

@@ -1,4 +1,5 @@
-﻿using FullDevToolKit.Helpers;
+﻿using FullDevToolKit.Core.Common;
+using FullDevToolKit.Helpers;
 
 namespace MyApp.Models
 {
@@ -19,32 +20,9 @@ namespace MyApp.Models
 
     }
 
-    public class PersonEntry
+    public class PersonBaseModel: BaseModel
     {
-
-        public PersonEntry()
-        {
-
-        }
-
-        public PersonEntry(PersonResult fromobj)
-        {
-            PersonID = fromobj.PersonID;
-            PersonName = fromobj.PersonName;
-            Email = fromobj.Email;
-            PhoneNamber = fromobj.PhoneNamber;
-            IsActive = fromobj.IsActive;
-            CreateDate = fromobj.CreateDate;
-            Contacts = new List<PersonContactEntry>();
-
-            foreach (PersonContactResult c in fromobj.Contacts)
-            {
-                Contacts.Add(new PersonContactEntry(c));
-            }
-
-        }
-
-        public Int64 PersonID { get; set; }
+        public long PersonID { get; set; }
 
         [PrimaryValidationConfig("PersonName", "Person Name", FieldType.TEXT, false, 50)]
         public string PersonName { get; set; }
@@ -58,34 +36,44 @@ namespace MyApp.Models
         public bool IsActive { get; set; }
 
         public DateTime CreateDate { get; set; }
+        
+    }
+
+    public class PersonEntry: PersonBaseModel
+    {
+
+        public PersonEntry()
+        {
+            
+        }
+
+        public PersonEntry(PersonResult fromobj)
+        {
+            BaseModel.ConvertTo(fromobj, this);
+
+            this.Contacts = new List<PersonContactEntry>(); 
+
+            foreach (PersonContactResult c in fromobj.Contacts)
+            {
+                Contacts.Add(new PersonContactEntry(c));
+            }
+
+        }
 
         public List<PersonContactEntry> Contacts { get; set; }
 
 
     }
 
-    public class PersonList
+    public class PersonList: PersonBaseModel
     {
-        public Int64 PersonID { get; set; }
-
-        public string PersonName { get; set; } = string.Empty;
 
     }
 
-    public class PersonResult
+    public class PersonResult: PersonBaseModel
     {
-        public Int64 PersonID { get; set; }
 
-        public string PersonName { get; set; } = string.Empty;
+        public List<PersonContactResult> Contacts { get; set; }
 
-        public string Email { get; set; } = string.Empty;
-
-        public string PhoneNamber { get; set; } = string.Empty;
-
-        public bool IsActive { get; set; }
-
-        public DateTime CreateDate { get; set; }
-
-        public List<PersonContactResult> Contacts { get; set; } = new List<PersonContactResult>();  
     }
 }

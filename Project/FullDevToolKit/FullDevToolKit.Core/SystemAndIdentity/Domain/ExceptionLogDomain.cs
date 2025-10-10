@@ -72,6 +72,11 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<ExceptionLogEntry> Set(ExceptionLogEntry model, object userid)
         {
             ExceptionLogEntry ret = null;
+            
+            if (model.ExceptionLogID == 0)
+            {
+                model.ExceptionLogID = Helpers.Utilities.GenerateId();
+            }
             this.PKValue = model.ExceptionLogID.ToString();
 
             ret = await ExecutionForSet(model, userid,
@@ -83,7 +88,7 @@ namespace FullDevToolKit.Sys.Domains
                       }
                       ,
                       async (model) =>
-                      {
+                      {                          
                           await _repositories.ExceptionLog.Create(model);
                       }
                       ,

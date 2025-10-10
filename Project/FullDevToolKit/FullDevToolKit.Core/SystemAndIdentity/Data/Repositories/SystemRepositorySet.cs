@@ -20,6 +20,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             this.GroupParameter = new GroupParameterRepository(context);
             this.Parameter = new ParameterRepository(context);
             this.ExceptionLog = new ExceptionLogRepository(context);
+            this.Configs = new ConfigsRepository(context);
         }
     
         
@@ -49,6 +50,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
 
         public IExceptionLogRepository ExceptionLog { get; set; }
 
+        public IConfigsRepository Configs { get; set; }
     }
 
 }

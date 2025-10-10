@@ -184,7 +184,7 @@ namespace FullDevToolKit.Sys.Manager
             await Domainset.User.UpdateUserLogin(stateinfo);
 
             SessionLogEntry session = new SessionLogEntry();
-            session.SessionLogID = 0;
+            session.SessionLogID = Helpers.Utilities.GenerateId(); 
             session.UserID = stateinfo.UserID;
             session.Date = DateTime.Now;
             session.IP = model.ClientIP;

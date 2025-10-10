@@ -51,7 +51,7 @@
                                                             @if (view.listObject.Count > 0)
                                                             {
                                                                      <SelectList TItem="ObjectPermissionList"
-                                                                            TValue="Int64"
+                                                                            TValue="long"
                                                                             Data="@view.listObject"
                                                                             TextField="@((item)=>item.ObjectName)"
                                                                             ValueField="@((item)=>item.ObjectPermissionID)"
@@ -271,7 +271,7 @@
                                                                     @if (view.listObject.Count > 0)
                                                                     {
                                                                         <SelectList TItem="ObjectPermissionList"
-                                                                            TValue="Int64"
+                                                                            TValue="long"
                                                                             Data="@view.listObject"
                                                                             TextField="@((item)=>item.ObjectName)"
                                                                             ValueField="@((item)=>item.ObjectPermissionID)"
@@ -322,7 +322,7 @@
                                                                                 @if (view.listRoles.Count > 0)
                                                                                 {
                                                                                     <SelectList TItem="RoleList" Disabled=@view.GetDisabledStatus("R",view.result.TypeGrant)
-                                                                                                TValue="long"
+                                                                                                TValue="long?"
                                                                                                 Data="@view.listRoles"
                                                                                                 TextField="@((item)=>item.RoleName)"
                                                                                                 ValueField="@((item)=>item.RoleID)"
@@ -347,7 +347,7 @@
                                                                             @if (view.listUsers.Count > 0)
                                                                             {
                                                                                 <SelectList TItem="UserList" Disabled=@view.GetDisabledStatus("U",view.result.TypeGrant)
-                                                                                            TValue="Int64"
+                                                                                            TValue="long?"
                                                                                             Data="@view.listUsers"
                                                                                             TextField="@((item)=>item.UserName)"
                                                                                             ValueField="@((item)=>item.UserID)"

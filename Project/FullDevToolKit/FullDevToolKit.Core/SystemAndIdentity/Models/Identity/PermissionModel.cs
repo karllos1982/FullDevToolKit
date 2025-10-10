@@ -79,6 +79,7 @@ namespace FullDevToolKit.Sys.Models.Identity
 
         public string ObjectCode { get; set; }
 
+        public string ObjectName { get; set; }
     }
   
 

@@ -76,5 +76,8 @@ namespace FullDevToolKit.Sys.Models.Common
 
         }
 
+
+        public string Email { get; set; }
+
     }
 }

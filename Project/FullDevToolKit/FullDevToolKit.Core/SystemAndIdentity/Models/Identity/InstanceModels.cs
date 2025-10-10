@@ -8,13 +8,13 @@ namespace FullDevToolKit.Sys.Models.Identity
     public class InstanceBaseModel: BaseModel
     {
 
-        [PrimaryValidationConfig("InstanceID", "LocalizationText ID", FieldType.NUMERIC, false, 0)]
+        [PrimaryValidationConfig("InstanceID", "Instance ID", FieldType.NUMERIC, false, 0)]
         public long InstanceID { get; set; }
 
-        [PrimaryValidationConfig("InstanceTypeName", "LocalizationText Type Name", FieldType.TEXT, false, 50)]
+        [PrimaryValidationConfig("InstanceTypeName", "Instance Type Name", FieldType.TEXT, false, 50)]
         public string InstanceTypeName { get; set; } = string.Empty;
 
-        [PrimaryValidationConfig("InstanceName", "LocalizationText Name", FieldType.TEXT, false, 100)]
+        [PrimaryValidationConfig("InstanceName", "Instance Name", FieldType.TEXT, false, 100)]
         public string InstanceName { get; set; } = string.Empty;
 
         public bool IsActive { get; set; }

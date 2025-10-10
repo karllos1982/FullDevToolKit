@@ -147,7 +147,13 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<LocalizationTextEntry> Set(LocalizationTextEntry model, object userid)
         {
             LocalizationTextEntry ret = null;
+            
+            if (model.LocalizationTextID == 0)
+            {
+                model.LocalizationTextID = Helpers.Utilities.GenerateId();
+            }
             this.PKValue = model.LocalizationTextID.ToString();
+
 
             ret = await ExecutionForSet(model, userid,
                       async (model) =>

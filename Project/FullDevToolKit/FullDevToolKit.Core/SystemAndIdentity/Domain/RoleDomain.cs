@@ -99,6 +99,11 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<RoleEntry> Set(RoleEntry model, object userid)
         {
             RoleEntry ret = null;
+            
+            if (model.RoleID == 0)
+            {
+                model.RoleID = Helpers.Utilities.GenerateId();
+            }
             this.PKValue = model.RoleID.ToString();
 
             ret = await ExecutionForSet(model, userid,
@@ -111,6 +116,7 @@ namespace FullDevToolKit.Sys.Domains
                       ,
                       async (model) =>
                       {
+                          model.CreateDate = DateTime.Now;  
                           await _repositories.Role.Create(model);
                       }
                       ,

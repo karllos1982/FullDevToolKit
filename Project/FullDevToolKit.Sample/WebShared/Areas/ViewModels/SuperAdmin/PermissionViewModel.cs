@@ -35,8 +35,7 @@ namespace MyApp.ViewModel
         public List<SelectBaseItem> listPermissionValue = new List<SelectBaseItem>();
         
         public string pTypeGrant = "";
-
-
+        
         public DefaultLocalization texts = null;
 
         public override async Task ClearSummaryValidation()

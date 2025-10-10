@@ -103,6 +103,11 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<InstanceEntry> Set(InstanceEntry model, object userid)
         {
             InstanceEntry ret = null;
+
+            if (model.InstanceID == 0 )
+            {
+                model.InstanceID = Helpers.Utilities.GenerateId();                
+            }
             this.PKValue = model.InstanceID.ToString();
 
             ret = await ExecutionForSet(model, userid,
@@ -115,6 +120,7 @@ namespace FullDevToolKit.Sys.Domains
                       ,
                       async (model) =>
                       {
+                          model.CreateDate = DateTime.Now; 
                           await _repositories.Instance.Create(model);
                       }
                       ,

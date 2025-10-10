@@ -100,6 +100,11 @@ namespace FullDevToolKit.Sys.Domains
         public async Task<ParameterEntry> Set(ParameterEntry model, object userid)
         {
             ParameterEntry ret = null;
+            
+            if (model.ParameterID == 0)
+            {
+                model.ParameterID = Helpers.Utilities.GenerateId();
+            }
             this.PKValue = model.ParameterID.ToString();
 
             ret = await ExecutionForSet(model, userid,

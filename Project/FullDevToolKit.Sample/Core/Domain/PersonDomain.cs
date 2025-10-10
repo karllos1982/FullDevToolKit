@@ -5,23 +5,29 @@ using MyApp.Models;
 using MyApp.Contracts.Repositories;
 using FullDevToolKit.Helpers;
 using MyApp.Data.Repositories;
+using FullDevToolKit.Sys.Models.Common;
+using System.Runtime.Intrinsics.X86;
+using FullDevToolKit.Sys.Models.Identity;
+using FullDevToolKit.Core.Common;
+
 
 namespace MyApp.Domain
 {
-    public class PersonDomain : IPersonDomain
+    public class PersonDomain 
+                   : BaseDomain<PersonParam, PersonEntry, PersonList, PersonResult>, IPersonDomain
     {
         
         public PersonDomain( IContext context)
         {            
             Context = context;
-            RepositorySet = new MyAppRepositorySet(context);    
+            RepositorySet = new MyAppRepositorySet(context);
+            this.TableName = RepositorySet.Person.TableName;
         }
-
-        public IContext Context { get; set; }
+        
 
         private IMyAppRepositorySet RepositorySet { get; set; }
 
-        public async Task<PersonResult> FillChields(PersonResult obj)
+        public override async Task<PersonResult> FillChields(PersonResult obj)
         {
             PersonContactParam param = new PersonContactParam();
 
@@ -30,7 +36,7 @@ namespace MyApp.Domain
             List<PersonContactResult> list
                 = await RepositorySet.PersonContact.Search(param);
 
-            obj.Contacts = list;
+            obj.Contacts = (list as List<PersonContactResult>);
 
             return obj;
         }
@@ -68,7 +74,7 @@ namespace MyApp.Domain
             return ret;
         }
 
-        public async Task EntryValidation(PersonEntry obj)
+        public async Task EntryValidation_(PersonEntry obj)
         {
             ExecutionStatus ret = null;
 
@@ -140,7 +146,7 @@ namespace MyApp.Domain
             return ret;
         }
 
-        public async Task InsertValidation(PersonEntry obj)
+        public override async Task InsertValidation(PersonEntry obj)
         {
             ExecutionStatus ret = new ExecutionStatus(true);
 
@@ -158,7 +164,7 @@ namespace MyApp.Domain
 
         }
 
-        public async Task UpdateValidation(PersonEntry obj)
+        public override async Task UpdateValidation(PersonEntry obj)
         {
             ExecutionStatus ret = new ExecutionStatus(true);
 
@@ -177,7 +183,7 @@ namespace MyApp.Domain
 
         }
 
-        public async Task DeleteValidation(PersonEntry obj)
+        public override async Task DeleteValidation(PersonEntry obj)
         {
             Context.Status = new ExecutionStatus(true);
         }
@@ -185,85 +191,112 @@ namespace MyApp.Domain
         public async Task<PersonEntry> Set(PersonEntry model, object userid)
         {
             PersonEntry ret = null;
-            OPERATIONLOGENUM operation = OPERATIONLOGENUM.INSERT;
 
-            await EntryValidation(model);
-
-            if (Context.Status.Success)
+            if (model.PersonID == 0)
             {
-
-                PersonResult old
-                    = await RepositorySet.Person.Read(new PersonParam() { pPersonID = model.PersonID });
-
-                if (old == null)
-                {
-                    await InsertValidation(model);
-
-                    if (Context.Status.Success)
-                    {
-                        model.CreateDate = DateTime.Now;
-                        if (model.PersonID == 0) { model.PersonID = FullDevToolKit.Helpers.Utilities.GenerateId(); }
-                        await RepositorySet.Person.Create(model);
-                    }
-                }
-                else
-                {
-                    model.CreateDate = old.CreateDate;
-                    operation = OPERATIONLOGENUM.UPDATE;
-
-                    await UpdateValidation(model);
-
-                    if (Context.Status.Success)
-                    {
-                        await RepositorySet.Person.Update(model);
-                    }
-
-                }
-
-                if (model.Contacts != null)
-                {
-                    foreach (PersonContactEntry u in model.Contacts )
-                    {
-                        if (u.RecordState != RECORDSTATEENUM.NONE)
-                        {
-                            u.PersonID = model.PersonID;
-
-                            if (u.RecordState == RECORDSTATEENUM.ADD)
-                            {
-                               await RepositorySet.PersonContact.Create(u);
-                            }
-
-                            if (u.RecordState == RECORDSTATEENUM.EDITED)
-                            {
-                                await RepositorySet.PersonContact.Update(u);
-                            }
-
-                            if (u.RecordState == RECORDSTATEENUM.DELETED)
-                            {
-                                await RepositorySet.PersonContact.Delete(u);
-                            }
-
-                        }
-                    }
-                }
-
-
-                if (Context.Status.Success && userid != null)
-                {
-                    await RepositorySet.Person.Context
-                        .RegisterDataLogAsync(userid.ToString(), operation, "Person",
-                        model.PersonID.ToString(), old, model);
-
-                    ret = model;
-                }
-
+                model.PersonID = Utilities.GenerateId();
             }
+            this.PKValue = model.PersonID.ToString();
+
+            ret = await ExecutionForSet(model, userid,
+                      async (model) =>
+                      {
+                          return
+                             await RepositorySet.Person.Read(new PersonParam()
+                             { pPersonID = model.PersonID });
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await RepositorySet.Person.Create(model);
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await RepositorySet.Person.Update(model);
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          return ContactsEntriesValidation(model.Contacts);
+                      }
+                      ,
+                      async (model) =>
+                      {
+
+                          if (model.Contacts != null)
+                          {
+                              foreach (PersonContactEntry u in model.Contacts)
+                              {
+                                  if (u.RecordState != RECORDSTATEENUM.NONE)
+                                  {
+                                      u.PersonID = model.PersonID;
+
+                                      if (u.RecordState == RECORDSTATEENUM.ADD)
+                                      {
+                                          await RepositorySet.PersonContact.Create(u);
+                                      }
+
+                                      if (u.RecordState == RECORDSTATEENUM.EDITED)
+                                      {
+                                          await RepositorySet.PersonContact.Update(u);
+                                      }
+
+                                      if (u.RecordState == RECORDSTATEENUM.DELETED)
+                                      {
+                                          await RepositorySet.PersonContact.Delete(u);
+                                      }
+
+                                  }
+                              }
+                          }
+                      }
+                  );
 
             return ret;
         }
 
-       
         public async Task<PersonEntry> Delete(PersonEntry model, object userid)
+        {
+            PersonEntry ret = null;
+            this.PKValue = model.PersonID.ToString();
+
+            ret = await ExecutionForDelete(model, userid,
+                      async (model) =>
+                      {
+                          return
+                            await RepositorySet.Person.Read(new PersonParam()
+                            { pPersonID = model.PersonID });
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          await RepositorySet.Person.Delete(model);
+                      }
+                      ,
+                      async (model) =>
+                      {
+                          if (model.Contacts != null)
+                          {
+                              PersonContactEntry aux = null; 
+
+                              foreach (PersonContactResult u in model.Contacts)
+                              {
+                                  aux = new PersonContactEntry();
+                                  BaseModel.ConvertTo(u, aux);
+                                  await RepositorySet.PersonContact.Delete(aux);
+
+                              }
+                          }
+                      }
+                  );
+
+            return ret;
+        }
+
+
+
+        public async Task<PersonEntry> Delete_(PersonEntry model, object userid)
         {
             PersonEntry ret = null;
 

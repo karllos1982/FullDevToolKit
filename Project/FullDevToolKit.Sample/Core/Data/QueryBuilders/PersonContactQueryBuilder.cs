@@ -15,6 +15,7 @@ namespace MyApp.Data.QueryBuilders
             ExcludeFields = new List<string>();
 
             Keys.Add("PersonContactID");
+            ExcludeFields = QueryBuilder.GetDefaultExcludesFields();
             ExcludeFields.Add("RecordState"); 
 
         }

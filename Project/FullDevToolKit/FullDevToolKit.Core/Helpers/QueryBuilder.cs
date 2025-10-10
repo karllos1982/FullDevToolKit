@@ -65,6 +65,16 @@ namespace FullDevToolKit.Helpers
             strq.Append("insert into " + tablename + "(");
             strq_v.Append("values (");
 
+            if (excludefields == null)
+            {
+                excludefields = new List<string>();
+            }
+
+            if (excludefields.Count == 0)
+            {
+                excludefields.Add("Seq");                
+            }
+
             foreach (PropertyInfo p in prop)
             {
                 pname = p.Name;
@@ -126,6 +136,17 @@ namespace FullDevToolKit.Helpers
 
             strq.Append("update " + tablename);
             strq.Append(" set ");
+
+            if (excludefields == null)
+            {
+                excludefields = new List<string>();                        
+            }
+
+            if (excludefields.Count == 0)
+            {
+                excludefields.Add("Seq");
+                excludefields.Add("TSCreate");
+            }
 
             foreach (PropertyInfo p in prop)
             {
@@ -215,6 +236,19 @@ namespace FullDevToolKit.Helpers
 
             return ret;
         }
+    
+    
+        public static List<string> GetDefaultExcludesFields()
+        {
+            List<string> ret = new List<string>();
+
+            ret.Add("Seq");
+            ret.Add("TSCreate");
+            ret.Add("TSLastUpdate");
+
+            return ret;
+        }
+    
     }
 
     public enum JOINTYPE

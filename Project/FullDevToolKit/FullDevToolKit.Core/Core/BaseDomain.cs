@@ -1,4 +1,5 @@
 ﻿using FullDevToolKit.Common;
+using FullDevToolKit.Core.Common;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
 using FullDevToolKit.Sys.Data.Repositories;
@@ -73,7 +74,10 @@ namespace FullDevToolKit.Core
                 {
                     await InsertValidation(model);
                     if (Context.Status.Success)
-                    {                        
+                    {
+                        (model as BaseModel).TSCreate = DateTime.Now;
+                        (model as BaseModel).TSLastUpdate = DateTime.Now;
+
                         await createmethod(model);
                     }
                 }
@@ -85,6 +89,7 @@ namespace FullDevToolKit.Core
 
                     if (Context.Status.Success)
                     {
+                        (model as BaseModel).TSLastUpdate = DateTime.Now;
                         await updatemethod(model);                        
                     }
 
@@ -98,7 +103,7 @@ namespace FullDevToolKit.Core
                 if (Context.Status.Success && userid != null)
                 {
                     await Context
-                         .RegisterDataLogAsync(userid.ToString(), operation, this.TableName,
+                         .RegisterDataLogAsync(userid.ToString(), operation, this.TableName.ToUpper(),
                           this.PKValue, old, model);
 
                     ret = model;
@@ -114,7 +119,7 @@ namespace FullDevToolKit.Core
         public async Task<TEntry> ExecutionForDelete(TEntry model, object userid,
              Func<TEntry, Task<TResult>> readmethod,
              Func<TEntry, Task> deletemethod=null,
-             Func<TResult, Task> childsetmethod = null)
+             Func<TResult, Task> childdeletemethod = null)
         {
             TEntry ret = default;
 
@@ -127,9 +132,9 @@ namespace FullDevToolKit.Core
                 if (Context.Status.Success)
                 {
 
-                    if (Context.Status.Success &&  childsetmethod != null)
+                    if (Context.Status.Success && childdeletemethod != null)
                     {
-                        await childsetmethod (old);
+                        await childdeletemethod(old);
                     }
 
                     if (Context.Status.Success)
@@ -141,7 +146,7 @@ namespace FullDevToolKit.Core
                     if (Context.Status.Success && userid != null)
                     {
                         await Context
-                                .RegisterDataLogAsync(userid.ToString(), OPERATIONLOGENUM.DELETE, this.TableName ,
+                                .RegisterDataLogAsync(userid.ToString(), OPERATIONLOGENUM.DELETE, this.TableName.ToUpper(),
                                     this.PKValue, old, model);
 
                         ret = model;
