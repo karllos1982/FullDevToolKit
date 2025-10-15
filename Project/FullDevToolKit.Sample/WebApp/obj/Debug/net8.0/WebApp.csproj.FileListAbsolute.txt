@@ -1,4 +1,3 @@
-C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\WebShared.staticwebassets.runtime.json
 C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\appsettings.Development.json
 C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\appsettings.json
 C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\WebApp.staticwebassets.runtime.json
@@ -28,10 +27,8 @@ C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug
 C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\FullDevToolKit.Core.dll
 C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\Models.dll
 C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\Proxy.dll
-C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\WebShared.dll
 C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\Models.pdb
 C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\Proxy.pdb
-C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\WebShared.pdb
 C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\FullDevToolKit.Core.pdb
 C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\obj\Debug\net8.0\WebApp.csproj.AssemblyReference.cache
 C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\obj\Debug\net8.0\WebApp.GeneratedMSBuildEditorConfig.editorconfig
@@ -116,3 +113,8 @@ H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\ob
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\obj\Debug\net8.0\WebApp.pdb
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\obj\Debug\net8.0\WebApp.genruntimeconfig.cache
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\obj\Debug\net8.0\ref\WebApp.dll
+C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\WebUIComponents.staticwebassets.runtime.json
+C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\WebBases.dll
+C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\WebUIComponents.dll
+C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\WebBases.pdb
+C:\Projetos\OUTROS\FullDevToolKit\Project\FullDevToolKit.Sample\WebApp\bin\Debug\net8.0\WebUIComponents.pdb

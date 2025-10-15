@@ -6,6 +6,7 @@ using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
 using FullDevToolKit.Sys.Data.Repositories;
 using FullDevToolKit.Sys.Models.Identity;
+using System.Net.Http.Headers;
 
 namespace FullDevToolKit.Sys.Domains
 {
@@ -32,16 +33,35 @@ namespace FullDevToolKit.Sys.Domains
         {
             ConfigsResult ret = null;
 
-            ret = await _repositories.Configs.Read(param);
+            ret = await _repositories.Configs.ReadObject(param);
 
             return ret;
         }
+
+        public async Task<ConfigsResult> GetConfigByName(string name)
+        {
+            ConfigsResult ret = null; 
+
+            List<ConfigsResult> list 
+                = await _repositories.Configs.ReadSearch(new ConfigsParam() { pConfigName=name});
+
+            if (list != null)
+            {
+                if (list.Count > 0)
+                {
+                    ret = list[0];
+                }
+            }
+                        
+            return ret;
+        }
+        
 
         public async Task<List<ConfigsList>> List(ConfigsParam param)
         {
             List<ConfigsList> ret = null;
 
-            ret = await _repositories.Configs.List(param);
+            ret = await _repositories.Configs.ReadList(param);
 
             return ret;
         }
@@ -50,7 +70,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<ConfigsResult> ret = null;
 
-            ret = await _repositories.Configs.Search(param);
+            ret = await _repositories.Configs.ReadSearch(param);
 
             return ret;
         }
@@ -111,7 +131,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.Configs.Read(new ConfigsParam()
+                             await _repositories.Configs.ReadObject(new ConfigsParam()
                              { pConfigID = model.ConfigID });
                       }
                       ,
@@ -130,7 +150,7 @@ namespace FullDevToolKit.Sys.Domains
         }
 
 
-        public async Task<ConfigsEntry> Delete(ConfigsEntry model, object userid)
+        public async Task<ConfigsEntry> Remove(ConfigsEntry model, object userid)
         {
             ConfigsEntry ret = null;
             this.PKValue = model.ConfigID.ToString();
@@ -139,7 +159,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.Configs.Read(new ConfigsParam()
+                             await _repositories.Configs.ReadObject(new ConfigsParam()
                              { pConfigID = model.ConfigID });
                       }
                       ,

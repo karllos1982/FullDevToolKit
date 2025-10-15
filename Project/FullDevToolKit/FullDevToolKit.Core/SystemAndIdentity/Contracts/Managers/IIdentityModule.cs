@@ -2,6 +2,8 @@
 using FullDevToolKit.Core;
 using FullDevToolKit.Sys.Contracts.Domains;
 using FullDevToolKit.Sys.Models.Identity;
+using FullDevToolKit.Sys.Models.Common; 
+
 
 namespace FullDevToolKit.Sys.Contracts.Managers
 {
@@ -35,7 +37,8 @@ namespace FullDevToolKit.Sys.Contracts.Managers
 
         Task ChangeUserProfileImage(ChangeUserImage model);
 
-        Task<bool> ChangeUserLanguage(ChangeUserLanguage model); 
+        Task<bool> ChangeUserLanguage(ChangeUserLanguage model);
 
+        Task<ConfigsResult> GetConfigByName(string name); 
     }
 }

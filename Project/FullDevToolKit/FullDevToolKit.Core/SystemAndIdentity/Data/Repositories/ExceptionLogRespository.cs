@@ -32,7 +32,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
 
         }
 
-        public async Task<ExceptionLogResult> Read(ExceptionLogParam param)
+        public async Task<ExceptionLogResult> ReadObject(ExceptionLogParam param)
         {
             ExceptionLogResult ret = null;
 
@@ -58,7 +58,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
 
         }
 
-        public async Task<List<ExceptionLogList>> List(ExceptionLogParam param)
+        public async Task<List<ExceptionLogList>> ReadList(ExceptionLogParam param)
         {
             List<ExceptionLogList> ret = null;
 
@@ -68,7 +68,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             return ret;
         }
 
-        public async Task<List<ExceptionLogResult>> Search(ExceptionLogParam param)
+        public async Task<List<ExceptionLogResult>> ReadSearch(ExceptionLogParam param)
         {
             List<ExceptionLogResult> ret = null;
 

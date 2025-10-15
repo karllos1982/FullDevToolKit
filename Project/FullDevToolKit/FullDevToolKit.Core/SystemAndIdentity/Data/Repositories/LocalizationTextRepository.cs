@@ -32,7 +32,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             await Context.ExecuteAsync(sql, model);
         }
 
-        public async Task<LocalizationTextResult> Read(LocalizationTextParam param)
+        public async Task<LocalizationTextResult> ReadObject(LocalizationTextParam param)
         {
             LocalizationTextResult ret = null;
 
@@ -59,7 +59,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
 
         }
 
-        public async Task<List<LocalizationTextList>> List(LocalizationTextParam param)
+        public async Task<List<LocalizationTextList>> ReadList(LocalizationTextParam param)
         {
             List<LocalizationTextList> ret = null;
 
@@ -69,7 +69,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             return ret;
         }
 
-        public async Task<List<LocalizationTextResult>> Search(LocalizationTextParam param)
+        public async Task<List<LocalizationTextResult>> ReadSearch(LocalizationTextParam param)
         {
             List<LocalizationTextResult> ret = null;
 

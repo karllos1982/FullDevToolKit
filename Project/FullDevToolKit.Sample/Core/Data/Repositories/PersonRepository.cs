@@ -33,7 +33,7 @@ namespace MyApp.Data.Repositories
             await Context.ExecuteAsync(sql, model);
         }
 
-        public async Task<PersonResult> Read(PersonParam param)
+        public async Task<PersonResult> ReadObject(PersonParam param)
         {
             PersonResult ret = null;
 
@@ -60,7 +60,7 @@ namespace MyApp.Data.Repositories
 
         }
 
-        public async Task<List<PersonList>> List(PersonParam param)
+        public async Task<List<PersonList>> ReadList(PersonParam param)
         {
             List<PersonList> ret = null;
 
@@ -70,7 +70,7 @@ namespace MyApp.Data.Repositories
             return ret;
         }
 
-        public async Task<List<PersonResult>> Search(PersonParam param)
+        public async Task<List<PersonResult>> ReadSearch(PersonParam param)
         {
             List<PersonResult> ret = null;
 

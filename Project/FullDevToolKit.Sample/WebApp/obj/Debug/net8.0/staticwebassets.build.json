@@ -1,15 +1,15 @@
 {
   "Version": 1,
-  "Hash": "zeb4g3rLXOionI+WhXbWx4ZK52xxvDlRAExv2X1I84c=",
+  "Hash": "FVUi7nWHgC72HPyAhiNfK8whM03oLWadmjN3HnbIzzU=",
   "Source": "WebApp",
   "BasePath": "_content/WebApp",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [
     {
-      "Identity": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebShared\\WebShared.csproj",
+      "Identity": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebUIComponents\\WebUIComponents.csproj",
       "Version": 2,
-      "Source": "WebShared",
+      "Source": "WebUIComponents",
       "GetPublishAssetsTargets": "ComputeReferencedStaticWebAssetsPublishManifest;GetCurrentProjectPublishStaticWebAssetItems",
       "AdditionalPublishProperties": "Configuration=Debug;Platform=AnyCPU",
       "AdditionalPublishPropertiesToRemove": "WebPublishProfileFile;TargetFramework;RuntimeIdentifier;SelfContained",

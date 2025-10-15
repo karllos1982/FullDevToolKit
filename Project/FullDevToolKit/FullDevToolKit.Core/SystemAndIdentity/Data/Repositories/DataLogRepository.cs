@@ -32,7 +32,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
 
         }
 
-        public async Task<DataLogResult> Read(DataLogParam param)
+        public async Task<DataLogResult> ReadObject(DataLogParam param)
         {
             DataLogResult ret = null;
             
@@ -59,7 +59,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             
         }
 
-        public async Task<List<DataLogList>> List(DataLogParam param)
+        public async Task<List<DataLogList>> ReadList(DataLogParam param)
         {
             List<DataLogList> ret = null;
 
@@ -69,7 +69,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             return ret;
         }
              
-        public async Task<List<DataLogResult>> Search(DataLogParam param)
+        public async Task<List<DataLogResult>> ReadSearch(DataLogParam param)
         {
             List<DataLogResult> ret = null;
 

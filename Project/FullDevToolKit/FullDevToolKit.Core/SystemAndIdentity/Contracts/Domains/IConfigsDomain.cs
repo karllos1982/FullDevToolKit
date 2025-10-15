@@ -7,7 +7,7 @@ namespace FullDevToolKit.Sys.Contracts.Domains
     public interface IConfigsDomain :
       IDomain<ConfigsParam, ConfigsEntry, ConfigsList, ConfigsResult>
     {
-
+        Task<ConfigsResult> GetConfigByName(string name); 
 
     }
 

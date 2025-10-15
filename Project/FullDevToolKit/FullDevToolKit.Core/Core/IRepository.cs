@@ -12,15 +12,15 @@ namespace FullDevToolKit.Core
 
         Task Create(TEntry model);
 
-        Task<TResult> Read(TParam model);
+        Task<TResult> ReadObject(TParam model);
 
         Task Update(TEntry model);
 
         Task Delete(TEntry model);
 
-        Task<List<TList>> List(TParam param);
+        Task<List<TList>> ReadList(TParam param);
 
-        Task<List<TResult>> Search(TParam param);
+        Task<List<TResult>> ReadSearch(TParam param);
 
     }
 

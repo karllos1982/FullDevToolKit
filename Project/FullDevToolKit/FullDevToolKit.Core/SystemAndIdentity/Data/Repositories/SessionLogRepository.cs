@@ -33,7 +33,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             
         }
 
-        public async Task<SessionLogResult> Read(SessionLogParam param)
+        public async Task<SessionLogResult> ReadObject(SessionLogParam param)
         {
             SessionLogResult ret = null;
             
@@ -61,7 +61,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
  
         }
 
-        public async Task<List<SessionLogList>> List(SessionLogParam param)
+        public async Task<List<SessionLogList>> ReadList(SessionLogParam param)
         {
             List<SessionLogList> ret = null;
 
@@ -71,7 +71,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             return ret;
         }
              
-        public async Task<List<SessionLogResult>> Search(SessionLogParam param)
+        public async Task<List<SessionLogResult>> ReadSearch(SessionLogParam param)
         {
             List<SessionLogResult> ret = null;
 

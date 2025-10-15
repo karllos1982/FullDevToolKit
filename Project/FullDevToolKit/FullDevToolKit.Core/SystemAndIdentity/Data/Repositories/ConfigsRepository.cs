@@ -32,7 +32,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             await Context.ExecuteAsync(sql, model);
         }
 
-        public async Task<ConfigsResult> Read(ConfigsParam param)
+        public async Task<ConfigsResult> ReadObject(ConfigsParam param)
         {
             ConfigsResult ret = null;
 
@@ -59,7 +59,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
 
         }
 
-        public async Task<List<ConfigsList>> List(ConfigsParam param)
+        public async Task<List<ConfigsList>> ReadList(ConfigsParam param)
         {
             List<ConfigsList> ret = null;
 
@@ -69,7 +69,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             return ret;
         }
 
-        public async Task<List<ConfigsResult>> Search(ConfigsParam param)
+        public async Task<List<ConfigsResult>> ReadSearch(ConfigsParam param)
         {
             List<ConfigsResult> ret = null;
 

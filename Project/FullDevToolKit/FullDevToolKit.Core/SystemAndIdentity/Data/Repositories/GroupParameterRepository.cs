@@ -32,7 +32,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             await Context.ExecuteAsync(sql, model);
         }
 
-        public async Task<GroupParameterResult> Read(GroupParameterParam param)
+        public async Task<GroupParameterResult> ReadObject(GroupParameterParam param)
         {
             GroupParameterResult ret = null;
 
@@ -59,7 +59,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
 
         }
 
-        public async Task<List<GroupParameterList>> List(GroupParameterParam param)
+        public async Task<List<GroupParameterList>> ReadList(GroupParameterParam param)
         {
             List<GroupParameterList> ret = null;
 
@@ -69,7 +69,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             return ret;
         }
 
-        public async Task<List<GroupParameterResult>> Search(GroupParameterParam param)
+        public async Task<List<GroupParameterResult>> ReadSearch(GroupParameterParam param)
         {
             List<GroupParameterResult> ret = null;
 

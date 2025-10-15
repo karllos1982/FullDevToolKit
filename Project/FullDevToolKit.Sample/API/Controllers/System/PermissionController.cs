@@ -85,15 +85,15 @@ namespace MyApp.Controllers
         }
 
         [HttpPost]
-        [Route("delete")]
+        [Route("remove")]
         [Authorize]
-        public async Task<object> Delete(PermissionEntry param)
+        public async Task<object> Remove(PermissionEntry param)
         {
             await ExecuteForDelete(param, async (param) =>
             {
                 PermissionEntry data
                     = await Manager.IdentityModule
-                        .Domainset.Permission.Delete(param, this.UserID);
+                        .Domainset.Permission.Remove(param, this.UserID);
                 ret = SetReturn(data);
             });
                      

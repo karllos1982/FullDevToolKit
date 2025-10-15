@@ -38,6 +38,8 @@ namespace MyApp.Proxys
 
         public ExceptionLogProxy ExceptionLog = null;
 
+        public ConfigsProxy Configs = null; 
+        
         public SystemProxy()
         {
 
@@ -56,6 +58,7 @@ namespace MyApp.Proxys
             GroupParameter = new GroupParameterProxy(); 
             Parameter = new ParameterProxy();
             ExceptionLog = new ExceptionLogProxy(); 
+            Configs = new ConfigsProxy();  
 
             User.InitializeAPI(http, baseurl + "/system/user/", token);
             User.IsAuthenticated = true;
@@ -89,6 +92,9 @@ namespace MyApp.Proxys
 
             ExceptionLog.InitializeAPI(http, baseurl + "/system/exceptionlog/", token);
             ExceptionLog.IsAuthenticated = true;
+
+            Configs.InitializeAPI(http, baseurl + "/system/configs/", token);
+            Configs.IsAuthenticated = true;
         }
      
 
@@ -565,11 +571,11 @@ namespace MyApp.Proxys
             return ret;
         }
 
-        public async Task<APIResponse<PermissionEntry>?> Delete(PermissionEntry data)
+        public async Task<APIResponse<PermissionEntry>?> Remove(PermissionEntry data)
         {
             APIResponse<PermissionEntry?> ret = null;
 
-            ret = await PostAsJSON<PermissionEntry?>("delete", JsonConvert.SerializeObject(data), null);
+            ret = await PostAsJSON<PermissionEntry?>("remove", JsonConvert.SerializeObject(data), null);
 
             return ret;
         }
@@ -768,6 +774,56 @@ namespace MyApp.Proxys
         
     }
 
+    public class ConfigsProxy : APIProxyBase
+    {
+
+        public ConfigsProxy()
+        {
+
+        }
+
+        public async Task<APIResponse<List<ConfigsResult>?>> Search(ConfigsParam param)
+        {
+            APIResponse<List<ConfigsResult>?> ret = null;
+
+            ret = await PostAsJSON<List<ConfigsResult>?>("search", JsonConvert.SerializeObject(param), null);
+
+
+            return ret;
+        }
+
+        public async Task<APIResponse<List<ConfigsList>?>> List(ConfigsParam param)
+        {
+            APIResponse<List<ConfigsList>?> ret = null;
+
+            ret = await PostAsJSON<List<ConfigsList>?>("list", JsonConvert.SerializeObject(param), null);
+
+            return ret;
+        }
+
+        public async Task<APIResponse<ConfigsResult>?> Get(string id)
+        {
+            APIResponse<ConfigsResult?> ret = null;
+
+            object[] param = new object[1];
+            param[0] = new DefaultGetParam(id);
+
+            ret = await GetAsJSON<ConfigsResult?>("get", param);
+
+            return ret;
+        }
+
+        public async Task<APIResponse<ConfigsEntry>?> Set(ConfigsEntry data)
+        {
+            APIResponse<ConfigsEntry?> ret = null;
+
+            ret = await PostAsJSON<ConfigsEntry?>("set", JsonConvert.SerializeObject(data), null);
+
+            return ret;
+        }
+      
+
+    }
 
 }
 

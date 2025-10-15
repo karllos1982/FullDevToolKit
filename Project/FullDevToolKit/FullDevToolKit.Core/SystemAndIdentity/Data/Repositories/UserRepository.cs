@@ -33,7 +33,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
          
         }
 
-        public async Task<UserResult> Read(UserParam param)
+        public async Task<UserResult> ReadObject(UserParam param)
         {
             UserResult ret = null;
             
@@ -60,7 +60,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
            
         }
 
-        public async Task<List<UserList>> List(UserParam param)
+        public async Task<List<UserList>> ReadList(UserParam param)
         {
             List<UserList> ret = null;
 
@@ -70,7 +70,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             return ret;
         }
              
-        public async Task<List<UserResult>> Search(UserParam param)
+        public async Task<List<UserResult>> ReadSearch(UserParam param)
         {
             List<UserResult> ret = null;
 

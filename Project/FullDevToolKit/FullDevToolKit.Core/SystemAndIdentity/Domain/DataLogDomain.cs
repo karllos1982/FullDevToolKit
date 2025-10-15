@@ -30,7 +30,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             DataLogResult ret = null;
 
-            ret = await _repositories.DataLog.Read(param); 
+            ret = await _repositories.DataLog.ReadObject(param); 
             
             return ret;
         }
@@ -39,7 +39,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<DataLogList> ret = null;
 
-            ret = await _repositories.DataLog.List(param);           
+            ret = await _repositories.DataLog.ReadList(param);           
 
             return ret;
         }
@@ -48,7 +48,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<DataLogResult> ret = null;
 
-            ret = await _repositories.DataLog.Search(param);
+            ret = await _repositories.DataLog.ReadSearch(param);
 
             return ret;
         }
@@ -85,7 +85,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                          return 
-                            await _repositories.DataLog.Read(new DataLogParam() { pDataLogID = model.DataLogID });
+                            await _repositories.DataLog.ReadObject(new DataLogParam() { pDataLogID = model.DataLogID });
                       }
                       ,
                       async (model) =>
@@ -103,7 +103,7 @@ namespace FullDevToolKit.Sys.Domains
         }
 
       
-        public async Task<DataLogEntry> Delete(DataLogEntry model, object userid)
+        public async Task<DataLogEntry> Remove(DataLogEntry model, object userid)
         {
             DataLogEntry ret = null;
             this.PKValue = model.DataLogID.ToString();
@@ -112,7 +112,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.DataLog.Read(new DataLogParam() { pDataLogID = model.DataLogID });
+                             await _repositories.DataLog.ReadObject(new DataLogParam() { pDataLogID = model.DataLogID });
                       }
                       ,
                       async (model) =>

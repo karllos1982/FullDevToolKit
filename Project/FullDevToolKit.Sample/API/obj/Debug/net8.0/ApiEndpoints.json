@@ -468,6 +468,114 @@
   {
     "ContainingType": "MyApp.API.APIControllerBase",
     "Method": "Init",
+    "RelativePath": "system/Configs",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/Configs",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.Controllers.ConfigsController",
+    "Method": "Get",
+    "RelativePath": "system/Configs/get",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.Controllers.ConfigsController",
+    "Method": "List",
+    "RelativePath": "system/Configs/list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Sys.Models.Common.ConfigsParam",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.Controllers.ConfigsController",
+    "Method": "Search",
+    "RelativePath": "system/Configs/search",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Sys.Models.Common.ConfigsParam",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.Controllers.ConfigsController",
+    "Method": "Set",
+    "RelativePath": "system/Configs/set",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Sys.Models.Common.ConfigsEntry",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
     "RelativePath": "system/DataLog",
     "HttpMethod": "",
     "IsController": true,
@@ -1261,22 +1369,6 @@
   },
   {
     "ContainingType": "MyApp.Controllers.PermissionController",
-    "Method": "Delete",
-    "RelativePath": "system/Permission/delete",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "param",
-        "Type": "FullDevToolKit.Sys.Models.Identity.PermissionEntry",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MyApp.Controllers.PermissionController",
     "Method": "Get",
     "RelativePath": "system/Permission/get",
     "HttpMethod": "GET",
@@ -1302,6 +1394,22 @@
       {
         "Name": "param",
         "Type": "FullDevToolKit.Sys.Models.Identity.PermissionParam",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.Controllers.PermissionController",
+    "Method": "Remove",
+    "RelativePath": "system/Permission/remove",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Sys.Models.Identity.PermissionEntry",
         "IsRequired": true
       }
     ],

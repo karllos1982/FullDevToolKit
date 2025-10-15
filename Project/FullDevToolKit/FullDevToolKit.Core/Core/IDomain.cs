@@ -14,7 +14,7 @@ namespace FullDevToolKit.Core
 
         Task<TEntry> Set(TEntry model, object userid);
 
-        Task<TEntry> Delete(TEntry model, object userid);
+        Task<TEntry> Remove(TEntry model, object userid);
 
     }
 

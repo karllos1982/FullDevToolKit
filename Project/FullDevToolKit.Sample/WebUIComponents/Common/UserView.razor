@@ -1,0 +1,448 @@
+﻿
+<div class="app-navbar-item ms-1 ms-md-3" id="ProfileControl">
+
+    @if (Islogged)
+    {
+
+        <div class="cursor-pointer symbol symbol-30px symbol-md-40px" data-kt-menu-trigger="{default: 'click', lg: 'hover'}" data-kt-menu-attach="parent" data-kt-menu-placement="bottom-end">
+            <img id="img1" src="@User.ProfileImageURL"  alt="user" @onclick="OpenProfile" />
+        </div>
+
+
+        <div @onclick="Logout" class="btn btn-icon btn-custom btn-icon-muted btn-active-light btn-active-color-danger w-30px h-30px w-md-40px h-md-40px position-relative">
+            <i class="ki-duotone ki-exit-right fs-2 fs-lg-1">
+				<span class="path1"></span>
+				<span class="path2"></span>
+				<span class="path3"></span>
+			</i>		
+		</div>
+		
+               
+    }
+
+</div>
+
+  
+    
+<MessageBox @ref="msgbox" ></MessageBox>
+<MessageBox @ref="pwdbox" OnClickOk="OnMsgBoxOk"></MessageBox>
+<MessageBox @ref="imgbox" OnClickOk="OnMsgBoxOk2"></MessageBox>
+
+<Modal @ref="modalRef"  >
+    <ModalContent Centered Size="ModalSize.Large" >
+      
+        <ModalBody>
+          @if(Islogged && _localization != null) 
+          {
+            <div class="row" style="min-height:540px">
+                                                
+                  <div class="card" style="height:20px">
+					    <!--begin::Card head-->
+					    <div class="card-header card-header-stretch">
+						    <!--begin::Title-->
+						    <div class="card-title d-flex align-items-center">
+										
+							    <h3 class="fw-bold m-0 text-gray-800">
+                                    @_localization.Get("MyProfile-Label")
+                                 </h3>
+						    </div>
+						    <!--end::Title-->
+						    <!--begin::Toolbar-->
+						    <div class="card-toolbar m-0">
+							    <!--begin::Tab nav-->
+							    <ul class="nav nav-tabs nav-line-tabs nav-stretch fs-6 border-0 fw-bold" role="tablist">
+								    <li class="nav-item" role="presentation">
+                                        <a id="kt_link_tab1" class="nav-link justify-content-center text-active-gray-800 active" data-bs-toggle="tab" role="tab" href="#kt_tab1">
+                                            @_localization.Get("MainProfileData-Label")
+                                        </a>
+								    </li>
+								    <li class="nav-item" role="presentation">
+                                        <a id="kt_link_tab2" class="nav-link justify-content-center text-active-gray-800" data-bs-toggle="tab" role="tab" href="#kt_tab2">
+                                            @_localization.Get("AlterPassword-Label")</a>
+								    </li>								   
+							    </ul>
+							    <!--end::Tab nav-->
+						    </div>
+						    <!--end::Toolbar-->
+					    </div>
+
+                 </div>
+
+                 <div class="">
+						<!--begin::Tab Content-->
+						<div class="tab-content">
+							<!--begin::Tab panel-->
+							<div id="kt_tab1" class="card-body p-0 tab-pane fade show active" role="tabpanel" aria-labelledby="kt_link_tab1">
+                                <div Class="card mb-5 mb-xl-10">
+                                    <div Class="card-body pt-9 pb-0">
+                                        <div class="d-flex flex-wrap flex-sm-nowrap mb-3">
+										<!--begin: Pic-->
+										<div class="me-7 mb-4">
+											<div class="symbol symbol-100px symbol-lg-160px symbol-fixed position-relative">
+                                                    <img src="@User.ProfileImageURL" alt="Carregando imagem...">
+												<div class="position-absolute translate-middle bottom-0 start-100 mb-6 bg-success rounded-circle border border-4 border-body h-20px w-20px"></div>
+											</div>
+										</div>
+										<!--end::Pic-->
+										<!--begin::Info-->
+										<div class="flex-grow-1">
+											<!--begin::Title-->
+											<div class="d-flex justify-content-between align-items-start flex-wrap mb-2">
+												<!--begin::User-->
+												<div class="d-flex flex-column">
+													<!--begin::Name-->
+													<div class="d-flex align-items-center mb-2">
+														 <a class="text-gray-900 text-hover-primary fs-2 fw-bold me-1" title="User Name"> 
+                                                             @_localization.Get("UserName-Label"): @User.UserName
+                                                          </a>													
+													</div>
+
+                                                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+														 <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" title="Role Name">
+                                                              @_localization.Get("Role-Label"): @User.RoleName
+                                                          </a>
+                                                    </div>
+
+                                                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                                                            <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" title="E-mail">
+                                                                @_localization.Get("Email-Label"):   @User.Email
+                                                            </a>
+                                                    </div>
+
+                                                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                                                            <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" title="Instance Name"> 
+                                                            @_localization.Get("Instance-Label") :  @User.InstanceName 
+                                                            </a>
+                                                    </div>
+
+                                                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+
+                                                            <a class="d-flex align-items-center text-gray-400 text-hover-primary me-5 mb-2" title="Instance Name">
+                                                                @_localization.Get("Language-Label") : 
+                                                            </a>
+
+                                                        </div>
+
+
+                                                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                                                            <div class="form-group">
+                                                              
+                                                                <strong class="form-label">@_localization.Get("ChangeUserLanguage-Title"):</strong>
+                                                               
+                                                                <br />
+                                                                @if (_languages != null)
+                                                                {
+                                                                    @if (_languages.Count > 0)
+                                                                    {
+                                                                        <SelectList TItem="LocalizationTextList"
+                                                                                    TValue="string"
+                                                                                    Data="@_languages"
+                                                                                    TextField="@((item)=>item.Language)"
+                                                                                    ValueField="@((item)=>item.Language)"
+                                                                                    SelectedValueChanged="@ChangeLanguage"
+                                                                                    ></SelectList>
+                                                                    }
+
+                                                                }
+
+                                                            </div>
+                                                           
+                                                    </div>
+
+                                                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                                                            <span>@_localization.Get("AlterProfileImage-Label"):</span>
+
+                                                    </div>
+                                                    
+                                                    <div class="d-flex flex-wrap fw-semibold fs-6 mb-4 pe-2">
+                                                        <FileEdit  Changed="@OnChanged" Filter=".jpg, .png, .gif"  />
+                                                    </div>
+                                                   
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+
+                                </div>
+                                     </div>
+                                 </div>
+                             </div>
+
+                             <div id="kt_tab2" class="card-body p-0 tab-pane fade" role="tabpanel" aria-labelledby="kt_link_tab2">
+                                 <div style="padding-left: 25px;padding-top: 20px;" >
+                                                                     
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <h5>1. @_localization.Get("AlterPasswordStep1-Label")  </h5>
+
+                                                    <TaskButton @ref="sendcodebtn" OnClick="SendCode" 
+                                                            Title=@_localization.Get("SendCodeButton-Label")
+                                                             ActionLabel=@_localization.Get("SendText-Description")>
+                                                     </TaskButton>       
+
+                                                </div>
+                                                    
+                                           </div>
+
+                                            <div class="row" style="margin-top:20px">
+                                                <div class="col-md-12">
+                                                    <h5> 2.  @_localization.Get("AlterPasswordStep2-Label") :</h5>
+                                                 </div>
+                                            </div>
+
+                                            <div class="row" style="margin-top:20px">
+                                                <div class="col-md-12"> 
+                                                    <input type="email" @bind-value=@changeObj.Code class="form-control"
+                                                         placeholder=@_localization.Get("InputCode-Description")>
+                                                 </div>
+                                            </div>
+
+                                            <div class="row" style="margin-top:20px">
+                                                <div class="col-md-12"> 
+                                                   <input type="password" @bind-value=@changeObj.NewPassword 
+                                                            class="form-control" maxlength="10"
+                                                             placeholder=@_localization.Get("InputNewPassword-Label")>
+                                        
+                                                </div>
+                                            </div>
+                                        
+                                            <div class="row" style="margin-top:20px">
+                                                <div class="col-md-12"> 
+                                                                    
+                                                     <TaskButton @ref="alterarsenhabtn" OnClick="ChangePassword"
+                                                             Title=@_localization.Get("AlterPasswordButton-Label")                                                            
+                                                             ActionLabel=@_localization.Get("AlterPasswordButton-Loading")>
+                                                      </TaskButton>    
+
+                                                </div>
+                                                 
+
+                                            </div> 
+                                    
+                                 </div>
+                             </div>
+
+
+                        </div>
+                 </div>
+
+            </div>
+          }
+
+        </ModalBody>   
+        
+        <ModalFooter>
+            <CloseButton></CloseButton>
+        </ModalFooter>
+
+    </ModalContent>
+</Modal>
+
+@code {
+
+    private Modal modalRef;
+
+    private MessageBox msgbox;
+    private MessageBox pwdbox;
+    private MessageBox imgbox;
+
+    private TaskButton alterarsenhabtn;
+    private TaskButton sendcodebtn;
+    private TaskButton logoutbtn;
+
+    private string editLanguage; 
+
+    //private UserAuthenticated LoggedUser;
+
+    private ChangeUserPassword changeObj = new ChangeUserPassword();
+
+    private DefaultLocalization _localization = null; 
+
+    [Parameter]
+    public DefaultLocalization Localization { 
+        set
+        {
+            if (value != null)
+            {
+                _localization=value; 
+            }
+        }
+
+        get
+        {
+            return _localization;
+        }
+    }
+
+    private List<LocalizationTextList> _languages = null;
+
+    [Parameter]
+    public List<LocalizationTextList> LanguageList
+    {
+        set
+        {
+            if (value != null)
+            {
+                _languages = value;
+            }
+        }
+
+        get
+        {
+            return _languages;
+        }
+    }
+
+    [Parameter]
+    public bool Islogged { get; set; }
+
+    [Parameter]
+    public UserAuthenticated User { get; set; }
+
+    [Parameter]
+    public AuthProxy Service { get; set; }
+
+
+    [Parameter]
+    public EventCallback OnLogout { get; set; }
+
+    public async Task Logout()
+    {
+        // logoutbtn.Begin();
+
+        await OnLogout.InvokeAsync(null);
+
+        // logoutbtn.End(); 
+    }
+
+    private async Task OpenProfile()
+    {
+        await modalRef.Show();      
+
+    }
+
+    private async void ChangeLanguage(string value)
+    {
+        ChangeUserLanguage model = new ChangeUserLanguage();
+        model.UserID = long.Parse(User.UserID);
+        model.NewLanguage = value;
+
+        APIResponse<bool> response
+            = await Service.ChangeUserLanguage (model);
+
+
+        if (response.IsSuccess)
+        {
+            await pwdbox.ShowDialog(_localization.Get("NoticeLabel"),
+                _localization.Get("ChangeUserLanguage-Message"));
+        }
+        else
+        {
+            await msgbox.ShowDialog(_localization.Get("NoticeLabel"),
+               response.Exceptions.Messages[0].Description);
+        }
+      
+    }
+       
+
+    public async Task SendCode()
+    {
+
+        sendcodebtn.Begin();
+
+        
+        APIResponse<bool> response
+            = await Service.RequestChangePasswordCode(User.Email);
+
+        if (response.IsSuccess)
+        {
+            await msgbox.ShowDialog(_localization.Get("ActivateCode-Title"),
+                _localization.Get("ActivateCode-Message"));
+        }
+        else
+        {            
+            await msgbox.ShowDialog(_localization.Get("NoticeLabel"), 
+                response.Exceptions.Messages[0].Description);
+        }
+        sendcodebtn.End();    
+
+    }
+
+    public async Task ChangePassword()
+    {
+
+        alterarsenhabtn.Begin();
+
+        changeObj.Email = User.Email;
+        APIResponse<bool> response
+            = await Service.ChangePassword(changeObj);
+                   
+
+        if (response.IsSuccess)
+        {
+            await pwdbox.ShowDialog(_localization.Get("PasswordChanged-Title"),
+                _localization.Get("PasswordChanged-Message"));
+        }
+        else
+        {
+            await msgbox.ShowDialog(_localization.Get("NoticeLabel"),
+               response.Exceptions.Messages[0].Description);
+        }
+        alterarsenhabtn.End();  
+
+    }
+
+    private async Task OnMsgBoxOk()
+    {
+
+        await OnLogout.InvokeAsync(null);
+
+    }
+
+    private async Task OnChanged( FileChangedEventArgs e )
+    {
+        IFileEntry f = e.Files[0];
+        ChangeUserImage ret = null;
+        byte[] content = null;
+
+        foreach ( var file in e.Files )
+        {         
+
+            using ( var stream = new MemoryStream() )
+            {                
+                await file.WriteToStreamAsync( stream );
+
+                stream.Seek( 0, SeekOrigin.Begin );
+                content = stream.ToArray();
+
+            }
+        }     
+        
+        APIResponse<bool> response
+          = await Service.ChangeUserImage(content);        
+
+        if (response.IsSuccess)
+        {
+
+            await pwdbox.ShowDialog(_localization.Get("ImageChanged-Title"), 
+                _localization.Get("ImageChanged-Message"));
+
+        }
+        else
+        {
+            await msgbox.ShowDialog(_localization.Get("NoticeLabel"),
+              response.Exceptions.Messages[0].Description);
+        }
+
+    }
+
+    private  async Task OnMsgBoxOk2()
+    {
+        await modalRef.Hide();
+
+    }
+
+
+
+
+}

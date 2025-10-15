@@ -32,7 +32,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             
         }
 
-        public async Task<PermissionResult> Read(PermissionParam param)
+        public async Task<PermissionResult> ReadObject(PermissionParam param)
         {
             PermissionResult ret = null;
             
@@ -60,7 +60,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
 
           }
 
-        public async Task<List<PermissionList>> List(PermissionParam param)
+        public async Task<List<PermissionList>> ReadList(PermissionParam param)
         {
             List<PermissionList> ret = null;
 
@@ -71,7 +71,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             return ret;
         }
              
-        public  async Task<List<PermissionResult>> Search(PermissionParam param)
+        public  async Task<List<PermissionResult>> ReadSearch(PermissionParam param)
         {
             List<PermissionResult> ret = null;
 

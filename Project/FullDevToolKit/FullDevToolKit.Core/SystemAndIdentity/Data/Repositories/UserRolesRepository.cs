@@ -35,7 +35,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
 
         }
 
-        public async Task<UserRolesResult> Read(UserRolesParam param)
+        public async Task<UserRolesResult> ReadObject(UserRolesParam param)
         {
             UserRolesResult ret = null;
 
@@ -63,7 +63,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
 
         }
 
-        public async Task<List<UserRolesList>> List(UserRolesParam param)
+        public async Task<List<UserRolesList>> ReadList(UserRolesParam param)
         {
             List<UserRolesList> ret = null;
 
@@ -73,7 +73,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             return ret;
         }
 
-        public async Task<List<UserRolesResult>> Search(UserRolesParam param)
+        public async Task<List<UserRolesResult>> ReadSearch(UserRolesParam param)
         {
             List<UserRolesResult> ret = null;
 

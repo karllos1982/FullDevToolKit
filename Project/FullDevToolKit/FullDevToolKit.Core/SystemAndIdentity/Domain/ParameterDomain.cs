@@ -32,7 +32,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             ParameterResult ret = null;
 
-            ret = await _repositories.Parameter.Read(param);
+            ret = await _repositories.Parameter.ReadObject(param);
 
             return ret;
         }
@@ -41,7 +41,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<ParameterList> ret = null;
 
-            ret = await _repositories.Parameter.List(param);
+            ret = await _repositories.Parameter.ReadList(param);
 
             return ret;
         }
@@ -50,7 +50,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<ParameterResult> ret = null;
 
-            ret = await _repositories.Parameter.Search(param);
+            ret = await _repositories.Parameter.ReadSearch(param);
 
             return ret;
         }
@@ -111,7 +111,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.Parameter.Read(new ParameterParam()
+                             await _repositories.Parameter.ReadObject(new ParameterParam()
                              { pParameterID = model.ParameterID });
                       }
                       ,
@@ -130,7 +130,7 @@ namespace FullDevToolKit.Sys.Domains
         }
 
 
-        public async Task<ParameterEntry> Delete(ParameterEntry model, object userid)
+        public async Task<ParameterEntry> Remove(ParameterEntry model, object userid)
         {
             ParameterEntry ret = null;
             this.PKValue = model.ParameterID.ToString();
@@ -139,7 +139,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.Parameter.Read(new ParameterParam()
+                             await _repositories.Parameter.ReadObject(new ParameterParam()
                              { pParameterID = model.ParameterID });
                       }
                       ,

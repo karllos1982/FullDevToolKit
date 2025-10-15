@@ -33,7 +33,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             ObjectPermissionResult ret = null;
 
-            ret = await _repositories.ObjectPermission.Read(param); 
+            ret = await _repositories.ObjectPermission.ReadObject(param); 
             
             return ret;
         }
@@ -42,7 +42,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<ObjectPermissionList> ret = null;
 
-            ret = await _repositories.ObjectPermission.List(param);           
+            ret = await _repositories.ObjectPermission.ReadList(param);           
 
             return ret;
         }
@@ -51,7 +51,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<ObjectPermissionResult> ret = null;
 
-            ret = await _repositories.ObjectPermission.Search(param);
+            ret = await _repositories.ObjectPermission.ReadSearch(param);
 
             return ret;
         }
@@ -113,7 +113,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.ObjectPermission.Read(new ObjectPermissionParam()
+                             await _repositories.ObjectPermission.ReadObject(new ObjectPermissionParam()
                              { pObjectPermissionID = model.ObjectPermissionID });
                       }
                       ,
@@ -132,7 +132,7 @@ namespace FullDevToolKit.Sys.Domains
         }
 
 
-        public async Task<ObjectPermissionEntry> Delete(ObjectPermissionEntry model, object userid)
+        public async Task<ObjectPermissionEntry> Remove(ObjectPermissionEntry model, object userid)
         {
             ObjectPermissionEntry ret = null;
             this.PKValue = model.ObjectPermissionID.ToString();
@@ -141,7 +141,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.ObjectPermission.Read(new ObjectPermissionParam()
+                             await _repositories.ObjectPermission.ReadObject(new ObjectPermissionParam()
                              { pObjectPermissionID = model.ObjectPermissionID });
                       }
                       ,

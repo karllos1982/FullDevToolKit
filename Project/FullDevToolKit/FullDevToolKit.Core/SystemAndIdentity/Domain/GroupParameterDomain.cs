@@ -30,7 +30,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             GroupParameterResult ret = null;
 
-            ret = await _repositories.GroupParameter.Read(param);
+            ret = await _repositories.GroupParameter.ReadObject(param);
 
             return ret;
         }
@@ -39,7 +39,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<GroupParameterList> ret = null;
 
-            ret = await _repositories.GroupParameter.List(param);
+            ret = await _repositories.GroupParameter.ReadList(param);
 
             return ret;
         }
@@ -48,7 +48,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<GroupParameterResult> ret = null;
 
-            ret = await _repositories.GroupParameter.Search(param);
+            ret = await _repositories.GroupParameter.ReadSearch(param);
 
             return ret;
         }
@@ -107,7 +107,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.GroupParameter.Read(new GroupParameterParam()
+                             await _repositories.GroupParameter.ReadObject(new GroupParameterParam()
                              { pGroupParameterID = model.GroupParameterID });
                       }
                       ,
@@ -126,7 +126,7 @@ namespace FullDevToolKit.Sys.Domains
         }
 
 
-        public async Task<GroupParameterEntry> Delete(GroupParameterEntry model, object userid)
+        public async Task<GroupParameterEntry> Remove(GroupParameterEntry model, object userid)
         {
             GroupParameterEntry ret = null;
             this.PKValue = model.GroupParameterID.ToString();
@@ -135,7 +135,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.GroupParameter.Read(new GroupParameterParam()
+                             await _repositories.GroupParameter.ReadObject(new GroupParameterParam()
                              { pGroupParameterID = model.GroupParameterID });
                       }
                       ,

@@ -34,7 +34,7 @@ namespace MyApp.Domain
             param.pPersonID = obj.PersonID;
 
             List<PersonContactResult> list
-                = await RepositorySet.PersonContact.Search(param);
+                = await RepositorySet.PersonContact.ReadSearch(param);
 
             obj.Contacts = (list as List<PersonContactResult>);
 
@@ -45,7 +45,7 @@ namespace MyApp.Domain
         {
             PersonResult ret = null;
 
-            ret = await RepositorySet.Person.Read(param);
+            ret = await RepositorySet.Person.ReadObject(param);
 
             if (ret != null) {
 
@@ -60,7 +60,7 @@ namespace MyApp.Domain
         {
             List<PersonList> ret = null;
 
-            ret = await RepositorySet.Person.List(param);
+            ret = await RepositorySet.Person.ReadList(param);
 
             return ret;
         }
@@ -69,7 +69,7 @@ namespace MyApp.Domain
         {
             List<PersonResult> ret = null;
 
-            ret = await RepositorySet.Person.Search(param);
+            ret = await RepositorySet.Person.ReadSearch(param);
 
             return ret;
         }
@@ -202,7 +202,7 @@ namespace MyApp.Domain
                       async (model) =>
                       {
                           return
-                             await RepositorySet.Person.Read(new PersonParam()
+                             await RepositorySet.Person.ReadObject(new PersonParam()
                              { pPersonID = model.PersonID });
                       }
                       ,
@@ -256,7 +256,7 @@ namespace MyApp.Domain
             return ret;
         }
 
-        public async Task<PersonEntry> Delete(PersonEntry model, object userid)
+        public async Task<PersonEntry> Remove(PersonEntry model, object userid)
         {
             PersonEntry ret = null;
             this.PKValue = model.PersonID.ToString();
@@ -265,7 +265,7 @@ namespace MyApp.Domain
                       async (model) =>
                       {
                           return
-                            await RepositorySet.Person.Read(new PersonParam()
+                            await RepositorySet.Person.ReadObject(new PersonParam()
                             { pPersonID = model.PersonID });
                       }
                       ,
@@ -294,53 +294,6 @@ namespace MyApp.Domain
             return ret;
         }
 
-
-
-        public async Task<PersonEntry> Delete_(PersonEntry model, object userid)
-        {
-            PersonEntry ret = null;
-
-            PersonResult old
-                = await RepositorySet.Person.Read(new PersonParam() { pPersonID = model.PersonID });
-
-            if (old != null)
-            {
-                await DeleteValidation(model);
-
-                if (Context.Status.Success)
-                {
-
-                    if (model.Contacts != null)
-                    {
-                        foreach (PersonContactEntry u in model.Contacts)
-                        {
-
-                            await RepositorySet.PersonContact.Delete(u);
-
-                        }
-                    }
-
-                    await RepositorySet.Person.Delete(model);
-
-                    if (Context.Status.Success && userid != null)
-                    {
-                        await Context
-                            .RegisterDataLogAsync(userid.ToString(),  OPERATIONLOGENUM.DELETE, "Person",
-                            model.PersonID.ToString(), old, model);
-
-                        ret = model;
-                    }
-
-                }
-            }
-            else
-            {
-                Context.Status.SetFailStatus("Error", LocalizationText.Get("Record-NotFound", Context.LocalizationLanguage).Text);
-                
-            }
-
-            return ret;
-        }
 
         public PersonContactEntry ContactEntryValidation(PersonContactEntry entry)
         {

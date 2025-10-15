@@ -15,7 +15,8 @@
           "Blazorise.Icons.FontAwesome": "1.7.2",
           "Models": "1.0.0",
           "Proxy": "1.0.0",
-          "WebShared": "1.0.0",
+          "WebBases": "1.0.0",
+          "WebUIComponents": "1.0.0",
           "FullDevToolKit.Core": "1.0.0.0"
         },
         "runtime": {
@@ -168,6 +169,7 @@
           }
         }
       },
+      "Microsoft.AspNetCore.Components.WebAssembly.DevServer/8.0.11": {},
       "Microsoft.AspNetCore.Metadata/8.0.11": {
         "runtime": {
           "lib/net8.0/Microsoft.AspNetCore.Metadata.dll": {
@@ -256,18 +258,32 @@
           }
         }
       },
-      "WebShared/1.0.0": {
+      "WebBases/1.0.0": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Components.Web": "8.0.11",
+          "Models": "1.0.0",
+          "Proxy": "1.0.0"
+        },
+        "runtime": {
+          "WebBases.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
+      "WebUIComponents/1.0.0": {
         "dependencies": {
           "Blazorise": "1.7.2",
           "Blazorise.Components": "1.7.2",
           "Blazorise.DataGrid": "1.7.2",
           "Blazorise.Icons.FontAwesome": "1.7.2",
-          "Microsoft.AspNetCore.Components": "8.0.11",
+          "Microsoft.AspNetCore.Components.WebAssembly.DevServer": "8.0.11",
           "Models": "1.0.0",
-          "Proxy": "1.0.0"
+          "Proxy": "1.0.0",
+          "WebBases": "1.0.0"
         },
         "runtime": {
-          "WebShared.dll": {
+          "WebUIComponents.dll": {
             "assemblyVersion": "1.0.0",
             "fileVersion": "1.0.0.0"
           }
@@ -373,6 +389,13 @@
       "path": "microsoft.aspnetcore.components.web/8.0.11",
       "hashPath": "microsoft.aspnetcore.components.web.8.0.11.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Components.WebAssembly.DevServer/8.0.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Yl6dGx9jd5ZkjRl6iJhguazv16qZio5KpVynL3YVfrFz3UM5g3ZvkaZkZ6bF9/z7hADf6qoX4CRRnSPwbFb20A==",
+      "path": "microsoft.aspnetcore.components.webassembly.devserver/8.0.11",
+      "hashPath": "microsoft.aspnetcore.components.webassembly.devserver.8.0.11.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.Metadata/8.0.11": {
       "type": "package",
       "serviceable": true,
@@ -446,7 +469,12 @@
       "serviceable": false,
       "sha512": ""
     },
-    "WebShared/1.0.0": {
+    "WebBases/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WebUIComponents/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

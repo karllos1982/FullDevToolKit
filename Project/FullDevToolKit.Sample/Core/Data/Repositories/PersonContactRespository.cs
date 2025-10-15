@@ -36,7 +36,7 @@ namespace MyApp.Data.Repositories
             await Context.ExecuteAsync(sql, model);
         }
 
-        public async Task<List<PersonContactList>> List(PersonContactParam param)
+        public async Task<List<PersonContactList>> ReadList(PersonContactParam param)
         {
             List<PersonContactList> ret = null;
 
@@ -46,7 +46,7 @@ namespace MyApp.Data.Repositories
             return ret;
         }
 
-        public async Task<PersonContactResult> Read(PersonContactParam param)
+        public async Task<PersonContactResult> ReadObject(PersonContactParam param)
         {
             PersonContactResult ret = null;
 
@@ -57,7 +57,7 @@ namespace MyApp.Data.Repositories
             return ret;
         }
 
-        public async Task<List<PersonContactResult>> Search(PersonContactParam param)
+        public async Task<List<PersonContactResult>> ReadSearch(PersonContactParam param)
         {
             List<PersonContactResult> ret = null;
 

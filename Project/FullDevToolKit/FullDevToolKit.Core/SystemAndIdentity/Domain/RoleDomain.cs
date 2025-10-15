@@ -33,7 +33,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             RoleResult ret = null;
 
-            ret = await _repositories.Role.Read(param); 
+            ret = await _repositories.Role.ReadObject(param); 
             
             return ret;
         }
@@ -42,7 +42,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<RoleList> ret = null;
 
-            ret = await _repositories.Role.List(param);           
+            ret = await _repositories.Role.ReadList(param);           
 
             return ret;
         }
@@ -51,7 +51,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<RoleResult> ret = null;
 
-            ret = await _repositories.Role.Search(param);
+            ret = await _repositories.Role.ReadSearch(param);
 
             return ret;
         }
@@ -110,7 +110,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.Role.Read(new RoleParam()
+                             await _repositories.Role.ReadObject(new RoleParam()
                              { pRoleID = model.RoleID });
                       }
                       ,
@@ -130,7 +130,7 @@ namespace FullDevToolKit.Sys.Domains
         }
 
 
-        public async Task<RoleEntry> Delete(RoleEntry model, object userid)
+        public async Task<RoleEntry> Remove(RoleEntry model, object userid)
         {
             RoleEntry ret = null;
             this.PKValue = model.RoleID.ToString();
@@ -139,7 +139,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.Role.Read(new RoleParam()
+                             await _repositories.Role.ReadObject(new RoleParam()
                              { pRoleID = model.RoleID });
                       }
                       ,

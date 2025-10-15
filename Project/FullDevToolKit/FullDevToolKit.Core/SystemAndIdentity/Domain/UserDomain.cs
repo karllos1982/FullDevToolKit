@@ -32,7 +32,7 @@ namespace FullDevToolKit.Sys.Domains
             param.pUserID = obj.UserID;
 
             List<UserRolesResult> roles
-                = await  _repositories.UserRoles.Search(param);
+                = await  _repositories.UserRoles.ReadSearch(param);
 
             obj.Roles = roles;
 
@@ -42,7 +42,7 @@ namespace FullDevToolKit.Sys.Domains
             param2.pUserID = obj.UserID;
 
             List<UserInstancesResult> instances
-                = await _repositories.UserInstances.Search(param2);
+                = await _repositories.UserInstances.ReadSearch(param2);
 
             obj.Instances = instances; 
 
@@ -53,7 +53,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             UserResult ret = null;
 
-            ret = await _repositories.User.Read(param); 
+            ret = await _repositories.User.ReadObject(param); 
 
             if (ret != null)
             {
@@ -67,7 +67,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<UserList> ret = null;
 
-            ret = await _repositories.User.List(param);           
+            ret = await _repositories.User.ReadList(param);           
 
             return ret;
         }
@@ -76,7 +76,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<UserResult> ret = null;
 
-            ret = await _repositories.User.Search(param);
+            ret = await _repositories.User.ReadSearch(param);
 
             return ret;
         }
@@ -160,7 +160,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.User.Read(new UserParam()
+                             await _repositories.User.ReadObject(new UserParam()
                              { pUserID = model.UserID });
                       }
                       ,
@@ -238,7 +238,7 @@ namespace FullDevToolKit.Sys.Domains
         }
 
 
-        public async Task<UserEntry> Delete(UserEntry model, object userid)
+        public async Task<UserEntry> Remove(UserEntry model, object userid)
         {
             UserEntry ret = null;
             this.PKValue = model.UserID.ToString();
@@ -247,7 +247,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.User.Read(new UserParam()
+                             await _repositories.User.ReadObject(new UserParam()
                              { pUserID = model.UserID });
                       }
                       ,
@@ -326,7 +326,7 @@ namespace FullDevToolKit.Sys.Domains
             
             UserResult obj = null;
 
-            obj = await _repositories.User.Read(new UserParam() { pUserID = model.UserID });
+            obj = await _repositories.User.ReadObject(new UserParam() { pUserID = model.UserID });
 
             if (Context.Status.Success)
             {
@@ -530,7 +530,7 @@ namespace FullDevToolKit.Sys.Domains
             else
             {
                 UserResult usermatch = null;
-                usermatch = await _repositories.User.Read(new UserParam() { pUserID=model.UserID });
+                usermatch = await _repositories.User.ReadObject(new UserParam() { pUserID=model.UserID });
 
                 if (Context.Status.Success)
                 {
@@ -577,7 +577,7 @@ namespace FullDevToolKit.Sys.Domains
             else
             {
                 UserResult usermatch = null;
-                usermatch = await _repositories.User.Read(new UserParam() { pUserID = model.UserID });
+                usermatch = await _repositories.User.ReadObject(new UserParam() { pUserID = model.UserID });
 
                 if (Context.Status.Success)
                 {
@@ -649,7 +649,7 @@ namespace FullDevToolKit.Sys.Domains
             param.pUserID = userid;
             param.pRoleID = roleid;
 
-            list = await _repositories.UserRoles.Search(param);
+            list = await _repositories.UserRoles.ReadSearch(param);
 
             if (list != null)
             {
@@ -690,7 +690,7 @@ namespace FullDevToolKit.Sys.Domains
             param.pUserID = userid;
             param.pRoleID = roleid;
 
-            list = await _repositories.UserRoles.Search(param);
+            list = await _repositories.UserRoles.ReadSearch(param);
 
             if (list != null)
             {
@@ -744,7 +744,7 @@ namespace FullDevToolKit.Sys.Domains
             param.pUserID = userid;
             param.pInstanceID = instanceid;
 
-            list = await _repositories.UserInstances.Search(param);
+            list = await _repositories.UserInstances.ReadSearch(param);
 
             if (list != null)
             {
@@ -785,7 +785,7 @@ namespace FullDevToolKit.Sys.Domains
             param.pUserID = userid;
             param.pInstanceID = instanceid;
 
-            list = await _repositories.UserInstances.Search(param);
+            list = await _repositories.UserInstances.ReadSearch(param);
 
             if (list != null)
             {

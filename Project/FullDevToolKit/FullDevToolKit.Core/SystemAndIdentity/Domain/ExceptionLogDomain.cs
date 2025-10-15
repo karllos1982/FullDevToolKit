@@ -29,7 +29,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             ExceptionLogResult ret = null;
 
-            ret = await _repositories.ExceptionLog.Read(param);
+            ret = await _repositories.ExceptionLog.ReadObject(param);
 
             return ret;
         }
@@ -38,7 +38,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<ExceptionLogList> ret = null;
 
-            ret = await _repositories.ExceptionLog.List(param);
+            ret = await _repositories.ExceptionLog.ReadList(param);
 
             return ret;
         }
@@ -47,7 +47,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<ExceptionLogResult> ret = null;
 
-            ret = await _repositories.ExceptionLog.Search(param);
+            ret = await _repositories.ExceptionLog.ReadSearch(param);
 
             return ret;
         }
@@ -83,7 +83,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.ExceptionLog.Read(new ExceptionLogParam() 
+                             await _repositories.ExceptionLog.ReadObject(new ExceptionLogParam() 
                              { pExceptionLogID = model.ExceptionLogID });
                       }
                       ,
@@ -101,7 +101,7 @@ namespace FullDevToolKit.Sys.Domains
             return ret;
         }
 
-        public async Task<ExceptionLogEntry> Delete(ExceptionLogEntry model, object userid)
+        public async Task<ExceptionLogEntry> Remove(ExceptionLogEntry model, object userid)
         {
             ExceptionLogEntry ret = null;
             this.PKValue = model.ExceptionLogID.ToString();
@@ -110,7 +110,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.ExceptionLog.Read(new ExceptionLogParam() 
+                             await _repositories.ExceptionLog.ReadObject(new ExceptionLogParam() 
                                 { pExceptionLogID = model.ExceptionLogID });
                       }
                       ,

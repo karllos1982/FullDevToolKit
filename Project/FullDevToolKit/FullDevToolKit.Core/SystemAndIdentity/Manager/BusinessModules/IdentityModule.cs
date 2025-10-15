@@ -5,7 +5,7 @@ using FullDevToolKit.Sys.Contracts.Domains;
 using FullDevToolKit.Sys.Contracts.Managers;
 using FullDevToolKit.Sys.Domains;
 using FullDevToolKit.Sys.Models.Identity;
-
+using FullDevToolKit.Sys.Models.Common;
 
 namespace FullDevToolKit.Sys.Manager
 {
@@ -340,7 +340,11 @@ namespace FullDevToolKit.Sys.Manager
 
             return ret; 
         }
-     
+
+        public async Task<ConfigsResult> GetConfigByName(string name)
+        {
+            return await Domainset.Configs.GetConfigByName(name);
+        }
 
     }
 

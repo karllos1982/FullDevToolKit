@@ -34,7 +34,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             PermissionResult ret = null;
 
-            ret = await _repositories.Permission.Read(param); 
+            ret = await _repositories.Permission.ReadObject(param); 
             
             return ret;
         }
@@ -43,7 +43,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<PermissionList> ret = null;
 
-            ret = await _repositories.Permission.List(param);           
+            ret = await _repositories.Permission.ReadList(param);           
 
             return ret;
         }
@@ -52,7 +52,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<PermissionResult> ret = null;
 
-            ret = await _repositories.Permission.Search(param);
+            ret = await _repositories.Permission.ReadSearch(param);
 
             return ret;
         }
@@ -88,7 +88,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.Permission.Read(new PermissionParam()
+                             await _repositories.Permission.ReadObject(new PermissionParam()
                              { pPermissionID = model.PermissionID });
                       }
                       ,
@@ -107,7 +107,7 @@ namespace FullDevToolKit.Sys.Domains
         }
 
 
-        public async Task<PermissionEntry> Delete(PermissionEntry model, object userid)
+        public async Task<PermissionEntry> Remove(PermissionEntry model, object userid)
         {
             PermissionEntry ret = null;
             this.PKValue = model.PermissionID.ToString();
@@ -116,7 +116,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.Permission.Read(new PermissionParam()
+                             await _repositories.Permission.ReadObject(new PermissionParam()
                              { pPermissionID = model.PermissionID });
                       }
                       ,

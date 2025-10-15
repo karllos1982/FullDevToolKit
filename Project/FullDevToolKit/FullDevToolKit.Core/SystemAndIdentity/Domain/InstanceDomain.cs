@@ -33,7 +33,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             InstanceResult ret = null;
 
-            ret = await _repositories.Instance.Read(param);
+            ret = await _repositories.Instance.ReadObject(param);
 
             return ret;
         }
@@ -42,7 +42,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<InstanceList> ret = null;
 
-            ret = await _repositories.Instance.List(param);
+            ret = await _repositories.Instance.ReadList(param);
 
             return ret;
         }
@@ -51,7 +51,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<InstanceResult> ret = null;
 
-            ret = await _repositories.Instance.Search(param);
+            ret = await _repositories.Instance.ReadSearch(param);
 
             return ret;
         }
@@ -114,7 +114,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.Instance.Read(new InstanceParam()
+                             await _repositories.Instance.ReadObject(new InstanceParam()
                              { pInstanceID = model.InstanceID });
                       }
                       ,
@@ -135,7 +135,7 @@ namespace FullDevToolKit.Sys.Domains
         }
 
 
-        public async Task<InstanceEntry> Delete(InstanceEntry model, object userid)
+        public async Task<InstanceEntry> Remove(InstanceEntry model, object userid)
         {
             InstanceEntry ret = null;
             this.PKValue = model.InstanceID.ToString();
@@ -144,7 +144,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.Instance.Read(new InstanceParam()
+                             await _repositories.Instance.ReadObject(new InstanceParam()
                              { pInstanceID = model.InstanceID });
                       }
                       ,

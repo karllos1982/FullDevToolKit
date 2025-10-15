@@ -1,0 +1,131 @@
+﻿
+<Modal @ref="modalRef" Class="messagebox"    >
+    <ModalContent Centered>
+        <ModalHeader>
+            <ModalTitle>@Title</ModalTitle>          
+        </ModalHeader>
+        <ModalBody>
+             <h5>
+                @Message
+            </h5>
+
+        </ModalBody>
+        <ModalFooter>
+            @if (_buttonOK)
+            {
+                 <Button Color="Color.Primary" Clicked="@ClickOk">OK</Button>
+                
+            }
+
+            @if (_buttonNo != "") 
+            {
+                <Button Color="Color.Secondary" Clicked="@ClickNo">@_buttonNo</Button>
+                
+            }
+
+            @if (_buttonYes != "")
+            {
+                <Button Color="Color.Success" Clicked="@ClickYes">@_buttonYes</Button>
+                
+            }
+            
+        </ModalFooter>
+    </ModalContent>
+</Modal>
+
+
+@code {
+
+    private Modal modalRef;
+    private bool _buttonOK = true;
+    private string _buttonNo = "";
+    private string _buttonYes = "";
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public string Message { get; set; }
+
+    [Parameter]
+    public bool ButtonOK
+    {
+        get
+        {
+            return _buttonOK;
+        }
+
+        set
+        {
+            _buttonOK = value;
+        }
+    }
+
+    [Parameter]
+    public string ButtonNo
+    {
+        get
+        {
+            return _buttonNo;
+        }
+
+        set
+        {
+            _buttonNo = value;
+        }
+    }
+
+    [Parameter]
+    public string ButtonYes
+    {
+        get
+        {
+            return _buttonYes;
+        }
+
+        set
+        {
+            _buttonYes = value;
+        }
+    }    
+
+    [Parameter]
+    public EventCallback OnClickOk { get; set; }
+
+    [Parameter]
+    public EventCallback OnClickYes { get; set; }
+
+    [Parameter]
+    public EventCallback OnClickNo { get; set; }
+
+
+    public async Task ClickOk(Object e)
+    {
+       await OnClickOk.InvokeAsync(e);
+       await modalRef.Hide();
+    }
+
+    public async Task ClickNo(Object e)
+    {
+       await OnClickNo.InvokeAsync(e);
+       await modalRef.Hide();
+    }
+
+    public async Task ClickYes(Object e)
+    {
+       await OnClickYes.InvokeAsync(e);
+       await modalRef.Hide();
+    }
+
+
+    public async Task ShowDialog(string title, string message)
+    {
+        this.Title = title;
+        this.Message = message;
+        await modalRef.Show();
+        StateHasChanged();
+
+    }
+
+
+}

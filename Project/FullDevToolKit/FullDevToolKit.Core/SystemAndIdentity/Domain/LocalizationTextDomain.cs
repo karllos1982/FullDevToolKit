@@ -32,7 +32,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             LocalizationTextResult ret = null;
 
-            ret = await _repositories.LocalizationText.Read(param);
+            ret = await _repositories.LocalizationText.ReadObject(param);
 
             return ret;
         }
@@ -41,7 +41,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<LocalizationTextList> ret = null;
 
-            ret = await _repositories.LocalizationText.List(param);
+            ret = await _repositories.LocalizationText.ReadList(param);
 
             return ret;
         }
@@ -50,7 +50,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<LocalizationTextResult> ret = null;
 
-            ret = await _repositories.LocalizationText.Search(param);
+            ret = await _repositories.LocalizationText.ReadSearch(param);
 
             return ret;
         }
@@ -77,7 +77,7 @@ namespace FullDevToolKit.Sys.Domains
             // verificar por name na mesma linguagem
 
             param = new LocalizationTextParam() { pName = obj.Name };
-            list = await _repositories.LocalizationText.List(param);
+            list = await _repositories.LocalizationText.ReadList(param);
 
             if (list != null)
             {
@@ -118,7 +118,7 @@ namespace FullDevToolKit.Sys.Domains
             // verificar por name na mesma linguagem
 
             param = new LocalizationTextParam() { pName = obj.Name };
-            list = await _repositories.LocalizationText.List(param);
+            list = await _repositories.LocalizationText.ReadList(param);
 
             if (list != null)
             {
@@ -159,7 +159,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.LocalizationText.Read(new LocalizationTextParam()
+                             await _repositories.LocalizationText.ReadObject(new LocalizationTextParam()
                              { pLocalizationTextID = model.LocalizationTextID });
                       }
                       ,
@@ -178,7 +178,7 @@ namespace FullDevToolKit.Sys.Domains
         }
 
 
-        public async Task<LocalizationTextEntry> Delete(LocalizationTextEntry model, object userid)
+        public async Task<LocalizationTextEntry> Remove(LocalizationTextEntry model, object userid)
         {
             LocalizationTextEntry ret = null;
             this.PKValue = model.LocalizationTextID.ToString();
@@ -187,7 +187,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.LocalizationText.Read(new LocalizationTextParam()
+                             await _repositories.LocalizationText.ReadObject(new LocalizationTextParam()
                              { pLocalizationTextID = model.LocalizationTextID });
                       }
                       ,

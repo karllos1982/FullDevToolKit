@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "4cnh4sRDFR4=",
+  "dgSpecHash": "ar5d/LySxIE=",
   "success": true,
   "projectFilePath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebApp\\WebApp.csproj",
   "expectedPackageFiles": [
@@ -16,6 +16,7 @@
     "C:\\Users\\carlos.fonteles\\.nuget\\packages\\microsoft.aspnetcore.components.analyzers\\8.0.11\\microsoft.aspnetcore.components.analyzers.8.0.11.nupkg.sha512",
     "C:\\Users\\carlos.fonteles\\.nuget\\packages\\microsoft.aspnetcore.components.forms\\8.0.11\\microsoft.aspnetcore.components.forms.8.0.11.nupkg.sha512",
     "C:\\Users\\carlos.fonteles\\.nuget\\packages\\microsoft.aspnetcore.components.web\\8.0.11\\microsoft.aspnetcore.components.web.8.0.11.nupkg.sha512",
+    "C:\\Users\\carlos.fonteles\\.nuget\\packages\\microsoft.aspnetcore.components.webassembly.devserver\\8.0.11\\microsoft.aspnetcore.components.webassembly.devserver.8.0.11.nupkg.sha512",
     "C:\\Users\\carlos.fonteles\\.nuget\\packages\\microsoft.aspnetcore.metadata\\8.0.11\\microsoft.aspnetcore.metadata.8.0.11.nupkg.sha512",
     "C:\\Users\\carlos.fonteles\\.nuget\\packages\\microsoft.extensions.dependencyinjection\\8.0.1\\microsoft.extensions.dependencyinjection.8.0.1.nupkg.sha512",
     "C:\\Users\\carlos.fonteles\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.2\\microsoft.extensions.dependencyinjection.abstractions.8.0.2.nupkg.sha512",

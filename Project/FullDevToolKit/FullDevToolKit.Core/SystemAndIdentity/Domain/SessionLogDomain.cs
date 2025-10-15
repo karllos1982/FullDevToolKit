@@ -31,7 +31,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             SessionLogResult ret = null;
 
-            ret = await _repositories.SessionLog.Read(param); 
+            ret = await _repositories.SessionLog.ReadObject(param); 
             
             return ret;
         }
@@ -40,7 +40,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<SessionLogList> ret = null;
 
-            ret = await _repositories.SessionLog.List(param);           
+            ret = await _repositories.SessionLog.ReadList(param);           
 
             return ret;
         }
@@ -49,7 +49,7 @@ namespace FullDevToolKit.Sys.Domains
         {
             List<SessionLogResult> ret = null;
 
-            ret = await  _repositories.SessionLog.Search(param);
+            ret = await  _repositories.SessionLog.ReadSearch(param);
 
             return ret;
         }
@@ -86,7 +86,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.SessionLog.Read(new SessionLogParam()
+                             await _repositories.SessionLog.ReadObject(new SessionLogParam()
                              { pSessionLogID = model.SessionLogID });
                       }
                       ,
@@ -105,7 +105,7 @@ namespace FullDevToolKit.Sys.Domains
         }
 
 
-        public async Task<SessionLogEntry> Delete(SessionLogEntry model, object userid)
+        public async Task<SessionLogEntry> Remove(SessionLogEntry model, object userid)
         {
             SessionLogEntry ret = null;
             this.PKValue = model.SessionLogID.ToString();
@@ -114,7 +114,7 @@ namespace FullDevToolKit.Sys.Domains
                       async (model) =>
                       {
                           return
-                             await _repositories.SessionLog.Read(new SessionLogParam()
+                             await _repositories.SessionLog.ReadObject(new SessionLogParam()
                              { pSessionLogID = model.SessionLogID });
                       }
                       ,
