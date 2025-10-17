@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\**" />
+    <Content Remove="Areas\**" />
+    <EmbeddedResource Remove="Areas\**" />
+    <None Remove="Areas\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.13.0" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.13.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\FullDevToolKit.Sample\Models\Models.csproj" />
+    <ProjectReference Include="..\..\FullDevToolKit.Sample\Proxy\Proxy.csproj" />
+    <ProjectReference Include="..\..\FullDevToolKit.Sample\WebBases\WebBases.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="FullDevToolKit.Core">
+      <HintPath>..\..\FullDevToolKit\FullDevToolKit.Core\bin\Debug\net8.0\FullDevToolKit.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+
+</Project>

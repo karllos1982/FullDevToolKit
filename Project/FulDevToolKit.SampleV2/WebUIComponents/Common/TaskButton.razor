@@ -1,0 +1,123 @@
+﻿
+@if (_visible)
+{
+    if (_disabled == "")
+    {
+        @if (!_readonly)
+        {
+            <FluentButton Appearance="@ButtonAppearance" Title="@Description"
+                          Loading="@executing" OnClick="@StartLoadingAsync">
+                @Title
+             </FluentButton>
+          
+        }
+        else
+        {
+            <FluentButton Appearance="@ButtonAppearance"  Disabled="true"
+                          Loading="@executing">
+                @Title
+             </FluentButton>
+            
+        }
+    }
+    else
+    {
+        <FluentButton Appearance="@ButtonAppearance"  Disabled="true"
+                      Loading="@executing">
+            @Title
+        </FluentButton>
+
+    }
+
+}
+
+
+@code {
+
+    private bool executing = false;
+
+    [Parameter]
+    public string Title { get; set; } = "Button"; 
+
+    [Parameter]
+    public string ActionLabel { get; set; } = ""; 
+
+    [Parameter]
+    public string Description { get; set; } = ""; 
+
+    [Parameter]
+    public Appearance ButtonAppearance { get; set; } = Appearance.Accent;
+
+    private string _class = "var(--primary)";
+
+    [Parameter]
+    public string Class { get; set; } = "var(--primary)";
+
+
+    private bool _visible = true;
+
+    [Parameter]
+    public bool Visible
+    {
+        get
+        {
+
+            return _visible;
+        }
+
+        set
+        {
+            _visible = value;
+        }
+    }
+
+    private bool _readonly = false;
+
+    [Parameter]
+    public bool ReadOnly
+    {
+        get
+        {
+
+            return _visible;
+        }
+
+        set
+        {
+            _readonly = value;
+        }
+    }
+
+    private string _disabled = "";
+
+    [Parameter]
+    public string Disabled
+    {
+        get
+        {
+
+            return _disabled;
+        }
+
+        set
+        {
+            _disabled = value;
+        }
+    }
+
+
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+
+
+
+    async Task StartLoadingAsync()
+    {
+        executing = true;
+        await OnClick.InvokeAsync();
+        executing = false; 
+    }
+
+   
+
+}

@@ -1,0 +1,371 @@
+﻿@page "/login"
+
+@inherits MainLayout
+@layout MainLayout
+
+@inject IJSRuntime JSRuntime
+@inject IAppControllerAsync<UserAuthenticated> _appctrl
+@inject IAuthProxyManager _authservices
+@inject IAppSettings _settings
+@inject NavigationManager NavigationManager
+@inject HttpClient _httpclient
+@inject IDialogService msgbox
+
+<PageTitle>Login</PageTitle>
+
+<div class="d-flex flex-column flex-root" id="kt_app_root">
+
+    @if (user != null && texts != null)
+    {
+
+        <FluentStack Style="margin-bottom: 24px;"
+                     VerticalAlignment="VerticalAlignment.Center">
+            <FluentLabel> <h1> @texts.Get("Welcome-Label")</h1> </FluentLabel>
+
+        </FluentStack>
+
+
+        <FluentGrid Spacing="@Spacing" AdaptiveRendering="true" Justify="@Justification"
+                    Style="padding: 4px; ">
+            <FluentGridItem xs="12">
+                <h3>@texts.Get("LoginTitle-Label")</h3>
+            </FluentGridItem>
+
+            <FluentGridItem xs="12">
+                <h4>@texts.Get("LoginTitle-Description")</h4>
+            </FluentGridItem>
+
+            <FluentGridItem xs="12" lg="6" >
+
+                   <FluentStack Style="margin-bottom: 20px;" Orientation="Orientation.Vertical"
+                                     VerticalAlignment="VerticalAlignment.Center">
+
+                        <FluentTextField @bind-Value=@user.Email Maxlength="100" Label="@texts.Get("Email-Label")" style="width:100%"
+                                         Placeholder="@texts.Get("InputEmail-Description")">
+                        </FluentTextField>
+
+                        <FluentTextField @bind-Value=@pwd Maxlength="100" Label="@texts.Get("Password-Label")" style="width:100%" TextFieldType="TextFieldType.Password"
+                                         Placeholder="@texts.Get("InputPassword-Description")">
+                        </FluentTextField>
+
+                        <TaskButton Title=@texts.Get("LoginButton-Label")
+                                    ButtonAppearance="Appearance.Accent"
+                                    ActionLabel=@texts.Get("LoginLoading-Label") OnClick="ExecuteLogin">
+                        </TaskButton>
+
+                    </FluentStack>                
+
+            </FluentGridItem>
+                               
+
+        </FluentGrid>
+
+        <FluentGrid Spacing="@Spacing" AdaptiveRendering="true" Justify="@Justification"
+                    Style="padding: 4px; ">
+
+            <FluentGridItem xs="12" lg="6">
+
+                <FluentAccordion>
+
+                    <FluentAccordionItem Heading="@texts.Get("ForgetPassword-Description")">
+                        <FluentIcon Value="@(new Icons.Regular.Size20.PersonPasskey())"
+                                    Color="@Color.Accent" Slot="start" />
+
+                        <FluentStack Style="margin-bottom: 20px;" Orientation="Orientation.Vertical"
+                                     VerticalAlignment="VerticalAlignment.Center">
+
+                            <FluentLabel> <h5> @texts.Get("InputEmail-Description")</h5> </FluentLabel>
+
+                            <FluentTextField @bind-Value=@emailrecovery Maxlength="100" style="width:100%" />
+
+                            <TaskButton  Title=@texts.Get("SendCodeButton-Label")
+                                        ButtonAppearance="Appearance.Outline"
+                                        OnClick="RecoveryPassword">
+                            </TaskButton>
+
+                            <TaskLoading @ref="loadingPwd" Title=@texts.Get("SendText-Description")></TaskLoading>
+
+                        </FluentStack>
+
+                    </FluentAccordionItem>
+
+                        <FluentAccordionItem Heading="@texts.Get("ActiveAccountButton-Label")">
+                            <FluentIcon Value="@(new Icons.Regular.Size20.InprivateAccount())"
+                                        Color="@Color.Accent" Slot="start" />
+
+                            <FluentStack Style="margin-bottom: 20px;" Orientation="Orientation.Vertical"
+                                         VerticalAlignment="VerticalAlignment.Center">
+                            
+
+                                <FluentLabel> <h5>1. @texts.Get("ActiveAccount-Step1"):</h5> </FluentLabel>
+
+                                <FluentTextField @bind-Value=@active.Email Maxlength="100"
+                                             Placeholder=@texts.Get("InputEmail-Description") style="width:100%" />
+
+                                <TaskButton Title=@texts.Get("SendCodeButton-Label")
+                                            ButtonAppearance="Appearance.Outline"
+                                        OnClick="SendActiveAccountCode">
+                                </TaskButton>
+
+                                <FluentDivider Style="width: 100%;" Role="DividerRole.Presentation"></FluentDivider>
+
+
+                            <FluentLabel> <h5>2. @texts.Get("ActiveAccount-Step2"):</h5> </FluentLabel>
+
+                            <FluentTextField @bind-Value=@active.Code Maxlength="20"
+                                             Placeholder=@texts.Get("InputCode-Description") style="width:100%" />
+
+                            <TaskButton Title=@texts.Get("ActiveAccountButton-Label")
+                                        ButtonAppearance="Appearance.Outline"
+                                        OnClick="ActivateAccount">
+                            </TaskButton>
+                           
+
+                            </FluentStack>
+
+                        </FluentAccordionItem>
+
+                </FluentAccordion>
+
+            </FluentGridItem>
+
+        </FluentGrid>
+    }
+    else
+    {
+        <PageLoading LoadingText="Loading page. Wait..."></PageLoading>
+        
+    }
+
+
+</div>
+
+
+
+@code {
+
+    JustifyContent Justification = JustifyContent.FlexStart;
+    int Spacing = 3;
+
+    private UserLogin user = new UserLogin();
+    private string pwd = "";
+    private string emailrecovery = "";
+    private ActiveUserAccount active = new ActiveUserAccount();
+  
+    private TaskLoading loadingPwd;
+    private bool islogged = false;
+
+    private DefaultLocalization texts = null;
+
+
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+    private void InitResources()
+    {
+
+        ((MyAppController)_appctrl).Settings = _settings;
+
+        _authservices.Init(_httpclient, _settings.ServiceURL, "");
+
+
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+
+        if (firstRender)
+        {
+            try
+            {
+                this.InitResources();
+                string url = _settings.SiteURL;
+
+                APIResponse<List<LocalizationTextResult>?> response
+                    = await ((AuthProxy)_authservices).ListLocalizationTexts();
+
+                if (response.IsSuccess)
+                {
+                    this.texts = new DefaultLocalization();
+                    this.texts.Set(response.Data, _settings.DefaultLanguage);
+                }
+
+                islogged = await _appctrl.IsAuthenticated();
+
+                if (islogged)
+                {
+                    await _appctrl.GetSession();
+
+                    UserAuthenticated usr = _appctrl.UserInfo;
+
+                    url = _settings.SiteURL + "/" + usr.HomeURL;
+                    NavigationManager.NavigateTo(url);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            StateHasChanged();
+        }
+
+    }
+
+    private async Task ExecuteLogin()
+    {
+
+        try
+        {
+            this.InitResources();
+
+            if (user.Email != null && pwd != null)
+            {
+
+                user.Password = FullDevToolKit.Helpers.Utilities.ConvertToBase64(pwd);
+
+                ExecutionStatus ret = await _appctrl.Login(_authservices, user);
+
+                if (ret.Success)
+                {
+                    UserAuthenticated user = (UserAuthenticated)ret.Returns;
+                    string url = _settings.SiteURL + "/" + user.HomeURL;
+                    NavigationManager.NavigateTo(url);
+                }
+                else
+                {
+                    await msgbox.ShowWarningAsync(ret.Exceptions.Messages[0].Description, texts.Get("NoticeLabel"));
+                }
+
+            }
+            else
+            {
+                await msgbox.ShowWarningAsync(texts.Get("InvalidCredentials-Message"), texts.Get("InvalidCredentials-Title"));
+
+            }
+        }
+        catch (Exception ex)
+        {
+            await msgbox.ShowWarningAsync(ex.Message, texts.Get("NoticeLabel"));
+        }
+
+    }
+
+    private async Task RecoveryPassword()
+    {
+        InitResources();
+
+
+        if (emailrecovery != null)
+        {
+
+            AuthProxy proxy = (AuthProxy)_authservices;
+
+            await loadingPwd.Begin();
+
+            APIResponse<bool> response
+                = await proxy.RecoveryPassword(emailrecovery);
+
+            if (response.IsSuccess)
+            {
+                await msgbox.ShowSuccessAsync(texts.Get("TemporaryPassword-Message"),
+                        texts.Get("TemporaryPassword-Title"));
+            }
+            else
+            {
+                await msgbox.ShowWarningAsync(response.Exceptions.Messages[0].Description,
+                    texts.Get("NoticeLabel"));
+            }
+
+            await loadingPwd.End();
+        }
+        else
+        {
+            await msgbox.ShowWarningAsync(texts.Get("InputEmail-Description"),
+                    texts.Get("NoticeLabel"));
+
+        }
+
+    }
+
+    private async Task SendActiveAccountCode()
+    {
+        this.InitResources();
+
+        if (active.Email != null)
+        {
+
+            AuthProxy proxy = (AuthProxy)_authservices;
+
+            APIResponse<bool> response
+                = await proxy.RequestActiveAccountCode(active.Email);
+
+            if (response.IsSuccess)
+            {
+                await msgbox.ShowSuccessAsync(texts.Get("ActivateCode-Message"),
+                    texts.Get("ActivateCode-Title")
+                    );
+            }
+            else
+            {
+                await msgbox.ShowWarningAsync(response.Exceptions.Messages[0].Description,
+                    texts.Get("NoticeLabel"));
+            }
+        }
+        else
+        {
+            await msgbox.ShowWarningAsync(texts.Get("InputEmail-Description"),
+                    texts.Get("NoticeLabel"));
+
+        }
+
+    }
+
+    private async Task ActivateAccount()
+    {
+        this.InitResources();
+
+        if (active.Code != null)
+        {
+
+            AuthProxy proxy = (AuthProxy)_authservices;
+
+            APIResponse<bool> response
+                = await proxy.ActiveAccount(active);
+
+
+            if (response.IsSuccess)
+            {
+                await msgbox.ShowSuccessAsync(texts.Get("SuccessActivated-Message"),
+                  texts.Get("SuccessActivated-Title")
+                    );
+
+            }
+            else
+            {
+                await msgbox.ShowWarningAsync(response.Exceptions.Messages[0].Description,
+                        texts.Get("NoticeLabel"));
+            }
+        }
+        else
+        {
+            await msgbox.ShowWarningAsync(texts.Get("InputCode-Description"),
+                        texts.Get("NoticeLabel"));
+
+        }
+
+
+    }
+
+
+
+    private async Task ShowActiveModal()
+    {
+        // await modalRef.Show();
+
+    }
+
+}

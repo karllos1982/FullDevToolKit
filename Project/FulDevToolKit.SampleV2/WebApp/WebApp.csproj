@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components" Version="4.13.0" />
+    <PackageReference Include="Microsoft.FluentUI.AspNetCore.Components.Icons" Version="4.13.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\FullDevToolKit.Sample\Models\Models.csproj" />
+    <ProjectReference Include="..\..\FullDevToolKit.Sample\Proxy\Proxy.csproj" />
+    <ProjectReference Include="..\..\FullDevToolKit.Sample\WebBases\WebBases.csproj" />
+    <ProjectReference Include="..\WebUIComponents\WebUIComponents.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="FullDevToolKit.Core">
+      <HintPath>..\..\FullDevToolKit\FullDevToolKit.Core\bin\Debug\net8.0\FullDevToolKit.Core.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

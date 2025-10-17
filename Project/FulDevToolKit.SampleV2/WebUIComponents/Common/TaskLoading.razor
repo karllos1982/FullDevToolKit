@@ -1,0 +1,48 @@
+﻿@inject NavigationManager NavigationManager
+
+<div>
+    <FluentDialog @ref="_myFluentDialog" @bind-Hidden="@Hidden" aria-label="Loading" Style="height:400px"
+            Modal=@_modal TrapFocus=@_trapFocus PreventScroll=@_preventScroll>
+        <FluentDialogHeader Visible="false"  />
+        <h4>@Title</h4>
+        <p>  Loading...</p>                
+        
+    </FluentDialog>
+</div>
+
+
+@code {
+
+    private FluentDialog? _myFluentDialog;
+    private bool _trapFocus = true;
+    private bool _modal = false;
+    private bool _preventScroll = true;
+    
+    private bool Hidden { get; set; } = true;
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+            _myFluentDialog!.Hide();
+    }
+ 
+
+    [Parameter]
+    public string Title { get; set; }
+
+    
+    public async Task Begin()
+    {
+        _myFluentDialog!.Show();
+
+    }
+
+
+    public async Task End()
+    {
+        _myFluentDialog!.Hide();
+    }
+
+
+
+}
