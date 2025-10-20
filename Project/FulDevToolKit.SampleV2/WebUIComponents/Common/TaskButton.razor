@@ -1,33 +1,15 @@
 ﻿
 @if (_visible)
 {
-    if (_disabled == "")
-    {
-        @if (!_readonly)
-        {
-            <FluentButton Appearance="@ButtonAppearance" Title="@Description"
-                          Loading="@executing" OnClick="@StartLoadingAsync">
-                @Title
-             </FluentButton>
-          
-        }
-        else
-        {
-            <FluentButton Appearance="@ButtonAppearance"  Disabled="true"
-                          Loading="@executing">
-                @Title
-             </FluentButton>
-            
-        }
-    }
-    else
-    {
-        <FluentButton Appearance="@ButtonAppearance"  Disabled="true"
-                      Loading="@executing">
-            @Title
+    
+    <FluentButton Appearance="@ButtonAppearance" Title="@Description"
+                    IconStart="@IconStart" IconEnd="@IconEnd"
+                    Disabled=@_disabled
+                    Loading="@executing" OnClick="@StartLoadingAsync">
+        @Title
         </FluentButton>
-
-    }
+          
+     
 
 }
 
@@ -37,7 +19,13 @@
     private bool executing = false;
 
     [Parameter]
-    public string Title { get; set; } = "Button"; 
+    public string Title { get; set; } = "Button";
+
+    [Parameter]
+    public Icon IconStart { get; set; } 
+
+    [Parameter]
+    public Icon IconEnd { get; set; }
 
     [Parameter]
     public string ActionLabel { get; set; } = ""; 
@@ -71,27 +59,11 @@
         }
     }
 
-    private bool _readonly = false;
+  
+    private bool _disabled =false;
 
     [Parameter]
-    public bool ReadOnly
-    {
-        get
-        {
-
-            return _visible;
-        }
-
-        set
-        {
-            _readonly = value;
-        }
-    }
-
-    private string _disabled = "";
-
-    [Parameter]
-    public string Disabled
+    public bool Disabled
     {
         get
         {

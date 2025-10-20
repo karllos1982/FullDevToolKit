@@ -1,34 +1,22 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\",
+  "WorkspaceRootPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0824FF1E-C293-4DE1-AD11-0701DBCC4899}|WebUIComponents\\WebUIComponents.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webuicomponents\\common\\pageloading.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0824FF1E-C293-4DE1-AD11-0701DBCC4899}|WebUIComponents\\WebUIComponents.csproj|solutionrelative:webuicomponents\\common\\pageloading.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{0824FF1E-C293-4DE1-AD11-0701DBCC4899}|WebUIComponents\\WebUIComponents.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webuicomponents\\common\\taskiconbutton.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0824FF1E-C293-4DE1-AD11-0701DBCC4899}|WebUIComponents\\WebUIComponents.csproj|solutionrelative:webuicomponents\\common\\taskiconbutton.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\layout\\superadminlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\layout\\superadminlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\layout\\mainlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\weather.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0824FF1E-C293-4DE1-AD11-0701DBCC4899}|WebUIComponents\\WebUIComponents.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webuicomponents\\common\\taskbutton.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{0824FF1E-C293-4DE1-AD11-0701DBCC4899}|WebUIComponents\\WebUIComponents.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webuicomponents\\common\\taskbutton.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{0824FF1E-C293-4DE1-AD11-0701DBCC4899}|WebUIComponents\\WebUIComponents.csproj|solutionrelative:webuicomponents\\common\\taskbutton.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{0824FF1E-C293-4DE1-AD11-0701DBCC4899}|WebUIComponents\\WebUIComponents.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webuicomponents\\common\\taskloading.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0824FF1E-C293-4DE1-AD11-0701DBCC4899}|WebUIComponents\\WebUIComponents.csproj|solutionrelative:webuicomponents\\common\\taskloading.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -37,121 +25,70 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 269,
-          "SelectedChildIndex": 6,
+          "DockedWidth": 335,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
-              "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "PageLoading.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\PageLoading.razor",
-              "RelativeDocumentMoniker": "WebUIComponents\\Common\\PageLoading.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\PageLoading.razor",
-              "RelativeToolTip": "WebUIComponents\\Common\\PageLoading.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAdAAAAAAAAAA==",
+              "Title": "TaskIconButton.razor",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\TaskIconButton.razor",
+              "RelativeDocumentMoniker": "WebUIComponents\\Common\\TaskIconButton.razor",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\TaskIconButton.razor",
+              "RelativeToolTip": "WebUIComponents\\Common\\TaskIconButton.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA2AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-17T21:33:11.49Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Weather.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\Weather.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\Weather.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\Weather.razor",
-              "RelativeToolTip": "WebApp\\Components\\Pages\\Weather.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-17T21:19:02.925Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "TaskLoading.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\TaskLoading.razor",
-              "RelativeDocumentMoniker": "WebUIComponents\\Common\\TaskLoading.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\TaskLoading.razor",
-              "RelativeToolTip": "WebUIComponents\\Common\\TaskLoading.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAGAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-16T19:48:26.17Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "TaskButton.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\TaskButton.razor",
-              "RelativeDocumentMoniker": "WebUIComponents\\Common\\TaskButton.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\TaskButton.razor",
-              "RelativeToolTip": "WebUIComponents\\Common\\TaskButton.razor",
-              "ViewState": "AgIAACcAAAAAAAAAAAAAAHgAAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-16T19:46:47.838Z",
+              "WhenOpened": "2025-10-20T00:40:32.043Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Login.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\Login.razor",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\Login.razor",
               "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\Login.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\Login.razor",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\Login.razor",
               "RelativeToolTip": "WebApp\\Components\\Pages\\Login.razor",
-              "ViewState": "AgIAAGkAAAAAAAAAAAAAwH0AAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAABgAAAAAAAAAAAAAADEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-16T19:16:32.654Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SuperAdminLayout.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Layout\\SuperAdminLayout.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Layout\\SuperAdminLayout.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Layout\\SuperAdminLayout.razor",
-              "RelativeToolTip": "WebApp\\Components\\Layout\\SuperAdminLayout.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-16T19:13:19.528Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "MainLayout.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Layout\\MainLayout.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Layout\\MainLayout.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Layout\\MainLayout.razor",
-              "RelativeToolTip": "WebApp\\Components\\Layout\\MainLayout.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-10-16T19:03:43.007Z",
+              "WhenOpened": "2025-10-20T00:15:10.711Z",
               "EditorCaption": ""
             }
           ]
         },
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "DockedWidth": 203,
+          "SelectedChildIndex": 1,
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "TaskButton.razor",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\TaskButton.razor",
+              "RelativeDocumentMoniker": "WebUIComponents\\Common\\TaskButton.razor",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\TaskButton.razor",
+              "RelativeToolTip": "WebUIComponents\\Common\\TaskButton.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-20T00:08:20.274Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{605322a2-17ae-43f4-b60f-766556e46c87}"
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MainLayout.razor",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Layout\\MainLayout.razor",
+              "RelativeDocumentMoniker": "WebApp\\Components\\Layout\\MainLayout.razor",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Layout\\MainLayout.razor",
+              "RelativeToolTip": "WebApp\\Components\\Layout\\MainLayout.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-10-20T00:10:56.405Z",
+              "EditorCaption": ""
             }
           ]
         }

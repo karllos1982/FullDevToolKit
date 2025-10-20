@@ -92,11 +92,6 @@ H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\D
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\API.sourcelink.json
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\staticwebassets.build.json
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\staticwebassets.development.json
-H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\staticwebassets\msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props
-H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\staticwebassets\msbuild.build.API.props
-H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.API.props
-H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.API.props
-H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\staticwebassets.pack.json
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\scopedcss\bundle\API.styles.css
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\API.csproj.Up2Date
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\API.dll
@@ -172,3 +167,11 @@ H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\bin\D
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\bin\Debug\net8.0\runtimes\win-x86\native\Microsoft.Data.SqlClient.SNI.dll
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Diagnostics.EventLog.dll
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\bin\Debug\net8.0\runtimes\win\lib\net8.0\System.Security.Cryptography.Pkcs.dll
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\bin\Debug\net8.0\API.staticwebassets.endpoints.json
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\rpswa.dswa.cache.json
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\rjimswa.dswa.cache.json
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\rjsmrazor.dswa.cache.json
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\rjsmcshtml.dswa.cache.json
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\staticwebassets.build.json.cache
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\staticwebassets.build.endpoints.json
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

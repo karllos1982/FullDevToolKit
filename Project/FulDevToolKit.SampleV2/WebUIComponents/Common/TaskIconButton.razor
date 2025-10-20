@@ -1,0 +1,72 @@
+﻿@if (_visible)
+{
+
+      <FluentButton OnClick="@StartLoadingAsync"
+                  Color="@Color" Disabled=@_disabled
+                  IconStart="@IconStart" />    
+
+}
+
+
+@code {
+
+    private bool executing = false;
+    
+    [Parameter]
+    public Icon IconStart { get; set; }
+    
+    [Parameter]
+    public string Color { get; set; } = "Lightweight";
+
+
+    private bool _visible = true;
+
+    [Parameter]
+    public bool Visible
+    {
+        get
+        {
+
+            return _visible;
+        }
+
+        set
+        {
+            _visible = value;
+        }
+    }
+
+
+    private bool _disabled = false;
+
+    [Parameter]
+    public bool Disabled
+    {
+        get
+        {
+
+            return _disabled;
+        }
+
+        set
+        {
+            _disabled = value;
+        }
+    }
+
+
+    [Parameter]
+    public EventCallback OnClick { get; set; }
+
+
+
+    async Task StartLoadingAsync()
+    {
+        executing = true;
+        await OnClick.InvokeAsync();
+        executing = false;
+    }
+
+
+
+}

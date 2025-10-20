@@ -18,7 +18,7 @@
     @if (user != null && texts != null)
     {
 
-        <FluentStack Style="margin-bottom: 24px;"
+        <FluentStack Style="margin-bottom: 10px;"
                      VerticalAlignment="VerticalAlignment.Center">
             <FluentLabel> <h1> @texts.Get("Welcome-Label")</h1> </FluentLabel>
 
@@ -48,11 +48,11 @@
                                          Placeholder="@texts.Get("InputPassword-Description")">
                         </FluentTextField>
 
-                        <TaskButton Title=@texts.Get("LoginButton-Label")
-                                    ButtonAppearance="Appearance.Accent"
+                        <TaskButton Title=@texts.Get("LoginButton-Label") 
+                                    ButtonAppearance="Appearance.Accent" 
+                                    IconEnd="@(new Icons.Regular.Size20.CheckmarkSquare())"
                                     ActionLabel=@texts.Get("LoginLoading-Label") OnClick="ExecuteLogin">
-                        </TaskButton>
-
+                        </TaskButton>                    
                     </FluentStack>                
 
             </FluentGridItem>
@@ -74,9 +74,11 @@
                         <FluentStack Style="margin-bottom: 20px;" Orientation="Orientation.Vertical"
                                      VerticalAlignment="VerticalAlignment.Center">
 
-                            <FluentLabel> <h5> @texts.Get("InputEmail-Description")</h5> </FluentLabel>
+                            <FluentLabel> @texts.Get("InputEmail-Description")</FluentLabel>
 
-                            <FluentTextField @bind-Value=@emailrecovery Maxlength="100" style="width:100%" />
+                            <FluentTextField @bind-Value=@emailrecovery
+                                             Placeholder=@texts.Get("InputEmail-Description")
+                                             Maxlength="100" style="width:100%" />
 
                             <TaskButton  Title=@texts.Get("SendCodeButton-Label")
                                         ButtonAppearance="Appearance.Outline"
@@ -97,9 +99,9 @@
                                          VerticalAlignment="VerticalAlignment.Center">
                             
 
-                                <FluentLabel> <h5>1. @texts.Get("ActiveAccount-Step1"):</h5> </FluentLabel>
+                                <FluentLabel> 1. @texts.Get("ActiveAccount-Step1"): </FluentLabel>
 
-                                <FluentTextField @bind-Value=@active.Email Maxlength="100"
+                                <FluentTextField @bind-Value=@active.Email Maxlength="100"                                             
                                              Placeholder=@texts.Get("InputEmail-Description") style="width:100%" />
 
                                 <TaskButton Title=@texts.Get("SendCodeButton-Label")
@@ -110,7 +112,7 @@
                                 <FluentDivider Style="width: 100%;" Role="DividerRole.Presentation"></FluentDivider>
 
 
-                            <FluentLabel> <h5>2. @texts.Get("ActiveAccount-Step2"):</h5> </FluentLabel>
+                            <FluentLabel>2. @texts.Get("ActiveAccount-Step2"):</FluentLabel>
 
                             <FluentTextField @bind-Value=@active.Code Maxlength="20"
                                              Placeholder=@texts.Get("InputCode-Description") style="width:100%" />
@@ -133,7 +135,13 @@
     }
     else
     {
-        <PageLoading LoadingText="Loading page. Wait..."></PageLoading>
+        <FluentStack Style="margin-bottom: 24px;"
+                     VerticalAlignment="VerticalAlignment.Center"
+                     HorizontalAlignment="HorizontalAlignment.Center" >
+            <PageLoading LoadingText="Loading page. Wait..."></PageLoading>
+
+        </FluentStack>
+                
         
     }
 
