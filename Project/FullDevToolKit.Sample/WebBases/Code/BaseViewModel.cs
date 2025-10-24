@@ -157,6 +157,8 @@ namespace MyApp.ViewModel
 
         public bool Inserting { get; set; }
 
+        public bool Editing { get; set; }
+
         public PermissionsState Permissions { get; set; }
 
         public List<ExceptionMessage> SummaryValidation = null;
@@ -392,5 +394,14 @@ namespace MyApp.ViewModel
             return ret;
         }
 
-    }
+		public bool GetTabEditState()
+		{
+            bool ret = false; 
+
+            ret = (Inserting || Editing);
+
+            return ret;
+	    }
+
+	}
 }

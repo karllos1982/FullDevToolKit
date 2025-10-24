@@ -1,0 +1,40 @@
+﻿@inject NavigationManager NavigationManager
+
+<FluentBreadcrumb>
+    
+    <FluentBreadcrumbItem Href="@HomeURL">
+        Home
+        <FluentIcon Value="@(new Icons.Regular.Size16.Home())" Color="@Color.Neutral" Slot="start" />
+    </FluentBreadcrumbItem>
+
+    <FluentBreadcrumbItem >
+        @PageTitle        
+    </FluentBreadcrumbItem>
+            
+</FluentBreadcrumb>
+
+
+
+@code {
+
+    [Parameter]    
+    public string PageTitle { get; set; }
+
+    [Parameter]    
+    public string HomeURL { get; set; }
+
+    [Parameter]
+    public bool IsHome { get; set; }
+
+    private string GetURL()
+    {
+        return HomeURL;
+    }
+
+    private void GotoHome()
+    {
+        NavigationManager.NavigateTo(HomeURL);
+    }
+
+
+}

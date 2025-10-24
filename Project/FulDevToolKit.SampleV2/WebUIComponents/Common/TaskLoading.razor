@@ -2,8 +2,9 @@
 
 <div>
     <FluentDialog @ref="_myFluentDialog" @bind-Hidden="@Hidden" aria-label="Loading" Style="height:400px"
-            Modal=@_modal TrapFocus=@_trapFocus PreventScroll=@_preventScroll>
-        <FluentDialogHeader Visible="false"  />
+            Modal=@_modal TrapFocus=@_trapFocus 
+            PreventScroll=@_preventScroll>
+        <FluentDialogHeader Visible="false"   />
         <h4>@Title</h4>
         <p>  Loading...</p>                
         
@@ -32,8 +33,8 @@
 
     
     public async Task Begin()
-    {
-        _myFluentDialog!.Show();
+    {        
+        _myFluentDialog!.Show(); 
 
     }
 

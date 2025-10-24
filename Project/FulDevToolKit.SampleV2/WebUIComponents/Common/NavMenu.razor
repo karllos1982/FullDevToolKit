@@ -1,0 +1,121 @@
+﻿
+@if (RoleName == "SuperAdmin") //
+{
+    ﻿<div class="navmenu">
+        <input type="checkbox" title="Menu expand/collapse toggle" id="navmenu-toggle" class="navmenu-icon" />
+        <label for="navmenu-toggle" class="navmenu-icon"><FluentIcon Value="@(new Icons.Regular.Size20.Navigation())" Color="Color.Fill" /></label>
+        <nav class="sitenav" aria-labelledby="main-menu">
+
+
+            <FluentNavMenu Id="main-menu" Collapsible="true" Width="270" Title="Navigation menu" @bind-Expanded="expanded" CustomToggle="true">
+                <FluentNavLink Icon="@(new Icons.Regular.Size20.Home())" Href="/superadmin/home" Match="NavLinkMatch.All">Home</FluentNavLink>
+
+                <FluentNavGroup Title="@Localization.Get("Menu-Superadmin")" Disabled="@GetPermissionsState("MENU.SUPERADMIN")"
+                        Icon="@(new Icons.Regular.Size20.DesktopEdit())">
+                    <ChildContent>
+                        <FluentNavLink Href="superadmin/configs" Disabled="@GetPermissionsState("MENU.CONFIGS")"
+                                       Icon="@(new Icons.Regular.Size20.SettingsCogMultiple())">
+                            @Localization.Get("Menu-Configs")
+                        </FluentNavLink>
+
+                        <FluentNavLink Href="superadmin/instances" Disabled="@GetPermissionsState("MENU.INSTANCE")"
+                            Icon="@(new Icons.Regular.Size20.BuildingBank())">
+                            @Localization.Get("Menu-Instance")
+                        </FluentNavLink>
+
+                        <FluentNavLink Href="superadmin/roles" Disabled="@GetPermissionsState("MENU.ROLES")"
+                            Icon="@(new Icons.Regular.Size20.LayerDiagonalPerson())">
+                            @Localization.Get("Menu-Roles")
+                        </FluentNavLink>
+
+                        <FluentNavLink Href="superadmin/objectpermission" Disabled="@GetPermissionsState("MENU.OBJECTPERMISSIONS")"
+                            Icon="@(new Icons.Regular.Size20.NavigationBriefcase())">
+                            @Localization.Get("Menu-ObjectPermissions")
+                        </FluentNavLink>
+
+                        <FluentNavLink Href="superadmin/permission" Disabled="@GetPermissionsState("MENU.PERMISSIONS")"
+                            Icon="@(new Icons.Regular.Size20.NavigationPerson())">
+                            @Localization.Get("Menu-Permissions")
+                        </FluentNavLink>
+
+                        <FluentNavLink Href="superadmin/users" Disabled="@GetPermissionsState("MENU.USERS")"
+                            Icon="@(new Icons.Regular.Size20.DatabasePerson())">
+                            @Localization.Get("Menu-Users")
+                        </FluentNavLink>
+
+                        <FluentNavLink Href="superadmin/localizationtext" Disabled="@GetPermissionsState("MENU.LOCALIZATIONTEXTS")"
+                            Icon="@(new Icons.Regular.Size20.ScanText())">
+                            @Localization.Get("Menu-LocalizationTexts")
+                        </FluentNavLink>
+
+                        <FluentNavLink Href="superadmin/groupparameter" Disabled="@GetPermissionsState("MENU.GROUPPARAMETERS")"
+                            Icon="@(new Icons.Regular.Size20.GroupList())">
+                            @Localization.Get("Menu-GroupParameters")
+                        </FluentNavLink>
+
+                        <FluentNavLink Href="superadmin/parameter" Disabled="@GetPermissionsState("MENU.PARAMETERS")"
+                            Icon="@(new Icons.Regular.Size20.TabGroup())">
+                            @Localization.Get("Menu-Parameters")
+                        </FluentNavLink>
+                        
+                    </ChildContent>
+                </FluentNavGroup>
+
+                <FluentNavGroup Title="@Localization.Get("Menu-Monitoring")"  Disabled="@GetPermissionsState("MENU.MONITORING")"
+                    Icon="@(new Icons.Regular.Size20.DesktopSignal())">
+                    <ChildContent>
+                        <FluentNavLink Href="superadmin/sessionlog"  Disabled="@GetPermissionsState("MENU.SESSIONLOG")"
+                            Icon="@(new Icons.Regular.Size20.TaskListSquarePerson())">
+                            @Localization.Get("Menu-SessionLog")
+                        </FluentNavLink>
+
+                        <FluentNavLink Href="superadmin/datalog" Disabled="@GetPermissionsState("MENU.DATALOG")"
+                            Icon="@(new Icons.Regular.Size20.BookDatabase())">
+                            @Localization.Get("Menu-DataLog")
+                        </FluentNavLink>
+
+                        <FluentNavLink Href="superadmin/exceptionlog" Disabled="@GetPermissionsState("MENU.EXCEPTIONLOG")"
+                            Icon="@(new Icons.Regular.Size20.NotebookError())">
+                            @Localization.Get("Menu-ExceptionLog")
+                        </FluentNavLink>
+
+                    </ChildContent>
+                </FluentNavGroup>
+
+            </FluentNavMenu>
+
+        </nav>
+    </div>
+
+
+                
+}
+
+
+@code {
+    private bool expanded = true;
+
+    [Parameter]
+    public string RoleName { get; set; }
+
+    [Parameter]
+    public DefaultLocalization Localization { get; set; }
+
+    [Parameter]
+    public List<UserPermissions> Permissions { get; set; }
+
+    private bool GetPermissionsState(string objectcode)
+    {
+        bool ret = false;
+
+        PermissionsState aux = new PermissionsState(false, false, false);
+
+        aux =
+           FullDevToolKit.Helpers.Utilities
+            .GetPermissionsState(Permissions, objectcode,false);
+
+        ret = !aux.AllowRead; 
+
+        return ret;
+    }
+}

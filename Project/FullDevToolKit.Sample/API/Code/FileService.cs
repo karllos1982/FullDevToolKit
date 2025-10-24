@@ -45,7 +45,7 @@ namespace MyApp.API
                 }
 
                 MemoryStream aux = new MemoryStream();
-                content.CopyTo(aux);
+                await content.CopyToAsync(aux);
                 File.WriteAllBytes(fisicalpath, aux.ToArray());
 
 

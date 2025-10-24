@@ -1,0 +1,91 @@
+﻿@inject IDialogService msgbox
+@inject IDialogService DialogService
+
+<FluentStack HorizontalAlignment="@HorizontalAlignment.End"
+             VerticalAlignment="@VerticalAlignment.Center"
+             Style="height: 48px; background:padding-inline-end: 10px; ">
+
+  @if (Islogged && Details != null)    
+  {
+        <FluentProfileMenu Image="@Details.LoggedUser.ProfileImageURL"
+                           Status="@PresenceStatus.Available"
+                           HeaderLabel="@Details.LoggedUser.RoleName"
+                           Initials="US"
+                           FullName="@Details.LoggedUser.UserName"
+                           EMail="@Details.LoggedUser.Email"
+                           OnHeaderButtonClick="Logout"
+                           OnFooterLinkClick="ViewAccount"
+                           FooterLink="@Details.Localization.Get("MyProfile-Label")"
+                           HeaderButton="@Details.Localization.Get("Logout-Label")"
+                           PopoverStyle="min-width: 330px;" />
+    }
+  else
+  {
+        <FluentPersona 
+                       Status="PresenceStatus.Offline"
+                       StatusSize="PresenceBadgeSize.Small"
+                       OnClick="GotoLogin"                       
+                       Image="@(new Icons.Regular.Size48.Person().ToDataUri(size: "25px", color: "white"))"
+                       ImageSize="40px">
+        </FluentPersona>
+
+    }
+
+ </FluentStack>
+   
+
+@code {
+
+    [Parameter]
+    public bool Islogged { get; set; }
+
+    [Parameter]
+    public UserViewDetailsObject Details { get; set; } = default!;
+
+    [Parameter]
+    public EventCallback OnGotoLogin { get; set; }      
+
+    [Parameter]
+    public EventCallback OnLogout { get; set; }
+
+
+    public async Task Logout()
+
+    {
+        await OnLogout.InvokeAsync(null);
+
+    }
+
+    private async Task GotoLogin()
+    {
+        await  OnGotoLogin.InvokeAsync(); 
+    }
+
+    private async Task ViewAccount()
+    {
+        await  OpenPanelRightAsync();
+    }
+    
+    private IDialogReference? _dialog;
+
+    private async Task OpenPanelRightAsync()
+    {
+        string title = $"{Details.LoggedUser.UserName}";
+
+        _dialog = await DialogService.ShowPanelAsync<UserViewDetails>(Details,
+            new DialogParameters<UserViewDetailsObject>()
+                {
+                    Content = Details,
+                    Alignment = HorizontalAlignment.Right,
+                    Title = title,
+                    PrimaryActionEnabled = false,
+                    SecondaryActionEnabled = false,
+                    Visible = true
+                    
+                });
+        DialogResult result = await _dialog.Result;
+        
+    }
+
+
+}

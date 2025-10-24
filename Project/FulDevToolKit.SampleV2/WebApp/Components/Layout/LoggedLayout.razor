@@ -1,0 +1,194 @@
+﻿@inherits LayoutComponentBase
+
+@inject IJSRuntime JSRuntime
+@inject IAppControllerAsync<UserAuthenticated> _appctrl
+@inject IAuthProxyManager _appservices
+@inject IDataCacheProxyManager _cache
+@inject IAppSettings _settings
+@inject NavigationManager NavigationManager
+@inject HttpClient _httpclient
+
+
+<FluentLayout>
+    <FluentHeader>
+        FullDevToolKit
+       
+        <FluentSpacer />
+		 
+	
+        <UserView Islogged=@islogged
+				  Details=@userdetails   				  
+				  OnGotoLogin="GotoHome"
+                  OnLogout="Logout">
+        </UserView>
+
+    </FluentHeader>
+    <FluentStack Class="main" Orientation="Orientation.Horizontal" Width="100%">
+		
+		@if (user != null && permissions != null && localization != null)
+		{
+			<NavMenu RoleName="@user.RoleName" Localization="@localization" Permissions="@permissions" />
+		}
+
+        <FluentBodyContent Class="body-content">
+            <div class="content">
+                @Body
+            </div>
+        </FluentBodyContent>
+    </FluentStack>
+
+	<FluentFooter>
+		2025
+		<FluentSpacer />
+		My Softhouse
+	</FluentFooter>
+
+</FluentLayout>
+
+<FluentDialogProvider/>
+
+
+<div id="blazor-error-ui" data-nosnippet>
+    An unhandled error has occurred.
+    <a href="." class="reload">Reload</a>
+    <span class="dismiss">🗙</span>
+</div>
+
+@code{
+
+	protected bool islogged = false;
+	protected UserAuthenticated user;	
+	protected List<UserPermissions> permissions = null;
+	protected DefaultLocalization localization = null;
+	protected List<LocalizationTextList> langs = null; 
+	protected string siteURL = "";	
+	protected string homeURL = "";
+
+	private UserViewDetailsObject userdetails = null; 
+
+	protected TaskLoading loading;
+
+	protected TaskButton searchbtn;
+	protected TaskButton newbtn;
+	protected TaskButton savenewbtn;
+
+	protected string _LoadingData_Text;
+	protected string _AreaURL = "";
+	protected string _PageTitle;
+	protected string _msgYes = "";
+	protected string _msgNo = "";
+
+	protected override async Task OnAfterRenderAsync(bool firstRender)
+	{
+
+		if (firstRender)
+		{
+			await Initialize(firstRender);
+
+			StateHasChanged();
+		}
+	}
+
+	protected async Task Initialize(bool firstRender)
+	{		
+		if (firstRender)
+		{
+
+			if (await  this.InitResources())
+			{				
+				await this.InitCacheAndLocalization();							
+				this.InitServices();
+				userdetails = new UserViewDetailsObject();
+				userdetails.LoggedUser = user; 
+				userdetails.Localization = localization;
+				userdetails.Service = GetService();
+				userdetails.LanguageList = langs;
+				userdetails.Language = user.LocalizationLanguage; 
+
+			}
+			else
+			{
+
+				NavigationManager.NavigateTo(siteURL + "/home");
+			}
+
+		}
+
+	}
+
+	protected async Task<bool> InitResources()
+	{
+		bool ret = false;
+
+		((MyAppController)_appctrl).Settings = _settings;
+		siteURL = _settings.SiteURL;
+
+		islogged = await _appctrl.IsAuthenticated();
+
+		if (islogged)
+		{
+			await _appctrl.GetSession();
+			user = _appctrl.UserInfo;
+
+			ret = true; // (user.RoleName == "SuperAdmin"); 						
+			permissions = await _appctrl.GetUserPermissions(user);
+
+		}
+
+		return ret;
+	}
+
+	protected async Task InitCacheAndLocalization()
+	{		
+		_cache.Init(_httpclient, _settings.ServiceURL, user.Token);
+
+		this.localization = new DefaultLocalization();	
+
+		this.localization.Set(await ((DataCacheProxy)_cache).ListLocalizationTexts(),
+				user.LocalizationLanguage);
+
+		this.langs = await ((DataCacheProxy)_cache).ListLanguages(); 
+	}
+
+	protected void InitServices()
+	{
+		_appservices.Init(_httpclient, _settings.ServiceURL, _appctrl.UserInfo.Token);
+
+	}
+
+
+	private async Task Logout()
+	{
+
+		if (_appctrl.UserInfo != null)
+		{
+			await ((AuthProxy)_appservices).Logout();
+
+			await _appctrl.Logout();
+			string url = _settings.SiteURL;
+			NavigationManager.NavigateTo(url);
+			islogged = false;
+		}
+
+		StateHasChanged();
+	}
+
+	private AuthProxy GetService()
+	{
+
+		return (AuthProxy)_appservices;
+	}
+
+	protected void SetPageTile(string title)
+	{
+		this._PageTitle = title; 
+		homeURL = siteURL + "/" + _AreaURL + "/home";
+	}
+
+	private void GotoHome()
+	{
+		NavigationManager.NavigateTo(homeURL);
+	}
+
+	
+}

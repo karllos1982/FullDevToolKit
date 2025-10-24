@@ -179,6 +179,7 @@ namespace MyApp.Controllers
                 }
 
                 string img = userM.ProfileImage; 
+                if (img==null) { img = "";  }
                 if (img=="") { img = "user_anonymous.png";  }
                 userA.ProfileImageURL =
                     Context.Settings.SiteURL+ "auth/GetUserImageProfile?file=" + img;

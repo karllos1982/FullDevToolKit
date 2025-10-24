@@ -1,0 +1,285 @@
+﻿@implements IDialogContentComponent<UserViewDetailsObject>
+@inject IDialogService msgbox
+@inject IDialogService dialog
+
+<FluentDialogBody>
+    
+    <FluentStack 
+            HorizontalAlignment="@HorizontalAlignment.Center" 
+            Orientation="Orientation.Vertical"
+            VerticalAlignment="@VerticalAlignment.Center">
+
+        <FluentPersona Status="PresenceStatus.Available"
+                       StatusSize="PresenceBadgeSize.Medium"                   
+                       Image="@Content.LoggedUser.ProfileImageURL"
+                       ImageSize="96px">
+        </FluentPersona>
+                    
+        <FluentLabel>
+            <h5>
+                @Content.Localization.Get("Email-Label"):                
+            </h5>
+         </FluentLabel>
+
+        <FluentLabel>
+            <h5>                
+                <strong>@Content.LoggedUser.Email</strong>
+            </h5>
+        </FluentLabel>
+
+
+        <FluentLabel>
+            <h5>
+                @Content.Localization.Get("InstanceName-Label"):                
+            </h5>
+        </FluentLabel>
+
+        <FluentLabel>
+            <h5>                
+                <strong>@Content.LoggedUser.InstanceName</strong>
+            </h5>
+        </FluentLabel>
+
+    </FluentStack>
+
+     
+    <FluentAccordion Style="margin-top:25px">
+
+        <FluentAccordionItem Heading="@Content.Localization.Get("AlterProfileImage-Label")">
+            <FluentIcon Value="@(new Icons.Regular.Size24.CameraArrowUp())"
+                        Color="@Color.Accent" Slot="start" />
+
+           <FluentInputFile Id="my-file-uploader"
+                             Mode="InputFileMode.Stream"
+                             Multiple="false"
+                             MaximumFileCount="1"
+                             MaximumFileSize="@(10*1024*1024)"
+                             Accept="image/*"
+                             @bind-ProgressPercent="@ProgressPercent"
+                             OnCompleted="@OnCompletedAsync"
+                             Style="height: 300px;">
+                <ChildContent> 
+                    <label for="my-file-uploader">
+                        <FluentIcon Value="@(new @Icons.Regular.Size24.ArrowUpload())" />
+                    </label>
+
+                    <div>
+                        @Content.Localization.Get("AlterProfileImage-Description")
+                    </div>
+                    
+                   </ChildContent>
+            </FluentInputFile>
+
+                        
+        </FluentAccordionItem>
+
+        <FluentAccordionItem Heading="@Content.Localization.Get("AlterPassword-Label")">
+            <FluentIcon Value="@(new Icons.Regular.Size24.PersonKey())"
+                        Color="@Color.Accent" Slot="start" />                         
+
+                <FluentStack Style="margin-bottom: 20px;" Orientation="Orientation.Vertical"
+                                         VerticalAlignment="VerticalAlignment.Center">
+
+                    <FluentLabel> 1. @Content.Localization.Get("AlterPasswordStep1-Label"): </FluentLabel>
+
+                    <TaskButton Title=@Content.Localization.Get("SendCodeButton-Label")
+                                ButtonAppearance="Appearance.Accent"
+                                OnClick="SendCode">
+                    </TaskButton>
+
+                    <FluentDivider Style="width: 100%;" Role="DividerRole.Presentation"></FluentDivider>
+
+                    <FluentLabel> 2. @Content.Localization.Get("AlterPasswordStep2-Label"): </FluentLabel>
+
+                     <FluentTextField @bind-Value=@changeObj.Code Maxlength="20"
+                                 Label=@Content.Localization.Get("InputCode-Description") 
+                                 style="width:100%" />
+
+                     <FluentTextField @bind-Value=@changeObj.NewPassword Maxlength="20"
+                                 Label=@Content.Localization.Get("InputNewPassword-Label")
+                                 style="width:100%" />
+
+                    <TaskButton OnClick="ChangePassword" ButtonAppearance="Appearance.Accent"
+                            Title=@Content.Localization.Get("AlterPasswordButton-Label")
+                            ActionLabel=@Content.Localization.Get("AlterPasswordButton-Loading")>
+                    </TaskButton>
+
+                
+                 </FluentStack>
+
+        </FluentAccordionItem>
+
+
+        <FluentAccordionItem Heading="@Content.Localization.Get("Language-Label")">
+            <FluentIcon Value="@(new Icons.Regular.Size24.LocalLanguage())"
+                        Color="@Color.Accent" Slot="start" />                                            
+
+            @if (Content.LanguageList != null)
+            {
+                @if (Content.LanguageList.Count > 0)
+                {
+                    <FluentSelect TOption="LocalizationTextList"
+                          Label="@Content.Localization.Get("ChangeUserLanguage-Title")"
+                          Items="@Content.LanguageList"
+                          Id="lang-listbox"
+                          Width="200px"
+                          Height="250px"                          
+                          OptionValue="@(p => p.Language)"
+                          OptionText="@(p => p.Language)"  
+                          @bind-Value="@Content.Language" />
+
+                }
+
+                <TaskButton Title="@Content.Localization.Get("Save-Label")"
+                            OnClick="ChangeLanguage" />
+                
+            }
+
+        </FluentAccordionItem>
+
+
+    </FluentAccordion>
+
+  </FluentDialogBody>
+
+
+@code {
+
+
+    [Parameter]
+    public UserViewDetailsObject Content { get; set; } = default!;
+
+    [CascadingParameter]
+    public FluentDialog Dialog { get; set; } = default!;
+
+    private ChangeUserPassword changeObj = new ChangeUserPassword();
+    private bool visible = false;
+
+    private async void ChangeLanguage()
+    {
+
+        ChangeUserLanguage model = new ChangeUserLanguage();
+
+        model.UserID = long.Parse(Content.LoggedUser.UserID);
+        model.NewLanguage = Content.Language;
+
+        APIResponse<bool> response
+            = await Content.Service.ChangeUserLanguage(model);
+
+        if (response.IsSuccess)
+        {
+            await Close();
+            await msgbox.ShowSuccessAsync(@Content.Localization.Get("ChangeUserLanguage-Message"),
+                @Content.Localization.Get("NoticeLabel"));
+
+        }
+        else
+        {
+
+            await msgbox.ShowWarningAsync(response.Exceptions.Messages[0].Description,
+                @Content.Localization.Get("NoticeLabel"));
+
+        }
+
+    }
+
+    public async Task SendCode()
+    {
+
+        APIResponse<bool> response
+            = await Content.Service.RequestChangePasswordCode(Content.LoggedUser.Email);
+
+        if (response.IsSuccess)
+        {            
+            await msgbox.ShowSuccessAsync(@Content.Localization.Get("ActivateCode-Message"),
+                 @Content.Localization.Get("ActivateCode-Title"));
+        }
+        else
+        {
+            await msgbox.ShowWarningAsync(response.Exceptions.Messages[0].Description,
+            @Content.Localization.Get("NoticeLabel"));
+        }
+    }
+
+
+    public async Task ChangePassword()
+    {
+
+        changeObj.Email = Content.LoggedUser.Email;
+
+        APIResponse<bool> response
+            = await Content.Service.ChangePassword(changeObj);
+
+        if (response.IsSuccess)
+        {
+            await Close();
+            await msgbox.ShowSuccessAsync(@Content.Localization.Get("PasswordChanged-Message"),
+                   @Content.Localization.Get("PasswordChanged-Title"));
+        }
+        else
+
+        {
+            await msgbox.ShowWarningAsync(response.Exceptions.Messages[0].Description,
+                @Content.Localization.Get("NoticeLabel"));
+        }
+    }
+
+
+    int ProgressPercent = 0;
+    FluentInputFileEventArgs[] Files = Array.Empty<FluentInputFileEventArgs>();
+
+    private async Task OnCompletedAsync(IEnumerable<FluentInputFileEventArgs> files)
+    {
+        ProgressPercent = 0;
+
+        Files = files.ToArray();
+
+        bool go = false;
+        ChangeUserImage ret = null;
+        byte[] content = null;
+
+        if (Files != null)
+        {
+            if (Files.Length > 0)
+            {
+                go = true; 
+            }
+        }
+
+        if (go)
+        {            
+            MemoryStream ms = new MemoryStream();
+            await Files[0].Stream.CopyToAsync(ms); 
+            ms.Seek(0, SeekOrigin.Begin);
+            content = ms.ToArray();            
+
+            APIResponse<bool> response
+                = await Content.Service.ChangeUserImage(content);
+
+            if (response.IsSuccess)
+            {
+                await Close();
+                await msgbox.ShowSuccessAsync(@Content.Localization.Get("ImageChanged-Message"),
+                        @Content.Localization.Get("ImageChanged-Title"));                   
+            }
+            else
+            {
+                await msgbox.ShowWarningAsync(  response.Exceptions.Messages[0].Description,
+                 @Content.Localization.Get("NoticeLabel"));
+            }
+        }
+        else
+        {            
+            await msgbox.ShowWarningAsync(@Content.Localization.Get("User-No-Image"),
+                 @Content.Localization.Get("NoticeLabel"));
+        }
+
+    }
+
+    private async Task Close()
+    {
+        await Dialog.CancelAsync();
+    }
+
+    
+}

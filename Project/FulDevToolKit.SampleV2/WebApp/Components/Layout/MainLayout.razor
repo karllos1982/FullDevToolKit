@@ -8,11 +8,11 @@
     <FluentHeader>
         FullDevToolKit
         <FluentSpacer />
-
-        <TaskIconButton OnClick="GotoLogin"
-            Color="Lightweight"
-            IconStart="@(new Icons.Filled.Size28.PersonPasskey())">
-        </TaskIconButton>
+       
+        <UserView Islogged=false                  
+                  OnGotoLogin="GotoLogin"
+                  >
+        </UserView>
        
                 
     </FluentHeader>
@@ -31,6 +31,7 @@
         <FluentSpacer />
         My Softhouse
     </FluentFooter>
+
 </FluentLayout>
 
 <FluentDialogProvider/>

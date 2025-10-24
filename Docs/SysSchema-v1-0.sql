@@ -426,6 +426,41 @@ BEGIN
 	insert into sysPermission values (10011, 10011, 1, null, 1,1,1,'R')
 	insert into sysPermission values (10012, 10011, 2, null, 1,1,1,'R')
 
+
+  -- permissoes do menu
+  
+  
+	insert into sysObjectPermission values (20001, 'Menu.SuperAdmin.Basic', 'MENU.SUPERADMIN',getdate(),getdate())
+	insert into sysObjectPermission values (20002, 'Menu.Instance.Basic', 'MENU.INSTANCE',getdate(),getdate())
+	insert into sysObjectPermission values (20003, 'Menu.Roles.Basic', 'MENU.ROLES',getdate(),getdate())
+	insert into sysObjectPermission values (20004, 'Menu.ObjectPermissions.Basic', 'MENU.OBJECTPERMISSIONS',getdate(),getdate())
+	insert into sysObjectPermission values (20005, 'Menu.Permissions.Basic', 'MENU.PERMISSIONS',getdate(),getdate())
+	insert into sysObjectPermission values (20006, 'Menu.Users.Basic', 'MENU.USERS',getdate(),getdate())
+	insert into sysObjectPermission values (20007, 'Menu.LocalizationTexts.Basic', 'MENU.LOCALIZATIONTEXTS',getdate(),getdate())
+	insert into sysObjectPermission values (20008, 'Menu.GroupParameters.Basic', 'MENU.GROUPPARAMETERS',getdate(),getdate())
+	insert into sysObjectPermission values (20009, 'Menu.Parameters.Basic', 'MENU.PARAMETERS',getdate(),getdate())
+	insert into sysObjectPermission values (20010, 'Menu.Monitoring.Basic', 'MENU.MONITORING',getdate(),getdate())
+	insert into sysObjectPermission values (20011, 'Menu.SessionLog.Basic', 'MENU.SESSIONLOG',getdate(),getdate())
+	insert into sysObjectPermission values (20012, 'Menu.DataLog.Basic', 'MENU.DATALOG',getdate(),getdate())
+	insert into sysObjectPermission values (20013, 'Menu.ExceptionLog.Basic', 'MENU.EXCEPTIONLOG',getdate(),getdate())
+	insert into sysObjectPermission values (20014, 'Menu.Configs.Basic', 'MENU.CONFIGS',getdate(),getdate())
+
+	insert into sysPermission values (20001, 20001, 1, null, 1,1,1,'R',getdate(),getdate())	
+	insert into sysPermission values (20002, 20002, 1, null, 1,1,1,'R',getdate(),getdate())	
+	insert into sysPermission values (20003, 20003, 1, null, 1,1,1,'R',getdate(),getdate())	
+	insert into sysPermission values (20004, 20004, 1, null, 1,1,1,'R',getdate(),getdate())	
+	insert into sysPermission values (20005, 20005, 1, null, 1,1,1,'R',getdate(),getdate())	
+	insert into sysPermission values (20006, 20006, 1, null, 1,1,1,'R',getdate(),getdate())	
+	insert into sysPermission values (20007, 20007, 1, null, 1,1,1,'R',getdate(),getdate())	
+	insert into sysPermission values (20008, 20008, 1, null, 1,1,1,'R',getdate(),getdate())	
+	insert into sysPermission values (20009, 20009, 1, null, 1,1,1,'R',getdate(),getdate())	
+	insert into sysPermission values (20010, 20010, 1, null, 1,1,1,'R',getdate(),getdate())	
+	insert into sysPermission values (20011, 20011, 1, null, 1,1,1,'R',getdate(),getdate())	
+	insert into sysPermission values (20012, 20012, 1, null, 1,1,1,'R',getdate(),getdate())	
+	insert into sysPermission values (20013, 20013, 1, null, 1,1,1,'R',getdate(),getdate())	
+	insert into sysPermission values (20014, 20014, 1, null, 1,1,1,'R',getdate(),getdate())	
+
+
 	-- inserts na tabela LocalizationTexts
 
 	delete from sysLocalizationText
