@@ -25,7 +25,7 @@ namespace MyApp.ViewModel
         public RoleResult result = new RoleResult();
         public RoleParam param = new RoleParam() { };
         public List<RoleResult> searchresult = new List<RoleResult>();
-
+        public IQueryable<RoleResult> gridlist = null;
         public DefaultLocalization texts = null;
 
         public override async Task ClearSummaryValidation()
@@ -94,7 +94,9 @@ namespace MyApp.ViewModel
             APIResponse<List<RoleResult>> ret
                = await _Proxys.Role.Search(param);
 
-            SetResult<List<RoleResult>>(ret, ref searchresult, ref ServiceStatus);           
+            SetResult<List<RoleResult>>(ret, ref searchresult, ref ServiceStatus);
+            
+            gridlist = searchresult.AsQueryable(); 
 
         }
 

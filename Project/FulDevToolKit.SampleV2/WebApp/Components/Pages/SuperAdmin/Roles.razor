@@ -16,12 +16,32 @@
 @if (view != null)
 {
     
-
     <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
                 
-        <FluentGridItem lg="6" xs="12">
+        <FluentGridItem lg="10" xs="12">
                 <FluentLabel> <h2> @_PageTitle</h2> </FluentLabel>
-            </FluentGridItem>
+                                 
+        </FluentGridItem>
+
+        <FluentGridItem lg="2" xs="12"  Style="margin-top: 6px;">
+
+            <TaskButton OnClick="OnNew" Visible="!view.GetTabEditState()"
+                        Title=@view.texts.Get("NewRole-Label")
+                        Disabled=!view.Permissions.AllowSave                        
+                        IconEnd="@(new Icons.Regular.Size20.AddCircle())"
+                        ButtonAppearance="Appearance.Accent">
+
+            </TaskButton>
+
+            <TaskButton OnClick="OnSet" Visible="view.GetTabEditState()"
+                        Title=@view.texts.Get("SaveRoleButton-Label")
+                        Disabled=!view.Permissions.AllowSave
+                        IconEnd="@(new Icons.Regular.Size24.SaveEdit())"
+                        ButtonAppearance="Appearance.Accent">
+
+            </TaskButton>
+
+        </FluentGridItem>
 
      </FluentGrid>
 
@@ -29,81 +49,131 @@
         @if (!view.GetTabEditState())
         {                             
             <FluentGrid  Spacing="1" AdaptiveRendering="true" Style="padding: 4px; ">
-
              
                 <FluentGridItem lg="12" xs="12" >
 
-                    <FluentCard Width="100%" Height="100%" >
-                        
-                        <FluentGridItem xs="12">
-                            <FluentLabel> <h5>@view.texts.Get("SearchButtonLabel")</h5> </FluentLabel>
+                    <FluentAccordion >
 
-                        </FluentGridItem>
+                        <FluentAccordionItem Expanded="true"  Heading="@view.texts.Get("SearchButtonLabel")">
+                            <FluentIcon Value="@(new Icons.Regular.Size20.Search())"
+                                        Color="@Color.Accent" Slot="start"  />
 
-                        <FluentGridItem xs="12">
+                            <FluentStack Style="margin-bottom: 20px;" Orientation="Orientation.Vertical"
+                                            VerticalAlignment="VerticalAlignment.Center">
 
-                            <FluentTextField @bind-Value=view.param.pRoleName Maxlength="100"
-                                                Label="@view.texts.Get("SearchByRoleName-Label")" style="width:100%">
-                            </FluentTextField>
+                                <FluentTextField @bind-Value=view.param.pRoleName Maxlength="100"
+                                                    Label="@view.texts.Get("SearchByRoleName-Label")" style="width:50%">
+                                </FluentTextField>
 
-                        </FluentGridItem>
-
-                        <FluentGridItem xs="12">
-
-                            <TaskButton OnClick="OnSearch"
-                                        Title=@view.texts.Get("SearchButtonLabel")
-                                        Disabled=!view.Permissions.AllowRead
-                                        ButtonAppearance="Appearance.Accent"
-                                        IconEnd="@(new Icons.Regular.Size20.Search())"
-                                        ActionLabel=@view.texts.Get("SearchingLabel")>
-                            </TaskButton>
-
-                        </FluentGridItem>
+                                <TaskButton OnClick="OnSearch"
+                                            Title=@view.texts.Get("SearchButtonLabel")
+                                            Disabled=!view.Permissions.AllowRead
+                                            ButtonAppearance="Appearance.Accent"                                        
+                                            ActionLabel=@view.texts.Get("SearchingLabel")>
+                                </TaskButton>
 
 
-                    </FluentCard>
+                            </FluentStack>
 
-                 </FluentGridItem>
-
-
-                <FluentGridItem xs="12">
-                    
-                    <FluentLabel> <h5>@view.texts.Get("SearchResultLabel")</h5> </FluentLabel>
-
+                        </FluentAccordionItem>                    
+                    </FluentAccordion>         
                 </FluentGridItem>
+             
 
                 <FluentGridItem lg="12" xs="12">
 
-                    <FluentCard Width="100%" Height="100%">
+                    <FluentCard Width="100%" Height="100%" Class="card-layout">
+                                           
+                            <FluentLabel> <h5>@view.texts.Get("SearchResultLabel")</h5> </FluentLabel>
 
+                            <div id="datagrid-container">
+                                    <FluentDataGrid Items="@view.gridlist"   TGridItem="RoleResult"
+                                                Pagination="@pagination"
+                                                RowSize="@rowSize"
+                                                AutoItemsPerPage="true"
+                                                Style="overflow-y:hidden;">
 
+                                    <PropertyColumn Property="@(c => c.RoleName)" Title="@view.texts.Get("RoleName-Label")" Sortable="true" />
+                                    <PropertyColumn Property="@(c => c.IsActive)" Title="@view.texts.Get("Active-Label")" Sortable="true" />
 
+                                    <TemplateColumn>
+                                
+                                         <FluentButton Appearance="Appearance.Lightweight" 
+                                              IconEnd="@(new Icons.Regular.Size24.ClipboardTextEdit())"
+                                              @onclick="@(() => OnDetClick(context.RoleID))">
+                                            </FluentButton>
+                                        
+                                    </TemplateColumn>
+
+                                </FluentDataGrid>
+                            </div>
+
+                            <FluentPaginator State="@pagination"  />
+                                                     
                     </FluentCard>
-
                 </FluentGridItem>
 
         </FluentGrid>
         }            
 
-}
-else
-{
+        @if (view.GetTabEditState())
+        {
+            <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
 
-    <FluentStack Style="margin-bottom: 24px;"
-                    VerticalAlignment="VerticalAlignment.Center"
-                    HorizontalAlignment="HorizontalAlignment.Center">
-        <PageLoading LoadingText="Loading page. Wait..."></PageLoading>
+                <FluentGridItem lg="1" xs="12" Style="margin-top: 0px;">
+                
+                       <TaskIconButton OnClick="Back" 
+                            IconStart="@(new Icons.Regular.Size24.ArrowCircleLeft())" >
 
-    </FluentStack>
+                       </TaskIconButton>
 
-}
+                </FluentGridItem>
+
+                <FluentGridItem lg="9" xs="12">
+                        <FluentLabel> <h4>@view.ModoLabel</h4> </FluentLabel>
+
+                </FluentGridItem>
+                
+            </FluentGrid>
+
+            <FluentCard Width="100%" Height="100%" Class="card-layout">
+
+                <FluentTextField @bind-Value=view.result.RoleName Maxlength="100"
+                                 Label="@view.texts.Get("RoleName-Label")" style="width:50%">
+                </FluentTextField>
+                <FluentLabel> @view.GetSummaryMessage("RoleName") </FluentLabel>
+                                           
+
+                <FluentSwitch @bind-Value=@view.result.IsActive  >
+                    @view.texts.Get("Active-Label")
+                </FluentSwitch>                                                                          
+                
+
+            </FluentCard>
+              
+        }
+    }
+    else
+    {
+
+        <FluentStack Style="margin-bottom: 24px;"
+                        VerticalAlignment="VerticalAlignment.Center"
+                        HorizontalAlignment="HorizontalAlignment.Center">
+            <PageLoading LoadingText="Loading page. Wait..."></PageLoading>
+
+        </FluentStack>
+
+    }
       
-
+    <TaskLoading @ref="loading"></TaskLoading>
 
 @code {
 
-    string? activeid = "tab-searching";
+    
+    DataGridRowSize rowSize = DataGridRowSize.Medium;    
+    PaginationState pagination = new PaginationState { ItemsPerPage = 10 };
 
+    protected TaskLoading loading;
     private RoleViewModel view;
 
     //

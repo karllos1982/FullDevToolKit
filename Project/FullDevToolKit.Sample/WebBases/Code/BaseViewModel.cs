@@ -217,7 +217,8 @@ namespace MyApp.ViewModel
         {
             this.SearchingState = "block";
             this.EditingState = "none";
-            this.Inserting = false; 
+            this.Inserting = false;
+            this.Editing = false;
         }
 
         protected void BaseInitNew()
@@ -227,6 +228,7 @@ namespace MyApp.ViewModel
             this.SearchingState = "none";
             ModoLabel = "Inserindo";
             this.Inserting = true;
+            this.Editing = false;
             ClearSummaryValidation();
         }
 
@@ -236,6 +238,7 @@ namespace MyApp.ViewModel
             this.SearchingState = "none";
             ModoLabel = "Editando";
             this.Inserting = false;
+            this.Editing = true;
             ClearSummaryValidation();
         }
 
