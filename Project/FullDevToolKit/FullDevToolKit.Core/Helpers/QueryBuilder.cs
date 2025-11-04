@@ -69,12 +69,9 @@ namespace FullDevToolKit.Helpers
             {
                 excludefields = new List<string>();
             }
-
-            if (excludefields.Count == 0)
-            {
-                excludefields.Add("Seq");                
-            }
-
+            
+            excludefields.Add("Seq");                
+            
             foreach (PropertyInfo p in prop)
             {
                 pname = p.Name;
@@ -141,12 +138,10 @@ namespace FullDevToolKit.Helpers
             {
                 excludefields = new List<string>();                        
             }
-
-            if (excludefields.Count == 0)
-            {
-                excludefields.Add("Seq");
-                excludefields.Add("TSCreate");
-            }
+                        
+            excludefields.Add("Seq");
+            excludefields.Add("TSCreate");
+            
 
             foreach (PropertyInfo p in prop)
             {

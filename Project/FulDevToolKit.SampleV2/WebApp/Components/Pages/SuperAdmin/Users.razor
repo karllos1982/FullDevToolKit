@@ -1,0 +1,722 @@
+﻿@page "/superadmin/users"
+
+@inherits LoggedLayout
+@layout LoggedLayout
+
+@inject NavigationManager NavigationManager
+@inject HttpClient _httpclient
+@inject IAppControllerAsync<UserAuthenticated> _appctrl
+@inject IAppSettings _settings
+@inject IDataCacheProxyManager _cache
+@inject ISystemProxyManager _systemservices
+@inject IDialogService msgbox
+
+            
+
+@if (view != null)
+{
+    
+    <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+                
+        <FluentGridItem lg="10" xs="12">
+                <FluentLabel> <h2> @_PageTitle</h2> </FluentLabel>
+                                 
+        </FluentGridItem>
+
+        <FluentGridItem lg="2" xs="12"  Style="margin-top: 6px;">
+
+            <FormActionButton ButtonType=ButtonTypeEnum.ADD
+                              Title="@view.texts.Get("NewUser-Label")"
+                              Disabled="!view.Permissions.AllowSave"
+                              Visible="!view.GetTabEditState()"
+                              OnAction="OnNew">
+            </FormActionButton>
+            
+                        
+        </FluentGridItem>
+
+     </FluentGrid>
+
+
+        @if (!view.GetTabEditState())
+        {                             
+            <FluentGrid  Spacing="1" AdaptiveRendering="true" Style="padding: 4px; ">
+             
+                <FluentGridItem lg="12" xs="12" >
+
+                    <FluentAccordion >
+
+                        <FluentAccordionItem Expanded="true"  Heading="@view.texts.Get("SearchButtonLabel")">
+                            <FluentIcon Value="@(new Icons.Regular.Size24.Search())"
+                                        Color="@Color.Accent" Slot="start"  />
+
+                        <FluentGrid Spacing="1" AdaptiveRendering="true">
+
+                            <FluentGridItem lg="6" xs="12">
+
+                                <FluentTextField @bind-Value=view.param.pEmail Maxlength="100"
+                                                 Label="@view.texts.Get("SearchByEmail-Label")" style="width:90%">
+                                </FluentTextField>
+
+                            </FluentGridItem>
+
+                            <FluentGridItem lg="6" xs="12">
+
+                                <FluentTextField @bind-Value=view.param.pUserName Maxlength="100"
+                                                 Label="@view.texts.Get("SearchByUserName-Label")" style="width:90%">
+                                </FluentTextField>                                                  
+
+                            </FluentGridItem>
+
+                            <FluentGridItem lg="6" xs="12">
+
+                                @if (view.listInstances != null)
+                                {
+                                    @if (view.listInstances.Count > 0)
+                                    {
+                                        <FluentSelect TOption="SelectItemBase"
+                                                      Label=@view.texts.Get("SearchByInstance-Label")
+                                                      Items="@view.listInstances"
+                                                      Id="pInstanceID"
+                                                      Height="250px"
+                                                      Width="90%"
+                                                      OptionValue="@(p => p.Value)"
+                                                      OptionText="@(p => p.Text)"
+                                                      @bind-Value="view._selectvalues.pInstanceID" />
+
+                                    }
+                                }
+
+                            </FluentGridItem>
+
+                            <FluentGridItem lg="6" xs="12">
+
+                                @if (view.listRoles != null)
+                                {
+                                    @if (view.listRoles.Count > 0)
+                                    {
+                                        <FluentSelect TOption="SelectItemBase"
+                                                      Label=@view.texts.Get("SearchByRole-Label")
+                                                      Items="@view.listRoles"
+                                                      Id="pRoleID"
+                                                      Height="250px"
+                                                      Width="90%"
+                                                      OptionValue="@(p => p.Value)"
+                                                      OptionText="@(p => p.Text)"
+                                                      @bind-Value="view._selectvalues.pRoleID" />
+
+                                    }
+                                }
+
+                            </FluentGridItem>
+                            
+
+                            <FluentGridItem lg="6" xs="12" Style="padding-top: 25px;">
+
+                                <FormActionButton ButtonType=ButtonTypeEnum.SEARCH
+                                                  Title="@view.texts.Get("SearchButtonLabel")"
+                                                  Visible="true"
+                                                  Disabled="!view.Permissions.AllowRead"
+                                                  OnAction="OnSearch">
+                                </FormActionButton>
+
+                            </FluentGridItem>
+
+
+                        </FluentGrid>
+
+
+                    </FluentAccordionItem>                    
+                    </FluentAccordion>         
+                </FluentGridItem>
+             
+
+                <FluentGridItem lg="12" xs="12">
+
+                    <FluentCard Width="100%" Height="100%" Class="card-layout">
+                                           
+                            <FluentLabel> <h5>@view.texts.Get("SearchResultLabel")</h5> </FluentLabel>
+
+                            <div id="datagrid-container">
+                                    <FluentDataGrid Items="@view.gridlist"   
+                                            TGridItem="UserResult"
+                                            Pagination="@pagination"
+                                            RowSize="@rowSize"
+                                            ResizableColumns=true                                                                                                                                                                              
+                                            Style="overflow-y:hidden;">
+
+                                    <PropertyColumn Property="@(c => c.Email)" Title="@view.texts.Get("Email-Label")" Sortable="true" Width="55%" />
+
+                                    <TemplateColumn Title="@view.texts.Get("Active-Label")" Width="15%">
+
+                                                @if (context.IsActive)
+                                                {
+                                                    <span>@view.texts.Get("Yes-Text")</span>
+                                                }
+                                                else
+                                                {
+                                                    <span>@view.texts.Get("No-Text")</span>
+                                                }
+                                    </TemplateColumn>
+        
+                                     <TemplateColumn Title="@view.texts.Get("Locked-Label")" Width="15%">
+
+                                        @if (context.IsLocked)
+                                        {
+                                            <span>@view.texts.Get("Yes-Text")</span>
+                                        }
+                                        else
+                                        {
+                                            <span>@view.texts.Get("No-Text")</span>
+                                        }
+                                    </TemplateColumn>
+
+                                    
+                                    <TemplateColumn Title="..." Width="15%">
+                                
+                                         <FluentButton Appearance="Appearance.Lightweight" 
+                                              IconEnd="@(new Icons.Regular.Size24.ClipboardTextEdit())"
+                                              @onclick="@(() => OnDetClick(context.UserID))">
+                                            </FluentButton>
+                                        
+                                    </TemplateColumn>
+
+                                </FluentDataGrid>
+                            </div>
+
+                            <FluentPaginator State="@pagination"  />
+                                                     
+                    </FluentCard>
+                </FluentGridItem>
+
+        </FluentGrid>
+        }            
+
+        @if (view.GetTabEditState())
+        {
+            <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+
+                <FluentGridItem lg="1" xs="12" Style="margin-top: 0px;">
+                
+                       <TaskIconButton OnClick="Back" 
+                            IconStart="@(new Icons.Regular.Size24.ArrowCircleLeft())" >
+
+                       </TaskIconButton>
+
+                </FluentGridItem>
+
+                <FluentGridItem lg="9" xs="12">
+                    <FluentLabel > <h4>@view.ModoLabel</h4> </FluentLabel>
+
+                </FluentGridItem>
+                
+            </FluentGrid>
+
+            <FluentCard Width="100%" Height="100%" Class="card-layout">
+
+              @if (view.Editing)
+              {
+                   <FluentTabs  Size="TabSize.Large" >
+
+                        <FluentTab Label="@view.texts.Get("MainData-Label")" Id="tab-1">
+
+                              <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+
+                                   <FluentGridItem lg="8" xs="12" Style="margin-top: 0px;">  
+                                        <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+
+                                        <FluentGridItem lg="12" xs="12" Style="margin-top: 0px;">                                          
+                                            <FluentTextField Value=@view.result.UserName Maxlength="100" ReadOnly="true"
+                                                     Label="@view.texts.Get("UserName-Label")" style="width:95%">
+                                            </FluentTextField>                                    
+                                        </FluentGridItem>
+
+                                        <FluentGridItem lg="12" xs="12">
+                                             <FluentTextField Value=@view.result.Email Maxlength="100" ReadOnly="true"
+                                                             Label="@view.texts.Get("Email-Label")" style="width:95%">
+                                            </FluentTextField>
+                                        </FluentGridItem>
+
+                                        <FluentGridItem lg="4" xs="12">
+                                            <FluentTextField Value=@view.result.CreateDate.ToShortDateString() Maxlength="100" ReadOnly="true"
+                                                     Label="@view.texts.Get("CreateDate-Label")" style="width:90%">
+                                            </FluentTextField>
+                                        </FluentGridItem>
+
+                                         <FluentGridItem lg="4" xs="12">
+                                                <FluentTextField Value=@view.result.LastLoginDate.ToShortDateString()
+                                                     Maxlength="100" ReadOnly="true"
+                                                     Label="@view.texts.Get("LastLoginDate-Label")" style="width:90%">
+                                                </FluentTextField>
+                                          </FluentGridItem>
+
+                                        <FluentGridItem lg="4" xs="12">
+                                    <FluentTextField Value=@view.result.DefaultLanguage Maxlength="100" ReadOnly="true"
+                                                     Label="@view.texts.Get("DefaultLanguage-Label")" style="width:90%">
+                                            </FluentTextField>
+                                        </FluentGridItem>
+
+
+                                        <FluentGridItem lg="4" xs="12">
+                                    <FluentTextField @bind-Value=view.result.LastLoginIP Maxlength="100" ReadOnly="true"
+                                                     Label="@view.texts.Get("LastLoginIP-Label")" style="width:90%">
+                                            </FluentTextField>
+                                        </FluentGridItem>
+
+                                        <FluentGridItem lg="4" xs="12">
+                                    <FluentTextField Value=@view.result.LoginCounter.ToString() Maxlength="100" ReadOnly="true"
+                                                     Label="@view.texts.Get("LoginCounter-Label")" style="width:90%">
+                                            </FluentTextField>
+                                        </FluentGridItem>
+
+                                        <FluentGridItem lg="4" xs="12">
+                                    <FluentTextField Value=@view.result.PasswordRecoveryCode Maxlength="100" ReadOnly="true"
+                                                     Label="@view.texts.Get("PasswordRecovery-Label")" style="width:90%">
+                                            </FluentTextField>
+                                        </FluentGridItem>
+                                    </FluentGrid>
+                            
+                                   </FluentGridItem>
+                                 
+                                   <FluentGridItem lg="4" xs="12" Style="margin-top: 0px;">
+                                        
+                                       <FluentStack HorizontalAlignment="@HorizontalAlignment.Center"
+                                                     Orientation="Orientation.Vertical" 
+                                                     VerticalAlignment="@VerticalAlignment.Center">
+
+                                           <FluentPersona Status="PresenceStatus.Available"
+                                                           StatusSize="PresenceBadgeSize.Medium"
+                                                           Image="@view.result.ProfileImageURL"
+                                                           ImageSize="128px">
+                                            </FluentPersona>
+
+                                            <FluentLabel>
+                                                <h5>
+                                                    @view.texts.Get("UserStatus-Label"):
+                                                </h5>
+                                            </FluentLabel>
+
+                                            <FluentSwitch @bind-Value="@view.isUserActive">
+                                                    @view.texts.Get("Active-Label")
+                                            </FluentSwitch>
+
+                                            <FluentSwitch @bind-Value="@view.isUserLocked">
+                                                @view.texts.Get("Locked-Label")
+                                            </FluentSwitch>
+
+                                              <TaskButton Title=@view.texts.Get("ChangeUserState-Label")
+                                                    ButtonAppearance="Appearance.Accent" 
+                                                    Disabled=!view.Permissions.AllowSave
+                                                     IconEnd="@(new Icons.Regular.Size24.CheckboxPerson())"
+                                                     OnClick="OnChangeState">
+                                            </TaskButton>    
+
+                                           
+                                        </FluentStack> 
+
+                                    </FluentGridItem>
+
+                            </FluentGrid>
+
+                        </FluentTab>
+
+                        <FluentTab Label="@view.texts.Get("User-SecondTabLabel")" Id="tab-2">
+                            
+                                <FluentStack HorizontalAlignment="@HorizontalAlignment.Left"
+                                                     Orientation="Orientation.Vertical" 
+                                                     VerticalAlignment="@VerticalAlignment.Center">
+
+                                        <FluentLabel Typo="Typography.H5"> @view.texts.Get("AlterInstance-Label"): </FluentLabel>
+
+                                            @if (view.listInstances != null)
+                                            {
+                                                @if (view.listInstances.Count > 0)
+                                                {
+                                                    <FluentSelect TOption="SelectItemBase"
+                                                                    Label=@view.texts.Get("AlterInstance-Description")
+                                                                  Items="@view.listInstances"
+                                                                  Id="InstanceID_Edit"
+                                                                  Height="250px"
+                                                                  Width="50%"
+                                                                  OptionValue="@(p => p.Value)"
+                                                                  OptionText="@(p => p.Text)"
+                                                                @bind-Value="view._selectvalues.SelectedInstance" />
+
+                                                }
+                                            }
+
+                                         <FluentLabel Typo="Typography.H5"> @view.texts.Get("AlterRole-Label"): </FluentLabel>
+
+                                            @if (view.listRoles != null)
+                                            {
+                                                @if (view.listRoles.Count > 0)
+                                                {
+                                                    <FluentSelect TOption="SelectItemBase"
+                                                                  Label=@view.texts.Get("AlterRole-Description")
+                                                                  Items="@view.listRoles"
+                                                                  Id="RoleID_Edit"
+                                                                  Height="250px"
+                                                                  Width="50%"
+                                                                  OptionValue="@(p => p.Value)"
+                                                                  OptionText="@(p => p.Text)"
+                                                                    @bind-Value="view._selectvalues.SelectedRole" />
+
+                                                }
+                                            }
+
+                                            <TaskButton Title=@view.texts.Get("Save-Label")
+                                                        ButtonAppearance="Appearance.Accent"
+                                                        Disabled=!view.Permissions.AllowSave
+                                                        IconEnd="@(new Icons.Regular.Size24.SaveArrowRight())"
+                                                        OnClick="OnSet">
+                                            </TaskButton>
+
+               
+                        </FluentStack>                                                                                                             
+                         
+
+                        </FluentTab>
+                
+
+                </FluentTabs>
+              }
+              
+              @if (view.Inserting)
+              {
+                  <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+
+                       <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
+                            
+                           @if (view.listInstances != null)
+                            {
+                                @if (view.listInstances.Count > 0)
+                                {
+                                    <FluentSelect TOption="SelectItemBase"
+                                              Label=@view.texts.Get("Instance-Label")
+                                                  Items="@view.listInstances"
+                                                  Id="InstanceID_Edit"
+                                                  Height="250px"
+                                                  Width="95%"
+                                                  OptionValue="@(p => p.Value)"
+                                                  OptionText="@(p => p.Text)"
+                                                  @bind-Value="view._selectvalues.InstanceID" />
+
+                                <FluentLabel Class="summary-label"> @view.GetSummaryMessage("InstanceID") </FluentLabel>
+
+                                }
+                            }
+
+                        </FluentGridItem>
+
+                        <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
+
+                            @if (view.listRoles != null)
+                            {
+                                @if (view.listRoles.Count > 0)
+                                {
+                                    <FluentSelect TOption="SelectItemBase"
+                                              Label=@view.texts.Get("Role-Label")
+                                                  Items="@view.listRoles"
+                                                  Id="RoleID_Edit"
+                                                  Height="250px"
+                                                  Width="95%"
+                                                  OptionValue="@(p => p.Value)"
+                                                  OptionText="@(p => p.Text)"
+                                                  @bind-Value="view._selectvalues.RoleID" />
+
+                                                  <FluentLabel Class="summary-label"> @view.GetSummaryMessage("RoleID") </FluentLabel>
+                                }
+                            }
+                         
+                        </FluentGridItem>
+                         
+                        <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
+
+                            <FluentTextField @bind-Value="view.newModel.Email" Maxlength="100"
+                                Label="@view.texts.Get("Email-Label")" style="width:95%">
+                            </FluentTextField>
+                             <FluentLabel Class="summary-label"> @view.GetSummaryMessage("Email") </FluentLabel>
+
+                         </FluentGridItem>
+
+                        <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
+
+                            <FluentTextField @bind-Value="view.newModel.UserName" Maxlength="50"
+                                         Label="@view.texts.Get("UserName-Label")" style="width:95%">
+                            </FluentTextField>
+                             <FluentLabel Class="summary-label"> @view.GetSummaryMessage("UserName") </FluentLabel>
+
+                        </FluentGridItem>
+
+                            <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
+
+                                <FluentTextField @bind-Value="view.newModel.Password" Maxlength="8" 
+                                        TextFieldType="TextFieldType.Password"
+                                         Label="@view.texts.Get("Password-Label")" style="width:95%">
+                                </FluentTextField>
+                                <FluentLabel Class="summary-label"> @view.GetSummaryMessage("Password") </FluentLabel>
+
+                            </FluentGridItem>
+
+
+                            <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
+
+                                    @if (view.listLangs != null)
+                                    {
+                                        @if (view.listLangs.Count > 0)
+                                        {
+                                            <FluentSelect TOption="LocalizationTextList"
+                                                Label=@view.texts.Get("DefaultLanguage-Label")
+                                                Items="@view.listLangs"
+                                                Id="LocalizationTextList"
+                                                Height="250px"
+                                                Width="95%"
+                                                OptionValue="@(p => p.Language)"
+                                                OptionText="@(p => p.Language)"
+                                              @bind-Value="view.newModel.DefaultLanguage" />
+
+                                             <FluentLabel Class="summary-label"> @view.GetSummaryMessage("DefaultLanguage") </FluentLabel>
+                                        }
+                                    }
+                             
+                            </FluentGridItem>
+
+
+                            <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
+
+                                <FormActionButton ButtonType=ButtonTypeEnum.SAVE
+                                                  Title="@view.texts.Get("CreateUserButton-Label")"
+                                                  Disabled="!view.Permissions.AllowSave"
+                                                  Visible="view.GetTabEditState()"
+                                                  OnAction="OnCreate">
+                                </FormActionButton>
+
+                             </FluentGridItem>
+
+                     
+                 </FluentGrid>
+              }
+                            
+            </FluentCard>
+              
+        }
+    }
+    else
+    {
+
+        <FluentStack Style="margin-bottom: 24px;"
+                        VerticalAlignment="VerticalAlignment.Center"
+                        HorizontalAlignment="HorizontalAlignment.Center">
+            <PageLoading LoadingText="Loading page. Wait..."></PageLoading>
+
+        </FluentStack>
+
+    }
+      
+  <TaskLoading @ref="loading" Content=loadingConfigs></TaskLoading>
+
+@code {
+
+       
+    private UserViewModel view;
+
+    //
+
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+
+        if (firstRender)
+        {
+            if (await this.InitResources())
+            {
+                await this.InitCacheAndLocalization();
+
+                this.InitServices();
+
+                view = new UserViewModel((_systemservices as SystemProxy),
+                   (_cache as DataCacheProxy), user, _httpclient, _settings.ServiceURL, _appctrl.UserInfo.Token);
+
+                view.texts = this.localization;
+
+                view.Permissions
+                    = BaseViewModel.SetPermissions(permissions, "SYSUSER", false);
+
+                await view.InitializeModels();
+
+                _LoadingData_Text = view.texts.Get("LoadingData");                
+                _AreaURL = "superadmin"; 
+                _msgYes = view.texts.Get("Yes-Text");
+                _msgNo = view.texts.Get("No-Text");
+                this.SetPageTile(view.texts.Get("User-PageTitle"));
+                loadingConfigs= new TaskLoadingConfigs
+                    { Title = view.texts.Get("LoadingPage"), 
+                      Description = view.texts.Get("UserRecord-Label") };
+            }
+
+            StateHasChanged();
+
+        }
+    }
+
+
+
+    public async Task OnSearch()
+    {        
+        await view.Search();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                view.texts.Get("ErrorOnExecuteSearch"));
+
+        }
+        
+    }
+
+    public void OnNew()
+    {
+
+        view.InitNew();
+        StateHasChanged();
+    }
+
+    public async Task OnGet(object id)
+    {
+        await loading.Begin();
+
+        await view.Get(id);
+
+        await loading.End();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                view.texts.Get("ErrorOnReturnData"));
+            
+        }
+        else
+        {
+            view.InitEdit();
+
+        }
+
+        StateHasChanged();
+    }
+
+    public async Task OnSet()
+    {
+        bool go = true;
+        string message = "";
+
+        if (view._selectvalues.SelectedInstance == "0")
+        {
+            message = view.texts.Get("AlterInstance-Description");
+            go = false;
+        }
+
+        if (view._selectvalues.SelectedRole == "0")
+        {
+            message = view.texts.Get("AlterRole-Description");
+            go = false;
+        }
+
+        if (go)
+        {
+           
+            await view.Set();
+
+            if (!view.ServiceStatus.Success)
+            {
+                await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                    view.texts.Get("NoticeLabel"));
+
+            }
+            else
+            {
+                await msgbox.ShowSuccessAsync(view.texts.Get("SuccessSaveMessage"),
+                    view.texts.Get("SuccessLabel"));
+
+                this.Back();
+            }
+        }
+        else
+        {
+            await msgbox.ShowWarningAsync(message, view.texts.Get("NoticeLabel"));
+            
+        }
+
+    }
+
+
+    public async Task OnCreate()
+    {
+        
+        await view.CreateNew();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                    view.texts.Get("ErrorOnCreateNewRecord"));            
+
+        }
+        else
+        {
+            this.Back();
+
+            await msgbox.ShowSuccessAsync(view.texts.Get("SuccessSaveMessage"),
+                    view.texts.Get("SuccessLabel"));          
+
+        }        
+
+    }
+    
+    public async Task OnDetClick(object id)
+    {
+        await OnGet(id);
+
+    }
+
+    public async Task OnChangeState()
+    {
+        
+        await view.ChangeState();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                    view.texts.Get("AlterStatus-Error"));
+
+        }
+        else
+        {
+            await msgbox.ShowSuccessAsync(view.texts.Get("AlterStatus-Success"),
+                view.texts.Get("NoticeLabel"));
+            
+        }
+        
+    }
+
+
+    public void Back()
+    {
+        view.BackToSearch();
+        StateHasChanged();
+
+    }
+
+    public void GoHome()
+    {
+        string url = _appctrl.UserInfo.HomeURL;
+        NavigationManager.NavigateTo(url);
+
+    }
+
+
+
+}

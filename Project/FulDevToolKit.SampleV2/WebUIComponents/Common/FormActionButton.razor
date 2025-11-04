@@ -1,0 +1,70 @@
+﻿<TaskButton OnClick="OnAction" 
+            Visible=@Visible
+            Title=@Title
+            Disabled=@Disabled
+            IconEnd="@_icon"
+            ButtonAppearance="Appearance.Accent">
+</TaskButton>
+
+@code {
+
+    private Icon _icon = null;
+
+    private ButtonTypeEnum _buttontype = ButtonTypeEnum.NONE ;
+    
+    [Parameter]
+    public bool Disabled {get; set; }
+
+    [Parameter]
+    public bool Visible {get; set; }
+
+
+    [Parameter]
+    public ButtonTypeEnum ButtonType
+    {
+        get
+        {
+            return _buttontype;
+        }
+
+        set
+        {
+            _buttontype = value; 
+           
+             switch(_buttontype)
+            {
+                case ButtonTypeEnum.ADD:
+                    {
+                        _icon = new Icons.Regular.Size24.AddCircle();                        
+                        break;     
+                    }
+
+                case ButtonTypeEnum.SEARCH:
+                    {
+                        _icon = new Icons.Regular.Size24.Search();                        
+                        break;
+                    }
+
+                case ButtonTypeEnum.SAVE:
+                    {
+                        _icon = new Icons.Regular.Size24.SaveEdit();
+                        break;
+                }
+
+                case ButtonTypeEnum.DELETE:
+                    {
+                        _icon = new Icons.Regular.Size24.Delete();
+                        break;
+                }
+            }
+                   
+       }
+    }
+
+    [Parameter]
+    public string Title { get; set; }
+
+    [Parameter]
+    public EventCallback OnAction { get; set; }
+
+}

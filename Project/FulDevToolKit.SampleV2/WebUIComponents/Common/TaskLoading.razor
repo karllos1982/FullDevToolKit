@@ -1,48 +1,69 @@
 ﻿@inject NavigationManager NavigationManager
+@implements IDialogContentComponent<TaskLoadingConfigs>
 
-<div>
-    <FluentDialog @ref="_myFluentDialog" @bind-Hidden="@Hidden" aria-label="Loading" 
-            Style="height:500px;background-color:lightyellow"
-            Modal=@_modal TrapFocus=@_trapFocus 
-            PreventScroll=@_preventScroll>
-        <FluentDialogHeader Visible="false"   />
-        <h4>@Title</h4>
-        <p>  Loading...</p>                
+    
+<FluentDialog Hidden="@_hidden">
+    <FluentDialogHeader ShowDismiss="false">
+        <FluentStack VerticalAlignment="VerticalAlignment.Center" 
+            HorizontalAlignment="HorizontalAlignment.Center">            
+            <FluentLabel Typo="Typography.PaneHeader">
+                @Content.Title
+            </FluentLabel>
+        </FluentStack>
+    </FluentDialogHeader>
+
+    <FluentDialogBody>
         
-    </FluentDialog>
-</div>
+        <FluentStack Orientation="Orientation.Vertical" VerticalAlignment="VerticalAlignment.Center" 
+            HorizontalAlignment="HorizontalAlignment.Center">
+           <FluentLabel Typo="Typography.Body">
+                @Content.Description
+            </FluentLabel>
 
+              <div style="width: 300px; display: grid; grid-gap: 12px; grid-auto-flow: column;">
+                <FluentProgress></FluentProgress>
+             </div>
+
+        </FluentStack>
+          
+    </FluentDialogBody>
+
+</FluentDialog>
 
 @code {
+    private bool _hidden = true;
 
-    private FluentDialog? _myFluentDialog;
-    private bool _trapFocus = true;
-    private bool _modal = false;
-    private bool _preventScroll = true;
-    
-    private bool Hidden { get; set; } = true;
+    [Parameter]
+    public TaskLoadingConfigs Content { get; set; } = new TaskLoadingConfigs();
 
-    protected override void OnAfterRender(bool firstRender)
+    [CascadingParameter]
+    public FluentDialog Dialog { get; set; } = default!;
+
+    private async Task SaveAsync()
     {
-        if (firstRender)
-            _myFluentDialog!.Hide();
+        await Dialog.CloseAsync(Content);
     }
- 
+
+    private async Task CancelAsync()
+    {
+        await Dialog.CancelAsync();
+    }
+
 
     [Parameter]
     public string Title { get; set; }
 
-    
+
     public async Task Begin()
-    {        
-        _myFluentDialog!.Show(); 
+    {
+        _hidden = false;
 
     }
 
 
     public async Task End()
     {
-        _myFluentDialog!.Hide();
+        _hidden = true; 
     }
 
 

@@ -1,4 +1,5 @@
 ﻿using FullDevToolKit.Common;
+using FullDevToolKit.Sys.Models.Common;
 using FullDevToolKit.Sys.Models.Identity;
 using MyApp.Proxys;
 
@@ -26,7 +27,7 @@ namespace MyApp.ViewModel
         public InstanceResult result = new InstanceResult();
         public InstanceParam param = new InstanceParam() {  };
         public List<InstanceResult> searchresult = new List<InstanceResult>();
-
+        public IQueryable<InstanceResult> gridlist = null;
         public DefaultLocalization texts = null;
 
         public override async Task ClearSummaryValidation()
@@ -61,6 +62,10 @@ namespace MyApp.ViewModel
 
         }
 
+        public override async Task Remove()
+        {
+
+        }
         public override async Task Get(object id)
         {
 
@@ -99,8 +104,8 @@ namespace MyApp.ViewModel
             APIResponse<List<InstanceResult>> ret
                = await _Proxys.Instance.Search(param);
 
-            SetResult<List<InstanceResult>>(ret, ref searchresult, ref ServiceStatus);           
-
+            SetResult<List<InstanceResult>>(ret, ref searchresult, ref ServiceStatus);
+            gridlist = searchresult.AsQueryable();
         }
 
     }

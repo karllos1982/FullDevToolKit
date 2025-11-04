@@ -44,7 +44,7 @@
                                          Placeholder="@texts.Get("InputEmail-Description")">
                         </FluentTextField>
 
-                        <FluentTextField @bind-Value=@pwd Maxlength="100" Label="@texts.Get("Password-Label")" style="width:100%" TextFieldType="TextFieldType.Password"
+                        <FluentTextField @bind-Value=@pwd Maxlength="10" Label="@texts.Get("Password-Label")" style="width:100%" TextFieldType="TextFieldType.Password"
                                          Placeholder="@texts.Get("InputPassword-Description")">
                         </FluentTextField>
 
@@ -84,8 +84,7 @@
                                         ButtonAppearance="Appearance.Outline"
                                         OnClick="RecoveryPassword">
                             </TaskButton>
-
-                            <TaskLoading @ref="loadingPwd" Title=@texts.Get("SendText-Description")></TaskLoading>
+              
 
                         </FluentStack>
 
@@ -148,7 +147,7 @@
 
 </div>
 
-
+<TaskLoading @ref="loading" Content=loadingConfigs></TaskLoading>
 
 @code {
 
@@ -159,12 +158,13 @@
     private string pwd = "";
     private string emailrecovery = "";
     private ActiveUserAccount active = new ActiveUserAccount();
-  
-    private TaskLoading loadingPwd;
+      
     private bool islogged = false;
 
     private DefaultLocalization texts = null;
 
+    public TaskLoadingConfigs loadingConfigs = new TaskLoadingConfigs();
+    public TaskLoading loading;
 
 
     protected override Task OnInitializedAsync()
@@ -199,6 +199,12 @@
                 {
                     this.texts = new DefaultLocalization();
                     this.texts.Set(response.Data, _settings.DefaultLanguage);
+
+                    loadingConfigs = new TaskLoadingConfigs
+                        {
+                            Title = texts.Get("LoadingPage"),
+                            Description = texts.Get("SendText-Description")
+                        };
                 }
 
                 islogged = await _appctrl.IsAuthenticated();
@@ -271,8 +277,8 @@
         {
 
             AuthProxy proxy = (AuthProxy)_authservices;
-
-            await loadingPwd.Begin();
+          
+            await loading.Begin();
 
             APIResponse<bool> response
                 = await proxy.RecoveryPassword(emailrecovery);
@@ -288,7 +294,7 @@
                     texts.Get("NoticeLabel"));
             }
 
-            await loadingPwd.End();
+            await loading.End();
         }
         else
         {

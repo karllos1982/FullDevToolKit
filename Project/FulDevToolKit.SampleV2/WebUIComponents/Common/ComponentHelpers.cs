@@ -27,6 +27,20 @@ namespace WebUIComponents.Common
         public string Language { get; set; }
     }
 
+    public enum ButtonTypeEnum
+    {
+        NONE = 0,
+        SEARCH= 1,
+        ADD= 2,
+        SAVE= 3,
+        DELETE=4
+    }
 
+    public class TaskLoadingConfigs
+    {
+        public string Title { get; set; }
+
+        public string Description { get; set; }
+    }
 
 }

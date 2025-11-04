@@ -2,6 +2,7 @@
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Sys.Models.Common;
 using MyApp.Proxys;
+using FullDevToolKit.Core.Common;
 
 
 namespace MyApp.ViewModel
@@ -29,14 +30,16 @@ namespace MyApp.ViewModel
         public NewUser newModel = new NewUser();
         public UserParam param = new UserParam();
         public List<UserResult> searchresult = new List<UserResult>();
-        public List<RoleList> listRoles = new List<RoleList>();
-        public List<InstanceList> listInstances = new List<InstanceList>();
+        public IQueryable<UserResult> gridlist = null;
+        public List<SelectItemBase> listRoles = new List<SelectItemBase>();
+        public List<SelectItemBase> listInstances = new List<SelectItemBase>();
         public List<LocalizationTextList> listLangs = new List<LocalizationTextList>();
         
-        public Int64 selectedRole = 0;
-        public Int64 selectedInstance = 0;
 
         public DefaultLocalization texts = null;
+
+        public UserSelectStringValues _selectvalues = null;
+        
 
         public bool isUserActive { get; set; }
         public bool isUserLocked { get; set; }
@@ -63,23 +66,29 @@ namespace MyApp.ViewModel
             await LoadRolesList();
             await LoadInstancesList();
             await LoadLangsList();
-          
+
+            _selectvalues = new UserSelectStringValues(); 
         }
 
         public async Task LoadRolesList()
         {
-            listRoles = new List<RoleList>();
+            listRoles = new List<SelectItemBase>();
 
             ServiceStatus = new ExecutionStatus(true);
-            listRoles = await _cache.ListRoles();
 
-            if (listRoles == null)
+            List<RoleList> list
+                = await _cache.ListRoles();
+
+            if (list != null)
             {
-                listRoles = new List<RoleList>();
-
+                foreach (RoleList role in list)
+                {
+                    listRoles.Add(new SelectItemBase(role.RoleID.ToString(), role.RoleName));
+                }
             }
 
-            listRoles.Insert(0, new RoleList() { RoleID = 0, RoleName = this.texts.Get("SelectItem-Description") });
+            listRoles.Insert(0, new SelectItemBase() { Value = "0", Text = this.texts.Get("SelectItem-Description") });
+
         }
 
         public async Task LoadLangsList()
@@ -101,7 +110,7 @@ namespace MyApp.ViewModel
 
         public async Task LoadInstancesList()
         {
-            listInstances = new List<InstanceList>();
+            listInstances = new List<SelectItemBase>();
 
             APIResponse<List<InstanceList>> ret
                  = await _Proxys.Instance.List(new InstanceParam());
@@ -110,11 +119,16 @@ namespace MyApp.ViewModel
             {
                 if (ret.Data != null)
                 {
-                    listInstances.AddRange(ret.Data);
-                }               
-            }
+                    foreach (InstanceList u in ret.Data)
+                    {
+                        listInstances.Add(new SelectItemBase(u.InstanceID.ToString(), u.InstanceName));
+                    }
+                }
 
-            listInstances.Insert(0, new InstanceList() { InstanceID = 0, InstanceName = this.texts.Get("SelectItem-Description") });
+                listInstances.Insert(0, new SelectItemBase() { Value = "0", Text = this.texts.Get("SelectItem-Description") });
+
+            }
+ 
         }
 
 
@@ -124,8 +138,8 @@ namespace MyApp.ViewModel
             
             UserEntry entry = new UserEntry(result);
 
-            MergeRole(ref entry, result.Roles, selectedRole);
-            MergeInstance(ref entry, result.Instances, selectedInstance);
+            MergeRole(ref entry, result.Roles, long.Parse(_selectvalues.SelectedRole));
+            MergeInstance(ref entry, result.Instances, long.Parse(_selectvalues.SelectedInstance));
 
             APIResponse<UserEntry> ret
                 = await _Proxys.User.Set(entry);
@@ -133,7 +147,11 @@ namespace MyApp.ViewModel
             SetResult<UserEntry>(ret, ref entry, ref ServiceStatus);
           
         }
-        
+
+        public override async Task Remove()
+        {
+
+        }
         private void MergeRole(ref UserEntry obj,
                 List<UserRolesResult> roles, Int64 roleid)
         {
@@ -175,8 +193,8 @@ namespace MyApp.ViewModel
             {
                 this.isUserActive = Convert.ToBoolean(result.IsActive);
                 this.isUserLocked = Convert.ToBoolean(result.IsLocked);
-                selectedRole = result.Roles[0].RoleID;
-                selectedInstance = result.Instances[0].InstanceID;
+                _selectvalues.SelectedRole = result.Roles[0].RoleID.ToString();
+                _selectvalues.SelectedInstance = result.Instances[0].InstanceID.ToString();
             }
            
         }
@@ -184,8 +202,11 @@ namespace MyApp.ViewModel
         public async Task CreateNew()
         {
             ServiceStatus = new ExecutionStatus(true);
-            
-             APIResponse<UserEntry> ret
+
+            newModel.RoleID = long.Parse(_selectvalues.RoleID);
+            newModel.InstanceID = long.Parse(_selectvalues.InstanceID);
+
+            APIResponse<UserEntry> ret
                 = await _Proxys.User.CreateNewUser(newModel);
 
             UserEntry resultUser = new UserEntry(); 
@@ -226,6 +247,10 @@ namespace MyApp.ViewModel
         public override void InitNew()
         {
             this.BaseInitNew();
+            
+            _selectvalues.RoleID = "0";
+            _selectvalues.InstanceID = "0"; 
+
             newModel = new NewUser();
         }
 
@@ -233,12 +258,32 @@ namespace MyApp.ViewModel
         {
             ServiceStatus = new ExecutionStatus(true);
 
+            param.pRoleID = long.Parse(_selectvalues.pRoleID);
+            param.pInstanceID = long.Parse(_selectvalues.pInstanceID);
+
             APIResponse<List<UserResult>> ret
                = await _Proxys.User.Search(param);
 
             SetResult<List<UserResult>>(ret, ref searchresult, ref ServiceStatus);
-
+            gridlist = searchresult.AsQueryable();
         }   
 
     }
+}
+
+public class UserSelectStringValues
+{
+    
+    public string pRoleID { get; set; } = "0";    
+
+    public string pInstanceID{ get; set; } = "0";
+
+    public string SelectedRole { get; set; } = "0";
+
+    public string SelectedInstance { get; set; } = "0";
+
+    public string RoleID { get; set; } = "0";
+
+    public string InstanceID { get; set; } = "0";
+
 }

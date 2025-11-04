@@ -4,8 +4,19 @@
     padding-bottom: 35px !important;
 }
 
- /*Grid classes*/
+.summary-label {
+    padding-top: 3px;
+    color: darkred !important;
+    padding-bottom: 17px;
+}
 
+.task-loading {
+    height: 400px;
+    background-color: lightyellow;    
+}
+
+
+/*Grid classes*/
 #datagrid-container {
     height: calc(100% - 3rem);
     min-height: 8rem;

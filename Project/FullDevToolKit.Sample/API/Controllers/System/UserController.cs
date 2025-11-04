@@ -95,7 +95,7 @@ namespace MyApp.Controllers
             await ExecuteForSave(param, async (param) =>
             {
                 UserEntry data
-                    = await Manager.IdentityModule.CreateNewUser(param, false, null);
+                    = await Manager.IdentityModule.CreateNewUser(param, false, this.UserID);
                 ret = SetReturn(data);
             });
                      

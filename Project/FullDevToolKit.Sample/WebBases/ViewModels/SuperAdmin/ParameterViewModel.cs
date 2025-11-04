@@ -77,6 +77,11 @@ namespace MyApp.ViewModel
 
         }
 
+        public override async Task Remove()
+        {
+            
+        }
+
         public override async Task Get(object id)
         {
             ServiceStatus = new ExecutionStatus(true);

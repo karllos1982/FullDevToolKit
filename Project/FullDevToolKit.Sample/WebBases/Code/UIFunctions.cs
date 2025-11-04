@@ -22,27 +22,6 @@
     }
 }
 
-public class UIBaseItem
-{
-    public string ID;
-    public string Value;
-   
-    public UIBaseItem(string id, string value)
-    {
-        //JavaUnicodeParser jup = new JavaUnicodeParser();
-
-        ID = id;
-        Value = value;
-        
-    }
-
-    public UIBaseItem()
-    {
-
-    }
-
-        
-}
 
 public class SelectBaseItem
 {

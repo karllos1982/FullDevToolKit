@@ -260,38 +260,40 @@ namespace FullDevToolKit.Sys.Manager
                     obj.ProfileImage = null;
                     obj.AuthUserID = null;
 
-                    ret = await Domainset.User.Set(obj, userid);
-
-                    if (Domainset.User.Context.Status.Success)
+                    if (data.RoleID != 0)
                     {
-                        var aux
-                            = await Domainset.User.AddRoleToUser(ret.UserID, data.RoleID);
-
-                        if (aux != null)
+                        obj.Roles = new List<UserRolesEntry>();
+                        obj.Roles.Add(new UserRolesEntry()
                         {
-                            var aux2
-                            = await Domainset.User.AddInstanceToUser(ret.UserID, data.InstanceID);
-
-                        }
-
+                            RoleID = data.RoleID,
+                            RecordState = RECORDSTATEENUM.ADD                                                        
+                        });
                     }
 
+                    if (data.InstanceID != 0)
+                    {
+                        obj.Instances = new List<UserInstancesEntry>();
+                        obj.Instances.Add(new UserInstancesEntry()
+                        {
+                            InstanceID = data.InstanceID,
+                            RecordState = RECORDSTATEENUM.ADD
+                        });
+                    }
+
+                    ret = await Domainset.User.Set(obj, userid);
+                    
                 }
                 else
                 {
                     Domainset.User.Context.Status.SetFailStatus("Error",
-                       LocalizationText.Get("User-Exists", Domainset.User.Context.LocalizationLanguage).Text + data.Email) ;
-                  
+                       LocalizationText.Get("User-Exists", Domainset.User.Context.LocalizationLanguage).Text + data.Email) ;                  
                 }
             }
             else
             {
                 Domainset.User.Context.Status.SetFailStatus("Error",
-                     LocalizationText.Get("Validation-Error", Domainset.User.Context.LocalizationLanguage).Text);
-
-            
+                     LocalizationText.Get("Validation-Error", Domainset.User.Context.LocalizationLanguage).Text);            
             }
-
 
             return ret;
         }

@@ -27,7 +27,7 @@ namespace MyApp.ViewModel
         public ConfigsResult result = new ConfigsResult();
         public ConfigsParam param = new ConfigsParam() { };
         public List<ConfigsResult> searchresult = new List<ConfigsResult>();
-
+        public IQueryable<ConfigsResult> gridlist = null;
         public DefaultLocalization texts = null;
 
         public override async Task ClearSummaryValidation()
@@ -59,6 +59,11 @@ namespace MyApp.ViewModel
                 = await _Proxys.Configs.Set(entry);
 
             SetResult<ConfigsEntry>(ret, ref entry, ref ServiceStatus);
+
+        }
+
+        public override async Task Remove()
+        {
 
         }
 
@@ -101,7 +106,7 @@ namespace MyApp.ViewModel
                = await _Proxys.Configs.Search(param);
 
             SetResult<List<ConfigsResult>>(ret, ref searchresult, ref ServiceStatus);
-
+            gridlist = searchresult.AsQueryable();
         }
 
     }

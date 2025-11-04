@@ -226,7 +226,7 @@ namespace MyApp.ViewModel
             ClearSummaryValidation();
             this.EditingState = "block";
             this.SearchingState = "none";
-            ModoLabel = "Inserindo";
+            ModoLabel = texts.Get("Inserting-Label"); 
             this.Inserting = true;
             this.Editing = false;
             ClearSummaryValidation();
@@ -236,7 +236,7 @@ namespace MyApp.ViewModel
         {
             this.EditingState = "block";
             this.SearchingState = "none";
-            ModoLabel = "Editando";
+            ModoLabel = texts.Get("Editing-Label");
             this.Inserting = false;
             this.Editing = true;
             ClearSummaryValidation();
@@ -259,6 +259,8 @@ namespace MyApp.ViewModel
         public abstract Task Get(object id);
 
         public abstract Task Set();
+
+        public abstract Task Remove();
 
         public void SetResult<T>(APIResponse<T> response,
            ref T data,  ref ExecutionStatus status)

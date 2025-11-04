@@ -112,7 +112,6 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
                   where UserID=@UserID";
             }
 
-
             return ret;
         }
 
@@ -120,9 +119,11 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
         {
             string ret = "";
 
-            ret = @"update sysUser set IsActive=@ActiveValue,IsLocked=@LockedValue  
-                 where UserID=@UserID";
-
+            ret = @"update sysUser set 
+                  IsActive=@ActiveValue,
+                  IsLocked=@LockedValue,
+                  LoginFailCounter=0
+                  where UserID=@UserID";
 
             return ret;
         }
@@ -132,7 +133,8 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
         {
             string ret = @"Select 
                     UserID,ApplicationID,UserName,Email,Password,Salt,CreateDate,IsActive,IsLocked,DefaultLanguage,LastLoginDate,
-                    LastLoginIP,LoginCounter,LoginFailCounter,AuthCode,AuthCodeExpires,PasswordRecoveryCode,ProfileImage,AuthUserID                     
+                    LastLoginIP,LoginCounter,LoginFailCounter,AuthCode,AuthCodeExpires,PasswordRecoveryCode,ProfileImage,AuthUserID,                     
+                    Seq, TSCreate, TSLastUpdate
                     from sysUser where userid=@pUserID";
 
             return ret;

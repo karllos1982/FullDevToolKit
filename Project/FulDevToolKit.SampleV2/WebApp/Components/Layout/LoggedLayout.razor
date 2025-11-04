@@ -8,6 +8,7 @@
 @inject NavigationManager NavigationManager
 @inject HttpClient _httpclient
 
+@inject IDialogService DialogService
 
 <FluentLayout>
     <FluentHeader>
@@ -45,8 +46,9 @@
 
 </FluentLayout>
 
-<FluentDialogProvider/>
 
+<FluentDialogProvider/>
+<FluentMenuProvider/>
 
 <div id="blazor-error-ui" data-nosnippet>
     An unhandled error has occurred.
@@ -66,17 +68,16 @@
 
 	private UserViewDetailsObject userdetails = null; 
 
-	protected TaskLoading loading;
-
-	protected TaskButton searchbtn;
-	protected TaskButton newbtn;
-	protected TaskButton savenewbtn;
-
 	protected string _LoadingData_Text;
 	protected string _AreaURL = "";
 	protected string _PageTitle;
 	protected string _msgYes = "";
 	protected string _msgNo = "";
+		
+	public DataGridRowSize rowSize = DataGridRowSize.Medium;
+	public PaginationState pagination = new PaginationState { ItemsPerPage = 20  };
+	public TaskLoadingConfigs loadingConfigs = new TaskLoadingConfigs();
+	public TaskLoading loading;
 
 	protected override async Task OnAfterRenderAsync(bool firstRender)
 	{

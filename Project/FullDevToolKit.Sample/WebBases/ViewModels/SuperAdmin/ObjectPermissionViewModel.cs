@@ -26,7 +26,7 @@ namespace MyApp.ViewModel
         public ObjectPermissionResult result = new ObjectPermissionResult();
         public ObjectPermissionParam param = new ObjectPermissionParam() { pObjectCode="",pObjectName=""};
         public List<ObjectPermissionResult> searchresult = new List<ObjectPermissionResult>();
-
+        public IQueryable<ObjectPermissionResult> gridlist = null;
         public DefaultLocalization texts = null;
 
         public override async Task ClearSummaryValidation()
@@ -58,6 +58,10 @@ namespace MyApp.ViewModel
 
             SetResult<ObjectPermissionEntry>(ret, ref entry, ref ServiceStatus);
 
+        }
+
+        public override async Task Remove()
+        {
 
         }
 
@@ -99,7 +103,7 @@ namespace MyApp.ViewModel
                = await _Proxys.ObjectPermission.Search(param);
 
             SetResult<List<ObjectPermissionResult>>(ret, ref searchresult, ref ServiceStatus);
-
+            gridlist = searchresult.AsQueryable();
         }
 
     }

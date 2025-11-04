@@ -180,18 +180,22 @@ namespace FullDevToolKit.Sys.Domains
                           {
                               foreach (UserRolesEntry c in model.Roles)
                               {
+                                  
                                   if (c.RecordState != RECORDSTATEENUM.NONE)
                                   {
                                       c.UserID = model.UserID;
 
                                       if (c.RecordState == RECORDSTATEENUM.ADD)
                                       {
+                                          c.TSLastUpdate = DateTime.Now;
+                                          c.TSCreate =  DateTime.Now;
                                           c.UserRoleID = Utilities.GenerateId();
                                           await _repositories.UserRoles.Create(c);
                                       }
 
                                       if (c.RecordState == RECORDSTATEENUM.EDITED)
-                                      {
+                                      {                                          
+                                          c.TSLastUpdate = DateTime.Now;
                                           await _repositories.UserRoles.Update(c);
                                       }
 
@@ -208,18 +212,22 @@ namespace FullDevToolKit.Sys.Domains
                           {
                               foreach (UserInstancesEntry c in model.Instances)
                               {
+                             
                                   if (c.RecordState != RECORDSTATEENUM.NONE)
                                   {
                                       c.UserID = model.UserID;
 
                                       if (c.RecordState == RECORDSTATEENUM.ADD)
                                       {
+                                          c.TSLastUpdate = DateTime.Now;
+                                          c.TSCreate = DateTime.Now;
                                           c.UserInstanceID = Utilities.GenerateId();
                                           await _repositories.UserInstances.Create(c);
                                       }
 
                                       if (c.RecordState == RECORDSTATEENUM.EDITED)
                                       {
+                                          c.TSLastUpdate = DateTime.Now;
                                           await _repositories.UserInstances.Update(c);
                                       }
 
