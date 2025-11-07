@@ -27,8 +27,10 @@ namespace MyApp.ViewModel
         public SessionLogResult result = new SessionLogResult();
         public SessionLogParam param = new SessionLogParam();
         public List<SessionLogResult> searchresult = new List<SessionLogResult>();
+        public IQueryable<SessionLogResult> gridlist = null;
 
-        public DefaultLocalization texts = null;
+        public DateTime? dataInicio { get; set; }
+        public DateTime? dataFim { get; set; }
 
         public override async Task ClearSummaryValidation()
         {
@@ -36,7 +38,6 @@ namespace MyApp.ViewModel
             {
 
             };
-
            
         }
 
@@ -93,11 +94,24 @@ namespace MyApp.ViewModel
         {
             ServiceStatus = new ExecutionStatus(true);
 
+            if (dataInicio != null && dataFim != null)
+            {
+                param.pDate_Start = dataInicio.Value;
+                param.pData_End = dataFim.Value;
+                param.SearchByDate = true;
+            }
+            else
+            {
+                dataInicio = null;
+                dataFim = null;
+            }
+            
             APIResponse<List<SessionLogResult>> ret
                = await _Proxys.SessionLog.Search(param);
 
             SetResult<List<SessionLogResult>>(ret, ref searchresult, ref ServiceStatus);
-          
+            gridlist = searchresult.AsQueryable();
+
         }
 
     }

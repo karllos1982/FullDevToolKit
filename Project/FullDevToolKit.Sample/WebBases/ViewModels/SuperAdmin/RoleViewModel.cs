@@ -26,8 +26,7 @@ namespace MyApp.ViewModel
         public RoleParam param = new RoleParam() { };
         public List<RoleResult> searchresult = new List<RoleResult>();
         public IQueryable<RoleResult> gridlist = null;
-        public DefaultLocalization texts = null;
-
+        
         public override async Task ClearSummaryValidation()
         {
             SummaryValidation = new List<ExceptionMessage>()

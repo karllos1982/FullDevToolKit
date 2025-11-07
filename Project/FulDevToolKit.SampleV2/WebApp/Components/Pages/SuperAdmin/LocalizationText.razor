@@ -1,0 +1,396 @@
+﻿@page "/superadmin/localizationtext"
+
+@inherits LoggedLayout
+@layout LoggedLayout
+
+@inject NavigationManager NavigationManager
+@inject HttpClient _httpclient
+@inject IAppControllerAsync<UserAuthenticated> _appctrl
+@inject IAppSettings _settings
+@inject IDataCacheProxyManager _cache
+@inject ISystemProxyManager _systemservices
+@inject IDialogService msgbox
+
+
+
+@if (view != null)
+{
+
+    <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+
+        <FluentGridItem lg="8" xs="12">
+            <FluentLabel> <h2> @_PageTitle</h2> </FluentLabel>
+
+        </FluentGridItem>
+
+        <FluentGridItem lg="3" xs="12" Style="margin-top: 6px;">
+
+            <FormActionButton ButtonType=ButtonTypeEnum.ADD
+                              Title="@view.texts.Get("NewLocalization-Label")"
+                              Disabled="!view.Permissions.AllowSave"
+                              Visible="!view.GetTabEditState()"
+                              OnAction="OnNew">
+            </FormActionButton>
+
+            <FormActionButton ButtonType=ButtonTypeEnum.SAVE
+                              Title="@view.texts.Get("SaveLocalizationButton-Label")"
+                              Disabled="!view.Permissions.AllowSave"
+                              Visible="view.GetTabEditState()"
+                              OnAction="OnSet">
+            </FormActionButton>
+
+        </FluentGridItem>
+
+        <FluentGridItem lg="1" xs="12" Style="margin-top: 6px;">
+
+            <TaskIconButton OnClick="OnRemove"
+                            Visible="view.Editing"
+                            Disabled="!view.Permissions.AllowSave"
+                            IconStart="@(new Icons.Regular.Size24.Delete())">
+            </TaskIconButton>
+
+        </FluentGridItem>
+
+    </FluentGrid>
+
+
+    @if (!view.GetTabEditState())
+    {
+        <FluentGrid Spacing="1" AdaptiveRendering="true" Style="padding: 4px; ">
+
+            <FluentGridItem lg="12" xs="12">
+
+                <FluentAccordion>
+
+                    <FluentAccordionItem Expanded="true" Heading="@view.texts.Get("SearchButtonLabel")">
+                        <FluentIcon Value="@(new Icons.Regular.Size24.Search())"
+                                    Color="@Color.Accent" Slot="start" />
+
+                           <FluentGrid Spacing="1" AdaptiveRendering="true" >
+
+                                <FluentGridItem lg="3" xs="12">
+
+                                    @if (view.listLangs != null)
+                                    {
+                                        @if (view.listLangs.Count > 0)
+                                        {
+                                            <FluentSelect TOption="LocalizationTextList"
+                                                      Label=@view.texts.Get("SearchByLanguage-Label")
+                                                          Items="@view.listLangs"
+                                                          Id="LocalizationTextList"
+                                                          Height="250px"
+                                                          Width="95%"
+                                                          OptionValue="@(p => p.Language)"
+                                                          OptionText="@(p => p.Language)"
+                                                      @bind-Value="view.param.pLanguage" />
+
+                                            <FluentLabel Class="summary-label"> @view.GetSummaryMessage("DefaultLanguage") </FluentLabel>
+                                        }
+                                    }
+                                        
+
+                                 </FluentGridItem>
+
+                                <FluentGridItem lg="3" xs="12">
+
+                                         <FluentTextField @bind-Value="view.param.pCode" Maxlength="50"
+                                             Label="@view.texts.Get("SearchByLocalizationCode-Label")" style="width:95%">
+                                        </FluentTextField>
+
+                                </FluentGridItem>
+
+
+                                 <FluentGridItem lg="6" xs="12">
+
+                                        <FluentTextField @bind-Value="view.param.pName" Maxlength="50"
+                                                         Label="@view.texts.Get("SearchByLocalizationName-Label")" style="width:95%">
+                                        </FluentTextField>
+
+                                  </FluentGridItem>
+
+
+                                   <FluentGridItem lg="12" xs="12">
+                                        <FormActionButton ButtonType=ButtonTypeEnum.SEARCH
+                                                          Title="@view.texts.Get("SearchButtonLabel")"
+                                                          Visible="true"
+                                                          Disabled="!view.Permissions.AllowRead"
+                                                          OnAction="OnSearch">
+                                        </FormActionButton>
+
+                                   </FluentGridItem>
+
+                            </FluentGrid>
+      
+                    </FluentAccordionItem>
+                </FluentAccordion>
+            </FluentGridItem>
+
+
+            <FluentGridItem lg="12" xs="12">
+
+                <FluentCard Width="100%" Height="100%" Class="card-layout">
+
+                    <FluentLabel> <h5>@view.texts.Get("SearchResultLabel")</h5> </FluentLabel>
+
+                    <div id="datagrid-container">
+                        <FluentDataGrid Items="@view.gridlist"
+                                        TGridItem="LocalizationTextResult"
+                                        Pagination="@pagination"
+                                        RowSize="@rowSize"
+                                        ResizableColumns=true
+                                        Style="overflow-y:hidden;">
+
+                            <PropertyColumn Property="@(c => c.Language)" Title="@view.texts.Get("Language-Label")" Sortable="true" Width="20%" />
+                            <PropertyColumn Property="@(c => c.Code)" Title="@view.texts.Get("LocalizationCode-Label")" Sortable="true" Width="25%" />
+                            <PropertyColumn Property="@(c => c.Name)" Title="@view.texts.Get("LocalizationName-Label")" Sortable="true" Width="40%" />
+
+                            <TemplateColumn Title="..." Width="15%">
+
+                                <FluentButton Appearance="Appearance.Lightweight"
+                                              IconEnd="@(new Icons.Regular.Size24.ClipboardTextEdit())"
+                                              @onclick="@(() => OnDetClick(context.LocalizationTextID ))">
+                                </FluentButton>
+
+                            </TemplateColumn>
+
+                        </FluentDataGrid>
+                    </div>
+
+                    <FluentPaginator State="@pagination" />
+
+                </FluentCard>
+            </FluentGridItem>
+
+        </FluentGrid>
+    }
+
+    @if (view.GetTabEditState())
+    {
+        <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+
+            <FluentGridItem lg="1" xs="12" Style="margin-top: 0px;">
+
+                <TaskIconButton OnClick="Back"
+                                IconStart="@(new Icons.Regular.Size24.ArrowCircleLeft())">
+
+                </TaskIconButton>
+
+            </FluentGridItem>
+
+            <FluentGridItem lg="9" xs="12">
+                <FluentLabel> <h4>@view.ModoLabel</h4> </FluentLabel>
+
+            </FluentGridItem>
+
+        </FluentGrid>
+
+        <FluentCard Width="100%" Height="100%" Class="card-layout">
+
+            <FluentTextField @bind-Value="view.result.Language" Maxlength="5"
+                             Label="@view.texts.Get("Language-Label")" style="width:25%">
+            </FluentTextField>
+            <FluentLabel Class="summary-label"> @view.GetSummaryMessage("Language") </FluentLabel>
+
+            <FluentTextField @bind-Value=view.result.Code Maxlength="10"
+                             Label="@view.texts.Get("LocalizationCode-Label")" style="width:25%">
+            </FluentTextField>
+            <FluentLabel Class="summary-label"> @view.GetSummaryMessage("Code") </FluentLabel>
+
+            <FluentTextField @bind-Value=view.result.Name Maxlength="50"
+                             Label="@view.texts.Get("LocalizationName-Label")" style="width:75%">
+            </FluentTextField>
+            <FluentLabel Class="summary-label"> @view.GetSummaryMessage("Name") </FluentLabel>
+
+            <FluentTextField @bind-Value=view.result.Text Maxlength="255"
+                             Label="@view.texts.Get("LocalizationText-Label")" style="width:75%">
+            </FluentTextField>
+            <FluentLabel Class="summary-label"> @view.GetSummaryMessage("Text") </FluentLabel>
+           
+          
+        </FluentCard>
+
+    }
+}
+else
+{
+
+    <FluentStack Style="margin-bottom: 24px;"
+                 VerticalAlignment="VerticalAlignment.Center"
+                 HorizontalAlignment="HorizontalAlignment.Center">
+        <PageLoading LoadingText="Loading page. Wait..."></PageLoading>
+
+    </FluentStack>
+
+}
+
+<TaskLoading @ref="loading" Content=loadingConfigs></TaskLoading>
+
+@code {
+
+    private LocalizationTextViewModel view;
+
+    //
+
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+
+        if (firstRender)
+        {
+            if (await this.InitResources())
+            {
+                await this.InitCacheAndLocalization();
+
+                this.InitServices();
+
+                view = new LocalizationTextViewModel((_systemservices as SystemProxy),
+                   (_cache as DataCacheProxy), user, _httpclient, _settings.ServiceURL, _appctrl.UserInfo.Token);
+
+                view.texts = this.localization;
+
+                view.Permissions
+                    = BaseViewModel.SetPermissions(permissions, "SYSLOCALIZATIONTEXT", false);
+
+                await view.InitializeModels();
+
+                _LoadingData_Text = view.texts.Get("LoadingData");
+                _AreaURL = "superadmin";                
+                this.SetPageTile(view.texts.Get("Localization-PageTitle"));
+                loadingConfigs = new TaskLoadingConfigs
+                    {
+                        Title = view.texts.Get("LoadingPage"),
+                        Description = view.texts.Get("LocalizationRecord-Label")
+                    };
+            }
+
+            StateHasChanged();
+
+        }
+    }
+
+
+
+    public async Task OnSearch()
+    {
+        await view.Search();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                view.texts.Get("ErrorOnExecuteSearch"));
+
+        }
+
+    }
+
+    public void OnNew()
+    {
+
+        view.InitNew();
+        StateHasChanged();
+    }
+
+    public async Task OnGet(object id)
+    {
+
+        await loading.Begin();
+
+        await view.Get(id);
+
+        await loading.End();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                view.texts.Get("ErrorOnReturnData"));
+
+        }
+        else
+        {
+            view.InitEdit();
+
+        }
+
+        StateHasChanged();
+    }
+
+
+    public async Task OnSet()
+    {
+
+        await view.Set();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                view.texts.Get("NoticeLabel"));
+
+        }
+        else
+        {
+            await msgbox.ShowSuccessAsync(view.texts.Get("SuccessSaveMessage"),
+                view.texts.Get("SuccessLabel"));
+
+            this.Back();
+
+        }
+
+    }
+
+    public async Task OnRemove()
+    {
+
+        var dialog = await msgbox.ShowConfirmationAsync(view.texts.Get("RemoveConfirmation-Label"));
+        var result = await dialog.Result;
+        bool canceled = result.Cancelled;
+
+        if (!canceled)
+        {            
+            
+            await view.Remove();
+                    
+            if (!view.ServiceStatus.Success)
+            {
+                await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                    view.texts.Get("NoticeLabel"));
+            }
+            else
+            {
+                await msgbox.ShowSuccessAsync(view.texts.Get("RemoveConfirmation-Message"),
+                    view.texts.Get("SuccessLabel"));
+
+                await view.Search();
+                this.Back();
+            }
+        }
+
+    }
+
+    public async Task OnDetClick(object id)
+    {
+        await OnGet(id);
+
+    }
+
+    public void Back()
+    {
+        view.BackToSearch();
+        StateHasChanged();
+
+    }
+
+    public void GoHome()
+    {
+        string url = _appctrl.UserInfo.HomeURL;
+        NavigationManager.NavigateTo(url);
+
+    }
+
+
+
+}

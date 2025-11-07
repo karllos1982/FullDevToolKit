@@ -18,119 +18,136 @@
     @if (user != null && texts != null)
     {
 
-        <FluentStack Style="margin-bottom: 10px;"
-                     VerticalAlignment="VerticalAlignment.Center">
-            <FluentLabel> <h1> @texts.Get("Welcome-Label")</h1> </FluentLabel>
 
-        </FluentStack>
+    <FluentGrid Spacing="@Spacing" AdaptiveRendering="true" Justify="@Justification"
+        Style="padding: 4px; ">
+           
+            <FluentGridItem xs="12" lg="6">                
 
+                <FluentGrid Spacing="@Spacing" AdaptiveRendering="true" Justify="@Justification"
+                            Style="padding: 4px; ">
+                    <FluentGridItem xs="12">
+                        <h3>@texts.Get("LoginTitle-Label")</h3>
+                    </FluentGridItem>
+                  
+                    <FluentGridItem xs="12"  lg="10">
 
-        <FluentGrid Spacing="@Spacing" AdaptiveRendering="true" Justify="@Justification"
-                    Style="padding: 4px; ">
-            <FluentGridItem xs="12">
-                <h3>@texts.Get("LoginTitle-Label")</h3>
-            </FluentGridItem>
+                          <FluentCard Width="100%" Height="100%" Class="card-layout">
+                               <FluentStack Style="margin-bottom: 20px;" Orientation="Orientation.Vertical"
+                                                 VerticalAlignment="VerticalAlignment.Center">
 
-            <FluentGridItem xs="12">
-                <h4>@texts.Get("LoginTitle-Description")</h4>
-            </FluentGridItem>
+                                    <FluentLabel Typo="Typography.PaneHeader">
+                                        @texts.Get("LoginTitle-Description")
+                                    </FluentLabel>
 
-            <FluentGridItem xs="12" lg="6" >
+                                    <FluentTextField @bind-Value=@user.Email Maxlength="100" Label="@texts.Get("Email-Label")" style="width:100%"
+                                                     Placeholder="@texts.Get("InputEmail-Description")">
+                                    </FluentTextField>
 
-                   <FluentStack Style="margin-bottom: 20px;" Orientation="Orientation.Vertical"
-                                     VerticalAlignment="VerticalAlignment.Center">
+                                    <FluentTextField @bind-Value=@pwd Maxlength="10" Label="@texts.Get("Password-Label")" style="width:100%" TextFieldType="TextFieldType.Password"
+                                                     Placeholder="@texts.Get("InputPassword-Description")">
+                                    </FluentTextField>
 
-                        <FluentTextField @bind-Value=@user.Email Maxlength="100" Label="@texts.Get("Email-Label")" style="width:100%"
-                                         Placeholder="@texts.Get("InputEmail-Description")">
-                        </FluentTextField>
-
-                        <FluentTextField @bind-Value=@pwd Maxlength="10" Label="@texts.Get("Password-Label")" style="width:100%" TextFieldType="TextFieldType.Password"
-                                         Placeholder="@texts.Get("InputPassword-Description")">
-                        </FluentTextField>
-
-                        <TaskButton Title=@texts.Get("LoginButton-Label") 
-                                    ButtonAppearance="Appearance.Accent" 
-                                    IconEnd="@(new Icons.Regular.Size20.CheckmarkSquare())"
-                                    ActionLabel=@texts.Get("LoginLoading-Label") OnClick="ExecuteLogin">
-                        </TaskButton>                    
-                    </FluentStack>                
-
-            </FluentGridItem>
+                                    <TaskButton Title=@texts.Get("LoginButton-Label") 
+                                                ButtonAppearance="Appearance.Accent" 
+                                                IconEnd="@(new Icons.Regular.Size20.CheckmarkSquare())"
+                                                ActionLabel=@texts.Get("LoginLoading-Label") OnClick="ExecuteLogin">
+                                    </TaskButton>                    
+                                </FluentStack>                
+                            </FluentCard>
+                    </FluentGridItem>
                                
 
-        </FluentGrid>
+                </FluentGrid>
 
-        <FluentGrid Spacing="@Spacing" AdaptiveRendering="true" Justify="@Justification"
-                    Style="padding: 4px; ">
+
+                <FluentGrid Spacing="@Spacing" AdaptiveRendering="true" Justify="@Justification"
+                            Style="padding: 4px; ">
+
+                    <FluentGridItem xs="12" lg="10">
+
+                        <FluentAccordion>
+
+                            <FluentAccordionItem Heading="@texts.Get("ForgetPassword-Description")">
+                                <FluentIcon Value="@(new Icons.Regular.Size20.PersonPasskey())"
+                                            Color="@Color.Accent" Slot="start" />
+
+                                <FluentStack Style="margin-bottom: 20px;" Orientation="Orientation.Vertical"
+                                             VerticalAlignment="VerticalAlignment.Center">
+
+                                    <FluentLabel> @texts.Get("InputEmail-Description")</FluentLabel>
+
+                                    <FluentTextField @bind-Value=@emailrecovery
+                                                     Placeholder=@texts.Get("InputEmail-Description")
+                                                     Maxlength="100" style="width:100%" />
+
+                                    <TaskButton  Title=@texts.Get("SendCodeButton-Label")
+                                                ButtonAppearance="Appearance.Outline"
+                                                OnClick="RecoveryPassword">
+                                    </TaskButton>
+              
+
+                                </FluentStack>
+
+                            </FluentAccordionItem>
+
+                                <FluentAccordionItem Heading="@texts.Get("ActiveAccountButton-Label")">
+                                    <FluentIcon Value="@(new Icons.Regular.Size20.InprivateAccount())"
+                                                Color="@Color.Accent" Slot="start" />
+
+                                    <FluentStack Style="margin-bottom: 20px;" Orientation="Orientation.Vertical"
+                                                 VerticalAlignment="VerticalAlignment.Center">
+                            
+
+                                        <FluentLabel> 1. @texts.Get("ActiveAccount-Step1"): </FluentLabel>
+
+                                        <FluentTextField @bind-Value=@active.Email Maxlength="100"                                             
+                                                     Placeholder=@texts.Get("InputEmail-Description") style="width:100%" />
+
+                                        <TaskButton Title=@texts.Get("SendCodeButton-Label")
+                                                    ButtonAppearance="Appearance.Outline"
+                                                OnClick="SendActiveAccountCode">
+                                        </TaskButton>
+
+                                        <FluentDivider Style="width: 100%;" Role="DividerRole.Presentation"></FluentDivider>
+
+
+                                    <FluentLabel>2. @texts.Get("ActiveAccount-Step2"):</FluentLabel>
+
+                                    <FluentTextField @bind-Value=@active.Code Maxlength="20"
+                                                     Placeholder=@texts.Get("InputCode-Description") style="width:100%" />
+
+                                    <TaskButton Title=@texts.Get("ActiveAccountButton-Label")
+                                                ButtonAppearance="Appearance.Outline"
+                                                OnClick="ActivateAccount">
+                                    </TaskButton>
+                           
+
+                                    </FluentStack>
+
+                                </FluentAccordionItem>
+
+                        </FluentAccordion>
+
+                    </FluentGridItem>
+
+                </FluentGrid>
+        
+         </FluentGridItem>
 
             <FluentGridItem xs="12" lg="6">
 
-                <FluentAccordion>
+                <FluentStack Style="margin-bottom: 10px;height:100%" 
+                             Orientation = "Orientation.Vertical"
+                             HorizontalAlignment="HorizontalAlignment.Center"
+                             VerticalAlignment="VerticalAlignment.Center">
+                    <FluentLabel Typo="Typography.HeroTitle" > @texts.Get("Welcome-Label") </FluentLabel>
 
-                    <FluentAccordionItem Heading="@texts.Get("ForgetPassword-Description")">
-                        <FluentIcon Value="@(new Icons.Regular.Size20.PersonPasskey())"
-                                    Color="@Color.Accent" Slot="start" />
-
-                        <FluentStack Style="margin-bottom: 20px;" Orientation="Orientation.Vertical"
-                                     VerticalAlignment="VerticalAlignment.Center">
-
-                            <FluentLabel> @texts.Get("InputEmail-Description")</FluentLabel>
-
-                            <FluentTextField @bind-Value=@emailrecovery
-                                             Placeholder=@texts.Get("InputEmail-Description")
-                                             Maxlength="100" style="width:100%" />
-
-                            <TaskButton  Title=@texts.Get("SendCodeButton-Label")
-                                        ButtonAppearance="Appearance.Outline"
-                                        OnClick="RecoveryPassword">
-                            </TaskButton>
-              
-
-                        </FluentStack>
-
-                    </FluentAccordionItem>
-
-                        <FluentAccordionItem Heading="@texts.Get("ActiveAccountButton-Label")">
-                            <FluentIcon Value="@(new Icons.Regular.Size20.InprivateAccount())"
-                                        Color="@Color.Accent" Slot="start" />
-
-                            <FluentStack Style="margin-bottom: 20px;" Orientation="Orientation.Vertical"
-                                         VerticalAlignment="VerticalAlignment.Center">
-                            
-
-                                <FluentLabel> 1. @texts.Get("ActiveAccount-Step1"): </FluentLabel>
-
-                                <FluentTextField @bind-Value=@active.Email Maxlength="100"                                             
-                                             Placeholder=@texts.Get("InputEmail-Description") style="width:100%" />
-
-                                <TaskButton Title=@texts.Get("SendCodeButton-Label")
-                                            ButtonAppearance="Appearance.Outline"
-                                        OnClick="SendActiveAccountCode">
-                                </TaskButton>
-
-                                <FluentDivider Style="width: 100%;" Role="DividerRole.Presentation"></FluentDivider>
-
-
-                            <FluentLabel>2. @texts.Get("ActiveAccount-Step2"):</FluentLabel>
-
-                            <FluentTextField @bind-Value=@active.Code Maxlength="20"
-                                             Placeholder=@texts.Get("InputCode-Description") style="width:100%" />
-
-                            <TaskButton Title=@texts.Get("ActiveAccountButton-Label")
-                                        ButtonAppearance="Appearance.Outline"
-                                        OnClick="ActivateAccount">
-                            </TaskButton>
-                           
-
-                            </FluentStack>
-
-                        </FluentAccordionItem>
-
-                </FluentAccordion>
+                </FluentStack>
 
             </FluentGridItem>
 
-        </FluentGrid>
+      </FluentGrid>
     }
     else
     {

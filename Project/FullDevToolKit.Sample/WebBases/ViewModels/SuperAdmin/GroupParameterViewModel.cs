@@ -26,8 +26,7 @@ namespace MyApp.ViewModel
         public GroupParameterResult result = new GroupParameterResult();
         public GroupParameterParam param = new GroupParameterParam() { };
         public List<GroupParameterResult> searchresult = new List<GroupParameterResult>();
-
-        public DefaultLocalization texts = null;
+        public IQueryable<GroupParameterResult> gridlist = null;
 
         public override async Task ClearSummaryValidation()
         {
@@ -101,7 +100,7 @@ namespace MyApp.ViewModel
                = await _Proxys.GroupParameter.Search(param);
 
             SetResult<List<GroupParameterResult>>(ret, ref searchresult, ref ServiceStatus);
-
+            gridlist = searchresult.AsQueryable();
         }
 
     }

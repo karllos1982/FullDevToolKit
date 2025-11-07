@@ -204,9 +204,7 @@ else
                 await view.InitializeModels();
 
                 _LoadingData_Text = view.texts.Get("LoadingData");
-                _AreaURL = "superadmin";
-                _msgYes = view.texts.Get("Yes-Text");
-                _msgNo = view.texts.Get("No-Text");
+                _AreaURL = "superadmin";                
                 this.SetPageTile(view.texts.Get("ObjectPermission-PageTitle"));
                 loadingConfigs= new TaskLoadingConfigs
                     { Title = view.texts.Get("LoadingPage"), 

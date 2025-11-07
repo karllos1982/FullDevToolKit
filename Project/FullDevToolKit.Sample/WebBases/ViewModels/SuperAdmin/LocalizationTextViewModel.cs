@@ -26,8 +26,8 @@ namespace MyApp.ViewModel
         public LocalizationTextResult result = new LocalizationTextResult();
         public LocalizationTextParam param = new LocalizationTextParam() ;
         public List<LocalizationTextResult> searchresult = new List<LocalizationTextResult>();
-
-        public DefaultLocalization texts = null;
+        public IQueryable<LocalizationTextResult> gridlist = null;
+        public List<LocalizationTextList> listLangs = new List<LocalizationTextList>();
 
         public override async Task ClearSummaryValidation()
         {
@@ -43,9 +43,27 @@ namespace MyApp.ViewModel
 
         public override async Task InitializeModels()
         {
-            await ClearSummaryValidation();            
+            await ClearSummaryValidation();
+            await LoadLangsList();
+
         }
 
+        public async Task LoadLangsList()
+        {
+            listLangs = new List<LocalizationTextList>();
+
+            ServiceStatus = new ExecutionStatus(true);
+            listLangs = await _cache.ListLanguages();
+
+            if (listLangs == null)
+            {
+                listLangs = new List<LocalizationTextList>();
+
+            }
+
+            listLangs.Insert(0, new LocalizationTextList() { LocalizationTextID = 0, Language = this.texts.Get("SelectItem-Description") });
+
+        }
 
         public override async Task Set()
         {
@@ -62,8 +80,16 @@ namespace MyApp.ViewModel
 
         public override async Task Remove()
         {
+            ServiceStatus = new ExecutionStatus(true);
 
+            LocalizationTextEntry entry = new LocalizationTextEntry(result);
+
+            APIResponse<LocalizationTextEntry> ret
+                = await _Proxys.LocalizationText.Remove(entry);
+
+            SetResult<LocalizationTextEntry>(ret, ref entry, ref ServiceStatus);
         }
+
         public override async Task Get(object id)
         {
 
@@ -104,7 +130,7 @@ namespace MyApp.ViewModel
                = await _Proxys.LocalizationText.Search(param);
 
             SetResult<List<LocalizationTextResult>>(ret, ref searchresult, ref ServiceStatus);
-           
+            gridlist = searchresult.AsQueryable();
         }
 
     }

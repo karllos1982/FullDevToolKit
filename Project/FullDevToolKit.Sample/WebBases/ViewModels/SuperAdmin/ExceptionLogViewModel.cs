@@ -28,9 +28,7 @@ namespace MyApp.ViewModel
         public ExceptionLogResult result = new ExceptionLogResult();
         public ExceptionLogParam param = new ExceptionLogParam();
         public List<ExceptionLogResult> searchresult = new List<ExceptionLogResult>();
-        
-        public DefaultLocalization texts = null;
-
+                
         public override async Task ClearSummaryValidation()
         {
             SummaryValidation = new List<ExceptionMessage>()

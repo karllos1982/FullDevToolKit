@@ -4,6 +4,7 @@ using FullDevToolKit.Common;
 using MyApp.API;
 using Microsoft.AspNetCore.Authorization;
 using FullDevToolKit.Core;
+using FullDevToolKit.Sys.Models.Identity;
 
 
 namespace MyApp.Controllers
@@ -24,6 +25,7 @@ namespace MyApp.Controllers
         [Authorize]
         public async Task<object> Search(LocalizationTextParam param)
         {
+            
             await ExecuteForRead(param, async (param) =>
             {
                 List<LocalizationTextResult> data
@@ -81,5 +83,20 @@ namespace MyApp.Controllers
             return ret;
         }
 
+        [HttpPost]
+        [Route("remove")]
+        [Authorize]
+        public async Task<object> Remove(LocalizationTextEntry param)
+        {
+            await ExecuteForDelete(param, async (param) =>
+            {
+                LocalizationTextEntry data
+                    = await Manager.IdentityModule
+                        .Domainset.LocalizationText.Remove(param, this.UserID);
+                ret = SetReturn(data);
+            });
+
+            return ret;
+        }
     }
 }

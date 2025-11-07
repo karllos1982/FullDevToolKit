@@ -631,6 +631,15 @@ namespace MyApp.Proxys
             return ret;
         }
 
+        public async Task<APIResponse<LocalizationTextEntry>?> Remove(LocalizationTextEntry data)
+        {
+            APIResponse<LocalizationTextEntry?> ret = null;
+
+            ret = await PostAsJSON<LocalizationTextEntry?>("remove", JsonConvert.SerializeObject(data), null);
+
+            return ret;
+        }
+
 
     }
 

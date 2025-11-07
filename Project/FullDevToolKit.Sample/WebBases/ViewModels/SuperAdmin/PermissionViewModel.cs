@@ -39,9 +39,7 @@ namespace MyApp.ViewModel
         public List<SelectItemBase> listPermissionValue = new List<SelectItemBase>();
         
         public string pTypeGrant = "";
-        
-        public DefaultLocalization texts = null;
-
+                
         public PermissionSelectStringValues _selectvalues = null; 
 
 

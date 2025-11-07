@@ -28,8 +28,7 @@ namespace MyApp.ViewModel
         public ConfigsParam param = new ConfigsParam() { };
         public List<ConfigsResult> searchresult = new List<ConfigsResult>();
         public IQueryable<ConfigsResult> gridlist = null;
-        public DefaultLocalization texts = null;
-
+        
         public override async Task ClearSummaryValidation()
         {
             SummaryValidation = new List<ExceptionMessage>()

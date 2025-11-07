@@ -36,8 +36,6 @@ namespace MyApp.ViewModel
         public List<LocalizationTextList> listLangs = new List<LocalizationTextList>();
         
 
-        public DefaultLocalization texts = null;
-
         public UserSelectStringValues _selectvalues = null;
         
 

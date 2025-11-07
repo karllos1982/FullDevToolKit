@@ -2,6 +2,7 @@
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Sys.Models.Common;
 using MyApp.Proxys;
+using FullDevToolKit.Core.Common;
 
 namespace MyApp.ViewModel
 {
@@ -26,8 +27,10 @@ namespace MyApp.ViewModel
         public ParameterResult result = new ParameterResult();
         public ParameterParam param = new ParameterParam() { };
         public List<ParameterResult> searchresult = new List<ParameterResult>();
-        public List<GroupParameterList> listgroupparameter = new List<GroupParameterList>();    
-        public DefaultLocalization texts = null;
+        public List<SelectItemBase> listgroupparameter = new List<SelectItemBase>();
+        public IQueryable<ParameterResult> gridlist = null;
+
+        public ParameterSelectStringValues _selectvalues = null;
 
         public override async Task ClearSummaryValidation()
         {
@@ -42,25 +45,31 @@ namespace MyApp.ViewModel
 
         public async Task LoadGroupParameterList()
         {
-            listgroupparameter = new List<GroupParameterList>();
+            listgroupparameter = new List<SelectItemBase>();
 
             ServiceStatus = new ExecutionStatus(true);
-            listgroupparameter = await _cache.ListGroupParameter();
 
-            if (listgroupparameter == null)
+            List<GroupParameterList> list
+                = await _cache.ListGroupParameter();
+
+            if (list != null)
             {
-                listgroupparameter = new List<GroupParameterList>();
-
+                foreach (GroupParameterList g in list)
+                {
+                    listgroupparameter.Add(new SelectItemBase(g.GroupParameterID.ToString(), g.GroupParameterName));
+                }
             }
 
-            listgroupparameter.Insert(0, new GroupParameterList() { GroupParameterID = 0, GroupParameterName = this.texts.Get("SelectItem-Description") });
-
+            listgroupparameter.Insert(0, new SelectItemBase() { Value = "0", Text = this.texts.Get("SelectItem-Description") });
+        
         }
 
         public override async Task InitializeModels()
         {
             await ClearSummaryValidation();    
-            await LoadGroupParameterList(); 
+            await LoadGroupParameterList();
+
+            _selectvalues = new ParameterSelectStringValues();
         }
 
 
@@ -69,6 +78,8 @@ namespace MyApp.ViewModel
             ServiceStatus = new ExecutionStatus(true);
 
             ParameterEntry entry = new ParameterEntry(result);
+
+            entry.GroupParameterID = long.Parse(_selectvalues.GroupParameterID);
 
             APIResponse<ParameterEntry> ret
                 = await _Proxys.Parameter.Set(entry);
@@ -91,7 +102,11 @@ namespace MyApp.ViewModel
 
             SetResult<ParameterResult>(ret, ref result, ref ServiceStatus);
 
-        }
+            if (result != null)
+            {
+                _selectvalues.GroupParameterID = result.GroupParameterID.ToString(); 
+            }
+         }
 
         public override void BackToSearch()
         {
@@ -116,12 +131,25 @@ namespace MyApp.ViewModel
         {
             ServiceStatus = new ExecutionStatus(true);
 
+            param.pGroupParameterID = long.Parse(_selectvalues.pGroupParameterID);
+
             APIResponse<List<ParameterResult>> ret
                = await _Proxys.Parameter.Search(param);
 
             SetResult<List<ParameterResult>>(ret, ref searchresult, ref ServiceStatus);
+            gridlist = searchresult.AsQueryable();
 
         }
 
     }
-}
+
+    public class ParameterSelectStringValues
+    {
+        public string pGroupParameterID { get; set; } = "0";
+
+        public string GroupParameterID { get; set; } = "0";
+
+    }
+
+
+ }

@@ -28,8 +28,7 @@ namespace MyApp.ViewModel
         public InstanceParam param = new InstanceParam() {  };
         public List<InstanceResult> searchresult = new List<InstanceResult>();
         public IQueryable<InstanceResult> gridlist = null;
-        public DefaultLocalization texts = null;
-
+        
         public override async Task ClearSummaryValidation()
         {
             SummaryValidation = new List<ExceptionMessage>()

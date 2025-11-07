@@ -1077,6 +1077,22 @@
   },
   {
     "ContainingType": "MyApp.Controllers.LocalizationTextController",
+    "Method": "Remove",
+    "RelativePath": "system/LocalizationText/remove",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Sys.Models.Common.LocalizationTextEntry",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.Controllers.LocalizationTextController",
     "Method": "Search",
     "RelativePath": "system/LocalizationText/search",
     "HttpMethod": "POST",

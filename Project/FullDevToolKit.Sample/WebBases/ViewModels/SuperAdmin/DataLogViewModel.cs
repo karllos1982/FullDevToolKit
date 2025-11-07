@@ -28,15 +28,19 @@ namespace MyApp.ViewModel
         public DataLogResult result = new DataLogResult();
         public DataLogParam param = new DataLogParam();
         public List<DataLogResult> searchresult = new List<DataLogResult>();
+        public IQueryable<DataLogResult> gridlist = null;
         public List<TipoOperacaoValueModel> listTipoOperacao = new List<TipoOperacaoValueModel>();
         public List<TabelasValueModel> listTabelas = new List<TabelasValueModel>();
-
+        
         public List<DataLogItem> logold_content;
         public List<DataLogItem> logcurrent_content;
         public List<DataLogTimelineModel> timeline = null;
         public bool ShowTimeline = false;
 
-        public DefaultLocalization texts = null;
+        public DateTime? dataInicio { get; set; }
+        public DateTime? dataFim { get; set; }
+
+        public string idDataLog { get; set; }
 
         public override async Task ClearSummaryValidation()
         {
@@ -49,8 +53,9 @@ namespace MyApp.ViewModel
 
         public override async Task InitializeModels()
         {
-            await ClearSummaryValidation();         
-            
+            await ClearSummaryValidation();
+            await this.LoadTipoOperacaoList(_cache);
+            await this.LoadTabelaList(_cache);
         }
 
         public async Task LoadTipoOperacaoList(DataCacheProxy cache)
@@ -132,6 +137,8 @@ namespace MyApp.ViewModel
         {
             this.BaseInitEdit();
 
+            this.ModoLabel = texts.Get("DetailsLabel");
+
             if (result != null)
             {
                 GetDataLogContent(result);
@@ -181,11 +188,28 @@ namespace MyApp.ViewModel
 
             ServiceStatus = new ExecutionStatus(true);
 
+            if (dataInicio != null && dataFim != null)
+            {
+                param.pDate_Start = dataInicio.Value;
+                param.pData_End = dataFim.Value;
+                param.SearchByDate = true;
+            }
+            else
+            {
+                dataInicio = null;
+                dataFim = null;
+            }
+
+            long aux = 0;
+            long.TryParse(idDataLog, out aux);            
+            param.pID = aux;
+
             APIResponse<List<DataLogResult>> ret
                = await _Proxys.DataLog.Search(param);
 
             SetResult<List<DataLogResult>>(ret, ref searchresult, ref ServiceStatus);
-          
+
+            gridlist = searchresult.AsQueryable();
         }
 
     }

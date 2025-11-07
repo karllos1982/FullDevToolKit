@@ -27,8 +27,7 @@ namespace MyApp.ViewModel
         public ObjectPermissionParam param = new ObjectPermissionParam() { pObjectCode="",pObjectName=""};
         public List<ObjectPermissionResult> searchresult = new List<ObjectPermissionResult>();
         public IQueryable<ObjectPermissionResult> gridlist = null;
-        public DefaultLocalization texts = null;
-
+        
         public override async Task ClearSummaryValidation()
         {
             SummaryValidation = new List<ExceptionMessage>()
