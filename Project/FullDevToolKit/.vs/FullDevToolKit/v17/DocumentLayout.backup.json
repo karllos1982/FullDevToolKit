@@ -3,68 +3,12 @@
   "WorkspaceRootPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\data\\querybuilders\\userquerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\data\\querybuilders\\userquerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\models\\common\\languagemodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\models\\common\\languagemodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\data\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\data\\repositories\\userrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\domain\\userdomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\domain\\userdomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\manager\\businessmodules\\identitymodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\manager\\businessmodules\\identitymodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\helpers\\querybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\helpers\\querybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\core\\basedomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\core\\basedomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\data\\repositories\\userrolesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\data\\repositories\\userrolesrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\models\\identity\\userrolesmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\models\\identity\\userrolesmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\data\\querybuilders\\userrolesquerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\data\\querybuilders\\userrolesquerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\common\\basemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\common\\basemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\models\\identity\\usermodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\models\\identity\\usermodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\models\\identity\\rolemodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\models\\identity\\rolemodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\data\\repositories\\instancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\data\\repositories\\instancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\domain\\instancedomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\domain\\instancedomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\data\\repositories\\configsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\data\\repositories\\configsrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\domain\\configsdomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\domain\\configsdomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\models\\common\\configsmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\models\\common\\configsmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -74,138 +18,8 @@
       "DocumentGroups": [
         {
           "DockedHeight": 50,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 3,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IdentityModule.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Manager\\BusinessModules\\IdentityModule.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Manager\\BusinessModules\\IdentityModule.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Manager\\BusinessModules\\IdentityModule.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Manager\\BusinessModules\\IdentityModule.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAMsAAABeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T17:57:38.511Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "BaseDomain.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Core\\BaseDomain.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\Core\\BaseDomain.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Core\\BaseDomain.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\Core\\BaseDomain.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAwwFAAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T17:39:20.66Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "QueryBuilder.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Helpers\\QueryBuilder.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\Helpers\\QueryBuilder.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Helpers\\QueryBuilder.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\Helpers\\QueryBuilder.cs",
-              "ViewState": "AgIAAFgAAAAAAAAAAAAYwI0AAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T16:06:19.885Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "UserDomain.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Domain\\UserDomain.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Domain\\UserDomain.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Domain\\UserDomain.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Domain\\UserDomain.cs",
-              "ViewState": "AgIAAGQCAAAAAAAAAAAAAHgCAAAnAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T15:20:56.055Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "UserRepository.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\UserRepository.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\UserRepository.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\UserRepository.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\UserRepository.cs",
-              "ViewState": "AgIAAIMAAAAAAAAAAAAgwJIAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T15:24:56.582Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "UserQueryBuilder.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\UserQueryBuilder.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\UserQueryBuilder.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\UserQueryBuilder.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\UserQueryBuilder.cs",
-              "ViewState": "AgIAAGgAAAAAAAAAAAAowHEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T15:25:14.937Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UserRolesRepository.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\UserRolesRepository.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\UserRolesRepository.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\UserRolesRepository.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\UserRolesRepository.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABUAAAA/AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T16:03:34.222Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UserRolesModels.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserRolesModels.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserRolesModels.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserRolesModels.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserRolesModels.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T16:05:19.371Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "UserRolesQueryBuilder.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\UserRolesQueryBuilder.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\UserRolesQueryBuilder.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\UserRolesQueryBuilder.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\UserRolesQueryBuilder.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAcAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T16:04:09.426Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "BaseModel.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Common\\BaseModel.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\Common\\BaseModel.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Common\\BaseModel.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\Common\\BaseModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAkAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T15:25:51.553Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -216,80 +30,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "RoleModels.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\RoleModels.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\RoleModels.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\RoleModels.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\RoleModels.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAjAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "ConfigsModels.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\ConfigsModels.cs",
+              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\ConfigsModels.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\ConfigsModels.cs",
+              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\ConfigsModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T15:19:55.576Z",
+              "WhenOpened": "2025-11-13T20:13:57.67Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "UserModels.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserModels.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserModels.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserModels.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\UserModels.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADsAAAAmAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "LanguageModels.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\LanguageModels.cs",
+              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\LanguageModels.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\LanguageModels.cs",
+              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Common\\LanguageModels.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAqwBoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T15:19:36.417Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "InstanceDomain.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Domain\\InstanceDomain.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Domain\\InstanceDomain.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Domain\\InstanceDomain.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Domain\\InstanceDomain.cs",
-              "ViewState": "AgIAAGkAAAAAAAAAAAAkwHAAAAAgAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T14:18:52.042Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "InstanceRepository.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\InstanceRepository.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\InstanceRepository.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\InstanceRepository.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\InstanceRepository.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAgwBUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T14:17:39.68Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "ConfigsRepository.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\ConfigsRepository.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\ConfigsRepository.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\ConfigsRepository.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\ConfigsRepository.cs",
-              "ViewState": "AgIAADsAAAAAAAAAAAAAwDoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T14:17:03.498Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "ConfigsDomain.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Domain\\ConfigsDomain.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Domain\\ConfigsDomain.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Domain\\ConfigsDomain.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Domain\\ConfigsDomain.cs",
-              "ViewState": "AgIAAHoAAAAAAAAAAAAswJIAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-04T14:16:16.854Z",
+              "WhenOpened": "2025-11-13T20:13:52.49Z",
               "EditorCaption": ""
             }
           ]

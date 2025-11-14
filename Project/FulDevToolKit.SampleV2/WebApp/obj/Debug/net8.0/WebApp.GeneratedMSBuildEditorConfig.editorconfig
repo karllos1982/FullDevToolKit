@@ -58,6 +58,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdXBlckFkbWluXERhdGFMb2cucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebApp/Components/Pages/SuperAdmin/ExceptionLog.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdXBlckFkbWluXEV4Y2VwdGlvbkxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebApp/Components/Pages/SuperAdmin/GroupParameter.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdXBlckFkbWluXEdyb3VwUGFyYW1ldGVyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 

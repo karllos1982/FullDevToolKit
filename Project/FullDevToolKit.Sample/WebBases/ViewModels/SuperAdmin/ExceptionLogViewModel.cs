@@ -28,7 +28,11 @@ namespace MyApp.ViewModel
         public ExceptionLogResult result = new ExceptionLogResult();
         public ExceptionLogParam param = new ExceptionLogParam();
         public List<ExceptionLogResult> searchresult = new List<ExceptionLogResult>();
-                
+        public IQueryable<ExceptionLogResult> gridlist = null;
+
+        public DateTime? dataInicio { get; set; }
+        public DateTime? dataFim { get; set; }
+
         public override async Task ClearSummaryValidation()
         {
             SummaryValidation = new List<ExceptionMessage>()
@@ -89,11 +93,23 @@ namespace MyApp.ViewModel
 
             ServiceStatus = new ExecutionStatus(true);
 
+            if (dataInicio != null && dataFim != null)
+            {
+                param.pDate_Start = dataInicio.Value;
+                param.pData_End = dataFim.Value;
+                param.SearchByDate = true;
+            }
+            else
+            {
+                dataInicio = null;
+                dataFim = null;
+            }
+
             APIResponse<List<ExceptionLogResult>> ret
                = await _Proxys.ExceptionLog.Search(param);
 
             SetResult<List<ExceptionLogResult>>(ret, ref searchresult, ref ServiceStatus);
-
+            gridlist = searchresult.AsQueryable();
         }
 
     }

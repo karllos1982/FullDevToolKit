@@ -1,0 +1,59 @@
+﻿@implements IDialogContentComponent<TimelineConfigs>
+
+
+ @if (Content.TimeLineRecords != null)
+        {
+            @if (Content.TimeLineRecords.Count > 0)
+            {
+                <div class="datalog-tml">
+
+                    @for (int i = 0; i <= Content.TimeLineRecords.Count - 1; i++)
+                    {
+                        <div class="datalog-tml-container @getPosicionClass(i)">
+                            <div class="datalog-tml-content">
+                                <h5>@Content.TimeLineRecords[i].Date</h5>
+                                <h5 class="@getOperationClass(Content.TimeLineRecords[i].OperationText)">
+                                    @Content.TimeLineRecords[i].OperationText
+                                </h5>
+                                <h5>@Content.TimeLineRecords[i].UserEmail</h5>
+
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            }
+        }
+       
+
+@code {
+
+   
+    [Parameter]
+    public TimelineConfigs Content { get; set; } = new TimelineConfigs();
+
+    [CascadingParameter]
+    public FluentDialog Dialog { get; set; } = default!;
+ 
+     
+    private string getPosicionClass(int i)
+    {
+        string ret = "datalog-tml-left";
+
+        if ((i % 2) > 0)
+        {
+            ret = "datalog-tml-right";
+        }
+
+        return ret;
+    }
+
+    private string getOperationClass(string operation)
+    {
+        string ret = "datalog-tml-operation-" + operation.ToLower();
+
+        return ret;
+    }
+
+}

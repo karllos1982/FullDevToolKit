@@ -10,7 +10,7 @@
 @inject IDataCacheProxyManager _cache
 @inject ISystemProxyManager _systemservices
 @inject IDialogService msgbox
-
+@inject IDialogService timeline
 
 
 @if (view != null)
@@ -222,8 +222,125 @@
 
                 </FluentGridItem>
 
+                <FluentGridItem lg="6" xs="12">
+                    
+                        <TaskButton Title="@view.texts.Get("ShowTimeLine-Label")"
+                                    ButtonAppearance="Appearance.Accent"
+                                    IconEnd="@(new Icons.Regular.Size20.Timeline())"
+                                        OnClick="OnGetTimeline">
+                        </TaskButton>                    
+
+                </FluentGridItem>
+
             </FluentGrid>
      
+             @if (!view.ShowTimeline)
+              {
+
+                  <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+
+                     <FluentGridItem lg="6" xs="12" Style="margin-top: 5px;">
+
+                        <FluentLabel Alignment="HorizontalAlignment.Center" Style="font-weight:bold"
+                            Typo="Typography.Subject">@view.texts.Get("OldVersionData-Label")
+                          </FluentLabel>
+                      
+                     </FluentGridItem>
+
+                    <FluentGridItem lg="6" xs="12" Style="margin-top: 5px;">
+
+                        <FluentLabel Alignment="HorizontalAlignment.Center" Style="font-weight:bold"
+                            Typo="Typography.Subject">@view.texts.Get("CurrentVersionData-Label")
+                        </FluentLabel>
+
+                    </FluentGridItem>
+
+                   </FluentGrid>
+
+                <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px;" >
+
+                    <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;" Class="grid-old-version">
+
+                        @if (view.logold_content != null)
+                            {
+                                @if (view.logold_content.ToList().Count > 0)
+                                {
+                                    <div id="datagrid-container">
+
+                                        <FluentDataGrid Items="@view.logold_content"
+                                                        TGridItem="DataLogItem"                                                        
+                                                        RowSize="@rowSize"
+                                                        ResizableColumns=true
+                                                        Style="overflow-y:hidden;">
+
+                                            <PropertyColumn Property="@(c => c.ItemName)"  Sortable="true" Title="@view.texts.Get("Field-Label")" Width="50%" />
+                                            <PropertyColumn Property="@(c => c.ItemValue)" Title="@view.texts.Get("Value-Label")"  Width="50%" />
+                                      
+                                        </FluentDataGrid>                                        
+                                    </div>
+                                                                        
+                                }
+                                else
+                                {
+                                    <p> @view.texts.Get("HasNoOldVersion-Label") </p>
+                                }
+                            }
+
+                     </FluentGridItem>
+
+                     
+                     <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">                                                        
+
+                            @if (view.logcurrent_content != null)
+                            {
+                            @if (view.logcurrent_content.ToList().Count > 0)
+                                {
+
+                                    <div id="datagrid-container">
+
+                                        <FluentDataGrid Items="@view.logcurrent_content"
+                                                        TGridItem="DataLogItem"                                                        
+                                                        RowSize="@rowSize"
+                                                        ResizableColumns=true
+                                                        Style="overflow-y:hidden;">
+
+                                        <PropertyColumn Property="@(c => c.ItemName)" Sortable="true" Title="@view.texts.Get("Field-Label")" Width="50%" />
+                                            <PropertyColumn Property="@(c => c.ItemValue)" Title="@view.texts.Get("Value-Label")"  Width="50%" />
+                                           
+                                        </FluentDataGrid>                                          
+
+                                    </div>                                    
+                                    
+                                }
+                                else
+                                {
+                                        <p> @view.texts.Get("HasNoCurrentVersion-Label")  </p>
+                                }
+                            }
+
+                     </FluentGridItem>
+
+                 </FluentGrid>
+              }                                                                                                    
+              else
+                {                   
+                       <p>
+                                
+                            @if (view.timeline != null)
+                            {
+                                @if (view.timeline.Count > 0)
+                                {
+                                    
+                                }
+                                else
+                                {
+                                    <strong> @view.texts.Get("HasNoTimeLine-Label")  </strong>
+                                }
+                            }                        
+
+                         </p>
+                }
+
 
         </FluentCard>
 
@@ -244,13 +361,25 @@ else
 
 <TaskLoading @ref="loading" Content=loadingConfigs></TaskLoading>
 
+@* <DataLogTimeline @ref="modaltimeline"                
+                 Content="timelineConfigs"
+                 Title="@timelinetitle">
+</DataLogTimeline> *@
+
+
 @code {
 
-    
+
     private DataLogViewModel view;
+
+    public TimelineConfigs timelineConfigs = new TimelineConfigs();
+    public DataLogTimeline modaltimeline ; 
+    
 
     //
 
+
+    private string timelinetitle = "";
 
     protected override Task OnInitializedAsync()
     {
@@ -281,10 +410,11 @@ else
                 _LoadingData_Text = view.texts.Get("LoadingData");
                 _AreaURL = "superadmin";                
                 this.SetPageTile(view.texts.Get("DataLog-PageTitle"));
-                 loadingConfigs= new TaskLoadingConfigs
+                loadingConfigs= new TaskLoadingConfigs
                     { Title = view.texts.Get("LoadingPage"), 
                         Description = view.texts.Get("DataLogRecord-Label")
                     };
+
             }
 
             StateHasChanged();
@@ -363,7 +493,7 @@ else
 
     public async Task OnDetClick(object id)
     {
-        
+
         await OnGet(id);
 
     }
@@ -382,6 +512,50 @@ else
 
     }
 
+    public void BackTimeLine()
+    {
+        view.ShowTimeline = false;
+        StateHasChanged();
+    }
 
+    public async Task OnGetTimeline()
+    {
+
+        await view.GetTimeline();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowSuccessAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                  view.texts.Get("ErrorOnReturnData"));                        
+        }
+        else
+        {
+            timelinetitle = view.texts.Get("ShowTimeLine-Label") + " - ID: " + view.result.ID;
+            //view.ShowTimeline = true;
+
+            timelineConfigs = new TimelineConfigs()
+            {                
+                TimeLineRecords = view.timeline
+            };
+            
+            DialogParameters tlparams = new ()
+            {
+                PrimaryActionEnabled = true, 
+                PrimaryAction = "Fechar",
+                SecondaryAction = "",
+                SecondaryActionEnabled = false,
+                Title = timelinetitle,
+                Width = "700px",
+                Modal = false,
+                PreventScroll =false
+            };
+
+            IDialogReference modal 
+                = await timeline.ShowDialogAsync<DataLogTimeline>(timelineConfigs, tlparams);
+            DialogResult? result = await modal.Result; 
+
+        }
+
+    }
 
 }

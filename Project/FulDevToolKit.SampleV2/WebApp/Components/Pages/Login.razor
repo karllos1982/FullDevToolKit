@@ -40,17 +40,17 @@
                                         @texts.Get("LoginTitle-Description")
                                     </FluentLabel>
 
-                                    <FluentTextField @bind-Value=@user.Email Maxlength="100" Label="@texts.Get("Email-Label")" style="width:100%"
+                                    <FluentTextField @bind-Value=@user.Email Maxlength="100" style="width:100%"
                                                      Placeholder="@texts.Get("InputEmail-Description")">
                                     </FluentTextField>
 
-                                    <FluentTextField @bind-Value=@pwd Maxlength="10" Label="@texts.Get("Password-Label")" style="width:100%" TextFieldType="TextFieldType.Password"
+                                <FluentTextField @bind-Value=@pwd Maxlength="10" style="width:100%;margin-bottom:10px" TextFieldType="TextFieldType.Password"
                                                      Placeholder="@texts.Get("InputPassword-Description")">
                                     </FluentTextField>
 
-                                    <TaskButton Title=@texts.Get("LoginButton-Label") 
+                                <TaskButton Title=@texts.Get("LoginButton-Label") 
                                                 ButtonAppearance="Appearance.Accent" 
-                                                IconEnd="@(new Icons.Regular.Size20.CheckmarkSquare())"
+                                                IconEnd="@(new Icons.Regular.Size20.CheckboxArrowRight())"
                                                 ActionLabel=@texts.Get("LoginLoading-Label") OnClick="ExecuteLogin">
                                     </TaskButton>                    
                                 </FluentStack>                
@@ -140,8 +140,11 @@
                 <FluentStack Style="margin-bottom: 10px;height:100%" 
                              Orientation = "Orientation.Vertical"
                              HorizontalAlignment="HorizontalAlignment.Center"
-                             VerticalAlignment="VerticalAlignment.Center">
+                             VerticalAlignment="VerticalAlignment.Top">
+
                     <FluentLabel Typo="Typography.HeroTitle" > @texts.Get("Welcome-Label") </FluentLabel>
+
+                    <img src="assets/images/fullstack-icon.png" width="300" height="300" />
 
                 </FluentStack>
 

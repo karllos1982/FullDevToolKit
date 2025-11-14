@@ -43,4 +43,12 @@ namespace WebUIComponents.Common
         public string Description { get; set; }
     }
 
+    public class TimelineConfigs
+    {
+        public string Title { get; set; }
+
+        public List<DataLogTimelineModel> TimeLineRecords { get; set; }
+
+    }
+
 }

@@ -1,0 +1,384 @@
+﻿@page "/superadmin/exceptionlog"
+
+@inherits LoggedLayout
+@layout LoggedLayout
+
+@inject NavigationManager NavigationManager
+@inject HttpClient _httpclient
+@inject IAppControllerAsync<UserAuthenticated> _appctrl
+@inject IAppSettings _settings
+@inject IDataCacheProxyManager _cache
+@inject ISystemProxyManager _systemservices
+@inject IDialogService msgbox
+
+
+
+@if (view != null)
+{
+
+    <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+
+        <FluentGridItem lg="10" xs="12">
+            <FluentLabel> <h2> @_PageTitle</h2> </FluentLabel>
+
+        </FluentGridItem>
+
+        <FluentGridItem lg="2" xs="12" Style="margin-top: 6px;">
+
+        
+
+        </FluentGridItem>
+
+    </FluentGrid>
+
+
+    @if (!view.GetTabEditState())
+    {
+        <FluentGrid Spacing="1" AdaptiveRendering="true" Style="padding: 4px; ">
+
+            <FluentGridItem lg="12" xs="12">
+
+                <FluentAccordion>
+
+                    <FluentAccordionItem Expanded="true" Heading="@view.texts.Get("SearchButtonLabel")">
+                        <FluentIcon Value="@(new Icons.Regular.Size24.Search())"
+                                    Color="@Color.Accent" Slot="start" />
+
+                            <FluentGrid Spacing="1" AdaptiveRendering="true" Style="padding: 4px; ">
+
+                                 <FluentGridItem lg="6" xs="12">
+                  
+                                     <FluentTextField @bind-Value="@view.param.pOrigin" Maxlength="30"
+                                                 Label="@view.texts.Get("SearchByOrgin-Label")" style="width:95%">
+                                    </FluentTextField>
+
+                                 </FluentGridItem>
+                                 
+
+                                 <FluentGridItem lg="3" xs="12">
+                                        
+                                        <FluentDatePicker Label="@view.texts.Get("SearchByInicialDate-Label")"
+                                                @bind-Value="@view.dataInicio" />
+                                         
+                                  </FluentGridItem>
+
+                                   <FluentGridItem lg="3" xs="12">
+
+                                             <FluentDatePicker Label="@view.texts.Get("SearchByFinalDate-Label")"
+                                                       @bind-Value="@view.dataFim" />                                         
+                                    </FluentGridItem>
+
+                                    <FluentGridItem lg="6" xs="12">
+                                              <FormActionButton ButtonType=ButtonTypeEnum.SEARCH
+                                                  Title="@view.texts.Get("SearchButtonLabel")"
+                                                  Visible="true"
+                                                  Disabled="!view.Permissions.AllowRead"
+                                                  OnAction="OnSearch">
+                                              </FormActionButton>
+
+                                    </FluentGridItem>
+
+                             </FluentGrid>
+
+                    </FluentAccordionItem>
+                </FluentAccordion>
+            </FluentGridItem>
+
+
+            <FluentGridItem lg="12" xs="12">
+
+                <FluentCard Width="100%" Height="100%" Class="card-layout">
+
+                    <FluentLabel> <h5>@view.texts.Get("SearchResultLabel")</h5> </FluentLabel>
+                                  
+                        <div id="datagrid-container">
+                            <FluentDataGrid Items="@view.gridlist"
+                                        TGridItem="ExceptionLogResult"
+                                            Pagination="@pagination"
+                                            RowSize="@rowSize"
+                                            ResizableColumns=true                                       
+                                            Style="overflow-y:hidden;">
+
+                                <PropertyColumn Property="@(c => c.Origin)" Title="@view.texts.Get("Origin-Label")" Sortable="true" Width="35%" />
+                                <PropertyColumn Property="@(c => c.TargetSite)" Title="@view.texts.Get("TargetSite-Label")" Sortable="true" Width="35%" />
+                                <PropertyColumn Property="@(c => c.Date)" Title="@view.texts.Get("Date-Label")" Sortable="true" Width="20%" />
+
+                                <TemplateColumn Title="..." Width="10%">
+
+                                    <FluentButton Appearance="Appearance.Lightweight"
+                                                  IconEnd="@(new Icons.Regular.Size24.DocumentBulletList())"
+                                                  @onclick="@(() => OnDetClick(context.ExceptionLogID ))">
+                                    </FluentButton>
+
+                                </TemplateColumn>
+
+                            </FluentDataGrid>
+                        </div>
+
+                    <FluentPaginator State="@pagination" />
+
+                </FluentCard>
+            </FluentGridItem>
+
+        </FluentGrid>
+    }
+
+    @if (view.GetTabEditState())
+    {
+        <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+
+            <FluentGridItem lg="1" xs="12" Style="margin-top: 0px;">
+
+                <TaskIconButton OnClick="Back"
+                                IconStart="@(new Icons.Regular.Size24.ArrowCircleLeft())">
+
+                </TaskIconButton>
+
+            </FluentGridItem>
+
+            <FluentGridItem lg="9" xs="12">
+                <FluentLabel> <h4>@view.ModoLabel</h4> </FluentLabel>
+
+            </FluentGridItem>
+
+        </FluentGrid>
+
+        <FluentCard Width="100%" Height="100%" Class="card-layout">
+
+            <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+                
+                <FluentGridItem lg="12" xs="12">
+
+                    <FluentTextField Value=@view.result.ExceptionLogID.ToString() ReadOnly="true"
+                                     Label="@view.texts.Get("LogID-Label")" style="width:95%">
+                    </FluentTextField>
+
+                </FluentGridItem>
+
+                <FluentGridItem lg="12" xs="12">
+
+                    <FluentTextField Value=@view.result.UserID ReadOnly="true"
+                                     Label="@view.texts.Get("UserID")" style="width:95%">
+                    </FluentTextField>
+
+                </FluentGridItem>
+
+                <FluentGridItem lg="12" xs="12">
+
+                    <FluentTextField Value=@view.result.Email ReadOnly="true"
+                                     Label="@view.texts.Get("Email-Label")" style="width:95%">
+                    </FluentTextField>
+
+                </FluentGridItem>
+
+                <FluentGridItem lg="12" xs="12">
+
+                    <FluentTextField Value=@view.result.Date.ToString("yyyy-MM-dd HH:mm") ReadOnly="true"
+                                     Label="@view.texts.Get("Date-Label")" style="width:95%">
+                    </FluentTextField>
+
+                </FluentGridItem>
+
+                <FluentGridItem lg="12" xs="12">
+
+                    <FluentTextField Value=@view.result.Origin ReadOnly="true"
+                                     Label="@view.texts.Get("Origin-Label")" style="width:95%">
+                    </FluentTextField>
+
+                </FluentGridItem>
+
+                <FluentGridItem lg="12" xs="12">
+
+                    <FluentTextField Value=@view.result.TargetSite ReadOnly="true"
+                                     Label="@view.texts.Get("TargetSite-Label")" style="width:95%">
+                    </FluentTextField>
+
+                </FluentGridItem>
+
+                <FluentGridItem lg="12" xs="12">
+
+                    <FluentTextField Value=@view.result.ErrMessage ReadOnly="true"
+                                     Label="@view.texts.Get("ErrMessage-Label")" style="width:95%">
+                    </FluentTextField>
+
+                </FluentGridItem>
+
+                <FluentGridItem lg="3" xs="12">
+
+                    <FluentTextField Value=@view.result.StackTrace ReadOnly="true"
+                                     Label="@view.texts.Get("StackTrace-Label")" style="width:95%">
+                    </FluentTextField>
+
+                </FluentGridItem>
+
+                <FluentGridItem lg="12" xs="12">
+
+                    <FluentTextField Value=@view.result.ClientIP ReadOnly="true"
+                                     Label="@view.texts.Get("ClientIP-Label")" style="width:95%">
+                    </FluentTextField>
+
+                </FluentGridItem>
+                
+            </FluentGrid>
+    
+
+        </FluentCard>
+
+    }
+   
+}
+else
+{
+
+    <FluentStack Style="margin-bottom: 24px;"
+                 VerticalAlignment="VerticalAlignment.Center"
+                 HorizontalAlignment="HorizontalAlignment.Center">
+        <PageLoading LoadingText="Loading page. Wait..."></PageLoading>
+
+    </FluentStack>
+
+}
+
+<TaskLoading @ref="loading" Content=loadingConfigs></TaskLoading>
+
+@code {
+
+    
+    private ExceptionLogViewModel view;
+
+    //
+
+
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+
+        if (firstRender)
+        {
+            if (await this.InitResources())
+            {
+                await this.InitCacheAndLocalization();
+
+                this.InitServices();
+
+                view = new ExceptionLogViewModel((_systemservices as SystemProxy),
+                   (_cache as DataCacheProxy), user, _httpclient, _settings.ServiceURL, _appctrl.UserInfo.Token);
+
+                view.texts = this.localization;
+
+                view.Permissions
+                    = BaseViewModel.SetPermissions(permissions, "SYSEXCEPTIONLOG", false);
+
+                await view.InitializeModels();
+
+                _LoadingData_Text = view.texts.Get("LoadingData");
+                _AreaURL = "superadmin";                
+                this.SetPageTile(view.texts.Get("ExceptionLog-PageTitle"));
+                 loadingConfigs= new TaskLoadingConfigs
+                    { Title = view.texts.Get("LoadingPage"), 
+                        Description = view.texts.Get("ExceptionLogRecord-Label")
+                    };
+            }
+
+            StateHasChanged();
+
+        }
+    }
+
+
+
+    public async Task OnSearch()
+    {
+        await view.Search();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                view.texts.Get("ErrorOnExecuteSearch"));
+
+        }
+
+    }
+
+    public void OnNew()
+    {
+
+        view.InitNew();
+        StateHasChanged();
+    }
+
+    public async Task OnGet(object id)
+    {
+        await loading.Begin();
+
+        await view.Get(id);
+
+        await loading.End();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                view.texts.Get("ErrorOnReturnData"));
+
+        }
+        else
+        {
+            view.InitEdit();
+
+        }
+
+        StateHasChanged();
+    }
+
+
+    public async Task OnSet()
+    {
+
+        await view.Set();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                view.texts.Get("NoticeLabel"));
+
+        }
+        else
+        {
+            await msgbox.ShowSuccessAsync(view.texts.Get("SuccessSaveMessage"),
+                view.texts.Get("SuccessLabel"));
+
+            this.Back();
+
+        }
+
+
+    }
+
+    public async Task OnDetClick(object id)
+    {
+        await OnGet(id);
+
+    }
+
+    public void Back()
+    {
+        view.BackToSearch();
+        StateHasChanged();
+
+    }
+
+    public void GoHome()
+    {
+        string url = _appctrl.UserInfo.HomeURL;
+        NavigationManager.NavigateTo(url);
+
+    }
+
+
+
+}

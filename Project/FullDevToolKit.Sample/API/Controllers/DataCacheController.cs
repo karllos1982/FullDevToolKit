@@ -25,9 +25,24 @@ namespace MyApp.Controllers
             Init(context, null, "");
         }
 
+        private string GetText(List<LocalizationTextItem> texts, string code)
+        {
+            string ret = code;
+
+            LocalizationTextItem item
+                = texts.Where(t => t.Name == code).FirstOrDefault(); 
+
+            if (item != null)
+            {
+                ret = item.Text;
+            }
+
+            return ret;
+        }
+
         [HttpGet]
         [Route("listtipoperacao")]
-        public object ListTipoOperacao()
+        public async Task<object> ListTipoOperacao()
         {
             BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
@@ -38,11 +53,14 @@ namespace MyApp.Controllers
 
             if (list == null)
             {
+                List<LocalizationTextItem> texts
+                    = await Manager.Context.GetLocalizationTextsAsync();  
+               
                 list = new List<TipoOperacaoValueModel>()
                     {
-                        new TipoOperacaoValueModel(){ Value="I", Text="Inserção"},
-                        new TipoOperacaoValueModel(){ Value="U", Text="Edição"},
-                        new TipoOperacaoValueModel(){ Value="D", Text="Exclusão"}
+                        new TipoOperacaoValueModel(){ Value="I", Text=GetText(texts,"InsertOperation-Text") },
+                        new TipoOperacaoValueModel(){ Value="U", Text=GetText(texts,"UpdateOperation-Text")},
+                        new TipoOperacaoValueModel(){ Value="D", Text=GetText(texts,"DeleteOperation-Text")}
                     };
             
                 memorycache.Set("TIPOOPERACAO", list, this.GetMemoryCacheOptionsByHour(2)); 

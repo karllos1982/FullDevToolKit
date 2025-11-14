@@ -9,6 +9,14 @@
       "PackagePath": "staticwebassets\\assets\\css\\components.css"
     },
     {
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\wwwroot\\assets\\css\\pages.css",
+      "PackagePath": "staticwebassets\\assets\\css\\pages.css"
+    },
+    {
+      "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\wwwroot\\assets\\images\\fullstack-icon.png",
+      "PackagePath": "staticwebassets\\assets\\images\\fullstack-icon.png"
+    },
+    {
       "Id": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\wwwroot\\assets\\js\\components.js",
       "PackagePath": "staticwebassets\\assets\\js\\components.js"
     },

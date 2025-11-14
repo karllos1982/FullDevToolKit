@@ -138,3 +138,28 @@ CREATE TABLE [dbo].[sysConfigs](
 ) ON [PRIMARY] 
 GO
 
+
+-- CRIAÇÃO DA TABELA DE LINGUAGENS
+
+-- 1.15: sysLanguages
+
+CREATE TABLE [dbo].[sysLanguage](
+	[LanguageID] [bigint] NOT NULL,	
+	[LanguageName] [varchar](10) NOT NULL,
+	[Description] [varchar](255) NOT NULL,	
+	[Seq] [bigint] IDENTITY(1,1),
+	[TSCreate] [datetime],
+	[TSLastUpdate] [datetime]
+ CONSTRAINT [pk_sysLanguage] PRIMARY KEY CLUSTERED 
+(
+	[LanguageID] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] 
+GO
+
+insert into sysLanguage values (1,'en-US','English',getdate(),getdate())
+insert into sysLanguage values (2,'pt-BR','Portuguese',getdate(),getdate())
+
+
+-- AJUSTAR CAMPO LanguageID nas tabelas
+

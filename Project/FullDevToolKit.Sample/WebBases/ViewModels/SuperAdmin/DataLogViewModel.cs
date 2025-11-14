@@ -2,6 +2,7 @@
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Sys.Models.Common;
 using MyApp.Proxys;
+using System.Collections.Generic;
 
 namespace MyApp.ViewModel
 {
@@ -32,8 +33,8 @@ namespace MyApp.ViewModel
         public List<TipoOperacaoValueModel> listTipoOperacao = new List<TipoOperacaoValueModel>();
         public List<TabelasValueModel> listTabelas = new List<TabelasValueModel>();
         
-        public List<DataLogItem> logold_content;
-        public List<DataLogItem> logcurrent_content;
+        public IQueryable<DataLogItem> logold_content;
+        public IQueryable<DataLogItem> logcurrent_content;
         public List<DataLogTimelineModel> timeline = null;
         public bool ShowTimeline = false;
 
@@ -62,7 +63,14 @@ namespace MyApp.ViewModel
         {
 
             ServiceStatus = new ExecutionStatus(true);
-            listTipoOperacao = await cache.ListTipoOperacao();
+
+            listTipoOperacao 
+                = new List<TipoOperacaoValueModel>()
+                    {
+                        new TipoOperacaoValueModel(){ Value="I", Text=this.texts.Get("InsertOperation-Text") },
+                        new TipoOperacaoValueModel(){ Value="U", Text=this.texts.Get("UpdateOperation-Text")},
+                        new TipoOperacaoValueModel(){ Value="D", Text=this.texts.Get("DeleteOperation-Text")}
+                    };
 
             if (listTipoOperacao != null)
             {
@@ -149,15 +157,18 @@ namespace MyApp.ViewModel
 
         public void GetDataLogContent(DataLogResult log)
         {
-            logold_content = new List<DataLogItem>();
-            logcurrent_content = new List<DataLogItem>();
+            logold_content = null;
+            logcurrent_content = null;
+
+            List<DataLogItem> oldlist = null;
+            List<DataLogItem> currentlist = null;
 
             if (log.LogOldData != null)
             {
                 if (log.LogOldData != "")
                 {
-                    logold_content = _Proxys.DataLog
-                        .GetDataLogItems(log.LogOldData);
+                    oldlist 
+                        = _Proxys.DataLog.GetDataLogItems(log.LogOldData);                    
                 }
             }
 
@@ -165,15 +176,25 @@ namespace MyApp.ViewModel
             {
                 if (log.LogCurrentData != "")
                 {
-                    logcurrent_content = _Proxys.DataLog
-                        .GetDataLogItems(log.LogCurrentData);
+                    currentlist 
+                        = _Proxys.DataLog.GetDataLogItems(log.LogCurrentData);                    
                 }
             }
 
             if (log.Operation == "U")
             {
                 _Proxys.DataLog
-                    .GetDataLogDiff(ref logold_content, ref logcurrent_content);
+                    .GetDataLogDiff(ref oldlist, ref currentlist);
+            }
+
+            if (oldlist != null)
+            {
+                logold_content = oldlist.AsQueryable(); 
+            }
+
+            if (currentlist != null)
+            {
+                logcurrent_content = currentlist.AsQueryable();
             }
 
         }
