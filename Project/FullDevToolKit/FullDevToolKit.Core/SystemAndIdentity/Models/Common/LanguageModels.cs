@@ -11,7 +11,7 @@ namespace FullDevToolKit.Sys.Models.Common
 {
     
 
-    public class LanguageModels : BaseModel
+    public class LanguageBaseModel : BaseModel
     {
         [PrimaryValidationConfig("LanguageID", "Language ID", FieldType.NUMERIC, false, 0)]
         public long LanguageID { get; set; }
@@ -22,6 +22,45 @@ namespace FullDevToolKit.Sys.Models.Common
         [PrimaryValidationConfig("Description", "Description", FieldType.TEXT, false, 255)]
         public string Description { get; set; } = string.Empty;
         
+    }
+
+    public class LanguageParam
+    {
+        public LanguageParam() 
+        {
+            pLanguageID = 0;
+            pLanguageName = ""; 
+        }
+
+
+        public long pLanguageID { get; set; }
+
+        public string pLanguageName { get; set; }
+
+    }
+
+    public class LanguageEntry : LanguageBaseModel
+    {
+        public LanguageEntry()
+        {
+
+        }
+
+        public LanguageEntry(LanguageResult fromobj)
+        {
+            BaseModel.ConvertTo(fromobj, this);
+        }
+
+    }
+
+    public class LanguageList : LanguageBaseModel
+    {
+
+    }
+
+    public class LanguageResult : LanguageBaseModel
+    {
+
     }
 
 }

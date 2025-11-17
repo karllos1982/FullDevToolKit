@@ -23,6 +23,7 @@ namespace FullDevToolKit.Sys.Domains
             this.Parameter = new ParameterDomain(context);
             this.ExceptionLog = new ExceptionLogDomain(context);
             this.Configs = new ConfigsDomain(context);
+            this.Language = new LanguageDomain(context);    
         }
      
 
@@ -49,5 +50,8 @@ namespace FullDevToolKit.Sys.Domains
         public IExceptionLogDomain ExceptionLog { get; set; }
 
         public IConfigsDomain Configs { get; set; }
+
+        public ILanguageDomain  Language { get; set; }  
+
     }
 }

@@ -34,5 +34,8 @@ namespace FullDevToolKit.Sys.Contracts.Repositories
         IExceptionLogRepository ExceptionLog { get; set; }
 
         IConfigsRepository Configs { get; set; }
+
+        ILanguageRepository Language { get; set; }  
+
     }
 }

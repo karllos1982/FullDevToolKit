@@ -1002,6 +1002,114 @@
   {
     "ContainingType": "MyApp.API.APIControllerBase",
     "Method": "Init",
+    "RelativePath": "system/Language",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "system/Language",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.Controllers.LanguageController",
+    "Method": "Get",
+    "RelativePath": "system/Language/get",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.Controllers.LanguageController",
+    "Method": "List",
+    "RelativePath": "system/Language/list",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Sys.Models.Common.LanguageParam",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.Controllers.LanguageController",
+    "Method": "Search",
+    "RelativePath": "system/Language/search",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Sys.Models.Common.LanguageParam",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.Controllers.LanguageController",
+    "Method": "Set",
+    "RelativePath": "system/Language/set",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Sys.Models.Common.LanguageEntry",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
     "RelativePath": "system/LocalizationText",
     "HttpMethod": "",
     "IsController": true,

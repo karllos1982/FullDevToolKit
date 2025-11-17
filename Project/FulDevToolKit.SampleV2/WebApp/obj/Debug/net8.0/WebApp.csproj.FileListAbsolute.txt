@@ -61,10 +61,10 @@ C:\Projetos\OUTROS\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\bin\Debu
 C:\Projetos\OUTROS\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\bin\Debug\net8.0\WebUIComponents.pdb
 C:\Projetos\OUTROS\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\bin\Debug\net8.0\FullDevToolKit.Core.pdb
 C:\Projetos\OUTROS\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\bin\Debug\net8.0\WebUIComponents.staticwebassets.runtime.json
-H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\bin\Debug\net8.0\appsettings.Development.json
-H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\bin\Debug\net8.0\appsettings.json
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\bin\Debug\net8.0\WebUIComponents.staticwebassets.runtime.json
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\bin\Debug\net8.0\WebUIComponents.staticwebassets.endpoints.json
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\bin\Debug\net8.0\appsettings.Development.json
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\bin\Debug\net8.0\appsettings.json
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\bin\Debug\net8.0\WebApp.staticwebassets.runtime.json
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\bin\Debug\net8.0\WebApp.staticwebassets.endpoints.json
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\bin\Debug\net8.0\WebApp.exe

@@ -38,8 +38,10 @@ namespace MyApp.Proxys
 
         public ExceptionLogProxy ExceptionLog = null;
 
-        public ConfigsProxy Configs = null; 
-        
+        public ConfigsProxy Configs = null;
+
+        public LanguageProxy Language = null; 
+
         public SystemProxy()
         {
 
@@ -59,6 +61,7 @@ namespace MyApp.Proxys
             Parameter = new ParameterProxy();
             ExceptionLog = new ExceptionLogProxy(); 
             Configs = new ConfigsProxy();  
+            Language = new LanguageProxy();
 
             User.InitializeAPI(http, baseurl + "/system/user/", token);
             User.IsAuthenticated = true;
@@ -95,8 +98,12 @@ namespace MyApp.Proxys
 
             Configs.InitializeAPI(http, baseurl + "/system/configs/", token);
             Configs.IsAuthenticated = true;
+
+            Language.InitializeAPI(http, baseurl + "/system/language/", token);
+            Language.IsAuthenticated = true;
+
         }
-     
+
 
     }
 
@@ -834,5 +841,55 @@ namespace MyApp.Proxys
 
     }
 
+    public class LanguageProxy : APIProxyBase
+    {
+
+        public LanguageProxy()
+        {
+
+        }
+
+        public async Task<APIResponse<List<LanguageResult>?>> Search(LanguageParam param)
+        {
+            APIResponse<List<LanguageResult>?> ret = null;
+
+            ret = await PostAsJSON<List<LanguageResult>?>("search", JsonConvert.SerializeObject(param), null);
+
+
+            return ret;
+        }
+
+        public async Task<APIResponse<List<LanguageList>?>> List(LanguageParam param)
+        {
+            APIResponse<List<LanguageList>?> ret = null;
+
+            ret = await PostAsJSON<List<LanguageList>?>("list", JsonConvert.SerializeObject(param), null);
+
+            return ret;
+        }
+
+        public async Task<APIResponse<LanguageResult>?> Get(string id)
+        {
+            APIResponse<LanguageResult?> ret = null;
+
+            object[] param = new object[1];
+            param[0] = new DefaultGetParam(id);
+
+            ret = await GetAsJSON<LanguageResult?>("get", param);
+
+            return ret;
+        }
+
+        public async Task<APIResponse<LanguageEntry>?> Set(LanguageEntry data)
+        {
+            APIResponse<LanguageEntry?> ret = null;
+
+            ret = await PostAsJSON<LanguageEntry?>("set", JsonConvert.SerializeObject(data), null);
+
+            return ret;
+        }
+
+
+    }
 }
 

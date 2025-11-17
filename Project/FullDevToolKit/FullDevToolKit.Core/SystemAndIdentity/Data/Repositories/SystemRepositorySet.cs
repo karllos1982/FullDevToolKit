@@ -21,6 +21,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
             this.Parameter = new ParameterRepository(context);
             this.ExceptionLog = new ExceptionLogRepository(context);
             this.Configs = new ConfigsRepository(context);
+            this.Language = new LanguageRepository(context);    
         }
     
         
@@ -51,6 +52,8 @@ namespace FullDevToolKit.Sys.Data.Repositories
         public IExceptionLogRepository ExceptionLog { get; set; }
 
         public IConfigsRepository Configs { get; set; }
+
+        public ILanguageRepository Language { get; set; }
     }
 
 }

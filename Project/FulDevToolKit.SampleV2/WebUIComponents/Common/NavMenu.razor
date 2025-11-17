@@ -13,6 +13,16 @@
                 <FluentNavGroup Title="@Localization.Get("Menu-Superadmin")" Disabled="@GetPermissionsState("MENU.SUPERADMIN")"
                         Icon="@(new Icons.Regular.Size20.DesktopEdit())">
                     <ChildContent>
+                        <FluentNavLink Href="superadmin/language" Disabled="@GetPermissionsState("MENU.LOCALIZATIONTEXTS")"
+                                       Icon="@(new Icons.Regular.Size20.LocalLanguageEn())">
+                            @Localization.Get("Menu-Language")
+                        </FluentNavLink>
+
+                        <FluentNavLink Href="superadmin/localizationtext" Disabled="@GetPermissionsState("MENU.LOCALIZATIONTEXTS")"
+                                       Icon="@(new Icons.Regular.Size20.ScanText())">
+                            @Localization.Get("Menu-LocalizationTexts")
+                        </FluentNavLink>
+
                         <FluentNavLink Href="superadmin/configs" Disabled="@GetPermissionsState("MENU.CONFIGS")"
                                        Icon="@(new Icons.Regular.Size20.SettingsCogMultiple())">
                             @Localization.Get("Menu-Configs")
@@ -42,12 +52,7 @@
                             Icon="@(new Icons.Regular.Size20.DatabasePerson())">
                             @Localization.Get("Menu-Users")
                         </FluentNavLink>
-
-                        <FluentNavLink Href="superadmin/localizationtext" Disabled="@GetPermissionsState("MENU.LOCALIZATIONTEXTS")"
-                            Icon="@(new Icons.Regular.Size20.ScanText())">
-                            @Localization.Get("Menu-LocalizationTexts")
-                        </FluentNavLink>
-
+                        
                         <FluentNavLink Href="superadmin/groupparameter" Disabled="@GetPermissionsState("MENU.GROUPPARAMETERS")"
                             Icon="@(new Icons.Regular.Size20.GroupList())">
                             @Localization.Get("Menu-GroupParameters")

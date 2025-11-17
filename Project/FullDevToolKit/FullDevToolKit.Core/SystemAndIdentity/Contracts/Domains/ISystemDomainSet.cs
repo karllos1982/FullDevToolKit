@@ -29,5 +29,7 @@ namespace FullDevToolKit.Sys.Contracts.Domains
         IExceptionLogDomain ExceptionLog { get; set; }
 
         IConfigsDomain Configs { get; set; }
+
+        ILanguageDomain Language { get; set; }
     }
 }
