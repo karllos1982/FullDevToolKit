@@ -125,7 +125,7 @@ namespace MyApp.ServerCode
         {            
 
             List<LocalizationTextResult>  texts 
-                = Localization.Where(t => t.Language==user.LocalizationLanguage).ToList();
+                = Localization.Where(t => t.LanguageID.ToString() ==user.LanguageID.ToString()).ToList();
 
             PermissionsState auxpermission;
             

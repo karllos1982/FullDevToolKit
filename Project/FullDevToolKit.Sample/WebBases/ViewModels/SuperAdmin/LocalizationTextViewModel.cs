@@ -22,12 +22,14 @@ namespace MyApp.ViewModel
         }
 
         UserAuthenticated _user;
-        
+
         public LocalizationTextResult result = new LocalizationTextResult();
-        public LocalizationTextParam param = new LocalizationTextParam() ;
+        public LocalizationTextParam param = new LocalizationTextParam();
         public List<LocalizationTextResult> searchresult = new List<LocalizationTextResult>();
         public IQueryable<LocalizationTextResult> gridlist = null;
-        public List<LocalizationTextList> listLangs = new List<LocalizationTextList>();
+        public List<LanguageList> listLangs = new List<LanguageList>();
+
+        public LocalizationSelectStringValues _selectvalues = null;
 
         public override async Task ClearSummaryValidation()
         {
@@ -38,7 +40,7 @@ namespace MyApp.ViewModel
                 new ExceptionMessage("Name",""),
                 new ExceptionMessage("Text","")
             };
-          
+
         }
 
         public override async Task InitializeModels()
@@ -46,22 +48,23 @@ namespace MyApp.ViewModel
             await ClearSummaryValidation();
             await LoadLangsList();
 
+            _selectvalues = new LocalizationSelectStringValues();   
         }
 
         public async Task LoadLangsList()
         {
-            listLangs = new List<LocalizationTextList>();
+            listLangs = new List<LanguageList>();
 
             ServiceStatus = new ExecutionStatus(true);
             listLangs = await _cache.ListLanguages();
 
             if (listLangs == null)
             {
-                listLangs = new List<LocalizationTextList>();
+                listLangs = new List<LanguageList>();
 
             }
 
-            listLangs.Insert(0, new LocalizationTextList() { LocalizationTextID = 0, Language = this.texts.Get("SelectItem-Description") });
+            listLangs.Insert(0, new LanguageList() { LanguageID = 0, LanguageName = this.texts.Get("SelectItem-Description") });
 
         }
 
@@ -71,11 +74,13 @@ namespace MyApp.ViewModel
 
             LocalizationTextEntry entry = new LocalizationTextEntry(result);
 
+            entry.LanguageID = long.Parse(_selectvalues.LanguageID);
+
             APIResponse<LocalizationTextEntry> ret
                 = await _Proxys.LocalizationText.Set(entry);
 
             SetResult<LocalizationTextEntry>(ret, ref entry, ref ServiceStatus);
-            
+
         }
 
         public override async Task Remove()
@@ -97,10 +102,16 @@ namespace MyApp.ViewModel
 
             APIResponse<LocalizationTextResult> ret
                 = await _Proxys.LocalizationText.Get(id.ToString());
-
+          
             SetResult<LocalizationTextResult>(ret, ref result, ref ServiceStatus);
 
-        }  
+            if (result != null)
+            {
+                _selectvalues.LanguageID = result.LanguageID.ToString();
+
+            }
+
+        }
 
         public override void BackToSearch()
         {
@@ -118,13 +129,16 @@ namespace MyApp.ViewModel
         {
             this.BaseInitNew();
             result = new LocalizationTextResult();
-           
+
+            _selectvalues = new LocalizationSelectStringValues();
         }
 
         public override async Task Search()
         {
 
             ServiceStatus = new ExecutionStatus(true);
+
+            param.pLanguageID = long.Parse(_selectvalues.pLanguageID);
 
             APIResponse<List<LocalizationTextResult>> ret
                = await _Proxys.LocalizationText.Search(param);
@@ -134,4 +148,14 @@ namespace MyApp.ViewModel
         }
 
     }
+
+    public class LocalizationSelectStringValues
+    {
+        public string pLanguageID { get; set; } = "0";
+
+        public string LanguageID { get; set; } = "0";
+
+    }
+
+
 }

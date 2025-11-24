@@ -138,7 +138,7 @@ namespace MyApp.Controllers
 
                 AuthToken token = TokenService.GenerateToken(userM.UserID.ToString(),
                     userM.Roles[0].RoleName, userM.Instances[0].InstanceID.ToString(),
-                    permissions_content, userM.DefaultLanguage, 
+                    permissions_content, userM.LanguageID.ToString(), 
                     int.Parse(param.SessionTimeOut) );
                            
                 UserAuthenticated userA = new UserAuthenticated();
@@ -150,7 +150,7 @@ namespace MyApp.Controllers
                 userA.Token = token.TokenValue;
                 userA.Expires = token.ExpiresDate;
                 userA.Permissions = userM.Permissions;
-                userA.LocalizationLanguage = userM.DefaultLanguage; 
+                userA.LanguageID = userM.LanguageID; 
 
                 UpdateUserLogin uplogin = new UpdateUserLogin()
                 {

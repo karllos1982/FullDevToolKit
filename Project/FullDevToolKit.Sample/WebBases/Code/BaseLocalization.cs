@@ -15,7 +15,7 @@ namespace MyApp.ViewModel
           
             foreach (LocalizationTextResult r in texts)
             {                
-                if (r.Language == lang) {
+                if (r.LanguageID.ToString() == lang) {
                    
                     if (!_texts.ContainsKey(r.Name))
                     {

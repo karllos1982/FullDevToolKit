@@ -9,8 +9,8 @@ namespace FullDevToolKit.Sys.Models.Common
         [PrimaryValidationConfig("LocalizationTextID", "Text ID", FieldType.NUMERIC, false, 0)]
         public long LocalizationTextID { get; set; }
 
-        [PrimaryValidationConfig("Language", "Language", FieldType.TEXT, false, 5)]
-        public string Language { get; set; } = string.Empty;
+        [PrimaryValidationConfig("LanguageID", "Language ID", FieldType.NUMERIC, false, 0)]
+        public long LanguageID { get; set; } 
 
         [PrimaryValidationConfig("Name", "Name", FieldType.TEXT, false, 50)]
         public string Name { get; set; } = string.Empty;
@@ -27,7 +27,7 @@ namespace FullDevToolKit.Sys.Models.Common
         public LocalizationTextParam()
         {
             pLocalizationTextID= 0;
-            pLanguage = "";
+            pLanguageID = 0;
             pCode = "";
             pName = "";
             pText = ""; 
@@ -35,7 +35,7 @@ namespace FullDevToolKit.Sys.Models.Common
 
         public long pLocalizationTextID { get; set; }
 
-        public string pLanguage { get; set; }
+        public long pLanguageID { get; set; }
 
         public string pName { get; set; }
 
@@ -62,13 +62,14 @@ namespace FullDevToolKit.Sys.Models.Common
 
     public class LocalizationTextList: LocalizationTextBaseModel
     {
-                
+        public string LanguageName { get; set; }
+
     }
 
     public class LocalizationTextResult: LocalizationTextBaseModel
     {
+        public string LanguageName { get; set; }
 
-   
 
     }
 

@@ -249,7 +249,7 @@ namespace FullDevToolKit.Sys.Manager
                     obj.CreateDate = DateTime.Now;
                     obj.IsActive = false;
                     obj.IsLocked = false;
-                    obj.DefaultLanguage = data.DefaultLanguage;
+                    obj.LanguageID = data.LanguageID;
                     obj.LastLoginDate = DateTime.Now;
                     obj.LastLoginIP = null;
                     obj.LoginCounter = 0;

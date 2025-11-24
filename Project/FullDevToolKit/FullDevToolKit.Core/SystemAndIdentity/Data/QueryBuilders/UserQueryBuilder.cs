@@ -24,8 +24,10 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
         public string QueryForGetByEmail()
         {
             string ret = @"Select 
-                    UserID,UserName,ApplicationID,Email,Password,Salt,CreateDate,IsActive,IsLocked,DefaultLanguage,LastLoginDate,
-                    LastLoginIP,LoginCounter,LoginFailCounter,AuthCode,AuthCodeExpires,PasswordRecoveryCode,ProfileImage,AuthUserID 
+                    UserID,UserName,ApplicationID,Email,Password,Salt,CreateDate,
+                    IsActive,IsLocked,LanguageID,LastLoginDate,
+                    LastLoginIP,LoginCounter,LoginFailCounter,AuthCode,AuthCodeExpires,
+                    PasswordRecoveryCode,ProfileImage,AuthUserID 
                     from sysUser where Email=@pEmail";
 
             return ret;
@@ -91,7 +93,7 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
         {
             string ret;
 
-            ret = @"update sysUser set DefaultLanguage=@NewLanguage 
+            ret = @"update sysUser set LanguageID=@NewLanguage 
                   where UserID=@UserID";
 
             return ret;
@@ -132,8 +134,10 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
         public override string QueryForGet(object param)
         {
             string ret = @"Select 
-                    UserID,ApplicationID,UserName,Email,Password,Salt,CreateDate,IsActive,IsLocked,DefaultLanguage,LastLoginDate,
-                    LastLoginIP,LoginCounter,LoginFailCounter,AuthCode,AuthCodeExpires,PasswordRecoveryCode,ProfileImage,AuthUserID,                     
+                    UserID,ApplicationID,UserName,Email,Password,Salt,CreateDate,
+                    IsActive,IsLocked,LanguageID,LastLoginDate,
+                    LastLoginIP,LoginCounter,LoginFailCounter,AuthCode,AuthCodeExpires,
+                    PasswordRecoveryCode,ProfileImage,AuthUserID,                     
                     Seq, TSCreate, TSLastUpdate
                     from sysUser where userid=@pUserID";
 
@@ -159,7 +163,7 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
         public override string QueryForSearch(object param)
         {
             string ret = @"Select 
-                UserID,ApplicationID,UserName,Email,Password,Salt,CreateDate,IsActive,IsLocked,DefaultLanguage,LastLoginDate,
+                UserID,ApplicationID,UserName,Email,Password,Salt,CreateDate,IsActive,IsLocked,LanguageID,LastLoginDate,
                 LastLoginIP,LoginCounter,LoginFailCounter,AuthCode,AuthCodeExpires,PasswordRecoveryCode,ProfileImage,AuthUserID 
                 from sysUser u
                 where 1=1 

@@ -251,7 +251,7 @@
                                           </FluentGridItem>
 
                                         <FluentGridItem lg="4" xs="12">
-                                    <FluentTextField Value=@view.result.DefaultLanguage Maxlength="100" ReadOnly="true"
+                                    <FluentTextField Value=@view.result.LanguageID.ToString() Maxlength="100" ReadOnly="true"
                                                      Label="@view.texts.Get("DefaultLanguage-Label")" style="width:90%">
                                             </FluentTextField>
                                         </FluentGridItem>
@@ -465,15 +465,15 @@
                                     {
                                         @if (view.listLangs.Count > 0)
                                         {
-                                            <FluentSelect TOption="LocalizationTextList"
+                                            <FluentSelect TOption="LanguageList"
                                                 Label=@view.texts.Get("DefaultLanguage-Label")
                                                 Items="@view.listLangs"
                                                 Id="LocalizationTextList"
                                                 Height="250px"
                                                 Width="95%"
-                                                OptionValue="@(p => p.Language)"
-                                                OptionText="@(p => p.Language)"
-                                              @bind-Value="view.newModel.DefaultLanguage" />
+                                                OptionValue="@(p => p.LanguageID.ToString())"
+                                                OptionText="@(p => p.LanguageName)"
+                                              @bind-Value="pLanguageID" />
 
                                              <FluentLabel Class="summary-label"> @view.GetSummaryMessage("DefaultLanguage") </FluentLabel>
                                         }
@@ -522,6 +522,7 @@
 
     //
 
+    private string pLanguageID = "0"; 
 
     protected override Task OnInitializedAsync()
     {

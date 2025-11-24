@@ -20,7 +20,7 @@ namespace WebUIComponents.Common
 
         public DefaultLocalization Localization { get; set; }
                        
-        public List<LocalizationTextList> LanguageList { get; set; }
+        public List<LanguageList> LanguageList { get; set; }
                 
         public AuthProxy Service { get; set; }
 

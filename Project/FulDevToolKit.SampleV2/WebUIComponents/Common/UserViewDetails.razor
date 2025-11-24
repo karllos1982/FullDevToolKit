@@ -118,14 +118,14 @@
             {
                 @if (Content.LanguageList.Count > 0)
                 {
-                    <FluentSelect TOption="LocalizationTextList"
+                    <FluentSelect TOption="LanguageList"
                           Label="@Content.Localization.Get("ChangeUserLanguage-Title")"
                           Items="@Content.LanguageList"
                           Id="lang-listbox"
                           Width="200px"
                           Height="250px"                          
-                          OptionValue="@(p => p.Language)"
-                          OptionText="@(p => p.Language)"  
+                          OptionValue="@(p => p.LanguageID.ToString())"
+                          OptionText="@(p => p.LanguageName)"  
                           @bind-Value="@Content.Language" />
 
                 }

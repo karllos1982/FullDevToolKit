@@ -74,17 +74,16 @@
                                     {
                                         @if (view.listLangs.Count > 0)
                                         {
-                                            <FluentSelect TOption="LocalizationTextList"
+                                        <FluentSelect TOption="LanguageList"
                                                       Label=@view.texts.Get("SearchByLanguage-Label")
                                                           Items="@view.listLangs"
                                                           Id="LocalizationTextList"
                                                           Height="250px"
                                                           Width="95%"
-                                                          OptionValue="@(p => p.Language)"
-                                                          OptionText="@(p => p.Language)"
-                                                      @bind-Value="view.param.pLanguage" />
-
-                                            <FluentLabel Class="summary-label"> @view.GetSummaryMessage("DefaultLanguage") </FluentLabel>
+                                                          OptionValue="@(p => p.LanguageID.ToString())"
+                                                          OptionText="@(p => p.LanguageName)"
+                                                      @bind-Value="view._selectvalues.pLanguageID" />
+                                            
                                         }
                                     }
                                         
@@ -140,7 +139,7 @@
                                         ResizableColumns=true
                                         Style="overflow-y:hidden;">
 
-                            <PropertyColumn Property="@(c => c.Language)" Title="@view.texts.Get("Language-Label")" Sortable="true" Width="20%" />
+                            <PropertyColumn Property="@(c => c.LanguageName)" Title="@view.texts.Get("Language-Label")" Sortable="true" Width="20%" />
                             <PropertyColumn Property="@(c => c.Code)" Title="@view.texts.Get("LocalizationCode-Label")" Sortable="true" Width="25%" />
                             <PropertyColumn Property="@(c => c.Name)" Title="@view.texts.Get("LocalizationName-Label")" Sortable="true" Width="40%" />
 
@@ -186,10 +185,23 @@
 
         <FluentCard Width="100%" Height="100%" Class="card-layout">
 
-            <FluentTextField @bind-Value="view.result.Language" Maxlength="5"
-                             Label="@view.texts.Get("Language-Label")" style="width:25%">
-            </FluentTextField>
-            <FluentLabel Class="summary-label"> @view.GetSummaryMessage("Language") </FluentLabel>
+            @if (view.listLangs != null)
+            {
+                @if (view.listLangs.Count > 0)
+                {
+                    <FluentSelect TOption="LanguageList"
+                                  Label=@view.texts.Get("SearchByLanguage-Label")
+                                  Items="@view.listLangs"
+                                  Id="LocalizationTextList"
+                                  Height="250px"
+                                  Width="25%"
+                                  OptionValue="@(p => p.LanguageID.ToString())"
+                                  OptionText="@(p => p.LanguageName)"
+                                  @bind-Value="view._selectvalues.LanguageID" />
+
+                    <FluentLabel Class="summary-label"> @view.GetSummaryMessage("Language-Label") </FluentLabel>
+                }
+            }
 
             <FluentTextField @bind-Value=view.result.Code Maxlength="10"
                              Label="@view.texts.Get("LocalizationCode-Label")" style="width:25%">
@@ -230,8 +242,7 @@ else
     private LocalizationTextViewModel view;
 
     //
-
-
+   
     protected override Task OnInitializedAsync()
     {
         return base.OnInitializedAsync();

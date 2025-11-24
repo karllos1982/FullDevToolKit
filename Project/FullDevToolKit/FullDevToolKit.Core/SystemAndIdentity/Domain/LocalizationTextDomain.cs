@@ -81,7 +81,7 @@ namespace FullDevToolKit.Sys.Domains
 
             if (list != null)
             {
-                if (list.Count > 0 && list[0].Language == obj.Language)
+                if (list.Count > 0 && list[0].LanguageID == obj.LanguageID)
                 {
                     ret.Success = false;
                     string msg
@@ -123,7 +123,7 @@ namespace FullDevToolKit.Sys.Domains
             if (list != null)
             {
                 if (list.Count > 0 && list[0].LocalizationTextID != obj.LocalizationTextID 
-                    && list[0].Language == obj.Language)
+                    && list[0].LanguageID == obj.LanguageID)
                 {
                     
                     ret.Success = false;
@@ -219,7 +219,7 @@ namespace FullDevToolKit.Sys.Domains
     {
 
         public void FillTexts(List<LocalizationTextResult> textLists,
-                string language)
+                long language)
         {
             Type t = this.GetType();
             PropertyInfo[] prop = t.GetProperties();
@@ -238,12 +238,12 @@ namespace FullDevToolKit.Sys.Domains
         }
 
         private string GetText(List<LocalizationTextResult> textLists,
-                string name, string lang)
+                string name, long lang)
         {
             string ret = "";
 
             var aux = textLists
-                .Where(t => t.Name == name && t.Language == lang)
+                .Where(t => t.Name == name && t.LanguageID == lang)
                 .FirstOrDefault();
 
             if (aux != null)

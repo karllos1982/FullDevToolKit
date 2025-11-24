@@ -163,3 +163,42 @@ insert into sysLanguage values (2,'pt-BR','Portuguese',getdate(),getdate())
 
 -- AJUSTAR CAMPO LanguageID nas tabelas
 
+-- tabela sysLocalizationText
+
+alter table sysLocalizationText add LanguageID [bigint] NULL	
+
+alter table [dbo].[sysLocalizationText]  WITH NOCHECK 
+ADD  CONSTRAINT [fk_sysLocalizationText_Language] FOREIGN KEY([LanguageID])
+REFERENCES [dbo].[sysLanguage] ([LanguageID])
+
+
+begin transaction
+
+update [sysLocalizationText] set [LanguageID] = 1 where [Language]='en-us'
+update [sysLocalizationText] set [LanguageID] = 2 where [Language]='pt-br'
+
+-- commit 
+-- rollback
+
+alter table sysLocalizationText drop column [Language]
+
+
+
+-- tabela sysLocalizationText
+
+alter table sysUser add LanguageID [bigint] NULL	
+
+alter table [dbo].[sysUser]  WITH NOCHECK 
+ADD  CONSTRAINT [fk_sysUser_Language] FOREIGN KEY([LanguageID])
+REFERENCES [dbo].[sysLanguage] ([LanguageID])
+
+
+begin transaction
+
+update [sysUser] set [LanguageID] = 1 where [DefaultLanguage]='en-us'
+update [sysUser] set [LanguageID] = 2 where [DefaultLanguage]='pt-br'
+
+-- commit 
+-- rollback
+
+alter table [sysUser] drop column [DefaultLanguage]

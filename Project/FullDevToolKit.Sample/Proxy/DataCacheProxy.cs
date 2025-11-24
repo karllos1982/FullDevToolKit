@@ -73,12 +73,12 @@ namespace MyApp.Proxys
         }
 
 
-        public async Task<List<LocalizationTextList>?> ListLanguages()
+        public async Task<List<LanguageList>?> ListLanguages()
         {
-            List<LocalizationTextList> ret = new List<LocalizationTextList>();
-            APIResponse<List<LocalizationTextList>?> response = null;
+            List<LanguageList> ret = new List<LanguageList>();
+            APIResponse<List<LanguageList>?> response = null;
 
-            response = await this.GetAsJSON<List<LocalizationTextList>?>("listlangs", null);
+            response = await this.GetAsJSON<List<LanguageList>?>("listlangs", null);
 
             if (response.IsSuccess)
             {

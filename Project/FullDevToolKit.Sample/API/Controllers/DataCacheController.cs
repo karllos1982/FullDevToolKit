@@ -132,22 +132,19 @@ namespace MyApp.Controllers
             BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
-            List<LocalizationTextList> list = null;
+            List<LanguageList> list = null;
 
-            list = memorycache.Get<List<LocalizationTextList>>("LANGS");
+            list = memorycache.Get<List<LanguageList>>("LANGS");
 
             if (list == null)
             {
-                //list = await Manager.IdentityModule.Domainset.LocalizationText.GetListOfLanguages();
-                list = new List<LocalizationTextList>();
-                list.Add(new LocalizationTextList() { Language = "en-us" });
-                list.Add(new LocalizationTextList() { Language = "pt-br" });
-
+                list = await Manager.IdentityModule.Domainset.Language.List(new LanguageParam());
+                                
                 memorycache.Set("LANGS", list, this.GetMemoryCacheOptionsByHour(2));
 
             }
 
-            ret = SetReturn<List<LocalizationTextList>>(list);
+            ret = SetReturn<List<LanguageList>>(list);
 
             FinalizeManager();
 

@@ -53,7 +53,7 @@ namespace FullDevToolKit.Sys.Models.Identity
 
         public List<UserPermissions> Permissions { get; set; }  = new List<UserPermissions>();
 
-        public string LocalizationLanguage { get; set; } = string.Empty;
+        public long LanguageID { get; set; }
 
     }
    
@@ -80,7 +80,7 @@ namespace FullDevToolKit.Sys.Models.Identity
 
         public bool IsLocked { get; set; }
 
-        public string? DefaultLanguage { get; set; }
+        public long LanguageID { get; set; }
 
         public DateTime LastLoginDate { get; set; }
 
@@ -141,10 +141,10 @@ namespace FullDevToolKit.Sys.Models.Identity
         public long RoleID { get; set; } 
 
         [PrimaryValidationConfig("InstanceID", "LocalizationText ID", FieldType.NUMERIC, false, 0)]
-        public long InstanceID { get; set; } 
+        public long InstanceID { get; set; }
 
-        [PrimaryValidationConfig("DefaultLanguage", "Default Language", FieldType.TEXT, false, 5)]
-        public string DefaultLanguage { get; set; } = string.Empty;
+        [PrimaryValidationConfig("LanguageID", "Language ID", FieldType.NUMERIC, false, 0)]
+        public long LanguageID { get; set; }
 
         [PrimaryValidationConfig("Password", "Password", FieldType.TEXT, false, 8)]
         public string Password { get; set; } = string.Empty;

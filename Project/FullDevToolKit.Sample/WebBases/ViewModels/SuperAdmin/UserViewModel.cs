@@ -33,7 +33,7 @@ namespace MyApp.ViewModel
         public IQueryable<UserResult> gridlist = null;
         public List<SelectItemBase> listRoles = new List<SelectItemBase>();
         public List<SelectItemBase> listInstances = new List<SelectItemBase>();
-        public List<LocalizationTextList> listLangs = new List<LocalizationTextList>();
+        public List<LanguageList> listLangs = new List<LanguageList>();
         
 
         public UserSelectStringValues _selectvalues = null;
@@ -91,18 +91,18 @@ namespace MyApp.ViewModel
 
         public async Task LoadLangsList()
         {
-            listLangs = new List<LocalizationTextList>();
+            listLangs = new List<LanguageList>();
 
             ServiceStatus = new ExecutionStatus(true);
             listLangs = await _cache.ListLanguages();
 
             if (listLangs == null)
             {
-                listLangs = new List<LocalizationTextList>();
+                listLangs = new List<LanguageList>();
 
             }
 
-            listLangs.Insert(0, new LocalizationTextList() { LocalizationTextID = 0, Language = this.texts.Get("SelectItem-Description") });
+            listLangs.Insert(0, new () { LanguageID = 0, LanguageName = this.texts.Get("SelectItem-Description") });
 
         }
 

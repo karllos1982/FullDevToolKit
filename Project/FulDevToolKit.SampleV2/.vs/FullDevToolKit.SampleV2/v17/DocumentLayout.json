@@ -3,15 +3,21 @@
   "WorkspaceRootPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{BF1745C5-AD63-48D2-9673-FC85FB42FA50}|..\\FullDevToolKit.Sample\\API\\API.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\api\\controllers\\system\\languagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{71DBF85E-ED5D-4609-A4E2-11C5DFB11EA1}|..\\FullDevToolKit.Sample\\WebBases\\WebBases.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webbases\\viewmodels\\superadmin\\permissionviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\language.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\language.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{71DBF85E-ED5D-4609-A4E2-11C5DFB11EA1}|..\\FullDevToolKit.Sample\\WebBases\\WebBases.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webbases\\viewmodels\\superadmin\\localizationtextviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{0824FF1E-C293-4DE1-AD11-0701DBCC4899}|WebUIComponents\\WebUIComponents.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webuicomponents\\common\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{0824FF1E-C293-4DE1-AD11-0701DBCC4899}|WebUIComponents\\WebUIComponents.csproj|solutionrelative:webuicomponents\\common\\navmenu.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\localizationtext.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\localizationtext.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71DBF85E-ED5D-4609-A4E2-11C5DFB11EA1}|..\\FullDevToolKit.Sample\\WebBases\\WebBases.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webbases\\viewmodels\\superadmin\\userviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0824FF1E-C293-4DE1-AD11-0701DBCC4899}|WebUIComponents\\WebUIComponents.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webuicomponents\\common\\userviewdetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0824FF1E-C293-4DE1-AD11-0701DBCC4899}|WebUIComponents\\WebUIComponents.csproj|solutionrelative:webuicomponents\\common\\userviewdetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,7 +26,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 208,
+          "DockedWidth": 293,
           "SelectedChildIndex": 3,
           "Children": [
             {
@@ -38,46 +44,60 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "LanguageController.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\System\\LanguageController.cs",
-              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\API\\Controllers\\System\\LanguageController.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\System\\LanguageController.cs",
-              "RelativeToolTip": "..\\FullDevToolKit.Sample\\API\\Controllers\\System\\LanguageController.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABoAAAAMAAAAAAAAAA==",
+              "Title": "PermissionViewModel.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\PermissionViewModel.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\PermissionViewModel.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\PermissionViewModel.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\PermissionViewModel.cs",
+              "ViewState": "AgIAAL4AAAAAAAAAAAAcwNkAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-16T23:53:53.01Z",
+              "WhenOpened": "2025-11-23T23:48:57.225Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Language.razor",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Language.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\Language.razor",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Language.razor",
-              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\Language.razor",
-              "ViewState": "AgIAAC0AAAAAAAAAAAAAAEEAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 3,
+              "Title": "UserViewModel.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\UserViewModel.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\UserViewModel.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\UserViewModel.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\UserViewModel.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAgwCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T23:46:02.624Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "UserViewDetails.razor",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\UserViewDetails.razor",
+              "RelativeDocumentMoniker": "WebUIComponents\\Common\\UserViewDetails.razor",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\UserViewDetails.razor",
+              "RelativeToolTip": "WebUIComponents\\Common\\UserViewDetails.razor",
+              "ViewState": "AgIAAGwAAAAAAAAAAAAAAHUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-16T23:12:58.488Z",
+              "WhenOpened": "2025-11-23T23:41:48.742Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "NavMenu.razor",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\NavMenu.razor",
-              "RelativeDocumentMoniker": "WebUIComponents\\Common\\NavMenu.razor",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\NavMenu.razor",
-              "RelativeToolTip": "WebUIComponents\\Common\\NavMenu.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAB7AAAAAAAAAA==",
+              "Title": "LocalizationText.razor",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\LocalizationText.razor",
+              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\LocalizationText.razor",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\LocalizationText.razor",
+              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\LocalizationText.razor",
+              "ViewState": "AgIAALkAAAAAAAAAAAAkwMEAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-16T16:53:58.482Z"
+              "WhenOpened": "2025-11-23T23:41:38.342Z",
+              "EditorCaption": ""
             }
           ]
         },
         {
-          "DockedWidth": 227,
-          "SelectedChildIndex": -1,
+          "DockedWidth": 241,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -86,6 +106,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{605322a2-17ae-43f4-b60f-766556e46c87}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LocalizationTextViewModel.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\LocalizationTextViewModel.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\LocalizationTextViewModel.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\LocalizationTextViewModel.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\LocalizationTextViewModel.cs",
+              "ViewState": "AgIAAF0AAAAAAAAAAAAwwGkAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-11-23T23:46:09.226Z",
+              "EditorCaption": ""
             }
           ]
         }

@@ -21,20 +21,23 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
 
         public override string QueryForGet(object param)
         {
-            string ret = @"Select * 
-            from sysLocalizationText where LocalizationTextID=@pLocalizationTextID";
+            string ret = @"Select t.*, l.LanguageName 
+            from sysLocalizationText t
+            inner join sysLanguage l on t.LanguageID=l.LanguageID
+            where t.LocalizationTextID=@pLocalizationTextID";
 
             return ret;
         }
 
         public override string QueryForList(object param)
         {
-            string ret = @"select *           
-             from sysLocalizationText 
+            string ret = @"select t.*, l.LanguageName            
+             from sysLocalizationText t
+             inner join sysLanguage l on t.LanguageID=l.LanguageID
              where 1=1 
-             and (@pLanguage='' or [Language]=@pLanguage)
-             and (@pName='' or [Name] like '%' + @pName + '%')
-             and (@pCode='' or Code=@pCode)
+             and (@pLanguageID=0 or t.LanguageID=@pLanguageID)
+             and (@pName='' or t.Name like '%' + @pName + '%')
+             and (@pCode='' or t.Code=@pCode)
              and (@pLocalizationTextID=0 or LocalizationTextID=@pLocalizationTextID)      
              ";
 
@@ -43,13 +46,14 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
 
         public override string QueryForSearch(object param)
         {
-            string ret = @"select *            
-             from sysLocalizationText              
+            string ret = @"select t.*, l.LanguageName            
+             from sysLocalizationText t
+             inner join sysLanguage l on t.LanguageID=l.LanguageID
              where 1=1 
-             and (@pLanguage='' or [Language]=@pLanguage)
-             and (@pName='' or [Name] like '%' + @pName + '%')
-             and (@pCode='' or Code=@pCode)
-             and (@pLocalizationTextID=0 or LocalizationTextID=@pLocalizationTextID)              
+             and (@pLanguageID=0 or t.LanguageID=@pLanguageID)
+             and (@pName='' or t.Name like '%' + @pName + '%')
+             and (@pCode='' or t.Code=@pCode)
+             and (@pLocalizationTextID=0 or LocalizationTextID=@pLocalizationTextID)      
              ";
 
             return ret;
