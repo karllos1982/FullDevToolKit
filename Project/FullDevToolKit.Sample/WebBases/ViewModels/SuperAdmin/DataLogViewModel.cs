@@ -37,6 +37,7 @@ namespace MyApp.ViewModel
         public IQueryable<DataLogItem> logcurrent_content;
         public List<DataLogTimelineModel> timeline = null;
         public bool ShowTimeline = false;
+        
 
         public DateTime? dataInicio { get; set; }
         public DateTime? dataFim { get; set; }
@@ -231,6 +232,7 @@ namespace MyApp.ViewModel
             SetResult<List<DataLogResult>>(ret, ref searchresult, ref ServiceStatus);
 
             gridlist = searchresult.AsQueryable();
+            
         }
 
     }

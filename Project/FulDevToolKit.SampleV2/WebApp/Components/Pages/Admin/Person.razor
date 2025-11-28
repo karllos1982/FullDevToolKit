@@ -1,0 +1,500 @@
+﻿@page "/admin/person"
+
+@inherits LoggedLayout
+@layout LoggedLayout
+
+@inject NavigationManager NavigationManager
+@inject HttpClient _httpclient
+@inject IAppControllerAsync<UserAuthenticated> _appctrl
+@inject IAppSettings _settings
+@inject IDataCacheProxyManager _cache
+@inject ISystemProxyManager _systemservices
+@inject IMyAppProxy _services
+@inject IDialogService msgbox
+@inject IDialogService contactModal
+
+
+@if (view != null)
+{
+
+    <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+
+        <FluentGridItem lg="10" xs="12">
+            <FluentLabel> <h2> @_PageTitle</h2> </FluentLabel>
+
+        </FluentGridItem>
+
+        <FluentGridItem lg="2" xs="12" Style="margin-top: 6px;">
+
+            <FormActionButton ButtonType=ButtonTypeEnum.ADD
+                              Title="@view.texts.Get("NewPerson-Label")"
+                              Disabled="!view.Permissions.AllowSave"
+                              Visible="!view.GetTabEditState()"
+                              OnAction="OnNew">
+            </FormActionButton>
+
+            <FormActionButton ButtonType=ButtonTypeEnum.SAVE
+                              Title="@view.texts.Get("SavePersonButton-Label")"
+                              Disabled="!view.Permissions.AllowSave"
+                              Visible="view.GetTabEditState()"
+                              OnAction="OnSet">
+            </FormActionButton>
+
+
+        </FluentGridItem>
+
+    </FluentGrid>
+
+
+    @if (!view.GetTabEditState())
+    {
+        <FluentGrid Spacing="1" AdaptiveRendering="true" Style="padding: 4px; ">
+
+            <FluentGridItem lg="12" xs="12">
+
+                <FluentAccordion>
+
+                    <FluentAccordionItem Expanded="true" Heading="@view.texts.Get("SearchButtonLabel")">
+                        <FluentIcon Value="@(new Icons.Regular.Size24.Search())"
+                                    Color="@Color.Accent" Slot="start" />
+
+                        <FluentStack Style="margin-bottom: 20px;" Orientation="Orientation.Vertical"
+                                     VerticalAlignment="VerticalAlignment.Center">
+
+                            <FluentTextField @bind-Value=view.param.pPersonName  Maxlength="100"
+                                             Label="@view.texts.Get("SearchByPersonName-Label")" style="width:50%">
+                            </FluentTextField>
+                            
+                            <FluentTextField @bind-Value=view.param.pEmail  Maxlength="100"
+                                             Label="@view.texts.Get("SearchByPersonEmail-Label")" style="width:50%">
+                            </FluentTextField>
+
+                            <FormActionButton ButtonType=ButtonTypeEnum.SEARCH
+                                              Title="@view.texts.Get("SearchButtonLabel")"
+                                              Visible="true"
+                                              Disabled="!view.Permissions.AllowRead"
+                                              OnAction="OnSearch">
+                            </FormActionButton>
+
+                        </FluentStack>
+
+                    </FluentAccordionItem>
+                </FluentAccordion>
+            </FluentGridItem>
+
+
+            <FluentGridItem lg="12" xs="12">
+
+                <FluentCard Width="100%" Height="100%" Class="card-layout">
+
+                    <FluentLabel> <h5>@view.texts.Get("SearchResultLabel")</h5> </FluentLabel>
+
+                    <div id="datagrid-container">
+                        <FluentDataGrid Items="@view.gridlist"
+                                        TGridItem="PersonResult"
+                                        Pagination="@pagination"
+                                        RowSize="@rowSize"
+                                        ResizableColumns=true                                       
+                                        Style="overflow-y:hidden;">
+
+                            <PropertyColumn Property="@(c => c.PersonName)" Title="@view.texts.Get("PersonName-Label")" Sortable="true" Width="40%" />
+                            <PropertyColumn Property="@(c => c.Email)" Title="@view.texts.Get("Email-Label")" Sortable="true" Width="30%" />
+                            <PropertyColumn Property="@(c => c.IsActive )" Title="@view.texts.Get("Active-Label")" Sortable="true" Width="15%" />
+
+                            <TemplateColumn Title="@view.texts.Get("UpdateOperation-Text")" Width="15%">
+
+                                <FluentButton Appearance="Appearance.Lightweight"
+                                              IconEnd="@(new Icons.Regular.Size24.ClipboardTextEdit())"
+                                              @onclick="@(() => OnDetClick(context.PersonID))">
+                                </FluentButton>
+
+                            </TemplateColumn>
+
+                        </FluentDataGrid>
+                    </div>
+
+                    <FluentPaginator State="@pagination" />
+
+                </FluentCard>
+            </FluentGridItem>
+
+        </FluentGrid>
+    }
+
+    @if (view.GetTabEditState())
+    {
+        <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+
+            <FluentGridItem lg="1" xs="12" Style="margin-top: 0px;">
+
+                <TaskIconButton OnClick="Back"
+                                IconStart="@(new Icons.Regular.Size24.ArrowCircleLeft())">
+
+                </TaskIconButton>
+
+            </FluentGridItem>
+
+            <FluentGridItem lg="9" xs="12">
+                <FluentLabel> <h4>@view.ModoLabel</h4> </FluentLabel>
+
+            </FluentGridItem>
+
+        </FluentGrid>
+
+        <FluentCard Width="100%" Height="100%" Class="card-layout">
+
+             <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+
+                    <FluentGridItem lg="12" xs="12" Style="margin-top: 0px;">
+                            <FluentTextField @bind-Value=view.result.PersonName Maxlength="100"
+                                             Label="@view.texts.Get("PersonName-Label")" style="width:75%">
+                            </FluentTextField>
+                            <FluentLabel Class="summary-label"> @view.GetSummaryMessage("PersonName") </FluentLabel>
+
+                     </FluentGridItem>
+
+                     <FluentGridItem lg="12" xs="12" Style="margin-top: 0px;">
+                            <FluentTextField @bind-Value=view.result.Email Maxlength="100"
+                                             Label="@view.texts.Get("Email-Label")" style="width:75%">
+                            </FluentTextField>
+                            <FluentLabel Class="summary-label"> @view.GetSummaryMessage("Email") </FluentLabel>
+                     
+                     </FluentGridItem>
+
+                      <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
+
+                            <FluentTextField @bind-Value=view.result.PhoneNamber Maxlength="15"
+                                             Label="@view.texts.Get("PhoneNumber-Label")" style="width:75%">
+                            </FluentTextField>
+                            <FluentLabel Class="summary-label"> @view.GetSummaryMessage("PhoneNamber") </FluentLabel>
+                       
+                      </FluentGridItem>
+
+                      <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
+
+                            <FluentSwitch @bind-Value=@view.result.IsActive>
+                                @view.texts.Get("Active-Label")
+                            </FluentSwitch>
+                        
+                      </FluentGridItem>
+
+            </FluentGrid>
+                
+            <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+
+                  <FluentGridItem lg="10" xs="12" Style="margin-top: 0px;">
+                       
+                       <FluentLabel Typo="Typography.Header" >
+                             @view.texts.Get("Contacts-Title")
+                        </FluentLabel>
+
+                   </FluentGridItem>
+              
+                    <FluentGridItem lg="2" xs="12" Style="margin-top: 0px;">
+
+                        <FluentButton Appearance="Appearance.Lightweight" Disabled="!view.Permissions.AllowDelete"
+                                        IconEnd="@(new Icons.Regular.Size24.AddCircle())"
+                                    @onclick="@(() => OnInsertNewContactsClick())">
+                        </FluentButton>
+
+                     </FluentGridItem>
+                                 
+                <FluentGridItem lg="12" xs="12" Style="margin-top: 0px;">
+
+                        @if (view.result.Contacts != null)
+                        {
+                            @if (view.result.Contacts.Count > 0)
+                            {
+                                    <div id="datagrid-container">
+                                         <FluentDataGrid Items="@view.gridlistContacts"
+                                                TGridItem="PersonContactResult"
+                                                RowSize="@rowSize"
+                                                ResizableColumns=true
+                                                Style="overflow-y:hidden;">
+
+                                            <PropertyColumn Property="@(c => c.ContactName)" Title="@view.texts.Get("ContactName-Label")" Sortable="true" Width="40%" />
+                                            <PropertyColumn Property="@(c => c.Email)" Title="@view.texts.Get("Email-Label")" Sortable="true" Width="30%" />
+
+                                    <TemplateColumn Title="@view.texts.Get("UpdateOperation-Text")" Width="15%">
+
+                                            @if (view.Permissions.AllowSave)
+                                            {
+                                                     @if (context.RecordState!= RECORDSTATEENUM.DELETED)
+                                                    {
+                                                   
+                                                        <FluentButton Appearance="Appearance.Lightweight"
+                                                                IconEnd="@(new Icons.Regular.Size24.ClipboardTextEdit())"
+                                                                @onclick="@(() => OnDetContactsClick(context.PersonContactID))">
+                                                        </FluentButton>
+                                                                                                     
+                                                    }
+                                                    else
+                                                    {
+                                                        <FluentIcon Value="@(new Icons.Regular.Size24.EditOff())" Color="Color.Warning" >
+
+                                                        </FluentIcon>
+                                                    }             
+                                            }
+
+                                            </TemplateColumn>
+
+
+                                            <TemplateColumn Title="@view.texts.Get("DeleteOperation-Text")" Width="15%">
+
+                                                @if (view.Permissions.AllowDelete)
+                                                {
+                                                    @if (context.RecordState != RECORDSTATEENUM.DELETED)
+                                                    {
+                                                        
+                                                            <FluentButton Appearance="Appearance.Lightweight"
+                                                                        IconEnd="@(new Icons.Regular.Size24.Delete())"
+                                                                @onclick="@(() => OnRemoveContactsClick(context.PersonContactID))">
+                                                                </FluentButton>                                                                                                                    
+                                                      
+                                                    }
+                                                    else
+                                                    {
+                                                            <FluentButton Appearance="Appearance.Lightweight"
+                                                                    IconEnd="@(new Icons.Regular.Size24.ArrowUndo())"
+                                                                    @onclick="@(() => OnUnRemoveContactsClick(context.PersonContactID))">
+                                                            </FluentButton>                                                                                                                                     
+                                                                          
+                                                    }
+                                                }                                        
+
+                                            </TemplateColumn>
+
+                                        </FluentDataGrid>
+                                    </div>
+                            }
+                            else
+                            {
+                                <p> @view.texts.Get("NoRecordsFound") </p>
+                            }
+                        }
+                        else
+                        {
+                            <p> @view.texts.Get("NoRecordsFound") </p>
+                         }
+
+                    </FluentGridItem>
+
+             </FluentGrid>
+
+        </FluentCard>
+
+    }
+}
+else
+{
+
+    <FluentStack Style="margin-bottom: 24px;"
+                 VerticalAlignment="VerticalAlignment.Center"
+                 HorizontalAlignment="HorizontalAlignment.Center">
+        <PageLoading LoadingText="Loading page. Wait..."></PageLoading>
+
+    </FluentStack>
+
+}
+
+<TaskLoading @ref="loading" Content=loadingConfigs></TaskLoading>
+
+@code {
+
+
+    private PersonViewModel view;
+
+    //
+
+    public PersonContactDetailsConfigs contactConfigs
+        = new PersonContactDetailsConfigs();
+
+
+    protected override Task OnInitializedAsync()
+    {
+        return base.OnInitializedAsync();
+    }
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+
+        if (firstRender)
+        {
+            if (await this.InitResources())
+            {
+                await this.InitCacheAndLocalization();
+
+                this.InitServices();
+
+                view = new PersonViewModel((_services as MyAppProxy),
+                   (_cache as DataCacheProxy), user, _httpclient, _settings.ServiceURL, _appctrl.UserInfo.Token);
+
+                view.texts = this.localization;
+
+                view.Permissions
+                    = BaseViewModel.SetPermissions(permissions, "PERSON", false);
+
+                await view.InitializeModels();
+
+                _LoadingData_Text = view.texts.Get("LoadingData");
+                _AreaURL = "admin";                
+                this.SetPageTile(view.texts.Get("Person-PageTitle"));
+                loadingConfigs= new TaskLoadingConfigs
+                    { Title = view.texts.Get("LoadingPage"), 
+                        Description = view.texts.Get("Person-PageTitle")
+                    };
+            }
+
+            StateHasChanged();
+
+        }
+    }
+
+
+
+    public async Task OnSearch()
+    {
+        await view.Search();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                view.texts.Get("ErrorOnExecuteSearch"));
+
+        }
+
+    }
+
+    public void OnNew()
+    {
+
+        view.InitNew();
+        StateHasChanged();
+    }
+
+    public async Task OnGet(object id)
+    {
+        await loading.Begin();
+
+        await view.Get(id);
+
+        await loading.End();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                view.texts.Get("ErrorOnReturnData"));
+
+        }
+        else
+        {
+            view.InitEdit();
+
+        }
+
+        StateHasChanged();
+    }
+
+
+    public async Task OnSet()
+    {
+
+        await view.Set();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                view.texts.Get("NoticeLabel"));
+
+        }
+        else
+        {
+            await msgbox.ShowSuccessAsync(view.texts.Get("SuccessSaveMessage"),
+                view.texts.Get("SuccessLabel"));
+
+            this.Back();
+
+        }
+
+
+    }
+
+    public async Task OnDetClick(object id)
+    {
+        await OnGet(id);
+
+    }
+
+    public void Back()
+    {
+        view.BackToSearch();
+        StateHasChanged();
+
+    }
+
+    public void GoHome()
+    {
+        string url = _appctrl.UserInfo.HomeURL;
+        NavigationManager.NavigateTo(url);
+
+    }
+
+    // funçoes do contato
+
+    public async Task OnDetContactsClick(object id)
+    {
+        view.GetContactToEdit(Int64.Parse(id.ToString()));
+        await OpenPersonContactDetails(); 
+       
+    }
+
+ 
+    public async Task OnInsertNewContactsClick()
+    {
+        await view.InitNewContact();
+        await OpenPersonContactDetails();
+    }
+
+    public async Task OpenPersonContactDetails()
+    {
+        contactConfigs = new PersonContactDetailsConfigs()
+            {
+                Title = view.contactstate,
+                View = this.view,
+                msgbox = this.msgbox
+            };
+
+        DialogParameters tlparams = new()
+            {
+                PrimaryActionEnabled = false,
+                PrimaryAction = "",
+                SecondaryAction = "",
+                Title = view.contactstate,
+                SecondaryActionEnabled = false,
+                Width = "700px",
+                Modal = true,
+                PreventScroll = false
+            };
+
+        IDialogReference modal
+               = await contactModal.ShowDialogAsync<PersonContactDetails>(contactConfigs, tlparams);
+
+        DialogResult? result = await modal.Result;
+        
+    }
+
+    public async Task OnRemoveContactsClick(object id)
+    {
+        await view.RemoveContact(Int64.Parse(id.ToString()));
+
+    }
+
+    public async Task OnUnRemoveContactsClick(object id)
+    {
+
+        await view.UnRemoveContact(Int64.Parse(id.ToString()));
+
+    }
+
+
+}

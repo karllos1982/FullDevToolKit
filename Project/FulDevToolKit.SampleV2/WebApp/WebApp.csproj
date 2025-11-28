@@ -23,4 +23,10 @@
       <HintPath>..\..\FullDevToolKit\FullDevToolKit.Core\bin\Debug\net8.0\FullDevToolKit.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Components\Pages\Admin\Person.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
 </Project>

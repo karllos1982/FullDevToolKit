@@ -235,61 +235,50 @@
             </FluentGrid>
      
              @if (!view.ShowTimeline)
-              {
-
-                  <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
-
-                     <FluentGridItem lg="6" xs="12" Style="margin-top: 5px;">
-
-                        <FluentLabel Alignment="HorizontalAlignment.Center" Style="font-weight:bold"
-                            Typo="Typography.Subject">@view.texts.Get("OldVersionData-Label")
-                          </FluentLabel>
-                      
-                     </FluentGridItem>
-
-                    <FluentGridItem lg="6" xs="12" Style="margin-top: 5px;">
-
-                        <FluentLabel Alignment="HorizontalAlignment.Center" Style="font-weight:bold"
-                            Typo="Typography.Subject">@view.texts.Get("CurrentVersionData-Label")
-                        </FluentLabel>
-
-                    </FluentGridItem>
-
-                   </FluentGrid>
+              {                 
 
                 <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px;" >
 
-                    <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;" Class="grid-old-version">
+                    <FluentSplitter Orientation="Orientation.Horizontal"  BarSize="6" Panel1MinSize="10%" Panel2MinSize="10%">
+                        <Panel1>
+                            <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;" Class="grid-old-version">
 
-                        @if (view.logold_content != null)
-                            {
-                                @if (view.logold_content.ToList().Count > 0)
-                                {
-                                    <div id="datagrid-container">
+                                @if (view.logold_content != null)
+                                    {
+                                        @if (view.logold_content.ToList().Count > 0)
+                                        {
+                                            <div id="datagrid-container">
 
-                                        <FluentDataGrid Items="@view.logold_content"
-                                                        TGridItem="DataLogItem"                                                        
-                                                        RowSize="@rowSize"
-                                                        ResizableColumns=true
-                                                        Style="overflow-y:hidden;">
+                                            <FluentLabel Alignment="HorizontalAlignment.Center" Style="font-weight:bold;padding:10px"
+                                                         Typo="Typography.Subject">
+                                                @view.texts.Get("OldVersionData-Label")
+                                            </FluentLabel>
 
-                                            <PropertyColumn Property="@(c => c.ItemName)"  Sortable="true" Title="@view.texts.Get("Field-Label")" Width="50%" />
-                                            <PropertyColumn Property="@(c => c.ItemValue)" Title="@view.texts.Get("Value-Label")"  Width="50%" />
+                                                <FluentDataGrid  Items="@view.logold_content"
+                                                                TGridItem="DataLogItem"                                                        
+                                                                RowSize="@rowSize"
+                                                                ResizableColumns=true
+                                                                Style="overflow-y:hidden;">
+
+                                                    <PropertyColumn Property="@(c => c.ItemName)"  Sortable="true" Title="@view.texts.Get("Field-Label")" Width="50%" />
+                                                    <PropertyColumn Property="@(c => c.ItemValue)" Title="@view.texts.Get("Value-Label")"  Width="50%" />
                                       
-                                        </FluentDataGrid>                                        
-                                    </div>
+                                                </FluentDataGrid>                                        
+                                            </div>
                                                                         
-                                }
-                                else
-                                {
-                                    <p> @view.texts.Get("HasNoOldVersion-Label") </p>
-                                }
-                            }
+                                        }
+                                        else
+                                        {
+                                            <p> @view.texts.Get("HasNoOldVersion-Label") </p>
+                                        }
+                                    }
 
-                     </FluentGridItem>
+                             </FluentGridItem>
+                        </Panel1>
 
-                     
-                     <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">                                                        
+                        <Panel2>
+
+                          <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">                                                        
 
                             @if (view.logcurrent_content != null)
                             {
@@ -298,6 +287,10 @@
 
                                     <div id="datagrid-container">
 
+                                            <FluentLabel Alignment="HorizontalAlignment.Center" Style="font-weight:bold;padding:10px"
+                                            Typo="Typography.Subject">@view.texts.Get("CurrentVersionData-Label")
+                                        </FluentLabel>
+
                                         <FluentDataGrid Items="@view.logcurrent_content"
                                                         TGridItem="DataLogItem"                                                        
                                                         RowSize="@rowSize"
@@ -305,8 +298,22 @@
                                                         Style="overflow-y:hidden;">
 
                                         <PropertyColumn Property="@(c => c.ItemName)" Sortable="true" Title="@view.texts.Get("Field-Label")" Width="50%" />
-                                            <PropertyColumn Property="@(c => c.ItemValue)" Title="@view.texts.Get("Value-Label")"  Width="50%" />
-                                           
+                                         
+                                        <TemplateColumn Title="@view.texts.Get("Value-Label")" Width="50%">
+
+                                            @if(context.IsDifferent)
+                                            {
+                                                <FluentBadge Appearance="Appearance.Neutral" Fill="highlight"
+                                                    BackgroundColor="#ffd800;" Color="#000">@context.ItemValue
+                                                </FluentBadge>
+                                            }
+                                            else
+                                            {
+                                                <span>@context.ItemValue</span>
+                                            }
+
+                                        </TemplateColumn>
+                                    
                                         </FluentDataGrid>                                          
 
                                     </div>                                    
@@ -319,6 +326,10 @@
                             }
 
                      </FluentGridItem>
+                         
+                         </Panel2>
+
+                     </FluentSplitter>
 
                  </FluentGrid>
               }                                                                                                    
@@ -360,11 +371,6 @@ else
 }
 
 <TaskLoading @ref="loading" Content=loadingConfigs></TaskLoading>
-
-@* <DataLogTimeline @ref="modaltimeline"                
-                 Content="timelineConfigs"
-                 Title="@timelinetitle">
-</DataLogTimeline> *@
 
 
 @code {

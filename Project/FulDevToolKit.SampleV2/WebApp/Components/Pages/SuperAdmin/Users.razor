@@ -171,8 +171,8 @@
                                         }
                                     </TemplateColumn>
 
-                                    
-                                    <TemplateColumn Title="..." Width="15%">
+
+                            <TemplateColumn Title="@view.texts.Get("UpdateOperation-Text")" Width="15%">
                                 
                                          <FluentButton Appearance="Appearance.Lightweight" 
                                               IconEnd="@(new Icons.Regular.Size24.ClipboardTextEdit())"
@@ -251,9 +251,24 @@
                                           </FluentGridItem>
 
                                         <FluentGridItem lg="4" xs="12">
-                                    <FluentTextField Value=@view.result.LanguageID.ToString() Maxlength="100" ReadOnly="true"
-                                                     Label="@view.texts.Get("DefaultLanguage-Label")" style="width:90%">
-                                            </FluentTextField>
+
+                                            @if (view.listLangs != null)
+                                            {
+                                                @if (view.listLangs.Count > 0)
+                                                {
+                                                    <FluentSelect TOption="LanguageList"
+                                                                  Label=@view.texts.Get("DefaultLanguage-Label")
+                                                                  Items="@view.listLangs"
+                                                                  Id="LocalizationTextList"
+                                                                  Height="250px"
+                                                                  Width="95%"
+                                                                  OptionValue="@(p => p.LanguageID.ToString())"
+                                                                  OptionText="@(p => p.LanguageName)"
+                                                                @bind-Value="view._selectvalues.LanguageID" />                                                       
+                                                    
+                                                }
+                                            }
+
                                         </FluentGridItem>
 
 
@@ -473,7 +488,7 @@
                                                 Width="95%"
                                                 OptionValue="@(p => p.LanguageID.ToString())"
                                                 OptionText="@(p => p.LanguageName)"
-                                              @bind-Value="pLanguageID" />
+                                              @bind-Value="view._selectvalues.LanguageID" />
 
                                              <FluentLabel Class="summary-label"> @view.GetSummaryMessage("DefaultLanguage") </FluentLabel>
                                         }

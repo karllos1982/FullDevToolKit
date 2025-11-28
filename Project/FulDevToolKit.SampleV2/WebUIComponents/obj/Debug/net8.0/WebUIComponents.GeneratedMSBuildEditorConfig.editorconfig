@@ -9,57 +9,59 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = WebUIComponents
 build_property.RootNamespace = WebUIComponents
-build_property.ProjectDir = H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebUIComponents\
+build_property.ProjectDir = C:\Projetos\OUTROS\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebUIComponents\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebUIComponents
+build_property.MSBuildProjectDirectory = C:\Projetos\OUTROS\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebUIComponents
 build_property._RazorSourceGeneratorDebug = 
-build_property.EffectiveAnalysisLevelStyle = 8.0
-build_property.EnableCodeStyleSeverity = 
 
-[H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Business/DataLogTimeline.razor]
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Business/DataLogTimeline.razor]
 build_metadata.AdditionalFiles.TargetPath = QnVzaW5lc3NcRGF0YUxvZ1RpbWVsaW5lLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/BreadCrumbView.razor]
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Business/PersonContactDetails.razor]
+build_metadata.AdditionalFiles.TargetPath = QnVzaW5lc3NcUGVyc29uQ29udGFjdERldGFpbHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/BreadCrumbView.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tbW9uXEJyZWFkQ3J1bWJWaWV3LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/FormActionButton.razor]
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/FormActionButton.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tbW9uXEZvcm1BY3Rpb25CdXR0b24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/NavMenu.razor]
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tbW9uXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/PageLoading.razor]
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/PageLoading.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tbW9uXFBhZ2VMb2FkaW5nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/TaskButton.razor]
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/TaskButton.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tbW9uXFRhc2tCdXR0b24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/TaskIconButton.razor]
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/TaskIconButton.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tbW9uXFRhc2tJY29uQnV0dG9uLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/TaskLoading.razor]
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/TaskLoading.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tbW9uXFRhc2tMb2FkaW5nLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/UserView.razor]
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/UserView.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tbW9uXFVzZXJWaWV3LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/UserViewDetails.razor]
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/UserViewDetails.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tbW9uXFVzZXJWaWV3RGV0YWlscy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/_Imports.razor]
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 

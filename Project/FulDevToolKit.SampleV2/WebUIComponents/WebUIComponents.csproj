@@ -35,6 +35,12 @@
     </Reference>
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Update="Business\PersonContactDetails.razor">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+    </Content>
+  </ItemGroup>
+
 
 
 </Project>

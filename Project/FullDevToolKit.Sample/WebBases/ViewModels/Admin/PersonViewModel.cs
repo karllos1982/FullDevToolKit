@@ -31,9 +31,10 @@ namespace MyApp.ViewModel
         public PersonResult result = new PersonResult();
         public PersonParam param = new PersonParam() { };
         public List<PersonResult> searchresult = new List<PersonResult>();
+        public IQueryable<PersonResult> gridlist = null;
+        public IQueryable<PersonContactResult> gridlistContacts = null;
 
-        public DefaultLocalization texts = null;
-
+        
         public override async Task ClearSummaryValidation()
         {
             SummaryValidation = new List<ExceptionMessage>()
@@ -82,6 +83,13 @@ namespace MyApp.ViewModel
 
 			SetResult<PersonResult>(ret, ref result, ref ServiceStatus);
 
+            if (result != null)
+            {
+                if (result.Contacts != null)
+                {
+                    gridlistContacts = result.Contacts.AsQueryable();
+                }
+            }
 		}
 		
 
@@ -104,6 +112,7 @@ namespace MyApp.ViewModel
             result.CreateDate = DateTime.Now;
             result.PersonID = Utilities.GenerateId();
             result.Contacts = new List<PersonContactResult>();
+            gridlistContacts = result.Contacts.AsQueryable();
 
         }
 
@@ -115,8 +124,8 @@ namespace MyApp.ViewModel
 			   = await _proxys.Person.Search(param);
 
 			SetResult<List<PersonResult>>(ret, ref searchresult, ref ServiceStatus);
-
-		}
+            gridlist = searchresult.AsQueryable();
+        }
 		
 
         // contacts functions        
@@ -128,15 +137,16 @@ namespace MyApp.ViewModel
             ContactSummary.ClearSummaryValidation();  
 
             contact = result.Contacts.Where(c => c.PersonContactID == id).FirstOrDefault();
-            contactstate = "Contact Editing";
-        }      
+            contactstate = this.texts.Get("ContactEditing-Label");
+            
+        }
 
         public async Task InitNewContact()
         {
              await ClearSummaryValidation();
             ContactSummary.ClearSummaryValidation();
 
-            contactstate = "Inserting Contact";
+            contactstate = this.texts.Get("ContactInserting-Label");
             contact = new PersonContactResult();
             contact.RecordState = RECORDSTATEENUM.ADD;
             contact.PersonContactID = 0; 
@@ -241,7 +251,7 @@ namespace MyApp.ViewModel
                 new ExceptionMessage("Email",""),
                 new ExceptionMessage("CellPhoneNumber","")                
             };
-
+                        
         }
     }
 }

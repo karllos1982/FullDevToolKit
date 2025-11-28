@@ -18,12 +18,12 @@
 
     <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
 
-        <FluentGridItem lg="10" xs="12">
+        <FluentGridItem lg="9" xs="12">
             <FluentLabel> <h2> @_PageTitle</h2> </FluentLabel>
 
         </FluentGridItem>
 
-        <FluentGridItem lg="2" xs="12" Style="margin-top: 6px;">
+        <FluentGridItem lg="3" xs="12" Style="margin-top: 6px;">
 
             <FormActionButton ButtonType=ButtonTypeEnum.ADD
                               Title="@view.texts.Get("NewConfig-Label")"
@@ -96,7 +96,7 @@
                             <PropertyColumn Property="@(c => c.ConfigValue)" Title="@view.texts.Get("ConfigValue-Label")" Sortable="true" Width="30%" />
                             <PropertyColumn Property="@(c => c.IsActive)" Title="@view.texts.Get("Active-Label")" Sortable="true" Width="15%" />
 
-                            <TemplateColumn Title="..." Width="15%">
+                            <TemplateColumn Title="@view.texts.Get("UpdateOperation-Text")" Width="15%">
 
                                 <FluentButton Appearance="Appearance.Lightweight"
                                               IconEnd="@(new Icons.Regular.Size24.ClipboardTextEdit())"

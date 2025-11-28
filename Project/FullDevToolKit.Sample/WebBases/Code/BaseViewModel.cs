@@ -158,7 +158,7 @@ namespace MyApp.ViewModel
         public bool Inserting { get; set; }
 
         public bool Editing { get; set; }
-
+        
         public PermissionsState Permissions { get; set; }
 
         public List<ExceptionMessage> SummaryValidation = null;
@@ -268,7 +268,7 @@ namespace MyApp.ViewModel
             
             if (response.IsSuccess)
             {
-                data = response.Data;
+                data = response.Data;                
             }
             else
             {
@@ -284,8 +284,8 @@ namespace MyApp.ViewModel
 
 			if (response.IsSuccess)
 			{
-				data = response.Data;
-			}
+				data = response.Data;                
+            }
 			else
 			{
 				ServiceStatus.Exceptions = response.Exceptions;

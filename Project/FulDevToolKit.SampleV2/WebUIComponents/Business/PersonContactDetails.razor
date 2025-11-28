@@ -1,0 +1,90 @@
+﻿@implements IDialogContentComponent<PersonContactDetailsConfigs>
+
+
+ @if (Content != null )
+{
+ 
+    <FluentGrid Spacing="1" AdaptiveRendering="true" Style="padding: 4px; ">
+
+         
+        <FluentGridItem lg="12" xs="12">
+
+            <FluentTextField @bind-Value=Content.View.contact.ContactName Maxlength="100"
+                             Label="@Content.View.texts.Get("ContactName-Label")" style="width:90%">
+            </FluentTextField>
+            <FluentLabel Class="summary-label"> @Content.View.GetSummaryMessage("ContactName") </FluentLabel>
+
+        </FluentGridItem>
+
+
+        <FluentGridItem lg="12" xs="12">
+
+            <FluentTextField @bind-Value=Content.View.contact.Email Maxlength="100"
+                             Label="@Content.View.texts.Get("ContactEmail-Label")" style="width:90%">
+            </FluentTextField>
+            <FluentLabel Class="summary-label"> @Content.View.GetSummaryMessage("Email") </FluentLabel>
+
+        </FluentGridItem>
+
+
+        <FluentGridItem lg="12" xs="12">
+
+            <FluentTextField @bind-Value=Content.View.contact.CellPhoneNumber Maxlength="100"
+                             Label="@Content.View.texts.Get("ContactCellPhoneNumber-Label")" style="width:90%">
+            </FluentTextField>
+            <FluentLabel Class="summary-label"> @Content.View.GetSummaryMessage("CellPhoneNumber") </FluentLabel>
+
+        </FluentGridItem>
+
+        <FluentGridItem lg="6" xs="12">
+
+         </FluentGridItem>
+
+         <FluentGridItem lg="6" xs="12">
+
+            <FormActionButton ButtonType=ButtonTypeEnum.SAVE
+                              Title="@Content.View.texts.Get("SavePersonContactButton-Label")"
+                              Disabled="!Content.View.Permissions.AllowSave"
+                              Visible=true
+                              OnAction="OnSetContact">
+            </FormActionButton>
+
+        </FluentGridItem>
+
+    </FluentGrid>
+        
+
+}
+
+       
+
+@code {
+
+
+    [Parameter]
+    public PersonContactDetailsConfigs Content { get; set; } = new PersonContactDetailsConfigs();
+
+    
+    [CascadingParameter]
+    public FluentDialog Dialog { get; set; } = default!;
+
+   
+    public async Task OnSetContact()
+    {
+
+        await Content.View.SaveContact();
+
+        if (!Content.View.ServiceStatus.Success)
+        {
+            await Content.msgbox.ShowSuccessAsync(Content.View.texts.Get("SuccessSaveMessage"),
+              Content.View.texts.Get("SuccessLabel"));
+        }
+        else
+        {
+            await Dialog.CloseAsync();
+        } 
+
+    }
+
+
+}

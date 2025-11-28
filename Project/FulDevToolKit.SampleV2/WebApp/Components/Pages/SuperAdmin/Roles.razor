@@ -96,7 +96,7 @@
                                     <PropertyColumn Property="@(c => c.RoleName)" Title="@view.texts.Get("RoleName-Label")" Sortable="true" Width="50%" />
                                     <PropertyColumn Property="@(c => c.IsActive)" Title="@view.texts.Get("Active-Label")" Sortable="true" Width="25%" />
 
-                                    <TemplateColumn Title="..." Width="25%">
+                            <TemplateColumn Title="@view.texts.Get("UpdateOperation-Text")" Width="25%">
                                 
                                          <FluentButton Appearance="Appearance.Lightweight" 
                                               IconEnd="@(new Icons.Regular.Size24.ClipboardTextEdit())"

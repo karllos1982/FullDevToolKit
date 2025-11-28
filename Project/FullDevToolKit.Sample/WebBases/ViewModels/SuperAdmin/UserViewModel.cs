@@ -136,6 +136,7 @@ namespace MyApp.ViewModel
             
             UserEntry entry = new UserEntry(result);
 
+            entry.LanguageID = long.Parse(_selectvalues.LanguageID); 
             MergeRole(ref entry, result.Roles, long.Parse(_selectvalues.SelectedRole));
             MergeInstance(ref entry, result.Instances, long.Parse(_selectvalues.SelectedInstance));
 
@@ -193,6 +194,7 @@ namespace MyApp.ViewModel
                 this.isUserLocked = Convert.ToBoolean(result.IsLocked);
                 _selectvalues.SelectedRole = result.Roles[0].RoleID.ToString();
                 _selectvalues.SelectedInstance = result.Instances[0].InstanceID.ToString();
+                _selectvalues.LanguageID = result.LanguageID.ToString(); 
             }
            
         }
@@ -203,6 +205,7 @@ namespace MyApp.ViewModel
 
             newModel.RoleID = long.Parse(_selectvalues.RoleID);
             newModel.InstanceID = long.Parse(_selectvalues.InstanceID);
+            newModel.LanguageID = long.Parse(_selectvalues.LanguageID);
 
             APIResponse<UserEntry> ret
                 = await _Proxys.User.CreateNewUser(newModel);
@@ -248,6 +251,7 @@ namespace MyApp.ViewModel
             
             _selectvalues.RoleID = "0";
             _selectvalues.InstanceID = "0"; 
+            _selectvalues.LanguageID = "0"; 
 
             newModel = new NewUser();
         }
@@ -258,7 +262,7 @@ namespace MyApp.ViewModel
 
             param.pRoleID = long.Parse(_selectvalues.pRoleID);
             param.pInstanceID = long.Parse(_selectvalues.pInstanceID);
-
+            
             APIResponse<List<UserResult>> ret
                = await _Proxys.User.Search(param);
 
@@ -283,5 +287,7 @@ public class UserSelectStringValues
     public string RoleID { get; set; } = "0";
 
     public string InstanceID { get; set; } = "0";
+
+    public string LanguageID { get; set; } = "0"; 
 
 }

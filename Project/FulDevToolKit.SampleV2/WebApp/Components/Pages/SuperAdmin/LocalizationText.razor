@@ -18,7 +18,7 @@
 
     <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
 
-        <FluentGridItem lg="8" xs="12">
+        <FluentGridItem lg="9" xs="12">
             <FluentLabel> <h2> @_PageTitle</h2> </FluentLabel>
 
         </FluentGridItem>
@@ -143,7 +143,7 @@
                             <PropertyColumn Property="@(c => c.Code)" Title="@view.texts.Get("LocalizationCode-Label")" Sortable="true" Width="25%" />
                             <PropertyColumn Property="@(c => c.Name)" Title="@view.texts.Get("LocalizationName-Label")" Sortable="true" Width="40%" />
 
-                            <TemplateColumn Title="..." Width="15%">
+                            <TemplateColumn Title="@view.texts.Get("UpdateOperation-Text")" Width="15%">
 
                                 <FluentButton Appearance="Appearance.Lightweight"
                                               IconEnd="@(new Icons.Regular.Size24.ClipboardTextEdit())"

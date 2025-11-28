@@ -92,10 +92,38 @@
         </nav>
     </div>
 
-
                 
 }
 
+@if (RoleName == "Admin") //
+{
+    ﻿<div class="navmenu">
+        <input type="checkbox" title="Menu expand/collapse toggle" id="navmenu-toggle" class="navmenu-icon" />
+        <label for="navmenu-toggle" class="navmenu-icon"><FluentIcon Value="@(new Icons.Regular.Size20.Navigation())" Color="Color.Fill" /></label>
+        <nav class="sitenav" aria-labelledby="main-menu">
+
+
+            <FluentNavMenu Id="main-menu" Collapsible="true" Width="270" Title="Navigation menu" @bind-Expanded="expanded" CustomToggle="true">
+                <FluentNavLink Icon="@(new Icons.Regular.Size20.Home())" Href="/admin/home" Match="NavLinkMatch.All">Home</FluentNavLink>
+
+                <FluentNavGroup Title="@Localization.Get("Menu-Admin")" Disabled="@GetPermissionsState("MENU.PERSON")"
+                                Icon="@(new Icons.Regular.Size20.DesktopSignal())">
+                         <ChildContent>
+                        <FluentNavLink Href="admin/person" Disabled="@GetPermissionsState("MENU.PERSON")"
+                                           Icon="@(new Icons.Regular.Size20.Person())">
+                            @Localization.Get("Menu-Person")
+                            </FluentNavLink>
+                        
+                    </ChildContent>
+                     </FluentNavGroup>
+
+            </FluentNavMenu>
+
+        </nav>
+    </div>
+
+
+}
 
 @code {
     private bool expanded = true;

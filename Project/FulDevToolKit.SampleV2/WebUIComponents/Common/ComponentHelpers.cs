@@ -51,4 +51,13 @@ namespace WebUIComponents.Common
 
     }
 
+    public class PersonContactDetailsConfigs
+    {
+        public string Title { get; set; }
+
+        public PersonViewModel View { get; set; }
+
+        public IDialogService msgbox { get; set; }
+    }
+
 }
