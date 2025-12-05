@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Common\BaseConfiguration.cs" />
+    <Compile Remove="Common\BaseLocalization.cs" />
+    <Compile Remove="Common\BaseParameter.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 

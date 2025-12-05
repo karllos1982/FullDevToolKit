@@ -351,7 +351,7 @@ namespace MyApp.Context
         public async Task RegisterExceptionLog(object exceptioninfo)
         {
             ConnectionStringItem conn
-                = Settings.Connections.GetConnection("DefaultDB");
+                = Settings.Connections.GetConnection("MASTERDB");
 
             Connection = new SqlConnection(conn.Value);
 

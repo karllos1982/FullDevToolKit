@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Code\BaseLocalization.cs" />
+    <Compile Remove="Code\DefaultLocalization.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Components.Web" Version="8.0.11" />
   </ItemGroup>
 

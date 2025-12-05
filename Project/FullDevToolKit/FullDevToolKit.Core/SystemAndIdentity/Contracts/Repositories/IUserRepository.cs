@@ -26,5 +26,7 @@ namespace FullDevToolKit.Sys.Contracts.Repositories
 
         Task ChangeUserLanguage(ChangeUserLanguage model);
 
-    }
+		Task SetAuthToken(AuthTokenModel model);
+
+	}
 }

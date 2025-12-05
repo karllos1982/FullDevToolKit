@@ -61,7 +61,8 @@
 	protected bool islogged = false;
 	protected UserAuthenticated user;	
 	protected List<UserPermissions> permissions = null;
-	protected DefaultLocalization localization = null;
+	protected LocalizationResource localization = null;
+	protected ConfigurationResource configuration = null;
 	protected List<LanguageList> langs = null; 
 	protected string siteURL = "";	
 	protected string homeURL = "";
@@ -71,7 +72,7 @@
 	protected string _LoadingData_Text;
 	protected string _AreaURL = "";
 	protected string _PageTitle;
-			
+
 	public DataGridRowSize rowSize = DataGridRowSize.Medium;
 	public PaginationState pagination = new PaginationState { ItemsPerPage = 20  };
 	public TaskLoadingConfigs loadingConfigs = new TaskLoadingConfigs();
@@ -141,11 +142,13 @@
 	{		
 		_cache.Init(_httpclient, _settings.ServiceURL, user.Token);
 
-		this.localization = new DefaultLocalization();	
-
+		this.localization = new LocalizationResource();
 		this.localization.Set(await ((DataCacheProxy)_cache).ListLocalizationTexts(),
 				user.LanguageID.ToString());
 
+		this.configuration = new ConfigurationResource();
+		this.configuration.Set(await ((DataCacheProxy)_cache).ListConfiguration()); 
+		 
 		this.langs = await ((DataCacheProxy)_cache).ListLanguages(); 
 	}
 

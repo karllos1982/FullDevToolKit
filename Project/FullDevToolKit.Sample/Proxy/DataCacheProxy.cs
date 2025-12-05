@@ -137,6 +137,22 @@ namespace MyApp.Proxys
             return ret;
         }
 
-    }
+		public async Task<List<ConfigsResult>> ListConfiguration()
+		{
+			List<ConfigsResult> ret = null;
+
+			APIResponse<List<ConfigsResult>?> response = null;
+
+			response = await GetAsJSON<List<ConfigsResult>?>("listconfiguration", null);
+
+			if (response.IsSuccess)
+			{
+				ret = response.Data;
+			}
+
+			return ret;
+		}
+
+	}
 
 }

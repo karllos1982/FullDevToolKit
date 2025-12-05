@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using FullDevToolKit.Common;
 
 namespace WebUIComponents.Common
 {
@@ -18,7 +19,7 @@ namespace WebUIComponents.Common
     {
         public UserAuthenticated LoggedUser { get; set; }
 
-        public DefaultLocalization Localization { get; set; }
+        public LocalizationResource Localization { get; set; }
                        
         public List<LanguageList> LanguageList { get; set; }
                 

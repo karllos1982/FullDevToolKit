@@ -150,7 +150,8 @@ namespace MyApp.Controllers
                 userA.Token = token.TokenValue;
                 userA.Expires = token.ExpiresDate;
                 userA.Permissions = userM.Permissions;
-                userA.LanguageID = userM.LanguageID; 
+                userA.LanguageID = userM.LanguageID;
+                userA.KeepConnection = param.KeepConnection; 
 
                 UpdateUserLogin uplogin = new UpdateUserLogin()
                 {
@@ -196,9 +197,92 @@ namespace MyApp.Controllers
 
             return ret;
         }
-   
 
-        [HttpPost]
+		[HttpPost]
+		[Route("refreshlogin")]
+		[AllowAnonymous]
+		public async Task<object> RefreshLogin(AuthTokenModel param)
+		{
+			BeginManager();
+			CheckPermission(PERMISSION_CHECK_ENUM.READ, true);            
+			
+			UserResult userM = await Manager.IdentityModule.RefreshLogin(param);
+
+			if (Context.Status.Success)
+			{
+				string permissions_content = JsonConvert.SerializeObject(userM.Permissions);
+
+				AuthToken token = TokenService.GenerateToken(userM.UserID.ToString(),
+					userM.Roles[0].RoleName, userM.Instances[0].InstanceID.ToString(),
+					permissions_content, userM.LanguageID.ToString(),
+					int.Parse(param.SessionTimeOut));
+
+				UserAuthenticated userA = new UserAuthenticated();
+				userA.UserID = userM.UserID.ToString();
+				userA.UserName = userM.UserName;
+				userA.Email = userM.Email;
+				userA.RoleName = userM.Roles[0].RoleName;
+				userA.InstanceName = userM.Instances[0].InstanceName;
+				userA.Token = token.TokenValue;
+				userA.Expires = token.ExpiresDate;
+				userA.Permissions = userM.Permissions;
+				userA.LanguageID = userM.LanguageID;
+				userA.KeepConnection = param.KeepConnection;
+
+				UpdateUserLogin uplogin = new UpdateUserLogin()
+				{
+					UserID = userM.UserID,
+					LastLoginDate = DateTime.Now,
+					AuthToken = token.TokenValue,
+					AuthTokenExpires = token.ExpiresDate
+				};
+
+                UserLogin usrlogin = new UserLogin()
+                {
+                    ClientIP = HttpContext.Connection.RemoteIpAddress?.ToString(),
+                    ClienteBrowserName = ""
+                }
+                ;
+
+				await Manager.IdentityModule.RegisterLoginState(usrlogin, uplogin);
+
+				switch (userA.RoleName)
+				{
+					case "Admin":
+						{
+							userA.HomeURL = "admin/home";
+							break;
+						}
+
+					case "SuperAdmin":
+						{
+							userA.HomeURL = "superadmin/home";
+							break;
+						}
+
+				}
+
+				string img = userM.ProfileImage;
+				if (img == null) { img = ""; }
+				if (img == "") { img = "user_anonymous.png"; }
+				userA.ProfileImageURL =
+					Context.Settings.SiteURL + "auth/GetUserImageProfile?file=" + img;
+
+				ret = SetReturn<UserAuthenticated>(userA);
+
+			}
+			else
+			{
+				ret = SetReturn<UserAuthenticated>(null);
+			}
+
+			FinalizeManager();
+
+			return ret;
+		}
+
+
+		[HttpPost]
         [Route("recoverypassword")]
         [AllowAnonymous]
         public async Task<object> RecoveryPassword(ChangeUserPassword param)

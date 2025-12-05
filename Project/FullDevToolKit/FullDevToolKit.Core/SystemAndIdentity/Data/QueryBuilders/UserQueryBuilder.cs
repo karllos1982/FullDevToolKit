@@ -130,8 +130,19 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
             return ret;
         }
 
+		public string QueryForSetAuthToken()
+		{
+			string ret = "";
 
-        public override string QueryForGet(object param)
+			ret = @"update sysUser set 
+                  AuthCode=@CurrentToken,
+                  AuthCodeExpires=@ExpiresDate
+                  where Email=@Email";
+
+			return ret;
+		}
+
+		public override string QueryForGet(object param)
         {
             string ret = @"Select 
                     UserID,ApplicationID,UserName,Email,Password,Salt,CreateDate,
@@ -158,6 +169,22 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
                 ;
 
             return ret;
+        }
+
+        public override string GetWhereClausule(object param)
+        {
+            string ret = "";
+
+            return ret;
+        }
+
+        public override string QueryForPaginationSettings(object param)
+        {
+
+            string ret = "";
+
+            return ret;
+
         }
 
         public override string QueryForSearch(object param)

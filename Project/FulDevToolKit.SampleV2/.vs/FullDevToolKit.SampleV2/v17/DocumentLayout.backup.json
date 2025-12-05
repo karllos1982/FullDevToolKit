@@ -3,14 +3,35 @@
   "WorkspaceRootPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{71DBF85E-ED5D-4609-A4E2-11C5DFB11EA1}|..\\FullDevToolKit.Sample\\WebBases\\WebBases.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webbases\\code\\baseviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF1745C5-AD63-48D2-9673-FC85FB42FA50}|..\\FullDevToolKit.Sample\\API\\API.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\api\\code\\tokenservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\datalog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\datalog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{71DBF85E-ED5D-4609-A4E2-11C5DFB11EA1}|..\\FullDevToolKit.Sample\\WebBases\\WebBases.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webbases\\viewmodels\\superadmin\\datalogviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BF1745C5-AD63-48D2-9673-FC85FB42FA50}|..\\FullDevToolKit.Sample\\API\\API.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\api\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF1745C5-AD63-48D2-9673-FC85FB42FA50}|..\\FullDevToolKit.Sample\\API\\API.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\api\\code\\globalexceptionhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\login.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF1745C5-AD63-48D2-9673-FC85FB42FA50}|..\\FullDevToolKit.Sample\\API\\API.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\code\\appcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\code\\appcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71DBF85E-ED5D-4609-A4E2-11C5DFB11EA1}|..\\FullDevToolKit.Sample\\WebBases\\WebBases.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webbases\\code\\appcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\layout\\loggedlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\layout\\loggedlayout.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -20,7 +41,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 7,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -32,49 +53,131 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BaseViewModel.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\Code\\BaseViewModel.cs",
-              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\WebBases\\Code\\BaseViewModel.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\Code\\BaseViewModel.cs",
-              "RelativeToolTip": "..\\FullDevToolKit.Sample\\WebBases\\Code\\BaseViewModel.cs",
-              "ViewState": "AgIAABABAAAAAAAAAAAuwB4BAAAnAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "WebApp\\appsettings.Development.json",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\appsettings.Development.json",
+              "RelativeToolTip": "WebApp\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-05T17:44:35.372Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GlobalExceptionHandler.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Code\\GlobalExceptionHandler.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\API\\Code\\GlobalExceptionHandler.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Code\\GlobalExceptionHandler.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\API\\Code\\GlobalExceptionHandler.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T20:03:13.024Z",
+              "WhenOpened": "2025-12-05T17:28:27.826Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "DataLogViewModel.cs",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\DataLogViewModel.cs",
-              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\DataLogViewModel.cs",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\DataLogViewModel.cs",
-              "RelativeToolTip": "..\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\DataLogViewModel.cs",
-              "ViewState": "AgIAAHcAAAAAAAAAAAAQwIkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-11-28T20:00:56.834Z",
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\API\\appsettings.Development.json",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\appsettings.Development.json",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\API\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-12-05T17:28:17.153Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "DataLog.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\DataLog.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\DataLog.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\DataLog.razor",
-              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\DataLog.razor",
-              "ViewState": "AgIAABgAAAAAAAAAAAAAACgAAAAhAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "TokenService.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Code\\TokenService.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\API\\Code\\TokenService.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Code\\TokenService.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\API\\Code\\TokenService.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAwwBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T17:17:25.274Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AppController.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\Code\\AppController.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\WebBases\\Code\\AppController.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\Code\\AppController.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\WebBases\\Code\\AppController.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAIwCcAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T16:47:02.364Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "AppController.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Code\\AppController.cs",
+              "RelativeDocumentMoniker": "WebApp\\Code\\AppController.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Code\\AppController.cs",
+              "RelativeToolTip": "WebApp\\Code\\AppController.cs",
+              "ViewState": "AgIAAJEAAAAAAAAAAAASwJwAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T16:06:38.097Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "LoggedLayout.razor",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Layout\\LoggedLayout.razor",
+              "RelativeDocumentMoniker": "WebApp\\Components\\Layout\\LoggedLayout.razor",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Layout\\LoggedLayout.razor",
+              "RelativeToolTip": "WebApp\\Components\\Layout\\LoggedLayout.razor",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAAAH0AAAAhAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-11-28T19:46:33.296Z",
+              "WhenOpened": "2025-12-05T15:47:27.734Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAH4AAAAAAAAAAAAowIoAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-05T15:46:08.142Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Login.razor",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\Login.razor",
+              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\Login.razor",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\Login.razor",
+              "RelativeToolTip": "WebApp\\Components\\Pages\\Login.razor",
+              "ViewState": "AgIAAAwBAAAAAAAAAAAMwB0BAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-12-05T15:26:41.596Z",
               "EditorCaption": ""
             }
           ]
         },
         {
-          "DockedHeight": 50,
+          "DockedHeight": 7,
           "SelectedChildIndex": -1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"

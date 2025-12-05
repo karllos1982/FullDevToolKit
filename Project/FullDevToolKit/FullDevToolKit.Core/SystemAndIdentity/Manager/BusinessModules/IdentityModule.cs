@@ -135,6 +135,88 @@ namespace FullDevToolKit.Sys.Manager
             return ret;
         }
 
+        public async Task<UserResult> RefreshLogin(AuthTokenModel model)
+        {
+			UserResult ret = null;
+
+			string errmsg = "";
+		
+			UserResult usermatch = null;
+
+			await LocalizationText.LoadDataSync(Domainset.User.Context, true);
+
+			usermatch = await Domainset.User.GetByEmail(model.Email);
+
+			if (Domainset.User.Context.Status.Success)
+			{
+				if (usermatch != null)
+				{
+					if (!usermatch.IsLocked)
+					{
+						if (usermatch.IsActive)
+						{
+                            if (usermatch.AuthCode == model.CurrentToken)
+                            {
+                                if (usermatch.AuthCodeExpires.Ticks < DateTime.Now.Ticks)
+                                {
+                                    // token expirado
+									errmsg = LocalizationText.Get("Login-Invalid-Password",
+									Domainset.User.Context.LocalizationLanguage).Text;
+								}
+                            }
+                            else
+                            {          
+                                // token invalido
+                                errmsg = LocalizationText.Get("Login-Invalid-Password",
+                                    Domainset.User.Context.LocalizationLanguage).Text;
+
+                            }
+
+						}
+						else
+						{
+							errmsg = LocalizationText.Get("Login-Inactive-Account",
+								Domainset.User.Context.LocalizationLanguage).Text;
+
+						}
+					}
+					else
+					{
+						errmsg =
+							LocalizationText.Get("Login-Locked-Account",
+								Domainset.User.Context.LocalizationLanguage).Text;
+					}
+				}
+				else
+				{
+					errmsg =
+						 LocalizationText.Get("Login-User-NotFound",
+							Domainset.User.Context.LocalizationLanguage).Text;
+				}
+
+				if (errmsg == "")
+				{
+					usermatch.Permissions
+						= await this.GetUserPermissions(usermatch.Roles[0].RoleID, usermatch.UserID);
+
+					ret = usermatch;
+				}			
+
+			}
+			else
+			{
+				errmsg
+					= LocalizationText.Get("Login-User-NotFound", Domainset.User.Context.LocalizationLanguage).Text;
+			}
+
+			if (errmsg != "")
+			{
+				Domainset.User.Context.Status.SetFailStatus("Error", errmsg);
+			}
+
+			return ret;
+		}
+
         public async Task<List<UserPermissions>> GetUserPermissions(long roleid, long userid)
         {
             List<UserPermissions> ret = new List<UserPermissions>();

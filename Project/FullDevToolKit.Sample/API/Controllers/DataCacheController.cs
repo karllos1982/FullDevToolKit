@@ -169,7 +169,6 @@ namespace MyApp.Controllers
                     .LocalizationText.Search(new LocalizationTextParam()); 
 
                 memorycache.Set("LOCALIZATIONTEXTS", list, this.GetMemoryCacheOptionsByHour(2));
-
             }
 
 			ret = SetReturn<List<LocalizationTextResult>>(list);
@@ -233,6 +232,32 @@ namespace MyApp.Controllers
             return ret;
         }
 
+		[HttpGet]
+		[Route("listconfiguration")]
 
-    }
+		public async Task<object> ListConfiguration()
+		{
+			BeginManager();
+			CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
+
+			List<ConfigsResult> list = null;
+
+			list = memorycache.Get<List<ConfigsResult>>("CONFIGURATION");
+
+			if (list == null)
+			{
+				list = await Manager.IdentityModule.Domainset
+					.Configs.Search(new ConfigsParam());
+
+				memorycache.Set("CONFIGURATION", list, this.GetMemoryCacheOptionsByHour(2));
+			}
+
+			ret = SetReturn<List<ConfigsResult>>(list);
+
+			FinalizeManager();
+
+			return ret;
+		}
+
+	}
 }

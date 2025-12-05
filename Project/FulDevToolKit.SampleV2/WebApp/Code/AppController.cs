@@ -88,7 +88,11 @@ namespace MyApp.ServerCode
 
 
         private IJSRuntime _jscontext;
-        public IJSRuntime JSContext
+
+        private IAuthProxyManager _apiproxy; 
+
+
+		public IJSRuntime JSContext
         {
             get
             {
@@ -118,13 +122,13 @@ namespace MyApp.ServerCode
             }
         }
 
-        public MyAppController(IConfiguration webhost, IJSRuntime jscontext)
+        public MyAppController(IConfiguration webhost, IJSRuntime jscontext, IAuthProxyManager apiproxy)
         {
             _webhost = webhost;
             _jscontext = jscontext;
             _cookies = new Cookies(jscontext);
             _localStorage = new LocalStorage(jscontext);
-
+            _apiproxy = apiproxy;   
         }
 
         public async Task<bool> CheckSession()
@@ -174,6 +178,14 @@ namespace MyApp.ServerCode
                 {
                     UserInfo = ticket;
                 }
+                else
+                {
+                    if (ticket.KeepConnection)
+                    {
+                        ticket = await RefreshLogin(ticket.Email, ticket.Token); 
+                    }
+                }
+                
             }
         }
 
@@ -189,7 +201,7 @@ namespace MyApp.ServerCode
             return ret;
         }
 
-        public async Task<ExecutionStatus> Login(IAuthProxyManager apiproxy, UserLogin user)
+        public async Task<ExecutionStatus> Login(UserLogin user)
         {
             ExecutionStatus ret = new ExecutionStatus(true);
             UserAuthenticated usr = null;
@@ -197,14 +209,13 @@ namespace MyApp.ServerCode
             user.SessionTimeOut = _settings.SessionTimeOut;
 
             APIResponse<UserAuthenticated?> response
-                 = await ((AuthProxy)apiproxy).Login(user);
+                 = await ((AuthProxy)_apiproxy).Login(user);
 
             if (response.IsSuccess)
             {
                 usr = response.Data;
 
-                // criando a sessão do usuario no navegador
-                usr.Expires = DateTime.Now.AddMinutes(int.Parse(_settings.SessionTimeOut));
+                // criando a sessão do usuario no navegador                
                 await this.CreateSession(usr);
 
                 ret.Returns = usr;
@@ -218,7 +229,31 @@ namespace MyApp.ServerCode
             return ret;
         }
 
-        public async Task Logout()
+		public async Task<UserAuthenticated> RefreshLogin(string email, string currenttoken)
+		{
+            UserAuthenticated ret = null;
+            
+			AuthTokenModel token = new AuthTokenModel();
+            token.SessionTimeOut = _settings.SessionTimeOut;
+            token.CurrentToken = currenttoken; 
+            token.Email = email;
+
+            APIResponse<UserAuthenticated?> response
+                 = await ((AuthProxy)_apiproxy).RefreshLogin(token);
+
+			if (response.IsSuccess)
+			{
+				ret = response.Data;
+
+				// criando a sessão do usuario no navegador                
+				await this.CreateSession(ret);
+				
+			}
+		
+			return ret;
+		}
+
+		public async Task Logout()
         {
 
             await _cookies.ClearAllCookies();

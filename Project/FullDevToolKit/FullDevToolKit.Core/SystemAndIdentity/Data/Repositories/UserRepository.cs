@@ -149,6 +149,11 @@ namespace FullDevToolKit.Sys.Data.Repositories
            
         }
 
-    }
+        public async Task SetAuthToken(AuthTokenModel model)
+        {
+            string sql = query.QueryForSetAuthToken();
+			await Context.ExecuteAsync(sql, model);
+		}
+	}
 
 }

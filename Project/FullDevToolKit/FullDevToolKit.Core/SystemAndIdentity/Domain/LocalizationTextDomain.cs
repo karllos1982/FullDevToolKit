@@ -215,46 +215,4 @@ namespace FullDevToolKit.Sys.Domains
     }
 
 
-    public class LocalizationServiceBase
-    {
-
-        public void FillTexts(List<LocalizationTextResult> textLists,
-                long language)
-        {
-            Type t = this.GetType();
-            PropertyInfo[] prop = t.GetProperties();
-
-            string text = "";
-            string auxname = "";
-
-            foreach (PropertyInfo p in prop)
-            {
-                auxname = p.Name;                
-                text = GetText(textLists, auxname, language);
-                p.SetValue(this, text, null);
-
-            }
-
-        }
-
-        private string GetText(List<LocalizationTextResult> textLists,
-                string name, long lang)
-        {
-            string ret = "";
-
-            var aux = textLists
-                .Where(t => t.Name == name && t.LanguageID == lang)
-                .FirstOrDefault();
-
-            if (aux != null)
-            {
-                ret = aux.Text;
-            }
-
-            return ret;
-
-        }        
-
-    }
-
 }

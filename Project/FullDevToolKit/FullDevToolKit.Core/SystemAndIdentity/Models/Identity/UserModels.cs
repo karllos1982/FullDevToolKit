@@ -27,6 +27,18 @@ namespace FullDevToolKit.Sys.Models.Identity
 
     }
 
+    public class AuthTokenModel
+    {
+        public string Email { get; set; } = string.Empty;
+
+		public string CurrentToken { get; set; } = string.Empty;
+
+		public bool KeepConnection { get; set; } 
+
+		public string SessionTimeOut { get; set; } = string.Empty;
+	}
+
+
     public class UserAuthenticated
     {
         public string UserID { get; set; } = string.Empty;
@@ -55,7 +67,9 @@ namespace FullDevToolKit.Sys.Models.Identity
 
         public long LanguageID { get; set; }
 
-    }
+		public bool KeepConnection { get; set; }
+
+	}
    
     public class UserBaseModel: BaseModel
     {

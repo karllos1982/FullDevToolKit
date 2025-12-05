@@ -16,9 +16,13 @@ namespace FullDevToolKit.Helpers
 
         public abstract string QueryForGet(object param);
 
+        public abstract string GetWhereClausule(object param); 
+
         public abstract string QueryForList(object param);
 
         public abstract string QueryForSearch(object param);
+
+        public abstract string QueryForPaginationSettings(object param);
 
         public string QueryForCreate(string tablename, object baseobject, object param)
         {

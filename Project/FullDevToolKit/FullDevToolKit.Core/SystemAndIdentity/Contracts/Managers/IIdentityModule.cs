@@ -16,7 +16,9 @@ namespace FullDevToolKit.Sys.Contracts.Managers
 
         Task<UserResult> Login(UserLogin model);
 
-        Task<List<UserPermissions>> GetUserPermissions(long roleid, long userid);
+		Task<UserResult> RefreshLogin(AuthTokenModel model);
+
+		Task<List<UserPermissions>> GetUserPermissions(long roleid, long userid);
 
         Task<PERMISSION_STATE_ENUM> CheckPermission(List<UserPermissions> permissions,
             string objectcode, PERMISSION_CHECK_ENUM type);

@@ -181,6 +181,22 @@
   },
   {
     "ContainingType": "MyApp.Controllers.AuthController",
+    "Method": "RefreshLogin",
+    "RelativePath": "Auth/refreshlogin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Sys.Models.Identity.AuthTokenModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.Controllers.AuthController",
     "Method": "RequestActiveAccountCode",
     "RelativePath": "Auth/requestactiveaccountcode",
     "HttpMethod": "POST",
@@ -270,6 +286,16 @@
         "StatusCode": 200
       }
     ]
+  },
+  {
+    "ContainingType": "MyApp.Controllers.DataCacheController",
+    "Method": "ListConfiguration",
+    "RelativePath": "DataCache/listconfiguration",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
   },
   {
     "ContainingType": "MyApp.Controllers.DataCacheController",

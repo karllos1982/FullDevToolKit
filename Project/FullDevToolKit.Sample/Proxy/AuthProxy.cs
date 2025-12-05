@@ -70,8 +70,19 @@ namespace MyApp.Proxys
 
             return ret;
         }
-       
-        public async Task<APIResponse<bool>> RecoveryPassword(string email)
+
+		public async Task<APIResponse<UserAuthenticated?>> RefreshLogin(AuthTokenModel data)
+		{
+			APIResponse<UserAuthenticated?> ret = null;
+
+			string jsoncontent = JsonConvert.SerializeObject(data);
+
+			ret = await this.PostAsJSON<UserAuthenticated?>("refreshlogin", jsoncontent, null);
+
+			return ret;
+		}
+
+		public async Task<APIResponse<bool>> RecoveryPassword(string email)
         {
             APIResponse<bool> ret = null;
 

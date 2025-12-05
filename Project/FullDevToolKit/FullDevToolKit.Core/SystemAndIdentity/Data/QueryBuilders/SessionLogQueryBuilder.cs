@@ -41,26 +41,50 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
             return ret;
         }
 
-        public override string QueryForSearch(object param)
+        public override string GetWhereClausule(object param)
         {
+            string ret = "";
+
             bool gobydate = ((SessionLogParam)param).SearchByDate;
 
-            string ret = @"select u.UserName, u.Email, s.*             
-             from sysSessionLog s
-             inner join sysUser u on s.UserID = u.UserID  
-             where 1=1 
-             and (@pUserID=0 or s.UserID=@pUserID)
-             and (@pEmail='' or u.Email=@pEmail)
-             ";
+            ret = @" where 1=1 
+                 and (@pUserID=0 or s.UserID=@pUserID)
+                 and (@pEmail='' or u.Email=@pEmail)
+                 ";
 
             if (gobydate)
             {
                 ret = ret + " and (s.Date between @pDate_Start and @pData_End )";
             }
+                     
+            return ret;
+        }
 
-            ret = ret + " order by s.Date desc ";
-             
+        public override string QueryForPaginationSettings(object param)
+        {
 
+            string ret = @"select count(s.SessionLogID) cnt             
+             from sysSessionLog s
+             inner join sysUser u on s.UserID = u.UserID  
+             ";
+
+            ret = ret + GetWhereClausule(param);
+
+            return ret;
+
+        }
+
+        public override string QueryForSearch(object param)
+        {            
+
+            string ret = @"select u.UserName, u.Email, s.*             
+             from sysSessionLog s
+             inner join sysUser u on s.UserID = u.UserID  
+             ";
+
+            ret = ret +  GetWhereClausule(param) + " order by s.Seq";
+
+            
             return ret;
 
         }

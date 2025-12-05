@@ -18,9 +18,12 @@ namespace MyApp.ServerCode
 
         T UserInfo { get; set; }
 
-        Task <ExecutionStatus> Login(IAuthProxyManager apiProxys,  UserLogin user);
+        Task <ExecutionStatus> Login( UserLogin user);
 
-        Task Logout();
+        Task<UserAuthenticated> RefreshLogin(string email, string currenttoken);
+
+
+		Task Logout();
 
         Task<ExecutionStatus> CreateSession(UserAuthenticated user);
 

@@ -22,7 +22,7 @@ namespace FullDevToolKit.Sys.Models.Identity
         public DateTime CreateDate { get; set; }
     }
 
-    public class InstanceParam
+    public class InstanceParam: BaseParam
     {
         public InstanceParam()
         {        

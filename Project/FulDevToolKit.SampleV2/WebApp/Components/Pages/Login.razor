@@ -44,15 +44,26 @@
                                                      Placeholder="@texts.Get("InputEmail-Description")">
                                     </FluentTextField>
 
-                                <FluentTextField @bind-Value=@pwd Maxlength="10" style="width:100%;margin-bottom:10px" TextFieldType="TextFieldType.Password"
+                                    <FluentTextField @bind-Value=@pwd Maxlength="10" style="width:100%;margin-bottom:10px" TextFieldType="TextFieldType.Password"
                                                      Placeholder="@texts.Get("InputPassword-Description")">
                                     </FluentTextField>
+    
+                                    <FluentStack  Orientation="Orientation.Horizontal"
+                                            HorizontalAlignment="HorizontalAlignment.SpaceBetween">
 
-                                <TaskButton Title=@texts.Get("LoginButton-Label") 
-                                                ButtonAppearance="Appearance.Accent" 
-                                                IconEnd="@(new Icons.Regular.Size20.CheckboxArrowRight())"
-                                                ActionLabel=@texts.Get("LoginLoading-Label") OnClick="ExecuteLogin">
-                                    </TaskButton>                    
+                                        <FluentSwitch @bind-Value=@keepconnetion 
+                                                Label="Manter conexão"
+                                                 Style="margin-top:5px">
+                                        </FluentSwitch>
+
+                                        <TaskButton Title=@texts.Get("LoginButton-Label") 
+                                                    ButtonAppearance="Appearance.Accent" 
+                                                    IconEnd="@(new Icons.Regular.Size20.CheckboxArrowRight())"
+                                                    ActionLabel=@texts.Get("LoginLoading-Label") OnClick="ExecuteLogin">
+                                        </TaskButton>                                                                       
+
+                                </FluentStack>
+
                                 </FluentStack>                
                             </FluentCard>
                     </FluentGridItem>
@@ -177,11 +188,12 @@
     private UserLogin user = new UserLogin();
     private string pwd = "";
     private string emailrecovery = "";
+    private bool keepconnetion = false; 
     private ActiveUserAccount active = new ActiveUserAccount();
-      
+
     private bool islogged = false;
 
-    private DefaultLocalization texts = null;
+    private LocalizationResource texts = null;
 
     public TaskLoadingConfigs loadingConfigs = new TaskLoadingConfigs();
     public TaskLoading loading;
@@ -217,7 +229,7 @@
 
                 if (response.IsSuccess)
                 {
-                    this.texts = new DefaultLocalization();
+                    this.texts = new LocalizationResource();
                     this.texts.Set(response.Data, _settings.DefaultLanguage);
 
                     loadingConfigs = new TaskLoadingConfigs
@@ -258,10 +270,10 @@
 
             if (user.Email != null && pwd != null)
             {
-
+                user.KeepConnection = keepconnetion;
                 user.Password = FullDevToolKit.Helpers.Utilities.ConvertToBase64(pwd);
 
-                ExecutionStatus ret = await _appctrl.Login(_authservices, user);
+                ExecutionStatus ret = await _appctrl.Login( user);
 
                 if (ret.Success)
                 {

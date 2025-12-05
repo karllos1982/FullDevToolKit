@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using FullDevToolKit.Core;
+using FullDevToolKit.Sys.Models.Common;
 
 namespace FullDevToolKit.Common
 {
@@ -212,5 +213,45 @@ namespace FullDevToolKit.Common
 
     }
 
+
+    public class BaseLocalization 
+    {
+
+        private Dictionary<string, string> _texts;
+
+        public void Set(List<LocalizationTextResult> texts, string lang)
+        {
+            _texts = new Dictionary<string, string>();
+
+            foreach (LocalizationTextResult r in texts)
+            {
+                if (r.LanguageID.ToString() == lang)
+                {
+
+                    if (!_texts.ContainsKey(r.Name))
+                    {
+                        _texts.Add(r.Name, r.Text);
+                    }
+                }
+            }
+        }
+
+        public string Get(string name)
+        {
+            string ret = name;
+
+            if (_texts != null)
+            {
+                if (_texts.ContainsKey(name))
+                {
+                    ret = _texts[name];
+                }
+            }
+
+            return ret;
+        }
+
+
+    }
 
 }

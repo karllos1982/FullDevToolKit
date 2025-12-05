@@ -46,6 +46,22 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
             return ret;
         }
 
+        public override string GetWhereClausule(object param)
+        {
+            string ret = "";
+
+            return ret;
+        }
+
+        public override string QueryForPaginationSettings(object param)
+        {
+
+            string ret = "";
+
+            return ret;
+
+        }
+
         public override string QueryForSearch(object param)
         {
             string ret = @"select a.UserRoleID, a.UserID, u.UserName, a.RoleID, r.RoleName             

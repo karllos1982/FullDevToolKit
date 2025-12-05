@@ -16,7 +16,7 @@ namespace MyApp.API
         {
             AuthToken ret = new AuthToken();
 
-            ret.ExpiresDate = DateTime.UtcNow.AddMinutes(timeout);
+            ret.ExpiresDate = DateTime.Now.AddMinutes(timeout);
 
             var tkhandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(PRIVATEKEY);

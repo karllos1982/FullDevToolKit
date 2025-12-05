@@ -153,7 +153,7 @@ namespace MyApp.ViewModel
 
         public string ModoLabel = "";
 
-        public BaseLocalization texts = new BaseLocalization();
+        public LocalizationResource texts = new LocalizationResource();
 
         public bool Inserting { get; set; }
 
@@ -296,7 +296,7 @@ namespace MyApp.ViewModel
 
 		public async Task InitLocalization(DataCacheProxy cache, string lang)
         {
-            this.texts = new DefaultLocalization();
+            this.texts = new LocalizationResource();
             this.texts.Set(await cache.ListLocalizationTexts(), lang);
         }
 
