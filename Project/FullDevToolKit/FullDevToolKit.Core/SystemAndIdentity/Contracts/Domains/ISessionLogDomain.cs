@@ -5,7 +5,7 @@ using FullDevToolKit.Sys.Models.Identity;
 namespace FullDevToolKit.Sys.Contracts.Domains
 {
     public interface ISessionLogDomain :
-        IDomain<SessionLogParam, SessionLogEntry, SessionLogList, SessionLogResult>
+        IDomainSearchPaged<SessionLogParam, SessionLogEntry, SessionLogList, SessionLogResult>
     {
        
     }

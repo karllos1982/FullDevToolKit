@@ -277,8 +277,9 @@ namespace MyApp.ViewModel
                 this.ShowSummaryValidation(response.Exceptions.Messages);
             }            
         }
+  
 
-		public void SetResult<T>(APIResponse<T> response,
+        public void SetResult<T>(APIResponse<T> response,
 		ref T data, ref ExecutionStatus status, SummaryManager summary )
 		{
 

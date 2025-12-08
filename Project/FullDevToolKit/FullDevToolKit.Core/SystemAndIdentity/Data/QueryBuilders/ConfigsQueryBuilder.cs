@@ -40,7 +40,7 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
             return ret;
         }
 
-        public override string GetWhereClausule(object param)
+        public override string GetWhereClausule(object param )
         {
             string ret = "";
 

@@ -1,4 +1,5 @@
 ﻿using FullDevToolKit.Common;
+using FullDevToolKit.Core.Common;
 using FullDevToolKit.Sys.Models.Identity;
 using MyApp.Proxys;
 
@@ -26,7 +27,7 @@ namespace MyApp.ViewModel
         public SessionLogEntry entry = new SessionLogEntry();
         public SessionLogResult result = new SessionLogResult();
         public SessionLogParam param = new SessionLogParam();
-        public List<SessionLogResult> searchresult = new List<SessionLogResult>();
+        public PagedList<SessionLogResult> searchresult = new PagedList<SessionLogResult>();
         public IQueryable<SessionLogResult> gridlist = null;
 
         public DateTime? dataInicio { get; set; }
@@ -105,12 +106,15 @@ namespace MyApp.ViewModel
                 dataInicio = null;
                 dataFim = null;
             }
+
+            param.RecordsPerPage = 20;
             
-            APIResponse<List<SessionLogResult>> ret
+            APIResponse<PagedList<SessionLogResult>> ret
                = await _Proxys.SessionLog.Search(param);
 
-            SetResult<List<SessionLogResult>>(ret, ref searchresult, ref ServiceStatus);
-            gridlist = searchresult.AsQueryable();
+            SetResult<PagedList<SessionLogResult>>(ret, ref searchresult, ref ServiceStatus);
+                  
+            gridlist = searchresult.RecordList.AsQueryable();
 
         }
 

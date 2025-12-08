@@ -50,6 +50,21 @@ namespace MyApp.Data.QueryBuilders
             return ret;
         }
 
+        public override string GetWhereClausule(object param)
+        {
+            string ret = "";
+
+            return ret;
+        }
+
+        public override string QueryForPaginationSettings(object param)
+        {
+
+            string ret = "";
+
+            return ret;
+
+        }
         public override string QueryForSearch(object param)
         {
 

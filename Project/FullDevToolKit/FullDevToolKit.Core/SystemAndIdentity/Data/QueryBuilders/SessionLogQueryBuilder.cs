@@ -1,4 +1,5 @@
-﻿using FullDevToolKit.Helpers;
+﻿using FullDevToolKit.Core.Common;
+using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Models.Identity;
 using System.Collections.Generic;
 
@@ -44,7 +45,7 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
         public override string GetWhereClausule(object param)
         {
             string ret = "";
-
+            
             bool gobydate = ((SessionLogParam)param).SearchByDate;
 
             ret = @" where 1=1 
@@ -56,19 +57,25 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
             {
                 ret = ret + " and (s.Date between @pDate_Start and @pData_End )";
             }
-                     
+                             
+            BaseParam b_param = ((BaseParam)param);
+            if (b_param.Pagination != null)
+            {
+                ret = ret + " and " + this.BuildWhereClausuleForPaging("s", b_param.Pagination);
+            }
+                       
             return ret;
         }
 
         public override string QueryForPaginationSettings(object param)
         {
 
-            string ret = @"select count(s.SessionLogID) cnt             
+            string ret = @"select s.Seq             
              from sysSessionLog s
              inner join sysUser u on s.UserID = u.UserID  
              ";
 
-            ret = ret + GetWhereClausule(param);
+            ret = ret + GetWhereClausule(param) + " order by s.Seq";
 
             return ret;
 

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WebBases")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6027fa961a7063f093a16ff90f4957b49f814163")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79f3a9558e38747ba16c1ee8be4e0770beee7472")]
 [assembly: System.Reflection.AssemblyProductAttribute("WebBases")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WebBases")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

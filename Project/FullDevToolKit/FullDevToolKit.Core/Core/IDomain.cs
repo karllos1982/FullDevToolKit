@@ -1,4 +1,5 @@
 ﻿using FullDevToolKit.Common;
+using FullDevToolKit.Core.Common;
 
 namespace FullDevToolKit.Core
 {
@@ -11,6 +12,22 @@ namespace FullDevToolKit.Core
         Task<List<TList>> List(TParam param);
 
         Task<List<TResult>> Search(TParam param);
+
+        Task<TEntry> Set(TEntry model, object userid);
+
+        Task<TEntry> Remove(TEntry model, object userid);
+
+    }
+
+    public interface IDomainSearchPaged<TParam, TEntry, TList, TResult>
+    {
+        IContext Context { get; }
+
+        Task<TResult> Get(TParam param);
+
+        Task<List<TList>> List(TParam param);
+
+        Task<PagedList<TResult>> Search(TParam param);
 
         Task<TEntry> Set(TEntry model, object userid);
 

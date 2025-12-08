@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using FullDevToolKit.Sys.Models.Common;
+using System.Linq;
 using System.Reflection;
 
 namespace FullDevToolKit.Core.Common
@@ -6,19 +7,44 @@ namespace FullDevToolKit.Core.Common
 
     public abstract class BaseParam
     {
-        public long RecordsByPage { get; set; } = 20;
+        public int RecordsPerPage { get; set; } = 20;
 
         public int PageIndex { get; set; } = 0;
-       
+
+        public PaginationSettingsItem? Pagination { get; set; }
+
+        public static int CalcPageCount(int recordperpage, int recordcount )
+        {
+            int ret = 0;
+
+            int rest = 0;
+
+            ret = Convert.ToInt32((recordcount / recordperpage));
+
+            rest = recordcount % recordperpage;
+
+            if (rest > 0)
+            {
+                ret++;
+            }
+
+            return ret;
+        }
+    }
+
+    public class PaginationModel
+    {
+        public long Seq { get; set; }
+
     }
 
     public class PaginationSettingsItem
     {
         public int PageIndex { get; set; }
 
-        public int StartSeq { get; set; }
+        public long StartSeq { get; set; }
 
-        public int EndSeq { get; set; }
+        public long EndSeq { get; set; }
     }
 
     public class PaginationSettings
@@ -51,7 +77,7 @@ namespace FullDevToolKit.Core.Common
             }
         }    
         
-        public void AddItem(int index, int start, int end)
+        public void AddItem(int index, long start, long end)
         {
             items.Add(new PaginationSettingsItem()
             {
@@ -75,13 +101,23 @@ namespace FullDevToolKit.Core.Common
 
     }
 
+    public class PagedList<T>
+    {
+        public long TotalRecords { get; set; } = 0;
+
+        public int PageCount { get; set; } = 0;
+
+        public List<T> RecordList { get; set; } = null;
+
+    }
+
     public abstract class BaseModel
     {
         public long Seq { get; set; }
 
         public DateTime TSCreate { get; set; }
 
-        public DateTime TSLastUpdate { get; set; }
+        public DateTime TSLastUpdate { get; set; }        
 
         public static void ConvertTo(BaseModel inobj, BaseModel outobj)
         {

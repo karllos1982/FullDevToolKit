@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using System.Reflection;
+using FullDevToolKit.Core.Common;
 
 namespace FullDevToolKit.Helpers
 {
@@ -236,7 +237,36 @@ namespace FullDevToolKit.Helpers
             return ret;
         }
     
-    
+        public string BuildWhereClausuleForPaging(string maintablename, PaginationSettingsItem paginationinfo)
+        {
+            string ret = "";
+
+            ret = $" {maintablename}.Seq >= {paginationinfo.StartSeq} and {maintablename}.Seq <= {paginationinfo.EndSeq} ";
+
+            return ret;
+        }
+
+        public PaginationSettings GetPaginationSettings(List<PaginationModel> recordslist,
+             int pagecount, int recordsperpage)
+        {
+            PaginationSettings ret = new PaginationSettings();
+
+            ret.SetPagination(recordslist.Count, pagecount);
+            int index = 1;
+
+            for (int i = 0; i < recordslist.Count; i += recordsperpage)
+            {
+                long primeiro = recordslist[i].Seq;
+                long ultimo = recordslist[Math.Min(i + recordsperpage - 1, recordslist.Count - 1)].Seq;
+                
+                ret.AddItem(index, primeiro, ultimo);
+                index++;
+            }
+
+
+            return ret;
+        }
+
         public static List<string> GetDefaultExcludesFields()
         {
             List<string> ret = new List<string>();
@@ -244,6 +274,7 @@ namespace FullDevToolKit.Helpers
             ret.Add("Seq");
             ret.Add("TSCreate");
             ret.Add("TSLastUpdate");
+            ret.Add("VirtualRecordCount");
 
             return ret;
         }

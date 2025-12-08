@@ -3,6 +3,7 @@ using FullDevToolKit.Core;
 using FullDevToolKit.Sys.Contracts.Repositories;
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Sys.Data.QueryBuilders;
+using FullDevToolKit.Core.Common;
 
 namespace FullDevToolKit.Sys.Data.Repositories
 {
@@ -71,13 +72,45 @@ namespace FullDevToolKit.Sys.Data.Repositories
             return ret;
         }
              
-        public async Task<List<SessionLogResult>> ReadSearch(SessionLogParam param)
+        // retorna uma listagem com controle de paginação 
+        public async Task<PagedList<SessionLogResult>> ReadSearch(SessionLogParam param)
         {
-            List<SessionLogResult> ret = null;
+            PagedList<SessionLogResult> ret  = new PagedList<SessionLogResult>();   
+            List<SessionLogResult> recordlist = null;
+            List<PaginationModel> paglist = null;
+            int index = 1; 
 
-            ret = await Context
-                .ExecuteQueryToListAsync<SessionLogResult>(query.QueryForSearch(param),  param);
+            // pegar a list de Seq da busca solicitada pelo cliente
+            paglist = await Context
+            .ExecuteQueryToListAsync<PaginationModel>(query.QueryForPaginationSettings(param), param);
 
+            if (paglist.Count > 0)
+            {
+                // montar o objeto com as configurações da paginação: lista com os seq start e seq end para cada pagina
+                PaginationSettings paginationSettings
+                    = query.GetPaginationSettings(paglist, 
+                    BaseParam.CalcPageCount(param.RecordsPerPage, paglist.Count), param.RecordsPerPage);
+                
+                // por padrão, se é uma nova pesquisa (PageIndex), sempre retornar a primeira pagina
+                // se passar um indice, retorna a pagina correspondente
+                if(param.PageIndex > 0)
+                {
+                    index = param.PageIndex; 
+                }
+                
+                // fazer a busca de retorno correspondente à pagina solicitada
+                param.Pagination = paginationSettings.GetItem(index);
+                recordlist = await Context
+                .ExecuteQueryToListAsync<SessionLogResult>(query.QueryForSearch(param), param);
+
+                // configurando o Paged do retorno
+
+                ret.PageCount = paginationSettings.PageCount; 
+                ret.TotalRecords = paglist.Count;
+                ret.RecordList = recordlist; 
+                
+            }
+          
             return ret;
         }
 

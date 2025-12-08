@@ -64,8 +64,7 @@ namespace FullDevToolKit.Sys.Models.Identity
 
     public class SessionLogResult : SessionLogBaseModel
     {
-
-        public static PaginationInfo Pagination { get; set; }  
+        
 
         public string UserName { get; set; } = string.Empty;
 

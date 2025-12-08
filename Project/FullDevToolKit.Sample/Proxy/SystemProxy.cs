@@ -4,6 +4,7 @@ using FullDevToolKit.Sys.Models.Common;
 using Newtonsoft.Json;
 using FullDevToolKit.ApplicationHelpers;
 using Newtonsoft.Json.Linq;
+using FullDevToolKit.Core.Common;
 
 namespace MyApp.Proxys
 {
@@ -331,11 +332,11 @@ namespace MyApp.Proxys
 
         }
 
-        public async Task<APIResponse<List<SessionLogResult>?>> Search(SessionLogParam data)
+        public async Task<APIResponse<PagedList<SessionLogResult>?>> Search(SessionLogParam data)
         {
-            APIResponse<List<SessionLogResult>?> ret = null;
+            APIResponse<PagedList<SessionLogResult>?> ret = null;
 
-            ret = await PostAsJSON<List<SessionLogResult>?>("search",  JsonConvert.SerializeObject(data), null);
+            ret = await PostAsJSON<PagedList<SessionLogResult>?>("search",  JsonConvert.SerializeObject(data), null);
 
             return ret;
         }

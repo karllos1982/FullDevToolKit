@@ -1,0 +1,44 @@
+﻿<FluentStack Orientation="Orientation.Horizontal" HorizontalAlignment="HorizontalAlignment.SpaceBetween">
+
+    <FluentStack Orientation="Orientation.Horizontal">
+          <FluentLabel Typo="Typography.Body">
+            @PageCount Records
+
+          </FluentLabel>
+    </FluentStack>
+
+    <FluentGrid>
+
+        <FluentGridItem lg="3" xs="3">
+            <TaskIconButton 
+                            IconStart="@(new Icons.Regular.Size24.ArrowCircleLeft())">
+
+            </TaskIconButton>
+
+        </FluentGridItem>
+
+        <FluentGridItem lg="6" xs="6">
+
+        </FluentGridItem>
+
+        <FluentGridItem lg="3" xs="3">
+
+            <TaskIconButton IconStart="@(new Icons.Regular.Size24.ArrowCircleRight())">
+
+            </TaskIconButton>
+
+
+        </FluentGridItem>
+
+    </FluentGrid>
+
+</FluentStack>
+
+
+@code {
+
+    [Parameter]
+    public int PageCount { get; set; } = 0; 
+
+
+}
