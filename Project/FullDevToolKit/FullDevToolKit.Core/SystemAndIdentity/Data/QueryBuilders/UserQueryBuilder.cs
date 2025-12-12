@@ -1,4 +1,5 @@
-﻿using FullDevToolKit.Helpers;
+﻿using FullDevToolKit.Core.Common;
+using FullDevToolKit.Helpers;
 
 namespace FullDevToolKit.Sys.Data.QueryBuilders
 {
@@ -175,13 +176,31 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
         {
             string ret = "";
 
+            ret = @"where 1=1 
+                and (@pUserID=0 or u.UserID=@pUserID)                
+                and (@pEmail='' or u.Email like '%' + @pEmail + '%')
+                and (@pUserName='' or u.UserName like '%' + @pUserName + '%')                
+                and (@pRoleID=0 or (u.UserID in (select r.UserID from sysUserRoles r where r.RoleID=@pRoleID)))
+                and (@pInstanceID=0 or (u.UserID in (select r.UserID from sysUserInstances r where r.InstanceID=@pInstanceID)))
+
+            ";
+
+            BaseParam b_param = ((BaseParam)param);
+            if (b_param.Pagination != null)
+            {
+                ret = ret + " and " + this.BuildWhereClausuleForPaging("u", b_param.Pagination);
+            }
+
             return ret;
         }
 
         public override string QueryForPaginationSettings(object param)
         {
 
-            string ret = "";
+            string ret = @"Select u.Seq from sysUser u                           
+             ";
+
+            ret = ret + GetWhereClausule(param) + " order by u.Seq";
 
             return ret;
 
@@ -193,13 +212,9 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
                 UserID,ApplicationID,UserName,Email,Password,Salt,CreateDate,IsActive,IsLocked,LanguageID,LastLoginDate,
                 LastLoginIP,LoginCounter,LoginFailCounter,AuthCode,AuthCodeExpires,PasswordRecoveryCode,ProfileImage,AuthUserID 
                 from sysUser u
-                where 1=1 
-                and (@pUserID=0 or u.UserID=@pUserID)                
-                and (@pEmail='' or u.Email like '%' + @pEmail + '%')
-                and (@pUserName='' or u.UserName like '%' + @pUserName + '%')                
-                and (@pRoleID=0 or (u.UserID in (select r.UserID from sysUserRoles r where r.RoleID=@pRoleID)))
-                and (@pInstanceID=0 or (u.UserID in (select r.UserID from sysUserInstances r where r.InstanceID=@pInstanceID)))
-                ";
+                 ";
+
+            ret = ret + GetWhereClausule(param) + " order by u.Seq";
 
             return ret;
 

@@ -1,130 +1,21 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\",
+  "WorkspaceRootPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\models\\identity\\sessionlogmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\models\\identity\\sessionlogmodels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\common\\basemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\common\\basemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\data\\repositories\\sessionlogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\data\\repositories\\sessionlogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\domain\\sessionlogdomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\domain\\sessionlogdomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\contracts\\domains\\isessionlogdomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\contracts\\domains\\isessionlogdomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\core\\idomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\core\\idomain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\isessionlogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\contracts\\repositories\\isessionlogrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\core\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\core\\irepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\helpers\\querybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\helpers\\querybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\data\\querybuilders\\configsquerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\data\\querybuilders\\configsquerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\data\\querybuilders\\sessionlogquerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\data\\querybuilders\\sessionlogquerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit\\fulldevtoolkit.core\\systemandidentity\\data\\querybuilders\\exceptionlogquerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{668D7A18-BCDA-4AA8-97E5-165117950A6A}|FullDevToolKit.Core\\FullDevToolKit.Core.csproj|solutionrelative:fulldevtoolkit.core\\systemandidentity\\data\\querybuilders\\exceptionlogquerybuilder.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
     {
-      "Orientation": 0,
+      "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 225,
-          "SelectedChildIndex": 8,
+          "DockedHeight": 8,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IDomain.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Core\\IDomain.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\Core\\IDomain.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Core\\IDomain.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\Core\\IDomain.cs",
-              "ViewState": "AgIAAA0AAAAAAAAAAAAcwBYAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T18:32:55.558Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "SessionLogDomain.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Domain\\SessionLogDomain.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Domain\\SessionLogDomain.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Domain\\SessionLogDomain.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Domain\\SessionLogDomain.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAADUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T18:32:41.971Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "ISessionLogDomain.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Domains\\ISessionLogDomain.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Domains\\ISessionLogDomain.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Domains\\ISessionLogDomain.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Domains\\ISessionLogDomain.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T18:32:24.256Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IRepository.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Core\\IRepository.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\Core\\IRepository.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Core\\IRepository.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\Core\\IRepository.cs",
-              "ViewState": "AgIAABUAAAAAAAAAAAAmwBsAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T18:25:29.488Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ISessionLogRepository.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\ISessionLogRepository.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\ISessionLogRepository.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\ISessionLogRepository.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Contracts\\Repositories\\ISessionLogRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABBAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T18:23:47.152Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -136,60 +27,26 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "SessionLogModels.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\SessionLogModels.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\SessionLogModels.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\SessionLogModels.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Models\\Identity\\SessionLogModels.cs",
-              "ViewState": "AgIAACgAAAAAAAAAAAAUwD8AAAAAAAAAAAAAAA==",
+              "Title": "ExceptionLogQueryBuilder.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\ExceptionLogQueryBuilder.cs",
+              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\ExceptionLogQueryBuilder.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\ExceptionLogQueryBuilder.cs",
+              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\ExceptionLogQueryBuilder.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAIwDsAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T23:08:20.722Z",
+              "WhenOpened": "2025-12-10T18:49:53.948Z",
               "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SessionLogRepository.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\SessionLogRepository.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\SessionLogRepository.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\SessionLogRepository.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\Repositories\\SessionLogRepository.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAwwGIAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T23:06:10.811Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BaseModel.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Common\\BaseModel.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\Common\\BaseModel.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Common\\BaseModel.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\Common\\BaseModel.cs",
-              "ViewState": "AgIAAGkAAAAAAAAAAADwv3cAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T23:07:51.211Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ConfigsQueryBuilder.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\ConfigsQueryBuilder.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\ConfigsQueryBuilder.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\ConfigsQueryBuilder.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\ConfigsQueryBuilder.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAwwCoAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-07T02:06:36.439Z"
             }
           ]
         },
         {
-          "DockedWidth": 126,
-          "SelectedChildIndex": 2,
+          "DockedHeight": 7,
+          "SelectedChildIndex": -1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
@@ -197,31 +54,6 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{605322a2-17ae-43f4-b60f-766556e46c87}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "QueryBuilder.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Helpers\\QueryBuilder.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\Helpers\\QueryBuilder.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\Helpers\\QueryBuilder.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\Helpers\\QueryBuilder.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T23:30:40.606Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "SessionLogQueryBuilder.cs",
-              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\SessionLogQueryBuilder.cs",
-              "RelativeDocumentMoniker": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\SessionLogQueryBuilder.cs",
-              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\SessionLogQueryBuilder.cs",
-              "RelativeToolTip": "FullDevToolKit.Core\\SystemAndIdentity\\Data\\QueryBuilders\\SessionLogQueryBuilder.cs",
-              "ViewState": "AgIAADoAAAAAAAAAAAAcwEUAAAA5AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-12-06T18:09:43.38Z"
             }
           ]
         }

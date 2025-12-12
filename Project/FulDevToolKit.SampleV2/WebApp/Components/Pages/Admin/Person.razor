@@ -91,8 +91,7 @@
 
                     <div id="datagrid-container">
                         <FluentDataGrid Items="@view.gridlist"
-                                        TGridItem="PersonResult"
-                                        Pagination="@pagination"
+                                        TGridItem="PersonResult"                                        
                                         RowSize="@rowSize"
                                         ResizableColumns=true                                       
                                         Style="overflow-y:hidden;">
@@ -113,7 +112,15 @@
                         </FluentDataGrid>
                     </div>
 
-                    <FluentPaginator State="@pagination" />
+                      <Pagenator PageCount="@view.searchresult.PageCount"
+                               TotalRecords="@view.searchresult.TotalRecords"
+                               RecordCount="@view.searchresult.RecordCount"
+                               PageIndex="@view.param.PageIndex"
+                               RecordsPerPage="@view.param.RecordsPerPage"
+                               OnPageChanged="OnPageChanged"
+                               OnRecordsPerChanged="OnRecordsPerPageChanged"
+                               Localization="@view.texts">
+                    </Pagenator>
 
                 </FluentCard>
             </FluentGridItem>
@@ -354,6 +361,7 @@ else
 
     public async Task OnSearch()
     {
+        view.param.PageIndex = 0;
         await view.Search();
 
         if (!view.ServiceStatus.Success)
@@ -361,6 +369,46 @@ else
             await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
                 view.texts.Get("ErrorOnExecuteSearch"));
 
+        }
+        else
+        {
+            view.param.PageIndex = 1;
+        }
+
+    }
+
+    public async Task OnPageChanged(int value)
+    {
+        view.param.PageIndex = value;
+
+        await loading.Begin();
+        await view.Search();
+        await loading.End();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                view.texts.Get("ErrorOnExecuteSearch"));
+        }
+    }
+
+    public async Task OnRecordsPerPageChanged(int value)
+    {
+        view.param.PageIndex = 0;
+        view.param.RecordsPerPage = value;
+
+        await loading.Begin();
+        await view.Search();
+        await loading.End();
+
+        if (!view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                view.texts.Get("ErrorOnExecuteSearch"));
+        }
+        else
+        {
+            view.param.PageIndex = 1;
         }
 
     }

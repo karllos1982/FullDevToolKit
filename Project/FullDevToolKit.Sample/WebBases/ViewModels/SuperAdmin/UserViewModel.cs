@@ -29,7 +29,7 @@ namespace MyApp.ViewModel
         public UserResult result = new UserResult();
         public NewUser newModel = new NewUser();
         public UserParam param = new UserParam();
-        public List<UserResult> searchresult = new List<UserResult>();
+        public PagedList<UserResult> searchresult = new PagedList<UserResult>();
         public IQueryable<UserResult> gridlist = null;
         public List<SelectItemBase> listRoles = new List<SelectItemBase>();
         public List<SelectItemBase> listInstances = new List<SelectItemBase>();
@@ -263,11 +263,11 @@ namespace MyApp.ViewModel
             param.pRoleID = long.Parse(_selectvalues.pRoleID);
             param.pInstanceID = long.Parse(_selectvalues.pInstanceID);
             
-            APIResponse<List<UserResult>> ret
+            APIResponse<PagedList<UserResult>> ret
                = await _Proxys.User.Search(param);
 
-            SetResult<List<UserResult>>(ret, ref searchresult, ref ServiceStatus);
-            gridlist = searchresult.AsQueryable();
+            SetResult<PagedList<UserResult>>(ret, ref searchresult, ref ServiceStatus);
+            gridlist = searchresult.RecordList.AsQueryable();
         }   
 
     }

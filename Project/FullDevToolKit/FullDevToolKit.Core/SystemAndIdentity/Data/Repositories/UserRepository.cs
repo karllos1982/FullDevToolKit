@@ -3,6 +3,7 @@ using FullDevToolKit.Core;
 using FullDevToolKit.Sys.Contracts.Repositories;
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Sys.Data.QueryBuilders;
+using FullDevToolKit.Core.Common;
 
 namespace FullDevToolKit.Sys.Data.Repositories
 {
@@ -69,14 +70,42 @@ namespace FullDevToolKit.Sys.Data.Repositories
                
             return ret;
         }
-             
-        public async Task<List<UserResult>> ReadSearch(UserParam param)
-        {
-            List<UserResult> ret = null;
+                   
 
-            ret = await Context
-                .ExecuteQueryToListAsync<UserResult>(query.QueryForSearch(null),  param);
-               
+        public async Task<PagedList<UserResult>> ReadSearch(UserParam param)
+        {
+            PagedList<UserResult> ret = new PagedList<UserResult>()
+            { RecordList = new List<UserResult>() };
+
+            List<UserResult> recordlist = null;
+            List<PaginationModel> paglist = null;
+            int index = 1;
+
+            paglist = await Context
+            .ExecuteQueryToListAsync<PaginationModel>(query.QueryForPaginationSettings(param), param);
+
+            if (paglist.Count > 0)
+            {
+
+                PaginationSettings paginationSettings
+                    = query.GetPaginationSettings(paglist,
+                    BaseParam.CalcPageCount(param.RecordsPerPage, paglist.Count), param.RecordsPerPage);
+
+                if (param.PageIndex > 0)
+                {
+                    index = param.PageIndex;
+                }
+
+                param.Pagination = paginationSettings.GetItem(index);
+                recordlist = await Context
+                .ExecuteQueryToListAsync<UserResult>(query.QueryForSearch(param), param);
+
+                ret.PageCount = paginationSettings.PageCount;
+                ret.TotalRecords = paglist.Count;
+                ret.RecordList = recordlist;
+                ret.RecordCount = recordlist.Count;
+            }
+
             return ret;
         }
 

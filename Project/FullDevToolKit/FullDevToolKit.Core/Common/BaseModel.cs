@@ -105,6 +105,8 @@ namespace FullDevToolKit.Core.Common
     {
         public long TotalRecords { get; set; } = 0;
 
+        public long RecordCount { get; set; } = 0; 
+
         public int PageCount { get; set; } = 0;
 
         public List<T> RecordList { get; set; } = null;

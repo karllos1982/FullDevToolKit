@@ -6,7 +6,7 @@ using FullDevToolKit.Sys.Models.Common;
 namespace FullDevToolKit.Sys.Contracts.Domains
 {
     public interface IExceptionLogDomain :
-        IDomain<ExceptionLogParam, ExceptionLogEntry, ExceptionLogList, ExceptionLogResult>
+        IDomainSearchPaged<ExceptionLogParam, ExceptionLogEntry, ExceptionLogList, ExceptionLogResult>
     {
         
 

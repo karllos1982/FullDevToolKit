@@ -65,9 +65,9 @@ namespace MyApp.Domain
             return ret;
         }
 
-        public async Task<List<PersonResult>> Search(PersonParam param)
+        public async Task<PagedList<PersonResult>> Search(PersonParam param)
         {
-            List<PersonResult> ret = null;
+            PagedList<PersonResult> ret = null;
 
             ret = await RepositorySet.Person.ReadSearch(param);
 

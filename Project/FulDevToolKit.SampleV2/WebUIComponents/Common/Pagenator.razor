@@ -1,44 +1,320 @@
-﻿<FluentStack Orientation="Orientation.Horizontal" HorizontalAlignment="HorizontalAlignment.SpaceBetween">
-
-    <FluentStack Orientation="Orientation.Horizontal">
-          <FluentLabel Typo="Typography.Body">
-            @PageCount Records
-
-          </FluentLabel>
-    </FluentStack>
-
-    <FluentGrid>
-
-        <FluentGridItem lg="3" xs="3">
-            <TaskIconButton 
-                            IconStart="@(new Icons.Regular.Size24.ArrowCircleLeft())">
-
-            </TaskIconButton>
-
-        </FluentGridItem>
-
-        <FluentGridItem lg="6" xs="6">
-
-        </FluentGridItem>
-
-        <FluentGridItem lg="3" xs="3">
-
-            <TaskIconButton IconStart="@(new Icons.Regular.Size24.ArrowCircleRight())">
-
-            </TaskIconButton>
+﻿@implements IDialogContentComponent<PaginatorPageSelector>
 
 
-        </FluentGridItem>
+    @if(RecordCount > 0)
+    {
+       
+        <FluentGrid Spacing="1" AdaptiveRendering="true" Class="paginator-body">
 
-    </FluentGrid>
+                 <FluentGridItem lg="3" xs="3">
 
-</FluentStack>
+                    <FluentLabel Typo="Typography.Body" >
+                         <strong>@Localization.Get("Records-Label"): @RecordCount / @TotalRecords </strong>
+                    </FluentLabel>
+
+                 </FluentGridItem>
+
+                <FluentGridItem lg="2" xs="2">
+
+                    @if(!IsFirst())
+                    {
+                    <FluentIcon Value="@(new Icons.Regular.Size20.ChevronDoubleLeft())" OnClick="FirstPage"
+                                Color="@Color.Accent" Slot="start" Class="paginator-button" />
+
+                    <FluentIcon Value="@(new Icons.Regular.Size20.ChevronLeft())" OnClick="PreviousPage"
+                            Color="@Color.Accent" Slot="start" Class="paginator-button" />
+                    }
+                    else
+                    {
+                    <FluentIcon Value="@(new Icons.Regular.Size20.ChevronDoubleLeft())"
+                                Color="@Color.Warning" Slot="start"  />
+
+                    <FluentIcon Value="@(new Icons.Regular.Size20.ChevronLeft())"
+                                Color="@Color.Warning" Slot="start" />
+                    }
+
+                </FluentGridItem>
+     
+    
+                <FluentGridItem lg="3" xs="3">
+
+                    <FluentLabel Typo="Typography.Body" >
+                        <strong> @Localization.Get("Page-Label"): @PageIndex </strong> / <strong>@PageCount </strong>
+                    </FluentLabel>
+           
+                </FluentGridItem>
+                
+                @if (!IsLast())
+                {
+            
+                    <FluentGridItem lg="2" xs="2">
+
+                    <FluentIcon Value="@(new Icons.Regular.Size20.ChevronRight())" OnClick="NextPage"
+                                Color="@Color.Accent" Slot="start" Class="paginator-button" />
+
+                    <FluentIcon Value="@(new Icons.Regular.Size20.ChevronDoubleRight())" OnClick="LastPage"
+                                    Color="@Color.Accent" Slot="start" Class="paginator-button" />
+
+                    </FluentGridItem>
+                }
+                else
+                {
+
+                    <FluentGridItem lg="2" xs="2">
+
+                    <FluentIcon Value="@(new Icons.Regular.Size20.ChevronRight())"
+                                Color="@Color.Warning" Slot="start" />
+
+                        <FluentIcon Value="@(new Icons.Regular.Size20.ChevronDoubleRight())"
+                                Color="@Color.Warning" Slot="start" />
+
+                    </FluentGridItem>
+                           
+                }
+
+                <FluentGridItem lg="2" xs="2">
+
+                <FluentIcon Value="@(new Icons.Regular.Size24.TextNumberListRtl())" OnClick="OpenPageSelector"
+                                Color="@Color.Accent" Slot="start" Class="paginator-button" />
+
+                
+                </FluentGridItem>
+
+        </FluentGrid>
+  
+    }
+    else
+    {
+          <FluentStack Orientation="Orientation.Horizontal" 
+                HorizontalAlignment="HorizontalAlignment.Center">
+
+            <h6><strong> @Localization.Get("NoRecordsFound") </strong></h6>
+            
+        </FluentStack>
+    }
+
+
+
+<FluentDialog Hidden="@_hidden" >
+    <FluentDialogHeader ShowDismiss="false">
+        <FluentStack VerticalAlignment="VerticalAlignment.Center"
+                     HorizontalAlignment="HorizontalAlignment.Center ">
+
+            <FluentIcon Value="@(new Icons.Regular.Size28.ArrowCircleLeft())" OnClick="ClosePageSelector"
+                Color="@Color.Accent" Slot="start" Class="paginator-button" />
+
+            <FluentLabel Typo="Typography.PaneHeader">
+                @Content.Title
+            </FluentLabel>
+                     
+        </FluentStack>
+    </FluentDialogHeader>
+
+    <FluentDialogBody>
+
+        <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center"
+                     HorizontalAlignment="HorizontalAlignment.Center">
+
+            <FluentNumberField @bind-Value="_tempIndex" Label="@Localization.Get("SelectPage-Title")"
+                               Min="1" Max="@_maxNumber" Class="paginator-fieldselectpage">                    
+                <FluentIcon Value="@(new Icons.Regular.Size20.ClipboardNumber123())" 
+                Color="@Color.Neutral" Slot="start" />
+            </FluentNumberField>
+
+            <FluentIcon Value="@(new Icons.Regular.Size28.Checkmark())" OnClick="SelectPage"
+                        Color="@Color.Accent" Slot="start" Class="paginator-button" />
+                                    
+
+        </FluentStack>
+
+        <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center"
+                     HorizontalAlignment="HorizontalAlignment.Center" Style="margin-top:30px">
+
+            <FluentNumberField @bind-Value="_tempRecordsPerPage" Label="@Localization.Get("SelectRecordsPerPage-Title")"
+                               Min="10" Max="100" Class="paginator-fieldselectpage">
+                <FluentIcon Value="@(new Icons.Regular.Size20.TabDesktopNewPage())"
+                            Color="@Color.Neutral" Slot="start" />
+            </FluentNumberField>
+
+            <FluentIcon Value="@(new Icons.Regular.Size28.Checkmark())" OnClick="SelectRecordPerPage"
+                        Color="@Color.Accent" Slot="start" Class="paginator-button" />
+
+
+        </FluentStack>
+
+    </FluentDialogBody>
+
+</FluentDialog>
 
 
 @code {
 
-    [Parameter]
-    public int PageCount { get; set; } = 0; 
 
+    private bool _hidden = true;
+
+    private int _tempIndex = 0; 
+
+    private string _maxNumber = "1"; 
+
+    private int _tempRecordsPerPage = 20; 
+
+    [Parameter]
+    public LocalizationResource Localization{ get; set; }
+
+    [Parameter]
+    public int  PageCount { get; set; } = 0; 
+
+    [Parameter]
+    public long RecordCount { get; set; } = 0;
+
+    [Parameter]
+    public long TotalRecords { get; set; } = 0;
+
+
+    private int _recordsperpage = 20;
+
+    [Parameter]
+    public int RecordsPerPage
+    {
+        get
+        {
+            return _recordsperpage;
+        }
+
+        set
+        {
+            _recordsperpage = value;
+        }
+    }
+
+    private int _pageindex = 0;  
+
+    [Parameter]
+    public int PageIndex 
+    { 
+        get
+        {
+            return _pageindex;   
+        }
+
+        set{
+            _pageindex = value; 
+        } 
+    } 
+
+    private bool IsFirst()
+    {
+        return (_pageindex == 1);
+    }
+
+    private bool IsLast()
+    {
+        return (_pageindex == PageCount);   
+    }
+
+    private void FirstPage()
+    {
+        if (_pageindex > 1)
+        {
+            _pageindex = 1 ;
+            PageChanging();
+        }
+
+    }
+
+    private void PreviousPage()
+    {
+        if (_pageindex > 1)
+        {
+            _pageindex--;
+            PageChanging();
+        }
+
+    }
+
+    private void NextPage()
+    {
+        if (_pageindex < PageCount)
+        {
+            _pageindex++;
+            PageChanging();
+        }
+
+    }
+
+    private  void LastPage()
+    {
+        if (_pageindex < PageCount)
+        {
+            _pageindex = PageCount;
+            PageChanging(); 
+        }
+
+    }
+
+    private void PageChanging()
+    {
+
+        OnPageChanged.InvokeAsync(_pageindex);
+
+    }
+
+    private void RecordsPerPageChanging()
+    {
+
+        OnRecordsPerChanged.InvokeAsync(_recordsperpage);
+
+    }
+
+    [Parameter]
+    public EventCallback<int> OnPageChanged { get; set; }
+
+    [Parameter]
+    public EventCallback<int> OnRecordsPerChanged { get; set; }
+
+    // dialog selector
+
+    [Parameter]
+    public PaginatorPageSelector Content { get; set; } = new PaginatorPageSelector();
+
+
+    [CascadingParameter]
+    public FluentDialog Dialog { get; set; } = default!;
+
+    private void OpenPageSelector()
+    {
+        Content.Title = Localization.Get("PaginationConfigs-Title");
+        _maxNumber = PageCount.ToString();  
+        _tempIndex = _pageindex;
+        _tempRecordsPerPage = _recordsperpage;
+        _hidden = false;
+    }
+
+    private void ClosePageSelector()
+    {
+        _tempIndex = _pageindex; 
+        _tempRecordsPerPage = _recordsperpage;
+        _hidden = true;
+    }
+
+    private void SelectPage()
+    {
+        _pageindex = _tempIndex;
+
+        PageChanging();
+
+        _hidden = true;
+
+    }
+
+    private void SelectRecordPerPage()
+    {
+        _recordsperpage = _tempRecordsPerPage;
+
+        RecordsPerPageChanging();
+
+        _hidden = true;
+
+    }
 
 }

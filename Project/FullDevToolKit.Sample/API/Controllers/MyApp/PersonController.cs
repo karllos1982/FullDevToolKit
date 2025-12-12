@@ -4,6 +4,7 @@ using MyApp.API;
 using Microsoft.AspNetCore.Authorization;
 using FullDevToolKit.Core;
 using MyApp.Models;
+using FullDevToolKit.Core.Common;
 
 namespace Template.Controllers
 {
@@ -26,7 +27,7 @@ namespace Template.Controllers
         {
             await ExecuteForRead(param,async (param)=>
             {
-                List<PersonResult> data 
+                PagedList<PersonResult> data 
                     = await Manager.MainBusinessModule.DomainSet.Person.Search(param);
                 ret = SetReturn(data);
             });   
@@ -42,8 +43,8 @@ namespace Template.Controllers
         {
             await ExecuteForRead(param, async(param)=>
             {
-                List<PersonResult> data
-                     = await Manager.MainBusinessModule.DomainSet.Person.Search(param);
+                List<PersonList> data
+                     = await Manager.MainBusinessModule.DomainSet.Person.List(param);
                 ret = SetReturn(data);
             });
 

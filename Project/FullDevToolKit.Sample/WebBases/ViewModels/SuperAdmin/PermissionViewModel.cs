@@ -30,7 +30,7 @@ namespace MyApp.ViewModel
         public PermissionEntry entry= new PermissionEntry();
         public PermissionResult result = new PermissionResult();
         public PermissionParam param = new PermissionParam() { };
-        public List<PermissionResult> searchresult = new List<PermissionResult>();
+        public PagedList<PermissionResult> searchresult = new PagedList<PermissionResult>();
         public IQueryable<PermissionResult> gridlist = null;
         public List<SelectItemBase> listRoles = new List<SelectItemBase>();
         public List<SelectItemBase> listUsers = new List<SelectItemBase>();
@@ -250,11 +250,11 @@ namespace MyApp.ViewModel
             param.pUserID = long.Parse(_selectvalues.pUserID);
 
 
-            APIResponse<List<PermissionResult>> ret
+            APIResponse<PagedList<PermissionResult>> ret
                = await _Proxys.Permission.Search(param);
 
-            SetResult<List<PermissionResult>>(ret, ref searchresult, ref ServiceStatus);
-            gridlist = searchresult.AsQueryable();
+            SetResult<PagedList<PermissionResult>>(ret, ref searchresult, ref ServiceStatus);
+            gridlist = searchresult.RecordList.AsQueryable();
         }
 
         public bool GetDisabledStatus(string expected, string typegrant )

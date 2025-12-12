@@ -1,6 +1,8 @@
 ﻿using FullDevToolKit.Helpers;
 using System.Collections.Generic;
-using FullDevToolKit.Sys.Models.Common; 
+using FullDevToolKit.Sys.Models.Common;
+using FullDevToolKit.Sys.Models.Identity;
+using FullDevToolKit.Core.Common;
 
 namespace FullDevToolKit.Sys.Data.QueryBuilders
 {
@@ -49,13 +51,36 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
         {
             string ret = "";
 
+            bool gobydate = ((ExceptionLogParam)param).SearchByDate;
+
+            ret = @" where 1=1 
+                 and (@pOrigin='' or s.Origin like '%' + @pOrigin + '%')
+                 ";
+
+            if (gobydate)
+            {
+                ret = ret + " and (s.Date between @pDate_Start and @pData_End )";
+            }
+
+            BaseParam b_param = ((BaseParam)param);
+            if (b_param.Pagination != null)
+            {
+                ret = ret + " and " + this.BuildWhereClausuleForPaging("s", b_param.Pagination);
+            }
+
+
             return ret;
         }
 
         public override string QueryForPaginationSettings(object param)
         {
 
-            string ret = "";
+            string ret = @"select s.Seq             
+             from sysExceptionLog s
+             left join sysUser u on s.UserID = u.UserID  
+             ";
+
+            ret = ret + GetWhereClausule(param) + " order by s.Seq";
 
             return ret;
 
@@ -63,24 +88,14 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
 
         public override string QueryForSearch(object param)
         {
-            bool gobydate = ((ExceptionLogParam)param).SearchByDate;
+            string ret = @"select u.UserName, u.Email, s.*             
+             from sysExceptionLog s
+             left join sysUser u on s.UserID = u.UserID  
+             ";
 
-            string ret = "";
+            ret = ret + GetWhereClausule(param) + " order by s.Seq";
 
-            ret = @"select e.*, u.Email
-                   from sysExceptionLog e 
-                   left join sysUser u on e.UserID=u.UserID
-                   where 1=1
-                   and (@pOrigin='' or e.Origin=@pOrigin)
-                    ";
-            
-            if (gobydate)
-            {
-                ret = ret + " and (e.Date between @pDate_Start and @pData_End )";
-            }
-
-            ret = ret + " order by e.Date desc"; 
-
+           
             return ret;
 
         }

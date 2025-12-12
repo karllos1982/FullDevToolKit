@@ -6,6 +6,7 @@ using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
 using FullDevToolKit.Sys.Data.Repositories;
 using FullDevToolKit.Sys.Models.Common;
+using FullDevToolKit.Core.Common;
 
 namespace FullDevToolKit.Sys.Domains
 {
@@ -48,9 +49,9 @@ namespace FullDevToolKit.Sys.Domains
             return ret;
         }
 
-        public async Task<List<PermissionResult>> Search(PermissionParam param)
+        public async Task<PagedList<PermissionResult>> Search(PermissionParam param)
         {
-            List<PermissionResult> ret = null;
+            PagedList<PermissionResult> ret = null;
 
             ret = await _repositories.Permission.ReadSearch(param);
 

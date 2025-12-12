@@ -5,7 +5,7 @@ using FullDevToolKit.Sys.Models.Identity;
 namespace FullDevToolKit.Sys.Contracts.Repositories
 {
     public interface IUserRepository :
-        IRepository<UserParam, UserEntry, UserList, UserResult>
+        IRepositorySearchPaged<UserParam, UserEntry, UserList, UserResult>
     {
 
         Task<UserResult> GetByEmail(string email);

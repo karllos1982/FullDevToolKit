@@ -61,7 +61,7 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
             string ret = @"select * from sysGroupParameter 
                          where 1=1 
                          and (@pGroupParameterID=0 or GroupParameterID=@pGroupParameterID)
-                         and (@pGroupParameterName='' or GroupParameterName=@pGroupParameterName)                         
+                         and (@pGroupParameterName='' or GroupParameterName like '%' + @pGroupParameterName + '%')                         
                         ";
 
             return ret;

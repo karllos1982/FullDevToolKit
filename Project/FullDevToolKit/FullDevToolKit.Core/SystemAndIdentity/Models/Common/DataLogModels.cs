@@ -23,7 +23,7 @@ namespace FullDevToolKit.Sys.Models.Common
         public string LogCurrentData { get; set; } = string.Empty;
     }
 
-    public class DataLogParam
+    public class DataLogParam: BaseParam
     {
         public long pDataLogID { get; set; }
 

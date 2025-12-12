@@ -1,6 +1,9 @@
-﻿using FullDevToolKit.Helpers;
+﻿using FullDevToolKit.Core.Common;
+using FullDevToolKit.Helpers;
+using FullDevToolKit.Sys.Models.Identity;
+using FullDevToolKit.Sys.Models.Common;
 using System.Collections.Generic;
-using FullDevToolKit.Sys.Models.Common; 
+
 
 namespace FullDevToolKit.Sys.Data.QueryBuilders
 {
@@ -51,44 +54,51 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
         {
             string ret = "";
 
+            bool gobydate = ((DataLogParam)param).SearchByDate;
+
+            ret = @" where 1=1 
+                 and (@pUserID=0 or s.UserID=@pUserID)
+                 and (@pEmail='' or u.Email like '%' + @pEmail + '%')
+                 and (@pTableName='0' or s.TableName=@pTableName) 
+                 and (@pOperation='0' or s.Operation=@pOperation)    
+                 ";            
+
+            if (gobydate)
+            {
+                ret = ret + " and (s.Date between @pDate_Start and @pData_End )";
+            }
+
+            BaseParam b_param = ((BaseParam)param);
+            if (b_param.Pagination != null)
+            {
+                ret = ret + " and " + this.BuildWhereClausuleForPaging("s", b_param.Pagination);
+            }
+
             return ret;
         }
 
         public override string QueryForPaginationSettings(object param)
         {
 
-            string ret = "";
+            string ret = @"select s.Seq             
+             from sysDataLog s
+             inner join sysUser u on s.UserID = u.UserID  
+             ";
+
+            ret = ret + GetWhereClausule(param) + " order by s.Seq";
 
             return ret;
 
         }
         public override string QueryForSearch(object param)
         {
-            bool gobydate = ((DataLogParam)param).SearchByDate;
+             string ret = @"select u.UserName, u.Email, s.*             
+             from sysDataLog s
+             inner join sysUser u on s.UserID = u.UserID  
+             ";
 
-            string ret = ""; 
-                                     
+            ret = ret + GetWhereClausule(param) + " order by s.Seq";
 
-            SelectBuilder.Clear();
-            SelectBuilder.AddTable("sysDataLog", "l", true, "UserID", "", JOINTYPE.NONE, null);
-            SelectBuilder.AddTable("sysUser", "u", false, "DataLogID", "UserID", JOINTYPE.INNER, "l");
-            SelectBuilder.AddField("u", "Email", "@pEmail", true, "''", null, ORDERBYTYPE.NONE);
-
-            SelectBuilder.AddField("l", "UserID", "@pUserID", false,"0",null, ORDERBYTYPE.NONE);
-            SelectBuilder.AddField("l", "Operation", "@pOperation",false,"'0'",null, ORDERBYTYPE.NONE);
-            SelectBuilder.AddField("l", "TableName", "@pTableName",false,"'0'",null, ORDERBYTYPE.NONE);
-            SelectBuilder.AddField("l", "ID", "@pID", false, "0", null, ORDERBYTYPE.NONE);
-            SelectBuilder.AddField("l", "Date", "", false, null, null, ORDERBYTYPE.DESC);
-           
-            if (gobydate)
-            {
-                ret = SelectBuilder.BuildQuery(" and (l.Date between @pDate_Start and @pData_End )");               
-            }
-            else
-            {
-                ret = SelectBuilder.BuildQuery(); 
-            }
-                                   
 
             return ret;
 

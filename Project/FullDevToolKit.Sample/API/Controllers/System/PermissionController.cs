@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Authorization;
 using FullDevToolKit.Core;
 using FullDevToolKit.Core.Helpers;
 using FullDevToolKit.Sys.Models.Common;
+using FullDevToolKit.Core.Common;
 
 
 namespace MyApp.Controllers
@@ -29,7 +30,7 @@ namespace MyApp.Controllers
         {
             await ExecuteForRead(param, async (param) =>
             {
-                List<PermissionResult> data
+                PagedList<PermissionResult> data
                     = await Manager.IdentityModule.Domainset.Permission.Search(param);
                 ret = SetReturn(data);
             });                 

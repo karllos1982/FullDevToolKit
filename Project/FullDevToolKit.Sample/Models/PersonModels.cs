@@ -3,7 +3,7 @@ using FullDevToolKit.Helpers;
 
 namespace MyApp.Models
 {
-    public class PersonParam
+    public class PersonParam: BaseParam
     {
         public PersonParam()
         {

@@ -6,6 +6,7 @@ using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
 using FullDevToolKit.Sys.Data.Repositories;
 using System.Security.Cryptography;
+using FullDevToolKit.Core.Common;
 
 
 namespace FullDevToolKit.Sys.Domains
@@ -72,9 +73,9 @@ namespace FullDevToolKit.Sys.Domains
             return ret;
         }
 
-        public async Task<List<UserResult>> Search(UserParam param)
+        public async Task<PagedList<UserResult>> Search(UserParam param)
         {
-            List<UserResult> ret = null;
+            PagedList<UserResult> ret = null;
 
             ret = await _repositories.User.ReadSearch(param);
 

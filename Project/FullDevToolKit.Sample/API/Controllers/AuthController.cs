@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Authorization;
 using Newtonsoft.Json;
 using FullDevToolKit.Core;
 using FullDevToolKit.ApplicationHelpers;
-   
+using FullDevToolKit.Core.Common;    
 
 
 namespace MyApp.Controllers
@@ -46,10 +46,19 @@ namespace MyApp.Controllers
             BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
-            List<LocalizationTextResult> data = null;
-            data = await Manager.IdentityModule.Domainset.LocalizationText.Search(new LocalizationTextParam());
-            ret = SetReturn<List<LocalizationTextResult>>(data);
-            
+            PagedList<LocalizationTextResult> data = null;
+            data = await Manager.IdentityModule.Domainset
+                .LocalizationText.Search(new LocalizationTextParam()
+                {
+                    RecordsPerPage= 10000,
+                    PageIndex= 0,
+                });
+
+            if (data != null)
+            {
+                ret = SetReturn<List<LocalizationTextResult>>(data.RecordList);
+            }
+                        
             FinalizeManager();
 
             return ret;
@@ -138,9 +147,8 @@ namespace MyApp.Controllers
 
                 AuthToken token = TokenService.GenerateToken(userM.UserID.ToString(),
                     userM.Roles[0].RoleName, userM.Instances[0].InstanceID.ToString(),
-                    permissions_content, userM.LanguageID.ToString(), 
-                    int.Parse(param.SessionTimeOut) );
-                           
+                    permissions_content, userM.LanguageID.ToString() );
+                                               
                 UserAuthenticated userA = new UserAuthenticated();
                 userA.UserID = userM.UserID.ToString();
                 userA.UserName = userM.UserName;
@@ -148,7 +156,7 @@ namespace MyApp.Controllers
                 userA.RoleName = userM.Roles[0].RoleName;
                 userA.InstanceName = userM.Instances[0].InstanceName;
                 userA.Token = token.TokenValue;
-                userA.Expires = token.ExpiresDate;
+                userA.Expires = DateTime.Now.AddMinutes(int.Parse(param.SessionTimeOut));
                 userA.Permissions = userM.Permissions;
                 userA.LanguageID = userM.LanguageID;
                 userA.KeepConnection = param.KeepConnection; 
@@ -158,7 +166,7 @@ namespace MyApp.Controllers
                     UserID = userM.UserID,
                     LastLoginDate = DateTime.Now,
                     AuthToken = token.TokenValue,
-                    AuthTokenExpires = token.ExpiresDate
+                    AuthTokenExpires = userA.Expires
                 };
             
                await Manager.IdentityModule.RegisterLoginState(param, uplogin);
@@ -214,9 +222,8 @@ namespace MyApp.Controllers
 
 				AuthToken token = TokenService.GenerateToken(userM.UserID.ToString(),
 					userM.Roles[0].RoleName, userM.Instances[0].InstanceID.ToString(),
-					permissions_content, userM.LanguageID.ToString(),
-					int.Parse(param.SessionTimeOut));
-
+					permissions_content, userM.LanguageID.ToString());
+					
 				UserAuthenticated userA = new UserAuthenticated();
 				userA.UserID = userM.UserID.ToString();
 				userA.UserName = userM.UserName;
@@ -224,8 +231,8 @@ namespace MyApp.Controllers
 				userA.RoleName = userM.Roles[0].RoleName;
 				userA.InstanceName = userM.Instances[0].InstanceName;
 				userA.Token = token.TokenValue;
-				userA.Expires = token.ExpiresDate;
-				userA.Permissions = userM.Permissions;
+                userA.Expires = DateTime.Now.AddMinutes(int.Parse(param.SessionTimeOut));
+                userA.Permissions = userM.Permissions;
 				userA.LanguageID = userM.LanguageID;
 				userA.KeepConnection = param.KeepConnection;
 
@@ -234,8 +241,8 @@ namespace MyApp.Controllers
 					UserID = userM.UserID,
 					LastLoginDate = DateTime.Now,
 					AuthToken = token.TokenValue,
-					AuthTokenExpires = token.ExpiresDate
-				};
+					AuthTokenExpires = userA.Expires
+                };
 
                 UserLogin usrlogin = new UserLogin()
                 {

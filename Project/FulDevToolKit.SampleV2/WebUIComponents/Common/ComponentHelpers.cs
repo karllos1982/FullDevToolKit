@@ -61,4 +61,10 @@ namespace WebUIComponents.Common
         public IDialogService msgbox { get; set; }
     }
 
+    public class PaginatorPageSelector
+    {
+        public string Title { get; set; } = string.Empty;        
+
+    }
+
 }

@@ -12,12 +12,10 @@ namespace MyApp.API
         public const string PRIVATEKEY = "AB725B66-DC4A-40FC-8061-5CFAE0F4C8AB";
 
         public static AuthToken GenerateToken(string username,string rolename,string instanceid, 
-                string permissions, string language, int timeout)
+                string permissions, string language)
         {
             AuthToken ret = new AuthToken();
-
-            ret.ExpiresDate = DateTime.Now.AddMinutes(timeout);
-
+            
             var tkhandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(PRIVATEKEY);
 
@@ -37,7 +35,7 @@ namespace MyApp.API
             var tokenDesc = new SecurityTokenDescriptor
             {
                 Subject = new ClaimsIdentity(claims),
-                Expires = ret.ExpiresDate,
+                Expires = DateTime.Now.AddMinutes(240),
                 SigningCredentials = 
                     new SigningCredentials(new SymmetricSecurityKey(key),
                     SecurityAlgorithms.HmacSha256Signature)

@@ -30,7 +30,7 @@ namespace FullDevToolKit.Sys.Models.Identity
         public string TypeGrant { get; set; } = string.Empty;
     }
 
-    public class PermissionParam
+    public class PermissionParam: BaseParam
     {
         public long pPermissionID { get; set; }
 

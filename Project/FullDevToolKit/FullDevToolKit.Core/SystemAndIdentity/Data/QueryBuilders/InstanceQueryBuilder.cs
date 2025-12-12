@@ -31,8 +31,8 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
             string ret = @"select InstanceID, InstanceName             
              from sysInstance 
              where 1=1 
-             and (@pInstanceName='' or InstanceName=@pInstanceName)
-             and (@pInstanceTypeName='' or InstanceTypeName=@pInstanceTypeName)
+             and (@pInstanceName='' or InstanceName like '%' + @pInstanceName + '%')
+             and (@pInstanceTypeName='' or InstanceTypeName like '%' + @pInstanceTypeName + '%')
              and (@pInstanceID=0 or InstanceID=@pInstanceID)      
              ";
 
@@ -59,8 +59,8 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
             string ret = @"select *            
              from sysInstance i             
              where 1=1 
-             and (@pInstanceName='' or InstanceName=@pInstanceName)
-             and (@pInstanceTypeName='' or InstanceTypeName=@pInstanceTypeName)
+             and (@pInstanceName='' or InstanceName like '%' + @pInstanceName + '%')
+             and (@pInstanceTypeName='' or InstanceTypeName like '%' + @pInstanceTypeName + '%')
              and (@pInstanceID=0 or InstanceID=@pInstanceID)             
              ";
 

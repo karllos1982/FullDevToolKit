@@ -3,6 +3,7 @@ using FullDevToolKit.Core;
 using FullDevToolKit.Sys.Contracts.Repositories;
 using FullDevToolKit.Sys.Models.Common;
 using FullDevToolKit.Sys.Data.QueryBuilders;
+using FullDevToolKit.Core.Common;
 
 namespace FullDevToolKit.Sys.Data.Repositories
 {
@@ -69,13 +70,40 @@ namespace FullDevToolKit.Sys.Data.Repositories
             return ret;
         }
 
-        public async Task<List<LocalizationTextResult>> ReadSearch(LocalizationTextParam param)
+      
+        public async Task<PagedList<LocalizationTextResult>> ReadSearch(LocalizationTextParam param)
         {
-            List<LocalizationTextResult> ret = null;
+            PagedList<LocalizationTextResult> ret = new PagedList<LocalizationTextResult>()
+            { RecordList = new List<LocalizationTextResult>() };
 
-            ret = await Context
-                .ExecuteQueryToListAsync<LocalizationTextResult>(query.QueryForSearch(null), param);
+            List<LocalizationTextResult> recordlist = null;
+            List<PaginationModel> paglist = null;
+            int index = 1;
 
+            paglist = await Context
+            .ExecuteQueryToListAsync<PaginationModel>(query.QueryForPaginationSettings(param), param);
+
+            if (paglist.Count > 0)
+            {
+
+                PaginationSettings paginationSettings
+                    = query.GetPaginationSettings(paglist,
+                    BaseParam.CalcPageCount(param.RecordsPerPage, paglist.Count), param.RecordsPerPage);
+
+                if (param.PageIndex > 0)
+                {
+                    index = param.PageIndex;
+                }
+
+                param.Pagination = paginationSettings.GetItem(index);
+                recordlist = await Context
+                .ExecuteQueryToListAsync<LocalizationTextResult>(query.QueryForSearch(param), param);
+
+                ret.PageCount = paginationSettings.PageCount;
+                ret.TotalRecords = paglist.Count;
+                ret.RecordList = recordlist;
+                ret.RecordCount = recordlist.Count;
+            }
 
             return ret;
         }

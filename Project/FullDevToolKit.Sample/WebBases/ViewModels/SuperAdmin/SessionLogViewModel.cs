@@ -107,8 +107,7 @@ namespace MyApp.ViewModel
                 dataFim = null;
             }
 
-            param.RecordsPerPage = 20;
-            
+                        
             APIResponse<PagedList<SessionLogResult>> ret
                = await _Proxys.SessionLog.Search(param);
 

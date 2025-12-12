@@ -1,20 +1,16 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\",
+  "WorkspaceRootPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit\\",
   "Documents": [],
   "DocumentGroupContainers": [
     {
-      "Orientation": 0,
+      "Orientation": 1,
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 225,
+          "DockedHeight": 8,
           "SelectedChildIndex": -1,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:129:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
@@ -26,9 +22,13 @@
           ]
         },
         {
-          "DockedWidth": 126,
+          "DockedHeight": 7,
           "SelectedChildIndex": -1,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{004be353-6879-467c-9d1e-9ac23cdf6d49}"
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"

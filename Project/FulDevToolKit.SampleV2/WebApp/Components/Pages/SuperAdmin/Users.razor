@@ -29,7 +29,7 @@
                               Title="@view.texts.Get("NewUser-Label")"
                               Disabled="!view.Permissions.AllowSave"
                               Visible="!view.GetTabEditState()"
-                              OnAction="OnNew">
+                              OnAction="@form.OnNew">
             </FormActionButton>
             
                         
@@ -139,8 +139,7 @@
 
                             <div id="datagrid-container">
                                     <FluentDataGrid Items="@view.gridlist"   
-                                            TGridItem="UserResult"
-                                            Pagination="@pagination"
+                                            TGridItem="UserResult"                                            
                                             RowSize="@rowSize"
                                             ResizableColumns=true                                                                                                                                                                              
                                             Style="overflow-y:hidden;">
@@ -172,11 +171,11 @@
                                     </TemplateColumn>
 
 
-                            <TemplateColumn Title="@view.texts.Get("UpdateOperation-Text")" Width="15%">
+                                        <TemplateColumn Title="@view.texts.Get("UpdateOperation-Text")" Width="15%">
                                 
                                          <FluentButton Appearance="Appearance.Lightweight" 
                                               IconEnd="@(new Icons.Regular.Size24.ClipboardTextEdit())"
-                                              @onclick="@(() => OnDetClick(context.UserID))">
+                                              @onclick="@(() => @form.OnDetClick(context.UserID))">
                                             </FluentButton>
                                         
                                     </TemplateColumn>
@@ -184,7 +183,15 @@
                                 </FluentDataGrid>
                             </div>
 
-                            <FluentPaginator State="@pagination"  />
+                                <Pagenator PageCount="@view.searchresult.PageCount"
+                                           TotalRecords="@view.searchresult.TotalRecords"
+                                           RecordCount="@view.searchresult.RecordCount"
+                                           PageIndex="@view.param.PageIndex"
+                                           RecordsPerPage="@view.param.RecordsPerPage"
+                                           OnPageChanged="OnPageChanged"
+                                           OnRecordsPerChanged="OnRecordsPerPageChanged"
+                                           Localization="@view.texts">
+                                </Pagenator>                    
                                                      
                     </FluentCard>
                 </FluentGridItem>
@@ -197,9 +204,9 @@
             <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
 
                 <FluentGridItem lg="1" xs="12" Style="margin-top: 0px;">
-                
-                       <TaskIconButton OnClick="Back" 
-                            IconStart="@(new Icons.Regular.Size24.ArrowCircleLeft())" >
+
+                <TaskIconButton OnClick="@form.Back"
+                                IconStart="@(new Icons.Regular.Size24.ArrowCircleLeft())" >
 
                        </TaskIconButton>
 
@@ -383,7 +390,7 @@
                                                         ButtonAppearance="Appearance.Accent"
                                                         Disabled=!view.Permissions.AllowSave
                                                         IconEnd="@(new Icons.Regular.Size24.SaveArrowRight())"
-                                                        OnClick="OnSet">
+                                        OnClick="@form.OnSet">
                                             </TaskButton>
 
                
@@ -534,6 +541,7 @@
 
        
     private UserViewModel view;
+    private PageFormMethods form;
 
     //
 
@@ -571,6 +579,9 @@
                 loadingConfigs= new TaskLoadingConfigs
                     { Title = view.texts.Get("LoadingPage"), 
                       Description = view.texts.Get("UserRecord-Label") };
+
+                this.form = new PageFormMethods(view, msgbox, loading);
+
             }
 
             StateHasChanged();
@@ -579,9 +590,9 @@
     }
 
 
-
     public async Task OnSearch()
-    {        
+    {
+        view.param.PageIndex = 0;
         await view.Search();
 
         if (!view.ServiceStatus.Success)
@@ -590,79 +601,45 @@
                 view.texts.Get("ErrorOnExecuteSearch"));
 
         }
-        
+        else
+        {
+            view.param.PageIndex = 1;
+        }
+
     }
 
-    public void OnNew()
+    public async Task OnPageChanged(int value)
     {
+        view.param.PageIndex = value;
 
-        view.InitNew();
-        StateHasChanged();
-    }
-
-    public async Task OnGet(object id)
-    {
         await loading.Begin();
-
-        await view.Get(id);
-
+        await view.Search();
         await loading.End();
 
         if (!view.ServiceStatus.Success)
         {
             await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
-                view.texts.Get("ErrorOnReturnData"));
-            
+                view.texts.Get("ErrorOnExecuteSearch"));
         }
-        else
-        {
-            view.InitEdit();
-
-        }
-
-        StateHasChanged();
     }
 
-    public async Task OnSet()
+    public async Task OnRecordsPerPageChanged(int value)
     {
-        bool go = true;
-        string message = "";
+        view.param.PageIndex = 0;
+        view.param.RecordsPerPage = value;
 
-        if (view._selectvalues.SelectedInstance == "0")
+        await loading.Begin();
+        await view.Search();
+        await loading.End();
+
+        if (!view.ServiceStatus.Success)
         {
-            message = view.texts.Get("AlterInstance-Description");
-            go = false;
-        }
-
-        if (view._selectvalues.SelectedRole == "0")
-        {
-            message = view.texts.Get("AlterRole-Description");
-            go = false;
-        }
-
-        if (go)
-        {
-           
-            await view.Set();
-
-            if (!view.ServiceStatus.Success)
-            {
-                await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
-                    view.texts.Get("NoticeLabel"));
-
-            }
-            else
-            {
-                await msgbox.ShowSuccessAsync(view.texts.Get("SuccessSaveMessage"),
-                    view.texts.Get("SuccessLabel"));
-
-                this.Back();
-            }
+            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
+                view.texts.Get("ErrorOnExecuteSearch"));
         }
         else
         {
-            await msgbox.ShowWarningAsync(message, view.texts.Get("NoticeLabel"));
-            
+            view.param.PageIndex = 1;
         }
 
     }
@@ -681,7 +658,7 @@
         }
         else
         {
-            this.Back();
+            form.Back();
 
             await msgbox.ShowSuccessAsync(view.texts.Get("SuccessSaveMessage"),
                     view.texts.Get("SuccessLabel"));          
@@ -689,13 +666,7 @@
         }        
 
     }
-    
-    public async Task OnDetClick(object id)
-    {
-        await OnGet(id);
-
-    }
-
+       
     public async Task OnChangeState()
     {
         
@@ -716,13 +687,6 @@
         
     }
 
-
-    public void Back()
-    {
-        view.BackToSearch();
-        StateHasChanged();
-
-    }
 
     public void GoHome()
     {

@@ -201,3 +201,27 @@ fluent-tabs {
 
 
 /* --- */
+
+/* Paginator */
+
+.paginator-body {
+    padding: 4px;margin-top:3px
+}
+
+.paginator-button{
+
+    cursor:pointer; 
+}
+
+.paginator-loading {
+
+    width: 300px; 
+    display: grid; 
+    grid-gap: 12px; 
+    grid-auto-flow: column;
+}
+
+.paginator-fieldselectpage {
+    font-size: 16px;
+    width: 30%
+}

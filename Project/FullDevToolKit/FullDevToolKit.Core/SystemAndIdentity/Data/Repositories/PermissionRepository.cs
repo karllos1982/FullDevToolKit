@@ -3,6 +3,8 @@ using FullDevToolKit.Core;
 using FullDevToolKit.Sys.Contracts.Repositories;
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Sys.Data.QueryBuilders;
+using FullDevToolKit.Core.Common;
+using FullDevToolKit.Sys.Models.Common;
 
 namespace FullDevToolKit.Sys.Data.Repositories
 {
@@ -71,13 +73,40 @@ namespace FullDevToolKit.Sys.Data.Repositories
             return ret;
         }
              
-        public  async Task<List<PermissionResult>> ReadSearch(PermissionParam param)
+   
+        public async Task<PagedList<PermissionResult>> ReadSearch(PermissionParam param)
         {
-            List<PermissionResult> ret = null;
+            PagedList<PermissionResult> ret = new PagedList<PermissionResult>()
+            { RecordList = new List<PermissionResult>() };
 
-            ret = await Context
-                .ExecuteQueryToListAsync<PermissionResult>(query.QueryForSearch(null),param);
-                 
+            List<PermissionResult> recordlist = null;
+            List<PaginationModel> paglist = null;
+            int index = 1;
+
+            paglist = await Context
+            .ExecuteQueryToListAsync<PaginationModel>(query.QueryForPaginationSettings(param), param);
+
+            if (paglist.Count > 0)
+            {
+
+                PaginationSettings paginationSettings
+                    = query.GetPaginationSettings(paglist,
+                    BaseParam.CalcPageCount(param.RecordsPerPage, paglist.Count), param.RecordsPerPage);
+
+                if (param.PageIndex > 0)
+                {
+                    index = param.PageIndex;
+                }
+
+                param.Pagination = paginationSettings.GetItem(index);
+                recordlist = await Context
+                .ExecuteQueryToListAsync<PermissionResult>(query.QueryForSearch(param), param);
+
+                ret.PageCount = paginationSettings.PageCount;
+                ret.TotalRecords = paglist.Count;
+                ret.RecordList = recordlist;
+                ret.RecordCount = recordlist.Count;
+            }
 
             return ret;
         }

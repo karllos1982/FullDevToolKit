@@ -119,7 +119,7 @@ namespace FullDevToolKit.Sys.Models.Identity
 
     }
 
-    public class UserParam
+    public class UserParam: BaseParam
     {
         public UserParam()
         {

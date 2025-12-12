@@ -3,6 +3,7 @@ using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Sys.Models.Common;
 using MyApp.Proxys;
 using System.Collections.Generic;
+using FullDevToolKit.Core.Common;
 
 namespace MyApp.ViewModel
 {
@@ -20,6 +21,7 @@ namespace MyApp.ViewModel
             _cache = cache;
             this.InitializeView();
             _Proxys.Init(http, serviceurl, token);
+            param = new DataLogParam();
         }
 
         UserAuthenticated _user;
@@ -27,8 +29,8 @@ namespace MyApp.ViewModel
 
         public DataLogEntry entry = new DataLogEntry();
         public DataLogResult result = new DataLogResult();
-        public DataLogParam param = new DataLogParam();
-        public List<DataLogResult> searchresult = new List<DataLogResult>();
+        public DataLogParam param = new DataLogParam(); 
+        public PagedList<DataLogResult> searchresult = new PagedList<DataLogResult>();
         public IQueryable<DataLogResult> gridlist = null;
         public List<TipoOperacaoValueModel> listTipoOperacao = new List<TipoOperacaoValueModel>();
         public List<TabelasValueModel> listTabelas = new List<TabelasValueModel>();
@@ -212,9 +214,9 @@ namespace MyApp.ViewModel
 
             if (dataInicio != null && dataFim != null)
             {
-                param.pDate_Start = dataInicio.Value;
-                param.pData_End = dataFim.Value;
-                param.SearchByDate = true;
+                ((DataLogParam)param).pDate_Start = dataInicio.Value;
+                ((DataLogParam)param).pData_End = dataFim.Value;
+                ((DataLogParam)param).SearchByDate = true;
             }
             else
             {
@@ -223,16 +225,16 @@ namespace MyApp.ViewModel
             }
 
             long aux = 0;
-            long.TryParse(idDataLog, out aux);            
-            param.pID = aux;
+            long.TryParse(idDataLog, out aux);
+            ((DataLogParam)param).pID = aux;
 
-            APIResponse<List<DataLogResult>> ret
-               = await _Proxys.DataLog.Search(param);
+            APIResponse<PagedList<DataLogResult>> ret
+               = await _Proxys.DataLog.Search(((DataLogParam)param));
 
-            SetResult<List<DataLogResult>>(ret, ref searchresult, ref ServiceStatus);
+            SetResult<PagedList<DataLogResult>>(ret, ref searchresult, ref ServiceStatus);
 
-            gridlist = searchresult.AsQueryable();
-            
+            gridlist = searchresult.RecordList.AsQueryable();
+
         }
 
     }

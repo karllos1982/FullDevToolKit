@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using FullDevToolKit.ApplicationHelpers;
 using MyApp.Models;
+using FullDevToolKit.Core.Common; 
 
 namespace MyApp.Proxys
 {
@@ -42,11 +43,11 @@ namespace MyApp.Proxys
 
         }
 
-		public async Task<APIResponse<List<PersonResult>?>> Search(PersonParam data)
+		public async Task<APIResponse<PagedList<PersonResult>?>> Search(PersonParam data)
 		{
-			APIResponse<List<PersonResult>?> ret = null;
+			APIResponse<PagedList<PersonResult>?> ret = null;
 
-			ret = await PostAsJSON<List<PersonResult>?>("search", JsonConvert.SerializeObject(data), null);
+			ret = await PostAsJSON<PagedList<PersonResult>?>("search", JsonConvert.SerializeObject(data), null);
 
 			return ret;
 		}

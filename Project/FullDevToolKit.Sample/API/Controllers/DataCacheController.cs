@@ -6,6 +6,7 @@ using Microsoft.Extensions.Caching.Memory;
 using FullDevToolKit.Core;
 using FullDevToolKit.Sys.Models.Identity;
 using MyApp.API;
+using FullDevToolKit.Core.Common;
 
 
 namespace MyApp.Controllers
@@ -165,8 +166,19 @@ namespace MyApp.Controllers
 
             if (list == null)
             {				
-				list = await Manager.IdentityModule.Domainset
-                    .LocalizationText.Search(new LocalizationTextParam()); 
+				
+                PagedList<LocalizationTextResult> data = null;
+                data = await Manager.IdentityModule.Domainset
+                    .LocalizationText.Search(new LocalizationTextParam()
+                    {
+                        RecordsPerPage = 10000,
+                        PageIndex = 0,
+                    });
+
+                if (data != null)
+                {
+                    list = data.RecordList;
+                }
 
                 memorycache.Set("LOCALIZATIONTEXTS", list, this.GetMemoryCacheOptionsByHour(2));
             }

@@ -5,6 +5,7 @@ using FullDevToolKit.Sys.Models.Common;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
 using FullDevToolKit.Sys.Data.Repositories;
+using FullDevToolKit.Core.Common;
 
 namespace FullDevToolKit.Sys.Domains
 {
@@ -43,9 +44,9 @@ namespace FullDevToolKit.Sys.Domains
             return ret;
         }
 
-        public async Task<List<ExceptionLogResult>> Search(ExceptionLogParam param)
+        public async Task<PagedList<ExceptionLogResult>> Search(ExceptionLogParam param)
         {
-            List<ExceptionLogResult> ret = null;
+            PagedList<ExceptionLogResult> ret = null;
 
             ret = await _repositories.ExceptionLog.ReadSearch(param);
 

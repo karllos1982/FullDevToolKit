@@ -4,7 +4,7 @@ using FullDevToolKit.Sys.Models.Common;
 namespace FullDevToolKit.Sys.Contracts.Repositories
 {
     public interface ILocalizationTextRepository :
-        IRepository<LocalizationTextParam, LocalizationTextEntry,
+        IRepositorySearchPaged<LocalizationTextParam, LocalizationTextEntry,
             LocalizationTextList, LocalizationTextResult >
     {
 

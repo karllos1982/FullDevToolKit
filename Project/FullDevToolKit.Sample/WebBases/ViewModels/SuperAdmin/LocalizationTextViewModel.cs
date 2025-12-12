@@ -2,6 +2,7 @@
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Sys.Models.Common;
 using MyApp.Proxys;
+using FullDevToolKit.Core.Common;
 
 namespace MyApp.ViewModel
 {
@@ -25,7 +26,7 @@ namespace MyApp.ViewModel
 
         public LocalizationTextResult result = new LocalizationTextResult();
         public LocalizationTextParam param = new LocalizationTextParam();
-        public List<LocalizationTextResult> searchresult = new List<LocalizationTextResult>();
+        public PagedList<LocalizationTextResult> searchresult = new PagedList<LocalizationTextResult>();
         public IQueryable<LocalizationTextResult> gridlist = null;
         public List<LanguageList> listLangs = new List<LanguageList>();
 
@@ -140,11 +141,11 @@ namespace MyApp.ViewModel
 
             param.pLanguageID = long.Parse(_selectvalues.pLanguageID);
 
-            APIResponse<List<LocalizationTextResult>> ret
+            APIResponse<PagedList<LocalizationTextResult>> ret
                = await _Proxys.LocalizationText.Search(param);
 
-            SetResult<List<LocalizationTextResult>>(ret, ref searchresult, ref ServiceStatus);
-            gridlist = searchresult.AsQueryable();
+            SetResult<PagedList<LocalizationTextResult>>(ret, ref searchresult, ref ServiceStatus);
+            gridlist = searchresult.RecordList.AsQueryable();
         }
 
     }

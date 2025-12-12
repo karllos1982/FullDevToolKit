@@ -1,0 +1,39 @@
+﻿@inject IDialogService msgbox
+
+@code {
+
+    private BaseViewModel _view;
+
+    [Parameter]
+    public BaseViewModel viewModel 
+    {
+        get
+        {
+            return _view;
+        }
+
+        set
+        {
+            _view = value;
+        } 
+    }
+
+    public SetViewModel(BaseViewModel view)
+    {
+        _view = view;   
+    }
+
+    public async Task OnSearch()
+    {
+        await _view.Search();
+
+        if (!_view.ServiceStatus.Success)
+        {
+            await msgbox.ShowWarningAsync(_view.ServiceStatus.Exceptions.Messages[0].Description,
+                _view.texts.Get("ErrorOnExecuteSearch"));
+
+        }
+
+    }
+
+}

@@ -6,7 +6,7 @@ using FullDevToolKit.Sys.Models.Common;
 namespace FullDevToolKit.Sys.Contracts.Domains
 {
     public interface IDataLogDomain :
-        IDomain<DataLogParam, DataLogEntry, DataLogList, DataLogResult>
+        IDomainSearchPaged<DataLogParam, DataLogEntry, DataLogList, DataLogResult>
     {
        
        Task<List<DataLogTimelineModel>> GetTimeLine(Int64 recordID);

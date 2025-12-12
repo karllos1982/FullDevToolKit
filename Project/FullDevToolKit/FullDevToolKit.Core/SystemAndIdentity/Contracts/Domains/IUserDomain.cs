@@ -5,7 +5,7 @@ using FullDevToolKit.Sys.Models.Identity;
 namespace FullDevToolKit.Sys.Contracts.Domains
 {
     public interface IUserDomain :
-        IDomain<UserParam, UserEntry, UserList, UserResult>
+        IDomainSearchPaged<UserParam, UserEntry, UserList, UserResult>
     {
         Task<UserResult> GetByEmail(string email);
 

@@ -22,7 +22,7 @@ namespace FullDevToolKit.Sys.Models.Common
         public string Text { get; set; } = string.Empty;
     }
 
-    public class LocalizationTextParam
+    public class LocalizationTextParam: BaseParam
     {
         public LocalizationTextParam()
         {

@@ -95,17 +95,28 @@
                                         RowSize="@rowSize"
                                         ResizableColumns=true                                       
                                         Style="overflow-y:hidden;">
-                             
+
+                            <PropertyColumn Property="@(c => c.Seq)" Title="Seq" Sortable="true" Width="10%" />
                             <PropertyColumn Property="@(c => c.Date)" Title="@view.texts.Get("AccessDate-Label")" Sortable="true" Width="20%" />
-                            <PropertyColumn Property="@(c => c.Email)" Title="@view.texts.Get("Email-Label")" Sortable="true" Width="30%" />
-                            <PropertyColumn Property="@(c => c.UserName)" Title="@view.texts.Get("UserName-Label")" Sortable="true" Width="30%" />
+                            <PropertyColumn Property="@(c => c.Email)" Title="@view.texts.Get("Email-Label")" Sortable="true" Width="25%" />
+                            <PropertyColumn Property="@(c => c.UserName)" Title="@view.texts.Get("UserName-Label")" Sortable="true" Width="25%" />
                             <PropertyColumn Property="@(c => c.IP)" Title="@view.texts.Get("IP-Label")" Sortable="true" Width="20%" />
                             
-
                         </FluentDataGrid>
                     </div>
 
-                    <Pagenator PageCount="@view.searchresult.PageCount" />
+                    <Pagenator 
+                        PageCount="@view.searchresult.PageCount" 
+                        TotalRecords="@view.searchresult.TotalRecords"
+                        RecordCount="@view.searchresult.RecordCount"   
+                        PageIndex="@view.param.PageIndex"
+                        RecordsPerPage="@view.param.RecordsPerPage"
+                        OnPageChanged="OnPageChanged"
+                        OnRecordsPerChanged="OnRecordsPerPageChanged"
+                        Localization="@view.texts"
+                        >
+                    </Pagenator>
+                            
 
                 </FluentCard>
             </FluentGridItem>
@@ -130,8 +141,9 @@ else
 
 @code {
 
-    
+
     private SessionLogViewModel view;
+    private PageFormMethods form;
 
     //
 
@@ -166,10 +178,12 @@ else
                 _LoadingData_Text = view.texts.Get("LoadingData");
                 _AreaURL = "superadmin";                
                 this.SetPageTile(view.texts.Get("SessionLog-PageTitle"));
-                 loadingConfigs= new TaskLoadingConfigs
+                loadingConfigs= new TaskLoadingConfigs
                     { Title = view.texts.Get("LoadingPage"), 
                         Description = view.texts.Get("SessionLogRecord-Label")
                     };
+
+                this.form = new PageFormMethods(view, msgbox, loading);
             }
 
             StateHasChanged();
@@ -181,84 +195,59 @@ else
 
     public async Task OnSearch()
     {
+        view.param.PageIndex = 0;   
         await view.Search();
-
+       
         if (!view.ServiceStatus.Success)
         {
             await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
                 view.texts.Get("ErrorOnExecuteSearch"));
-
+        }
+        else
+        {
+            view.param.PageIndex = 1;
         }
 
     }
 
-    public void OnNew()
+     public async Task OnPageChanged(int value)
     {
-
-        view.InitNew();
-        StateHasChanged();
-    }
-
-    public async Task OnGet(object id)
-    {
+        view.param.PageIndex = value;   
+        
         await loading.Begin();
-
-        await view.Get(id);
-
+        await view.Search();
         await loading.End();
 
         if (!view.ServiceStatus.Success)
         {
             await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
-                view.texts.Get("ErrorOnReturnData"));
-
+                view.texts.Get("ErrorOnExecuteSearch"));
         }
-        else
-        {
-            view.InitEdit();
-
-        }
-
-        StateHasChanged();
     }
 
-
-    public async Task OnSet()
+    public async Task OnRecordsPerPageChanged(int value)
     {
+        view.param.PageIndex = 0;
+        view.param.RecordsPerPage = value;
 
-        await view.Set();
+        await loading.Begin();
+        await view.Search();
+        await loading.End();
 
         if (!view.ServiceStatus.Success)
         {
             await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
-                view.texts.Get("NoticeLabel"));
-
+                view.texts.Get("ErrorOnExecuteSearch"));
         }
         else
         {
-            await msgbox.ShowSuccessAsync(view.texts.Get("SuccessSaveMessage"),
-                view.texts.Get("SuccessLabel"));
-
-            this.Back();
-
+            view.param.PageIndex = 1;
         }
 
-
     }
 
-    public async Task OnDetClick(object id)
-    {
-        await OnGet(id);
 
-    }
-
-    public void Back()
-    {
-        view.BackToSearch();
-        StateHasChanged();
-
-    }
-
+    
     public void GoHome()
     {
         string url = _appctrl.UserInfo.HomeURL;

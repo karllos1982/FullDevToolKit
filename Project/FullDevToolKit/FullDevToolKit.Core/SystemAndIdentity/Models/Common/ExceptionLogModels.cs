@@ -22,7 +22,7 @@ namespace FullDevToolKit.Sys.Models.Common
         public string ClientIP { get; set; }
     }
 
-    public class ExceptionLogParam
+    public class ExceptionLogParam: BaseParam
     {
         public long pExceptionLogID { get; set; }
 

@@ -12,7 +12,6 @@
 @inject IDialogService msgbox
 
 
-
 @if (view != null)
 {
 
@@ -29,14 +28,14 @@
                               Title="@view.texts.Get("NewConfig-Label")"
                               Disabled="!view.Permissions.AllowSave"
                               Visible="!view.GetTabEditState()"
-                              OnAction="OnNew">
+                              OnAction="@form.OnNew">
             </FormActionButton>
 
             <FormActionButton ButtonType=ButtonTypeEnum.SAVE
                               Title="@view.texts.Get("SaveConfigButton-Label")"
                               Disabled="!view.Permissions.AllowSave"
                               Visible="view.GetTabEditState()"
-                              OnAction="OnSet">
+                              OnAction="@form.OnSet">
             </FormActionButton>
 
 
@@ -68,7 +67,7 @@
                                               Title="@view.texts.Get("SearchButtonLabel")"
                                               Visible="true"
                                               Disabled="!view.Permissions.AllowRead"
-                                              OnAction="OnSearch">
+                                              OnAction="@form.OnSearch">
                             </FormActionButton>
 
                         </FluentStack>
@@ -100,7 +99,7 @@
 
                                 <FluentButton Appearance="Appearance.Lightweight"
                                               IconEnd="@(new Icons.Regular.Size24.ClipboardTextEdit())"
-                                              @onclick="@(() => OnDetClick(context.ConfigID))">
+                                              @onclick="@(() => @form.OnDetClick(context.ConfigID))">
                                 </FluentButton>
 
                             </TemplateColumn>
@@ -122,7 +121,7 @@
 
             <FluentGridItem lg="1" xs="12" Style="margin-top: 0px;">
 
-                <TaskIconButton OnClick="Back"
+                <TaskIconButton OnClick="@form.Back"
                                 IconStart="@(new Icons.Regular.Size24.ArrowCircleLeft())">
 
                 </TaskIconButton>
@@ -173,12 +172,11 @@ else
 
 @code {
 
-    
+
     private ConfigsViewModel view;
+    private PageFormMethods form; 
 
     //
-
-
 
     protected override Task OnInitializedAsync()
     {
@@ -209,97 +207,18 @@ else
                 _LoadingData_Text = view.texts.Get("LoadingData");
                 _AreaURL = "superadmin";                
                 this.SetPageTile(view.texts.Get("Configs-PageTitle"));
-                 loadingConfigs= new TaskLoadingConfigs
+                loadingConfigs= new TaskLoadingConfigs
                     { Title = view.texts.Get("LoadingPage"), 
                       Description = view.texts.Get("ConfigRecord-Label") };
+                
+                this.form = new PageFormMethods(view, msgbox,loading); 
             }
 
             StateHasChanged();
 
         }
     }
-
-
-
-    public async Task OnSearch()
-    {
-        await view.Search();
-
-        if (!view.ServiceStatus.Success)
-        {
-            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
-                view.texts.Get("ErrorOnExecuteSearch"));
-            
-        }
-
-    }
-
-    public void OnNew()
-    {
-
-        view.InitNew();
-        StateHasChanged();
-    }
-
-    public async Task OnGet(object id)
-    {
-        await loading.Begin();
-
-        await view.Get(id);
-
-        await loading.End();
-
-        if (!view.ServiceStatus.Success)
-        {
-            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
-                view.texts.Get("ErrorOnReturnData"));
-
-        }
-        else
-        {
-            view.InitEdit();
-
-        }
-
-        StateHasChanged();
-    }
-
-
-    public async Task OnSet()
-    {
-
-        await view.Set();
-
-        if (!view.ServiceStatus.Success)
-        {
-            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
-                view.texts.Get("NoticeLabel"));
-
-        }
-        else
-        {
-            await msgbox.ShowSuccessAsync(view.texts.Get("SuccessSaveMessage"),
-                view.texts.Get("SuccessLabel"));
-
-            this.Back();
-
-        }
-
-
-    }
-
-    public async Task OnDetClick(object id)
-    {
-        await OnGet(id);
-
-    }
-
-    public void Back()
-    {
-        view.BackToSearch();
-        StateHasChanged();
-
-    }
+        
 
     public void GoHome()
     {

@@ -2,6 +2,7 @@
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Sys.Models.Common;
 using MyApp.Proxys;
+using FullDevToolKit.Core.Common;
 
 
 namespace MyApp.ViewModel
@@ -27,7 +28,7 @@ namespace MyApp.ViewModel
         public ExceptionLogEntry entry = new ExceptionLogEntry();
         public ExceptionLogResult result = new ExceptionLogResult();
         public ExceptionLogParam param = new ExceptionLogParam();
-        public List<ExceptionLogResult> searchresult = new List<ExceptionLogResult>();
+        public PagedList<ExceptionLogResult> searchresult = new PagedList<ExceptionLogResult>();
         public IQueryable<ExceptionLogResult> gridlist = null;
 
         public DateTime? dataInicio { get; set; }
@@ -105,11 +106,11 @@ namespace MyApp.ViewModel
                 dataFim = null;
             }
 
-            APIResponse<List<ExceptionLogResult>> ret
+            APIResponse<PagedList<ExceptionLogResult>> ret
                = await _Proxys.ExceptionLog.Search(param);
 
-            SetResult<List<ExceptionLogResult>>(ret, ref searchresult, ref ServiceStatus);
-            gridlist = searchresult.AsQueryable();
+            SetResult<PagedList<ExceptionLogResult>>(ret, ref searchresult, ref ServiceStatus);
+            gridlist = searchresult.RecordList.AsQueryable();
         }
 
     }

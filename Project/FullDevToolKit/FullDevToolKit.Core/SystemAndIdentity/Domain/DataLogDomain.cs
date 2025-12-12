@@ -5,6 +5,7 @@ using FullDevToolKit.Sys.Models.Common;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Sys.Contracts.Repositories;
 using FullDevToolKit.Sys.Data.Repositories;
+using FullDevToolKit.Core.Common;
 
 namespace FullDevToolKit.Sys.Domains
 {
@@ -44,9 +45,9 @@ namespace FullDevToolKit.Sys.Domains
             return ret;
         }
 
-        public async Task<List<DataLogResult>> Search(DataLogParam param)
+        public async Task<PagedList<DataLogResult>> Search(DataLogParam param)
         {
-            List<DataLogResult> ret = null;
+            PagedList<DataLogResult> ret = null;
 
             ret = await _repositories.DataLog.ReadSearch(param);
 

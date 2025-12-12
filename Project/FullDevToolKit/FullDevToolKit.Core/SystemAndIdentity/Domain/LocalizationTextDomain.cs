@@ -7,6 +7,7 @@ using FullDevToolKit.Sys.Contracts.Repositories;
 using System.Reflection;
 using FullDevToolKit.Sys.Data.Repositories;
 using FullDevToolKit.Sys.Models.Identity;
+using FullDevToolKit.Core.Common;
 
 namespace FullDevToolKit.Sys.Domains
 {
@@ -46,9 +47,9 @@ namespace FullDevToolKit.Sys.Domains
             return ret;
         }
 
-        public async Task<List<LocalizationTextResult>> Search(LocalizationTextParam param)
+        public async Task<PagedList<LocalizationTextResult>> Search(LocalizationTextParam param)
         {
-            List<LocalizationTextResult> ret = null;
+            PagedList<LocalizationTextResult> ret = null;
 
             ret = await _repositories.LocalizationText.ReadSearch(param);
 

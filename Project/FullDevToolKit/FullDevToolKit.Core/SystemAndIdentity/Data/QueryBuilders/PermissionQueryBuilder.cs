@@ -1,4 +1,5 @@
-﻿using FullDevToolKit.Helpers;
+﻿using FullDevToolKit.Core.Common;
+using FullDevToolKit.Helpers;
 using System.Collections.Generic;
 
 namespace FullDevToolKit.Sys.Data.QueryBuilders
@@ -53,33 +54,49 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
         {
             string ret = "";
 
+            ret = @" where 1=1
+             and (@pObjectPermissionID=0 or p.ObjectPermissionID=@pObjectPermissionID)
+             and (@pRoleID=0 or p.RoleID=@pRoleID)
+             and (@pUserID=0 or p.UserID=@pUserID)
+            ";
+
+            BaseParam b_param = ((BaseParam)param);
+            if (b_param.Pagination != null)
+            {
+                ret = ret + " and " + this.BuildWhereClausuleForPaging("p", b_param.Pagination);
+            }
+
             return ret;
         }
 
         public override string QueryForPaginationSettings(object param)
         {
 
-            string ret = "";
+            string ret = @"select p.Seq
+             from sysPermission p
+             inner join sysObjectPermission o on o.ObjectPermissionID = p.ObjectPermissionID
+             left join sysUser u on u.UserID = p.UserID          
+             left join sysRole r on r.RoleID = p.RoleID 
+             ";
+
+            ret = ret + GetWhereClausule(param) + " order by p.Seq";
 
             return ret;
 
         }
         public override string QueryForSearch(object param)
         {
-
             string ret = @"select p.PermissionID, p.ObjectPermissionID, o.ObjectName , o.ObjectCode,
              r.RoleID, r.RoleName, u.UserID, u.UserName, p.ReadStatus, p.SaveStatus, p.DeleteStatus, p.TypeGrant
              from sysPermission p
              inner join sysObjectPermission o on o.ObjectPermissionID = p.ObjectPermissionID
              left join sysUser u on u.UserID = p.UserID          
-             left join sysRole r on r.RoleID = p.RoleID 
-             where 1=1
-             and (@pObjectPermissionID=0 or p.ObjectPermissionID=@pObjectPermissionID)
-             and (@pRoleID=0 or p.RoleID=@pRoleID)
-             and (@pUserID=0 or p.UserID=@pUserID)
-             order by o.ObjectName , r.RoleID, u.UserID
+             left join sysRole r on r.RoleID = p.RoleID                                        
              ";
 
+            ret = ret + GetWhereClausule(param) + " order by o.ObjectName , r.RoleID, u.UserID";
+
+         
             return ret;
 
         }

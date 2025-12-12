@@ -184,7 +184,7 @@ alter table sysLocalizationText drop column [Language]
 
 
 
--- tabela sysLocalizationText
+-- tabela sysUser
 
 alter table sysUser add LanguageID [bigint] NULL	
 

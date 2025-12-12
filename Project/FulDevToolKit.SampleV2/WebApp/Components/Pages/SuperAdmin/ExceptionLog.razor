@@ -93,8 +93,7 @@
                                   
                         <div id="datagrid-container">
                             <FluentDataGrid Items="@view.gridlist"
-                                        TGridItem="ExceptionLogResult"
-                                            Pagination="@pagination"
+                                        TGridItem="ExceptionLogResult"                                            
                                             RowSize="@rowSize"
                                             ResizableColumns=true                                       
                                             Style="overflow-y:hidden;">
@@ -107,7 +106,7 @@
 
                                     <FluentButton Appearance="Appearance.Lightweight"
                                                   IconEnd="@(new Icons.Regular.Size24.DocumentBulletList())"
-                                                  @onclick="@(() => OnDetClick(context.ExceptionLogID ))">
+                                                  @onclick="@(() => @form.OnDetClick(context.ExceptionLogID ))">
                                     </FluentButton>
 
                                 </TemplateColumn>
@@ -115,7 +114,16 @@
                             </FluentDataGrid>
                         </div>
 
-                    <FluentPaginator State="@pagination" />
+                        <Pagenator PageCount="@view.searchresult.PageCount"
+                                   TotalRecords="@view.searchresult.TotalRecords"
+                                   RecordCount="@view.searchresult.RecordCount"
+                                   PageIndex="@view.param.PageIndex"
+                                   RecordsPerPage="@view.param.RecordsPerPage"
+                                   OnPageChanged="OnPageChanged"
+                                   OnRecordsPerChanged="OnRecordsPerPageChanged"
+                                   Localization="@view.texts">
+                        </Pagenator>
+                    
 
                 </FluentCard>
             </FluentGridItem>
@@ -129,7 +137,7 @@
 
             <FluentGridItem lg="1" xs="12" Style="margin-top: 0px;">
 
-                <TaskIconButton OnClick="Back"
+                <TaskIconButton OnClick="@form.Back"
                                 IconStart="@(new Icons.Regular.Size24.ArrowCircleLeft())">
 
                 </TaskIconButton>
@@ -203,7 +211,7 @@
 
                 </FluentGridItem>
 
-                <FluentGridItem lg="3" xs="12">
+                <FluentGridItem lg="12" xs="12">
 
                     <FluentTextField Value=@view.result.StackTrace ReadOnly="true"
                                      Label="@view.texts.Get("StackTrace-Label")" style="width:95%">
@@ -245,6 +253,7 @@ else
 
     
     private ExceptionLogViewModel view;
+     private PageFormMethods form; 
 
     //
 
@@ -283,6 +292,8 @@ else
                     { Title = view.texts.Get("LoadingPage"), 
                         Description = view.texts.Get("ExceptionLogRecord-Label")
                     };
+
+                    this.form = new PageFormMethods(view, msgbox,loading); 
             }
 
             StateHasChanged();
@@ -294,6 +305,7 @@ else
 
     public async Task OnSearch()
     {
+        view.param.PageIndex = 0;
         await view.Search();
 
         if (!view.ServiceStatus.Success)
@@ -302,75 +314,49 @@ else
                 view.texts.Get("ErrorOnExecuteSearch"));
 
         }
-
+        else
+        {
+            view.param.PageIndex = 1;
+        }
     }
 
-    public void OnNew()
+    public async Task OnPageChanged(int value)
     {
+        view.param.PageIndex = value;
 
-        view.InitNew();
-        StateHasChanged();
-    }
-
-    public async Task OnGet(object id)
-    {
         await loading.Begin();
-
-        await view.Get(id);
-
+        await view.Search();
         await loading.End();
 
         if (!view.ServiceStatus.Success)
         {
             await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
-                view.texts.Get("ErrorOnReturnData"));
-
+                view.texts.Get("ErrorOnExecuteSearch"));
         }
-        else
-        {
-            view.InitEdit();
-
-        }
-
-        StateHasChanged();
     }
 
-
-    public async Task OnSet()
+    public async Task OnRecordsPerPageChanged(int value)
     {
+        view.param.PageIndex = 0;
+        view.param.RecordsPerPage = value;
 
-        await view.Set();
+        await loading.Begin();
+        await view.Search();
+        await loading.End();
 
         if (!view.ServiceStatus.Success)
         {
             await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
-                view.texts.Get("NoticeLabel"));
-
+                view.texts.Get("ErrorOnExecuteSearch"));
         }
         else
         {
-            await msgbox.ShowSuccessAsync(view.texts.Get("SuccessSaveMessage"),
-                view.texts.Get("SuccessLabel"));
-
-            this.Back();
-
+            view.param.PageIndex = 1;
         }
 
-
     }
 
-    public async Task OnDetClick(object id)
-    {
-        await OnGet(id);
-
-    }
-
-    public void Back()
-    {
-        view.BackToSearch();
-        StateHasChanged();
-
-    }
+     
 
     public void GoHome()
     {

@@ -117,11 +117,11 @@ namespace MyApp.Proxys
 
         }
 
-        public async Task<APIResponse<List<UserResult>?>> Search(UserParam data)
+        public async Task<APIResponse<PagedList<UserResult>?>> Search(UserParam data)
         {
-            APIResponse<List<UserResult>?> ret = null;
+            APIResponse<PagedList<UserResult>?> ret = null;
             
-            ret = await PostAsJSON<List<UserResult>?>("search", JsonConvert.SerializeObject(data),null);
+            ret = await PostAsJSON<PagedList<UserResult>?>("search", JsonConvert.SerializeObject(data),null);
             
             return ret;
         }
@@ -375,11 +375,11 @@ namespace MyApp.Proxys
 
         }
 
-        public async Task<APIResponse<List<DataLogResult>?>> Search(DataLogParam data)
+        public async Task<APIResponse<PagedList<DataLogResult>?>> Search(DataLogParam data)
         {
-            APIResponse<List<DataLogResult>?> ret = null;
+            APIResponse<PagedList<DataLogResult>?> ret = null;
 
-            ret = await PostAsJSON<List<DataLogResult>?>("search", JsonConvert.SerializeObject(data), null);
+            ret = await PostAsJSON<PagedList<DataLogResult>?>("search", JsonConvert.SerializeObject(data), null);
 
 
             return ret;
@@ -537,11 +537,11 @@ namespace MyApp.Proxys
 
         }
 
-        public async Task<APIResponse<List<PermissionResult>?>> Search(PermissionParam param)
+        public async Task<APIResponse<PagedList<PermissionResult>?>> Search(PermissionParam param)
         {
-            APIResponse<List<PermissionResult>?> ret = null;
+            APIResponse<PagedList<PermissionResult>?> ret = null;
 
-            ret = await PostAsJSON<List<PermissionResult>?>("search",
+            ret = await PostAsJSON<PagedList<PermissionResult>?>("search",
                 JsonConvert.SerializeObject(param), null);
 
 
@@ -597,11 +597,11 @@ namespace MyApp.Proxys
 
         }
 
-        public async Task<APIResponse<List<LocalizationTextResult>?>> Search(LocalizationTextParam param)
+        public async Task<APIResponse<PagedList<LocalizationTextResult>?>> Search(LocalizationTextParam param)
         {
-            APIResponse<List<LocalizationTextResult>?> ret = null;
+            APIResponse<PagedList<LocalizationTextResult>?> ret = null;
 
-            ret = await PostAsJSON<List<LocalizationTextResult>?>("search",
+            ret = await PostAsJSON<PagedList<LocalizationTextResult>?>("search",
                 JsonConvert.SerializeObject(param), null);
 
 
@@ -758,11 +758,11 @@ namespace MyApp.Proxys
 
         }
 
-        public async Task<APIResponse<List<ExceptionLogResult>?>> Search(ExceptionLogParam data)
+        public async Task<APIResponse<PagedList<ExceptionLogResult>?>> Search(ExceptionLogParam data)
         {
-            APIResponse<List<ExceptionLogResult>?> ret = null;
+            APIResponse<PagedList<ExceptionLogResult>?> ret = null;
 
-            ret = await PostAsJSON<List<ExceptionLogResult>?>("search", JsonConvert.SerializeObject(data), null);
+            ret = await PostAsJSON<PagedList<ExceptionLogResult>?>("search", JsonConvert.SerializeObject(data), null);
 
 
             return ret;

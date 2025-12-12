@@ -75,7 +75,9 @@ namespace FullDevToolKit.Sys.Data.Repositories
         // retorna uma listagem com controle de paginação 
         public async Task<PagedList<SessionLogResult>> ReadSearch(SessionLogParam param)
         {
-            PagedList<SessionLogResult> ret  = new PagedList<SessionLogResult>();   
+            PagedList<SessionLogResult> ret  = new PagedList<SessionLogResult>()
+            { RecordList=new List<SessionLogResult>()};   
+
             List<SessionLogResult> recordlist = null;
             List<PaginationModel> paglist = null;
             int index = 1; 
@@ -107,8 +109,8 @@ namespace FullDevToolKit.Sys.Data.Repositories
 
                 ret.PageCount = paginationSettings.PageCount; 
                 ret.TotalRecords = paglist.Count;
-                ret.RecordList = recordlist; 
-                
+                ret.RecordList = recordlist;
+                ret.RecordCount = recordlist.Count; 
             }
           
             return ret;

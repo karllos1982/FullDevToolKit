@@ -3,6 +3,7 @@ using FullDevToolKit.Core;
 using FullDevToolKit.Sys.Contracts.Repositories;
 using FullDevToolKit.Sys.Models.Common;
 using FullDevToolKit.Sys.Data.QueryBuilders;
+using FullDevToolKit.Core.Common;
 
 namespace FullDevToolKit.Sys.Data.Repositories
 {
@@ -68,12 +69,40 @@ namespace FullDevToolKit.Sys.Data.Repositories
             return ret;
         }
 
-        public async Task<List<ExceptionLogResult>> ReadSearch(ExceptionLogParam param)
+     
+        public async Task<PagedList<ExceptionLogResult>> ReadSearch(ExceptionLogParam param)
         {
-            List<ExceptionLogResult> ret = null;
+            PagedList<ExceptionLogResult> ret = new PagedList<ExceptionLogResult>()
+            { RecordList = new List<ExceptionLogResult>() };
 
-            ret = await Context
+            List<ExceptionLogResult> recordlist = null;
+            List<PaginationModel> paglist = null;
+            int index = 1;
+
+            paglist = await Context
+            .ExecuteQueryToListAsync<PaginationModel>(query.QueryForPaginationSettings(param), param);
+
+            if (paglist.Count > 0)
+            {
+
+                PaginationSettings paginationSettings
+                    = query.GetPaginationSettings(paglist,
+                    BaseParam.CalcPageCount(param.RecordsPerPage, paglist.Count), param.RecordsPerPage);
+
+                if (param.PageIndex > 0)
+                {
+                    index = param.PageIndex;
+                }
+
+                param.Pagination = paginationSettings.GetItem(index);
+                recordlist = await Context
                 .ExecuteQueryToListAsync<ExceptionLogResult>(query.QueryForSearch(param), param);
+
+                ret.PageCount = paginationSettings.PageCount;
+                ret.TotalRecords = paglist.Count;
+                ret.RecordList = recordlist;
+                ret.RecordCount = recordlist.Count;
+            }
 
             return ret;
         }

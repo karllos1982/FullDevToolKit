@@ -29,21 +29,21 @@
                               Title="@view.texts.Get("NewLocalization-Label")"
                               Disabled="!view.Permissions.AllowSave"
                               Visible="!view.GetTabEditState()"
-                              OnAction="OnNew">
+                              OnAction="@form.OnNew">
             </FormActionButton>
 
             <FormActionButton ButtonType=ButtonTypeEnum.SAVE
                               Title="@view.texts.Get("SaveLocalizationButton-Label")"
                               Disabled="!view.Permissions.AllowSave"
                               Visible="view.GetTabEditState()"
-                              OnAction="OnSet">
+                              OnAction="@form.OnSet">
             </FormActionButton>
 
         </FluentGridItem>
 
         <FluentGridItem lg="1" xs="12" Style="margin-top: 6px;">
 
-            <TaskIconButton OnClick="OnRemove"
+            <TaskIconButton OnClick="@form.OnRemove"
                             Visible="view.Editing"
                             Disabled="!view.Permissions.AllowSave"
                             IconStart="@(new Icons.Regular.Size24.Delete())">
@@ -133,8 +133,7 @@
 
                     <div id="datagrid-container">
                         <FluentDataGrid Items="@view.gridlist"
-                                        TGridItem="LocalizationTextResult"
-                                        Pagination="@pagination"
+                                        TGridItem="LocalizationTextResult"                                        
                                         RowSize="@rowSize"
                                         ResizableColumns=true
                                         Style="overflow-y:hidden;">
@@ -147,7 +146,7 @@
 
                                 <FluentButton Appearance="Appearance.Lightweight"
                                               IconEnd="@(new Icons.Regular.Size24.ClipboardTextEdit())"
-                                              @onclick="@(() => OnDetClick(context.LocalizationTextID ))">
+                                              @onclick="@(() => @form.OnDetClick(context.LocalizationTextID ))">
                                 </FluentButton>
 
                             </TemplateColumn>
@@ -155,7 +154,15 @@
                         </FluentDataGrid>
                     </div>
 
-                    <FluentPaginator State="@pagination" />
+                    <Pagenator PageCount="@view.searchresult.PageCount"
+                               TotalRecords="@view.searchresult.TotalRecords"
+                               RecordCount="@view.searchresult.RecordCount"
+                               PageIndex="@view.param.PageIndex"
+                               RecordsPerPage="@view.param.RecordsPerPage"
+                               OnPageChanged="OnPageChanged"
+                               OnRecordsPerChanged="OnRecordsPerPageChanged"
+                               Localization="@view.texts">
+                    </Pagenator>                    
 
                 </FluentCard>
             </FluentGridItem>
@@ -169,7 +176,7 @@
 
             <FluentGridItem lg="1" xs="12" Style="margin-top: 0px;">
 
-                <TaskIconButton OnClick="Back"
+                <TaskIconButton OnClick="@form.Back"
                                 IconStart="@(new Icons.Regular.Size24.ArrowCircleLeft())">
 
                 </TaskIconButton>
@@ -240,6 +247,7 @@ else
 @code {
 
     private LocalizationTextViewModel view;
+    private PageFormMethods form; 
 
     //
    
@@ -277,6 +285,9 @@ else
                         Title = view.texts.Get("LoadingPage"),
                         Description = view.texts.Get("LocalizationRecord-Label")
                     };
+
+                    
+                this.form = new PageFormMethods(view, msgbox,loading); 
             }
 
             StateHasChanged();
@@ -288,6 +299,7 @@ else
 
     public async Task OnSearch()
     {
+        view.param.PageIndex = 0;
         await view.Search();
 
         if (!view.ServiceStatus.Success)
@@ -296,105 +308,51 @@ else
                 view.texts.Get("ErrorOnExecuteSearch"));
 
         }
+        else
+        {
+            view.param.PageIndex = 1;
+        }
 
     }
 
-    public void OnNew()
+    public async Task OnPageChanged(int value)
     {
-
-        view.InitNew();
-        StateHasChanged();
-    }
-
-    public async Task OnGet(object id)
-    {
+        view.param.PageIndex = value;
 
         await loading.Begin();
-
-        await view.Get(id);
-
+        await view.Search();
         await loading.End();
 
         if (!view.ServiceStatus.Success)
         {
             await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
-                view.texts.Get("ErrorOnReturnData"));
-
+                view.texts.Get("ErrorOnExecuteSearch"));
         }
-        else
-        {
-            view.InitEdit();
-
-        }
-
-        StateHasChanged();
     }
 
-
-    public async Task OnSet()
+    public async Task OnRecordsPerPageChanged(int value)
     {
+        view.param.PageIndex = 0;
+        view.param.RecordsPerPage = value;
 
-        await view.Set();
+        await loading.Begin();
+        await view.Search();
+        await loading.End();
 
         if (!view.ServiceStatus.Success)
         {
             await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
-                view.texts.Get("NoticeLabel"));
-
+                view.texts.Get("ErrorOnExecuteSearch"));
         }
         else
         {
-            await msgbox.ShowSuccessAsync(view.texts.Get("SuccessSaveMessage"),
-                view.texts.Get("SuccessLabel"));
-
-            this.Back();
-
+            view.param.PageIndex = 1;
         }
 
     }
 
-    public async Task OnRemove()
-    {
 
-        var dialog = await msgbox.ShowConfirmationAsync(view.texts.Get("RemoveConfirmation-Label"));
-        var result = await dialog.Result;
-        bool canceled = result.Cancelled;
-
-        if (!canceled)
-        {            
-            
-            await view.Remove();
-                    
-            if (!view.ServiceStatus.Success)
-            {
-                await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
-                    view.texts.Get("NoticeLabel"));
-            }
-            else
-            {
-                await msgbox.ShowSuccessAsync(view.texts.Get("RemoveConfirmation-Message"),
-                    view.texts.Get("SuccessLabel"));
-
-                await view.Search();
-                this.Back();
-            }
-        }
-
-    }
-
-    public async Task OnDetClick(object id)
-    {
-        await OnGet(id);
-
-    }
-
-    public void Back()
-    {
-        view.BackToSearch();
-        StateHasChanged();
-
-    }
-
+   
     public void GoHome()
     {
         string url = _appctrl.UserInfo.HomeURL;

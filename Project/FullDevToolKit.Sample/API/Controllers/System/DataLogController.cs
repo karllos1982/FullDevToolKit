@@ -4,6 +4,7 @@ using FullDevToolKit.Common;
 using MyApp.API;
 using Microsoft.AspNetCore.Authorization;
 using FullDevToolKit.Core;
+using FullDevToolKit.Core.Common;
 
 
 namespace MyApp.Controllers
@@ -25,7 +26,7 @@ namespace MyApp.Controllers
         {
             await ExecuteForRead(param, async (param) =>
             {
-                List<DataLogResult> data
+                PagedList<DataLogResult> data
                     = await Manager.IdentityModule.Domainset.DataLog.Search(param);
                 ret = SetReturn(data);
             });

@@ -3,6 +3,7 @@ using MyApp.Models;
 using MyApp.Proxys;
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Helpers;
+using FullDevToolKit.Core.Common;
 
 namespace MyApp.ViewModel
 {
@@ -30,7 +31,7 @@ namespace MyApp.ViewModel
 
         public PersonResult result = new PersonResult();
         public PersonParam param = new PersonParam() { };
-        public List<PersonResult> searchresult = new List<PersonResult>();
+        public PagedList<PersonResult> searchresult = new PagedList<PersonResult>();
         public IQueryable<PersonResult> gridlist = null;
         public IQueryable<PersonContactResult> gridlistContacts = null;
 
@@ -120,11 +121,11 @@ namespace MyApp.ViewModel
 		{
 			ServiceStatus = new ExecutionStatus(true);
 
-			APIResponse<List<PersonResult>> ret
+			APIResponse<PagedList<PersonResult>> ret
 			   = await _proxys.Person.Search(param);
 
-			SetResult<List<PersonResult>>(ret, ref searchresult, ref ServiceStatus);
-            gridlist = searchresult.AsQueryable();
+			SetResult<PagedList<PersonResult>>(ret, ref searchresult, ref ServiceStatus);
+            gridlist = searchresult.RecordList.AsQueryable();
         }
 		
 
