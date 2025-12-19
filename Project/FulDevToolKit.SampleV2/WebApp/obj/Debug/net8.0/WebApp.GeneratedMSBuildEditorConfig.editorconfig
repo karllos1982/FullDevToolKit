@@ -38,10 +38,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xBZG1pblxQZXJzb24ucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebApp/Components/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xDb3VudGVyLnJhem9y
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebApp/Components/Pages/Error.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xFcnJvci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -64,6 +60,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebApp/Components/Pages/SuperAdmin/ExceptionLog.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdXBlckFkbWluXEV4Y2VwdGlvbkxvZy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebApp/Components/Pages/SuperAdmin/FileServerManager.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50c1xQYWdlc1xTdXBlckFkbWluXEZpbGVTZXJ2ZXJNYW5hZ2VyLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Projetos/OUTROS/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebApp/Components/Pages/SuperAdmin/GroupParameter.razor]

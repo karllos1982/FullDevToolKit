@@ -94,9 +94,7 @@
                                         TGridItem="SessionLogResult"                                        
                                         RowSize="@rowSize"
                                         ResizableColumns=true                                       
-                                        Style="overflow-y:hidden;">
-
-                            <PropertyColumn Property="@(c => c.Seq)" Title="Seq" Sortable="true" Width="10%" />
+                                        Style="overflow-y:hidden;">                            
                             <PropertyColumn Property="@(c => c.Date)" Title="@view.texts.Get("AccessDate-Label")" Sortable="true" Width="20%" />
                             <PropertyColumn Property="@(c => c.Email)" Title="@view.texts.Get("Email-Label")" Sortable="true" Width="25%" />
                             <PropertyColumn Property="@(c => c.UserName)" Title="@view.texts.Get("UserName-Label")" Sortable="true" Width="25%" />

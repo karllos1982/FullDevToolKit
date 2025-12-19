@@ -19,6 +19,7 @@ builder.Services.AddSingleton<IAppSettings, MyAppSettings>();
 builder.Services.AddSingleton<IAuthProxyManager, AuthProxy>();
 builder.Services.AddSingleton<ISystemProxyManager, SystemProxy>();
 builder.Services.AddSingleton<IDataCacheProxyManager, DataCacheProxy>();
+builder.Services.AddSingleton<IFileServerProxyManager, FileServerProxy>();
 builder.Services.AddSingleton<IMyAppProxy, MyAppProxy>();
 
 builder.Services.AddScoped<IAppControllerAsync<UserAuthenticated>, MyAppController>();

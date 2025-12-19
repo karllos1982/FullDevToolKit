@@ -370,6 +370,161 @@
   {
     "ContainingType": "MyApp.API.APIControllerBase",
     "Method": "Init",
+    "RelativePath": "FileServer",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
+    "RelativePath": "FileServer",
+    "HttpMethod": "",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "objetocode",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "API.Controllers.FileServerController",
+    "Method": "DeleteFile",
+    "RelativePath": "FileServer/deletefile",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Core.Common.FileEntry",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FileServerController",
+    "Method": "DownloadFile",
+    "RelativePath": "FileServer/downloadfile",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dir",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "file",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FileServerController",
+    "Method": "GetFileInfo",
+    "RelativePath": "FileServer/getfileinfo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Core.Common.FileEntry",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FileServerController",
+    "Method": "ListDirectories",
+    "RelativePath": "FileServer/listdirectories",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FileServerController",
+    "Method": "ListFiles",
+    "RelativePath": "FileServer/listfiles",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Core.Common.FileEntry",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FileServerController",
+    "Method": "MoveFileDirectory",
+    "RelativePath": "FileServer/movefiledirectory",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Core.Common.MoveFileEntry",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.FileServerController",
+    "Method": "UploadFile",
+    "RelativePath": "FileServer/uploadfile",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "FullDevToolKit.Core.Common.FileEntry",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MyApp.API.APIControllerBase",
+    "Method": "Init",
     "RelativePath": "myapp/Person",
     "HttpMethod": "",
     "IsController": true,
@@ -412,7 +567,7 @@
     ]
   },
   {
-    "ContainingType": "Template.Controllers.PersonController",
+    "ContainingType": "API.Controllers.PersonController",
     "Method": "ContactEntryValidation",
     "RelativePath": "myapp/Person/contactsentryvalidation",
     "HttpMethod": "POST",
@@ -428,7 +583,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Template.Controllers.PersonController",
+    "ContainingType": "API.Controllers.PersonController",
     "Method": "Get",
     "RelativePath": "myapp/Person/get",
     "HttpMethod": "GET",
@@ -444,7 +599,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Template.Controllers.PersonController",
+    "ContainingType": "API.Controllers.PersonController",
     "Method": "List",
     "RelativePath": "myapp/Person/list",
     "HttpMethod": "POST",
@@ -460,7 +615,23 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Template.Controllers.PersonController",
+    "ContainingType": "API.Controllers.PersonController",
+    "Method": "Remove",
+    "RelativePath": "myapp/Person/remove",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "param",
+        "Type": "MyApp.Models.PersonEntry",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "API.Controllers.PersonController",
     "Method": "Search",
     "RelativePath": "myapp/Person/search",
     "HttpMethod": "POST",
@@ -476,7 +647,7 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "Template.Controllers.PersonController",
+    "ContainingType": "API.Controllers.PersonController",
     "Method": "Set",
     "RelativePath": "myapp/Person/set",
     "HttpMethod": "POST",

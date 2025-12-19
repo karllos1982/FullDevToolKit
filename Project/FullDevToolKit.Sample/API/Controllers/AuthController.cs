@@ -423,7 +423,7 @@ namespace MyApp.Controllers
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
             MyAppSettings settings = (MyAppSettings)Context.Settings;
 
-            LocalFileService service = new LocalFileService("", settings.ProfileImageDir);
+            LocalFileService service = new LocalFileService("");
             Stream body = Request.Body;
             
             ChangeUserImage data = new ChangeUserImage();
@@ -434,9 +434,11 @@ namespace MyApp.Controllers
 
             if (Context.Status.Success)
             {
-                opsts = await service.UploadFile(body, data.FileName);
+              
+                FileOperationResult opsts
+                    = await service.UploadFile(body, settings.ProfileImageDir, data.FileName);
 
-                ret = SetReturn<bool>(opsts.Success);
+                ret = SetReturn<bool>(opsts.Status);
             }
             else
             {
@@ -457,13 +459,13 @@ namespace MyApp.Controllers
 
             MyAppSettings settings = (MyAppSettings)Context.Settings;
 
-            LocalFileService service = new LocalFileService("", settings.ProfileImageDir);
+            LocalFileService service = new LocalFileService("");
 
-            Stream str =  service.DownloadFile(file);
+            Stream str =  service.DownloadFile(settings.ProfileImageDir,file);
 
             if (str == null)
             {
-                str = service.DownloadFile("user_anonymous.png");
+                str = service.DownloadFile(settings.ProfileImageDir,"user_anonymous.png");
             }
 
             FileStreamResult result = new FileStreamResult(str, "application/octet-stream");

@@ -157,12 +157,7 @@ namespace FullDevToolKit.Sys.Manager
 						{
                             if (usermatch.AuthCode == model.CurrentToken)
                             {
-                                if (usermatch.AuthCodeExpires.Ticks < DateTime.Now.Ticks)
-                                {
-                                    // token expirado
-									errmsg = LocalizationText.Get("Login-Invalid-Password",
-									Domainset.User.Context.LocalizationLanguage).Text;
-								}
+                                
                             }
                             else
                             {          

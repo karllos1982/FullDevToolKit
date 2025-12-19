@@ -1,43 +1,37 @@
-﻿using FullDevToolKit.Common;
-
+﻿using Azure;
+using FullDevToolKit.Common;
+using System.IO;
+using FullDevToolKit.Core.Common;
 
 namespace MyApp.API
 {
-
-    public interface IFileService
-    {
-        Task<ExecutionStatus> UploadFile(Stream content, string filename);
-        Stream DownloadFile(string filename); 
-
-    }
-
+    
     public class LocalFileService : IFileService
     {
 
         private string _connection = "";
-        private string _container = "";
+        private string _basepath= "";
 
-        public LocalFileService(string connection, string container)
+        public LocalFileService(string connection)
         {
             _connection = connection;
-            _container = container;
 
-
+            _basepath = $@"{Environment.CurrentDirectory}";
+            _basepath = _basepath.Replace('\\', '/');
+            _basepath = _basepath + $"/FileServer/"; 
         }
 
-        public async Task<ExecutionStatus> UploadFile(Stream content, string filename)
+        public async Task<FileOperationResult> UploadFile(Stream content, string directory,
+            string filename)
         {
 
-            ExecutionStatus ret = new ExecutionStatus(true);
+            FileOperationResult ret = new FileOperationResult();
 
             try
             {
                              
                 string fisicalpath = "";
-
-                fisicalpath = $@"{Environment.CurrentDirectory}";
-                fisicalpath = fisicalpath.Replace('\\', '/');
-                fisicalpath = fisicalpath + $"/FileServer/{_container}/{filename}";
+                fisicalpath = $"{_basepath}{directory}/{filename}";
 
                 if (File.Exists(fisicalpath))
                 {
@@ -47,20 +41,19 @@ namespace MyApp.API
                 MemoryStream aux = new MemoryStream();
                 await content.CopyToAsync(aux);
                 File.WriteAllBytes(fisicalpath, aux.ToArray());
-
+                ret.Status = true;
 
             }
             catch (Exception ex)
-            {
-                ret.Success = false;
-                ret.Exceptions.AddException("Error", ex.Message);
+            {                
+                ret.ErrMessage = ex.Message;
             }
 
             return ret;
 
         }
 
-        public Stream DownloadFile(string filename)
+        public Stream DownloadFile(string directory, string filename)
         {
 
             Stream ret = null;
@@ -68,11 +61,8 @@ namespace MyApp.API
             try
             {
 
-                string fisicalpath = "";
-
-                fisicalpath = $@"{Environment.CurrentDirectory}";
-                fisicalpath = fisicalpath.Replace('\\', '/');
-                fisicalpath = fisicalpath + $"/FileServer/{_container}/{filename}";
+                string fisicalpath = "";                
+                fisicalpath = $"{_basepath}{directory}/{filename}";
 
                 if (File.Exists(fisicalpath))
                 {
@@ -87,10 +77,140 @@ namespace MyApp.API
             return ret;
 
         }
+
+        public async Task<FileOperationResult> DeleteFile(string directory, string filename)
+        {
+            FileOperationResult ret = new FileOperationResult();
+
+            try
+            {
+
+                string fisicalpath = "";             
+                fisicalpath = $"{_basepath}{directory}/{filename}";
+
+                if (File.Exists(fisicalpath))
+                {
+                    File.Delete(fisicalpath);
+                    ret.Status = true;
+                }
+            }
+            catch (Exception ex)
+            {                
+                ret.ErrMessage = ex.Message;
+            }
+
+            return ret;
+        }
+
+
+        public async Task<FileOperationResult> MoveFileDirectory(MoveFileEntry param)           
+        {
+            FileOperationResult ret = new FileOperationResult();
+
+            try
+            {
+
+                string fisicalpath = "";
+                fisicalpath = $"{_basepath}{param.FromDirectory}/{param.Filename}";
+
+                if (File.Exists(fisicalpath))
+                {
+                    string newpath = $"{_basepath}{param.ToDirectory}/{param.Filename}"; 
+
+                    if (!File.Exists(newpath))
+                    {
+                        Directory.Move(fisicalpath, newpath);
+                        ret.Status = true; 
+                    }
+                    else
+                    {                        
+                        ret.ErrMessage =  "Já existe um arquivo no destino com o mesmo nome.";
+                    }
+                    
+                }
+                else
+                {                    
+                    ret.ErrMessage = "O arquivo de origem não existe.";
+                }
+            }
+            catch (Exception ex)
+            {
+                ret.ErrMessage = ex.Message;
+            }
+
+            return ret;
+        }
+
+        public async Task<List<DirectoryResult>> ListDirectories()
+        {
+            List<DirectoryResult> ret = new List<DirectoryResult>();
+
+            if (Directory.Exists(_basepath))
+            {
+                var dirs = Directory.GetDirectories(_basepath);
+                foreach (var dir in dirs)
+                {
+                    ret.Add(new DirectoryResult() { Directory = Path.GetFileName(dir) });
+                }
+            }
+
+            return ret;
+        }
+
+        public async Task<List<FileResult>> ListFiles(string directory)
+        {
+            List<FileResult> ret = new List<FileResult>();
+
+            string fisicalpath = $"{_basepath}{directory}/";
+
+            if (Directory.Exists(fisicalpath))
+            {
+                var files = Directory.GetFiles(fisicalpath);
+                foreach (var file in files)
+                {
+                    ret.Add( new FileResult() 
+                    { 
+                        Filename = Path.GetFileName(file)                        
+                    });
+                }
+            }
+
+            return ret;
+        }
+
+        public async Task<FileOperationResult> GetFileInfo(string directory, string filename)
+        {
+            FileOperationResult ret = new FileOperationResult();
+
+            string fisicalpath = "";
+            fisicalpath = $"{_basepath}{directory}/{filename}";
+
+            if (File.Exists(fisicalpath))
+            {
+
+                FileInfo info = new FileInfo(fisicalpath);
+                ret.Status = true;
+                ret.Info = info; 
+
+            }
+            else
+            {                
+                ret.ErrMessage = "O arquivo não existe.";
+            }
+
+            return ret;
+        }
+
+        public string GetFileURL(string directory, string filename)
+        {
+            string ret = "";
+
+            return ret;
+        }
     }
 
 
-    public class AzureFileService: IFileService
+    public class AzureFileService
     {
 
         //private BlobClient _service = null;
@@ -98,12 +218,10 @@ namespace MyApp.API
         private string _connection = "";
         private string _container = ""; 
 
-        public AzureFileService(string connection, string container)
+        public AzureFileService(string connection)
         {
-            _connection = connection;   
-            _container = container; 
+            _connection = connection;              
            
-
         }
 
         public async Task<ExecutionStatus> UploadFile(Stream content, string filename)
@@ -160,6 +278,9 @@ namespace MyApp.API
             return ret;
 
         }
+
+                  
+
     }
 
 

@@ -110,8 +110,10 @@ namespace WebUIComponents.Common
         public async Task OnRemove()
         {
 
-            var dialog = await msgbox.ShowConfirmationAsync(view.texts.Get("RemoveConfirmation-Label"));
-            var result = await dialog.Result;
+            var dialog = await msgbox.ShowConfirmationAsync(view.texts.Get("RemoveConfirmation-Label"), 
+                view.texts.Get("Yes-Text"), view.texts.Get("No-Text"),
+                view.texts.Get("Messagebox-Confirmation-Title"));
+            var result = await dialog.Result; 
             bool canceled = result.Cancelled;
 
             if (!canceled)

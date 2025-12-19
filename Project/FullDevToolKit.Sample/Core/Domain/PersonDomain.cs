@@ -264,9 +264,12 @@ namespace MyApp.Domain
             ret = await ExecutionForDelete(model, userid,
                       async (model) =>
                       {
-                          return
-                            await RepositorySet.Person.ReadObject(new PersonParam()
+                          PersonResult person
+                           =  await RepositorySet.Person.ReadObject(new PersonParam()
                             { pPersonID = model.PersonID });
+                          await FillChields(person);
+
+                          return person; 
                       }
                       ,
                       async (model) =>

@@ -127,7 +127,7 @@
 
 		if (islogged)
 		{
-			await _appctrl.GetSession();
+			await _appctrl.GetSession(_settings);
 			user = _appctrl.UserInfo;
 
 			ret = true; // (user.RoleName == "SuperAdmin"); 						

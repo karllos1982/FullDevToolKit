@@ -83,6 +83,15 @@ namespace MyApp.Proxys
 			return ret;
 		}
 
+        public async Task<APIResponse<PersonEntry>?> Remove(PersonEntry data)
+        {
+            APIResponse<PersonEntry?> ret = null;
+
+            ret = await PostAsJSON<PersonEntry?>("remove", JsonConvert.SerializeObject(data), null);
+
+            return ret;
+        }
+
 
         public async Task<APIResponse<PersonContactEntry?>> ContactEntryValidation(PersonContactEntry data)
         {

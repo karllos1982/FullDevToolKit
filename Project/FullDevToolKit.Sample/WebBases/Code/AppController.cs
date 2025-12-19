@@ -27,7 +27,7 @@ namespace MyApp.ServerCode
 
         Task<ExecutionStatus> CreateSession(UserAuthenticated user);
 
-        Task GetSession();
+        Task GetSession(IAppSettings _settings = null);
 
         Task ClearSession();
 

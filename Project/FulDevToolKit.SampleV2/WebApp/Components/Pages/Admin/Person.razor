@@ -19,27 +19,37 @@
 
     <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
 
-        <FluentGridItem lg="10" xs="12">
+        <FluentGridItem lg="8" xs="12">
             <FluentLabel> <h2> @_PageTitle</h2> </FluentLabel>
 
         </FluentGridItem>
 
-        <FluentGridItem lg="2" xs="12" Style="margin-top: 6px;">
+        <FluentGridItem lg="3" xs="12" Style="margin-top: 6px;">
 
             <FormActionButton ButtonType=ButtonTypeEnum.ADD
                               Title="@view.texts.Get("NewPerson-Label")"
                               Disabled="!view.Permissions.AllowSave"
                               Visible="!view.GetTabEditState()"
-                              OnAction="OnNew">
+                              OnAction="@form.OnNew">
             </FormActionButton>
 
             <FormActionButton ButtonType=ButtonTypeEnum.SAVE
                               Title="@view.texts.Get("SavePersonButton-Label")"
                               Disabled="!view.Permissions.AllowSave"
                               Visible="view.GetTabEditState()"
-                              OnAction="OnSet">
+                              OnAction="@form.OnSet">
             </FormActionButton>
 
+
+        </FluentGridItem>
+
+         <FluentGridItem lg="1" xs="12" Style="margin-top: 6px;">
+
+            <TaskIconButton OnClick="@form.OnRemove"
+                            Visible="view.Editing"
+                            Disabled="!view.Permissions.AllowSave"
+                            IconStart="@(new Icons.Regular.Size24.Delete())">
+            </TaskIconButton>
 
         </FluentGridItem>
 
@@ -104,7 +114,7 @@
 
                                 <FluentButton Appearance="Appearance.Lightweight"
                                               IconEnd="@(new Icons.Regular.Size24.ClipboardTextEdit())"
-                                              @onclick="@(() => OnDetClick(context.PersonID))">
+                                              @onclick="@(() => @form.OnDetClick(context.PersonID))">
                                 </FluentButton>
 
                             </TemplateColumn>
@@ -134,7 +144,7 @@
 
             <FluentGridItem lg="1" xs="12" Style="margin-top: 0px;">
 
-                <TaskIconButton OnClick="Back"
+                <TaskIconButton OnClick="@form.Back"
                                 IconStart="@(new Icons.Regular.Size24.ArrowCircleLeft())">
 
                 </TaskIconButton>
@@ -310,6 +320,7 @@ else
 
 
     private PersonViewModel view;
+    private PageFormMethods form; 
 
     //
 
@@ -350,13 +361,15 @@ else
                     { Title = view.texts.Get("LoadingPage"), 
                         Description = view.texts.Get("Person-PageTitle")
                     };
+
+                 this.form = new PageFormMethods(view, msgbox,loading); 
+
             }
 
             StateHasChanged();
 
         }
     }
-
 
 
     public async Task OnSearch()
@@ -413,72 +426,7 @@ else
 
     }
 
-    public void OnNew()
-    {
-
-        view.InitNew();
-        StateHasChanged();
-    }
-
-    public async Task OnGet(object id)
-    {
-        await loading.Begin();
-
-        await view.Get(id);
-
-        await loading.End();
-
-        if (!view.ServiceStatus.Success)
-        {
-            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
-                view.texts.Get("ErrorOnReturnData"));
-
-        }
-        else
-        {
-            view.InitEdit();
-
-        }
-
-        StateHasChanged();
-    }
-
-
-    public async Task OnSet()
-    {
-
-        await view.Set();
-
-        if (!view.ServiceStatus.Success)
-        {
-            await msgbox.ShowWarningAsync(view.ServiceStatus.Exceptions.Messages[0].Description,
-                view.texts.Get("NoticeLabel"));
-
-        }
-        else
-        {
-            await msgbox.ShowSuccessAsync(view.texts.Get("SuccessSaveMessage"),
-                view.texts.Get("SuccessLabel"));
-
-            this.Back();
-
-        }
-
-
-    }
-
-    public async Task OnDetClick(object id)
-    {
-        await OnGet(id);
-
-    }
-
-    public void Back()
-    {
-        view.BackToSearch();
-        StateHasChanged();
-
-    }
+    
 
     public void GoHome()
     {

@@ -5,8 +5,9 @@ using Microsoft.AspNetCore.Authorization;
 using FullDevToolKit.Core;
 using MyApp.Models;
 using FullDevToolKit.Core.Common;
+using FullDevToolKit.Sys.Models.Common;
 
-namespace Template.Controllers
+namespace API.Controllers
 {
     [Route("myapp/[controller]")]
     [ApiController]
@@ -84,7 +85,22 @@ namespace Template.Controllers
 
             return ret;         
         }
-       
+
+        [HttpPost]
+        [Route("remove")]
+        [Authorize]
+        public async Task<object> Remove(PersonEntry param)
+        {
+            await ExecuteForDelete(param, async (param) =>
+            {
+                PersonEntry data
+                    = await Manager.MainBusinessModule 
+                        .DomainSet.Person.Remove(param, this.UserID);
+                ret = SetReturn(data);
+            });
+
+            return ret;
+        }
 
         [HttpPost]
         [Route("contactsentryvalidation")]

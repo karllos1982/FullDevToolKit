@@ -135,7 +135,7 @@ namespace MyApp.ServerCode
         {
             bool ret = false;
 
-            await GetSession();
+            await GetSession(_settings);
 
             if (UserInfo != null)
             {
@@ -166,7 +166,7 @@ namespace MyApp.ServerCode
 
         }
 
-        public async Task GetSession()
+        public async Task GetSession(IAppSettings settings = null)
         {
             UserAuthenticated ticket = null;
 
@@ -182,7 +182,15 @@ namespace MyApp.ServerCode
                 {
                     if (ticket.KeepConnection)
                     {
-                        ticket = await RefreshLogin(ticket.Email, ticket.Token); 
+                        if (settings != null)
+                        {
+                            HttpClient httpClient = new HttpClient();
+                            httpClient.BaseAddress = new Uri(settings.ServiceURL);
+                            _apiproxy = new AuthProxy();
+                            _apiproxy.Init(httpClient, settings.ServiceURL, null); 
+                            ticket = await RefreshLogin(ticket.Email, ticket.Token);
+                        }
+                        
                     }
                 }
                 

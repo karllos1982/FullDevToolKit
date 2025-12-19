@@ -4,6 +4,7 @@ using MyApp.Proxys;
 using FullDevToolKit.Sys.Models.Identity;
 using FullDevToolKit.Helpers;
 using FullDevToolKit.Core.Common;
+using FullDevToolKit.Sys.Models.Common;
 
 namespace MyApp.ViewModel
 {
@@ -72,7 +73,14 @@ namespace MyApp.ViewModel
 
         public override async Task Remove()
         {
-            
+            ServiceStatus = new ExecutionStatus(true);
+
+            PersonEntry entry = new PersonEntry(result);
+
+            APIResponse<PersonEntry> ret
+                = await _proxys.Person.Remove(entry);
+
+            SetResult<PersonEntry>(ret, ref entry, ref ServiceStatus);
         }
 
         public override async Task Get(object id)

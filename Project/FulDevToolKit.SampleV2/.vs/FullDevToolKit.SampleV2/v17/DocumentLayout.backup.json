@@ -3,48 +3,48 @@
   "WorkspaceRootPath": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\sessionlog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\sessionlog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\fileservermanager.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\fileservermanager.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\users.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\users.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{71DBF85E-ED5D-4609-A4E2-11C5DFB11EA1}|..\\FullDevToolKit.Sample\\WebBases\\WebBases.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webbases\\viewmodels\\superadmin\\fileserverviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\permission.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\permission.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D80AF543-6F0F-4BD7-8A2A-B79D4B0BD3F1}|..\\FullDevToolKit.Sample\\Proxy\\Proxy.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\proxy\\fileserverproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\roles.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\roles.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BF1745C5-AD63-48D2-9673-FC85FB42FA50}|..\\FullDevToolKit.Sample\\API\\API.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\api\\controllers\\fileservercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BF1745C5-AD63-48D2-9673-FC85FB42FA50}|..\\FullDevToolKit.Sample\\API\\API.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\api\\code\\fileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{71DBF85E-ED5D-4609-A4E2-11C5DFB11EA1}|..\\FullDevToolKit.Sample\\WebBases\\WebBases.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\webbases\\viewmodels\\superadmin\\configsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\parameter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\parameter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\localizationtext.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\localizationtext.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\configs.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\configs.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\groupparameter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\groupparameter.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{0824FF1E-C293-4DE1-AD11-0701DBCC4899}|WebUIComponents\\WebUIComponents.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webuicomponents\\common\\userviewdetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{0824FF1E-C293-4DE1-AD11-0701DBCC4899}|WebUIComponents\\WebUIComponents.csproj|solutionrelative:webuicomponents\\common\\userviewdetails.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\instance.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\instance.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\language.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\language.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D80AF543-6F0F-4BD7-8A2A-B79D4B0BD3F1}|..\\FullDevToolKit.Sample\\Proxy\\Proxy.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\proxy\\myappproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\objectpermission.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\objectpermission.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{BF1745C5-AD63-48D2-9673-FC85FB42FA50}|..\\FullDevToolKit.Sample\\API\\API.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\exceptionlog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\exceptionlog.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D80AF543-6F0F-4BD7-8A2A-B79D4B0BD3F1}|..\\FullDevToolKit.Sample\\Proxy\\Proxy.csproj|c:\\projetos\\outros\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\proxy\\authproxy.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -53,8 +53,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedHeight": 12,
-          "SelectedChildIndex": 3,
+          "DockedHeight": 14,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,145 +66,171 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Users.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Users.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\Users.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Users.razor",
-              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\Users.razor",
-              "ViewState": "AgIAAFACAAAAAAAAAIAwwJICAAAMAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "FileServerManager.razor",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\FileServerManager.razor",
+              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\FileServerManager.razor",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\FileServerManager.razor",
+              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\FileServerManager.razor",
+              "ViewState": "AgIAAHsAAAAAAAAAAAAAAIMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-12T20:19:22.353Z",
+              "WhenOpened": "2025-12-19T19:34:16.898Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "SessionLog.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\SessionLog.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\SessionLog.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\SessionLog.razor",
-              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\SessionLog.razor",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-12T20:17:21.542Z",
+              "DocumentIndex": 1,
+              "Title": "FileServerViewModel.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\FileServerViewModel.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\FileServerViewModel.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\FileServerViewModel.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\FileServerViewModel.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwB0AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T19:00:27.622Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Roles.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Roles.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\Roles.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Roles.razor",
-              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\Roles.razor",
-              "ViewState": "AgIAALsAAAAAAAAAAAAAANUAAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-12T20:15:18.299Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Permission.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Permission.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\Permission.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Permission.razor",
-              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\Permission.razor",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACcAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-12T20:12:50.259Z",
+              "Title": "FileServerController.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\FileServerController.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\API\\Controllers\\FileServerController.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\FileServerController.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\API\\Controllers\\FileServerController.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAmwEwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T17:46:04.373Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Parameter.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Parameter.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\Parameter.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Parameter.razor",
-              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\Parameter.razor",
-              "ViewState": "AgIAAJwAAAAAAAAAAAAAAKUAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-12T20:09:48.44Z",
+              "Title": "FileService.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Code\\FileService.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\API\\Code\\FileService.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Code\\FileService.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\API\\Code\\FileService.cs",
+              "ViewState": "AgIAAJQAAAAAAAAAAAAAwKcAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T17:47:10.779Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "ObjectPermission.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\ObjectPermission.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\ObjectPermission.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\ObjectPermission.razor",
-              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\ObjectPermission.razor",
-              "ViewState": "AgIAALsAAAAAAAAAAAAwwNYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-12T20:07:21.213Z",
+              "DocumentIndex": 2,
+              "Title": "FileServerProxy.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\FileServerProxy.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\Proxy\\FileServerProxy.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\FileServerProxy.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\Proxy\\FileServerProxy.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAuwE4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T18:03:13.156Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "LocalizationText.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\LocalizationText.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\LocalizationText.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\LocalizationText.razor",
-              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\LocalizationText.razor",
-              "ViewState": "AgIAABABAAAAAAAAAAAswCEBAAAQAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-12T20:05:47.566Z",
+              "Title": "ConfigsViewModel.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\ConfigsViewModel.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\ConfigsViewModel.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\ConfigsViewModel.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\WebBases\\ViewModels\\SuperAdmin\\ConfigsViewModel.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwGsAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T20:02:28.974Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "Language.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Language.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\Language.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Language.razor",
-              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\Language.razor",
-              "ViewState": "AgIAALcAAAAAAAAAAAAswNYAAAANAAAAAAAAAA==",
+              "Title": "UserViewDetails.razor",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\UserViewDetails.razor",
+              "RelativeDocumentMoniker": "WebUIComponents\\Common\\UserViewDetails.razor",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebUIComponents\\Common\\UserViewDetails.razor",
+              "RelativeToolTip": "WebUIComponents\\Common\\UserViewDetails.razor",
+              "ViewState": "AgIAAPMAAAAAAAAAAAAAABUAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-12T20:05:41.288Z",
+              "WhenOpened": "2025-12-19T19:11:55.99Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 7,
-              "Title": "Instance.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Instance.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\Instance.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Instance.razor",
-              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\Instance.razor",
-              "ViewState": "AgIAAMIAAAAAAAAAAAAswNwAAAANAAAAAAAAAA==",
+              "Title": "Configs.razor",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Configs.razor",
+              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\Configs.razor",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Configs.razor",
+              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\Configs.razor",
+              "ViewState": "AgIAAMUAAAAAAAAAAAAuwOcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-12T20:05:32.733Z",
+              "WhenOpened": "2025-12-19T19:34:25.878Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "GroupParameter.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\GroupParameter.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\GroupParameter.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\GroupParameter.razor",
-              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\GroupParameter.razor",
-              "ViewState": "AgIAAMYAAAAAAAAAAAAswPIAAAABAAAAAAAAAA==",
+              "Title": "Parameter.razor",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Parameter.razor",
+              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\Parameter.razor",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Parameter.razor",
+              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\Parameter.razor",
+              "ViewState": "AgIAADMAAAAAAAAAAAAAAD4AAAAgAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-12T20:05:20.782Z",
+              "WhenOpened": "2025-12-19T19:58:52.926Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Program.cs",
+              "RelativeDocumentMoniker": "WebApp\\Program.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Program.cs",
+              "RelativeToolTip": "WebApp\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T19:01:03.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAIQBAAAAAAAAAAAkwLgBAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T18:37:18.159Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 10,
-              "Title": "ExceptionLog.razor",
-              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\ExceptionLog.razor",
-              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\ExceptionLog.razor",
-              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\ExceptionLog.razor",
-              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\ExceptionLog.razor",
-              "ViewState": "AgIAABkBAAAAAAAAAAAswHIBAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-12-12T20:04:54.984Z",
+              "Title": "MyAppProxy.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\MyAppProxy.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\Proxy\\MyAppProxy.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\MyAppProxy.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\Proxy\\MyAppProxy.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T18:21:39.591Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "AuthProxy.cs",
+              "DocumentMoniker": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\AuthProxy.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\Proxy\\AuthProxy.cs",
+              "ToolTip": "C:\\Projetos\\OUTROS\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\Proxy\\AuthProxy.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\Proxy\\AuthProxy.cs",
+              "ViewState": "AgIAADIAAAAAAAAAAAAuwEYAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-12-19T18:33:23.336Z",
               "EditorCaption": ""
             }
           ]
