@@ -99,10 +99,7 @@
     <FluentDialogHeader ShowDismiss="false">
         <FluentStack VerticalAlignment="VerticalAlignment.Center"
                      HorizontalAlignment="HorizontalAlignment.Center ">
-
-            <FluentIcon Value="@(new Icons.Regular.Size28.ArrowCircleLeft())" OnClick="ClosePageSelector"
-                Color="@Color.Accent" Slot="start" Class="paginator-button" />
-
+            
             <FluentLabel Typo="Typography.PaneHeader">
                 @Content.Title
             </FluentLabel>
@@ -137,11 +134,19 @@
             </FluentNumberField>
 
             <FluentIcon Value="@(new Icons.Regular.Size28.Checkmark())" OnClick="SelectRecordPerPage"
-                        Color="@Color.Accent" Slot="start" Class="paginator-button" />
-
+                        Color="@Color.Accent" Slot="start" Class="paginator-button" />           
 
         </FluentStack>
 
+         <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center"
+                     HorizontalAlignment="HorizontalAlignment.Center" Style="margin-top:30px">
+
+             <FluentIcon Value="@(new Icons.Regular.Size28.ArrowCircleLeft())" OnClick="ClosePageSelector"
+                    Color="@Color.Accent" Slot="start" Class="paginator-button" />
+
+        </FluentStack>
+
+      
     </FluentDialogBody>
 
 </FluentDialog>

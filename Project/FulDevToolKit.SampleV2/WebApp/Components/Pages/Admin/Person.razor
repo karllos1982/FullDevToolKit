@@ -79,6 +79,13 @@
                                              Label="@view.texts.Get("SearchByPersonEmail-Label")" style="width:50%">
                             </FluentTextField>
 
+                            <FieldEntryCPF @bind-Value="@cpf" Style="width:50%"></FieldEntryCPF>                            
+                            <span @onclick="@PegaCPF" >@cpf</span>
+
+
+                            <FieldEntryCNPJ @bind-Value="@cnpj" Style="width:50%"></FieldEntryCNPJ>
+                            <span >@cnpj</span>
+
                             <FormActionButton ButtonType=ButtonTypeEnum.SEARCH
                                               Title="@view.texts.Get("SearchButtonLabel")"
                                               Visible="true"
@@ -322,6 +329,9 @@ else
     private PersonViewModel view;
     private PageFormMethods form; 
 
+    private string cpf = ""; 
+    private string cnpj = "";
+
     //
 
     public PersonContactDetailsConfigs contactConfigs
@@ -362,7 +372,7 @@ else
                         Description = view.texts.Get("Person-PageTitle")
                     };
 
-                 this.form = new PageFormMethods(view, msgbox,loading); 
+                this.form = new PageFormMethods(view, msgbox,loading); 
 
             }
 
@@ -426,7 +436,7 @@ else
 
     }
 
-    
+
 
     public void GoHome()
     {
@@ -441,10 +451,10 @@ else
     {
         view.GetContactToEdit(Int64.Parse(id.ToString()));
         await OpenPersonContactDetails(); 
-       
+
     }
 
- 
+
     public async Task OnInsertNewContactsClick()
     {
         await view.InitNewContact();
@@ -476,7 +486,7 @@ else
                = await contactModal.ShowDialogAsync<PersonContactDetails>(contactConfigs, tlparams);
 
         DialogResult? result = await modal.Result;
-        
+
     }
 
     public async Task OnRemoveContactsClick(object id)
@@ -492,5 +502,10 @@ else
 
     }
 
+    public async Task PegaCPF()
+    {
+        await msgbox.ShowWarningAsync(cpf,
+             view.texts.Get("ErrorOnExecuteSearch"));
+    }
 
 }

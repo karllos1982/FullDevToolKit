@@ -10,6 +10,7 @@ using MyApp.Managers;
 using System.Data;
 using FullDevToolKit.Core.Helpers;
 using MyApp.Models;
+using FullDevToolKit.Core.Common;
 
 namespace MyApp.API
 {
@@ -31,7 +32,7 @@ namespace MyApp.API
         public IContext Context;
         public IMyAppManager Manager;
         public MailManager MailCenter;
-
+        public IFileService FileServer; 
 
         public APIControllerBase()
         {

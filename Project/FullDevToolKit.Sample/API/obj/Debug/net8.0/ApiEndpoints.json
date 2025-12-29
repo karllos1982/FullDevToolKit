@@ -478,14 +478,14 @@
     "ContainingType": "API.Controllers.FileServerController",
     "Method": "ListFiles",
     "RelativePath": "FileServer/listfiles",
-    "HttpMethod": "POST",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "param",
-        "Type": "FullDevToolKit.Core.Common.FileEntry",
-        "IsRequired": true
+        "Name": "pDirectory",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -515,9 +515,14 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "param",
-        "Type": "FullDevToolKit.Core.Common.FileEntry",
-        "IsRequired": true
+        "Name": "pDirectory",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "pFileName",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

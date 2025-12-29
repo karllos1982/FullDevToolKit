@@ -25,8 +25,8 @@ namespace MyApp.ViewModel
         UserAuthenticated _user;
       
         public List<DirectoryResult> dirList = new List<DirectoryResult>();
-        public IQueryable<FileResult> fileList = null;
-        
+        public IQueryable<FileListResult> fileList = null;
+        public FileParam param = new FileParam();
         public string dirSelected = ""; 
 
         public async Task<FileOperationResult> UploadFile(FileEntry data)
@@ -76,18 +76,29 @@ namespace MyApp.ViewModel
             APIResponse<List<DirectoryResult>> aux
                = await _Proxys.ListDirectories();
 
-            SetResult<List<DirectoryResult>>(aux, ref this.dirList, ref ServiceStatus);    
-            
+            SetResult<List<DirectoryResult>>(aux, ref this.dirList, ref ServiceStatus);
+
+            if (dirList.Count > 0)
+            {
+                dirList.Insert(0, new DirectoryResult()
+                {
+                    Directory = texts.Get("SelectItem-Description")
+                });
+            }
+
         }
 
-        public async Task ListFiles(string dir)
+        public async Task ListFiles()
         {
             ServiceStatus = new ExecutionStatus(true);
-            List<FileResult> _list = new List<FileResult>(); 
-            APIResponse<List<FileResult>> aux
-               = await _Proxys.ListFiles(new FileEntry() { Directory = dir }); 
+            
+            List<FileListResult> _list = new List<FileListResult>();
+            
+            APIResponse<List<FileListResult>> aux
+               = await _Proxys.ListFiles(param);
+                      
 
-            SetResult<List<FileResult>>(aux, ref _list, ref ServiceStatus);
+            SetResult<List<FileListResult>>(aux, ref _list, ref ServiceStatus);
             this.fileList = _list.AsQueryable();
         }
 

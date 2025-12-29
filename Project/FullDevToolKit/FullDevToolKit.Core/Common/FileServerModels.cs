@@ -7,6 +7,13 @@ using System.Threading.Tasks;
 namespace FullDevToolKit.Core.Common
 {
 
+    public class FileParam
+    {
+        public string pDirectory { get; set; }
+
+        public string pFileName { get; set; }
+    }
+
     public class FileEntry
     {
         public string Directory { get; set; }
@@ -14,7 +21,7 @@ namespace FullDevToolKit.Core.Common
         public byte[] FileContent { get; set; }
     }
 
-    public class FileResult
+    public class FileListResult
     {
         public string Directory { get; set; }
         public string Filename { get; set; }
@@ -52,6 +59,9 @@ namespace FullDevToolKit.Core.Common
 
     public interface IFileService
     {
+
+        void Init(string connection); 
+
         Task<FileOperationResult> UploadFile(Stream content, string directory, string filename);
 
         Stream DownloadFile(string directory, string filename);
@@ -62,11 +72,13 @@ namespace FullDevToolKit.Core.Common
 
         Task<List<DirectoryResult>> ListDirectories();
 
-        Task<List<FileResult>> ListFiles(string directory);
+        Task<List<FileListResult>> ListFiles(string directory);
 
         Task<FileOperationResult> GetFileInfo(string directory, string filename);
 
         string GetFileURL(string directory, string filename);
+
+       
     }
 
 }

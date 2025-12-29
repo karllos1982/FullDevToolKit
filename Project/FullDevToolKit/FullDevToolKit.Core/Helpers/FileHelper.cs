@@ -2,6 +2,9 @@
 using FullDevToolKit.Common;
 using System.Reflection;
 using System.Text.RegularExpressions;
+using System;
+using System.Collections.Generic;
+using System.IO;
 
 namespace FullDevToolKit.Helpers
 {
@@ -103,10 +106,47 @@ namespace FullDevToolKit.Helpers
             return ret;
         }
 
+        public static string GetContentType(string filename)
+        {
+            // Dicionário de extensões para Content Types
+            var mimeTypes = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase)
+            {
+                { ".html", "text/html" },
+                { ".htm", "text/html" },
+                { ".txt", "text/plain" },
+                { ".csv", "text/csv" },
+                { ".json", "application/json" },
+                { ".xml", "application/xml" },
+                { ".jpg", "image/jpeg" },
+                { ".jpeg", "image/jpeg" },
+                { ".png", "image/png" },
+                { ".gif", "image/gif" },
+                { ".pdf", "application/pdf" },
+                { ".zip", "application/zip" },
+                { ".mp3", "audio/mpeg" },
+                { ".mp4", "video/mp4" },
+                { ".avi", "video/x-msvideo" },
+                { ".doc", "application/msword" },
+                { ".docx", "application/vnd.openxmlformats-officedocument.wordprocessingml.document" },
+                { ".xls", "application/vnd.ms-excel" },
+                { ".xlsx", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" },
+                { ".ppt", "application/vnd.ms-powerpoint" },
+                { ".pptx", "application/vnd.openxmlformats-officedocument.presentationml.presentation" }
+            };
 
+            // Extrai a extensão
+            string ext = Path.GetExtension(filename);
+
+            // Retorna o tipo correspondente ou um padrão genérico
+            return mimeTypes.TryGetValue(ext, out string contentType)
+                ? contentType
+                : "application/octet-stream";
+
+        }
     }
 
-     public static class ImageHelper
+
+    public static class ImageHelper
      {
 
         // 07-06-2022: removido os metodos de manipulação de imagem

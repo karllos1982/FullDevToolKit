@@ -19,10 +19,12 @@ namespace MyApp.Controllers
     public class AuthController : APIControllerBase
     {
 
-        public AuthController(IContext context,MailManager mail)
+        public AuthController(IContext context,MailManager mail, IFileService fileService)
         {
             Init(context, mail,""); 
-            
+
+            this.FileServer = fileService;
+            this.FileServer.Init("");
         }
                
 
@@ -422,8 +424,7 @@ namespace MyApp.Controllers
             BeginManager();
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
             MyAppSettings settings = (MyAppSettings)Context.Settings;
-
-            LocalFileService service = new LocalFileService("");
+           
             Stream body = Request.Body;
             
             ChangeUserImage data = new ChangeUserImage();
@@ -434,9 +435,9 @@ namespace MyApp.Controllers
 
             if (Context.Status.Success)
             {
-              
+                
                 FileOperationResult opsts
-                    = await service.UploadFile(body, settings.ProfileImageDir, data.FileName);
+                    = await this.FileServer.UploadFile(body, settings.ProfileImageDir, data.FileName);
 
                 ret = SetReturn<bool>(opsts.Status);
             }
@@ -458,14 +459,12 @@ namespace MyApp.Controllers
             CheckPermission(PERMISSION_CHECK_ENUM.READ, true);
 
             MyAppSettings settings = (MyAppSettings)Context.Settings;
-
-            LocalFileService service = new LocalFileService("");
-
-            Stream str =  service.DownloadFile(settings.ProfileImageDir,file);
+            
+            Stream str = this.FileServer.DownloadFile(settings.ProfileImageDir,file);
 
             if (str == null)
             {
-                str = service.DownloadFile(settings.ProfileImageDir,"user_anonymous.png");
+                str = this.FileServer.DownloadFile(settings.ProfileImageDir,"user_anonymous.png");
             }
 
             FileStreamResult result = new FileStreamResult(str, "application/octet-stream");

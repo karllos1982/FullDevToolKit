@@ -1,36 +1,47 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using API.Code;
+using FullDevToolKit; 
 using FullDevToolKit.Common;
-using MyApp.API;
-using Microsoft.AspNetCore.Authorization;
 using FullDevToolKit.Core;
 using FullDevToolKit.Core.Common;
+using FullDevToolKit.Helpers;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using MyApp.API;
 using MyApp.Models;
+using System.Buffers;
+using static Dapper.SqlMapper;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 
 namespace API.Controllers
 {
     [Route("[controller]")]
-    [ApiController]
-    [Authorize]
+    [ApiController]   
     public class FileServerController : APIControllerBase
     {
-        IFileService _fs = null;
-
-       public FileServerController(IContext context)
+       
+       public FileServerController(IContext context, IFileService fileService)
        {
             Init(context, null, "");
-            _fs = new LocalFileService(""); 
-       }
+
+            this.FileServer = fileService;
+            this.FileServer.Init("");
+        }
 
         [HttpPost]
         [Route("uploadfile")]
         [Authorize]
-        public async Task<object> UploadFile(FileEntry param)
+        public async Task<object> UploadFile(string pDirectory, string pFileName)
         {
+
             Stream body = Request.Body;
-            
-             return await _fs.UploadFile(body, param.Directory, param.Filename);
-            
+
+            FileOperationResult data
+              =  await this.FileServer.UploadFile(body, pDirectory, pFileName);
+
+            ret = SetReturn(data);
+            return ret;
+
         }
 
         [HttpGet]
@@ -38,11 +49,11 @@ namespace API.Controllers
         public FileStreamResult DownloadFile(string dir, string file)
         {
             FileStreamResult result = null;
-            Stream str = _fs.DownloadFile(dir, file);
+            Stream str = this.FileServer.DownloadFile(dir, file);
 
             if (str != null)
-            {
-                result =  new FileStreamResult(str, "application/octet-stream");
+            {               
+                result =  new FileStreamResult(str, FileHelper.GetContentType(file));
             }            
 
             return result;
@@ -54,7 +65,11 @@ namespace API.Controllers
         public async Task<object> DeleteFile(FileEntry param)
         {
 
-            return await _fs.DeleteFile(param.Directory,param.Filename);
+            FileOperationResult data
+                 = await this.FileServer.DeleteFile(param.Directory,param.Filename);
+
+            ret = SetReturn(data);
+            return ret;
 
         }
 
@@ -65,23 +80,32 @@ namespace API.Controllers
         public async Task<object> MoveFileDirectory(MoveFileEntry param)
         {
             
-            return await _fs.MoveFileDirectory(param);
-            
+            FileOperationResult data
+                = await this.FileServer.MoveFileDirectory(param);
+
+            ret = SetReturn(data); 
+
+            return ret;
         }
 
         [HttpGet]
         [Route("listdirectories")]
         public async Task<object> ListDirectories()
         {
-           ret = await _fs.ListDirectories();   
+           List<DirectoryResult> data = await this.FileServer.ListDirectories();
+            ret = SetReturn(data); 
            return ret;
         }
 
-        [HttpPost]
+        [HttpGet]
         [Route("listfiles")]
-        public async Task<object> ListFiles(FileEntry param)
+        public async Task<object> ListFiles(string pDirectory)
         {
-            ret = await _fs.ListFiles(param.Directory); 
+            
+            List<FileListResult> data 
+                = await this.FileServer.ListFiles(pDirectory);
+
+            ret = SetReturn(data);
             return ret;
         }
 
@@ -89,7 +113,10 @@ namespace API.Controllers
         [Route("getfileinfo")]
         public async Task<object> GetFileInfo(FileEntry param)
         {
-            ret = await _fs.GetFileInfo(param.Directory, param.Filename);
+            FileOperationResult data
+                    = await this.FileServer.GetFileInfo(param.Directory, param.Filename);
+            
+            ret = SetReturn(data);
             return ret;
         }
 

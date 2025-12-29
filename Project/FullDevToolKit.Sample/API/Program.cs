@@ -9,6 +9,7 @@ using FullDevToolKit.ApplicationHelpers;
 using MyApp.Contracts.Managers;
 using MyApp.Context;
 using API.Code;
+using FullDevToolKit.Core.Common;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,7 +27,7 @@ builder.Services.AddScoped<IContext, DapperContext>();
 builder.Services.AddScoped<IMyAppManager, MyAppManager>();
 builder.Services.AddScoped<MailManager, MyApMailCenter>();
 builder.Services.AddSingleton<ISystemContext, SystemContext>();
-
+builder.Services.AddScoped<IFileService, LocalFileService>();
 
 //configure auth
 

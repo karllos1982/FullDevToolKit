@@ -13,7 +13,7 @@
                 <FluentNavGroup Title="@Localization.Get("Menu-Superadmin")" Disabled="@GetPermissionsState("MENU.SUPERADMIN")"
                         Icon="@(new Icons.Regular.Size20.DesktopEdit())">
                     <ChildContent>
-                        <FluentNavLink Href="superadmin/language" Disabled="@GetPermissionsState("MENU.LOCALIZATIONTEXTS")"
+                        <FluentNavLink Href="superadmin/language" Disabled="@GetPermissionsState("MENU-LANGUAGE")"
                                        Icon="@(new Icons.Regular.Size20.LocalLanguageEn())">
                             @Localization.Get("Menu-Language")
                         </FluentNavLink>
@@ -62,7 +62,12 @@
                             Icon="@(new Icons.Regular.Size20.TabGroup())">
                             @Localization.Get("Menu-Parameters")
                         </FluentNavLink>
-                        
+
+                        <FluentNavLink Href="superadmin/fileservermanager" Disabled="@GetPermissionsState("MENU.FILESERVERMANAGER")"
+                                       Icon="@(new Icons.Regular.Size20.TabGroup())">
+                            @Localization.Get("Menu-FileServerManager")
+                        </FluentNavLink>
+
                     </ChildContent>
                 </FluentNavGroup>
 

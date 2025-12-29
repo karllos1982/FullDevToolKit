@@ -1,0 +1,41 @@
+﻿
+<input id="@Id" type="text" class="control" />
+
+
+@code {
+    [Parameter] public string? Value { get; set; }              // valor formatado
+    [Parameter] public EventCallback<string?> ValueChanged { get; set; }
+
+    [Parameter] public string? RawValue { get; set; }           // valor cru
+    [Parameter] public EventCallback<string?> RawValueChanged { get; set; }
+
+    [Parameter]
+    public Dictionary<int, string> ConditionalMasks { get; set; }
+        = new Dictionary<int, string>
+        {
+            { 11, "999.999.999-99" },       // CPF
+            { 14, "99.999.999/9999-99" }    // CNPJ
+        };
+
+    [Parameter] public string Id { get; set; } = $"masked_{Guid.NewGuid()}";
+
+    [Inject] private IJSRuntime JS { get; set; } = default!;
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await JS.InvokeVoidAsync("maskedInput.initConditional", Id, ConditionalMasks, DotNetObjectReference.Create(this));
+        }
+    }
+
+    [JSInvokable]
+    public async Task UpdateValues(string formatted, string raw)
+    {
+        Value = formatted;
+        RawValue = raw;
+
+        await ValueChanged.InvokeAsync(Value);
+        await RawValueChanged.InvokeAsync(RawValue);
+    }
+}

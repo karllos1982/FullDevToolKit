@@ -10,7 +10,7 @@
 @inject ISystemProxyManager _systemservices
 @inject IFileServerProxyManager _fileservice
 @inject IDialogService msgbox
-
+@inject IJSRuntime JSRuntime
 
 @if (view != null)
 {
@@ -23,14 +23,7 @@
         </FluentGridItem>
 
         <FluentGridItem lg="3" xs="12" Style="margin-top: 6px;">
-
-            <FormActionButton ButtonType=ButtonTypeEnum.ADD
-                              Title="@view.texts.Get("NewConfig-Label")"
-                              Disabled="!view.Permissions.AllowSave"
-                              Visible="!view.GetTabEditState()"
-                              OnAction="OnNew">
-            </FormActionButton>
-          
+                    
 
         </FluentGridItem>
 
@@ -48,30 +41,29 @@
                     <FluentAccordionItem Expanded="true" Heading="@view.texts.Get("SearchButtonLabel")">
                         <FluentIcon Value="@(new Icons.Regular.Size24.Search())"
                                     Color="@Color.Accent" Slot="start" />
-
-                        <FluentStack Style="margin-bottom: 20px;" Orientation="Orientation.Vertical"
-                                     VerticalAlignment="VerticalAlignment.Center">
-
+                        
                             @if (view.dirList != null)
                             {
                                 @if (view.dirList.Count > 0)
                                 {
 
-                                    <FluentSelect TOption="DirectoryResult"
-                                                  Label=@view.texts.Get("Diretory-Label")
-                                                  Items="@view.dirList"
-                                                  Id="pDirName"
-                                                  Height="250px"
-                                                  Width="90%"
-                                                  OptionValue="@(p => p.Directory)"
-                                                  OptionText="@(p => p.Directory)"
-                                                  @bind-Value="view.dirSelected" />
+                                    <FluentGrid Spacing="3" AdaptiveRendering="true" Style="padding: 4px; ">
+
+                                         <FluentGridItem lg="6" xs="12">
+                                                <FluentSelect TOption="DirectoryResult"
+                                                              Label=@view.texts.Get("Directory-Label")
+                                                              Items="@view.dirList"
+                                                              Id="pDirName"
+                                                              Height="250px"
+                                                              Width="90%"
+                                                              OptionValue="@(p => p.Directory)"
+                                                              OptionText="@(p => p.Directory)"
+                                                              ValueChanged="@OnSelectDirectory" />                                                              
+                                       </FluentGridItem>
+                                    </FluentGrid>
                                 }
                             }
-
-
-                        </FluentStack>
-
+                       
                     </FluentAccordionItem>
                 </FluentAccordion>
             </FluentGridItem>
@@ -85,18 +77,19 @@
 
                     <div id="datagrid-container">
                         <FluentDataGrid Items="@view.fileList"
-                                        TGridItem="FileResult"
+                                        TGridItem="FileListResult"
                                         Pagination="@pagination"
                                         RowSize="@rowSize"
                                         ResizableColumns=true
                                         Style="overflow-y:hidden;">
 
-                            <PropertyColumn Property="@(c => c.Filename)" Title="@view.texts.Get("FileName-Label")" Sortable="true" Width="800%" />                            
+                            <PropertyColumn Property="@(c => c.Filename)" Title="@view.texts.Get("FileName-Label")" Sortable="true" Width="85%" />                            
 
                             <TemplateColumn Title="@view.texts.Get("DownloadFile-Label")" Width="15%">
 
                                 <FluentButton Appearance="Appearance.Lightweight"
-                                              IconEnd="@(new Icons.Regular.Size24.ClipboardTextEdit())" >                                              
+                                            OnClick="()=>OnDownload(context.Directory,context.Filename)"
+                                              IconEnd="@(new Icons.Regular.Size24.ArrowDownload())" >                                              
                                 </FluentButton>
 
                             </TemplateColumn>
@@ -112,6 +105,7 @@
         </FluentGrid>
     }
    
+
 }
 else
 {
@@ -166,7 +160,7 @@ else
                 loadingConfigs = new TaskLoadingConfigs
                     {
                         Title = view.texts.Get("LoadingPage"),
-                        Description = view.texts.Get("FileServer-Label")
+                    Description = view.texts.Get("FileServer-PageTitle")
                     };                
             }
 
@@ -175,6 +169,26 @@ else
         }
     }
 
+    public async Task OnSelectDirectory(string value)
+    {
+        string defaultitem = view.texts.Get("SelectItem-Description");
+        if (defaultitem != value)
+        {
+            view.param = new FileParam();
+            view.param.pDirectory = value; 
+
+            await view.ListFiles(); 
+        }
+
+    }
+
+    public async Task OnDownload(string dir, string file)
+    {
+       
+        string url = $"{_settings.ServiceURL}/fileserver/downloadfile?dir={dir}&file={file}";
+        await JSRuntime.InvokeVoidAsync("open", url, "_blank");
+        
+    }
 
     public void GoHome()
     {

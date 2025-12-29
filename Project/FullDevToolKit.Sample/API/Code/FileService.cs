@@ -12,13 +12,18 @@ namespace MyApp.API
         private string _connection = "";
         private string _basepath= "";
 
-        public LocalFileService(string connection)
+        public LocalFileService()
+        {
+            
+        }
+
+        public void Init(string connection)
         {
             _connection = connection;
 
             _basepath = $@"{Environment.CurrentDirectory}";
             _basepath = _basepath.Replace('\\', '/');
-            _basepath = _basepath + $"/FileServer/"; 
+            _basepath = _basepath + $"/FileServer/";
         }
 
         public async Task<FileOperationResult> UploadFile(Stream content, string directory,
@@ -157,9 +162,9 @@ namespace MyApp.API
             return ret;
         }
 
-        public async Task<List<FileResult>> ListFiles(string directory)
+        public async Task<List<FileListResult>> ListFiles(string directory)
         {
-            List<FileResult> ret = new List<FileResult>();
+            List<FileListResult> ret = new List<FileListResult>();
 
             string fisicalpath = $"{_basepath}{directory}/";
 
@@ -168,9 +173,10 @@ namespace MyApp.API
                 var files = Directory.GetFiles(fisicalpath);
                 foreach (var file in files)
                 {
-                    ret.Add( new FileResult() 
+                    ret.Add( new FileListResult() 
                     { 
-                        Filename = Path.GetFileName(file)                        
+                        Filename = Path.GetFileName(file),  
+                        Directory = directory
                     });
                 }
             }

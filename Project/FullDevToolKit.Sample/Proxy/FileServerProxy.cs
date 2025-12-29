@@ -68,11 +68,14 @@ namespace MyApp.Proxys
             return ret;
         }
 
-        public async Task<APIResponse<List<FileResult>>> ListFiles(FileEntry data)
+        public async Task<APIResponse<List<FileListResult>>> ListFiles(FileParam param)
         {
-            APIResponse<List<FileResult>> ret = null;
+            APIResponse<List<FileListResult>> ret = null;
 
-            ret = await PostAsJSON<List<FileResult>>("listfiles", JsonConvert.SerializeObject(data), null);
+            object[] p= new object[1];
+            p[0] = param;
+
+            ret = await GetAsJSON<List<FileListResult>>("listfiles", p);
 
             return ret;
         }

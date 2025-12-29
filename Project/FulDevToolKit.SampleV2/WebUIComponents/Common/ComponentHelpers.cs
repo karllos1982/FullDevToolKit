@@ -67,4 +67,8 @@ namespace WebUIComponents.Common
 
     }
 
+    public class BaseEntryFieldMask
+    {
+        public string Title { get; set; } = string.Empty;
+    }
 }
