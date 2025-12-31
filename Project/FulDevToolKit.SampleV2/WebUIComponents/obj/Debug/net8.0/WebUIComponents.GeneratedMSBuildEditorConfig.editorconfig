@@ -32,12 +32,20 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Q29tbW9uXEJyZWFkQ3J1bWJWaWV3LnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
+[H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/FieldEntryCEP.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tbW9uXEZpZWxkRW50cnlDRVAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
 [H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/FieldEntryCNPJ.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tbW9uXEZpZWxkRW50cnlDTlBKLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/FieldEntryCPF.razor]
 build_metadata.AdditionalFiles.TargetPath = Q29tbW9uXEZpZWxkRW50cnlDUEYucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/FieldEntryPhone.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tbW9uXEZpZWxkRW50cnlQaG9uZS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [H:/LocalDrive_00/Projetos/FullDevToolKit/Project/FulDevToolKit.SampleV2/WebUIComponents/Common/FormActionButton.razor]

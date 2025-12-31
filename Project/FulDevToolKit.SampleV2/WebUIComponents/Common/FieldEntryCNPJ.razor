@@ -9,7 +9,7 @@
                  @onfocusin="@OpenDialog">
 </FluentTextField>
 
-<FluentDialog Hidden="@_hidden">
+<FluentDialog Hidden="@_hidden" @onkeydown="@KeyDown">
     <FluentDialogHeader ShowDismiss="false">
         <FluentStack VerticalAlignment="VerticalAlignment.Center"
                      HorizontalAlignment="HorizontalAlignment.Center ">
@@ -178,7 +178,7 @@
         }
         else
         {
-            await msgbox.ShowWarningAsync("O CNPJ digitado é inválido", "Aviso");
+            await msgbox.ShowWarningAsync("O CNPJ digitado é inválido.", "Aviso");
         }
 
     }
@@ -223,6 +223,14 @@
     }
 
 
+    private async Task KeyDown(KeyboardEventArgs e)
+    {
+
+        if (e.Key == "Escape")
+        {
+            await CloseDialog();
+        }
+    }
 
 
 }

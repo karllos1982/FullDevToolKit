@@ -71,4 +71,11 @@ namespace WebUIComponents.Common
     {
         public string Title { get; set; } = string.Empty;
     }
+
+    public enum PHONETYPE
+    {
+        CELLPHONE = 1,
+        LOCALPHONE = 2
+    }
+
 }

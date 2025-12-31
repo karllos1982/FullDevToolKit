@@ -86,6 +86,12 @@
                             <FieldEntryCNPJ @bind-Value="@cnpj" Style="width:50%"></FieldEntryCNPJ>
                             <span >@cnpj</span>
 
+                            <FieldEntryPhone @bind-Value="@telefone" PhoneType="PHONETYPE.LOCALPHONE" Style="width:50%"></FieldEntryPhone>
+                            <span>@telefone</span>
+
+                            <FieldEntryCEP @bind-Value="@cep" Style="width:50%"></FieldEntryCEP>
+                            <span>@cep</span>
+
                             <FormActionButton ButtonType=ButtonTypeEnum.SEARCH
                                               Title="@view.texts.Get("SearchButtonLabel")"
                                               Visible="true"
@@ -331,6 +337,8 @@ else
 
     private string cpf = ""; 
     private string cnpj = "";
+    private string telefone = "";
+    private string cep = "";
 
     //
 

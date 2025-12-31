@@ -2,12 +2,11 @@
 @inject IDialogService msgbox
 @implements IDialogContentComponent<BaseEntryFieldMask>
 
-<FluentTextField Value="@DisplayValue" 
-                 ReadOnly=true 
+<FluentTextField Value="@DisplayValue"
+                 ReadOnly=true
                  Label="@Label"
                  Style="@Style"
-                 @onfocusin="@OpenDialog"
-                  >
+                 @onfocusin="@OpenDialog">
 </FluentTextField>
 
 <FluentDialog Hidden="@_hidden" @onkeydown="@KeyDown">
@@ -27,31 +26,27 @@
         <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center"
                      HorizontalAlignment="HorizontalAlignment.Center">
 
-            <FluentTextField @ref="fdig1" @bind-Value=dig1 Maxlength="3" @onkeydown="GoToDig2" Autofocus=true />
-            <span>.</span>
-            
-            <FluentTextField @ref="fdig2" @bind-Value=dig2 Maxlength="3" @onkeydown="GoToDig3" />
-            <span>.</span>
+            <span>(</span>
+            <FluentTextField @ref="fdigDDD" @bind-Value=digDDD Maxlength="2" @onkeydown="GoToDig1" Style="width:25%" Autofocus=true />
+            <span>)</span>
 
-            <FluentTextField @ref="fdig3" @bind-Value=dig3 Maxlength="3" @onkeydown="GoToDigVer" />
+            <FluentTextField @ref="fdig1" @bind-Value=dig1 Maxlength="@maxlen" @onkeydown="GoToDig2" />
             <span>-</span>
-
-            <FluentTextField @ref="fdigver" @bind-Value=digVer Maxlength="2" />
-            
-
+            <FluentTextField @ref="fdig2" @bind-Value=dig2 Maxlength="4"  />
+     
         </FluentStack>
-      
+
 
         <FluentStack Orientation="Orientation.Horizontal" VerticalAlignment="VerticalAlignment.Center"
                      HorizontalAlignment="HorizontalAlignment.Center" Style="margin-top:30px">
 
             <TaskIconButton IconStart="@(new Icons.Regular.Size28.Checkmark())"
-                            OnClick="Confirm" >                        
-             </TaskIconButton>
+                            OnClick="Confirm">
+            </TaskIconButton>
 
             <TaskIconButton IconStart="@(new Icons.Regular.Size28.ArrowExit())"
-                          Color="warning"   OnClick="CloseDialog">
-            </TaskIconButton>            
+                            Color="warning" OnClick="CloseDialog">
+            </TaskIconButton>
 
         </FluentStack>
 
@@ -66,22 +61,35 @@
     private bool _hidden = true;
     private string displayValue = "";
 
+    private string digDDD = "";
     private string dig1 = "";
     private string dig2 = "";
-    private string dig3 = "";
-    private string digVer = "";
 
-
+    private FluentTextField fdigDDD;
     private FluentTextField fdig1;
     private FluentTextField fdig2;
-    private FluentTextField fdig3;
-    private FluentTextField fdigver; 
 
-    public string? DisplayValue 
-    { 
+    private int maxlen = 5; 
+
+    public string? DisplayValue
+    {
         get
         {
-            return ToMask(Value, "###.###.###-##");
+            string mask = ""; 
+
+            if ( PhoneType == PHONETYPE.CELLPHONE )
+            {
+                mask = "(##)#####-####" ;
+                maxlen = 5;
+            }
+
+            if (PhoneType == PHONETYPE.LOCALPHONE)
+            {
+                mask = "(##)####-####";
+                maxlen = 4;
+            }
+
+            return ToMask(Value, mask);
         }
 
     }
@@ -90,9 +98,11 @@
 
     [Parameter] public EventCallback<string?> ValueChanged { get; set; }
 
-    [Parameter] public string? Label { get; set; } = "CPF";
+    [Parameter] public string? Label { get; set; } = "TELEFONE";
 
     [Parameter] public string Style { get; set; } = "";
+
+    [Parameter] public PHONETYPE PhoneType { get; set; } = PHONETYPE.CELLPHONE;
 
     public string ToMask(string text, string maskpattern)
     {
@@ -120,43 +130,50 @@
     [CascadingParameter]
     public FluentDialog Dialog { get; set; } = default!;
 
+    // (##)#####-####
     private void OpenDialog()
-    {        
+    {
         Content.Title = Label;
 
-        string aux = Value.Replace(".","").Replace("-","");
+        string aux = Value.Replace("(", "").Replace(")", "").Replace("-", "");
 
-        if (aux.Length >= 3)
+        if (aux.Length >= 2)
         {
-            dig1 = aux.Substring(0, 3);
+            digDDD = aux.Substring(0, 2);
         }
 
-        if (aux.Length >= 6)
+        if (aux.Length >= 7)
         {
-            dig2 = aux.Substring(3, 3);
+            dig1 = aux.Substring(3, maxlen);
         }
 
-        if (aux.Length >= 9)
+        if (aux.Length >= 11)
         {
-            dig3 = aux.Substring(6, 3);
-        }
+            dig2 = aux.Substring(7, 4);
+        }        
 
-        if (aux.Length == 11)
-        {
-            digVer = aux.Substring(9, 2);
-        }
-
-        fdig1.FocusAsync(); 
+        fdig1.FocusAsync();
 
         _hidden = false;
     }
 
     private async Task Confirm()
     {
-        Validations validation = new Validations(); 
-        string aux = $"{dig1}{dig2}{dig3}{digVer}";
+        Validations validation = new Validations();
+        string aux = $"{digDDD}{dig1}{dig2}";
+        bool isvalid = false;
 
-        if (validation.ValidateCPF(aux))
+        if (PhoneType == PHONETYPE.CELLPHONE)
+        {
+            isvalid = validation.ValidateCellPhone(aux);
+        }
+
+        if (PhoneType == PHONETYPE.LOCALPHONE)
+        {
+            isvalid = validation.ValidatePhone(aux);
+        }
+
+        if (isvalid)
         {
             Value = aux;
             await ValueChanged.InvokeAsync(Value);
@@ -164,8 +181,8 @@
         }
         else
         {
-            await msgbox.ShowWarningAsync("O CPF digitado é inválido.", "Aviso");
-        }               
+            await msgbox.ShowWarningAsync("O " + Label + " digitado é inválido.", "Aviso");
+        }
 
     }
 
@@ -174,40 +191,32 @@
         _hidden = true;
     }
 
+    private async Task GoToDig1(KeyboardEventArgs e)
+    {
+
+        if (e.Key == "Enter")
+        {
+            fdig1.FocusAsync();
+        }
+    }
+
     private async Task GoToDig2(KeyboardEventArgs e)
     {
-        
-        if (e.Key == "Enter")
-        {
-            fdig2.FocusAsync();             
-        }
-    }
 
-    private async Task GoToDig3(KeyboardEventArgs e)
-    {
         if (e.Key == "Enter")
         {
-            fdig3.FocusAsync();
-        }
-    }
-
-    private async Task GoToDigVer(KeyboardEventArgs e)
-    {
-        if (e.Key == "Enter")
-        {
-            fdigver.FocusAsync();
+            fdig2.FocusAsync();
         }
     }
 
     private async Task KeyDown(KeyboardEventArgs e)
     {
-
+       
         if (e.Key == "Escape")
         {
             await CloseDialog();
         }
     }
-       
+  
 
-    
 }

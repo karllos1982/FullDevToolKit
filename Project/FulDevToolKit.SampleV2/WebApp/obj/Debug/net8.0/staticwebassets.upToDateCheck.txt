@@ -3,6 +3,6 @@ wwwroot\assets\css\components.css
 wwwroot\assets\css\pages.css
 wwwroot\assets\images\fullstack-icon.png
 wwwroot\assets\js\components.js
-wwwroot\favicon.ico
-wwwroot\assets\js\maskedInput.js
 wwwroot\assets\js\inputmask.js
+wwwroot\assets\js\maskedInput.js
+wwwroot\favicon.ico
