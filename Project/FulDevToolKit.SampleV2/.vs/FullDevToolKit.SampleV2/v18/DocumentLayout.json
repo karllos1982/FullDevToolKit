@@ -1,0 +1,87 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{BF1745C5-AD63-48D2-9673-FC85FB42FA50}|..\\FullDevToolKit.Sample\\API\\API.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fulldevtoolkit.sample\\api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\superadmin\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\superadmin\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\admin\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\admin\\index.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|h:\\localdrive_00\\projetos\\fulldevtoolkit\\project\\fuldevtoolkit.samplev2\\webapp\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}|WebApp\\WebApp.csproj|solutionrelative:webapp\\components\\pages\\home.razor||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 155,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Program.cs",
+              "RelativeDocumentMoniker": "..\\FullDevToolKit.Sample\\API\\Program.cs",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit.Sample\\API\\Program.cs",
+              "RelativeToolTip": "..\\FullDevToolKit.Sample\\API\\Program.cs",
+              "ViewState": "AgIAAC8AAAAAAAAAAAAAAD0AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-02T16:15:16.229Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Index.razor",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Index.razor",
+              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\SuperAdmin\\Index.razor",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\SuperAdmin\\Index.razor",
+              "RelativeToolTip": "WebApp\\Components\\Pages\\SuperAdmin\\Index.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-02T16:12:23.461Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.razor",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\Admin\\Index.razor",
+              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\Admin\\Index.razor",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\Admin\\Index.razor",
+              "RelativeToolTip": "WebApp\\Components\\Pages\\Admin\\Index.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-02T16:10:55.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Home.razor",
+              "DocumentMoniker": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\Home.razor",
+              "RelativeDocumentMoniker": "WebApp\\Components\\Pages\\Home.razor",
+              "ToolTip": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FulDevToolKit.SampleV2\\WebApp\\Components\\Pages\\Home.razor",
+              "RelativeToolTip": "WebApp\\Components\\Pages\\Home.razor",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-01-02T15:52:06.868Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

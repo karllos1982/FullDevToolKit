@@ -175,3 +175,4 @@ H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\D
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\API.pdb
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\API.genruntimeconfig.cache
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\ref\API.dll
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit.Sample\API\obj\Debug\net8.0\swae.build.ex.cache

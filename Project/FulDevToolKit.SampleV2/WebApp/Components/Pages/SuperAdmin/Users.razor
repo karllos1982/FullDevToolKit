@@ -238,9 +238,15 @@
                                             </FluentTextField>                                    
                                         </FluentGridItem>
 
-                                        <FluentGridItem lg="12" xs="12">
+                                        <FluentGridItem lg="8" xs="12">
                                              <FluentTextField Value=@view.result.Email Maxlength="100" ReadOnly="true"
                                                              Label="@view.texts.Get("Email-Label")" style="width:95%">
+                                            </FluentTextField>
+                                        </FluentGridItem>
+
+                                        <FluentGridItem lg="4" xs="12">
+                                            <FluentTextField Value=@view.result.PhoneNumber Maxlength="100" ReadOnly="true"
+                                                         Label="@view.texts.Get("PhoneNumber-Label")" style="width:95%">
                                             </FluentTextField>
                                         </FluentGridItem>
 
@@ -452,6 +458,7 @@
                          
                         </FluentGridItem>
                          
+
                         <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
 
                             <FluentTextField @bind-Value="view.newModel.Email" Maxlength="100"
@@ -460,6 +467,17 @@
                              <FluentLabel Class="summary-label"> @view.GetSummaryMessage("Email") </FluentLabel>
 
                          </FluentGridItem>
+
+                                              
+                        <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
+
+                              <FieldEntryPhone @bind-Value="@view.newModel.PhoneNumber" Label="@view.texts.Get("PhoneNumber-Label")"
+                                 PhoneType="PHONETYPE.CELLPHONE" Style="width:95%"></FieldEntryPhone>
+                           
+                                <FluentLabel Class="summary-label"> @view.GetSummaryMessage("PhoneNumber") </FluentLabel>
+
+                        </FluentGridItem>
+
 
                         <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
 
@@ -470,50 +488,49 @@
 
                         </FluentGridItem>
 
-                            <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
+                        <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
 
-                                <FluentTextField @bind-Value="view.newModel.Password" Maxlength="8" 
-                                        TextFieldType="TextFieldType.Password"
-                                         Label="@view.texts.Get("Password-Label")" style="width:95%">
-                                </FluentTextField>
-                                <FluentLabel Class="summary-label"> @view.GetSummaryMessage("Password") </FluentLabel>
+                            <FluentTextField @bind-Value="view.newModel.Password" Maxlength="8" 
+                                    TextFieldType="TextFieldType.Password"
+                                        Label="@view.texts.Get("Password-Label")" style="width:95%">
+                            </FluentTextField>
+                            <FluentLabel Class="summary-label"> @view.GetSummaryMessage("Password") </FluentLabel>
 
-                            </FluentGridItem>
+                        </FluentGridItem>
 
 
-                            <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
+                        <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
 
-                                    @if (view.listLangs != null)
+                                @if (view.listLangs != null)
+                                {
+                                    @if (view.listLangs.Count > 0)
                                     {
-                                        @if (view.listLangs.Count > 0)
-                                        {
-                                            <FluentSelect TOption="LanguageList"
-                                                Label=@view.texts.Get("DefaultLanguage-Label")
-                                                Items="@view.listLangs"
-                                                Id="LocalizationTextList"
-                                                Height="250px"
-                                                Width="95%"
-                                                OptionValue="@(p => p.LanguageID.ToString())"
-                                                OptionText="@(p => p.LanguageName)"
-                                              @bind-Value="view._selectvalues.LanguageID" />
+                                        <FluentSelect TOption="LanguageList"
+                                            Label=@view.texts.Get("DefaultLanguage-Label")
+                                            Items="@view.listLangs"
+                                            Id="LocalizationTextList"
+                                            Height="250px"
+                                            Width="95%"
+                                            OptionValue="@(p => p.LanguageID.ToString())"
+                                            OptionText="@(p => p.LanguageName)"
+                                            @bind-Value="view._selectvalues.LanguageID" />
 
-                                             <FluentLabel Class="summary-label"> @view.GetSummaryMessage("DefaultLanguage") </FluentLabel>
-                                        }
+                                            <FluentLabel Class="summary-label"> @view.GetSummaryMessage("DefaultLanguage") </FluentLabel>
                                     }
+                                }
                              
+                        </FluentGridItem>
+
+                        <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
+
+                            <FormActionButton ButtonType=ButtonTypeEnum.SAVE
+                                                Title="@view.texts.Get("CreateUserButton-Label")"
+                                                Disabled="!view.Permissions.AllowSave"
+                                                Visible="view.GetTabEditState()"
+                                                OnAction="OnCreate">
+                            </FormActionButton>
+
                             </FluentGridItem>
-
-
-                            <FluentGridItem lg="6" xs="12" Style="margin-top: 0px;">
-
-                                <FormActionButton ButtonType=ButtonTypeEnum.SAVE
-                                                  Title="@view.texts.Get("CreateUserButton-Label")"
-                                                  Disabled="!view.Permissions.AllowSave"
-                                                  Visible="view.GetTabEditState()"
-                                                  OnAction="OnCreate">
-                                </FormActionButton>
-
-                             </FluentGridItem>
 
                      
                  </FluentGrid>

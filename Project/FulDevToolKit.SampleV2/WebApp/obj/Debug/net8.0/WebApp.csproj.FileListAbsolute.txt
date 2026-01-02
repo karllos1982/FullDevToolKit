@@ -128,3 +128,4 @@ H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\o
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\obj\Debug\net8.0\WebApp.pdb
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\obj\Debug\net8.0\WebApp.genruntimeconfig.cache
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\obj\Debug\net8.0\ref\WebApp.dll
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\obj\Debug\net8.0\swae.build.ex.cache

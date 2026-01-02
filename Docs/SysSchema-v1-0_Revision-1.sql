@@ -202,3 +202,10 @@ update [sysUser] set [LanguageID] = 2 where [DefaultLanguage]='pt-br'
 -- rollback
 
 alter table [sysUser] drop column [DefaultLanguage]
+
+
+
+-- Novo campo PhoneNumber na tabela sysUser
+
+alter table sysUser add PhoneNumber varchar(15) NULL	
+

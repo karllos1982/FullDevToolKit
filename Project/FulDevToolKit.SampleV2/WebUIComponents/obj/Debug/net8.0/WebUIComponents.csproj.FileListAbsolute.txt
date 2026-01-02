@@ -71,3 +71,4 @@ H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebUICom
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebUIComponents\obj\Debug\net8.0\refint\WebUIComponents.dll
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebUIComponents\obj\Debug\net8.0\WebUIComponents.pdb
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebUIComponents\obj\Debug\net8.0\ref\WebUIComponents.dll
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebUIComponents\obj\Debug\net8.0\swae.build.ex.cache

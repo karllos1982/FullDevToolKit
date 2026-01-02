@@ -1,0 +1,3605 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Template-API",
+    "version": "v1"
+  },
+  "paths": {
+    "/Auth/index": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Auth/listlocalizationtexts": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Auth/sendemailconfirmation": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailConfirmation"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailConfirmation"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/EmailConfirmation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Auth/login": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLogin"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLogin"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserLogin"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Auth/refreshlogin": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthTokenModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthTokenModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AuthTokenModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Auth/recoverypassword": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeUserPassword"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeUserPassword"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeUserPassword"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Auth/requestactiveaccountcode": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActiveUserAccount"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActiveUserAccount"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActiveUserAccount"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Auth/activeaccount": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActiveUserAccount"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActiveUserAccount"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ActiveUserAccount"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Auth/requestchangepasswordcode": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeUserPassword"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeUserPassword"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeUserPassword"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Auth/changepassword": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeUserPassword"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeUserPassword"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeUserPassword"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Auth/changeuserimageprofile": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Auth/getuserimageprofile": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "parameters": [
+          {
+            "name": "file",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Auth/changeuserlanguage": {
+      "post": {
+        "tags": [
+          "Auth"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeUserLanguage"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeUserLanguage"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ChangeUserLanguage"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Auth/logout": {
+      "get": {
+        "tags": [
+          "Auth"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Configs/search": {
+      "post": {
+        "tags": [
+          "Configs"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfigsParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfigsParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfigsParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Configs/list": {
+      "post": {
+        "tags": [
+          "Configs"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfigsParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfigsParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfigsParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Configs/get": {
+      "get": {
+        "tags": [
+          "Configs"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Configs/set": {
+      "post": {
+        "tags": [
+          "Configs"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfigsEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfigsEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ConfigsEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/DataCache/listtipoperacao": {
+      "get": {
+        "tags": [
+          "DataCache"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/DataCache/listtabelas": {
+      "get": {
+        "tags": [
+          "DataCache"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/DataCache/listroles": {
+      "get": {
+        "tags": [
+          "DataCache"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/DataCache/listlangs": {
+      "get": {
+        "tags": [
+          "DataCache"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/DataCache/listlocalizationtexts": {
+      "get": {
+        "tags": [
+          "DataCache"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/DataCache/listgroupparameter": {
+      "get": {
+        "tags": [
+          "DataCache"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/DataCache/listparameter": {
+      "get": {
+        "tags": [
+          "DataCache"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/DataCache/listconfiguration": {
+      "get": {
+        "tags": [
+          "DataCache"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/DataLog/search": {
+      "post": {
+        "tags": [
+          "DataLog"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataLogParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataLogParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataLogParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/DataLog/list": {
+      "post": {
+        "tags": [
+          "DataLog"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataLogParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataLogParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/DataLogParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/DataLog/get": {
+      "get": {
+        "tags": [
+          "DataLog"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/DataLog/gettimeline": {
+      "get": {
+        "tags": [
+          "DataLog"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/DataLog/gettablelist": {
+      "get": {
+        "tags": [
+          "DataLog"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/ExceptionLog/search": {
+      "post": {
+        "tags": [
+          "ExceptionLog"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExceptionLogParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExceptionLogParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExceptionLogParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/ExceptionLog/list": {
+      "post": {
+        "tags": [
+          "ExceptionLog"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExceptionLogParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExceptionLogParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ExceptionLogParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/ExceptionLog/get": {
+      "get": {
+        "tags": [
+          "ExceptionLog"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/FileServer/uploadfile": {
+      "post": {
+        "tags": [
+          "FileServer"
+        ],
+        "parameters": [
+          {
+            "name": "pDirectory",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pFileName",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/FileServer/downloadfile": {
+      "get": {
+        "tags": [
+          "FileServer"
+        ],
+        "parameters": [
+          {
+            "name": "dir",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "file",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/FileServer/deletefile": {
+      "post": {
+        "tags": [
+          "FileServer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FileEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FileEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FileEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/FileServer/movefiledirectory": {
+      "post": {
+        "tags": [
+          "FileServer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MoveFileEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MoveFileEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/MoveFileEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/FileServer/listdirectories": {
+      "get": {
+        "tags": [
+          "FileServer"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/FileServer/listfiles": {
+      "get": {
+        "tags": [
+          "FileServer"
+        ],
+        "parameters": [
+          {
+            "name": "pDirectory",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/FileServer/getfileinfo": {
+      "post": {
+        "tags": [
+          "FileServer"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FileEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FileEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FileEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/GroupParameter/search": {
+      "post": {
+        "tags": [
+          "GroupParameter"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupParameterParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupParameterParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupParameterParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/GroupParameter/list": {
+      "post": {
+        "tags": [
+          "GroupParameter"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupParameterParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupParameterParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupParameterParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/GroupParameter/get": {
+      "get": {
+        "tags": [
+          "GroupParameter"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/GroupParameter/set": {
+      "post": {
+        "tags": [
+          "GroupParameter"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupParameterEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupParameterEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GroupParameterEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Instance/search": {
+      "post": {
+        "tags": [
+          "Instance"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstanceParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstanceParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstanceParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Instance/list": {
+      "post": {
+        "tags": [
+          "Instance"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstanceParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstanceParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstanceParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Instance/get": {
+      "get": {
+        "tags": [
+          "Instance"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Instance/set": {
+      "post": {
+        "tags": [
+          "Instance"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstanceEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstanceEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstanceEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Language/search": {
+      "post": {
+        "tags": [
+          "Language"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanguageParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanguageParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanguageParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Language/list": {
+      "post": {
+        "tags": [
+          "Language"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanguageParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanguageParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanguageParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Language/get": {
+      "get": {
+        "tags": [
+          "Language"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Language/set": {
+      "post": {
+        "tags": [
+          "Language"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanguageEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanguageEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LanguageEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/LocalizationText/search": {
+      "post": {
+        "tags": [
+          "LocalizationText"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalizationTextParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalizationTextParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalizationTextParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/LocalizationText/list": {
+      "post": {
+        "tags": [
+          "LocalizationText"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalizationTextParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalizationTextParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalizationTextParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/LocalizationText/get": {
+      "get": {
+        "tags": [
+          "LocalizationText"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/LocalizationText/set": {
+      "post": {
+        "tags": [
+          "LocalizationText"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalizationTextEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalizationTextEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalizationTextEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/LocalizationText/remove": {
+      "post": {
+        "tags": [
+          "LocalizationText"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalizationTextEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalizationTextEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/LocalizationTextEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/ObjectPermission/search": {
+      "post": {
+        "tags": [
+          "ObjectPermission"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ObjectPermissionParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ObjectPermissionParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ObjectPermissionParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/ObjectPermission/list": {
+      "post": {
+        "tags": [
+          "ObjectPermission"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ObjectPermissionParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ObjectPermissionParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ObjectPermissionParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/ObjectPermission/get": {
+      "get": {
+        "tags": [
+          "ObjectPermission"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/ObjectPermission/set": {
+      "post": {
+        "tags": [
+          "ObjectPermission"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ObjectPermissionEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ObjectPermissionEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ObjectPermissionEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Parameter/search": {
+      "post": {
+        "tags": [
+          "Parameter"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParameterParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParameterParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParameterParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Parameter/list": {
+      "post": {
+        "tags": [
+          "Parameter"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParameterParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParameterParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParameterParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Parameter/get": {
+      "get": {
+        "tags": [
+          "Parameter"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Parameter/set": {
+      "post": {
+        "tags": [
+          "Parameter"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParameterEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParameterEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParameterEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Permission/search": {
+      "post": {
+        "tags": [
+          "Permission"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Permission/list": {
+      "post": {
+        "tags": [
+          "Permission"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Permission/get": {
+      "get": {
+        "tags": [
+          "Permission"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Permission/set": {
+      "post": {
+        "tags": [
+          "Permission"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Permission/remove": {
+      "post": {
+        "tags": [
+          "Permission"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PermissionEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/myapp/Person/search": {
+      "post": {
+        "tags": [
+          "Person"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/myapp/Person/list": {
+      "post": {
+        "tags": [
+          "Person"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/myapp/Person/get": {
+      "get": {
+        "tags": [
+          "Person"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/myapp/Person/set": {
+      "post": {
+        "tags": [
+          "Person"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/myapp/Person/remove": {
+      "post": {
+        "tags": [
+          "Person"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/myapp/Person/contactsentryvalidation": {
+      "post": {
+        "tags": [
+          "Person"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonContactEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonContactEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/PersonContactEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Role/search": {
+      "post": {
+        "tags": [
+          "Role"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Role/list": {
+      "post": {
+        "tags": [
+          "Role"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Role/get": {
+      "get": {
+        "tags": [
+          "Role"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/Role/set": {
+      "post": {
+        "tags": [
+          "Role"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/RoleEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/SessionLog/search": {
+      "post": {
+        "tags": [
+          "SessionLog"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionLogParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionLogParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionLogParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/SessionLog/list": {
+      "post": {
+        "tags": [
+          "SessionLog"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionLogParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionLogParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionLogParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/SessionLog/get": {
+      "get": {
+        "tags": [
+          "SessionLog"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/User/search": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/User/list": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserParam"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserParam"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserParam"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/User/get": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/User/set": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserEntry"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserEntry"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/User/createnewuser": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewUser"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewUser"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/NewUser"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/system/User/changestate": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserChangeState"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserChangeState"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserChangeState"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "ActiveUserAccount": {
+        "type": "object",
+        "properties": {
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "Code": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "AuthTokenModel": {
+        "type": "object",
+        "properties": {
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "CurrentToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "KeepConnection": {
+            "type": "boolean"
+          },
+          "SessionTimeOut": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChangeUserLanguage": {
+        "type": "object",
+        "properties": {
+          "UserID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "NewLanguage": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChangeUserPassword": {
+        "type": "object",
+        "properties": {
+          "UserID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "NewPassword": {
+            "type": "string",
+            "nullable": true
+          },
+          "Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "ToActivate": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConfigsEntry": {
+        "type": "object",
+        "properties": {
+          "Seq": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TSCreate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "TSLastUpdate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ConfigID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ConfigName": {
+            "type": "string",
+            "nullable": true
+          },
+          "ConfigValue": {
+            "type": "string",
+            "nullable": true
+          },
+          "IsActive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConfigsParam": {
+        "type": "object",
+        "properties": {
+          "pConfigID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pConfigName": {
+            "type": "string",
+            "nullable": true
+          },
+          "pIsActive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DataLogParam": {
+        "type": "object",
+        "properties": {
+          "RecordsPerPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "PageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Pagination": {
+            "$ref": "#/components/schemas/PaginationSettingsItem"
+          },
+          "pDataLogID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pUserID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "pDate_Start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "pData_End": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "pOperation": {
+            "type": "string",
+            "nullable": true
+          },
+          "pTableName": {
+            "type": "string",
+            "nullable": true
+          },
+          "SearchByDate": {
+            "type": "boolean"
+          },
+          "pID": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "EmailConfirmation": {
+        "type": "object",
+        "properties": {
+          "UserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "Code": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ExceptionLogParam": {
+        "type": "object",
+        "properties": {
+          "RecordsPerPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "PageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Pagination": {
+            "$ref": "#/components/schemas/PaginationSettingsItem"
+          },
+          "pExceptionLogID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pUserID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pDate_Start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "pData_End": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "pOrigin": {
+            "type": "string",
+            "nullable": true
+          },
+          "SearchByDate": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FileEntry": {
+        "type": "object",
+        "properties": {
+          "Directory": {
+            "type": "string",
+            "nullable": true
+          },
+          "Filename": {
+            "type": "string",
+            "nullable": true
+          },
+          "FileContent": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "GroupParameterEntry": {
+        "type": "object",
+        "properties": {
+          "Seq": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TSCreate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "TSLastUpdate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "GroupParameterID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "GroupParameterName": {
+            "type": "string",
+            "nullable": true
+          },
+          "IsActive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GroupParameterParam": {
+        "type": "object",
+        "properties": {
+          "pGroupParameterID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pGroupParameterName": {
+            "type": "string",
+            "nullable": true
+          },
+          "pIsActive": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "InstanceEntry": {
+        "type": "object",
+        "properties": {
+          "Seq": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TSCreate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "TSLastUpdate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "InstanceID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "InstanceTypeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "InstanceName": {
+            "type": "string",
+            "nullable": true
+          },
+          "IsActive": {
+            "type": "boolean"
+          },
+          "CreateDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "InstanceParam": {
+        "type": "object",
+        "properties": {
+          "RecordsPerPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "PageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Pagination": {
+            "$ref": "#/components/schemas/PaginationSettingsItem"
+          },
+          "pInstanceID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pInstanceTypeName": {
+            "type": "string",
+            "nullable": true
+          },
+          "pInstanceName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LanguageEntry": {
+        "type": "object",
+        "properties": {
+          "Seq": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TSCreate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "TSLastUpdate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "LanguageID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "LanguageName": {
+            "type": "string",
+            "nullable": true
+          },
+          "Description": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LanguageParam": {
+        "type": "object",
+        "properties": {
+          "pLanguageID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pLanguageName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LocalizationTextEntry": {
+        "type": "object",
+        "properties": {
+          "Seq": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TSCreate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "TSLastUpdate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "LocalizationTextID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "LanguageID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Name": {
+            "type": "string",
+            "nullable": true
+          },
+          "Code": {
+            "type": "string",
+            "nullable": true
+          },
+          "Text": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LocalizationTextParam": {
+        "type": "object",
+        "properties": {
+          "RecordsPerPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "PageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Pagination": {
+            "$ref": "#/components/schemas/PaginationSettingsItem"
+          },
+          "pLocalizationTextID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pLanguageID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pName": {
+            "type": "string",
+            "nullable": true
+          },
+          "pCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "pText": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "MoveFileEntry": {
+        "type": "object",
+        "properties": {
+          "Filename": {
+            "type": "string",
+            "nullable": true
+          },
+          "FromDirectory": {
+            "type": "string",
+            "nullable": true
+          },
+          "ToDirectory": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "NewUser": {
+        "type": "object",
+        "properties": {
+          "UserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "PhoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "RoleID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "InstanceID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "LanguageID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "Password": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ObjectPermissionEntry": {
+        "type": "object",
+        "properties": {
+          "Seq": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TSCreate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "TSLastUpdate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ObjectPermissionID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ObjectName": {
+            "type": "string",
+            "nullable": true
+          },
+          "ObjectCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ObjectPermissionParam": {
+        "type": "object",
+        "properties": {
+          "pObjectPermissionID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pObjectName": {
+            "type": "string",
+            "nullable": true
+          },
+          "pObjectCode": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PaginationSettingsItem": {
+        "type": "object",
+        "properties": {
+          "PageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "StartSeq": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "EndSeq": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParameterEntry": {
+        "type": "object",
+        "properties": {
+          "Seq": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TSCreate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "TSLastUpdate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "ParameterID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "GroupParameterID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ParameterName": {
+            "type": "string",
+            "nullable": true
+          },
+          "IsActive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParameterParam": {
+        "type": "object",
+        "properties": {
+          "pParameterID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pGroupParameterID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pParameterName": {
+            "type": "string",
+            "nullable": true
+          },
+          "pIsActive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PermissionEntry": {
+        "type": "object",
+        "properties": {
+          "Seq": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TSCreate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "TSLastUpdate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "PermissionID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ObjectPermissionID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "RoleID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "UserID": {
+            "type": "integer",
+            "format": "int64",
+            "nullable": true
+          },
+          "ReadStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "SaveStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "DeleteStatus": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "TypeGrant": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PermissionParam": {
+        "type": "object",
+        "properties": {
+          "RecordsPerPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "PageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Pagination": {
+            "$ref": "#/components/schemas/PaginationSettingsItem"
+          },
+          "pPermissionID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pUserID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pRoleID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pObjectPermissionID": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PersonContactEntry": {
+        "type": "object",
+        "properties": {
+          "Seq": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TSCreate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "TSLastUpdate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "PersonContactID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "PersonID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ContactName": {
+            "type": "string",
+            "nullable": true
+          },
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "CellPhoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "RecordState": {
+            "$ref": "#/components/schemas/RECORDSTATEENUM"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PersonEntry": {
+        "type": "object",
+        "properties": {
+          "Seq": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TSCreate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "TSLastUpdate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "PersonID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "PersonName": {
+            "type": "string",
+            "nullable": true
+          },
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "PhoneNamber": {
+            "type": "string",
+            "nullable": true
+          },
+          "IsActive": {
+            "type": "boolean"
+          },
+          "CreateDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Contacts": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PersonContactEntry"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "PersonParam": {
+        "type": "object",
+        "properties": {
+          "RecordsPerPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "PageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Pagination": {
+            "$ref": "#/components/schemas/PaginationSettingsItem"
+          },
+          "pPersonID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pPersonName": {
+            "type": "string",
+            "nullable": true
+          },
+          "pEmail": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RECORDSTATEENUM": {
+        "enum": [
+          0,
+          1,
+          2,
+          3
+        ],
+        "type": "integer",
+        "format": "int32"
+      },
+      "RoleEntry": {
+        "type": "object",
+        "properties": {
+          "Seq": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TSCreate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "TSLastUpdate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "RoleID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "RoleName": {
+            "type": "string",
+            "nullable": true
+          },
+          "CreateDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "IsActive": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "RoleParam": {
+        "type": "object",
+        "properties": {
+          "pRoleID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pRoleName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SessionLogParam": {
+        "type": "object",
+        "properties": {
+          "RecordsPerPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "PageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Pagination": {
+            "$ref": "#/components/schemas/PaginationSettingsItem"
+          },
+          "pSessionLogID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pUserID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "pDate_Start": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "pData_End": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "SearchByDate": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserChangeState": {
+        "type": "object",
+        "properties": {
+          "UserID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ActiveValue": {
+            "type": "boolean"
+          },
+          "LockedValue": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserEntry": {
+        "type": "object",
+        "properties": {
+          "Seq": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TSCreate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "TSLastUpdate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "UserID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "ApplicationID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "UserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "PhoneNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "Password": {
+            "type": "string",
+            "nullable": true
+          },
+          "Salt": {
+            "type": "string",
+            "nullable": true
+          },
+          "CreateDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "IsActive": {
+            "type": "boolean"
+          },
+          "IsLocked": {
+            "type": "boolean"
+          },
+          "LanguageID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "LastLoginDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "LastLoginIP": {
+            "type": "string",
+            "nullable": true
+          },
+          "LoginCounter": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "LoginFailCounter": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Avatar": {
+            "type": "string",
+            "nullable": true
+          },
+          "AuthCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "AuthCodeExpires": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "PasswordRecoveryCode": {
+            "type": "string",
+            "nullable": true
+          },
+          "ProfileImage": {
+            "type": "string",
+            "nullable": true
+          },
+          "AuthUserID": {
+            "type": "string",
+            "nullable": true
+          },
+          "Roles": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserRolesEntry"
+            },
+            "nullable": true
+          },
+          "Instances": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/UserInstancesEntry"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserInstancesEntry": {
+        "type": "object",
+        "properties": {
+          "Seq": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TSCreate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "TSLastUpdate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "UserInstanceID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "UserID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "InstanceID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "RecordState": {
+            "$ref": "#/components/schemas/RECORDSTATEENUM"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserLogin": {
+        "type": "object",
+        "properties": {
+          "Email": {
+            "type": "string",
+            "nullable": true
+          },
+          "Password": {
+            "type": "string",
+            "nullable": true
+          },
+          "TargetRole": {
+            "type": "string",
+            "nullable": true
+          },
+          "KeepConnection": {
+            "type": "boolean"
+          },
+          "SessionTimeOut": {
+            "type": "string",
+            "nullable": true
+          },
+          "ClientIP": {
+            "type": "string",
+            "nullable": true
+          },
+          "ClienteBrowserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "AuthToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "AuthTokenExpires": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserParam": {
+        "type": "object",
+        "properties": {
+          "RecordsPerPage": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "PageIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Pagination": {
+            "$ref": "#/components/schemas/PaginationSettingsItem"
+          },
+          "pUserID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pEmail": {
+            "type": "string",
+            "nullable": true
+          },
+          "pUserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "pRoleID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "pInstanceID": {
+            "type": "integer",
+            "format": "int64"
+          }
+        },
+        "additionalProperties": false
+      },
+      "UserRolesEntry": {
+        "type": "object",
+        "properties": {
+          "Seq": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "TSCreate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "TSLastUpdate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "UserRoleID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "UserID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "RoleID": {
+            "type": "integer",
+            "format": "int64"
+          },
+          "RecordState": {
+            "$ref": "#/components/schemas/RECORDSTATEENUM"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "securitySchemes": {
+      "Bearer": {
+        "type": "apiKey",
+        "description": "JWT Authorization header using the Bearer scheme.\r\n                    Enter 'Bearer'[space] and then your token in the text input below.\r\n                    Example: Bearer 12345abcdef",
+        "name": "Authorization",
+        "in": "header"
+      }
+    }
+  },
+  "security": [
+    {
+      "Bearer": [ ]
+    }
+  ]
+}

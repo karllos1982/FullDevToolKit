@@ -321,6 +321,7 @@ namespace FullDevToolKit.Sys.Manager
                     obj.UserName = data.UserName;
                     obj.ApplicationID = 0;
                     obj.Email = data.Email;
+                    obj.PhoneNumber = data.PhoneNumber;
                     obj.Password = MD5.BuildMD5(pwd + slt);
                     obj.Salt = slt;
                     obj.CreateDate = DateTime.Now;

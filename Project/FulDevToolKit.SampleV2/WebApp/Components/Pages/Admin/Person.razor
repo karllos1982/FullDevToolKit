@@ -78,19 +78,7 @@
                             <FluentTextField @bind-Value=view.param.pEmail  Maxlength="100"
                                              Label="@view.texts.Get("SearchByPersonEmail-Label")" style="width:50%">
                             </FluentTextField>
-
-                            <FieldEntryCPF @bind-Value="@cpf" Style="width:50%"></FieldEntryCPF>                            
-                            <span @onclick="@PegaCPF" >@cpf</span>
-
-
-                            <FieldEntryCNPJ @bind-Value="@cnpj" Style="width:50%"></FieldEntryCNPJ>
-                            <span >@cnpj</span>
-
-                            <FieldEntryPhone @bind-Value="@telefone" PhoneType="PHONETYPE.LOCALPHONE" Style="width:50%"></FieldEntryPhone>
-                            <span>@telefone</span>
-
-                            <FieldEntryCEP @bind-Value="@cep" Style="width:50%"></FieldEntryCEP>
-                            <span>@cep</span>
+                         
 
                             <FormActionButton ButtonType=ButtonTypeEnum.SEARCH
                                               Title="@view.texts.Get("SearchButtonLabel")"
@@ -335,11 +323,7 @@ else
     private PersonViewModel view;
     private PageFormMethods form; 
 
-    private string cpf = ""; 
-    private string cnpj = "";
-    private string telefone = "";
-    private string cep = "";
-
+  
     //
 
     public PersonContactDetailsConfigs contactConfigs
@@ -510,10 +494,6 @@ else
 
     }
 
-    public async Task PegaCPF()
-    {
-        await msgbox.ShowWarningAsync(cpf,
-             view.texts.Get("ErrorOnExecuteSearch"));
-    }
+
 
 }

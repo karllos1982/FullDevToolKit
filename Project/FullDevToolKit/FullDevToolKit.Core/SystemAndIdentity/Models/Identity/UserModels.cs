@@ -47,6 +47,8 @@ namespace FullDevToolKit.Sys.Models.Identity
 
         public string Email { get; set; } = string.Empty;
 
+        public string PhoneNumber { get; set; } = string.Empty;
+
         public string RoleName { get; set; } = string.Empty;
 
         public string InstanceName { get; set; } = string.Empty;
@@ -83,6 +85,10 @@ namespace FullDevToolKit.Sys.Models.Identity
 
         [PrimaryValidationConfig("Email", "E-mail", FieldType.EMAIL, false, 100)]
         public string Email { get; set; } = string.Empty;
+
+        [PrimaryValidationConfig("PhoneNumber", "Phone Number", FieldType.CELLPHONENUMBER, true, 15)]
+        public string PhoneNumber { get; set; } = string.Empty;
+        
 
         public string Password { get; set; } = string.Empty;
 
@@ -150,6 +156,9 @@ namespace FullDevToolKit.Sys.Models.Identity
 
         [PrimaryValidationConfig("Email", "E-mail", FieldType.EMAIL, false, 100)]
         public string Email { get; set; } = string.Empty;
+
+        [PrimaryValidationConfig("PhoneNumber", "Phone Number", FieldType.CELLPHONENUMBER, true, 15)]
+        public string PhoneNumber { get; set; } = string.Empty;
 
         [PrimaryValidationConfig("RoleID", "Role ID", FieldType.NUMERIC, false, 0)]
         public long RoleID { get; set; } 

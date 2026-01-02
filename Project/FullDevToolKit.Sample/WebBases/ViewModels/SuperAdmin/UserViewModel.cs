@@ -50,6 +50,7 @@ namespace MyApp.ViewModel
                 new ExceptionMessage("RoleID",""),
                 new ExceptionMessage("Email",""),
                 new ExceptionMessage("UserName",""),
+                new ExceptionMessage("PhoneNumber",""),
                 new ExceptionMessage("Password",""),
                 new ExceptionMessage("DefaultLanguage","")
             };
@@ -195,6 +196,8 @@ namespace MyApp.ViewModel
                 _selectvalues.SelectedRole = result.Roles[0].RoleID.ToString();
                 _selectvalues.SelectedInstance = result.Instances[0].InstanceID.ToString();
                 _selectvalues.LanguageID = result.LanguageID.ToString(); 
+                
+                this.result.PhoneNumber = FormatCellPhoneNumber(result.PhoneNumber);
             }
            
         }

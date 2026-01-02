@@ -25,7 +25,7 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
         public string QueryForGetByEmail()
         {
             string ret = @"Select 
-                    UserID,UserName,ApplicationID,Email,Password,Salt,CreateDate,
+                    UserID,UserName,ApplicationID,Email,PhoneNumber,Password,Salt,CreateDate,
                     IsActive,IsLocked,LanguageID,LastLoginDate,
                     LastLoginIP,LoginCounter,LoginFailCounter,AuthCode,AuthCodeExpires,
                     PasswordRecoveryCode,ProfileImage,AuthUserID 
@@ -146,7 +146,7 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
 		public override string QueryForGet(object param)
         {
             string ret = @"Select 
-                    UserID,ApplicationID,UserName,Email,Password,Salt,CreateDate,
+                    UserID,ApplicationID,UserName,Email,PhoneNumber,Password,Salt,CreateDate,
                     IsActive,IsLocked,LanguageID,LastLoginDate,
                     LastLoginIP,LoginCounter,LoginFailCounter,AuthCode,AuthCodeExpires,
                     PasswordRecoveryCode,ProfileImage,AuthUserID,                     
@@ -209,7 +209,7 @@ namespace FullDevToolKit.Sys.Data.QueryBuilders
         public override string QueryForSearch(object param)
         {
             string ret = @"Select 
-                UserID,ApplicationID,UserName,Email,Password,Salt,CreateDate,IsActive,IsLocked,LanguageID,LastLoginDate,
+                UserID,ApplicationID,UserName,Email,PhoneNumber,Password,Salt,CreateDate,IsActive,IsLocked,LanguageID,LastLoginDate,
                 LastLoginIP,LoginCounter,LoginFailCounter,AuthCode,AuthCodeExpires,PasswordRecoveryCode,ProfileImage,AuthUserID 
                 from sysUser u
                  ";

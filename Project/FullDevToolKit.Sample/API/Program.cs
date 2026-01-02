@@ -53,8 +53,15 @@ builder.Services.AddAuthentication(x =>
 
 builder.Services.AddSwaggerGen(c =>
 {
-   
     c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Template-API", Version = "v1" });
+
+    // Adicionar configuração para ignorar construtores
+    c.IgnoreObsoleteActions();
+    c.DocInclusionPredicate((docName, apiDesc) =>
+    {
+        // Ignore construtores e métodos sem atributos HTTP
+        return apiDesc.HttpMethod != null;
+    });
 
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
     {

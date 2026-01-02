@@ -372,7 +372,14 @@ namespace MyApp.ViewModel
         {
             string ret = value;
                         
-            ret = Convert.ToInt64(value).ToString("(##)#####-####");
+            if (value != null) 
+            {
+                if (value != "")
+                {
+                        
+                        ret = Convert.ToInt64(value).ToString("(##)#####-####");
+                }
+            }
 
             return ret;
         }
@@ -381,7 +388,14 @@ namespace MyApp.ViewModel
         {
             string ret = value;
 
-            ret = Convert.ToInt64(value).ToString("(##)####-####");
+            if (value != null)
+            {
+                if (value != "")
+                {
+
+                    ret = Convert.ToInt64(value).ToString("(##)####-####");
+                }
+            }
 
             return ret;
         }
