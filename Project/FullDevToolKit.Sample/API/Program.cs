@@ -1,15 +1,17 @@
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using MyApp.API;
-using Microsoft.OpenApi.Models;
-using MyApp.Managers;
-using FullDevToolKit.Core;
-using FullDevToolKit.ApplicationHelpers;
-using MyApp.Contracts.Managers;
-using MyApp.Context;
 using API.Code;
+using FullDevToolKit.ApplicationHelpers;
+using FullDevToolKit.Core;
 using FullDevToolKit.Core.Common;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.OpenApi;
+using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi;
+using MyApp.API;
+using MyApp.Context;
+using MyApp.Contracts.Managers;
+using MyApp.Managers;
+using Scalar.AspNetCore;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,79 +53,77 @@ builder.Services.AddAuthentication(x =>
     };
 });
 
-builder.Services.AddSwaggerGen(c =>
+// Configuração OpenAPI com Scalar
+builder.Services.AddOpenApi(options =>
 {
-    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Template-API", Version = "v1" });
-
-    // Adicionar configuração para ignorar construtores
-    c.IgnoreObsoleteActions();
-    c.DocInclusionPredicate((docName, apiDesc) =>
+    options.AddDocumentTransformer((document, context, cancellationToken) =>
     {
-        // Ignore construtores e métodos sem atributos HTTP
-        return apiDesc.HttpMethod != null;
-    });
-
-    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
-    {
-        Name = "Authorization",
-        Type = SecuritySchemeType.ApiKey,
-        Scheme = "Bearer",
-        BearerFormat = "JWT",
-        In = ParameterLocation.Header,
-        Description = @"JWT Authorization header using the Bearer scheme.
-                    Enter 'Bearer'[space] and then your token in the text input below.
-                    Example: Bearer 12345abcdef",
-    });
-
-    c.AddSecurityRequirement(new OpenApiSecurityRequirement
-    {
+        document.Info = new()
         {
-                new OpenApiSecurityScheme
-                {
-                    Reference = new OpenApiReference
-                    {
-                        Type = ReferenceType.SecurityScheme,
-                        Id = "Bearer"
-                    }
-                },
-                new string[] {}
-        }
+            Title = "FullDevToolKit Template API",
+            Version = "v1",
+            Description = "API Template com autenticação JWT"
+        };
+        return Task.CompletedTask;
     });
 
-
+    options.AddOperationTransformer((operation, context, cancellationToken) =>
+    {
+        // Filtrar métodos sem HttpMethod
+        if (string.IsNullOrEmpty(context.Description.HttpMethod))
+        {
+            return Task.CompletedTask;
+        }
+     
+        return Task.CompletedTask;
+    });
 });
 
-builder.Services.AddMvc()
-    .AddJsonOptions(op => op.JsonSerializerOptions.PropertyNamingPolicy = null);
+// .NET 10 - Simplificação da configuração de serialização JSON
+builder.Services.ConfigureHttpJsonOptions(options =>
+{
+    options.SerializerOptions.PropertyNamingPolicy = null;
+});
+
+// Mantém compatibilidade com MVC Controllers
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = null;
+    });
 
 builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 var app = builder.Build();
 
-app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()  );
-         
+app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    
+    // Expor OpenAPI
+    app.MapOpenApi();
+
+    // UI do Scalar
+    app.MapScalarApiReference(options =>
+    {
+        options
+            .WithTitle("FullDevToolKit API")
+            .WithTheme(ScalarTheme.Default)
+            .WithDefaultHttpClient(ScalarTarget.CSharp, ScalarClient.HttpClient)
+            .WithPreferredScheme("Bearer");
+    });
 }
-app.UseDeveloperExceptionPage();
-
-app.UseSwagger();
-app.UseSwaggerUI(opt =>
+else
 {
-    opt.SwaggerEndpoint("/swagger/v1/swagger.json", "Template-API V1");
-    
-});
-
+    // Em produção, não expõe Swagger
+    app.UseExceptionHandler("/Error");
+}
 
 app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
-
-app.UseExceptionHandler();
 
 app.Run();
