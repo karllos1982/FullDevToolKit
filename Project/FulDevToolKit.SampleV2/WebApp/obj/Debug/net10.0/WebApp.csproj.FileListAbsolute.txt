@@ -82,8 +82,6 @@ H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\o
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\obj\Debug\net10.0\compressed\7rdtq3nq20-{0}-x7rr4amhnd-x7rr4amhnd.gz
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\obj\Debug\net10.0\compressed\w4h5mrcvlj-{0}-7fqarh0ccj-7fqarh0ccj.gz
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\obj\Debug\net10.0\compressed\qx4iwv2ogy-{0}-56bhdt2ooh-56bhdt2ooh.gz
-H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\obj\Debug\net10.0\compressed\1as8qug8gd-{0}-3e4x1a8p22-3e4x1a8p22.gz
-H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\obj\Debug\net10.0\compressed\2vnozlwifo-{0}-5hz9w5068u-5hz9w5068u.gz
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\obj\Debug\net10.0\compressed\r0eh6qul5j-{0}-a8m5cweeeb-a8m5cweeeb.gz
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\obj\Debug\net10.0\compressed\lnjkypxe0o-{0}-uhfllo7vmv-uhfllo7vmv.gz
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebApp\obj\Debug\net10.0\compressed\h4q3ud2caj-{0}-wmp8iwak4q-wmp8iwak4q.gz

@@ -91,7 +91,7 @@ namespace FullDevToolKit.Sys.Data.Repositories
 
                 PaginationSettings paginationSettings
                     = query.GetPaginationSettings(paglist,
-                    BaseParam.CalcPageCount(param.RecordsPerPage, paglist.Count), param.RecordsPerPage);
+                    PaginationFeatures.CalcPageCount(param.RecordsPerPage, paglist.Count), param.RecordsPerPage);
 
                 if (param.PageIndex > 0)
                 {

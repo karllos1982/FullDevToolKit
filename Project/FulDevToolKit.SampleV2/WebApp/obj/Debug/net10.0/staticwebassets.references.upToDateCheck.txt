@@ -2,3 +2,5 @@ H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebUICom
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebUIComponents\obj\Debug\net10.0\staticwebassets.build.json
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebUIComponents\obj\Debug\net10.0\staticwebassets.build.json
 H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebUIComponents\obj\Debug\net10.0\staticwebassets.build.json
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebUIComponents\obj\Debug\net10.0\staticwebassets.build.json
+H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FulDevToolKit.SampleV2\WebUIComponents\obj\Debug\net10.0\staticwebassets.build.json

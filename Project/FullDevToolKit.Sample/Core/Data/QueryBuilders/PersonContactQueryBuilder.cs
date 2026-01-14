@@ -22,32 +22,24 @@ namespace MyApp.Data.QueryBuilders
 
         public override string QueryForGet(object param)
         {
-            string ret = "";
-
-            SelectBuilder.Clear();
-            SelectBuilder.AddTable("PersonContacts", "s", true, "PersonContactID", "", JOINTYPE.NONE, null);
-            SelectBuilder.AddField("s", "PersonContactID", "@pPersonContactID", false, "0", null, ORDERBYTYPE.ASC);
-
-            ret = SelectBuilder.BuildQuery();          
-
+            string ret =
+                @"select * from PersonContacts where PersonContactID=@pPersonContactID";
+          
             return ret;
         }
 
         public override string QueryForList(object param)
         {
 
-            string ret = "";
-
-            SelectBuilder.Clear();
-            SelectBuilder.AddTable("PersonContacts", "s", true, "PersonContactID", "", JOINTYPE.NONE, null);
-            SelectBuilder.AddField("s", "PersonContactID", "@pPersonContactID", true, "0", null, ORDERBYTYPE.NONE);
-            SelectBuilder.AddField("s", "PersonID", "@pPersonID", true, "0", null, ORDERBYTYPE.NONE);
-            SelectBuilder.AddField("s", "ContactName", "@pContactName", true, "''", null, ORDERBYTYPE.ASC );
-            SelectBuilder.AddField("s", "Email", "@pEmail", false, "''", null, ORDERBYTYPE.NONE);
-
-            ret = SelectBuilder.BuildQuery();
+            string ret =
+              @"select * from PersonContacts 
+                where (@pPersonContactID=0 or PersonContactID=@pPersonContactID)
+                and (@pPersonID=0 or PersonID=@pPersonID) 
+                and (@pContactName='' or ContactName=@pContactName) 
+                and (@pEmail='' or Email=@pEmail)
+                order by ContactName asc        
+                ";
            
-
             return ret;
         }
 
@@ -70,16 +62,14 @@ namespace MyApp.Data.QueryBuilders
         public override string QueryForSearch(object param)
         {
 
-            string ret = "";
-
-            SelectBuilder.Clear();
-            SelectBuilder.AddTable("PersonContacts", "s", true, "PersonContactID", "", JOINTYPE.NONE, null);
-            SelectBuilder.AddField("s", "PersonContactID", "@pPersonContactID", false, "0", null, ORDERBYTYPE.NONE);
-            SelectBuilder.AddField("s", "PersonID", "@pPersonID", false, "0", null, ORDERBYTYPE.NONE);
-            SelectBuilder.AddField("s", "ContactName", "@pContactName", false, "''", null, ORDERBYTYPE.ASC);
-            SelectBuilder.AddField("s", "Email", "@pEmail", false, "''", null, ORDERBYTYPE.NONE);
-
-            ret = SelectBuilder.BuildQuery();          
+            string ret =
+                @"select * from PersonContacts 
+                where (@pPersonContactID=0 or PersonContactID=@pPersonContactID)
+                and (@pPersonID=0 or PersonID=@pPersonID) 
+                and (@pContactName='' or ContactName=@pContactName) 
+                and (@pEmail='' or Email=@pEmail)
+                order by ContactName asc        
+                ";
 
             return ret;
 

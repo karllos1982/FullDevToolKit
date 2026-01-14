@@ -1,0 +1,27 @@
+{
+  "Entity": "SimpleEntity",
+  "Properties": [
+    {
+      "PropertyName": "SimpleEntityID",
+      "DataType": "long",
+      "PrimaryKey": "true"
+    },
+    {
+      "PropertyName": "SimpleEntityName",
+      "DataType": "string",
+      "MaxLength": 50,
+      "NotNull": "false"
+    },
+    {
+      "PropertyName": "SimpleEntityDescription",
+      "DataType": "string",
+      "MaxLength": 100,
+      "NotNull": "false"
+    },
+    {
+      "PropertyName": "SimpleEntityDate",
+      "DataType": "datetime",      
+      "NotNull": "false"
+    }
+  ]
+}

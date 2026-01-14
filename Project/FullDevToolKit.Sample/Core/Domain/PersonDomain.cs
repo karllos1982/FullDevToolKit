@@ -74,36 +74,7 @@ namespace MyApp.Domain
             return ret;
         }
 
-        public async Task EntryValidation_(PersonEntry obj)
-        {
-            ExecutionStatus ret = null;
-
-            ret = PrimaryValidation.Execute(obj, new List<string>(), Context.LocalizationLanguage);
-
-            ExecutionStatus aux = ContactsEntriesValidation(obj.Contacts);
-
-            if (ret.Success)
-            {
-                ret = aux; 
-            }
-            else
-            {
-                if (!aux.Success)
-                {
-                    ret.Exceptions.AddException("Contacts", 
-                        aux.Exceptions.Messages[0].Description); 
-                }                
-            }
-
-            if (!ret.Success)
-            {
-                ret.SetFailStatus("Error", LocalizationText.Get("Validation-Error", Context.LocalizationLanguage).Text);                 
-            }
-          
-            Context.Status = ret;
-
-        }
-
+       
         public ExecutionStatus ContactsEntriesValidation(List<PersonContactEntry> entries)
         {
             ExecutionStatus ret = new ExecutionStatus(true);

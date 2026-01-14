@@ -209,3 +209,24 @@ alter table [sysUser] drop column [DefaultLanguage]
 
 alter table sysUser add PhoneNumber varchar(15) NULL	
 
+
+-- **** Novas tabelas para geração de código através de I.A ****
+
+
+CREATE TABLE SimpleEntity (
+    SimpleEntityID BIGINT NOT NULL PRIMARY KEY,
+    SimpleEntityName NVARCHAR(50) NULL,
+    SimpleEntityDescription NVARCHAR(100) NULL,
+    SimpleEntityDate DATETIME NULL,
+    Seq BIGINT IDENTITY(1,1) NOT NULL,
+    TSCreate DATETIME DEFAULT GETDATE(),
+    TSLastUpdate DATETIME DEFAULT GETDATE()
+);
+
+CREATE INDEX IX_SimpleEntity_Seq ON SimpleEntity(Seq);
+
+
+
+
+
+

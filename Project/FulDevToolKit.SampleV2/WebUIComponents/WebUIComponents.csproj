@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <Content Remove="Common\DefaultFormPage.razor" />
+    <Content Remove="Common\MaskedTextField.razor" />
   </ItemGroup>
 
   <ItemGroup>

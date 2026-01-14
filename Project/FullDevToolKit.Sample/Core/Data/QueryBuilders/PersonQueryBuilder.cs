@@ -25,13 +25,8 @@ namespace MyApp.Data.QueryBuilders
         public override string QueryForGet(object param)
         {
 
-            string ret = ""; 
-
-            SelectBuilder.Clear();
-            SelectBuilder.AddTable("Person", "c", true, "PersonID", "", JOINTYPE.NONE, null);                        
-            SelectBuilder.AddField("c", "PersonID", "@pPersonID", false, "0", null, ORDERBYTYPE.ASC);
-
-            ret = SelectBuilder.BuildQuery();
+            string ret =
+                "select * from Person where PersonID=@pPersonID";       
 
             return ret;
         }
@@ -39,15 +34,13 @@ namespace MyApp.Data.QueryBuilders
         public override string QueryForList(object param)
         {
 
-            string ret = "";
-
-            SelectBuilder.Clear();
-            SelectBuilder.AddTable("Person", "c", false, "PersonID", "", JOINTYPE.NONE, null);
-            SelectBuilder.AddField("c", "PersonID", "@pPersonID", true, "0", null, ORDERBYTYPE.NONE);
-            SelectBuilder.AddField("c", "PersonName", "@pPersonName", true, "''", null, ORDERBYTYPE.ASC);
-            SelectBuilder.AddField("c", "Email", "@pEmail", false, "''", null, ORDERBYTYPE.NONE);
-
-            ret = SelectBuilder.BuildQuery();
+            string ret =
+             @"select * from Person                 
+                and (@pPersonID=0 or PersonID=@pPersonID) 
+                and (@pPersonName='' or PersonName=@pPersonName) 
+                and (@pEmail='' or Email=@pEmail)
+                order by PersonName asc        
+                ";         
 
             return ret;
         }

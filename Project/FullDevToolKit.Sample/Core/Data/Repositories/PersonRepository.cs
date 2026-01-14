@@ -79,24 +79,17 @@ namespace MyApp.Data.Repositories
 
             List<PersonResult> recordlist = null;
             List<PaginationModel> paglist = null;
-            int index = 1;
-
+            
             paglist = await Context
             .ExecuteQueryToListAsync<PaginationModel>(query.QueryForPaginationSettings(param), param);
 
             if (paglist.Count > 0)
             {
-
+                
+                BaseParam b_param = (param as BaseParam);
                 PaginationSettings paginationSettings
-                    = query.GetPaginationSettings(paglist,
-                    BaseParam.CalcPageCount(param.RecordsPerPage, paglist.Count), param.RecordsPerPage);
+                     = PaginationFeatures.BuildPaginationSettings(query, ref b_param, paglist); 
 
-                if (param.PageIndex > 0)
-                {
-                    index = param.PageIndex;
-                }
-
-                param.Pagination = paginationSettings.GetItem(index);
                 recordlist = await Context
                 .ExecuteQueryToListAsync<PersonResult>(query.QueryForSearch(param), param);
 

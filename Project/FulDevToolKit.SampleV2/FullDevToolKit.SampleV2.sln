@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.1.11312.151 d18.0
+VisualStudioVersion = 18.1.11312.151
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApp", "WebApp\WebApp.csproj", "{5A26BD90-AA52-4AFD-B2D7-32B8A4E9667D}"
 EndProject
@@ -22,6 +22,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{66872758-0ED0-4D33-A092-7CA9989F5000}"
 	ProjectSection(SolutionItems) = preProject
 		Arquiteture.md = Arquiteture.md
+		DevelopmentStepByStep.md = DevelopmentStepByStep.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataModeling", "DataModeling", "{78133293-9D89-43E9-91F7-479BD75C3A85}"
+	ProjectSection(SolutionItems) = preProject
+		PersonType.json = PersonType.json
+		SimpleEntity.json = SimpleEntity.json
 	EndProjectSection
 EndProject
 Global
@@ -65,6 +72,9 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{78133293-9D89-43E9-91F7-479BD75C3A85} = {66872758-0ED0-4D33-A092-7CA9989F5000}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {799C7FB4-F7D4-466B-9BD3-D6ACF3CF45F0}

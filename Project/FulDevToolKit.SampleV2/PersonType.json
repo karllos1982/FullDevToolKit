@@ -1,0 +1,23 @@
+  
+  {  
+  "Entity": "PersonType",
+    "Properties": [
+      {
+        "PropertyName": "PersonTypeID",
+        "DataType": "long",
+        "PrimaryKey": "true"
+      },
+      {
+        "PropertyName": "TypeName",
+        "DataType": "string",
+        "MaxLength": 50,
+        "NotNull": "false"
+      },
+      {
+        "PropertyName": "Description",
+        "DataType": "string",
+        "MaxLength": 100,
+        "NotNull": "false"
+      }
+    ]
+  }

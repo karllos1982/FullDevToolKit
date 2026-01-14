@@ -90,8 +90,8 @@ namespace FullDevToolKit.Sys.Data.Repositories
             {
                 // montar o objeto com as configurações da paginação: lista com os seq start e seq end para cada pagina
                 PaginationSettings paginationSettings
-                    = query.GetPaginationSettings(paglist, 
-                    BaseParam.CalcPageCount(param.RecordsPerPage, paglist.Count), param.RecordsPerPage);
+                    = query.GetPaginationSettings(paglist,
+                    PaginationFeatures.CalcPageCount(param.RecordsPerPage, paglist.Count), param.RecordsPerPage);
                 
                 // por padrão, se é uma nova pesquisa (PageIndex), sempre retornar a primeira pagina
                 // se passar um indice, retorna a pagina correspondente
