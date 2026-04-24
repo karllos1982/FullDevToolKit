@@ -13,11 +13,11 @@ using System.Reflection;
 
 [assembly: System.Reflection.AssemblyCompanyAttribute("FullDevToolKit.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
-[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c47135034e7ea5dcf213c11dec942af3927b6051")]
+[assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.1")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e5639b94b9c5e7f7762b54e40db1e951ed269dea")]
 [assembly: System.Reflection.AssemblyProductAttribute("FullDevToolKit.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("FullDevToolKit.Core")]
-[assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
+[assembly: System.Reflection.AssemblyVersionAttribute("1.0.1")]
 
 // Gerado pela classe WriteCodeFragment do MSBuild.
 

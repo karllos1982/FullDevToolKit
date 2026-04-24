@@ -18,8 +18,9 @@ namespace FullDevToolKit.Helpers
             TIME = 8, //tipo hora (HH:MM)
             URL = 9, // tipo url (site)
             USERNAME = 10, //faz a validação verificando se existe caracteres especiais e espaço
-            CELLPHONENUMBER = 11 //tipo celular com DDD e nono dígito 
-        }
+            CELLPHONENUMBER = 11, //tipo celular com DDD e nono dígito 
+            ID = 12 //tipo id, valida se é numérico e maior que zero            
+    }
 
         [AttributeUsage
           (AttributeTargets.Class | AttributeTargets.Property, AllowMultiple = true)
@@ -94,18 +95,15 @@ namespace FullDevToolKit.Helpers
 
                                 if (p.GetCustomAttributes().ToList().Count > 0)
                                 {
-                                    attr = p.GetCustomAttributes().ToList()[0];
-                                    if (attr != null)
+                                    foreach (var a in p.GetCustomAttributes())
                                     {
-                                        if (attr is PrimaryValidationConfig)
+                                        if (a is PrimaryValidationConfig)
                                         {
-                                            configs = (PrimaryValidationConfig)attr;
+                                            configs = (PrimaryValidationConfig)a;
                                             val.Validator(ref ret, value, configs.DataType,
-                                            configs.FieldName, configs.FieldLabel, configs.AllowNull, configs.MaxLength,lang);
-
+                                            configs.FieldName, configs.FieldLabel, configs.AllowNull, configs.MaxLength, lang);
                                         }
-                                    }
-
+                                    }                               
                                 }
                             }
                         }
@@ -245,12 +243,41 @@ namespace FullDevToolKit.Helpers
                 return ret;
             }
 
+            public bool IsID(string value)
+            {
+                bool ret = false;
+                long aux = 0;
+
+                try
+                {
+                    value = value.Trim();
+                    if (value.Length != 0)
+                    {
+                        aux = long.Parse(value);
+                        ret = true;
+                    }
+
+                    if (ret)
+                    {
+                        if (aux <= 0)
+                        {
+                            ret = false;
+                        }
+                    }
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+                return ret;
+            }
 
 
-            /// <summary>
-            ///Efetua uma validação primária num valor passado como parâmetro de acordo com as especificações 
-            /// </summary>
-            public void Validator(ref ExecutionStatus ret, string value, FieldType type, 
+        /// <summary>
+        ///Efetua uma validação primária num valor passado como parâmetro de acordo com as especificações 
+        /// </summary>
+        public void Validator(ref ExecutionStatus ret, string value, FieldType type, 
                 string fieldname, string fieldlabel, bool allownull, int maxlength, string lang = "")
             {
                 bool exit = false;
@@ -389,11 +416,20 @@ namespace FullDevToolKit.Helpers
                            
                             }
                             break;
+
+                        case FieldType.ID:
+                            if (value?.Length > 0 && !this.IsID(value))
+                            {
+                                msg = string.Format(LocalizationText.Get("Validation-Invalid-Field", lang).Text, fieldlabel);
+                                ret.Exceptions?.AddException(fieldname, msg);
+                            }
+                            break;
                     }
                 }
+
                 if (ret.Exceptions?.Messages.Count > 0)
                 {
-                ret.Success = false;
+                    ret.Success = false;
                 }
             }
 
