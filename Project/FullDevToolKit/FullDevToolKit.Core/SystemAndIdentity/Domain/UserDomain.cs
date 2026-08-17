@@ -355,7 +355,7 @@ namespace FullDevToolKit.Sys.Domains
 
         public async Task<string> SetPasswordRecoveryCode(ChangeUserPassword model)
         {
-            string code = "";
+            PasswordCode code = PasswordManager.GetChangePasswordCode();
             string errmsg = "";
             
             UserResult usermatch = null;
@@ -368,22 +368,13 @@ namespace FullDevToolKit.Sys.Domains
                 {
                     if (!model.ToActivate)
                     {
-                        if (usermatch.IsActive)
+                        if (!usermatch.IsActive)
                         {
-                            code = Utilities.GenerateCode(6);
+                            errmsg = LocalizationText.Get("Login-Inactive-Account",
+                                    Context.LocalizationLanguage).Text;
 
                         }
-                        else
-                        {
-                            errmsg = LocalizationText.Get("Login-Inactive-Account", Context.LocalizationLanguage).Text;
-
-                        }
-                    }
-                    else
-                    {
-                        code = Utilities.GenerateCode(6);
-                    }
-
+                    }                   
                 }
                 else
                 {
@@ -396,7 +387,7 @@ namespace FullDevToolKit.Sys.Domains
                         new SetPasswordRecoveryCode()
                         {
                             UserID = usermatch.UserID,
-                            Code = code
+                            Code = code.EncriptedCode
                         });                   
                 }
                 else
@@ -407,7 +398,7 @@ namespace FullDevToolKit.Sys.Domains
 
             }                      
 
-            return code;
+            return code.Code;
 
         }
 
@@ -432,22 +423,19 @@ namespace FullDevToolKit.Sys.Domains
                     {
                         if (usermatch.PasswordRecoveryCode != null)
                         {
-                            if (usermatch.PasswordRecoveryCode != model.Code)
+                            if (!PasswordManager.ValidatePasswordCode(model.Code,
+                                                usermatch.PasswordRecoveryCode))
                             {
                                 errmsg 
                                     = LocalizationText.Get("User-Invalid-Password-Code",Context.LocalizationLanguage).Text;
-
                             }
                         }
                         else
                         {
-
                             errmsg
                                 = LocalizationText.Get("User-Invalid-Password-Code",Context.LocalizationLanguage).Text;
                         }
-
                     }
-
                 }
                 else
                 {
@@ -455,9 +443,10 @@ namespace FullDevToolKit.Sys.Domains
                 }
 
                 if (errmsg == "")
-                {                   
-                    string pwd = FullDevToolKit.Helpers.MD5.BuildMD5(model.NewPassword);
-                    pwd = FullDevToolKit.Helpers.MD5.BuildMD5(pwd + usermatch.Salt);
+                {
+                    string pwd 
+                        = PasswordManager.EncryptPassword(model.NewPassword + usermatch.Salt,
+                                usermatch.CreateDate.Ticks.ToString());
 
                     ChangeUserPassword change = new ChangeUserPassword();
                     change.NewPassword = pwd;

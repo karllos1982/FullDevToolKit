@@ -47,8 +47,10 @@ namespace FullDevToolKit.Sys.Manager
                     {
                         if (usermatch.IsActive)
                         {
+                            bool checkpwd = PasswordManager.ValidatePassword(usermatch.Password,
+                                model.Password + usermatch.Salt, usermatch.CreateDate.Ticks.ToString());
 
-                            if (usermatch.Password == MD5.BuildMD5(model.Password + usermatch.Salt))
+                            if (checkpwd)
                             {
 
                             }
@@ -65,7 +67,8 @@ namespace FullDevToolKit.Sys.Manager
                                 {
                                     if (usermatch.PasswordRecoveryCode.Length > 0)
                                     {
-                                        if (MD5.BuildMD5(usermatch.PasswordRecoveryCode) == model.Password)
+                                        if (PasswordManager.ValidatePasswordCode(model.Password, 
+                                                usermatch.PasswordRecoveryCode))
                                         {
                                             errmsg = "";
                                             invalidpassword = false;
@@ -310,9 +313,10 @@ namespace FullDevToolKit.Sys.Manager
                 UserEntry obj;
 
                 old = await Domainset.User.GetByEmail(data.Email);
-
-                string pwd = MD5.BuildMD5(data.Password);
+               
                 string slt = Utilities.GenerateCode(5);
+                string pwd = data.Password + slt;
+                DateTime dt = DateTime.Now;
 
                 if (old == null)
                 {
@@ -322,9 +326,9 @@ namespace FullDevToolKit.Sys.Manager
                     obj.ApplicationID = 0;
                     obj.Email = data.Email;
                     obj.PhoneNumber = data.PhoneNumber;
-                    obj.Password = MD5.BuildMD5(pwd + slt);
+                    obj.Password = PasswordManager.EncryptPassword(pwd,dt.Ticks.ToString());
                     obj.Salt = slt;
-                    obj.CreateDate = DateTime.Now;
+                    obj.CreateDate = dt;
                     obj.IsActive = false;
                     obj.IsLocked = false;
                     obj.LanguageID = data.LanguageID;

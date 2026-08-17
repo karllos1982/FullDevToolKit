@@ -61,15 +61,15 @@ namespace FullDevToolKit.Helpers
                     _cryptProvider = CryptProvider.Rijndael;
                     break;
                 case CryptProvider.RC2:
-                    _algorithm = RC2.Create();
+                    _algorithm = Aes.Create();
                     _cryptProvider = CryptProvider.RC2;
                     break;
                 case CryptProvider.DES:
-                    _algorithm = DES.Create();
+                    _algorithm = Aes.Create();
                     _cryptProvider = CryptProvider.DES;
                     break;
                 case CryptProvider.TripleDES:
-                    _algorithm = TripleDES.Create();
+                    _algorithm = Aes.Create();
                     _cryptProvider = CryptProvider.TripleDES;
                     break;
             }
