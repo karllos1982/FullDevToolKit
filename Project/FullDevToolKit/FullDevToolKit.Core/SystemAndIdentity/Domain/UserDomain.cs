@@ -484,9 +484,11 @@ namespace FullDevToolKit.Sys.Domains
                     {
                         if (usermatch.PasswordRecoveryCode != null)
                         {
-                            if (usermatch.PasswordRecoveryCode != model.Code)
-                            {
-                                errmsg = LocalizationText.Get("User-Invalid-Activation-Code", Context.LocalizationLanguage).Text;
+                            if (!PasswordManager.ValidatePasswordCode(model.Code,
+                                                usermatch.PasswordRecoveryCode))
+                            { 
+                                errmsg 
+                                    = LocalizationText.Get("User-Invalid-Activation-Code", Context.LocalizationLanguage).Text;
                             }
                         }
                         else
