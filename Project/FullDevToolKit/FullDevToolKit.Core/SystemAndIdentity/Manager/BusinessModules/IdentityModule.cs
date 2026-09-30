@@ -317,7 +317,7 @@ namespace FullDevToolKit.Sys.Manager
                 string slt = Utilities.GenerateCode(5);
                 string pwd = data.Password + slt;
                 DateTime dt = DateTime.Now;
-
+                
                 if (old == null)
                 {
                     obj = new UserEntry();
