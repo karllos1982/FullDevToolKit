@@ -62,7 +62,7 @@
     "version": "1.0.0",
     "restore": {
       "projectUniqueName": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\FullDevToolKit.Core.csproj",
-      "projectName": "FullDevToolKit.Core",
+      "projectName": "FullDevToolKit",
       "projectPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\FullDevToolKit.Core.csproj",
       "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
       "outputPath": "H:\\LocalDrive_00\\Projetos\\FullDevToolKit\\Project\\FullDevToolKit\\FullDevToolKit.Core\\obj\\",
