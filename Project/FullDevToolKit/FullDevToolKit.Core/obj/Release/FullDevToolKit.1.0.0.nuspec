@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>FullDevToolKit</id>
+    <version>1.0.0</version>
+    <title>Full Developer Tool Kit</title>
+    <authors>Carlos Fonteles</authors>
+    <projectUrl>https://github.com/karllos1982/FullDevToolKit</projectUrl>
+    <description>Library fundations for building applications, like websites, desktop and mobile. There is all stuffs for development of backend of this aplications (data access, identity manager and common libraries).</description>
+    <repository type="git" url="https://github.com/karllos1982/FullDevToolKit" commit="7b8aec89dccd825f343cc40693a4c0984473f18c" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit\FullDevToolKit.Core\bin\Release\net10.0\FullDevToolKit.Core.dll" target="lib\net10.0\FullDevToolKit.Core.dll" />
+  </files>
+</package>

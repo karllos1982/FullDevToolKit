@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>FullDevToolKit.Core</id>
+    <version>1.0.0</version>
+    <authors>FullDevToolKit.Core</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="7b8aec89dccd825f343cc40693a4c0984473f18c" />
+    <dependencies>
+      <group targetFramework="net10.0">
+        <dependency id="Newtonsoft.Json" version="13.0.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="H:\LocalDrive_00\Projetos\FullDevToolKit\Project\FullDevToolKit\FullDevToolKit.Core\bin\Release\net10.0\FullDevToolKit.Core.dll" target="lib\net10.0\FullDevToolKit.Core.dll" />
+  </files>
+</package>

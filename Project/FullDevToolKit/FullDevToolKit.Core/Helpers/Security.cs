@@ -45,7 +45,7 @@ namespace FullDevToolKit.Helpers
 
         public Encryptor()
         {
-            _algorithm = new RijndaelManaged();
+            _algorithm = Aes.Create();
             _algorithm.Mode = CipherMode.CBC;
             _cryptProvider = CryptProvider.Rijndael;
             _key = "dkproject";
@@ -57,19 +57,19 @@ namespace FullDevToolKit.Helpers
             switch (cryptProvider)
             {
                 case CryptProvider.Rijndael:
-                    _algorithm = new RijndaelManaged();
+                    _algorithm = Aes.Create();
                     _cryptProvider = CryptProvider.Rijndael;
                     break;
                 case CryptProvider.RC2:
-                    _algorithm = new RC2CryptoServiceProvider();
+                    _algorithm = RC2.Create();
                     _cryptProvider = CryptProvider.RC2;
                     break;
                 case CryptProvider.DES:
-                    _algorithm = new DESCryptoServiceProvider();
+                    _algorithm = DES.Create();
                     _cryptProvider = CryptProvider.DES;
                     break;
                 case CryptProvider.TripleDES:
-                    _algorithm = new TripleDESCryptoServiceProvider();
+                    _algorithm = TripleDES.Create();
                     _cryptProvider = CryptProvider.TripleDES;
                     break;
             }
@@ -187,7 +187,7 @@ namespace FullDevToolKit.Helpers
         public static string BuildMD5(string text)
         {
             string sString = "";
-            using (MD5CryptoServiceProvider csp = new MD5CryptoServiceProvider())
+            using (var csp = System.Security.Cryptography.MD5.Create())
             {
 
                 byte[] msg = Encoding.Default.GetBytes(text);

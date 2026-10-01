@@ -4,8 +4,17 @@
     <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <AssemblyVersion>1.0.1</AssemblyVersion>
-    <FileVersion>1.0.1</FileVersion>
+    <AssemblyVersion>1.1.0</AssemblyVersion>
+    <FileVersion>1.1.0</FileVersion>
+    <PackageId>FullDevToolKit</PackageId>
+    <Title>Full Developer Tool Kit</Title>
+    <Authors>Carlos Fonteles</Authors>
+    <Company>GW Tecnologia</Company>
+    <Product>FullDevToolKit</Product>
+    <Description>Library fundations for building applications, like websites, desktop and mobile. There is all stuffs for development of backend of this aplications (data access, identity manager and common libraries).</Description>
+    <Copyright></Copyright>
+    <PackageProjectUrl>https://github.com/karllos1982/FullDevToolKit</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/karllos1982/FullDevToolKit</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
